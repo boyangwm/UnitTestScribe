@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Configuration\ContentTypeElementCollection.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">System</name><op:operator pos:line="1" pos:column="13">.</op:operator><name pos:line="1" pos:column="14">Configuration</name></name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Core</name><op:operator pos:line="3" pos:column="23">.</op:operator><name pos:line="3" pos:column="24">Configuration</name></name>
+<block pos:line="4" pos:column="1">{
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="6" pos:column="5">/// The Glimpse configuration node for collecting a list of content types.</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// &lt;/summary&gt;</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// &lt;remarks&gt;</comment>
+    <comment type="line" pos:line="9" pos:column="5">/// By default, &lt;c&gt;ContentTypeElementCollection&lt;/c&gt;s contain three elements: &lt;c&gt;text/html&lt;/c&gt;, &lt;c&gt;application/json&lt;/c&gt; and &lt;c&gt;text/plain&lt;/c&gt;.</comment>
+    <comment type="line" pos:line="10" pos:column="5">/// &lt;/remarks&gt;</comment>
+    <class><attribute pos:line="11" pos:column="5">[<expr><call><name pos:line="11" pos:column="6">ConfigurationCollection</name><argument_list pos:line="11" pos:column="29">(<argument><expr><call><name pos:line="11" pos:column="30">typeof</name><argument_list pos:line="11" pos:column="36">(<argument><expr><name pos:line="11" pos:column="37">ContentTypeElement</name></expr></argument>)</argument_list></call></expr></argument>, <argument><expr><name pos:line="11" pos:column="58">CollectionType</name> <op:operator pos:line="11" pos:column="73">=</op:operator> <name><name pos:line="11" pos:column="75">ConfigurationElementCollectionType</name><op:operator pos:line="11" pos:column="109">.</op:operator><name pos:line="11" pos:column="110">AddRemoveClearMap</name></name></expr></argument>)</argument_list></call></expr>]</attribute>
+    <specifier pos:line="12" pos:column="5">public</specifier> <specifier pos:line="12" pos:column="12">sealed</specifier> class <name pos:line="12" pos:column="25">ContentTypeElementCollection</name> <super pos:line="12" pos:column="54">: <name pos:line="12" pos:column="56">ConfigurationElementCollection</name></super>
+    <block pos:line="13" pos:column="5">{
+        <comment type="line" pos:line="14" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// Initializes a new instance of the &lt;see cref="ContentTypeElementCollection" /&gt; class with &lt;c&gt;text/html&lt;/c&gt;, &lt;c&gt;application/json&lt;/c&gt; and &lt;c&gt;text/plain&lt;/c&gt; added to the collection.</comment>
+        <comment type="line" pos:line="16" pos:column="9">/// &lt;/summary&gt;</comment>
+        <constructor><specifier pos:line="17" pos:column="9">public</specifier> <name pos:line="17" pos:column="16">ContentTypeElementCollection</name><parameter_list pos:line="17" pos:column="44">()</parameter_list>
+        <block pos:line="18" pos:column="9">{
+            <expr_stmt><expr><call><name pos:line="19" pos:column="13">BaseAdd</name><argument_list pos:line="19" pos:column="20">(<argument><expr><op:operator pos:line="19" pos:column="21">new</op:operator> <name pos:line="19" pos:column="25">ContentTypeElement</name> <block pos:line="19" pos:column="44">{ <expr><name pos:line="19" pos:column="46">ContentType</name> <op:operator pos:line="19" pos:column="58">=</op:operator> <lit:literal type="string" pos:line="19" pos:column="60">@"text/html"</lit:literal></expr> }</block></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name pos:line="20" pos:column="13">BaseAdd</name><argument_list pos:line="20" pos:column="20">(<argument><expr><op:operator pos:line="20" pos:column="21">new</op:operator> <name pos:line="20" pos:column="25">ContentTypeElement</name> <block pos:line="20" pos:column="44">{ <expr><name pos:line="20" pos:column="46">ContentType</name> <op:operator pos:line="20" pos:column="58">=</op:operator> <lit:literal type="string" pos:line="20" pos:column="60">@"application/json"</lit:literal></expr> }</block></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name pos:line="21" pos:column="13">BaseAdd</name><argument_list pos:line="21" pos:column="20">(<argument><expr><op:operator pos:line="21" pos:column="21">new</op:operator> <name pos:line="21" pos:column="25">ContentTypeElement</name> <block pos:line="21" pos:column="44">{ <expr><name pos:line="21" pos:column="46">ContentType</name> <op:operator pos:line="21" pos:column="58">=</op:operator> <lit:literal type="string" pos:line="21" pos:column="60">@"text/plain"</lit:literal></expr> }</block></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// When overridden in a derived class, creates a new &lt;see cref="T:System.Configuration.ConfigurationElement" /&gt;.</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// A new &lt;see cref="T:System.Configuration.ConfigurationElement" /&gt;.</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="30" pos:column="9">protected</specifier> <specifier pos:line="30" pos:column="19">override</specifier> <name pos:line="30" pos:column="28">ConfigurationElement</name></type> <name pos:line="30" pos:column="49">CreateNewElement</name><parameter_list pos:line="30" pos:column="65">()</parameter_list>
+        <block pos:line="31" pos:column="9">{
+            <return pos:line="32" pos:column="13">return <expr><op:operator pos:line="32" pos:column="20">new</op:operator> <call><name pos:line="32" pos:column="24">ContentTypeElement</name><argument_list pos:line="32" pos:column="42">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="35" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// Gets the element key for a specified configuration element when overridden in a derived class.</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// &lt;param name="element"&gt;The &lt;see cref="T:System.Configuration.ConfigurationElement" /&gt; to return the key for.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// An &lt;see cref="T:System.Object" /&gt; that acts as the key for the specified &lt;see cref="T:System.Configuration.ConfigurationElement" /&gt;.</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// &lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="42" pos:column="9">protected</specifier> <specifier pos:line="42" pos:column="19">override</specifier> <name pos:line="42" pos:column="28">object</name></type> <name pos:line="42" pos:column="35">GetElementKey</name><parameter_list pos:line="42" pos:column="48">(<param><decl><type><name pos:line="42" pos:column="49">ConfigurationElement</name></type> <name pos:line="42" pos:column="70">element</name></decl></param>)</parameter_list>
+        <block pos:line="43" pos:column="9">{
+            <return pos:line="44" pos:column="13">return <expr><op:operator pos:line="44" pos:column="20">(</op:operator><op:operator pos:line="44" pos:column="21">(</op:operator><name pos:line="44" pos:column="22">ContentTypeElement</name><op:operator pos:line="44" pos:column="40">)</op:operator><name pos:line="44" pos:column="41">element</name><op:operator pos:line="44" pos:column="48">)</op:operator><op:operator pos:line="44" pos:column="49">.</op:operator><name pos:line="44" pos:column="50">ContentType</name></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

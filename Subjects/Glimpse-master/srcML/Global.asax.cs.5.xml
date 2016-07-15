@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.WebForms.WingTip.Sample\Global.asax.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Linq</name></name>;</using>
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">System</name><op:operator pos:line="4" pos:column="13">.</op:operator><name pos:line="4" pos:column="14">Web</name></name>;</using>
+<using pos:line="5" pos:column="1">using <name><name pos:line="5" pos:column="7">System</name><op:operator pos:line="5" pos:column="13">.</op:operator><name pos:line="5" pos:column="14">Web</name><op:operator pos:line="5" pos:column="17">.</op:operator><name pos:line="5" pos:column="18">Optimization</name></name>;</using>
+<using pos:line="6" pos:column="1">using <name><name pos:line="6" pos:column="7">System</name><op:operator pos:line="6" pos:column="13">.</op:operator><name pos:line="6" pos:column="14">Web</name><op:operator pos:line="6" pos:column="17">.</op:operator><name pos:line="6" pos:column="18">Routing</name></name>;</using>
+<using pos:line="7" pos:column="1">using <name><name pos:line="7" pos:column="7">System</name><op:operator pos:line="7" pos:column="13">.</op:operator><name pos:line="7" pos:column="14">Web</name><op:operator pos:line="7" pos:column="17">.</op:operator><name pos:line="7" pos:column="18">Security</name></name>;</using>
+<using pos:line="8" pos:column="1">using <name pos:line="8" pos:column="7">WingtipToys</name>;</using>
+<using pos:line="9" pos:column="1">using <name><name pos:line="9" pos:column="7">System</name><op:operator pos:line="9" pos:column="13">.</op:operator><name pos:line="9" pos:column="14">Data</name><op:operator pos:line="9" pos:column="18">.</op:operator><name pos:line="9" pos:column="19">Entity</name></name>;</using>
+<using pos:line="10" pos:column="1">using <name><name pos:line="10" pos:column="7">WingtipToys</name><op:operator pos:line="10" pos:column="18">.</op:operator><name pos:line="10" pos:column="19">Models</name></name>;</using>
+
+<namespace pos:line="12" pos:column="1">namespace <name pos:line="12" pos:column="11">WingtipToys</name>
+<block pos:line="13" pos:column="1">{
+    <class><specifier pos:line="14" pos:column="5">public</specifier> class <name pos:line="14" pos:column="18">Global</name> <super pos:line="14" pos:column="25">: <name pos:line="14" pos:column="27">HttpApplication</name></super>
+    <block pos:line="15" pos:column="5">{
+        <function><type><name pos:line="16" pos:column="9">void</name></type> <name pos:line="16" pos:column="14">Application_Start</name><parameter_list pos:line="16" pos:column="31">(<param><decl><type><name pos:line="16" pos:column="32">object</name></type> <name pos:line="16" pos:column="39">sender</name></decl></param>, <param><decl><type><name pos:line="16" pos:column="47">EventArgs</name></type> <name pos:line="16" pos:column="57">e</name></decl></param>)</parameter_list>
+        <block pos:line="17" pos:column="9">{
+            <comment type="line" pos:line="18" pos:column="13">// Code that runs on application startup</comment>
+            <expr_stmt><expr><call><name><name pos:line="19" pos:column="13">BundleConfig</name><op:operator pos:line="19" pos:column="25">.</op:operator><name pos:line="19" pos:column="26">RegisterBundles</name></name><argument_list pos:line="19" pos:column="41">(<argument><expr><name><name pos:line="19" pos:column="42">BundleTable</name><op:operator pos:line="19" pos:column="53">.</op:operator><name pos:line="19" pos:column="54">Bundles</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="20" pos:column="13">AuthConfig</name><op:operator pos:line="20" pos:column="23">.</op:operator><name pos:line="20" pos:column="24">RegisterOpenAuth</name></name><argument_list pos:line="20" pos:column="40">()</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="21" pos:column="13">Database</name><op:operator pos:line="21" pos:column="21">.</op:operator><name pos:line="21" pos:column="22">SetInitializer</name></name><argument_list pos:line="21" pos:column="36">(<argument><expr><op:operator pos:line="21" pos:column="37">new</op:operator> <call><name pos:line="21" pos:column="41">ProductDatabaseInitializer</name><argument_list pos:line="21" pos:column="67">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+            <comment type="line" pos:line="23" pos:column="13">// Add Administrator.</comment>
+            <if pos:line="24" pos:column="13">if <condition pos:line="24" pos:column="16">(<expr><op:operator pos:line="24" pos:column="17">!</op:operator><call><name><name pos:line="24" pos:column="18">Roles</name><op:operator pos:line="24" pos:column="23">.</op:operator><name pos:line="24" pos:column="24">RoleExists</name></name><argument_list pos:line="24" pos:column="34">(<argument><expr><lit:literal type="string" pos:line="24" pos:column="35">"Administrator"</lit:literal></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="24" pos:column="52">
+            <block pos:line="25" pos:column="13">{
+                <expr_stmt><expr><call><name><name pos:line="26" pos:column="17">Roles</name><op:operator pos:line="26" pos:column="22">.</op:operator><name pos:line="26" pos:column="23">CreateRole</name></name><argument_list pos:line="26" pos:column="33">(<argument><expr><lit:literal type="string" pos:line="26" pos:column="34">"Administrator"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+            <if pos:line="28" pos:column="13">if <condition pos:line="28" pos:column="16">(<expr><call><name><name pos:line="28" pos:column="17">Membership</name><op:operator pos:line="28" pos:column="27">.</op:operator><name pos:line="28" pos:column="28">GetUser</name></name><argument_list pos:line="28" pos:column="35">(<argument><expr><lit:literal type="string" pos:line="28" pos:column="36">"Admin"</lit:literal></expr></argument>)</argument_list></call> <op:operator pos:line="28" pos:column="45">==</op:operator> <name pos:line="28" pos:column="48">null</name></expr>)</condition><then pos:line="28" pos:column="53">
+            <block pos:line="29" pos:column="13">{
+                <expr_stmt><expr><call><name><name pos:line="30" pos:column="17">Membership</name><op:operator pos:line="30" pos:column="27">.</op:operator><name pos:line="30" pos:column="28">CreateUser</name></name><argument_list pos:line="30" pos:column="38">(<argument><expr><lit:literal type="string" pos:line="30" pos:column="39">"Admin"</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="30" pos:column="48">"Pa$$word"</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="30" pos:column="60">"Admin@contoso.com"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                <expr_stmt><expr><call><name><name pos:line="31" pos:column="17">Roles</name><op:operator pos:line="31" pos:column="22">.</op:operator><name pos:line="31" pos:column="23">AddUserToRole</name></name><argument_list pos:line="31" pos:column="36">(<argument><expr><lit:literal type="string" pos:line="31" pos:column="37">"Admin"</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="31" pos:column="46">"Administrator"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+
+            <comment type="line" pos:line="34" pos:column="13">// Add Routes.</comment>
+            <expr_stmt><expr><call><name pos:line="35" pos:column="13">RegisterRoutes</name><argument_list pos:line="35" pos:column="27">(<argument><expr><name><name pos:line="35" pos:column="28">RouteTable</name><op:operator pos:line="35" pos:column="38">.</op:operator><name pos:line="35" pos:column="39">Routes</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <function><type><name pos:line="38" pos:column="9">void</name></type> <name pos:line="38" pos:column="14">RegisterRoutes</name><parameter_list pos:line="38" pos:column="28">(<param><decl><type><name pos:line="38" pos:column="29">RouteCollection</name></type> <name pos:line="38" pos:column="45">routes</name></decl></param>)</parameter_list>
+        <block pos:line="39" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="40" pos:column="13">routes</name><op:operator pos:line="40" pos:column="19">.</op:operator><name pos:line="40" pos:column="20">MapPageRoute</name></name><argument_list pos:line="40" pos:column="32">(
+                <argument><expr><lit:literal type="string" pos:line="41" pos:column="17">"HomeRoute"</lit:literal></expr></argument>,
+                <argument><expr><lit:literal type="string" pos:line="42" pos:column="17">"Home"</lit:literal></expr></argument>,
+                <argument><expr><lit:literal type="string" pos:line="43" pos:column="17">"~/Default.aspx"</lit:literal></expr></argument>
+            )</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="45" pos:column="13">routes</name><op:operator pos:line="45" pos:column="19">.</op:operator><name pos:line="45" pos:column="20">MapPageRoute</name></name><argument_list pos:line="45" pos:column="32">(
+                <argument><expr><lit:literal type="string" pos:line="46" pos:column="17">"AboutRoute"</lit:literal></expr></argument>,
+                <argument><expr><lit:literal type="string" pos:line="47" pos:column="17">"About"</lit:literal></expr></argument>,
+                <argument><expr><lit:literal type="string" pos:line="48" pos:column="17">"~/About.aspx"</lit:literal></expr></argument>
+            )</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="50" pos:column="13">routes</name><op:operator pos:line="50" pos:column="19">.</op:operator><name pos:line="50" pos:column="20">MapPageRoute</name></name><argument_list pos:line="50" pos:column="32">(
+                <argument><expr><lit:literal type="string" pos:line="51" pos:column="17">"ContactRoute"</lit:literal></expr></argument>,
+                <argument><expr><lit:literal type="string" pos:line="52" pos:column="17">"Contact"</lit:literal></expr></argument>,
+                <argument><expr><lit:literal type="string" pos:line="53" pos:column="17">"~/Contact.aspx"</lit:literal></expr></argument>
+            )</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="55" pos:column="13">routes</name><op:operator pos:line="55" pos:column="19">.</op:operator><name pos:line="55" pos:column="20">MapPageRoute</name></name><argument_list pos:line="55" pos:column="32">(
+                <argument><expr><lit:literal type="string" pos:line="56" pos:column="17">"ProductListRoute"</lit:literal></expr></argument>,
+                <argument><expr><lit:literal type="string" pos:line="57" pos:column="17">"ProductList"</lit:literal></expr></argument>,
+                <argument><expr><lit:literal type="string" pos:line="58" pos:column="17">"~/ProductList.aspx"</lit:literal></expr></argument>
+            )</argument_list></call></expr>;</expr_stmt>
+
+            <expr_stmt><expr><call><name><name pos:line="61" pos:column="13">routes</name><op:operator pos:line="61" pos:column="19">.</op:operator><name pos:line="61" pos:column="20">MapPageRoute</name></name><argument_list pos:line="61" pos:column="32">(
+                <argument><expr><lit:literal type="string" pos:line="62" pos:column="17">"ProductsByCategoryRoute"</lit:literal></expr></argument>,
+                <argument><expr><lit:literal type="string" pos:line="63" pos:column="17">"ProductList/{categoryName}"</lit:literal></expr></argument>,
+                <argument><expr><lit:literal type="string" pos:line="64" pos:column="17">"~/ProductList.aspx"</lit:literal></expr></argument>
+            )</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="66" pos:column="13">routes</name><op:operator pos:line="66" pos:column="19">.</op:operator><name pos:line="66" pos:column="20">MapPageRoute</name></name><argument_list pos:line="66" pos:column="32">(
+                <argument><expr><lit:literal type="string" pos:line="67" pos:column="17">"ProductByNameRoute"</lit:literal></expr></argument>,
+                <argument><expr><lit:literal type="string" pos:line="68" pos:column="17">"Product/{productName}"</lit:literal></expr></argument>,
+                <argument><expr><lit:literal type="string" pos:line="69" pos:column="17">"~/ProductDetails.aspx"</lit:literal></expr></argument>
+            )</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <function><type><name pos:line="73" pos:column="9">void</name></type> <name pos:line="73" pos:column="14">Application_End</name><parameter_list pos:line="73" pos:column="29">(<param><decl><type><name pos:line="73" pos:column="30">object</name></type> <name pos:line="73" pos:column="37">sender</name></decl></param>, <param><decl><type><name pos:line="73" pos:column="45">EventArgs</name></type> <name pos:line="73" pos:column="55">e</name></decl></param>)</parameter_list>
+        <block pos:line="74" pos:column="9">{
+            <comment type="line" pos:line="75" pos:column="13">//  Code that runs on application shutdown</comment>
+
+        }</block></function>
+
+        <function><type><name pos:line="79" pos:column="9">void</name></type> <name pos:line="79" pos:column="14">Application_Error</name><parameter_list pos:line="79" pos:column="31">(<param><decl><type><name pos:line="79" pos:column="32">object</name></type> <name pos:line="79" pos:column="39">sender</name></decl></param>, <param><decl><type><name pos:line="79" pos:column="47">EventArgs</name></type> <name pos:line="79" pos:column="57">e</name></decl></param>)</parameter_list>
+        <block pos:line="80" pos:column="9">{
+            <comment type="line" pos:line="81" pos:column="13">// Code that runs when an unhandled error occurs</comment>
+
+            <comment type="line" pos:line="83" pos:column="13">// Get last error from the server</comment>
+            <decl_stmt><decl><type><name pos:line="84" pos:column="13">Exception</name></type> <name pos:line="84" pos:column="23">exc</name> <init pos:line="84" pos:column="27">= <expr><call><name><name pos:line="84" pos:column="29">Server</name><op:operator pos:line="84" pos:column="35">.</op:operator><name pos:line="84" pos:column="36">GetLastError</name></name><argument_list pos:line="84" pos:column="48">()</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <if pos:line="86" pos:column="13">if <condition pos:line="86" pos:column="16">(<expr><name pos:line="86" pos:column="17">exc</name> <op:operator pos:line="86" pos:column="21">is</op:operator> <name pos:line="86" pos:column="24">HttpUnhandledException</name></expr>)</condition><then pos:line="86" pos:column="47">
+            <block pos:line="87" pos:column="13">{
+                <if pos:line="88" pos:column="17">if <condition pos:line="88" pos:column="20">(<expr><name><name pos:line="88" pos:column="21">exc</name><op:operator pos:line="88" pos:column="24">.</op:operator><name pos:line="88" pos:column="25">InnerException</name></name> <op:operator pos:line="88" pos:column="40">!=</op:operator> <name pos:line="88" pos:column="43">null</name></expr>)</condition><then pos:line="88" pos:column="48">
+                <block pos:line="89" pos:column="17">{
+                    <expr_stmt><expr><name pos:line="90" pos:column="21">exc</name> <op:operator pos:line="90" pos:column="25">=</op:operator> <op:operator pos:line="90" pos:column="27">new</op:operator> <call><name pos:line="90" pos:column="31">Exception</name><argument_list pos:line="90" pos:column="40">(<argument><expr><name><name pos:line="90" pos:column="41">exc</name><op:operator pos:line="90" pos:column="44">.</op:operator><name pos:line="90" pos:column="45">InnerException</name><op:operator pos:line="90" pos:column="59">.</op:operator><name pos:line="90" pos:column="60">Message</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                    <expr_stmt><expr><call><name><name pos:line="91" pos:column="21">Server</name><op:operator pos:line="91" pos:column="27">.</op:operator><name pos:line="91" pos:column="28">Transfer</name></name><argument_list pos:line="91" pos:column="36">(<argument><expr><lit:literal type="string" pos:line="91" pos:column="37">"~/ErrorPage.aspx?handler=Application_Error%20-%20Global.asax"</lit:literal></expr></argument>,
+                        <argument><expr><lit:literal type="boolean" pos:line="92" pos:column="25">true</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                }</block></then></if>
+            }</block></then></if>
+        }</block></function>
+    }</block></class>
+}</block></namespace>
+</unit>

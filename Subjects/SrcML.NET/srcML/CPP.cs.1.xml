@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML\Namespaces\CPP.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2010 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Xml</name><op:operator pos:line="15" pos:column="17">.</op:operator><name pos:line="15" pos:column="18">Linq</name></name>;</using>
+
+<namespace pos:line="17" pos:column="1">namespace <name><name pos:line="17" pos:column="11">ABB</name><op:operator pos:line="17" pos:column="14">.</op:operator><name pos:line="17" pos:column="15">SrcML</name></name>
+<block pos:line="18" pos:column="1">{
+    <comment type="line" pos:line="19" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="20" pos:column="5">/// SrcML Namespace for C pre-preprocessor directives.</comment>
+    <comment type="line" pos:line="21" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><attribute pos:line="22" pos:column="5">[<expr><call><name><name pos:line="22" pos:column="6">System</name><op:operator pos:line="22" pos:column="12">.</op:operator><name pos:line="22" pos:column="13">Diagnostics</name><op:operator pos:line="22" pos:column="24">.</op:operator><name pos:line="22" pos:column="25">CodeAnalysis</name><op:operator pos:line="22" pos:column="37">.</op:operator><name pos:line="22" pos:column="38">SuppressMessage</name></name><argument_list pos:line="22" pos:column="53">(<argument><expr><lit:literal type="string" pos:line="22" pos:column="54">"Microsoft.Naming"</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="22" pos:column="74">"CA1709:IdentifiersShouldBeCasedCorrectly"</lit:literal></expr></argument>, <argument><expr><name pos:line="22" pos:column="118">MessageId</name> <op:operator pos:line="22" pos:column="128">=</op:operator> <lit:literal type="string" pos:line="22" pos:column="130">"CPP"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+    <specifier pos:line="23" pos:column="5">public</specifier> <specifier pos:line="23" pos:column="12">static</specifier> class <name pos:line="23" pos:column="25">CPP</name>
+    <block pos:line="24" pos:column="5">{
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// XNamespace for the SrcML CPP XML namespace</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="28" pos:column="9">public</specifier> <specifier pos:line="28" pos:column="16">static</specifier> <specifier pos:line="28" pos:column="23">readonly</specifier> <name pos:line="28" pos:column="32">XNamespace</name></type> <name pos:line="28" pos:column="43">NS</name> <init pos:line="28" pos:column="46">= <expr><lit:literal type="string" pos:line="28" pos:column="48">"http://www.sdml.info/srcML/cpp"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// XMLNS prefix for the SrcML CPP namespace</comment>
+        <comment type="line" pos:line="32" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="33" pos:column="9">public</specifier> <specifier pos:line="33" pos:column="16">const</specifier> <name pos:line="33" pos:column="22">string</name></type> <name pos:line="33" pos:column="29">Prefix</name> <init pos:line="33" pos:column="36">= <expr><lit:literal type="string" pos:line="33" pos:column="38">"cpp"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="35" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// Each CPP Directive is surrounded by </comment>
+        <comment type="line" pos:line="37" pos:column="9">/// </comment>
+        <comment type="line" pos:line="38" pos:column="9">/// #include &amp;lt;windows.h&amp;gt; becomes:</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// </comment>
+        <comment type="line" pos:line="40" pos:column="9">/// &amp;lt;cpp:include&amp;gt;#&amp;lt;cpp:directive&amp;gt;include&amp;lt;/cpp:directive&amp;gt; &amp;lt;cpp:file&amp;gt;&amp;lt;jni.h&amp;gt;&amp;lt;/cpp:file&amp;gt;&amp;lt;/cpp:include&amp;gt;</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="42" pos:column="9">public</specifier> <specifier pos:line="42" pos:column="16">static</specifier> <specifier pos:line="42" pos:column="23">readonly</specifier> <name pos:line="42" pos:column="32">XName</name></type> <name pos:line="42" pos:column="38">Directive</name> <init pos:line="42" pos:column="48">= <expr><name pos:line="42" pos:column="50">NS</name> <op:operator pos:line="42" pos:column="53">+</op:operator> <lit:literal type="string" pos:line="42" pos:column="55">"directive"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="44" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// References to files in CPP directives are surrounded by the File element:</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// </comment>
+        <comment type="line" pos:line="47" pos:column="9">/// #include &amp;lt;windows.h&amp;gt; becomes:</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// </comment>
+        <comment type="line" pos:line="49" pos:column="9">/// &amp;lt;cpp:include&amp;gt;#&amp;lt;cpp:directive&amp;gt;include&amp;lt;/cpp:directive&amp;gt; &amp;lt;cpp:file&amp;gt;&amp;lt;jni.h&amp;gt;&amp;lt;/cpp:file&amp;gt;&amp;lt;/cpp:include&amp;gt;</comment>
+        <comment type="line" pos:line="50" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="51" pos:column="9">public</specifier> <specifier pos:line="51" pos:column="16">static</specifier> <specifier pos:line="51" pos:column="23">readonly</specifier> <name pos:line="51" pos:column="32">XName</name></type> <name pos:line="51" pos:column="38">File</name> <init pos:line="51" pos:column="43">= <expr><name pos:line="51" pos:column="45">NS</name> <op:operator pos:line="51" pos:column="48">+</op:operator> <lit:literal type="string" pos:line="51" pos:column="50">"file"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="53" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// markup for #include:</comment>
+        <comment type="line" pos:line="55" pos:column="9">/// </comment>
+        <comment type="line" pos:line="56" pos:column="9">/// #include &amp;lt;windows.h&amp;gt; becomes:</comment>
+        <comment type="line" pos:line="57" pos:column="9">/// </comment>
+        <comment type="line" pos:line="58" pos:column="9">/// &amp;lt;cpp:include&amp;gt;#&amp;lt;cpp:directive&amp;gt;include&amp;lt;/cpp:directive&amp;gt; &amp;lt;cpp:file&amp;gt;&amp;lt;jni.h&amp;gt;&amp;lt;/cpp:file&amp;gt;&amp;lt;/cpp:include&amp;gt;</comment>
+        <comment type="line" pos:line="59" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="60" pos:column="9">public</specifier> <specifier pos:line="60" pos:column="16">static</specifier> <specifier pos:line="60" pos:column="23">readonly</specifier> <name pos:line="60" pos:column="32">XName</name></type> <name pos:line="60" pos:column="38">Include</name> <init pos:line="60" pos:column="46">= <expr><name pos:line="60" pos:column="48">NS</name> <op:operator pos:line="60" pos:column="51">+</op:operator> <lit:literal type="string" pos:line="60" pos:column="53">"include"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="62" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="63" pos:column="9">/// markup for #define macro</comment>
+        <comment type="line" pos:line="64" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="65" pos:column="9">public</specifier> <specifier pos:line="65" pos:column="16">static</specifier> <specifier pos:line="65" pos:column="23">readonly</specifier> <name pos:line="65" pos:column="32">XName</name></type> <name pos:line="65" pos:column="38">Define</name> <init pos:line="65" pos:column="45">= <expr><name pos:line="65" pos:column="47">NS</name> <op:operator pos:line="65" pos:column="50">+</op:operator> <lit:literal type="string" pos:line="65" pos:column="52">"define"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="67" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="68" pos:column="9">/// markup for #undef macro</comment>
+        <comment type="line" pos:line="69" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="70" pos:column="9">public</specifier> <specifier pos:line="70" pos:column="16">static</specifier> <specifier pos:line="70" pos:column="23">readonly</specifier> <name pos:line="70" pos:column="32">XName</name></type> <name pos:line="70" pos:column="38">Undef</name> <init pos:line="70" pos:column="44">= <expr><name pos:line="70" pos:column="46">NS</name> <op:operator pos:line="70" pos:column="49">+</op:operator> <lit:literal type="string" pos:line="70" pos:column="51">"undef"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="72" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="73" pos:column="9">/// markup for #if macro</comment>
+        <comment type="line" pos:line="74" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="75" pos:column="9">public</specifier> <specifier pos:line="75" pos:column="16">static</specifier> <specifier pos:line="75" pos:column="23">readonly</specifier> <name pos:line="75" pos:column="32">XName</name></type> <name pos:line="75" pos:column="38">If</name> <init pos:line="75" pos:column="41">= <expr><name pos:line="75" pos:column="43">NS</name> <op:operator pos:line="75" pos:column="46">+</op:operator> <lit:literal type="string" pos:line="75" pos:column="48">"if"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="77" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="78" pos:column="9">/// markup for the "then" portion of the #if/#else macro set</comment>
+        <comment type="line" pos:line="79" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="80" pos:column="9">public</specifier> <specifier pos:line="80" pos:column="16">static</specifier> <specifier pos:line="80" pos:column="23">readonly</specifier> <name pos:line="80" pos:column="32">XName</name></type> <name pos:line="80" pos:column="38">Then</name> <init pos:line="80" pos:column="43">= <expr><name pos:line="80" pos:column="45">NS</name> <op:operator pos:line="80" pos:column="48">+</op:operator> <lit:literal type="string" pos:line="80" pos:column="50">"then"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="82" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="83" pos:column="9">/// markup for #else tag</comment>
+        <comment type="line" pos:line="84" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="85" pos:column="9">public</specifier> <specifier pos:line="85" pos:column="16">static</specifier> <specifier pos:line="85" pos:column="23">readonly</specifier> <name pos:line="85" pos:column="32">XName</name></type> <name pos:line="85" pos:column="38">Else</name> <init pos:line="85" pos:column="43">= <expr><name pos:line="85" pos:column="45">NS</name> <op:operator pos:line="85" pos:column="48">+</op:operator> <lit:literal type="string" pos:line="85" pos:column="50">"else"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="87" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="88" pos:column="9">/// #endif becomes:</comment>
+        <comment type="line" pos:line="89" pos:column="9">/// </comment>
+        <comment type="line" pos:line="90" pos:column="9">/// &amp;lt;cpp:endif&amp;gt;#&amp;lt;cpp:directive&amp;gt;endif&amp;lt;/cpp:directive&amp;gt;&amp;lt;/cpp:endif&amp;gt;</comment>
+        <comment type="line" pos:line="91" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="92" pos:column="9">public</specifier> <specifier pos:line="92" pos:column="16">static</specifier> <specifier pos:line="92" pos:column="23">readonly</specifier> <name pos:line="92" pos:column="32">XName</name></type> <name pos:line="92" pos:column="38">Endif</name> <init pos:line="92" pos:column="44">= <expr><name pos:line="92" pos:column="46">NS</name> <op:operator pos:line="92" pos:column="49">+</op:operator> <lit:literal type="string" pos:line="92" pos:column="51">"endif"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="94" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="95" pos:column="9">/// markup for the elif tag</comment>
+        <comment type="line" pos:line="96" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="97" pos:column="9">public</specifier> <specifier pos:line="97" pos:column="16">static</specifier> <specifier pos:line="97" pos:column="23">readonly</specifier> <name pos:line="97" pos:column="32">XName</name></type> <name pos:line="97" pos:column="38">Elif</name> <init pos:line="97" pos:column="43">= <expr><name pos:line="97" pos:column="45">NS</name> <op:operator pos:line="97" pos:column="48">+</op:operator> <lit:literal type="string" pos:line="97" pos:column="50">"elif"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="99" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="100" pos:column="9">/// #ifdef __cplusplus becomes:</comment>
+        <comment type="line" pos:line="101" pos:column="9">/// </comment>
+        <comment type="line" pos:line="102" pos:column="9">/// &amp;lt;cpp:ifdef&amp;gt;#&amp;lt;cpp:directive&amp;gt;ifdef&amp;lt;/cpp:directive&amp;gt; &amp;lt;name&amp;gt;__cplusplus&amp;lt;/name&amp;gt;&amp;lt;/cpp:ifdef&amp;gt;</comment>
+        <comment type="line" pos:line="103" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="104" pos:column="9">public</specifier> <specifier pos:line="104" pos:column="16">static</specifier> <specifier pos:line="104" pos:column="23">readonly</specifier> <name pos:line="104" pos:column="32">XName</name></type> <name pos:line="104" pos:column="38">Ifdef</name> <init pos:line="104" pos:column="44">= <expr><name pos:line="104" pos:column="46">NS</name> <op:operator pos:line="104" pos:column="49">+</op:operator> <lit:literal type="string" pos:line="104" pos:column="51">"ifdef"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="106" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="107" pos:column="9">/// markup for the #ifndef macro</comment>
+        <comment type="line" pos:line="108" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="109" pos:column="9">public</specifier> <specifier pos:line="109" pos:column="16">static</specifier> <specifier pos:line="109" pos:column="23">readonly</specifier> <name pos:line="109" pos:column="32">XName</name></type> <name pos:line="109" pos:column="38">Ifndef</name> <init pos:line="109" pos:column="45">= <expr><name pos:line="109" pos:column="47">NS</name> <op:operator pos:line="109" pos:column="50">+</op:operator> <lit:literal type="string" pos:line="109" pos:column="52">"ifndef"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="111" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="112" pos:column="9">/// markup for the #line macro</comment>
+        <comment type="line" pos:line="113" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="114" pos:column="9">public</specifier> <specifier pos:line="114" pos:column="16">static</specifier> <specifier pos:line="114" pos:column="23">readonly</specifier> <name pos:line="114" pos:column="32">XName</name></type> <name pos:line="114" pos:column="38">Line</name> <init pos:line="114" pos:column="43">= <expr><name pos:line="114" pos:column="45">NS</name> <op:operator pos:line="114" pos:column="48">+</op:operator> <lit:literal type="string" pos:line="114" pos:column="50">"line"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="116" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="117" pos:column="9">/// Markup for the #region macro. This is actually used in C#.</comment>
+        <comment type="line" pos:line="118" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="119" pos:column="9">public</specifier> <specifier pos:line="119" pos:column="16">static</specifier> <specifier pos:line="119" pos:column="23">readonly</specifier> <name pos:line="119" pos:column="32">XName</name></type> <name pos:line="119" pos:column="38">Region</name> <init pos:line="119" pos:column="45">= <expr><name pos:line="119" pos:column="47">NS</name> <op:operator pos:line="119" pos:column="50">+</op:operator> <lit:literal type="string" pos:line="119" pos:column="52">"region"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="121" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="122" pos:column="9">/// Markup for the #endregion macro. This is actually used in C#.</comment>
+        <comment type="line" pos:line="123" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="124" pos:column="9">public</specifier> <specifier pos:line="124" pos:column="16">static</specifier> <specifier pos:line="124" pos:column="23">readonly</specifier> <name pos:line="124" pos:column="32">XName</name></type> <name pos:line="124" pos:column="38">EndRegion</name> <init pos:line="124" pos:column="48">= <expr><name pos:line="124" pos:column="50">NS</name> <op:operator pos:line="124" pos:column="53">+</op:operator> <lit:literal type="string" pos:line="124" pos:column="55">"endregion"</lit:literal></expr></init></decl>;</decl_stmt>
+    }</block></class>
+}</block></namespace>
+</unit>

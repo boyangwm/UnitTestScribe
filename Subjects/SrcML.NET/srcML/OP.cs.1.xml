@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML\Namespaces\OP.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2010 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Xml</name><op:operator pos:line="15" pos:column="17">.</op:operator><name pos:line="15" pos:column="18">Linq</name></name>;</using>
+
+<namespace pos:line="17" pos:column="1">namespace <name><name pos:line="17" pos:column="11">ABB</name><op:operator pos:line="17" pos:column="14">.</op:operator><name pos:line="17" pos:column="15">SrcML</name></name>
+<block pos:line="18" pos:column="1">{
+    <comment type="line" pos:line="19" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="20" pos:column="5">/// The operator namespace marks up operators ('-&amp;lt;', '.', '+', '-') with the Operator element.</comment>
+    <comment type="line" pos:line="21" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><attribute pos:line="22" pos:column="5">[<expr><call><name><name pos:line="22" pos:column="6">System</name><op:operator pos:line="22" pos:column="12">.</op:operator><name pos:line="22" pos:column="13">Diagnostics</name><op:operator pos:line="22" pos:column="24">.</op:operator><name pos:line="22" pos:column="25">CodeAnalysis</name><op:operator pos:line="22" pos:column="37">.</op:operator><name pos:line="22" pos:column="38">SuppressMessage</name></name><argument_list pos:line="22" pos:column="53">(<argument><expr><lit:literal type="string" pos:line="22" pos:column="54">"Microsoft.Naming"</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="22" pos:column="74">"CA1709:IdentifiersShouldBeCasedCorrectly"</lit:literal></expr></argument>, <argument><expr><name pos:line="22" pos:column="118">MessageId</name> <op:operator pos:line="22" pos:column="128">=</op:operator> <lit:literal type="string" pos:line="22" pos:column="130">"OP"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+    <specifier pos:line="23" pos:column="5">public</specifier> <specifier pos:line="23" pos:column="12">sealed</specifier> class <name pos:line="23" pos:column="25">OP</name>
+    <block pos:line="24" pos:column="5">{
+        <constructor><specifier pos:line="25" pos:column="9">private</specifier> <name pos:line="25" pos:column="17">OP</name><parameter_list pos:line="25" pos:column="19">()</parameter_list>
+        <block pos:line="26" pos:column="9">{
+
+        }</block></constructor>
+
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// XNamespace for the SrcML Operator XML namespace</comment>
+        <comment type="line" pos:line="32" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="33" pos:column="9">public</specifier> <specifier pos:line="33" pos:column="16">static</specifier> <specifier pos:line="33" pos:column="23">readonly</specifier> <name pos:line="33" pos:column="32">XNamespace</name></type> <name pos:line="33" pos:column="43">NS</name> <init pos:line="33" pos:column="46">= <expr><lit:literal type="string" pos:line="33" pos:column="48">"http://www.sdml.info/srcML/operator"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="35" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// XMLNS prefix for the SrcML OP namespace</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="38" pos:column="9">public</specifier> <specifier pos:line="38" pos:column="16">const</specifier> <name pos:line="38" pos:column="22">string</name></type> <name pos:line="38" pos:column="29">Prefix</name> <init pos:line="38" pos:column="36">= <expr><lit:literal type="string" pos:line="38" pos:column="38">"op"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// Argument string to pass to one of the srcml executables to enable this namespace</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="43" pos:column="9">public</specifier> <specifier pos:line="43" pos:column="16">const</specifier> <name pos:line="43" pos:column="22">string</name></type> <name pos:line="43" pos:column="29">ArgumentLabel</name> <init pos:line="43" pos:column="43">= <expr><lit:literal type="string" pos:line="43" pos:column="45">"--operator"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="45" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// Operator element -- all operators are surrounded with this:</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// e.g. &amp;lt;operator&amp;gt;-&amp;lt;&amp;lt;/operator&amp;gt;</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="49" pos:column="9">public</specifier> <specifier pos:line="49" pos:column="16">static</specifier> <specifier pos:line="49" pos:column="23">readonly</specifier> <name pos:line="49" pos:column="32">XName</name></type> <name pos:line="49" pos:column="38">Operator</name> <init pos:line="49" pos:column="47">= <expr><name pos:line="49" pos:column="49">NS</name> <op:operator pos:line="49" pos:column="52">+</op:operator> <lit:literal type="string" pos:line="49" pos:column="54">"operator"</lit:literal></expr></init></decl>;</decl_stmt>
+    }</block></class>
+}</block></namespace>
+</unit>

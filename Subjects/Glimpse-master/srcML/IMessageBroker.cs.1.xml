@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensibility\IMessageBroker.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Core</name><op:operator pos:line="3" pos:column="23">.</op:operator><name pos:line="3" pos:column="24">Extensibility</name></name>
+<block pos:line="4" pos:column="1">{
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="6" pos:column="5">/// Definition of the Message Broker that will used by the system.</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class type="interface"><specifier pos:line="8" pos:column="5">public</specifier> interface <name pos:line="8" pos:column="22">IMessageBroker</name>
+    <block pos:line="9" pos:column="5">{
+        <comment type="line" pos:line="10" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="11" pos:column="9">/// Publishes the specified message using the type as the topic.</comment>
+        <comment type="line" pos:line="12" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;typeparam name="T"&gt;Type of the message&lt;/typeparam&gt;</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt;</comment>
+        <function_decl><type><name pos:line="15" pos:column="9">void</name></type> <name><name pos:line="15" pos:column="14">Publish</name><argument_list pos:line="15" pos:column="21">&lt;<argument><name pos:line="15" pos:column="22">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="15" pos:column="24">(<param><decl><type><name pos:line="15" pos:column="25">T</name></type> <name pos:line="15" pos:column="27">message</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="17" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="18" pos:column="9">/// Subscribes the specified action to the Type specified.</comment>
+        <comment type="line" pos:line="19" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="20" pos:column="9">/// &lt;typeparam name="T"&gt;Type of the message&lt;/typeparam&gt;</comment>
+        <comment type="line" pos:line="21" pos:column="9">/// &lt;param name="action"&gt;The action.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="22" pos:column="9">/// &lt;returns&gt;A subscription Id, which should be retained in order to unsubscribe.&lt;/returns&gt;</comment>
+        <function_decl><type><name pos:line="23" pos:column="9">Guid</name></type> <name><name pos:line="23" pos:column="14">Subscribe</name><argument_list pos:line="23" pos:column="23">&lt;<argument><name pos:line="23" pos:column="24">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="23" pos:column="26">(<param><decl><type><name><name pos:line="23" pos:column="27">Action</name><argument_list pos:line="23" pos:column="33">&lt;<argument><name pos:line="23" pos:column="34">T</name></argument>&gt;</argument_list></name></type> <name pos:line="23" pos:column="37">action</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// Unsubscribes the listener from the specified subscription id.</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;typeparam name="T"&gt;Type of the message&lt;/typeparam&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;param name="subscriptionId"&gt;The subscription id.&lt;/param&gt;</comment>
+        <function_decl><type><name pos:line="30" pos:column="9">void</name></type> <name><name pos:line="30" pos:column="14">Unsubscribe</name><argument_list pos:line="30" pos:column="25">&lt;<argument><name pos:line="30" pos:column="26">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="30" pos:column="28">(<param><decl><type><name pos:line="30" pos:column="29">Guid</name></type> <name pos:line="30" pos:column="34">subscriptionId</name></decl></param>)</parameter_list>;</function_decl>
+    }</block></class>
+}</block></namespace></unit>

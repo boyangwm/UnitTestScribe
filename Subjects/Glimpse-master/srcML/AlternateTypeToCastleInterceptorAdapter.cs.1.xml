@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensibility\AlternateTypeToCastleInterceptorAdapter.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Reflection</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">Castle</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">DynamicProxy</name></name>;</using>
+
+<namespace pos:line="5" pos:column="1">namespace <name><name pos:line="5" pos:column="11">Glimpse</name><op:operator pos:line="5" pos:column="18">.</op:operator><name pos:line="5" pos:column="19">Core</name><op:operator pos:line="5" pos:column="23">.</op:operator><name pos:line="5" pos:column="24">Extensibility</name></name>
+<block pos:line="6" pos:column="1">{
+    <comment type="line" pos:line="7" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// An adapter between Glimpse's &lt;see cref="IAlternateType{T}"/&gt; and Castle DynamicProxy's &lt;see cref="IInterceptor"/&gt;.</comment>
+    <comment type="line" pos:line="9" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="10" pos:column="5">public</specifier> class <name pos:line="10" pos:column="18">AlternateTypeToCastleInterceptorAdapter</name> <super pos:line="10" pos:column="58">: <name pos:line="10" pos:column="60">IInterceptor</name></super>
+    <block pos:line="11" pos:column="5">{
+        <comment type="line" pos:line="12" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// Initializes a new instance of the &lt;see cref="AlternateTypeToCastleInterceptorAdapter" /&gt; class.</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// &lt;param name="implementation"&gt;The implementation.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="16" pos:column="9">/// &lt;param name="logger"&gt;The logger.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="17" pos:column="9">/// &lt;param name="messageBroker"&gt;The message broker.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="18" pos:column="9">/// &lt;param name="proxyFactory"&gt;The proxy factory.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="19" pos:column="9">/// &lt;param name="timerStrategy"&gt;The timer strategy.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="20" pos:column="9">/// &lt;param name="runtimePolicyStrategy"&gt;The runtime policy strategy.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="21" pos:column="9">/// &lt;exception cref="System.ArgumentNullException"&gt;Throws an exception if either &lt;paramref name="implementation"/&gt; or &lt;paramref name="logger"/&gt; are &lt;c&gt;null&lt;/c&gt;.&lt;/exception&gt;</comment>
+        <constructor><specifier pos:line="22" pos:column="9">public</specifier> <name pos:line="22" pos:column="16">AlternateTypeToCastleInterceptorAdapter</name><parameter_list pos:line="22" pos:column="55">(<param><decl><type><name pos:line="22" pos:column="56">IAlternateMethod</name></type> <name pos:line="22" pos:column="73">implementation</name></decl></param>, <param><decl><type><name pos:line="22" pos:column="89">ILogger</name></type> <name pos:line="22" pos:column="97">logger</name></decl></param>, <param><decl><type><name pos:line="22" pos:column="105">IMessageBroker</name></type> <name pos:line="22" pos:column="120">messageBroker</name></decl></param>, <param><decl><type><name pos:line="22" pos:column="135">IProxyFactory</name></type> <name pos:line="22" pos:column="149">proxyFactory</name></decl></param>, <param><decl><type><name><name pos:line="22" pos:column="163">Func</name><argument_list pos:line="22" pos:column="167">&lt;<argument><name pos:line="22" pos:column="168">IExecutionTimer</name></argument>&gt;</argument_list></name></type> <name pos:line="22" pos:column="185">timerStrategy</name></decl></param>, <param><decl><type><name><name pos:line="22" pos:column="200">Func</name><argument_list pos:line="22" pos:column="204">&lt;<argument><name pos:line="22" pos:column="205">RuntimePolicy</name></argument>&gt;</argument_list></name></type> <name pos:line="22" pos:column="220">runtimePolicyStrategy</name></decl></param>)</parameter_list>
+        <block pos:line="23" pos:column="9">{
+            <if pos:line="24" pos:column="13">if <condition pos:line="24" pos:column="16">(<expr><name pos:line="24" pos:column="17">implementation</name> <op:operator pos:line="24" pos:column="32">==</op:operator> <name pos:line="24" pos:column="35">null</name></expr>)</condition><then pos:line="24" pos:column="40">
+            <block pos:line="25" pos:column="13">{
+                <throw pos:line="26" pos:column="17">throw <expr><op:operator pos:line="26" pos:column="23">new</op:operator> <call><name pos:line="26" pos:column="27">ArgumentNullException</name><argument_list pos:line="26" pos:column="48">(<argument><expr><lit:literal type="string" pos:line="26" pos:column="49">"implementation"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <if pos:line="29" pos:column="13">if <condition pos:line="29" pos:column="16">(<expr><name pos:line="29" pos:column="17">logger</name> <op:operator pos:line="29" pos:column="24">==</op:operator> <name pos:line="29" pos:column="27">null</name></expr>)</condition><then pos:line="29" pos:column="32">
+            <block pos:line="30" pos:column="13">{
+                <throw pos:line="31" pos:column="17">throw <expr><op:operator pos:line="31" pos:column="23">new</op:operator> <call><name pos:line="31" pos:column="27">ArgumentNullException</name><argument_list pos:line="31" pos:column="48">(<argument><expr><lit:literal type="string" pos:line="31" pos:column="49">"logger"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="34" pos:column="13">Implementation</name> <op:operator pos:line="34" pos:column="28">=</op:operator> <name pos:line="34" pos:column="30">implementation</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="35" pos:column="13">Logger</name> <op:operator pos:line="35" pos:column="20">=</op:operator> <name pos:line="35" pos:column="22">logger</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="36" pos:column="13">MessageBroker</name> <op:operator pos:line="36" pos:column="27">=</op:operator> <name pos:line="36" pos:column="29">messageBroker</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="37" pos:column="13">ProxyFactory</name> <op:operator pos:line="37" pos:column="26">=</op:operator> <name pos:line="37" pos:column="28">proxyFactory</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="38" pos:column="13">TimerStrategy</name> <op:operator pos:line="38" pos:column="27">=</op:operator> <name pos:line="38" pos:column="29">timerStrategy</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="39" pos:column="13">RuntimePolicyStrategy</name> <op:operator pos:line="39" pos:column="35">=</op:operator> <name pos:line="39" pos:column="37">runtimePolicyStrategy</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// Gets or sets the implementation.</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// The implementation.</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="48" pos:column="9">public</specifier> <name pos:line="48" pos:column="16">IAlternateMethod</name></type> <name pos:line="48" pos:column="33">Implementation</name> <block pos:line="48" pos:column="48">{ <function_decl><name pos:line="48" pos:column="50">get</name>;</function_decl> <function_decl><name pos:line="48" pos:column="55">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="50" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="51" pos:column="9">/// Gets or sets the logger.</comment>
+        <comment type="line" pos:line="52" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="53" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// The logger.</comment>
+        <comment type="line" pos:line="55" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="56" pos:column="9">public</specifier> <name pos:line="56" pos:column="16">ILogger</name></type> <name pos:line="56" pos:column="24">Logger</name> <block pos:line="56" pos:column="31">{ <function_decl><name pos:line="56" pos:column="33">get</name>;</function_decl> <function_decl><name pos:line="56" pos:column="38">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="58" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="59" pos:column="9">/// Gets or sets the message broker.</comment>
+        <comment type="line" pos:line="60" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="61" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="62" pos:column="9">/// The message broker.</comment>
+        <comment type="line" pos:line="63" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="64" pos:column="9">public</specifier> <name pos:line="64" pos:column="16">IMessageBroker</name></type> <name pos:line="64" pos:column="31">MessageBroker</name> <block pos:line="64" pos:column="45">{ <function_decl><name pos:line="64" pos:column="47">get</name>;</function_decl> <function_decl><name pos:line="64" pos:column="52">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="66" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="67" pos:column="9">/// Gets or sets the proxy factory.</comment>
+        <comment type="line" pos:line="68" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="69" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="70" pos:column="9">/// The proxy factory.</comment>
+        <comment type="line" pos:line="71" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="72" pos:column="9">public</specifier> <name pos:line="72" pos:column="16">IProxyFactory</name></type> <name pos:line="72" pos:column="30">ProxyFactory</name> <block pos:line="72" pos:column="43">{ <function_decl><name pos:line="72" pos:column="45">get</name>;</function_decl> <function_decl><name pos:line="72" pos:column="50">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="74" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="75" pos:column="9">/// Gets or sets the runtime policy strategy.</comment>
+        <comment type="line" pos:line="76" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="77" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="78" pos:column="9">/// The runtime policy strategy.</comment>
+        <comment type="line" pos:line="79" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="80" pos:column="9">public</specifier> <name><name pos:line="80" pos:column="16">Func</name><argument_list pos:line="80" pos:column="20">&lt;<argument><name pos:line="80" pos:column="21">RuntimePolicy</name></argument>&gt;</argument_list></name></type> <name pos:line="80" pos:column="36">RuntimePolicyStrategy</name> <block pos:line="80" pos:column="58">{ <function_decl><name pos:line="80" pos:column="60">get</name>;</function_decl> <function_decl><name pos:line="80" pos:column="65">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="82" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="83" pos:column="9">/// Gets or sets the timer strategy.</comment>
+        <comment type="line" pos:line="84" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="85" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="86" pos:column="9">/// The timer strategy.</comment>
+        <comment type="line" pos:line="87" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="88" pos:column="9">public</specifier> <name><name pos:line="88" pos:column="16">Func</name><argument_list pos:line="88" pos:column="20">&lt;<argument><name pos:line="88" pos:column="21">IExecutionTimer</name></argument>&gt;</argument_list></name></type> <name pos:line="88" pos:column="38">TimerStrategy</name> <block pos:line="88" pos:column="52">{ <function_decl><name pos:line="88" pos:column="54">get</name>;</function_decl> <function_decl><name pos:line="88" pos:column="59">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="90" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="91" pos:column="9">/// Gets the method to implement.</comment>
+        <comment type="line" pos:line="92" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="93" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="94" pos:column="9">/// The method to implement.</comment>
+        <comment type="line" pos:line="95" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="96" pos:column="9">public</specifier> <name pos:line="96" pos:column="16">MethodInfo</name></type> <name pos:line="96" pos:column="27">MethodToImplement</name>
+        <block pos:line="97" pos:column="9">{
+            <function><name pos:line="98" pos:column="13">get</name> <block pos:line="98" pos:column="17">{ <return pos:line="98" pos:column="19">return <expr><name><name pos:line="98" pos:column="26">Implementation</name><op:operator pos:line="98" pos:column="40">.</op:operator><name pos:line="98" pos:column="41">MethodToImplement</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="101" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="102" pos:column="9">/// Intercepts the specified invocation.</comment>
+        <comment type="line" pos:line="103" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="104" pos:column="9">/// &lt;param name="invocation"&gt;The invocation.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="105" pos:column="9">public</specifier> <name pos:line="105" pos:column="16">void</name></type> <name pos:line="105" pos:column="21">Intercept</name><parameter_list pos:line="105" pos:column="30">(<param><decl><type><name pos:line="105" pos:column="31">IInvocation</name></type> <name pos:line="105" pos:column="43">invocation</name></decl></param>)</parameter_list>
+        <block pos:line="106" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="107" pos:column="13">var</name></type> <name pos:line="107" pos:column="17">context</name> <init pos:line="107" pos:column="25">= <expr><op:operator pos:line="107" pos:column="27">new</op:operator> <call><name pos:line="107" pos:column="31">CastleInvocationToAlternateMethodContextAdapter</name><argument_list pos:line="107" pos:column="78">(<argument><expr><name pos:line="107" pos:column="79">invocation</name></expr></argument>, <argument><expr><name pos:line="107" pos:column="91">Logger</name></expr></argument>, <argument><expr><name pos:line="107" pos:column="99">MessageBroker</name></expr></argument>, <argument><expr><name pos:line="107" pos:column="114">ProxyFactory</name></expr></argument>, <argument><expr><name pos:line="107" pos:column="128">TimerStrategy</name></expr></argument>, <argument><expr><name pos:line="107" pos:column="143">RuntimePolicyStrategy</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+            <expr_stmt><expr><call><name><name pos:line="108" pos:column="13">Implementation</name><op:operator pos:line="108" pos:column="27">.</op:operator><name pos:line="108" pos:column="28">NewImplementation</name></name><argument_list pos:line="108" pos:column="45">(<argument><expr><name pos:line="108" pos:column="46">context</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

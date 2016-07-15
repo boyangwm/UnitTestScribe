@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensibility\IResourceResult.cs" pos:tabs="8"><namespace pos:line="1" pos:column="1">namespace <name><name pos:line="1" pos:column="11">Glimpse</name><op:operator pos:line="1" pos:column="18">.</op:operator><name pos:line="1" pos:column="19">Core</name><op:operator pos:line="1" pos:column="23">.</op:operator><name pos:line="1" pos:column="24">Extensibility</name></name>
+<block pos:line="2" pos:column="1">{
+    <comment type="line" pos:line="3" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="4" pos:column="5">/// &lt;c&gt;IResourceResult&lt;/c&gt; provides Glimpse a &lt;see href="http://en.wikipedia.org/wiki/Command_pattern"&gt;command object&lt;/see&gt; for returning the results of an &lt;see cref="IResource"/&gt;.</comment>
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class type="interface"><specifier pos:line="6" pos:column="5">public</specifier> interface <name pos:line="6" pos:column="22">IResourceResult</name>
+    <block pos:line="7" pos:column="5">{
+        <comment type="line" pos:line="8" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="9" pos:column="9">/// Executes the resource result with the specified context.</comment>
+        <comment type="line" pos:line="10" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="11" pos:column="9">/// &lt;param name="context"&gt;The context.&lt;/param&gt;</comment>
+        <function_decl><type><name pos:line="12" pos:column="9">void</name></type> <name pos:line="12" pos:column="14">Execute</name><parameter_list pos:line="12" pos:column="21">(<param><decl><type><name pos:line="12" pos:column="22">IResourceResultContext</name></type> <name pos:line="12" pos:column="45">context</name></decl></param>)</parameter_list>;</function_decl>
+    }</block></class>
+}</block></namespace></unit>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.WindowsAzure\Infrastructure\WindowsAzureCloudServicesEnvironment.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">IO</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Reflection</name></name>;</using>
+
+<namespace pos:line="5" pos:column="1">namespace <name><name pos:line="5" pos:column="11">Glimpse</name><op:operator pos:line="5" pos:column="18">.</op:operator><name pos:line="5" pos:column="19">WindowsAzure</name><op:operator pos:line="5" pos:column="31">.</op:operator><name pos:line="5" pos:column="32">Infrastructure</name></name>
+<block pos:line="6" pos:column="1">{
+    <class><specifier pos:line="7" pos:column="5">public</specifier> class <name pos:line="7" pos:column="18">WindowsAzureCloudServicesEnvironment</name>
+        <super pos:line="8" pos:column="9">: <name pos:line="8" pos:column="11">IWindowsAzureEnvironment</name></super>
+    <block pos:line="9" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="10" pos:column="9">private</specifier> <specifier pos:line="10" pos:column="17">static</specifier> <name pos:line="10" pos:column="24">Assembly</name></type> <name pos:line="10" pos:column="33">ServiceRuntimeAssembly</name> <block pos:line="10" pos:column="56">{ <function_decl><name pos:line="10" pos:column="58">get</name>;</function_decl> <function_decl><name pos:line="10" pos:column="63">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="12" pos:column="9">private</specifier> <specifier pos:line="12" pos:column="17">static</specifier> <name pos:line="12" pos:column="24">Type</name></type> <name pos:line="12" pos:column="29">RoleEnvironmentType</name> <block pos:line="12" pos:column="49">{ <function_decl><name pos:line="12" pos:column="51">get</name>;</function_decl> <function_decl><name pos:line="12" pos:column="56">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <constructor><specifier pos:line="14" pos:column="9">static</specifier> <name pos:line="14" pos:column="16">WindowsAzureCloudServicesEnvironment</name><parameter_list pos:line="14" pos:column="52">()</parameter_list>
+        <block pos:line="15" pos:column="9">{
+            <expr_stmt><expr><name pos:line="16" pos:column="13">ServiceRuntimeAssembly</name> <op:operator pos:line="16" pos:column="36">=</op:operator> <call><name pos:line="16" pos:column="38">TryLoadServiceRuntimeAssembly</name><argument_list pos:line="16" pos:column="67">()</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name pos:line="17" pos:column="13">TryLoadServiceRuntimeTypes</name><argument_list pos:line="17" pos:column="39">()</argument_list></call></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <decl_stmt><decl><type><specifier pos:line="20" pos:column="9">public</specifier> <name pos:line="20" pos:column="16">bool</name></type> <name pos:line="20" pos:column="21">IsAvailable</name>
+        <block pos:line="21" pos:column="9">{
+            <function><name pos:line="22" pos:column="13">get</name>
+            <block pos:line="23" pos:column="13">{
+                <return pos:line="24" pos:column="17">return <expr><name pos:line="24" pos:column="24">ServiceRuntimeAssembly</name> <op:operator pos:line="24" pos:column="47">!=</op:operator> <name pos:line="24" pos:column="50">null</name> <op:operator pos:line="24" pos:column="55">&amp;&amp;</op:operator> <call><name pos:line="24" pos:column="58">WrappedIsAvailable</name><argument_list pos:line="24" pos:column="76">()</argument_list></call></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="28" pos:column="9">public</specifier> <name pos:line="28" pos:column="16">string</name></type> <name pos:line="28" pos:column="23">DeploymentId</name>
+        <block pos:line="29" pos:column="9">{
+            <function><name pos:line="30" pos:column="13">get</name>
+            <block pos:line="31" pos:column="13">{
+                <expr_stmt><expr><call><name pos:line="32" pos:column="17">VerifyAvailable</name><argument_list pos:line="32" pos:column="32">()</argument_list></call></expr>;</expr_stmt>
+                <return pos:line="33" pos:column="17">return <expr><op:operator pos:line="33" pos:column="24">(</op:operator><name pos:line="33" pos:column="25">string</name><op:operator pos:line="33" pos:column="31">)</op:operator><call><name><name pos:line="33" pos:column="32">RoleEnvironmentType</name><op:operator pos:line="33" pos:column="51">.</op:operator><name pos:line="33" pos:column="52">GetProperty</name></name><argument_list pos:line="33" pos:column="63">(<argument><expr><lit:literal type="string" pos:line="33" pos:column="64">"DeploymentId"</lit:literal></expr></argument>)</argument_list></call><op:operator pos:line="33" pos:column="79">.</op:operator><call><name pos:line="33" pos:column="80">GetValue</name><argument_list pos:line="33" pos:column="88">(<argument><expr><name pos:line="33" pos:column="89">null</name></expr></argument>, <argument><expr><name pos:line="33" pos:column="95">null</name></expr></argument>)</argument_list></call></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+        
+        <decl_stmt><decl><type><specifier pos:line="37" pos:column="9">public</specifier> <name pos:line="37" pos:column="16">bool</name></type> <name pos:line="37" pos:column="21">IsEmulated</name>
+        <block pos:line="38" pos:column="9">{
+            <function><name pos:line="39" pos:column="13">get</name>
+            <block pos:line="40" pos:column="13">{
+                <expr_stmt><expr><call><name pos:line="41" pos:column="17">VerifyAvailable</name><argument_list pos:line="41" pos:column="32">()</argument_list></call></expr>;</expr_stmt>
+                <return pos:line="42" pos:column="17">return <expr><op:operator pos:line="42" pos:column="24">(</op:operator><name pos:line="42" pos:column="25">bool</name><op:operator pos:line="42" pos:column="29">)</op:operator><call><name><name pos:line="42" pos:column="30">RoleEnvironmentType</name><op:operator pos:line="42" pos:column="49">.</op:operator><name pos:line="42" pos:column="50">GetProperty</name></name><argument_list pos:line="42" pos:column="61">(<argument><expr><lit:literal type="string" pos:line="42" pos:column="62">"IsEmulated"</lit:literal></expr></argument>)</argument_list></call><op:operator pos:line="42" pos:column="75">.</op:operator><call><name pos:line="42" pos:column="76">GetValue</name><argument_list pos:line="42" pos:column="84">(<argument><expr><name pos:line="42" pos:column="85">null</name></expr></argument>, <argument><expr><name pos:line="42" pos:column="91">null</name></expr></argument>)</argument_list></call></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="46" pos:column="9">public</specifier> <name pos:line="46" pos:column="16">object</name></type> <name pos:line="46" pos:column="23">CurrentRoleInstance</name>
+        <block pos:line="47" pos:column="9">{
+            <function><name pos:line="48" pos:column="13">get</name>
+            <block pos:line="49" pos:column="13">{
+                <expr_stmt><expr><call><name pos:line="50" pos:column="17">VerifyAvailable</name><argument_list pos:line="50" pos:column="32">()</argument_list></call></expr>;</expr_stmt>
+                <return pos:line="51" pos:column="17">return <expr><call><name><name pos:line="51" pos:column="24">RoleEnvironmentType</name><op:operator pos:line="51" pos:column="43">.</op:operator><name pos:line="51" pos:column="44">GetProperty</name></name><argument_list pos:line="51" pos:column="55">(<argument><expr><lit:literal type="string" pos:line="51" pos:column="56">"CurrentRoleInstance"</lit:literal></expr></argument>)</argument_list></call><op:operator pos:line="51" pos:column="78">.</op:operator><call><name pos:line="51" pos:column="79">GetValue</name><argument_list pos:line="51" pos:column="87">(<argument><expr><name pos:line="51" pos:column="88">null</name></expr></argument>, <argument><expr><name pos:line="51" pos:column="94">null</name></expr></argument>)</argument_list></call></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="55" pos:column="9">public</specifier> <name pos:line="55" pos:column="16">object</name></type> <name pos:line="55" pos:column="23">Roles</name>
+        <block pos:line="56" pos:column="9">{
+            <function><name pos:line="57" pos:column="13">get</name>
+            <block pos:line="58" pos:column="13">{
+                <expr_stmt><expr><call><name pos:line="59" pos:column="17">VerifyAvailable</name><argument_list pos:line="59" pos:column="32">()</argument_list></call></expr>;</expr_stmt>
+                <return pos:line="60" pos:column="17">return <expr><call><name><name pos:line="60" pos:column="24">RoleEnvironmentType</name><op:operator pos:line="60" pos:column="43">.</op:operator><name pos:line="60" pos:column="44">GetProperty</name></name><argument_list pos:line="60" pos:column="55">(<argument><expr><lit:literal type="string" pos:line="60" pos:column="56">"Roles"</lit:literal></expr></argument>)</argument_list></call><op:operator pos:line="60" pos:column="64">.</op:operator><call><name pos:line="60" pos:column="65">GetValue</name><argument_list pos:line="60" pos:column="73">(<argument><expr><name pos:line="60" pos:column="74">null</name></expr></argument>, <argument><expr><name pos:line="60" pos:column="80">null</name></expr></argument>)</argument_list></call></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <function><type><specifier pos:line="64" pos:column="9">protected</specifier> <name pos:line="64" pos:column="19">void</name></type> <name pos:line="64" pos:column="24">VerifyAvailable</name><parameter_list pos:line="64" pos:column="39">()</parameter_list>
+        <block pos:line="65" pos:column="9">{
+            <if pos:line="66" pos:column="13">if <condition pos:line="66" pos:column="16">(<expr><op:operator pos:line="66" pos:column="17">!</op:operator><name pos:line="66" pos:column="18">IsAvailable</name></expr>)</condition><then pos:line="66" pos:column="30">
+            <block pos:line="67" pos:column="13">{
+                <comment type="line" pos:line="68" pos:column="17">// todo: make this a custom exception type</comment>
+                <throw pos:line="69" pos:column="17">throw <expr><op:operator pos:line="69" pos:column="23">new</op:operator> <call><name pos:line="69" pos:column="27">Exception</name><argument_list pos:line="69" pos:column="36">(<argument><expr><lit:literal type="string" pos:line="69" pos:column="37">"Role environment is not available."</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+        }</block></function>
+
+        <function><type><specifier pos:line="73" pos:column="9">private</specifier> <specifier pos:line="73" pos:column="17">static</specifier> <name pos:line="73" pos:column="24">void</name></type> <name pos:line="73" pos:column="29">TryLoadServiceRuntimeTypes</name><parameter_list pos:line="73" pos:column="55">()</parameter_list>
+        <block pos:line="74" pos:column="9">{
+            <try pos:line="75" pos:column="13">try
+            <block pos:line="76" pos:column="13">{
+                <expr_stmt><expr><name pos:line="77" pos:column="17">RoleEnvironmentType</name> <op:operator pos:line="77" pos:column="37">=</op:operator> <call><name><name pos:line="77" pos:column="39">ServiceRuntimeAssembly</name><op:operator pos:line="77" pos:column="61">.</op:operator><name pos:line="77" pos:column="62">GetType</name></name><argument_list pos:line="77" pos:column="69">(<argument><expr><lit:literal type="string" pos:line="77" pos:column="70">"Microsoft.WindowsAzure.ServiceRuntime.RoleEnvironment"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block>
+            <catch pos:line="79" pos:column="13">catch <parameter_list pos:line="79" pos:column="19">(<param><decl><type><name pos:line="79" pos:column="20">ReflectionTypeLoadException</name></type></decl></param>)</parameter_list>
+            <block pos:line="80" pos:column="13">{
+            }</block></catch></try>
+        }</block></function>
+
+        <function><type><specifier pos:line="84" pos:column="9">private</specifier> <specifier pos:line="84" pos:column="17">static</specifier> <name pos:line="84" pos:column="24">bool</name></type> <name pos:line="84" pos:column="29">WrappedIsAvailable</name><parameter_list pos:line="84" pos:column="47">()</parameter_list>
+        <block pos:line="85" pos:column="9">{
+            <try pos:line="86" pos:column="13">try
+            <block pos:line="87" pos:column="13">{
+                <return pos:line="88" pos:column="17">return <expr><op:operator pos:line="88" pos:column="24">(</op:operator><name pos:line="88" pos:column="25">bool</name><op:operator pos:line="88" pos:column="29">)</op:operator><call><name><name pos:line="88" pos:column="30">RoleEnvironmentType</name><op:operator pos:line="88" pos:column="49">.</op:operator><name pos:line="88" pos:column="50">GetProperty</name></name><argument_list pos:line="88" pos:column="61">(<argument><expr><lit:literal type="string" pos:line="88" pos:column="62">"IsAvailable"</lit:literal></expr></argument>)</argument_list></call><op:operator pos:line="88" pos:column="76">.</op:operator><call><name pos:line="88" pos:column="77">GetValue</name><argument_list pos:line="88" pos:column="85">(<argument><expr><name pos:line="88" pos:column="86">null</name></expr></argument>, <argument><expr><name pos:line="88" pos:column="92">null</name></expr></argument>)</argument_list></call></expr>;</return>
+            }</block>  
+            <catch pos:line="90" pos:column="13">catch <parameter_list pos:line="90" pos:column="19">(<param><decl><type><name pos:line="90" pos:column="20">TargetInvocationException</name></type> <name pos:line="90" pos:column="46">ex</name></decl></param>)</parameter_list>
+            <block pos:line="91" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="92" pos:column="17">Exception</name></type> <name pos:line="92" pos:column="27">innerException1</name> <init pos:line="92" pos:column="43">= <expr><name pos:line="92" pos:column="45">ex</name></expr></init></decl>;</decl_stmt>
+                <for pos:line="93" pos:column="17">for (<init><decl><type><name pos:line="93" pos:column="22">int</name></type> <name pos:line="93" pos:column="26">i</name> <init pos:line="93" pos:column="28">= <expr><lit:literal type="number" pos:line="93" pos:column="30">0</lit:literal></expr></init></decl>;</init> <condition><expr><name pos:line="93" pos:column="33">i</name> <op:operator pos:line="93" pos:column="35">&lt;</op:operator> <lit:literal type="number" pos:line="93" pos:column="37">3</lit:literal></expr>;</condition> <incr><expr><name pos:line="93" pos:column="40">i</name><op:operator pos:line="93" pos:column="41">++</op:operator></expr></incr>)
+                <block pos:line="94" pos:column="17">{
+                    <if pos:line="95" pos:column="21">if <condition pos:line="95" pos:column="24">(<expr><name><name pos:line="95" pos:column="25">innerException1</name><op:operator pos:line="95" pos:column="40">.</op:operator><name pos:line="95" pos:column="41">InnerException</name></name> <op:operator pos:line="95" pos:column="56">!=</op:operator> <name pos:line="95" pos:column="59">null</name></expr>)</condition><then pos:line="95" pos:column="64">
+                    <block pos:line="96" pos:column="21">{
+                        <expr_stmt><expr><name pos:line="97" pos:column="25">innerException1</name> <op:operator pos:line="97" pos:column="41">=</op:operator> <name><name pos:line="97" pos:column="43">innerException1</name><op:operator pos:line="97" pos:column="58">.</op:operator><name pos:line="97" pos:column="59">InnerException</name></name></expr>;</expr_stmt>
+                    }</block></then></if>
+                }</block></for>
+
+                <if pos:line="101" pos:column="17">if <condition pos:line="101" pos:column="20">(<expr><name pos:line="101" pos:column="21">innerException1</name> <op:operator pos:line="101" pos:column="37">!=</op:operator> <name pos:line="101" pos:column="40">null</name> <op:operator pos:line="101" pos:column="45">&amp;&amp;</op:operator> <call><name><name pos:line="101" pos:column="48">innerException1</name><op:operator pos:line="101" pos:column="63">.</op:operator><name pos:line="101" pos:column="64">Message</name><op:operator pos:line="101" pos:column="71">.</op:operator><name pos:line="101" pos:column="72">Contains</name></name><argument_list pos:line="101" pos:column="80">(<argument><expr><lit:literal type="string" pos:line="101" pos:column="81">"C++ module failed to load"</lit:literal></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="101" pos:column="110">
+                <block pos:line="102" pos:column="17">{
+                    <return pos:line="103" pos:column="21">return <expr><lit:literal type="boolean" pos:line="103" pos:column="28">false</lit:literal></expr>;</return>
+                }</block></then></if>
+
+                <throw pos:line="106" pos:column="17">throw;</throw>
+            }</block></catch>
+            <catch pos:line="108" pos:column="13">catch <parameter_list pos:line="108" pos:column="19">(<param><decl><type><name pos:line="108" pos:column="20">TypeInitializationException</name></type> <name pos:line="108" pos:column="48">ex</name></decl></param>)</parameter_list>
+            <block pos:line="109" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="110" pos:column="17">var</name></type> <name pos:line="110" pos:column="21">innerException2</name> <init pos:line="110" pos:column="37">= <expr><name><name pos:line="110" pos:column="39">ex</name><op:operator pos:line="110" pos:column="41">.</op:operator><name pos:line="110" pos:column="42">InnerException</name></name></expr></init></decl>;</decl_stmt>
+                <if pos:line="111" pos:column="17">if <condition pos:line="111" pos:column="20">(<expr><name pos:line="111" pos:column="21">innerException2</name> <op:operator pos:line="111" pos:column="37">!=</op:operator> <name pos:line="111" pos:column="40">null</name> <op:operator pos:line="111" pos:column="45">&amp;&amp;</op:operator> <name pos:line="111" pos:column="48">innerException2</name> <op:operator pos:line="111" pos:column="64">is</op:operator> <name pos:line="111" pos:column="67">FileNotFoundException</name> <op:operator pos:line="111" pos:column="89">&amp;&amp;</op:operator> <call><name><name pos:line="111" pos:column="92">innerException2</name><op:operator pos:line="111" pos:column="107">.</op:operator><name pos:line="111" pos:column="108">Message</name><op:operator pos:line="111" pos:column="115">.</op:operator><name pos:line="111" pos:column="116">Contains</name></name><argument_list pos:line="111" pos:column="124">(<argument><expr><lit:literal type="string" pos:line="111" pos:column="125">"msshrtmi"</lit:literal></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="111" pos:column="137">
+                <block pos:line="112" pos:column="17">{
+                    <return pos:line="113" pos:column="21">return <expr><lit:literal type="boolean" pos:line="113" pos:column="28">false</lit:literal></expr>;</return>
+                }</block></then></if>
+
+                <throw pos:line="116" pos:column="17">throw;</throw>
+            }</block></catch></try>
+        }</block></function>
+
+        <function><type><specifier pos:line="120" pos:column="9">private</specifier> <specifier pos:line="120" pos:column="17">static</specifier> <name pos:line="120" pos:column="24">Assembly</name></type> <name pos:line="120" pos:column="33">TryLoadServiceRuntimeAssembly</name><parameter_list pos:line="120" pos:column="62">()</parameter_list>
+        <block pos:line="121" pos:column="9">{
+            <try pos:line="122" pos:column="13">try
+            <block pos:line="123" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="124" pos:column="17">var</name></type> <name pos:line="124" pos:column="21">serviceRuntimeAssembly</name> <init pos:line="124" pos:column="44">= <expr><call><name><name pos:line="124" pos:column="46">Assembly</name><op:operator pos:line="124" pos:column="54">.</op:operator><name pos:line="124" pos:column="55">LoadWithPartialName</name></name><argument_list pos:line="124" pos:column="74">(<argument><expr><lit:literal type="string" pos:line="124" pos:column="75">"Microsoft.WindowsAzure.ServiceRuntime, Culture=neutral, PublicKeyToken=31bf3856ad364e35, ProcessorArchitecture=MSIL"</lit:literal></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+                <return pos:line="125" pos:column="17">return <expr><name pos:line="125" pos:column="24">serviceRuntimeAssembly</name></expr>;</return>
+            }</block>
+            <catch pos:line="127" pos:column="13">catch <parameter_list pos:line="127" pos:column="19">(<param><decl><type><name pos:line="127" pos:column="20">FileNotFoundException</name></type></decl></param>)</parameter_list>
+            <block pos:line="128" pos:column="13">{
+                <return pos:line="129" pos:column="17">return <expr><name pos:line="129" pos:column="24">null</name></expr>;</return>
+            }</block></catch></try>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

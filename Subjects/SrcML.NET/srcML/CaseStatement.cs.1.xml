@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML.Data\CaseStatement.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2014 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Patrick Francis (ABB Group) - initial API, implementation, &amp; documentation
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="13" pos:column="1">using <name pos:line="13" pos:column="7">System</name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Collections</name><op:operator pos:line="14" pos:column="25">.</op:operator><name pos:line="14" pos:column="26">Generic</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Linq</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">System</name><op:operator pos:line="16" pos:column="13">.</op:operator><name pos:line="16" pos:column="14">Text</name></name>;</using>
+<using pos:line="17" pos:column="1">using <name><name pos:line="17" pos:column="7">System</name><op:operator pos:line="17" pos:column="13">.</op:operator><name pos:line="17" pos:column="14">Xml</name></name>;</using>
+
+<namespace pos:line="19" pos:column="1">namespace <name><name pos:line="19" pos:column="11">ABB</name><op:operator pos:line="19" pos:column="14">.</op:operator><name pos:line="19" pos:column="15">SrcML</name><op:operator pos:line="19" pos:column="20">.</op:operator><name pos:line="19" pos:column="21">Data</name></name> <block pos:line="19" pos:column="26">{
+    <comment type="line" pos:line="20" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="21" pos:column="5">/// Represents a case statement within a switch.</comment>
+    <comment type="line" pos:line="22" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="23" pos:column="5">public</specifier> class <name pos:line="23" pos:column="18">CaseStatement</name> <super pos:line="23" pos:column="32">: <name pos:line="23" pos:column="34">ConditionBlockStatement</name></super> <block pos:line="23" pos:column="58">{
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;summary&gt; The XML name for CaseStatement &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="25" pos:column="9">public</specifier> <specifier pos:line="25" pos:column="16">new</specifier> <specifier pos:line="25" pos:column="20">const</specifier> <name pos:line="25" pos:column="26">string</name></type> <name pos:line="25" pos:column="33">XmlName</name> <init pos:line="25" pos:column="41">= <expr><lit:literal type="string" pos:line="25" pos:column="43">"Case"</lit:literal></expr></init></decl>;</decl_stmt>
+        
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;summary&gt; XML Name for &lt;see cref="IsDefault" /&gt; &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="28" pos:column="9">public</specifier> <specifier pos:line="28" pos:column="16">const</specifier> <name pos:line="28" pos:column="22">string</name></type> <name pos:line="28" pos:column="29">XmlIsDefaultName</name> <init pos:line="28" pos:column="46">= <expr><lit:literal type="string" pos:line="28" pos:column="48">"IsDefault"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;summary&gt; Indicates whether this case is the default for the switch. &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="31" pos:column="9">public</specifier> <name pos:line="31" pos:column="16">bool</name></type> <name pos:line="31" pos:column="21">IsDefault</name> <block pos:line="31" pos:column="31">{ <function_decl><name pos:line="31" pos:column="33">get</name>;</function_decl> <function_decl><name pos:line="31" pos:column="38">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="33" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// Instance method for getting &lt;see cref="CaseStatement.XmlName"/&gt;</comment>
+        <comment type="line" pos:line="35" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// &lt;returns&gt;Returns the XML name for CaseStatement&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="37" pos:column="9">public</specifier> <specifier pos:line="37" pos:column="16">override</specifier> <name pos:line="37" pos:column="25">string</name></type> <name pos:line="37" pos:column="32">GetXmlName</name><parameter_list pos:line="37" pos:column="42">()</parameter_list> <block pos:line="37" pos:column="45">{ <return pos:line="37" pos:column="47">return <expr><name><name pos:line="37" pos:column="54">CaseStatement</name><op:operator pos:line="37" pos:column="67">.</op:operator><name pos:line="37" pos:column="68">XmlName</name></name></expr>;</return> }</block></function>
+
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// Writes XML attributes from this object to the XML writer</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;param name="writer"&gt;The XML writer&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="43" pos:column="9">protected</specifier> <specifier pos:line="43" pos:column="19">override</specifier> <name pos:line="43" pos:column="28">void</name></type> <name pos:line="43" pos:column="33">WriteXmlAttributes</name><parameter_list pos:line="43" pos:column="51">(<param><decl><type><name pos:line="43" pos:column="52">XmlWriter</name></type> <name pos:line="43" pos:column="62">writer</name></decl></param>)</parameter_list> <block pos:line="43" pos:column="70">{
+            <if pos:line="44" pos:column="13">if<condition pos:line="44" pos:column="15">(<expr><name pos:line="44" pos:column="16">IsDefault</name></expr>)</condition><then pos:line="44" pos:column="26"> <block pos:line="44" pos:column="27">{
+                <expr_stmt><expr><call><name><name pos:line="45" pos:column="17">writer</name><op:operator pos:line="45" pos:column="23">.</op:operator><name pos:line="45" pos:column="24">WriteAttributeString</name></name><argument_list pos:line="45" pos:column="44">(<argument><expr><name pos:line="45" pos:column="45">XmlIsDefaultName</name></expr></argument>, <argument><expr><call><name><name pos:line="45" pos:column="63">XmlConvert</name><op:operator pos:line="45" pos:column="73">.</op:operator><name pos:line="45" pos:column="74">ToString</name></name><argument_list pos:line="45" pos:column="82">(<argument><expr><name pos:line="45" pos:column="83">IsDefault</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+            <expr_stmt><expr><call><name><name pos:line="47" pos:column="13">base</name><op:operator pos:line="47" pos:column="17">.</op:operator><name pos:line="47" pos:column="18">WriteXmlAttributes</name></name><argument_list pos:line="47" pos:column="36">(<argument><expr><name pos:line="47" pos:column="37">writer</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="50" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="51" pos:column="9">/// Read the XML attributes from the current &lt;paramref name="reader"/&gt; position</comment>
+        <comment type="line" pos:line="52" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="53" pos:column="9">/// &lt;param name="reader"&gt;The XML reader&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="54" pos:column="9">protected</specifier> <specifier pos:line="54" pos:column="19">override</specifier> <name pos:line="54" pos:column="28">void</name></type> <name pos:line="54" pos:column="33">ReadXmlAttributes</name><parameter_list pos:line="54" pos:column="50">(<param><decl><type><name pos:line="54" pos:column="51">XmlReader</name></type> <name pos:line="54" pos:column="61">reader</name></decl></param>)</parameter_list> <block pos:line="54" pos:column="69">{
+            <decl_stmt><decl><type><name pos:line="55" pos:column="13">var</name></type> <name pos:line="55" pos:column="17">isDefaultAttribute</name> <init pos:line="55" pos:column="36">= <expr><call><name><name pos:line="55" pos:column="38">reader</name><op:operator pos:line="55" pos:column="44">.</op:operator><name pos:line="55" pos:column="45">GetAttribute</name></name><argument_list pos:line="55" pos:column="57">(<argument><expr><name pos:line="55" pos:column="58">XmlIsDefaultName</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+            <if pos:line="56" pos:column="13">if<condition pos:line="56" pos:column="15">(<expr><name pos:line="56" pos:column="16">null</name> <op:operator pos:line="56" pos:column="21">!=</op:operator> <name pos:line="56" pos:column="24">isDefaultAttribute</name></expr>)</condition><then pos:line="56" pos:column="43"> <block pos:line="56" pos:column="44">{
+                <expr_stmt><expr><name pos:line="57" pos:column="17">IsDefault</name> <op:operator pos:line="57" pos:column="27">=</op:operator> <call><name><name pos:line="57" pos:column="29">XmlConvert</name><op:operator pos:line="57" pos:column="39">.</op:operator><name pos:line="57" pos:column="40">ToBoolean</name></name><argument_list pos:line="57" pos:column="49">(<argument><expr><name pos:line="57" pos:column="50">isDefaultAttribute</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+            <expr_stmt><expr><call><name><name pos:line="59" pos:column="13">base</name><op:operator pos:line="59" pos:column="17">.</op:operator><name pos:line="59" pos:column="18">ReadXmlAttributes</name></name><argument_list pos:line="59" pos:column="35">(<argument><expr><name pos:line="59" pos:column="36">reader</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="62" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="63" pos:column="9">/// Returns a string representation of this statement.</comment>
+        <comment type="line" pos:line="64" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="65" pos:column="9">public</specifier> <specifier pos:line="65" pos:column="16">override</specifier> <name pos:line="65" pos:column="25">string</name></type> <name pos:line="65" pos:column="32">ToString</name><parameter_list pos:line="65" pos:column="40">()</parameter_list> <block pos:line="65" pos:column="43">{
+            <if pos:line="66" pos:column="13">if<condition pos:line="66" pos:column="15">(<expr><name pos:line="66" pos:column="16">IsDefault</name></expr>)</condition><then pos:line="66" pos:column="26"> <block pos:line="66" pos:column="27">{
+                <return pos:line="67" pos:column="17">return <expr><lit:literal type="string" pos:line="67" pos:column="24">"default:"</lit:literal></expr>;</return>
+            }</block></then></if>
+            <return pos:line="69" pos:column="13">return <expr><call><name><name pos:line="69" pos:column="20">string</name><op:operator pos:line="69" pos:column="26">.</op:operator><name pos:line="69" pos:column="27">Format</name></name><argument_list pos:line="69" pos:column="33">(<argument><expr><lit:literal type="string" pos:line="69" pos:column="34">"case {0}:"</lit:literal></expr></argument>, <argument><expr><name pos:line="69" pos:column="47">Content</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace>
+</unit>

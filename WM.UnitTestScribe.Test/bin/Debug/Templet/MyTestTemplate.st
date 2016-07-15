@@ -1,0 +1,1 @@
+﻿$type$ $name$ === $value$;

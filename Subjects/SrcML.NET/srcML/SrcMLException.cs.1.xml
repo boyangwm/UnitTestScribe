@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML\Exceptions\SrcMLException.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2010 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Text</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">System</name><op:operator pos:line="16" pos:column="13">.</op:operator><name pos:line="16" pos:column="14">Runtime</name><op:operator pos:line="16" pos:column="21">.</op:operator><name pos:line="16" pos:column="22">Serialization</name></name>;</using>
+
+<namespace pos:line="18" pos:column="1">namespace <name><name pos:line="18" pos:column="11">ABB</name><op:operator pos:line="18" pos:column="14">.</op:operator><name pos:line="18" pos:column="15">SrcML</name></name>
+<block pos:line="19" pos:column="1">{
+    <comment type="line" pos:line="20" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="21" pos:column="5">/// The base SrcML Exception</comment>
+    <comment type="line" pos:line="22" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><attribute pos:line="23" pos:column="5">[<expr><name pos:line="23" pos:column="6">Serializable</name></expr>]</attribute>
+    <specifier pos:line="24" pos:column="5">public</specifier> class <name pos:line="24" pos:column="18">SrcMLException</name> <super pos:line="24" pos:column="33">: <name pos:line="24" pos:column="35">Exception</name></super>
+    <block pos:line="25" pos:column="5">{
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// Initializes a new instance of the &lt;see cref="SrcMLException"/&gt; class.</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;/summary&gt;</comment>
+        <constructor><specifier pos:line="29" pos:column="9">public</specifier> <name pos:line="29" pos:column="16">SrcMLException</name><parameter_list pos:line="29" pos:column="30">()</parameter_list>
+            <member_list pos:line="30" pos:column="13">: <call><name pos:line="30" pos:column="15">this</name><argument_list pos:line="30" pos:column="19">(<argument><expr><lit:literal type="string" pos:line="30" pos:column="20">"An error occurred with srcML"</lit:literal></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="31" pos:column="9">{
+
+        }</block></constructor>
+
+        <comment type="line" pos:line="35" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// Initializes a new instance of the &lt;see cref="SrcMLException"/&gt; class.</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;param name="innerException"&gt;The inner exception.&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="40" pos:column="9">public</specifier> <name pos:line="40" pos:column="16">SrcMLException</name><parameter_list pos:line="40" pos:column="30">(<param><decl><type><name pos:line="40" pos:column="31">string</name></type> <name pos:line="40" pos:column="38">message</name></decl></param>, <param><decl><type><name pos:line="40" pos:column="47">Exception</name></type> <name pos:line="40" pos:column="57">innerException</name></decl></param>)</parameter_list>
+            <member_list pos:line="41" pos:column="13">: <call><name pos:line="41" pos:column="15">base</name><argument_list pos:line="41" pos:column="19">(<argument><expr><name pos:line="41" pos:column="20">message</name></expr></argument>, <argument><expr><name pos:line="41" pos:column="29">innerException</name></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="42" pos:column="9">{
+
+        }</block></constructor>
+
+        <comment type="line" pos:line="46" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// Create a SrcMLException with the given message.</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="49" pos:column="9">/// &lt;param name="message"&gt;&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="50" pos:column="9">public</specifier> <name pos:line="50" pos:column="16">SrcMLException</name><parameter_list pos:line="50" pos:column="30">(<param><decl><type><name pos:line="50" pos:column="31">string</name></type> <name pos:line="50" pos:column="38">message</name></decl></param>)</parameter_list>
+            <member_list pos:line="51" pos:column="13">: <call><name pos:line="51" pos:column="15">base</name><argument_list pos:line="51" pos:column="19">(<argument><expr><name pos:line="51" pos:column="20">message</name></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="52" pos:column="9">{
+        }</block></constructor>
+
+        <comment type="line" pos:line="55" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="56" pos:column="9">/// Initializes a new instance of the &lt;see cref="SrcMLException"/&gt; class.</comment>
+        <comment type="line" pos:line="57" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="58" pos:column="9">/// &lt;param name="serializationInfo"&gt;The serialization info.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="59" pos:column="9">/// &lt;param name="context"&gt;The context.&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="60" pos:column="9">protected</specifier> <name pos:line="60" pos:column="19">SrcMLException</name><parameter_list pos:line="60" pos:column="33">(<param><decl><type><name pos:line="60" pos:column="34">SerializationInfo</name></type> <name pos:line="60" pos:column="52">serializationInfo</name></decl></param>, <param><decl><type><name pos:line="60" pos:column="71">StreamingContext</name></type> <name pos:line="60" pos:column="88">context</name></decl></param>)</parameter_list>
+            <member_list pos:line="61" pos:column="13">: <call><name pos:line="61" pos:column="15">base</name><argument_list pos:line="61" pos:column="19">(<argument><expr><name pos:line="61" pos:column="20">serializationInfo</name></expr></argument>, <argument><expr><name pos:line="61" pos:column="39">context</name></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="62" pos:column="9">{
+
+        }</block></constructor>
+    }</block></class>
+}</block></namespace>
+</unit>

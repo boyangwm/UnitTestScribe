@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\textmgr90.h" pos:tabs="8" pos:line="1" pos:column="1">
+
+<comment type="block" pos:line="3" pos:column="1">/* this ALWAYS GENERATED file contains the definitions for the interfaces */</comment>
+
+
+ <comment type="block" pos:line="6" pos:column="2">/* File created by MIDL compiler version 7.00.0499 */</comment>
+<comment type="block" pos:line="7" pos:column="1">/* Compiler settings for textmgr90.idl:
+    Oicf, W0, Zp8, env=Win32 (32b run)
+    protocol : dce , ms_ext, c_ext, robust
+    error checks: allocation ref bounds_check enum stub_data 
+    VC __declspec() decoration level: 
+         __declspec(uuid()), __declspec(selectany), __declspec(novtable)
+         DECLSPEC_UUID(), MIDL_INTERFACE()
+*/</comment>
+<comment type="line" pos:line="15" pos:column="1">//@@MIDL_FILE_HEADING(  )</comment>
+
+<cpp:pragma pos:line="17" pos:column="1">#<cpp:directive pos:line="17" pos:column="2">pragma</cpp:directive> warning( disable: 4049 )</cpp:pragma>  <comment type="block" pos:line="17" pos:column="35">/* more than 64k source lines */</comment>
+
+
+<comment type="block" pos:line="20" pos:column="1">/* verify that the &lt;rpcndr.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="21" pos:column="1">#<cpp:directive pos:line="21" pos:column="2">ifndef</cpp:directive> <name pos:line="21" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="22" pos:column="1">#<cpp:directive pos:line="22" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="22" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:macro> <cpp:value pos:line="22" pos:column="39">475</cpp:value></cpp:define>
+<cpp:endif pos:line="23" pos:column="1">#<cpp:directive pos:line="23" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="25" pos:column="1">/* verify that the &lt;rpcsal.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="26" pos:column="1">#<cpp:directive pos:line="26" pos:column="2">ifndef</cpp:directive> <name pos:line="26" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="27" pos:column="1">#<cpp:directive pos:line="27" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="27" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:macro> <cpp:value pos:line="27" pos:column="39">100</cpp:value></cpp:define>
+<cpp:endif pos:line="28" pos:column="1">#<cpp:directive pos:line="28" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:include pos:line="30" pos:column="1">#<cpp:directive pos:line="30" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="30" pos:column="10">"rpc.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="31" pos:column="1">#<cpp:directive pos:line="31" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="31" pos:column="10">"rpcndr.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifndef pos:line="33" pos:column="1">#<cpp:directive pos:line="33" pos:column="2">ifndef</cpp:directive> <name pos:line="33" pos:column="9">__RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:error pos:line="34" pos:column="1">#<cpp:directive pos:line="34" pos:column="2">error</cpp:directive> this stub requires an updated version of &lt;rpcndr.h&gt;</cpp:error>
+<cpp:endif pos:line="35" pos:column="1">#<cpp:directive pos:line="35" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="35" pos:column="8">// __RPCNDR_H_VERSION__</comment>
+
+
+<cpp:ifndef pos:line="38" pos:column="1">#<cpp:directive pos:line="38" pos:column="2">ifndef</cpp:directive> <name pos:line="38" pos:column="9">__textmgr90_h__</name></cpp:ifndef>
+<cpp:define pos:line="39" pos:column="1">#<cpp:directive pos:line="39" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="39" pos:column="9">__textmgr90_h__</name></cpp:macro></cpp:define>
+
+<cpp:if pos:line="41" pos:column="1">#<cpp:directive pos:line="41" pos:column="2">if</cpp:directive> <expr><call><name pos:line="41" pos:column="5">defined</name><argument_list pos:line="41" pos:column="12">(<argument><expr><name pos:line="41" pos:column="13">_MSC_VER</name></expr></argument>)</argument_list></call> <op:operator pos:line="41" pos:column="23">&amp;&amp;</op:operator> <op:operator pos:line="41" pos:column="26">(</op:operator><name pos:line="41" pos:column="27">_MSC_VER</name> <op:operator pos:line="41" pos:column="36">&gt;=</op:operator> <lit:literal type="number" pos:line="41" pos:column="39">1020</lit:literal><op:operator pos:line="41" pos:column="43">)</op:operator></expr></cpp:if>
+<cpp:pragma pos:line="42" pos:column="1">#<cpp:directive pos:line="42" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+<cpp:endif pos:line="43" pos:column="1">#<cpp:directive pos:line="43" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="45" pos:column="1">/* Forward Declarations */</comment> 
+
+<cpp:ifndef pos:line="47" pos:column="1">#<cpp:directive pos:line="47" pos:column="2">ifndef</cpp:directive> <name pos:line="47" pos:column="9">__IVsLanguageDebugInfoRemap_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="48" pos:column="1">#<cpp:directive pos:line="48" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="48" pos:column="9">__IVsLanguageDebugInfoRemap_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="49" pos:column="1">typedef <type><name pos:line="49" pos:column="9">interface</name> <name pos:line="49" pos:column="19">IVsLanguageDebugInfoRemap</name></type> <name pos:line="49" pos:column="45">IVsLanguageDebugInfoRemap</name>;</typedef>
+<cpp:endif pos:line="50" pos:column="1">#<cpp:directive pos:line="50" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="50" pos:column="9">/* __IVsLanguageDebugInfoRemap_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="53" pos:column="1">#<cpp:directive pos:line="53" pos:column="2">ifndef</cpp:directive> <name pos:line="53" pos:column="9">__IVsHiddenColorableItemInTextEditorCategory_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="54" pos:column="1">#<cpp:directive pos:line="54" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="54" pos:column="9">__IVsHiddenColorableItemInTextEditorCategory_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="55" pos:column="1">typedef <type><name pos:line="55" pos:column="9">interface</name> <name pos:line="55" pos:column="19">IVsHiddenColorableItemInTextEditorCategory</name></type> <name pos:line="55" pos:column="62">IVsHiddenColorableItemInTextEditorCategory</name>;</typedef>
+<cpp:endif pos:line="56" pos:column="1">#<cpp:directive pos:line="56" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="56" pos:column="9">/* __IVsHiddenColorableItemInTextEditorCategory_FWD_DEFINED__ */</comment>
+
+
+<comment type="block" pos:line="59" pos:column="1">/* header files for imported files */</comment>
+<cpp:include pos:line="60" pos:column="1">#<cpp:directive pos:line="60" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="60" pos:column="10">"oaidl.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="61" pos:column="1">#<cpp:directive pos:line="61" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="61" pos:column="10">"ocidl.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifdef pos:line="63" pos:column="1">#<cpp:directive pos:line="63" pos:column="2">ifdef</cpp:directive> <name pos:line="63" pos:column="8">__cplusplus</name></cpp:ifdef>
+<extern pos:line="64" pos:column="1">extern <lit:literal type="string" pos:line="64" pos:column="8">"C"</lit:literal><block pos:line="64" pos:column="11">{
+<cpp:endif pos:line="65" pos:column="1">#<cpp:directive pos:line="65" pos:column="2">endif</cpp:directive></cpp:endif> 
+
+
+<comment type="block" pos:line="68" pos:column="1">/* interface __MIDL_itf_textmgr90_0000_0000 */</comment>
+<comment type="block" pos:line="69" pos:column="1">/* [local] */</comment> 
+
+<cpp:pragma pos:line="71" pos:column="1">#<cpp:directive pos:line="71" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+
+
+
+<decl_stmt><decl><type><specifier pos:line="75" pos:column="1">extern</specifier> <name pos:line="75" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="75" pos:column="22">__MIDL_itf_textmgr90_0000_0000_v0_0_c_ifspec</name></decl>;</decl_stmt>
+<decl_stmt><decl><type><specifier pos:line="76" pos:column="1">extern</specifier> <name pos:line="76" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="76" pos:column="22">__MIDL_itf_textmgr90_0000_0000_v0_0_s_ifspec</name></decl>;</decl_stmt>
+
+
+<cpp:ifndef pos:line="79" pos:column="1">#<cpp:directive pos:line="79" pos:column="2">ifndef</cpp:directive> <name pos:line="79" pos:column="9">__TextMgr90_LIBRARY_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="80" pos:column="1">#<cpp:directive pos:line="80" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="80" pos:column="9">__TextMgr90_LIBRARY_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="82" pos:column="1">/* library TextMgr90 */</comment>
+<comment type="block" pos:line="83" pos:column="1">/* [version][uuid] */</comment> 
+
+<typedef pos:line="85" pos:column="1">typedef 
+<type><enum pos:line="86" pos:column="1">enum <name pos:line="86" pos:column="6">_tag_DATA_OBJECT_RENDER_HINT90</name>
+    <block pos:line="87" pos:column="5">{	<decl><name pos:line="87" pos:column="9">DORH_COPY_IN_SAME_DOC</name>	<init pos:line="87" pos:column="33">= <expr><lit:literal type="number" pos:line="87" pos:column="35">0x20</lit:literal></expr></init></decl>
+    }</block></enum></type> 	<name pos:line="88" pos:column="9">DATA_OBJECT_RENDER_HINT90</name>;</typedef>
+
+<typedef pos:line="90" pos:column="1">typedef 
+<type><enum pos:line="91" pos:column="1">enum <name pos:line="91" pos:column="6">_markerbehaviorflags3</name>
+    <block pos:line="92" pos:column="5">{	<decl><name pos:line="92" pos:column="9">MB_HIDE_IN_FONTCOLOR_TEXTEDITOR_CATEGORY</name>	<init pos:line="92" pos:column="57">= <expr><lit:literal type="number" pos:line="92" pos:column="59">0x200</lit:literal></expr></init></decl>
+    }</block></enum></type> 	<name pos:line="93" pos:column="9">MARKERBEHAVIORFLAGS3</name>;</typedef>
+
+<typedef pos:line="95" pos:column="1">typedef 
+<type><enum pos:line="96" pos:column="1">enum <name pos:line="96" pos:column="6">_CompletionStatusFlags2</name>
+    <block pos:line="97" pos:column="5">{	<decl><name pos:line="97" pos:column="9">CSF_DONTSELECTONTAB</name>	<init pos:line="97" pos:column="33">= <expr><lit:literal type="number" pos:line="97" pos:column="35">0x100</lit:literal></expr></init></decl>
+    }</block></enum></type> 	<name pos:line="98" pos:column="9">UpdateCompletionFlags2</name>;</typedef>
+
+
+<decl_stmt><decl><type><name pos:line="101" pos:column="1">EXTERN_C</name> <specifier pos:line="101" pos:column="10">const</specifier> <name pos:line="101" pos:column="16">IID</name></type> <name pos:line="101" pos:column="20">LIBID_TextMgr90</name></decl>;</decl_stmt>
+
+<cpp:ifndef pos:line="103" pos:column="1">#<cpp:directive pos:line="103" pos:column="2">ifndef</cpp:directive> <name pos:line="103" pos:column="9">__IVsLanguageDebugInfoRemap_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="104" pos:column="1">#<cpp:directive pos:line="104" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="104" pos:column="9">__IVsLanguageDebugInfoRemap_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="106" pos:column="1">/* interface IVsLanguageDebugInfoRemap */</comment>
+<comment type="block" pos:line="107" pos:column="1">/* [local][unique][uuid][object] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="110" pos:column="1">EXTERN_C</name> <specifier pos:line="110" pos:column="10">const</specifier> <name pos:line="110" pos:column="16">IID</name></type> <name pos:line="110" pos:column="20">IID_IVsLanguageDebugInfoRemap</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="112" pos:column="1">#<cpp:directive pos:line="112" pos:column="2">if</cpp:directive> <expr><call><name pos:line="112" pos:column="5">defined</name><argument_list pos:line="112" pos:column="12">(<argument><expr><name pos:line="112" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="112" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="112" pos:column="29">!</op:operator><call><name pos:line="112" pos:column="30">defined</name><argument_list pos:line="112" pos:column="37">(<argument><expr><name pos:line="112" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="114" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="114" pos:column="19">(<argument pos:line="114" pos:column="20">"7E3FAAE7-F89E-448b-A5EB-C7D73E0685F5"</argument>)</argument_list></macro>
+    <label><name pos:line="115" pos:column="5">IVsLanguageDebugInfoRemap</name> :</label> <expr_stmt><expr pos:line="115" pos:column="33">public <name pos:line="115" pos:column="40">IUnknown</name>
+    <block pos:line="116" pos:column="5">{
+    <expr pos:line="117" pos:column="5">public<op:operator pos:line="117" pos:column="11">:</op:operator>
+        virtual <name pos:line="118" pos:column="17">HRESULT</name> <name pos:line="118" pos:column="25">STDMETHODCALLTYPE</name> <call><name pos:line="118" pos:column="43">RemapBreakpoint</name><argument_list pos:line="118" pos:column="58">( 
+            <comment type="block" pos:line="119" pos:column="13">/* [in] */</comment> <argument><expr><name pos:line="119" pos:column="24">IUnknown</name> <op:operator pos:line="119" pos:column="33">*</op:operator><name pos:line="119" pos:column="34">pUserBreakpointRequest</name></expr></argument>,
+            <comment type="block" pos:line="120" pos:column="13">/* [out] */</comment> <argument><expr><name pos:line="120" pos:column="25">IUnknown</name> <op:operator pos:line="120" pos:column="34">*</op:operator><op:operator pos:line="120" pos:column="35">*</op:operator><name pos:line="120" pos:column="36">ppMappedBreakpointRequest</name></expr></argument>)</argument_list></call> <op:operator pos:line="120" pos:column="63">=</op:operator> <lit:literal type="number" pos:line="120" pos:column="65">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="124" pos:column="1">#<cpp:directive pos:line="124" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="124" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="126" pos:column="5">typedef <type><struct pos:line="126" pos:column="13">struct <name pos:line="126" pos:column="20">IVsLanguageDebugInfoRemapVtbl</name>
+    <block pos:line="127" pos:column="5">{<public type="default" pos:line="127" pos:column="6">
+        <function_decl><type><name pos:line="128" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="130" pos:column="9">HRESULT</name></type> ( <name pos:line="130" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="130" pos:column="37">*</type:modifier><name pos:line="130" pos:column="38">QueryInterface</name> )<parameter_list pos:line="130" pos:column="54">( 
+            <param><decl><type><name pos:line="131" pos:column="13">IVsLanguageDebugInfoRemap</name> <type:modifier pos:line="131" pos:column="39">*</type:modifier></type> <name pos:line="131" pos:column="41">This</name></decl></param>,
+            <comment type="block" pos:line="132" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="132" pos:column="24">REFIID</name></type> <name pos:line="132" pos:column="31">riid</name></decl></param>,
+            <comment type="block" pos:line="133" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="134" pos:column="13">__RPC__deref_out</name>  <name pos:line="134" pos:column="31">void</name> <type:modifier pos:line="134" pos:column="36">*</type:modifier><type:modifier pos:line="134" pos:column="37">*</type:modifier></type><name pos:line="134" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="136" pos:column="9">ULONG</name></type> ( <name pos:line="136" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="136" pos:column="35">*</type:modifier><name pos:line="136" pos:column="36">AddRef</name> )<parameter_list pos:line="136" pos:column="44">( 
+            <param><decl><type><name pos:line="137" pos:column="13">IVsLanguageDebugInfoRemap</name> <type:modifier pos:line="137" pos:column="39">*</type:modifier></type> <name pos:line="137" pos:column="41">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="139" pos:column="9">ULONG</name></type> ( <name pos:line="139" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="139" pos:column="35">*</type:modifier><name pos:line="139" pos:column="36">Release</name> )<parameter_list pos:line="139" pos:column="45">( 
+            <param><decl><type><name pos:line="140" pos:column="13">IVsLanguageDebugInfoRemap</name> <type:modifier pos:line="140" pos:column="39">*</type:modifier></type> <name pos:line="140" pos:column="41">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="142" pos:column="9">HRESULT</name></type> ( <name pos:line="142" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="142" pos:column="37">*</type:modifier><name pos:line="142" pos:column="38">RemapBreakpoint</name> )<parameter_list pos:line="142" pos:column="55">( 
+            <param><decl><type><name pos:line="143" pos:column="13">IVsLanguageDebugInfoRemap</name> <type:modifier pos:line="143" pos:column="39">*</type:modifier></type> <name pos:line="143" pos:column="41">This</name></decl></param>,
+            <comment type="block" pos:line="144" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="144" pos:column="24">IUnknown</name> <type:modifier pos:line="144" pos:column="33">*</type:modifier></type><name pos:line="144" pos:column="34">pUserBreakpointRequest</name></decl></param>,
+            <comment type="block" pos:line="145" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="145" pos:column="25">IUnknown</name> <type:modifier pos:line="145" pos:column="34">*</type:modifier><type:modifier pos:line="145" pos:column="35">*</type:modifier></type><name pos:line="145" pos:column="36">ppMappedBreakpointRequest</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="147" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="148" pos:column="7">IVsLanguageDebugInfoRemapVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="150" pos:column="5">interface</name></type> <name pos:line="150" pos:column="15">IVsLanguageDebugInfoRemap</name>
+    <argument_list pos:line="151" pos:column="5">{
+        <argument><expr><name pos:line="152" pos:column="9">CONST_VTBL</name> struct <name pos:line="152" pos:column="27">IVsLanguageDebugInfoRemapVtbl</name> <op:operator pos:line="152" pos:column="57">*</op:operator><name pos:line="152" pos:column="58">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="157" pos:column="1">#<cpp:directive pos:line="157" pos:column="2">ifdef</cpp:directive> <name pos:line="157" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="160" pos:column="1">#<cpp:directive pos:line="160" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="160" pos:column="9">IVsLanguageDebugInfoRemap_QueryInterface</name><parameter_list pos:line="160" pos:column="49">(<param><type><name pos:line="160" pos:column="50">This</name></type></param>,<param><type><name pos:line="160" pos:column="55">riid</name></type></param>,<param><type><name pos:line="160" pos:column="60">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="161" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="163" pos:column="1">#<cpp:directive pos:line="163" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="163" pos:column="9">IVsLanguageDebugInfoRemap_AddRef</name><parameter_list pos:line="163" pos:column="41">(<param><type><name pos:line="163" pos:column="42">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="164" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="166" pos:column="1">#<cpp:directive pos:line="166" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="166" pos:column="9">IVsLanguageDebugInfoRemap_Release</name><parameter_list pos:line="166" pos:column="42">(<param><type><name pos:line="166" pos:column="43">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="167" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="170" pos:column="1">#<cpp:directive pos:line="170" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="170" pos:column="9">IVsLanguageDebugInfoRemap_RemapBreakpoint</name><parameter_list pos:line="170" pos:column="50">(<param><type><name pos:line="170" pos:column="51">This</name></type></param>,<param><type><name pos:line="170" pos:column="56">pUserBreakpointRequest</name></type></param>,<param><type><name pos:line="170" pos:column="79">ppMappedBreakpointRequest</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="171" pos:column="5">( (This)-&gt;lpVtbl -&gt; RemapBreakpoint(This,pUserBreakpointRequest,ppMappedBreakpointRequest) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="173" pos:column="1">#<cpp:directive pos:line="173" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="173" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="176" pos:column="1">#<cpp:directive pos:line="176" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="176" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="181" pos:column="1">#<cpp:directive pos:line="181" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="181" pos:column="9">/* __IVsLanguageDebugInfoRemap_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="184" pos:column="1">#<cpp:directive pos:line="184" pos:column="2">ifndef</cpp:directive> <name pos:line="184" pos:column="9">__IVsHiddenColorableItemInTextEditorCategory_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="185" pos:column="1">#<cpp:directive pos:line="185" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="185" pos:column="9">__IVsHiddenColorableItemInTextEditorCategory_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="187" pos:column="1">/* interface IVsHiddenColorableItemInTextEditorCategory */</comment>
+<comment type="block" pos:line="188" pos:column="1">/* [object][unique][version][uuid] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="191" pos:column="1">EXTERN_C</name> <specifier pos:line="191" pos:column="10">const</specifier> <name pos:line="191" pos:column="16">IID</name></type> <name pos:line="191" pos:column="20">IID_IVsHiddenColorableItemInTextEditorCategory</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="193" pos:column="1">#<cpp:directive pos:line="193" pos:column="2">if</cpp:directive> <expr><call><name pos:line="193" pos:column="5">defined</name><argument_list pos:line="193" pos:column="12">(<argument><expr><name pos:line="193" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="193" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="193" pos:column="29">!</op:operator><call><name pos:line="193" pos:column="30">defined</name><argument_list pos:line="193" pos:column="37">(<argument><expr><name pos:line="193" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="195" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="195" pos:column="19">(<argument pos:line="195" pos:column="20">"FAE9C935-0DA2-476b-AD3C-D73FB69432D7"</argument>)</argument_list></macro>
+    <label><name pos:line="196" pos:column="5">IVsHiddenColorableItemInTextEditorCategory</name> :</label> <expr_stmt><expr pos:line="196" pos:column="50">public <name pos:line="196" pos:column="57">IUnknown</name>
+    <block pos:line="197" pos:column="5">{
+    <expr pos:line="198" pos:column="5">public<op:operator pos:line="198" pos:column="11">:</op:operator></expr>
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="201" pos:column="1">#<cpp:directive pos:line="201" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="201" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="203" pos:column="5">typedef <type><struct pos:line="203" pos:column="13">struct <name pos:line="203" pos:column="20">IVsHiddenColorableItemInTextEditorCategoryVtbl</name>
+    <block pos:line="204" pos:column="5">{<public type="default" pos:line="204" pos:column="6">
+        <function_decl><type><name pos:line="205" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="207" pos:column="9">HRESULT</name></type> ( <name pos:line="207" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="207" pos:column="37">*</type:modifier><name pos:line="207" pos:column="38">QueryInterface</name> )<parameter_list pos:line="207" pos:column="54">( 
+            <param><decl><type><name pos:line="208" pos:column="13">IVsHiddenColorableItemInTextEditorCategory</name> <type:modifier pos:line="208" pos:column="56">*</type:modifier></type> <name pos:line="208" pos:column="58">This</name></decl></param>,
+            <comment type="block" pos:line="209" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="209" pos:column="24">__RPC__in</name> <name pos:line="209" pos:column="34">REFIID</name></type> <name pos:line="209" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="210" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="211" pos:column="13">__RPC__deref_out</name>  <name pos:line="211" pos:column="31">void</name> <type:modifier pos:line="211" pos:column="36">*</type:modifier><type:modifier pos:line="211" pos:column="37">*</type:modifier></type><name pos:line="211" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="213" pos:column="9">ULONG</name></type> ( <name pos:line="213" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="213" pos:column="35">*</type:modifier><name pos:line="213" pos:column="36">AddRef</name> )<parameter_list pos:line="213" pos:column="44">( 
+            <param><decl><type><name pos:line="214" pos:column="13">IVsHiddenColorableItemInTextEditorCategory</name> <type:modifier pos:line="214" pos:column="56">*</type:modifier></type> <name pos:line="214" pos:column="58">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="216" pos:column="9">ULONG</name></type> ( <name pos:line="216" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="216" pos:column="35">*</type:modifier><name pos:line="216" pos:column="36">Release</name> )<parameter_list pos:line="216" pos:column="45">( 
+            <param><decl><type><name pos:line="217" pos:column="13">IVsHiddenColorableItemInTextEditorCategory</name> <type:modifier pos:line="217" pos:column="56">*</type:modifier></type> <name pos:line="217" pos:column="58">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="219" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="220" pos:column="7">IVsHiddenColorableItemInTextEditorCategoryVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="222" pos:column="5">interface</name></type> <name pos:line="222" pos:column="15">IVsHiddenColorableItemInTextEditorCategory</name>
+    <argument_list pos:line="223" pos:column="5">{
+        <argument><expr><name pos:line="224" pos:column="9">CONST_VTBL</name> struct <name pos:line="224" pos:column="27">IVsHiddenColorableItemInTextEditorCategoryVtbl</name> <op:operator pos:line="224" pos:column="74">*</op:operator><name pos:line="224" pos:column="75">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="229" pos:column="1">#<cpp:directive pos:line="229" pos:column="2">ifdef</cpp:directive> <name pos:line="229" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="232" pos:column="1">#<cpp:directive pos:line="232" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="232" pos:column="9">IVsHiddenColorableItemInTextEditorCategory_QueryInterface</name><parameter_list pos:line="232" pos:column="66">(<param><type><name pos:line="232" pos:column="67">This</name></type></param>,<param><type><name pos:line="232" pos:column="72">riid</name></type></param>,<param><type><name pos:line="232" pos:column="77">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="233" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="235" pos:column="1">#<cpp:directive pos:line="235" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="235" pos:column="9">IVsHiddenColorableItemInTextEditorCategory_AddRef</name><parameter_list pos:line="235" pos:column="58">(<param><type><name pos:line="235" pos:column="59">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="236" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="238" pos:column="1">#<cpp:directive pos:line="238" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="238" pos:column="9">IVsHiddenColorableItemInTextEditorCategory_Release</name><parameter_list pos:line="238" pos:column="59">(<param><type><name pos:line="238" pos:column="60">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="239" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:endif pos:line="242" pos:column="1">#<cpp:directive pos:line="242" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="242" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="245" pos:column="1">#<cpp:directive pos:line="245" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="245" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="250" pos:column="1">#<cpp:directive pos:line="250" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="250" pos:column="9">/* __IVsHiddenColorableItemInTextEditorCategory_INTERFACE_DEFINED__ */</comment>
+
+<cpp:endif pos:line="252" pos:column="1">#<cpp:directive pos:line="252" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="252" pos:column="8">/* __TextMgr90_LIBRARY_DEFINED__ */</comment>
+
+<comment type="block" pos:line="254" pos:column="1">/* Additional Prototypes for ALL interfaces */</comment>
+
+<comment type="block" pos:line="256" pos:column="1">/* end of Additional Prototypes */</comment>
+
+<cpp:ifdef pos:line="258" pos:column="1">#<cpp:directive pos:line="258" pos:column="2">ifdef</cpp:directive> <name pos:line="258" pos:column="8">__cplusplus</name></cpp:ifdef>
+}</block></extern>
+<cpp:endif pos:line="260" pos:column="1">#<cpp:directive pos:line="260" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:endif pos:line="262" pos:column="1">#<cpp:directive pos:line="262" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+</unit>

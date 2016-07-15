@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Configuration\Section.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">ComponentModel</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Configuration</name></name>;</using>
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">Glimpse</name><op:operator pos:line="4" pos:column="14">.</op:operator><name pos:line="4" pos:column="15">Core</name><op:operator pos:line="4" pos:column="19">.</op:operator><name pos:line="4" pos:column="20">Extensibility</name></name>;</using>
+<using pos:line="5" pos:column="1">using <name><name pos:line="5" pos:column="7">Glimpse</name><op:operator pos:line="5" pos:column="14">.</op:operator><name pos:line="5" pos:column="15">Core</name><op:operator pos:line="5" pos:column="19">.</op:operator><name pos:line="5" pos:column="20">Framework</name></name>;</using>
+
+<namespace pos:line="7" pos:column="1">namespace <name><name pos:line="7" pos:column="11">Glimpse</name><op:operator pos:line="7" pos:column="18">.</op:operator><name pos:line="7" pos:column="19">Core</name><op:operator pos:line="7" pos:column="23">.</op:operator><name pos:line="7" pos:column="24">Configuration</name></name>
+<block pos:line="8" pos:column="1">{
+    <comment type="line" pos:line="9" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="10" pos:column="5">/// The root Glimpse configuration node, that provides Glimpse configuration options in a site's &lt;c&gt;web.config&lt;/c&gt;.</comment>
+    <comment type="line" pos:line="11" pos:column="5">/// &lt;/summary&gt;</comment>
+    <comment type="line" pos:line="12" pos:column="5">/// &lt;remarks&gt;</comment>
+    <comment type="line" pos:line="13" pos:column="5">/// Before using, the &lt;c&gt;Section&lt;/c&gt; class must be added to the &lt;c&gt;configSections&lt;/c&gt; section of &lt;c&gt;web.config&lt;/c&gt;, as shown in the examples. However, usually a NuGet package will make the necessary &lt;c&gt;web.config&lt;/c&gt; changes automatically.</comment>
+    <comment type="line" pos:line="14" pos:column="5">/// &lt;example&gt;</comment>
+    <comment type="line" pos:line="15" pos:column="5">/// &lt;code&gt;</comment>
+    <comment type="line" pos:line="16" pos:column="5">/// &lt;![CDATA[</comment>
+    <comment type="line" pos:line="17" pos:column="5">/// &lt;configuration&gt;</comment>
+    <comment type="line" pos:line="18" pos:column="5">///     &lt;configSections&gt;</comment>
+    <comment type="line" pos:line="19" pos:column="5">///         &lt;section name="glimpse" type="Glimpse.Core.Configuration.Section, Glimpse.Core" /&gt;</comment>
+    <comment type="line" pos:line="20" pos:column="5">///         &lt;!-- Additional section registrations --&gt;</comment>
+    <comment type="line" pos:line="21" pos:column="5">///     &lt;/configSections&gt;</comment>
+    <comment type="line" pos:line="22" pos:column="5">///     &lt;!-- Additional configuration nodes --&gt;</comment>
+    <comment type="line" pos:line="23" pos:column="5">/// &lt;/configuration&gt;</comment>
+    <comment type="line" pos:line="24" pos:column="5">/// ]]&gt;</comment>
+    <comment type="line" pos:line="25" pos:column="5">/// &lt;/code&gt;</comment>
+    <comment type="line" pos:line="26" pos:column="5">/// &lt;/example&gt;</comment>
+    <comment type="line" pos:line="27" pos:column="5">/// &lt;/remarks&gt;</comment>
+    <class><specifier pos:line="28" pos:column="5">public</specifier> class <name pos:line="28" pos:column="18">Section</name> <super pos:line="28" pos:column="26">: <name pos:line="28" pos:column="28">ConfigurationSection</name></super>
+    <block pos:line="29" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="30" pos:column="9">internal</specifier> <specifier pos:line="30" pos:column="18">const</specifier> <name pos:line="30" pos:column="24">string</name></type> <name pos:line="30" pos:column="31">DefaultLocation</name> <init pos:line="30" pos:column="47">= <expr><lit:literal type="string" pos:line="30" pos:column="49">""</lit:literal></expr></init></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="31" pos:column="9">internal</specifier> <specifier pos:line="31" pos:column="18">const</specifier> <name pos:line="31" pos:column="24">int</name></type> <name pos:line="31" pos:column="28">DefaultBufferSize</name> <init pos:line="31" pos:column="46">= <expr><lit:literal type="number" pos:line="31" pos:column="48">25</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="33" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// Gets or sets the logging settings used by Glimpse.</comment>
+        <comment type="line" pos:line="35" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// Glimpse logging is mostly used to diagnose problems with Glimpse itself. Logging is off by default.</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;example&gt;</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;code&gt;</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// &lt;![CDATA[</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;glimpse defaultRuntimePolicy="On" endpointBaseUri="~/Glimpse.axd"&gt;</comment>
+        <comment type="line" pos:line="43" pos:column="9">///     &lt;logging level="Trace" /&gt;</comment>
+        <comment type="line" pos:line="44" pos:column="9">///     &lt;!-- Additional Glimpse configuration nodes --&gt;</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// &lt;/glimpse&gt;</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// ]]&gt;</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// &lt;/code&gt;</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// &lt;/example&gt;</comment>
+        <decl_stmt><decl><type><attribute pos:line="49" pos:column="9">[<expr><call><name pos:line="49" pos:column="10">ConfigurationProperty</name><argument_list pos:line="49" pos:column="31">(<argument><expr><lit:literal type="string" pos:line="49" pos:column="32">"logging"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+        <specifier pos:line="50" pos:column="9">public</specifier> <name pos:line="50" pos:column="16">LoggingElement</name></type> <name pos:line="50" pos:column="31">Logging</name>
+        <block pos:line="51" pos:column="9">{
+            <function><name pos:line="52" pos:column="13">get</name> <block pos:line="52" pos:column="17">{ <return pos:line="52" pos:column="19">return <expr><op:operator pos:line="52" pos:column="26">(</op:operator><name pos:line="52" pos:column="27">LoggingElement</name><op:operator pos:line="52" pos:column="41">)</op:operator><name><name pos:line="52" pos:column="42">base</name><index pos:line="52" pos:column="46">[<expr><lit:literal type="string" pos:line="52" pos:column="47">"logging"</lit:literal></expr>]</index></name></expr>;</return> }</block></function>
+            <function><name pos:line="53" pos:column="13">set</name> <block pos:line="53" pos:column="17">{ <expr_stmt><expr><name><name pos:line="53" pos:column="19">base</name><index pos:line="53" pos:column="23">[<expr><lit:literal type="string" pos:line="53" pos:column="24">"logging"</lit:literal></expr>]</index></name> <op:operator pos:line="53" pos:column="35">=</op:operator> <name pos:line="53" pos:column="37">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="56" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="57" pos:column="9">/// Gets or sets the collection of &lt;see cref="IClientScript"/&gt;s that are injected into a page response by Glimpse.</comment>
+        <comment type="line" pos:line="58" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="59" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="60" pos:column="9">/// By default, client scripts are discovered at runtime but that behavior, plus the location of where they are found, and which ones should be ignored is configurable.</comment>
+        <comment type="line" pos:line="61" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <comment type="line" pos:line="62" pos:column="9">/// &lt;example&gt;</comment>
+        <comment type="line" pos:line="63" pos:column="9">/// &lt;code&gt;</comment>
+        <comment type="line" pos:line="64" pos:column="9">/// &lt;![CDATA[</comment>
+        <comment type="line" pos:line="65" pos:column="9">/// &lt;glimpse defaultRuntimePolicy="On" endpointBaseUri="~/Glimpse.axd"&gt;</comment>
+        <comment type="line" pos:line="66" pos:column="9">///     &lt;clientScripts autoDiscover="true" discoveryLocation="bin\debug"&gt;</comment>
+        <comment type="line" pos:line="67" pos:column="9">///         &lt;ignoredTypes&gt;</comment>
+        <comment type="line" pos:line="68" pos:column="9">///             &lt;add type="{Namespace.Type, AssemblyName}"/&gt;</comment>
+        <comment type="line" pos:line="69" pos:column="9">///         &lt;/ignoredTypes&gt;</comment>
+        <comment type="line" pos:line="70" pos:column="9">///     &lt;/clientScripts&gt;</comment>
+        <comment type="line" pos:line="71" pos:column="9">///     &lt;!-- Additional Glimpse configuration nodes --&gt;</comment>
+        <comment type="line" pos:line="72" pos:column="9">/// &lt;/glimpse&gt;</comment>
+        <comment type="line" pos:line="73" pos:column="9">/// ]]&gt;</comment>
+        <comment type="line" pos:line="74" pos:column="9">/// &lt;/code&gt;</comment>
+        <comment type="line" pos:line="75" pos:column="9">/// &lt;/example&gt;</comment>
+        <decl_stmt><decl><type><attribute pos:line="76" pos:column="9">[<expr><call><name pos:line="76" pos:column="10">ConfigurationProperty</name><argument_list pos:line="76" pos:column="31">(<argument><expr><lit:literal type="string" pos:line="76" pos:column="32">"clientScripts"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+        <specifier pos:line="77" pos:column="9">public</specifier> <name pos:line="77" pos:column="16">DiscoverableCollectionElement</name></type> <name pos:line="77" pos:column="46">ClientScripts</name>
+        <block pos:line="78" pos:column="9">{
+            <function><name pos:line="79" pos:column="13">get</name> <block pos:line="79" pos:column="17">{ <return pos:line="79" pos:column="19">return <expr><op:operator pos:line="79" pos:column="26">(</op:operator><name pos:line="79" pos:column="27">DiscoverableCollectionElement</name><op:operator pos:line="79" pos:column="56">)</op:operator><name><name pos:line="79" pos:column="57">base</name><index pos:line="79" pos:column="61">[<expr><lit:literal type="string" pos:line="79" pos:column="62">"clientScripts"</lit:literal></expr>]</index></name></expr>;</return> }</block></function>
+            <function><name pos:line="80" pos:column="13">set</name> <block pos:line="80" pos:column="17">{ <expr_stmt><expr><name><name pos:line="80" pos:column="19">base</name><index pos:line="80" pos:column="23">[<expr><lit:literal type="string" pos:line="80" pos:column="24">"clientScripts"</lit:literal></expr>]</index></name> <op:operator pos:line="80" pos:column="41">=</op:operator> <name pos:line="80" pos:column="43">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="83" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="84" pos:column="9">/// Gets or sets the collection of &lt;see cref="IInspector"/&gt;s that used to gather information about a site during Http requests.</comment>
+        <comment type="line" pos:line="85" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="86" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="87" pos:column="9">/// By default, inspectors are discovered at runtime but that behavior, plus the location of where they are found, and which ones should be ignored is configurable.</comment>
+        <comment type="line" pos:line="88" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <comment type="line" pos:line="89" pos:column="9">/// &lt;example&gt;</comment>
+        <comment type="line" pos:line="90" pos:column="9">/// &lt;code&gt;</comment>
+        <comment type="line" pos:line="91" pos:column="9">/// &lt;![CDATA[</comment>
+        <comment type="line" pos:line="92" pos:column="9">/// &lt;glimpse defaultRuntimePolicy="On" endpointBaseUri="~/Glimpse.axd"&gt;</comment>
+        <comment type="line" pos:line="93" pos:column="9">///     &lt;inspectors autoDiscover="true" discoveryLocation="bin\debug"&gt;</comment>
+        <comment type="line" pos:line="94" pos:column="9">///         &lt;ignoredTypes&gt;</comment>
+        <comment type="line" pos:line="95" pos:column="9">///             &lt;add type="{Namespace.Type, AssemblyName}"/&gt;</comment>
+        <comment type="line" pos:line="96" pos:column="9">///         &lt;/ignoredTypes&gt;</comment>
+        <comment type="line" pos:line="97" pos:column="9">///     &lt;/inspectors&gt;</comment>
+        <comment type="line" pos:line="98" pos:column="9">///     &lt;!-- Additional Glimpse configuration nodes --&gt;</comment>
+        <comment type="line" pos:line="99" pos:column="9">/// &lt;/glimpse&gt;</comment>
+        <comment type="line" pos:line="100" pos:column="9">/// ]]&gt;</comment>
+        <comment type="line" pos:line="101" pos:column="9">/// &lt;/code&gt;</comment>
+        <comment type="line" pos:line="102" pos:column="9">/// &lt;/example&gt;</comment>
+        <decl_stmt><decl><type><attribute pos:line="103" pos:column="9">[<expr><call><name pos:line="103" pos:column="10">ConfigurationProperty</name><argument_list pos:line="103" pos:column="31">(<argument><expr><lit:literal type="string" pos:line="103" pos:column="32">"inspectors"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+        <specifier pos:line="104" pos:column="9">public</specifier> <name pos:line="104" pos:column="16">DiscoverableCollectionElement</name></type> <name pos:line="104" pos:column="46">Inspectors</name>
+        <block pos:line="105" pos:column="9">{
+            <function><name pos:line="106" pos:column="13">get</name> <block pos:line="106" pos:column="17">{ <return pos:line="106" pos:column="19">return <expr><op:operator pos:line="106" pos:column="26">(</op:operator><name pos:line="106" pos:column="27">DiscoverableCollectionElement</name><op:operator pos:line="106" pos:column="56">)</op:operator><name><name pos:line="106" pos:column="57">base</name><index pos:line="106" pos:column="61">[<expr><lit:literal type="string" pos:line="106" pos:column="62">"inspectors"</lit:literal></expr>]</index></name></expr>;</return> }</block></function>
+            <function><name pos:line="107" pos:column="13">set</name> <block pos:line="107" pos:column="17">{ <expr_stmt><expr><name><name pos:line="107" pos:column="19">base</name><index pos:line="107" pos:column="23">[<expr><lit:literal type="string" pos:line="107" pos:column="24">"inspectors"</lit:literal></expr>]</index></name> <op:operator pos:line="107" pos:column="38">=</op:operator> <name pos:line="107" pos:column="40">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="110" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="111" pos:column="9">/// Gets or sets the collection of &lt;see cref="IResource"/&gt;s that provide endpoints to access server side data.</comment>
+        <comment type="line" pos:line="112" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="113" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="114" pos:column="9">/// By default, resources are discovered at runtime but that behavior, plus the location of where they are found, and which ones should be ignored is configurable.</comment>
+        <comment type="line" pos:line="115" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <comment type="line" pos:line="116" pos:column="9">/// &lt;example&gt;</comment>
+        <comment type="line" pos:line="117" pos:column="9">/// &lt;code&gt;</comment>
+        <comment type="line" pos:line="118" pos:column="9">/// &lt;![CDATA[</comment>
+        <comment type="line" pos:line="119" pos:column="9">/// &lt;glimpse defaultRuntimePolicy="On" endpointBaseUri="~/Glimpse.axd"&gt;</comment>
+        <comment type="line" pos:line="120" pos:column="9">///     &lt;resources autoDiscover="true" discoveryLocation="bin\debug"&gt;</comment>
+        <comment type="line" pos:line="121" pos:column="9">///         &lt;ignoredTypes&gt;</comment>
+        <comment type="line" pos:line="122" pos:column="9">///             &lt;add type="{Namespace.Type, AssemblyName}"/&gt;</comment>
+        <comment type="line" pos:line="123" pos:column="9">///         &lt;/ignoredTypes&gt;</comment>
+        <comment type="line" pos:line="124" pos:column="9">///     &lt;/resources&gt;</comment>
+        <comment type="line" pos:line="125" pos:column="9">///     &lt;!-- Additional Glimpse configuration nodes --&gt;</comment>
+        <comment type="line" pos:line="126" pos:column="9">/// &lt;/glimpse&gt;</comment>
+        <comment type="line" pos:line="127" pos:column="9">/// ]]&gt;</comment>
+        <comment type="line" pos:line="128" pos:column="9">/// &lt;/code&gt;</comment>
+        <comment type="line" pos:line="129" pos:column="9">/// &lt;/example&gt;</comment>
+        <decl_stmt><decl><type><attribute pos:line="130" pos:column="9">[<expr><call><name pos:line="130" pos:column="10">ConfigurationProperty</name><argument_list pos:line="130" pos:column="31">(<argument><expr><lit:literal type="string" pos:line="130" pos:column="32">"resources"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+        <specifier pos:line="131" pos:column="9">public</specifier> <name pos:line="131" pos:column="16">DiscoverableCollectionElement</name></type> <name pos:line="131" pos:column="46">Resources</name>
+        <block pos:line="132" pos:column="9">{
+            <function><name pos:line="133" pos:column="13">get</name> <block pos:line="133" pos:column="17">{ <return pos:line="133" pos:column="19">return <expr><op:operator pos:line="133" pos:column="26">(</op:operator><name pos:line="133" pos:column="27">DiscoverableCollectionElement</name><op:operator pos:line="133" pos:column="56">)</op:operator><name><name pos:line="133" pos:column="57">base</name><index pos:line="133" pos:column="61">[<expr><lit:literal type="string" pos:line="133" pos:column="62">"resources"</lit:literal></expr>]</index></name></expr>;</return> }</block></function>
+            <function><name pos:line="134" pos:column="13">set</name> <block pos:line="134" pos:column="17">{ <expr_stmt><expr><name><name pos:line="134" pos:column="19">base</name><index pos:line="134" pos:column="23">[<expr><lit:literal type="string" pos:line="134" pos:column="24">"resources"</lit:literal></expr>]</index></name> <op:operator pos:line="134" pos:column="37">=</op:operator> <name pos:line="134" pos:column="39">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="137" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="138" pos:column="9">/// Gets or sets the collection of &lt;see cref="ITab"/&gt;s that Glimpse will render in the client.</comment>
+        <comment type="line" pos:line="139" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="140" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="141" pos:column="9">/// By default, tabs are discovered at runtime but that behavior, plus the location of where they are found, and which ones should be ignored is configurable.</comment>
+        <comment type="line" pos:line="142" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <comment type="line" pos:line="143" pos:column="9">/// &lt;example&gt;</comment>
+        <comment type="line" pos:line="144" pos:column="9">/// &lt;code&gt;</comment>
+        <comment type="line" pos:line="145" pos:column="9">/// &lt;![CDATA[</comment>
+        <comment type="line" pos:line="146" pos:column="9">/// &lt;glimpse defaultRuntimePolicy="On" endpointBaseUri="~/Glimpse.axd"&gt;</comment>
+        <comment type="line" pos:line="147" pos:column="9">///     &lt;tabs autoDiscover="true" discoveryLocation="bin\debug"&gt;</comment>
+        <comment type="line" pos:line="148" pos:column="9">///         &lt;ignoredTypes&gt;</comment>
+        <comment type="line" pos:line="149" pos:column="9">///             &lt;add type="{Namespace.Type, AssemblyName}"/&gt;</comment>
+        <comment type="line" pos:line="150" pos:column="9">///         &lt;/ignoredTypes&gt;</comment>
+        <comment type="line" pos:line="151" pos:column="9">///     &lt;/tabs&gt;</comment>
+        <comment type="line" pos:line="152" pos:column="9">///     &lt;!-- Additional Glimpse configuration nodes --&gt;</comment>
+        <comment type="line" pos:line="153" pos:column="9">/// &lt;/glimpse&gt;</comment>
+        <comment type="line" pos:line="154" pos:column="9">/// ]]&gt;</comment>
+        <comment type="line" pos:line="155" pos:column="9">/// &lt;/code&gt;</comment>
+        <comment type="line" pos:line="156" pos:column="9">/// &lt;/example&gt;</comment>
+        <decl_stmt><decl><type><attribute pos:line="157" pos:column="9">[<expr><call><name pos:line="157" pos:column="10">ConfigurationProperty</name><argument_list pos:line="157" pos:column="31">(<argument><expr><lit:literal type="string" pos:line="157" pos:column="32">"tabs"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+        <specifier pos:line="158" pos:column="9">public</specifier> <name pos:line="158" pos:column="16">DiscoverableCollectionElement</name></type> <name pos:line="158" pos:column="46">Tabs</name>
+        <block pos:line="159" pos:column="9">{
+            <function><name pos:line="160" pos:column="13">get</name> <block pos:line="160" pos:column="17">{ <return pos:line="160" pos:column="19">return <expr><op:operator pos:line="160" pos:column="26">(</op:operator><name pos:line="160" pos:column="27">DiscoverableCollectionElement</name><op:operator pos:line="160" pos:column="56">)</op:operator><name><name pos:line="160" pos:column="57">base</name><index pos:line="160" pos:column="61">[<expr><lit:literal type="string" pos:line="160" pos:column="62">"tabs"</lit:literal></expr>]</index></name></expr>;</return> }</block></function>
+            <function><name pos:line="161" pos:column="13">set</name> <block pos:line="161" pos:column="17">{ <expr_stmt><expr><name><name pos:line="161" pos:column="19">base</name><index pos:line="161" pos:column="23">[<expr><lit:literal type="string" pos:line="161" pos:column="24">"tabs"</lit:literal></expr>]</index></name> <op:operator pos:line="161" pos:column="32">=</op:operator> <name pos:line="161" pos:column="34">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><attribute pos:line="164" pos:column="9">[<expr><call><name pos:line="164" pos:column="10">ConfigurationProperty</name><argument_list pos:line="164" pos:column="31">(<argument><expr><lit:literal type="string" pos:line="164" pos:column="32">"displays"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+        <specifier pos:line="165" pos:column="9">public</specifier> <name pos:line="165" pos:column="16">DiscoverableCollectionElement</name></type> <name pos:line="165" pos:column="46">Displays</name>
+        <block pos:line="166" pos:column="9">{
+            <function><name pos:line="167" pos:column="13">get</name> <block pos:line="167" pos:column="17">{ <return pos:line="167" pos:column="19">return <expr><op:operator pos:line="167" pos:column="26">(</op:operator><name pos:line="167" pos:column="27">DiscoverableCollectionElement</name><op:operator pos:line="167" pos:column="56">)</op:operator><name><name pos:line="167" pos:column="57">base</name><index pos:line="167" pos:column="61">[<expr><lit:literal type="string" pos:line="167" pos:column="62">"displays"</lit:literal></expr>]</index></name></expr>;</return> }</block></function>
+            <function><name pos:line="168" pos:column="13">set</name> <block pos:line="168" pos:column="17">{ <expr_stmt><expr><name><name pos:line="168" pos:column="19">base</name><index pos:line="168" pos:column="23">[<expr><lit:literal type="string" pos:line="168" pos:column="24">"displays"</lit:literal></expr>]</index></name> <op:operator pos:line="168" pos:column="36">=</op:operator> <name pos:line="168" pos:column="38">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="171" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="172" pos:column="9">/// Gets or sets the collection of &lt;see cref="IRuntimePolicy"/&gt;s that Glimpse will use to determine how it can manipulate any given Http response.</comment>
+        <comment type="line" pos:line="173" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="174" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="175" pos:column="9">/// By default, runtime policies are discovered at runtime but that behavior, plus the location of where they are found, and which ones should be ignored is configurable.</comment>
+        <comment type="line" pos:line="176" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <comment type="line" pos:line="177" pos:column="9">/// &lt;example&gt;</comment>
+        <comment type="line" pos:line="178" pos:column="9">/// &lt;code&gt;</comment>
+        <comment type="line" pos:line="179" pos:column="9">/// &lt;![CDATA[</comment>
+        <comment type="line" pos:line="180" pos:column="9">/// &lt;glimpse defaultRuntimePolicy="On" endpointBaseUri="~/Glimpse.axd"&gt;</comment>
+        <comment type="line" pos:line="181" pos:column="9">///     &lt;runtimePolicies autoDiscover="true" discoveryLocation="bin\debug"&gt;</comment>
+        <comment type="line" pos:line="182" pos:column="9">///         &lt;ignoredTypes&gt;</comment>
+        <comment type="line" pos:line="183" pos:column="9">///             &lt;add type="{Namespace.Type, AssemblyName}"/&gt;</comment>
+        <comment type="line" pos:line="184" pos:column="9">///         &lt;/ignoredTypes&gt;</comment>
+        <comment type="line" pos:line="185" pos:column="9">///     &lt;/runtimePolicies&gt;</comment>
+        <comment type="line" pos:line="186" pos:column="9">///     &lt;!-- Additional Glimpse configuration nodes --&gt;</comment>
+        <comment type="line" pos:line="187" pos:column="9">/// &lt;/glimpse&gt;</comment>
+        <comment type="line" pos:line="188" pos:column="9">/// ]]&gt;</comment>
+        <comment type="line" pos:line="189" pos:column="9">/// &lt;/code&gt;</comment>
+        <comment type="line" pos:line="190" pos:column="9">/// &lt;/example&gt;</comment>
+        <decl_stmt><decl><type><attribute pos:line="191" pos:column="9">[<expr><call><name pos:line="191" pos:column="10">ConfigurationProperty</name><argument_list pos:line="191" pos:column="31">(<argument><expr><lit:literal type="string" pos:line="191" pos:column="32">"runtimePolicies"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+        <specifier pos:line="192" pos:column="9">public</specifier> <name pos:line="192" pos:column="16">PolicyDiscoverableCollectionElement</name></type> <name pos:line="192" pos:column="52">RuntimePolicies</name>
+        <block pos:line="193" pos:column="9">{
+            <function><name pos:line="194" pos:column="13">get</name> <block pos:line="194" pos:column="17">{ <return pos:line="194" pos:column="19">return <expr><op:operator pos:line="194" pos:column="26">(</op:operator><name pos:line="194" pos:column="27">PolicyDiscoverableCollectionElement</name><op:operator pos:line="194" pos:column="62">)</op:operator><name><name pos:line="194" pos:column="63">base</name><index pos:line="194" pos:column="67">[<expr><lit:literal type="string" pos:line="194" pos:column="68">"runtimePolicies"</lit:literal></expr>]</index></name></expr>;</return> }</block></function>
+            <function><name pos:line="195" pos:column="13">set</name> <block pos:line="195" pos:column="17">{ <expr_stmt><expr><name><name pos:line="195" pos:column="19">base</name><index pos:line="195" pos:column="23">[<expr><lit:literal type="string" pos:line="195" pos:column="24">"runtimePolicies"</lit:literal></expr>]</index></name> <op:operator pos:line="195" pos:column="43">=</op:operator> <name pos:line="195" pos:column="45">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="198" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="199" pos:column="9">/// Gets or sets the collection of &lt;see cref="ISerializationConverter"/&gt;s that Glimpse will use alter the default serialization output of any given type.</comment>
+        <comment type="line" pos:line="200" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="201" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="202" pos:column="9">/// By default, serialization converters are discovered at runtime but that behavior, plus the location of where they are found, and which ones should be ignored is configurable.</comment>
+        <comment type="line" pos:line="203" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <comment type="line" pos:line="204" pos:column="9">/// &lt;example&gt;</comment>
+        <comment type="line" pos:line="205" pos:column="9">/// &lt;code&gt;</comment>
+        <comment type="line" pos:line="206" pos:column="9">/// &lt;![CDATA[</comment>
+        <comment type="line" pos:line="207" pos:column="9">/// &lt;glimpse defaultRuntimePolicy="On" endpointBaseUri="~/Glimpse.axd"&gt;</comment>
+        <comment type="line" pos:line="208" pos:column="9">///     &lt;serializationConverters autoDiscover="true" discoveryLocation="bin\debug"&gt;</comment>
+        <comment type="line" pos:line="209" pos:column="9">///         &lt;ignoredTypes&gt;</comment>
+        <comment type="line" pos:line="210" pos:column="9">///             &lt;add type="{Namespace.Type, AssemblyName}"/&gt;</comment>
+        <comment type="line" pos:line="211" pos:column="9">///         &lt;/ignoredTypes&gt;</comment>
+        <comment type="line" pos:line="212" pos:column="9">///     &lt;/serializationConverters&gt;</comment>
+        <comment type="line" pos:line="213" pos:column="9">///     &lt;!-- Additional Glimpse configuration nodes --&gt;</comment>
+        <comment type="line" pos:line="214" pos:column="9">/// &lt;/glimpse&gt;</comment>
+        <comment type="line" pos:line="215" pos:column="9">/// ]]&gt;</comment>
+        <comment type="line" pos:line="216" pos:column="9">/// &lt;/code&gt;</comment>
+        <comment type="line" pos:line="217" pos:column="9">/// &lt;/example&gt;</comment>
+        <decl_stmt><decl><type><attribute pos:line="218" pos:column="9">[<expr><call><name pos:line="218" pos:column="10">ConfigurationProperty</name><argument_list pos:line="218" pos:column="31">(<argument><expr><lit:literal type="string" pos:line="218" pos:column="32">"serializationConverters"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+        <specifier pos:line="219" pos:column="9">public</specifier> <name pos:line="219" pos:column="16">DiscoverableCollectionElement</name></type> <name pos:line="219" pos:column="46">SerializationConverters</name>
+        <block pos:line="220" pos:column="9">{
+            <function><name pos:line="221" pos:column="13">get</name> <block pos:line="221" pos:column="17">{ <return pos:line="221" pos:column="19">return <expr><op:operator pos:line="221" pos:column="26">(</op:operator><name pos:line="221" pos:column="27">DiscoverableCollectionElement</name><op:operator pos:line="221" pos:column="56">)</op:operator><name><name pos:line="221" pos:column="57">base</name><index pos:line="221" pos:column="61">[<expr><lit:literal type="string" pos:line="221" pos:column="62">"serializationConverters"</lit:literal></expr>]</index></name></expr>;</return> }</block></function>
+            <function><name pos:line="222" pos:column="13">set</name> <block pos:line="222" pos:column="17">{ <expr_stmt><expr><name><name pos:line="222" pos:column="19">base</name><index pos:line="222" pos:column="23">[<expr><lit:literal type="string" pos:line="222" pos:column="24">"serializationConverters"</lit:literal></expr>]</index></name> <op:operator pos:line="222" pos:column="51">=</op:operator> <name pos:line="222" pos:column="53">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="225" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="226" pos:column="9">/// Gets or sets the default runtime policy. Glimpse will never be allowed to do more with a Http response than is specified in &lt;c&gt;DefaultRuntimePolicy&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="227" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="228" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="229" pos:column="9">/// By default, the default runtime policy of Glimpse is &lt;c&gt;Off&lt;/c&gt;. Setting the base policy to &lt;c&gt;On&lt;/c&gt; will allow Glimpse to fully function.</comment>
+        <comment type="line" pos:line="230" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <comment type="line" pos:line="231" pos:column="9">/// &lt;example&gt;</comment>
+        <comment type="line" pos:line="232" pos:column="9">/// &lt;code&gt;</comment>
+        <comment type="line" pos:line="233" pos:column="9">/// &lt;![CDATA[</comment>
+        <comment type="line" pos:line="234" pos:column="9">/// &lt;glimpse defaultRuntimePolicy="On" endpointBaseUri="~/Glimpse.axd"&gt;</comment>
+        <comment type="line" pos:line="235" pos:column="9">///     &lt;!-- Additional Glimpse configuration nodes --&gt;</comment>
+        <comment type="line" pos:line="236" pos:column="9">/// &lt;/glimpse&gt;</comment>
+        <comment type="line" pos:line="237" pos:column="9">/// ]]&gt;</comment>
+        <comment type="line" pos:line="238" pos:column="9">/// &lt;/code&gt;</comment>
+        <comment type="line" pos:line="239" pos:column="9">/// &lt;/example&gt;</comment>
+        <decl_stmt><decl><type><attribute pos:line="240" pos:column="9">[<expr><call><name pos:line="240" pos:column="10">ConfigurationProperty</name><argument_list pos:line="240" pos:column="31">(<argument><expr><lit:literal type="string" pos:line="240" pos:column="32">"defaultRuntimePolicy"</lit:literal></expr></argument>, <argument><expr><name pos:line="240" pos:column="56">DefaultValue</name> <op:operator pos:line="240" pos:column="69">=</op:operator> <name><name pos:line="240" pos:column="71">RuntimePolicy</name><op:operator pos:line="240" pos:column="84">.</op:operator><name pos:line="240" pos:column="85">Off</name></name></expr></argument>)</argument_list></call></expr>]</attribute>
+        <specifier pos:line="241" pos:column="9">public</specifier> <name pos:line="241" pos:column="16">RuntimePolicy</name></type> <name pos:line="241" pos:column="30">DefaultRuntimePolicy</name>
+        <block pos:line="242" pos:column="9">{
+            <function><name pos:line="243" pos:column="13">get</name> <block pos:line="243" pos:column="17">{ <return pos:line="243" pos:column="19">return <expr><op:operator pos:line="243" pos:column="26">(</op:operator><name pos:line="243" pos:column="27">RuntimePolicy</name><op:operator pos:line="243" pos:column="40">)</op:operator><name><name pos:line="243" pos:column="41">base</name><index pos:line="243" pos:column="45">[<expr><lit:literal type="string" pos:line="243" pos:column="46">"defaultRuntimePolicy"</lit:literal></expr>]</index></name></expr>;</return> }</block></function>
+            <function><name pos:line="244" pos:column="13">set</name> <block pos:line="244" pos:column="17">{ <expr_stmt><expr><name><name pos:line="244" pos:column="19">base</name><index pos:line="244" pos:column="23">[<expr><lit:literal type="string" pos:line="244" pos:column="24">"defaultRuntimePolicy"</lit:literal></expr>]</index></name> <op:operator pos:line="244" pos:column="48">=</op:operator> <name pos:line="244" pos:column="50">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="247" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="248" pos:column="9">/// Gets or sets an &lt;see cref="IServiceLocator"/&gt; Glimpse will use to override default type resolution.</comment>
+        <comment type="line" pos:line="249" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="250" pos:column="9">/// &lt;example&gt;</comment>
+        <comment type="line" pos:line="251" pos:column="9">/// &lt;code&gt;</comment>
+        <comment type="line" pos:line="252" pos:column="9">/// &lt;![CDATA[</comment>
+        <comment type="line" pos:line="253" pos:column="9">/// &lt;glimpse defaultRuntimePolicy="On" endpointBaseUri="~/Glimpse.axd" serviceLocatorType="{Namespace.Type, AssemblyName}"&gt;</comment>
+        <comment type="line" pos:line="254" pos:column="9">///     &lt;!-- Additional Glimpse configuration nodes --&gt;</comment>
+        <comment type="line" pos:line="255" pos:column="9">/// &lt;/glimpse&gt;</comment>
+        <comment type="line" pos:line="256" pos:column="9">/// ]]&gt;</comment>
+        <comment type="line" pos:line="257" pos:column="9">/// &lt;/code&gt;</comment>
+        <comment type="line" pos:line="258" pos:column="9">/// &lt;/example&gt;</comment>
+        <decl_stmt><decl><type><attribute pos:line="259" pos:column="9">[<expr><call><name pos:line="259" pos:column="10">ConfigurationProperty</name><argument_list pos:line="259" pos:column="31">(<argument><expr><lit:literal type="string" pos:line="259" pos:column="32">"serviceLocatorType"</lit:literal></expr></argument>, <argument><expr><name pos:line="259" pos:column="54">DefaultValue</name> <op:operator pos:line="259" pos:column="67">=</op:operator> <name pos:line="259" pos:column="69">null</name></expr></argument>)</argument_list></call></expr>]</attribute>
+        <attribute pos:line="260" pos:column="9">[<expr><call><name pos:line="260" pos:column="10">TypeConverter</name><argument_list pos:line="260" pos:column="23">(<argument><expr><call><name pos:line="260" pos:column="24">typeof</name><argument_list pos:line="260" pos:column="30">(<argument><expr><name pos:line="260" pos:column="31">TypeConverter</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>]</attribute>
+        <specifier pos:line="261" pos:column="9">public</specifier> <name pos:line="261" pos:column="16">Type</name></type> <name pos:line="261" pos:column="21">ServiceLocatorType</name>
+        <block pos:line="262" pos:column="9">{
+            <function><name pos:line="263" pos:column="13">get</name> <block pos:line="263" pos:column="17">{ <return pos:line="263" pos:column="19">return <expr><op:operator pos:line="263" pos:column="26">(</op:operator><name pos:line="263" pos:column="27">Type</name><op:operator pos:line="263" pos:column="31">)</op:operator><name><name pos:line="263" pos:column="32">base</name><index pos:line="263" pos:column="36">[<expr><lit:literal type="string" pos:line="263" pos:column="37">"serviceLocatorType"</lit:literal></expr>]</index></name></expr>;</return> }</block></function>
+            <function><name pos:line="264" pos:column="13">set</name> <block pos:line="264" pos:column="17">{ <expr_stmt><expr><name><name pos:line="264" pos:column="19">base</name><index pos:line="264" pos:column="23">[<expr><lit:literal type="string" pos:line="264" pos:column="24">"serviceLocatorType"</lit:literal></expr>]</index></name> <op:operator pos:line="264" pos:column="46">=</op:operator> <name pos:line="264" pos:column="48">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="267" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="268" pos:column="9">/// Gets or sets the base Uri endpoint for accessing all resources. The &lt;c&gt;EndpointBaseUri&lt;/c&gt; is leveraged by an instance of &lt;see cref="ResourceEndpointConfiguration"/&gt; in order to generate dynamic resource Uris.</comment>
+        <comment type="line" pos:line="269" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="270" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="271" pos:column="9">/// The &lt;c&gt;EndpointBaseUri&lt;/c&gt; is required.</comment>
+        <comment type="line" pos:line="272" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <comment type="line" pos:line="273" pos:column="9">/// &lt;example&gt;</comment>
+        <comment type="line" pos:line="274" pos:column="9">/// &lt;code&gt;</comment>
+        <comment type="line" pos:line="275" pos:column="9">/// &lt;![CDATA[</comment>
+        <comment type="line" pos:line="276" pos:column="9">/// &lt;glimpse defaultRuntimePolicy="On" endpointBaseUri="~/Glimpse.axd"&gt;</comment>
+        <comment type="line" pos:line="277" pos:column="9">///     &lt;!-- Additional Glimpse configuration nodes --&gt;</comment>
+        <comment type="line" pos:line="278" pos:column="9">/// &lt;/glimpse&gt;</comment>
+        <comment type="line" pos:line="279" pos:column="9">/// ]]&gt;</comment>
+        <comment type="line" pos:line="280" pos:column="9">/// &lt;/code&gt;</comment>
+        <comment type="line" pos:line="281" pos:column="9">/// &lt;/example&gt;</comment>
+        <decl_stmt><decl><type><attribute pos:line="282" pos:column="9">[<expr><call><name pos:line="282" pos:column="10">ConfigurationProperty</name><argument_list pos:line="282" pos:column="31">(<argument><expr><lit:literal type="string" pos:line="282" pos:column="32">"endpointBaseUri"</lit:literal></expr></argument>, <argument><expr><name pos:line="282" pos:column="51">DefaultValue</name> <op:operator pos:line="282" pos:column="64">=</op:operator> <name pos:line="282" pos:column="66">null</name></expr></argument>, <argument><expr><name pos:line="282" pos:column="72">IsRequired</name> <op:operator pos:line="282" pos:column="83">=</op:operator> <lit:literal type="boolean" pos:line="282" pos:column="85">true</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+        <specifier pos:line="283" pos:column="9">public</specifier> <name pos:line="283" pos:column="16">string</name></type> <name pos:line="283" pos:column="23">EndpointBaseUri</name>
+        <block pos:line="284" pos:column="9">{
+            <function><name pos:line="285" pos:column="13">get</name> <block pos:line="285" pos:column="17">{ <return pos:line="285" pos:column="19">return <expr><op:operator pos:line="285" pos:column="26">(</op:operator><name pos:line="285" pos:column="27">string</name><op:operator pos:line="285" pos:column="33">)</op:operator><name><name pos:line="285" pos:column="34">base</name><index pos:line="285" pos:column="38">[<expr><lit:literal type="string" pos:line="285" pos:column="39">"endpointBaseUri"</lit:literal></expr>]</index></name></expr>;</return> }</block></function>
+            <function><name pos:line="286" pos:column="13">set</name> <block pos:line="286" pos:column="17">{ <expr_stmt><expr><name><name pos:line="286" pos:column="19">base</name><index pos:line="286" pos:column="23">[<expr><lit:literal type="string" pos:line="286" pos:column="24">"endpointBaseUri"</lit:literal></expr>]</index></name> <op:operator pos:line="286" pos:column="43">=</op:operator> <name pos:line="286" pos:column="45">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="289" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="290" pos:column="9">/// Gets or sets the path Glimpse will use to auto discover all types.</comment>
+        <comment type="line" pos:line="291" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="292" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="293" pos:column="9">/// The &lt;c&gt;DiscoveryLocation&lt;/c&gt; defaults to &lt;c&gt;AppDomain.CurrentDomain.BaseDirectory&lt;/c&gt;. Discovery locations for each type can be overwritten at the type level in &lt;c&gt;web.config&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="294" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <comment type="line" pos:line="295" pos:column="9">/// &lt;example&gt;</comment>
+        <comment type="line" pos:line="296" pos:column="9">/// &lt;code&gt;</comment>
+        <comment type="line" pos:line="297" pos:column="9">/// &lt;![CDATA[</comment>
+        <comment type="line" pos:line="298" pos:column="9">/// &lt;glimpse defaultRuntimePolicy="On" endpointBaseUri="~/Glimpse.axd" discoveryLocation="bin\debug"&gt;</comment>
+        <comment type="line" pos:line="299" pos:column="9">///     &lt;!-- Additional Glimpse configuration nodes --&gt;</comment>
+        <comment type="line" pos:line="300" pos:column="9">/// &lt;/glimpse&gt;</comment>
+        <comment type="line" pos:line="301" pos:column="9">/// ]]&gt;</comment>
+        <comment type="line" pos:line="302" pos:column="9">/// &lt;/code&gt;</comment>
+        <comment type="line" pos:line="303" pos:column="9">/// &lt;/example&gt;</comment>
+        <decl_stmt><decl><type><attribute pos:line="304" pos:column="9">[<expr><call><name pos:line="304" pos:column="10">ConfigurationProperty</name><argument_list pos:line="304" pos:column="31">(<argument><expr><lit:literal type="string" pos:line="304" pos:column="32">"discoveryLocation"</lit:literal></expr></argument>, <argument><expr><name pos:line="304" pos:column="53">DefaultValue</name> <op:operator pos:line="304" pos:column="66">=</op:operator> <name pos:line="304" pos:column="68">DefaultLocation</name></expr></argument>)</argument_list></call></expr>]</attribute>
+        <specifier pos:line="305" pos:column="9">public</specifier> <name pos:line="305" pos:column="16">string</name></type> <name pos:line="305" pos:column="23">DiscoveryLocation</name>
+        <block pos:line="306" pos:column="9">{
+            <function><name pos:line="307" pos:column="13">get</name> <block pos:line="307" pos:column="17">{ <return pos:line="307" pos:column="19">return <expr><op:operator pos:line="307" pos:column="26">(</op:operator><name pos:line="307" pos:column="27">string</name><op:operator pos:line="307" pos:column="33">)</op:operator><name><name pos:line="307" pos:column="34">base</name><index pos:line="307" pos:column="38">[<expr><lit:literal type="string" pos:line="307" pos:column="39">"discoveryLocation"</lit:literal></expr>]</index></name></expr>;</return> }</block></function>
+            <function><name pos:line="308" pos:column="13">set</name> <block pos:line="308" pos:column="17">{ <expr_stmt><expr><name><name pos:line="308" pos:column="19">base</name><index pos:line="308" pos:column="23">[<expr><lit:literal type="string" pos:line="308" pos:column="24">"discoveryLocation"</lit:literal></expr>]</index></name> <op:operator pos:line="308" pos:column="45">=</op:operator> <name pos:line="308" pos:column="47">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="311" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="312" pos:column="9">/// Gets or sets the number of requests persisted by default.</comment>
+        <comment type="line" pos:line="313" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="314" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="315" pos:column="9">/// The &lt;c&gt;RequestBufferSize&lt;/c&gt; defaults to &lt;c&gt;25&lt;/c&gt;. The &lt;c&gt;RequestBufferSize&lt;/c&gt; is leveraged by an instance of &lt;see cref="IPersistenceStore"/&gt; in order to persist the correct number of requests.</comment>
+        <comment type="line" pos:line="316" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <comment type="line" pos:line="317" pos:column="9">/// &lt;example&gt;</comment>
+        <comment type="line" pos:line="318" pos:column="9">/// &lt;code&gt;</comment>
+        <comment type="line" pos:line="319" pos:column="9">/// &lt;![CDATA[</comment>
+        <comment type="line" pos:line="320" pos:column="9">/// &lt;glimpse defaultRuntimePolicy="On" endpointBaseUri="~/Glimpse.axd" requestBufferSize="100"&gt;</comment>
+        <comment type="line" pos:line="321" pos:column="9">///     &lt;!-- Additional Glimpse configuration nodes --&gt;</comment>
+        <comment type="line" pos:line="322" pos:column="9">/// &lt;/glimpse&gt;</comment>
+        <comment type="line" pos:line="323" pos:column="9">/// ]]&gt;</comment>
+        <comment type="line" pos:line="324" pos:column="9">/// &lt;/code&gt;</comment>
+        <comment type="line" pos:line="325" pos:column="9">/// &lt;/example&gt;</comment>
+        <decl_stmt><decl><type><attribute pos:line="326" pos:column="9">[<expr><call><name pos:line="326" pos:column="10">ConfigurationProperty</name><argument_list pos:line="326" pos:column="31">(<argument><expr><lit:literal type="string" pos:line="326" pos:column="32">"requestBufferSize"</lit:literal></expr></argument>, <argument><expr><name pos:line="326" pos:column="53">DefaultValue</name> <op:operator pos:line="326" pos:column="66">=</op:operator> <name pos:line="326" pos:column="68">DefaultBufferSize</name></expr></argument>)</argument_list></call></expr>]</attribute>
+        <specifier pos:line="327" pos:column="9">public</specifier> <name pos:line="327" pos:column="16">int</name></type> <name pos:line="327" pos:column="20">RequestBufferSize</name>
+        <block pos:line="328" pos:column="9">{
+            <function><name pos:line="329" pos:column="13">get</name> <block pos:line="329" pos:column="17">{ <return pos:line="329" pos:column="19">return <expr><op:operator pos:line="329" pos:column="26">(</op:operator><name pos:line="329" pos:column="27">int</name><op:operator pos:line="329" pos:column="30">)</op:operator><name><name pos:line="329" pos:column="31">base</name><index pos:line="329" pos:column="35">[<expr><lit:literal type="string" pos:line="329" pos:column="36">"requestBufferSize"</lit:literal></expr>]</index></name></expr>;</return> }</block></function>
+            <function><name pos:line="330" pos:column="13">set</name> <block pos:line="330" pos:column="17">{ <expr_stmt><expr><name><name pos:line="330" pos:column="19">base</name><index pos:line="330" pos:column="23">[<expr><lit:literal type="string" pos:line="330" pos:column="24">"requestBufferSize"</lit:literal></expr>]</index></name> <op:operator pos:line="330" pos:column="45">=</op:operator> <name pos:line="330" pos:column="47">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace></unit>

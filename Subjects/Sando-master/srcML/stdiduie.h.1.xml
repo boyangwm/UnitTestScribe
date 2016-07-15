@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\stdiduie.h" pos:tabs="8"><comment type="line" pos:line="1" pos:column="1">//-----------------------------------------------------------------------------</comment>
+<comment type="line" pos:line="2" pos:column="1">// Microsoft Visual Studio</comment>
+<comment type="line" pos:line="3" pos:column="1">//</comment>
+<comment type="line" pos:line="4" pos:column="1">// Copyright 1995-1997 Microsoft Corporation.  All Rights Reserved.</comment>
+<comment type="line" pos:line="5" pos:column="1">//</comment>
+<comment type="line" pos:line="6" pos:column="1">// File: stdiduie.h</comment>
+<comment type="line" pos:line="7" pos:column="1">// Area: IOleComponentUIManager</comment>
+<comment type="line" pos:line="8" pos:column="1">//</comment>
+<comment type="line" pos:line="9" pos:column="1">// Contents:</comment>
+<comment type="line" pos:line="10" pos:column="1">//   Contains ids used for UIEvents used in StandardUIEventSet98.</comment>
+<comment type="line" pos:line="11" pos:column="1">//   StandardUIEventSet98 is defined by the following guid:</comment>
+<comment type="line" pos:line="12" pos:column="1">//</comment>
+<comment type="line" pos:line="13" pos:column="1">//   {54038220-FA22-11d0-8798-00A0C91E2A46}</comment>
+<comment type="line" pos:line="14" pos:column="1">//   DEFINE_GUID(StandardUIEventSet98, </comment>
+<comment type="line" pos:line="15" pos:column="1">//   0x54038220, 0xfa22, 0x11d0, 0x87, 0x98, 0x0, 0xa0, 0xc9, 0x1e, 0x2a, 0x46);</comment>
+<comment type="line" pos:line="16" pos:column="1">//-----------------------------------------------------------------------------</comment>
+
+<cpp:ifndef pos:line="18" pos:column="1">#<cpp:directive pos:line="18" pos:column="2">ifndef</cpp:directive> <name pos:line="18" pos:column="9">_STDIDUIE_H_</name></cpp:ifndef>                  
+<cpp:define pos:line="19" pos:column="1">#<cpp:directive pos:line="19" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="19" pos:column="9">_STDIDUIE_H_</name></cpp:macro></cpp:define>                  
+
+<cpp:ifndef pos:line="21" pos:column="1">#<cpp:directive pos:line="21" pos:column="2">ifndef</cpp:directive> <name pos:line="21" pos:column="9">__NOENUM__</name></cpp:ifndef>
+
+<comment type="line" pos:line="23" pos:column="1">// for specialized contracts</comment>
+<enum pos:line="24" pos:column="1">enum
+  <block pos:line="25" pos:column="3">{
+  <decl><name pos:line="26" pos:column="3">UIE_TEXTSELMODE_STREAM</name>   <init pos:line="26" pos:column="28">= <expr><lit:literal type="number" pos:line="26" pos:column="30">0</lit:literal></expr></init></decl><op:operator pos:line="26" pos:column="31">,</op:operator>
+  <decl><name pos:line="27" pos:column="3">UIE_TEXTSELMODE_BOX</name>      <init pos:line="27" pos:column="28">= <expr><lit:literal type="number" pos:line="27" pos:column="30">1</lit:literal></expr></init></decl>
+  }</block>;</enum>
+
+<enum pos:line="30" pos:column="1">enum
+  <block pos:line="31" pos:column="3">{
+  <decl><name pos:line="32" pos:column="3">UIE_TEXTINSMODE_INSERT</name>     <init pos:line="32" pos:column="30">= <expr><lit:literal type="number" pos:line="32" pos:column="32">0</lit:literal></expr></init></decl><op:operator pos:line="32" pos:column="33">,</op:operator>
+  <decl><name pos:line="33" pos:column="3">UIE_TEXTINSMODE_OVERSTRIKE</name> <init pos:line="33" pos:column="30">= <expr><lit:literal type="number" pos:line="33" pos:column="32">1</lit:literal></expr></init></decl>
+  }</block>;</enum>
+
+<cpp:endif pos:line="36" pos:column="1">#<cpp:directive pos:line="36" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="36" pos:column="8">//__NOENUM__</comment>
+
+<comment type="line" pos:line="38" pos:column="1">// Events for GUID StandardUIEventSet98</comment>
+<comment type="line" pos:line="39" pos:column="1">// The following UIEvents all use:</comment>
+<comment type="line" pos:line="40" pos:column="1">//    dwUIEventStatus = OLEUIEVENTSTATUS_OCCURRED</comment>
+<comment type="line" pos:line="41" pos:column="1">//    dwEventFreq     = OLEUIEVENTFREQ_NULL</comment>
+<cpp:define pos:line="42" pos:column="1">#<cpp:directive pos:line="42" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="42" pos:column="9">uieventidSetTextLinePos</name></cpp:macro>     <cpp:value pos:line="42" pos:column="37">1</cpp:value></cpp:define>	<comment type="line" pos:line="42" pos:column="41">// ARG: NULL, VT_I2, VT_I4, VT_BSTR, or VT_EMPTY</comment>
+					<comment type="line" pos:line="43" pos:column="41">//	If VT_I2 or VT_I4, number is formatted into "Ln ##"</comment>
+					<comment type="line" pos:line="44" pos:column="41">//	if VT_BSTR, text is displayed as is with no formatting</comment>
+					<comment type="line" pos:line="45" pos:column="41">//	if VT_EMPTY, value is NOT displayed at all</comment>
+					<comment type="line" pos:line="46" pos:column="41">//	if NULL pointer, value is left unchanged</comment>
+
+<cpp:define pos:line="48" pos:column="1">#<cpp:directive pos:line="48" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="48" pos:column="9">uieventidSetTextColPos</name></cpp:macro>	    <cpp:value pos:line="48" pos:column="37">10</cpp:value></cpp:define>	<comment type="line" pos:line="48" pos:column="41">// ARG: NULL, VT_I2, VT_I4, VT_BSTR, or VT_EMPTY</comment>
+					<comment type="line" pos:line="49" pos:column="41">//	If VT_I2 or VT_I4, number is formatted into "Ln ##"</comment>
+					<comment type="line" pos:line="50" pos:column="41">//	if VT_BSTR, text is displayed as is with no formatting</comment>
+					<comment type="line" pos:line="51" pos:column="41">//	if VT_EMPTY, value is NOT displayed at all</comment>
+					<comment type="line" pos:line="52" pos:column="41">//	if NULL pointer, value is left unchanged</comment>
+
+<cpp:define pos:line="54" pos:column="1">#<cpp:directive pos:line="54" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="54" pos:column="9">uieventidSetTextCharPos</name></cpp:macro>     <cpp:value pos:line="54" pos:column="37">2</cpp:value></cpp:define>	<comment type="line" pos:line="54" pos:column="41">// ARG: NULL, VT_I2, VT_I4, VT_BSTR, or VT_EMPTY</comment>
+					<comment type="line" pos:line="55" pos:column="41">//	If VT_I2 or VT_I4, number is formatted into "Ln ##"</comment>
+					<comment type="line" pos:line="56" pos:column="41">//	if VT_BSTR, text is displayed as is with no formatting</comment>
+					<comment type="line" pos:line="57" pos:column="41">//	if VT_EMPTY, value is NOT displayed at all</comment>
+					<comment type="line" pos:line="58" pos:column="41">//	if NULL pointer, value is left unchanged</comment>
+
+<cpp:define pos:line="60" pos:column="1">#<cpp:directive pos:line="60" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="60" pos:column="9">uieventidSetTextSelMode</name></cpp:macro>     <cpp:value pos:line="60" pos:column="37">3</cpp:value></cpp:define>	<comment type="line" pos:line="60" pos:column="41">// ARG: VT_I4 UIE_TEXTSELMODE enum or VT_BSTR</comment>
+<cpp:define pos:line="61" pos:column="1">#<cpp:directive pos:line="61" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="61" pos:column="9">uieventidSetTextInsMode</name></cpp:macro>     <cpp:value pos:line="61" pos:column="37">4</cpp:value></cpp:define>	<comment type="line" pos:line="61" pos:column="41">// ARG: VT_I4 UIE_TEXTINSMODE enum</comment>
+
+<cpp:define pos:line="63" pos:column="1">#<cpp:directive pos:line="63" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="63" pos:column="9">uieventidSetGraphicXPos</name></cpp:macro>     <cpp:value pos:line="63" pos:column="37">5</cpp:value></cpp:define>	<comment type="line" pos:line="63" pos:column="41">// ARG: VT_I2, VT_I4, VT_R4, or VT_R8</comment>
+<cpp:define pos:line="64" pos:column="1">#<cpp:directive pos:line="64" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="64" pos:column="9">uieventidSetGraphicYPos</name></cpp:macro>     <cpp:value pos:line="64" pos:column="37">6</cpp:value></cpp:define>	<comment type="line" pos:line="64" pos:column="41">// ARG: VT_I2, VT_I4, VT_R4, or VT_R8</comment>
+<cpp:define pos:line="65" pos:column="1">#<cpp:directive pos:line="65" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="65" pos:column="9">uieventidSetGraphicXSize</name></cpp:macro>    <cpp:value pos:line="65" pos:column="37">7</cpp:value></cpp:define>	<comment type="line" pos:line="65" pos:column="41">// ARG: VT_I2, VT_I4, VT_R4, or VT_R8</comment>
+<cpp:define pos:line="66" pos:column="1">#<cpp:directive pos:line="66" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="66" pos:column="9">uieventidSetGraphicYSize</name></cpp:macro>    <cpp:value pos:line="66" pos:column="37">8</cpp:value></cpp:define>	<comment type="line" pos:line="66" pos:column="41">// ARG: VT_I2, VT_I4, VT_R4, or VT_R8</comment>
+
+<comment type="line" pos:line="68" pos:column="1">// The following UIEvents all use:</comment>
+<comment type="line" pos:line="69" pos:column="1">//    dwUIEventStatus = OLEUIEVENTSTATUS_START / OLEUIEVENTSTATUS_STOP</comment>
+<comment type="line" pos:line="70" pos:column="1">//    dwEventFreq     = OLEUIEVENTFREQ_NULL</comment>
+<cpp:define pos:line="71" pos:column="1">#<cpp:directive pos:line="71" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="71" pos:column="9">uieventidAnimateIcon</name></cpp:macro>	    <cpp:value pos:line="71" pos:column="37">9</cpp:value></cpp:define>	<comment type="line" pos:line="71" pos:column="41">// OLEUIEVENTSTATUS_START:  Starts animated icon</comment>
+					<comment type="line" pos:line="72" pos:column="41">// OLEUIEVENTSTATUS_STOP:   Stops animated icon</comment>
+					<comment type="line" pos:line="73" pos:column="41">// NYI: ARG: VT_I4, Index of predefined icons, or custom icon</comment>
+<cpp:endif pos:line="74" pos:column="1">#<cpp:directive pos:line="74" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="74" pos:column="8">//_STDIDUIE_H_</comment>
+
+</unit>

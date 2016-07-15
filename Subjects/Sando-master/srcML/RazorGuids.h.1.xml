@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\RazorGuids.h" pos:tabs="8" pos:line="1" pos:column="1">
+
+<comment type="line" format="doxygen" pos:line="3" pos:column="1">/////////////////////////////////////////////////////////////////////////////</comment>
+<comment type="line" pos:line="4" pos:column="1">//                     Razor Package</comment>
+<comment type="line" pos:line="5" pos:column="1">//</comment>
+<comment type="line" pos:line="6" pos:column="1">// NOTE: make sure any changes to this file is synchronized with Guids.cs</comment>
+<comment type="line" pos:line="7" pos:column="1">//</comment>
+<comment type="line" pos:line="8" pos:column="1">//</comment>
+<comment type="line" pos:line="9" pos:column="1">// Guid of the client package</comment>
+<cpp:define pos:line="10" pos:column="1">#<cpp:directive pos:line="10" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="10" pos:column="9">guidRazorPackage</name></cpp:macro> <cpp:value pos:line="10" pos:column="26">{ 0xBEB01DDF, 0x9D2B, 0x435B, { 0xA9, 0xE7, 0x76, 0x55, 0x7E, 0x2B, 0x6B, 0x52 } }</cpp:value></cpp:define>
+
+<comment type="line" pos:line="12" pos:column="1">// Guid of the command set containing the command IDs of the client package</comment>
+<cpp:define pos:line="13" pos:column="1">#<cpp:directive pos:line="13" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="13" pos:column="9">guidRazorCmdSet</name></cpp:macro> <cpp:value pos:line="13" pos:column="25">{ 0x5289d302, 0x2432, 0x4761, { 0x8c, 0x45, 0x5, 0x1c, 0x64, 0xbd, 0x0, 0xc4 } }</cpp:value></cpp:define>
+
+<cpp:define pos:line="15" pos:column="1">#<cpp:directive pos:line="15" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="15" pos:column="9">guidVsDebugPresentationIcon</name></cpp:macro> <cpp:value pos:line="15" pos:column="37">{ 0x271f465f, 0x409, 0x4cbc, { 0x95, 0xf6, 0x56, 0x30, 0x85, 0x77, 0xdc, 0xe6 } }</cpp:value></cpp:define>
+
+<comment type="line" pos:line="17" pos:column="1">// Guid of our icons for toolbar buttons</comment>
+<cpp:define pos:line="18" pos:column="1">#<cpp:directive pos:line="18" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="18" pos:column="9">guidRazorToolbarIcons</name></cpp:macro> <cpp:value pos:line="18" pos:column="31">{0xC760F489, 0xE2D2, 0x4D20, {0xB5, 0x9B, 0xAD, 0x53, 0x65, 0xF2, 0xF8, 0xD9 } }</cpp:value></cpp:define>
+<comment type="line" pos:line="19" pos:column="1">//</comment>
+<comment type="line" format="doxygen" pos:line="20" pos:column="1">/////////////////////////////////////////////////////////////////////////////</comment>
+
+</unit>

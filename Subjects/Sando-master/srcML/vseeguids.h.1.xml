@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\vseeguids.h" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/*-----------------------------------------------------------------------------
+Microsoft VSEE
+
+Copyright 1995-2000 Microsoft Corporation. All Rights Reserved.
+
+@doc
+@module VseeGuids.h - Guids for VSEE services/interfaces |
+This is included by .idl files to define guids for VSEE services/interfaces.
+These are the non-shell-SDK interfaces, in idl/vsee
+
+@owner Source Control Integration Team
+-----------------------------------------------------------------------------*/</comment>
+<cpp:pragma pos:line="13" pos:column="1">#<cpp:directive pos:line="13" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+
+<cpp:ifdef pos:line="15" pos:column="1">#<cpp:directive pos:line="15" pos:column="2">ifdef</cpp:directive> <name pos:line="15" pos:column="8">_WIN64</name></cpp:ifdef>
+
+<cpp:define pos:line="17" pos:column="1">#<cpp:directive pos:line="17" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="17" pos:column="9">uuid_IVsSccManager</name></cpp:macro>							<cpp:value pos:line="17" pos:column="81">53474C4D-0F05-4735-8AAC-264109CF68AC</cpp:value></cpp:define>
+<cpp:define pos:line="18" pos:column="1">#<cpp:directive pos:line="18" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="18" pos:column="9">uuid_IVsSccProject</name></cpp:macro>							<cpp:value pos:line="18" pos:column="81">53474C4D-CD19-4928-A834-AFCD8A966C36</cpp:value></cpp:define>
+<cpp:define pos:line="19" pos:column="1">#<cpp:directive pos:line="19" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="19" pos:column="9">uuid_IVsQueryEditQuerySave</name></cpp:macro>					<cpp:value pos:line="19" pos:column="73">53474C4D-7E28-4d0c-A00F-3446801350CE</cpp:value></cpp:define>
+<cpp:define pos:line="20" pos:column="1">#<cpp:directive pos:line="20" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="20" pos:column="9">uuid_IVsTrackProjectDocuments</name></cpp:macro>				<cpp:value pos:line="20" pos:column="65">53474C4D-449A-4487-A56F-740CF8130032</cpp:value></cpp:define>
+<cpp:define pos:line="21" pos:column="1">#<cpp:directive pos:line="21" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="21" pos:column="9">uuid_IVsTrackProjectDocumentsEvents</name></cpp:macro>			<cpp:value pos:line="21" pos:column="65">53474C4D-A98B-4fd3-AA79-B182EE26185B</cpp:value></cpp:define>
+<cpp:define pos:line="22" pos:column="1">#<cpp:directive pos:line="22" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="22" pos:column="9">uuid_IVsSccEngine</name></cpp:macro>							<cpp:value pos:line="22" pos:column="81">53474C4D-F82C-11d0-8D84-00AA00A3F593</cpp:value></cpp:define>
+<cpp:define pos:line="23" pos:column="1">#<cpp:directive pos:line="23" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="23" pos:column="9">uuid_IVsSccPopulateList</name></cpp:macro>						<cpp:value pos:line="23" pos:column="73">53474C4D-F8CF-11d0-8D84-00AA00A3F593</cpp:value></cpp:define>
+<cpp:define pos:line="24" pos:column="1">#<cpp:directive pos:line="24" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="24" pos:column="9">uuid_IVsSccToolsOptions</name></cpp:macro>						<cpp:value pos:line="24" pos:column="73">53474C4D-304B-4D82-AD93-074816C1A0E5</cpp:value></cpp:define>
+<cpp:define pos:line="25" pos:column="1">#<cpp:directive pos:line="25" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="25" pos:column="9">uuid_IVsSccManagerTooltip</name></cpp:macro>					<cpp:value pos:line="25" pos:column="73">53474C4D-DF28-406D-81DA-96DEEB800B64</cpp:value></cpp:define>
+
+
+<cpp:else pos:line="28" pos:column="1">#<cpp:directive pos:line="28" pos:column="2">else</cpp:directive></cpp:else>
+
+<cpp:define pos:line="30" pos:column="1">#<cpp:directive pos:line="30" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="30" pos:column="9">uuid_IVsSccManager</name></cpp:macro>							<cpp:value pos:line="30" pos:column="81">53544C4D-0F05-4735-8AAC-264109CF68AC</cpp:value></cpp:define>
+<cpp:define pos:line="31" pos:column="1">#<cpp:directive pos:line="31" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="31" pos:column="9">uuid_IVsSccProject</name></cpp:macro>							<cpp:value pos:line="31" pos:column="81">53544C4D-CD19-4928-A834-AFCD8A966C36</cpp:value></cpp:define>
+<cpp:define pos:line="32" pos:column="1">#<cpp:directive pos:line="32" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="32" pos:column="9">uuid_IVsQueryEditQuerySave</name></cpp:macro>					<cpp:value pos:line="32" pos:column="73">53544C4D-7E28-4d0c-A00F-3446801350CE</cpp:value></cpp:define>
+<cpp:define pos:line="33" pos:column="1">#<cpp:directive pos:line="33" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="33" pos:column="9">uuid_IVsTrackProjectDocuments</name></cpp:macro>				<cpp:value pos:line="33" pos:column="65">53544C4D-449A-4487-A56F-740CF8130032</cpp:value></cpp:define>
+<cpp:define pos:line="34" pos:column="1">#<cpp:directive pos:line="34" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="34" pos:column="9">uuid_IVsTrackProjectDocumentsEvents</name></cpp:macro>			<cpp:value pos:line="34" pos:column="65">53544C4D-A98B-4fd3-AA79-B182EE26185B</cpp:value></cpp:define>
+<cpp:define pos:line="35" pos:column="1">#<cpp:directive pos:line="35" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="35" pos:column="9">uuid_IVsSccEngine</name></cpp:macro>							<cpp:value pos:line="35" pos:column="81">53544C4D-F82C-11d0-8D84-00AA00A3F593</cpp:value></cpp:define>
+<cpp:define pos:line="36" pos:column="1">#<cpp:directive pos:line="36" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="36" pos:column="9">uuid_IVsSccPopulateList</name></cpp:macro>						<cpp:value pos:line="36" pos:column="73">53544C4D-F8CF-11d0-8D84-00AA00A3F593</cpp:value></cpp:define>
+<cpp:define pos:line="37" pos:column="1">#<cpp:directive pos:line="37" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="37" pos:column="9">uuid_IVsSccToolsOptions</name></cpp:macro>						<cpp:value pos:line="37" pos:column="73">53544C4D-304B-4D82-AD93-074816C1A0E5</cpp:value></cpp:define>
+<cpp:define pos:line="38" pos:column="1">#<cpp:directive pos:line="38" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="38" pos:column="9">uuid_IVsSccManagerTooltip</name></cpp:macro>					<cpp:value pos:line="38" pos:column="73">53544C4D-DF28-406D-81DA-96DEEB800B64</cpp:value></cpp:define>
+
+<cpp:endif pos:line="40" pos:column="1">#<cpp:directive pos:line="40" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:define pos:line="42" pos:column="1">#<cpp:directive pos:line="42" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="42" pos:column="9">uuid_SVsSccToolsOptions</name></cpp:macro>						<cpp:value pos:line="42" pos:column="73">53544C4D-104B-4D82-AD93-074816C1A0E5</cpp:value></cpp:define>
+
+</unit>

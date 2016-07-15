@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\WCFReferencesIds.h" pos:tabs="8"><comment type="line" format="doxygen" pos:line="1" pos:column="1">//////////////////////////////////////////////////////////////////////////////</comment>
+<comment type="line" pos:line="2" pos:column="1">//</comment>
+<comment type="line" pos:line="3" pos:column="1">//Copyright Microsoft Corporation.  All Rights Reserved.</comment>
+<comment type="line" pos:line="4" pos:column="1">//</comment>
+<comment type="line" pos:line="5" pos:column="1">//File: WCFReferencesIds.h</comment>
+<comment type="line" pos:line="6" pos:column="1">//</comment>
+<comment type="line" format="doxygen" pos:line="7" pos:column="1">//////////////////////////////////////////////////////////////////////////////</comment>
+
+<cpp:ifndef pos:line="9" pos:column="1">#<cpp:directive pos:line="9" pos:column="2">ifndef</cpp:directive> <name pos:line="9" pos:column="9">_WCFREFERENCEIDS_H_</name></cpp:ifndef>
+<cpp:define pos:line="10" pos:column="1">#<cpp:directive pos:line="10" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="10" pos:column="9">_WCFREFERENCEIDS_H_</name></cpp:macro></cpp:define>
+
+<comment type="line" pos:line="12" pos:column="1">// Guids for the Add Service Reference dialog </comment>
+<comment type="line" pos:line="13" pos:column="1">//    </comment>
+<comment type="line" pos:line="14" pos:column="1">//    This provides an extensibility point for packages to add new menu items to the dropdown</comment>
+<comment type="line" pos:line="15" pos:column="1">//    "discover" button in the Add Service Reference dialog.  The drop-down menu for this</comment>
+<comment type="line" pos:line="16" pos:column="1">//    button is a standard visual studio context menu with the ID </comment>
+<comment type="line" pos:line="17" pos:column="1">//    "IDM_DiscoverServiceReferencesContextMenu".  To add a new entry in this context menu,</comment>
+<comment type="line" pos:line="18" pos:column="1">//    packages can add new menu groups and menu items to this context menu.  If the user clicks</comment>
+<comment type="line" pos:line="19" pos:column="1">//    the menu item, the package can display UI, if needed, to obtain input from the user, then</comment>
+<comment type="line" pos:line="20" pos:column="1">//    perform calculations necessary to obtain a list of "discovered" service urls.  The package</comment>
+<comment type="line" pos:line="21" pos:column="1">//    should then get the SVsAddWebReferenceDlg3 service from Visual Studio and call the</comment>
+<comment type="line" pos:line="22" pos:column="1">//    function ShowDiscoveredServicesInCurrentDialog() with that list of urls (see WCFReferences.idl).  </comment>
+<comment type="line" pos:line="23" pos:column="1">//    They will be displayed in the currently-shown add service reference dialog.  The user can </comment>
+<comment type="line" pos:line="24" pos:column="1">//    then select one and click OK to have a reference to the selected service added to the project.</comment>
+
+
+<cpp:ifndef pos:line="27" pos:column="1">#<cpp:directive pos:line="27" pos:column="2">ifndef</cpp:directive> <name pos:line="27" pos:column="9">_CTC_GUIDS_</name></cpp:ifndef>
+
+<comment type="line" pos:line="29" pos:column="1">// {df6db1a3-d973-4316-bdaa-7e21e9677f09}</comment>
+<expr_stmt><expr><call><name pos:line="30" pos:column="1">DEFINE_GUID</name><argument_list pos:line="30" pos:column="12">(<argument><expr><name pos:line="30" pos:column="13">guidAddServiceReferenceDialog</name></expr></argument>,
+		<argument><expr><lit:literal type="number" pos:line="31" pos:column="17">0xdf6db1a3</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="31" pos:column="29">0xd973</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="31" pos:column="37">0x4316</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="31" pos:column="45">0xbd</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="31" pos:column="51">0xaa</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="31" pos:column="57">0x7e</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="31" pos:column="63">0x21</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="31" pos:column="69">0xe9</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="31" pos:column="75">0x67</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="31" pos:column="81">0x7f</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="31" pos:column="87">0x09</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+<cpp:else pos:line="33" pos:column="1">#<cpp:directive pos:line="33" pos:column="2">else</cpp:directive></cpp:else> <comment type="line" pos:line="33" pos:column="7">//_CTC_GUIDS_</comment>
+
+<cpp:define pos:line="35" pos:column="1">#<cpp:directive pos:line="35" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="35" pos:column="9">guidAddServiceReferenceDialog</name></cpp:macro> <cpp:value pos:line="35" pos:column="39">{ 0xdf6db1a3, 0xd973, 0x4316, { 0xbd, 0xaa, 0x7e, 0x21, 0xe9, 0x67, 0x7f, 0x09 } }</cpp:value></cpp:define>
+
+<cpp:endif pos:line="37" pos:column="1">#<cpp:directive pos:line="37" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="37" pos:column="8">//_CTC_GUIDS_</comment>
+
+
+<comment type="line" pos:line="40" pos:column="1">// To add a new entry to the "Discover" button, add a new menu group with your menu</comment>
+<comment type="line" pos:line="41" pos:column="1">//    items to this context menu.</comment>
+<cpp:define pos:line="42" pos:column="1">#<cpp:directive pos:line="42" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="42" pos:column="9">IDM_DiscoverServiceReferencesContextMenu</name></cpp:macro>         <cpp:value pos:line="42" pos:column="58">0x1000</cpp:value></cpp:define>
+
+<comment type="line" pos:line="44" pos:column="1">// Pre-defined menu group and "Services in Solution" menu ID.</comment>
+<cpp:define pos:line="45" pos:column="1">#<cpp:directive pos:line="45" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="45" pos:column="9">IDG_DiscoverServiceReferences_ServicesInSolution</name></cpp:macro> <cpp:value pos:line="45" pos:column="58">0x1001</cpp:value></cpp:define>
+<cpp:define pos:line="46" pos:column="1">#<cpp:directive pos:line="46" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="46" pos:column="9">cmdidDiscoverServicesInSolution</name></cpp:macro>                  <cpp:value pos:line="46" pos:column="58">0x1010</cpp:value></cpp:define>
+
+<cpp:endif pos:line="48" pos:column="1">#<cpp:directive pos:line="48" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="48" pos:column="8">//_WCFREFERENCEIDS_H_</comment>
+</unit>

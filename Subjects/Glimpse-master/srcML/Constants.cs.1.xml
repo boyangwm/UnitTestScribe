@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.AspNet\Constants.cs" pos:tabs="8"><namespace pos:line="1" pos:column="1">namespace <name><name pos:line="1" pos:column="11">Glimpse</name><op:operator pos:line="1" pos:column="18">.</op:operator><name pos:line="1" pos:column="19">AspNet</name></name>
+<block pos:line="2" pos:column="1">{
+    <class><specifier pos:line="3" pos:column="5">public</specifier> <specifier pos:line="3" pos:column="12">static</specifier> class <name pos:line="3" pos:column="25">Constants</name>
+    <block pos:line="4" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="5" pos:column="9">internal</specifier> <specifier pos:line="5" pos:column="18">const</specifier> <name pos:line="5" pos:column="24">string</name></type> <name pos:line="5" pos:column="31">RuntimeKey</name> <init pos:line="5" pos:column="42">= <expr><lit:literal type="string" pos:line="5" pos:column="44">"__GlimpseRuntime"</lit:literal></expr></init></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="6" pos:column="9">internal</specifier> <specifier pos:line="6" pos:column="18">const</specifier> <name pos:line="6" pos:column="24">string</name></type> <name pos:line="6" pos:column="31">LoggerKey</name> <init pos:line="6" pos:column="41">= <expr><lit:literal type="string" pos:line="6" pos:column="43">"__GlimpseLogger"</lit:literal></expr></init></decl>;</decl_stmt>
+    }</block></class>
+}</block></namespace></unit>

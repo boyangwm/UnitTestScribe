@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Policy\ControlCookiePolicy.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">Glimpse</name><op:operator pos:line="2" pos:column="14">.</op:operator><name pos:line="2" pos:column="15">Core</name><op:operator pos:line="2" pos:column="19">.</op:operator><name pos:line="2" pos:column="20">Extensibility</name></name>;</using>
+
+<namespace pos:line="4" pos:column="1">namespace <name><name pos:line="4" pos:column="11">Glimpse</name><op:operator pos:line="4" pos:column="18">.</op:operator><name pos:line="4" pos:column="19">Core</name><op:operator pos:line="4" pos:column="23">.</op:operator><name pos:line="4" pos:column="24">Policy</name></name>
+<block pos:line="5" pos:column="1">{
+    <comment type="line" pos:line="6" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// Policy which will set Glimpse's runtime policy to &lt;c&gt;Off&lt;/c&gt; unless a marker cookie named &lt;c&gt;'glimpsePolicy'&lt;/c&gt; is present on the Http request.</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="9" pos:column="5">public</specifier> class <name pos:line="9" pos:column="18">ControlCookiePolicy</name> <super pos:line="9" pos:column="38">: <name pos:line="9" pos:column="40">IRuntimePolicy</name></super>
+    <block pos:line="10" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="11" pos:column="9">internal</specifier> <specifier pos:line="11" pos:column="18">const</specifier> <name pos:line="11" pos:column="24">string</name></type> <name pos:line="11" pos:column="31">ControlCookieName</name> <init pos:line="11" pos:column="49">= <expr><lit:literal type="string" pos:line="11" pos:column="51">"glimpsePolicy"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// Gets the point in an Http request lifecycle that a policy should execute.</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="16" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="17" pos:column="9">/// The moment to execute, &lt;see cref="AjaxPolicy"/&gt; uses &lt;c&gt;BeginRequest&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="18" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="19" pos:column="9">public</specifier> <name pos:line="19" pos:column="16">RuntimeEvent</name></type> <name pos:line="19" pos:column="29">ExecuteOn</name>
+        <block pos:line="20" pos:column="9">{
+            <function><name pos:line="21" pos:column="13">get</name> <block pos:line="21" pos:column="17">{ <return pos:line="21" pos:column="19">return <expr><name><name pos:line="21" pos:column="26">RuntimeEvent</name><op:operator pos:line="21" pos:column="38">.</op:operator><name pos:line="21" pos:column="39">BeginRequest</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// Executes the specified policy with the given context.</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;param name="policyContext"&gt;The policy context.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;c&gt;Off&lt;/c&gt; unless the request contains a 'glimpsePolicy' cookie, otherwise the parsed &lt;see cref="RuntimePolicy"/&gt; of the cookie.</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;/returns&gt;</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// &lt;exception cref="System.ArgumentNullException"&gt;Exception thrown if &lt;paramref name="policyContext"/&gt; is &lt;c&gt;null&lt;/c&gt;.&lt;/exception&gt;</comment>
+        <function><type><specifier pos:line="32" pos:column="9">public</specifier> <name pos:line="32" pos:column="16">RuntimePolicy</name></type> <name pos:line="32" pos:column="30">Execute</name><parameter_list pos:line="32" pos:column="37">(<param><decl><type><name pos:line="32" pos:column="38">IRuntimePolicyContext</name></type> <name pos:line="32" pos:column="60">policyContext</name></decl></param>)</parameter_list>
+        <block pos:line="33" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="34" pos:column="13">var</name></type> <name pos:line="34" pos:column="17">cookie</name> <init pos:line="34" pos:column="24">= <expr><call><name><name pos:line="34" pos:column="26">policyContext</name><op:operator pos:line="34" pos:column="39">.</op:operator><name pos:line="34" pos:column="40">RequestMetadata</name><op:operator pos:line="34" pos:column="55">.</op:operator><name pos:line="34" pos:column="56">GetCookie</name></name><argument_list pos:line="34" pos:column="65">(<argument><expr><name pos:line="34" pos:column="66">ControlCookieName</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <if pos:line="36" pos:column="13">if <condition pos:line="36" pos:column="16">(<expr><call><name><name pos:line="36" pos:column="17">string</name><op:operator pos:line="36" pos:column="23">.</op:operator><name pos:line="36" pos:column="24">IsNullOrEmpty</name></name><argument_list pos:line="36" pos:column="37">(<argument><expr><name pos:line="36" pos:column="38">cookie</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="36" pos:column="46">
+            <block pos:line="37" pos:column="13">{
+                <return pos:line="38" pos:column="17">return <expr><name><name pos:line="38" pos:column="24">RuntimePolicy</name><op:operator pos:line="38" pos:column="37">.</op:operator><name pos:line="38" pos:column="38">Off</name></name></expr>;</return>
+            }</block></then></if>
+                
+            <decl_stmt><decl><type><name pos:line="41" pos:column="13">RuntimePolicy</name></type> <name pos:line="41" pos:column="27">result</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="43" pos:column="1">#<cpp:directive pos:line="43" pos:column="2">if</cpp:directive> <expr><name pos:line="43" pos:column="5">NET35</name></expr></cpp:if>
+            <if pos:line="44" pos:column="13">if <condition pos:line="44" pos:column="16">(<expr><op:operator pos:line="44" pos:column="17">!</op:operator><call><name><name pos:line="44" pos:column="18">Glimpse</name><op:operator pos:line="44" pos:column="25">.</op:operator><name pos:line="44" pos:column="26">Core</name><op:operator pos:line="44" pos:column="30">.</op:operator><name pos:line="44" pos:column="31">Backport</name><op:operator pos:line="44" pos:column="39">.</op:operator><name pos:line="44" pos:column="40">Net35Backport</name><op:operator pos:line="44" pos:column="53">.</op:operator><name pos:line="44" pos:column="54">TryParseEnum</name></name><argument_list pos:line="44" pos:column="66">(<argument><expr><name pos:line="44" pos:column="67">cookie</name></expr></argument>, <argument><expr><lit:literal type="boolean" pos:line="44" pos:column="75">true</lit:literal></expr></argument>, <argument><expr pos:line="44" pos:column="81">out <name pos:line="44" pos:column="85">result</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="44" pos:column="93">
+            <block pos:line="45" pos:column="13">{
+                <return pos:line="46" pos:column="17">return <expr><name><name pos:line="46" pos:column="24">RuntimePolicy</name><op:operator pos:line="46" pos:column="37">.</op:operator><name pos:line="46" pos:column="38">Off</name></name></expr>;</return>
+            }</block></then></if>
+<cpp:else pos:line="48" pos:column="1">#<cpp:directive pos:line="48" pos:column="2">else</cpp:directive></cpp:else>
+            <if pos:line="49" pos:column="13">if <condition pos:line="49" pos:column="16">(<expr><op:operator pos:line="49" pos:column="17">!</op:operator><call><name><name pos:line="49" pos:column="18">Enum</name><op:operator pos:line="49" pos:column="22">.</op:operator><name pos:line="49" pos:column="23">TryParse</name></name><argument_list pos:line="49" pos:column="31">(<argument><expr><name pos:line="49" pos:column="32">cookie</name></expr></argument>, <argument><expr><lit:literal type="boolean" pos:line="49" pos:column="40">true</lit:literal></expr></argument>, <argument><expr pos:line="49" pos:column="46">out <name pos:line="49" pos:column="50">result</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="49" pos:column="58">
+            <block pos:line="50" pos:column="13">{
+                <return pos:line="51" pos:column="17">return <expr><name><name pos:line="51" pos:column="24">RuntimePolicy</name><op:operator pos:line="51" pos:column="37">.</op:operator><name pos:line="51" pos:column="38">Off</name></name></expr>;</return>
+            }</block></then></if>
+<cpp:endif pos:line="53" pos:column="1">#<cpp:directive pos:line="53" pos:column="2">endif</cpp:directive></cpp:endif>
+
+            <return pos:line="55" pos:column="13">return <expr><name pos:line="55" pos:column="20">result</name></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

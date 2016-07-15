@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\VisualStudio\SDML.SrcMLVSAddin.SyntaticCategory\SyntaticCategoryPathTypes.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2011 Brian Bartman
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Brian Bartman (SDML) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Text</name></name>;</using>
+
+<namespace pos:line="17" pos:column="1">namespace <name><name pos:line="17" pos:column="11">SDML</name><op:operator pos:line="17" pos:column="15">.</op:operator><name pos:line="17" pos:column="16">SrcMLVSAddin</name><op:operator pos:line="17" pos:column="28">.</op:operator><name pos:line="17" pos:column="29">SyntaticCategory</name></name>
+<block pos:line="18" pos:column="1">{
+    <comment type="line" pos:line="19" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="20" pos:column="5">/// An enumeration denoting which type of syntatic category to </comment>
+    <comment type="line" pos:line="21" pos:column="5">/// look for while handling each syntatic occurance of the</comment>
+    <comment type="line" pos:line="22" pos:column="5">/// search pattern.</comment>
+    <comment type="line" pos:line="23" pos:column="5">/// &lt;/summary&gt;</comment>
+    <enum><specifier pos:line="24" pos:column="5">public</specifier> enum <macro><name pos:line="24" pos:column="17">SyntaticCategoryPathTypes</name></macro>
+    <block pos:line="25" pos:column="5">{
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// This is only valid in the event that the out. If the search</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// pattern is looking for an expression or expr node and the search expression</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// isn't searching for a statement/s.</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl><name pos:line="31" pos:column="9">OuterStatmentCategory</name></decl><op:operator pos:line="31" pos:column="30">,</op:operator>
+
+        <comment type="line" pos:line="33" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// Causes the syntatic category to be generated based on</comment>
+        <comment type="line" pos:line="35" pos:column="9">/// the searching of parent nodes until either a block or a</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// translation unit.</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl><name pos:line="38" pos:column="9">OuterBlockCategory</name></decl><op:operator pos:line="38" pos:column="27">,</op:operator>
+
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// This looks for the OUTER most block being one which is nested inside of</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// a translation unit.</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl><name pos:line="44" pos:column="9">OuterMostBlockCategory</name></decl>
+    }</block>
+<decl/></enum>}</block></namespace>
+</unit>

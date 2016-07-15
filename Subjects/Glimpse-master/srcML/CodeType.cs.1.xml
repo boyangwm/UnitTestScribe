@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Tab\Assist\CodeType.cs" pos:tabs="8"><namespace pos:line="1" pos:column="1">namespace <name><name pos:line="1" pos:column="11">Glimpse</name><op:operator pos:line="1" pos:column="18">.</op:operator><name pos:line="1" pos:column="19">Core</name><op:operator pos:line="1" pos:column="23">.</op:operator><name pos:line="1" pos:column="24">Tab</name><op:operator pos:line="1" pos:column="27">.</op:operator><name pos:line="1" pos:column="28">Assist</name></name>
+<block pos:line="2" pos:column="1">{
+    <enum><specifier pos:line="3" pos:column="5">public</specifier> enum <macro><name pos:line="3" pos:column="17">CodeType</name></macro>
+    <block pos:line="4" pos:column="5">{
+        <decl><name pos:line="5" pos:column="9">Bash</name></decl><op:operator pos:line="5" pos:column="13">,</op:operator>
+        <decl><name pos:line="6" pos:column="9">C</name></decl><op:operator pos:line="6" pos:column="10">,</op:operator>
+        <decl><name pos:line="7" pos:column="9">Cpp</name></decl><op:operator pos:line="7" pos:column="12">,</op:operator>
+        <decl><name pos:line="8" pos:column="9">Csharp</name></decl><op:operator pos:line="8" pos:column="15">,</op:operator>
+        <decl><name pos:line="9" pos:column="9">Html</name></decl><op:operator pos:line="9" pos:column="13">,</op:operator>
+        <decl><name pos:line="10" pos:column="9">Java</name></decl><op:operator pos:line="10" pos:column="13">,</op:operator>
+        <decl><name pos:line="11" pos:column="9">Javascript</name></decl><op:operator pos:line="11" pos:column="19">,</op:operator>
+        <decl><name pos:line="12" pos:column="9">Python</name></decl><op:operator pos:line="12" pos:column="15">,</op:operator>
+        <decl><name pos:line="13" pos:column="9">Ruby</name></decl><op:operator pos:line="13" pos:column="13">,</op:operator>
+        <decl><name pos:line="14" pos:column="9">Shell</name></decl><op:operator pos:line="14" pos:column="14">,</op:operator>
+        <decl><name pos:line="15" pos:column="9">Sql</name></decl><op:operator pos:line="15" pos:column="12">,</op:operator>
+        <decl><name pos:line="16" pos:column="9">Xml</name></decl><op:operator pos:line="16" pos:column="12">,</op:operator>
+        <decl><name pos:line="17" pos:column="9">Xsl</name></decl>
+    }</block>
+<decl/></enum>}</block></namespace></unit>

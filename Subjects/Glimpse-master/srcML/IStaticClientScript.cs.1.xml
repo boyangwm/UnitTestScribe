@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensibility\IStaticClientScript.cs" pos:tabs="8"><namespace pos:line="1" pos:column="1">namespace <name><name pos:line="1" pos:column="11">Glimpse</name><op:operator pos:line="1" pos:column="18">.</op:operator><name pos:line="1" pos:column="19">Core</name><op:operator pos:line="1" pos:column="23">.</op:operator><name pos:line="1" pos:column="24">Extensibility</name></name>
+<block pos:line="2" pos:column="1">{
+    <comment type="line" pos:line="3" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="4" pos:column="5">/// &lt;c&gt;IStaticClientScript&lt;/c&gt;'s are a special type of &lt;see cref="IClientScript"/&gt; that sets the &lt;c&gt;&amp;lt;script&amp;gt;&lt;/c&gt; tag's &lt;c&gt;src&lt;/c&gt; attribute to a given uri.</comment>
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;/summary&gt;</comment>
+    <comment type="line" pos:line="6" pos:column="5">/// &lt;remarks&gt;</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// It is up to the implementer of &lt;c&gt;IStaticClientScript&lt;/c&gt; to host a given resource. </comment>
+    <comment type="line" pos:line="8" pos:column="5">/// &lt;/remarks&gt;</comment>
+    <class type="interface"><specifier pos:line="9" pos:column="5">public</specifier> interface <name pos:line="9" pos:column="22">IStaticClientScript</name> <super pos:line="9" pos:column="42">: <name pos:line="9" pos:column="44">IClientScript</name></super> <comment type="line" pos:line="9" pos:column="58">// TODO: Provide a config only way to create static client scripts without implementing a class</comment>
+    <block pos:line="10" pos:column="5">{
+        <comment type="line" pos:line="11" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="12" pos:column="9">/// Gets the Uri to set as the value for the &lt;c&gt;src&lt;/c&gt; attribute.</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// The returned Uri should only point to JavaScript files since the &lt;c&gt;&amp;lt;script&amp;gt;&lt;/c&gt; tag will be rendered with a &lt;c&gt;type='text/javascript'&lt;/c&gt; attribute.</comment>
+        <comment type="line" pos:line="16" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <comment type="line" pos:line="17" pos:column="9">/// &lt;param name="version"&gt;</comment>
+        <comment type="line" pos:line="18" pos:column="9">/// A unique string that should be combined with the Uri to allow for Http cache invalidation.</comment>
+        <comment type="line" pos:line="19" pos:column="9">/// &lt;example&gt;</comment>
+        <comment type="line" pos:line="20" pos:column="9">/// In this example, the version parameter is appended to a query string argument.</comment>
+        <comment type="line" pos:line="21" pos:column="9">/// &lt;code&gt;</comment>
+        <comment type="line" pos:line="22" pos:column="9">/// public string GetUri(string version)</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// {</comment>
+        <comment type="line" pos:line="24" pos:column="9">///     return "//localhost/scripts/myScript.js?v=" + version;</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// }</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;/code&gt;</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;/example&gt;</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;/param&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;returns&gt;A string Uri pointing to a JavaScript asset.&lt;/returns&gt;</comment>
+        <function_decl><type><name pos:line="30" pos:column="9">string</name></type> <name pos:line="30" pos:column="16">GetUri</name><parameter_list pos:line="30" pos:column="22">(<param><decl><type><name pos:line="30" pos:column="23">string</name></type> <name pos:line="30" pos:column="30">version</name></decl></param>)</parameter_list>;</function_decl>
+    }</block></class>
+}</block></namespace></unit>

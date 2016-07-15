@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Resource\InsightResource.cs" pos:tabs="8"><comment type="line" pos:line="1" pos:column="1">//using Glimpse.Core.Extensibility;</comment>
+
+<comment type="line" pos:line="3" pos:column="1">//namespace Glimpse.Core.Resource</comment>
+<comment type="line" pos:line="4" pos:column="1">//{</comment>
+<comment type="line" pos:line="5" pos:column="1">//    /// &lt;summary&gt;</comment>
+<comment type="line" pos:line="6" pos:column="1">//    /// The &lt;see cref="IResource"/&gt; implementation responsible for providing the Glimpse JavaScript client to the browser.</comment>
+<comment type="line" pos:line="7" pos:column="1">//    /// &lt;/summary&gt;</comment>
+<comment type="line" pos:line="8" pos:column="1">//    public class InsightResource : FileResource, IKey</comment>
+<comment type="line" pos:line="9" pos:column="1">//    {</comment>
+<comment type="line" pos:line="10" pos:column="1">//        internal const string InternalName = "glimpse_insight";</comment>
+
+<comment type="line" pos:line="12" pos:column="1">//        private EmbeddedResourceInfo ResourceInfo { get; set; }</comment>
+
+<comment type="line" pos:line="14" pos:column="1">//        /// &lt;summary&gt;</comment>
+<comment type="line" pos:line="15" pos:column="1">//        /// Initializes a new instance of the &lt;see cref="ClientResource" /&gt; class.</comment>
+<comment type="line" pos:line="16" pos:column="1">//        /// &lt;/summary&gt;</comment>
+<comment type="line" pos:line="17" pos:column="1">//        public InsightResource()</comment>
+<comment type="line" pos:line="18" pos:column="1">//        {</comment>
+<comment type="line" pos:line="19" pos:column="1">//            Name = InternalName;</comment>
+
+<comment type="line" pos:line="21" pos:column="1">//            ResourceInfo = new EmbeddedResourceInfo(GetType().Assembly, "Glimpse.Core.glimpseInsight.js", "application/x-javascript");</comment>
+<comment type="line" pos:line="22" pos:column="1">//        }</comment>
+
+<comment type="line" pos:line="24" pos:column="1">//        /// &lt;summary&gt;</comment>
+<comment type="line" pos:line="25" pos:column="1">//        /// Gets the key.</comment>
+<comment type="line" pos:line="26" pos:column="1">//        /// &lt;/summary&gt;</comment>
+<comment type="line" pos:line="27" pos:column="1">//        /// &lt;value&gt;</comment>
+<comment type="line" pos:line="28" pos:column="1">//        /// The key. Only valid JavaScript identifiers should be used for future compatibility.</comment>
+<comment type="line" pos:line="29" pos:column="1">//        /// &lt;/value&gt;</comment>
+<comment type="line" pos:line="30" pos:column="1">//        public string Key </comment>
+<comment type="line" pos:line="31" pos:column="1">//        {</comment>
+<comment type="line" pos:line="32" pos:column="1">//            get { return Name; }</comment>
+<comment type="line" pos:line="33" pos:column="1">//        }</comment>
+
+<comment type="line" pos:line="35" pos:column="1">//        /// &lt;summary&gt;</comment>
+<comment type="line" pos:line="36" pos:column="1">//        /// Returns the embedded resource that represents the Glimpse Client which will be returned during the execution of the &lt;see cref="FileResource"/&gt;</comment>
+<comment type="line" pos:line="37" pos:column="1">//        /// &lt;/summary&gt;</comment>
+<comment type="line" pos:line="38" pos:column="1">//        /// &lt;param name="context"&gt;The resource context&lt;/param&gt;</comment>
+<comment type="line" pos:line="39" pos:column="1">//        /// &lt;returns&gt;Information about the embedded Glimpse Client&lt;/returns&gt;</comment>
+<comment type="line" pos:line="40" pos:column="1">//        protected override EmbeddedResourceInfo GetEmbeddedResourceInfo(IResourceContext context)</comment>
+<comment type="line" pos:line="41" pos:column="1">//        {</comment>
+<comment type="line" pos:line="42" pos:column="1">//            return ResourceInfo;</comment>
+<comment type="line" pos:line="43" pos:column="1">//        }</comment>
+<comment type="line" pos:line="44" pos:column="1">//    }</comment>
+<comment type="line" pos:line="45" pos:column="1">//}</comment></unit>

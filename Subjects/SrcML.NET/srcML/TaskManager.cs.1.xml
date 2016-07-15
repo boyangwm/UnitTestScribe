@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML\Utilities\TaskManager.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Linq</name></name>;</using>
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">System</name><op:operator pos:line="4" pos:column="13">.</op:operator><name pos:line="4" pos:column="14">Text</name></name>;</using>
+<using pos:line="5" pos:column="1">using <name><name pos:line="5" pos:column="7">System</name><op:operator pos:line="5" pos:column="13">.</op:operator><name pos:line="5" pos:column="14">Threading</name></name>;</using>
+<using pos:line="6" pos:column="1">using <name><name pos:line="6" pos:column="7">System</name><op:operator pos:line="6" pos:column="13">.</op:operator><name pos:line="6" pos:column="14">Threading</name><op:operator pos:line="6" pos:column="23">.</op:operator><name pos:line="6" pos:column="24">Tasks</name></name>;</using>
+
+<namespace pos:line="8" pos:column="1">namespace <name><name pos:line="8" pos:column="11">ABB</name><op:operator pos:line="8" pos:column="14">.</op:operator><name pos:line="8" pos:column="15">SrcML</name><op:operator pos:line="8" pos:column="20">.</op:operator><name pos:line="8" pos:column="21">Utilities</name></name> <block pos:line="8" pos:column="31">{
+    <class><specifier pos:line="9" pos:column="5">public</specifier> class <name pos:line="9" pos:column="18">TaskManager</name> <super pos:line="9" pos:column="30">: <name pos:line="9" pos:column="32">IDisposable</name></super> <block pos:line="9" pos:column="44">{
+        <decl_stmt><decl><type><specifier pos:line="10" pos:column="9">private</specifier> <name pos:line="10" pos:column="17">int</name></type> <name pos:line="10" pos:column="21">_runningTasks</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="11" pos:column="9">private</specifier> <name pos:line="11" pos:column="17">Object</name></type> <name pos:line="11" pos:column="24">_parent</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="12" pos:column="9">private</specifier> <name pos:line="12" pos:column="17">ReadyNotifier</name></type> <name pos:line="12" pos:column="31">ReadyState</name></decl>;</decl_stmt>
+        
+        <comment type="line" pos:line="14" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// Event fires when the &lt;see cref="IsReady"/&gt; property changes</comment>
+        <comment type="line" pos:line="16" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="17" pos:column="9">public</specifier> <specifier pos:line="17" pos:column="16">event</specifier> <name><name pos:line="17" pos:column="22">EventHandler</name><argument_list pos:line="17" pos:column="34">&lt;<argument><name pos:line="17" pos:column="35">IsReadyChangedEventArgs</name></argument>&gt;</argument_list></name></type> <name pos:line="17" pos:column="60">IsReadyChanged</name> <block pos:line="17" pos:column="75">{
+            <function><name pos:line="18" pos:column="13">add</name> <block pos:line="18" pos:column="17">{ <expr_stmt><expr><name><name pos:line="18" pos:column="19">this</name><op:operator pos:line="18" pos:column="23">.</op:operator><name pos:line="18" pos:column="24">ReadyState</name><op:operator pos:line="18" pos:column="34">.</op:operator><name pos:line="18" pos:column="35">IsReadyChanged</name></name> <op:operator pos:line="18" pos:column="50">+=</op:operator> <name pos:line="18" pos:column="53">value</name></expr>;</expr_stmt> }</block></function>
+            <function><name pos:line="19" pos:column="13">remove</name> <block pos:line="19" pos:column="20">{ <expr_stmt><expr><name><name pos:line="19" pos:column="22">this</name><op:operator pos:line="19" pos:column="26">.</op:operator><name pos:line="19" pos:column="27">ReadyState</name><op:operator pos:line="19" pos:column="37">.</op:operator><name pos:line="19" pos:column="38">IsReadyChanged</name></name> <op:operator pos:line="19" pos:column="53">-=</op:operator> <name pos:line="19" pos:column="56">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <constructor><specifier pos:line="22" pos:column="9">public</specifier> <name pos:line="22" pos:column="16">TaskManager</name><parameter_list pos:line="22" pos:column="27">(<param><decl><type><name pos:line="22" pos:column="28">Object</name></type> <name pos:line="22" pos:column="35">parent</name></decl></param>)</parameter_list> <member_list pos:line="22" pos:column="43">: <call><name pos:line="22" pos:column="45">this</name><argument_list pos:line="22" pos:column="49">(<argument><expr><name pos:line="22" pos:column="50">parent</name></expr></argument>, <argument><expr><name><name pos:line="22" pos:column="58">TaskScheduler</name><op:operator pos:line="22" pos:column="71">.</op:operator><name pos:line="22" pos:column="72">Default</name></name></expr></argument>)</argument_list></call> </member_list><block pos:line="22" pos:column="81">{ }</block></constructor>
+
+        <constructor><specifier pos:line="24" pos:column="9">public</specifier> <name pos:line="24" pos:column="16">TaskManager</name><parameter_list pos:line="24" pos:column="27">(<param><decl><type><name pos:line="24" pos:column="28">Object</name></type> <name pos:line="24" pos:column="35">parent</name></decl></param>, <param><decl><type><name pos:line="24" pos:column="43">TaskScheduler</name></type> <name pos:line="24" pos:column="57">scheduler</name></decl></param>)</parameter_list> <block pos:line="24" pos:column="68">{
+            <expr_stmt><expr><name pos:line="25" pos:column="13">_parent</name> <op:operator pos:line="25" pos:column="21">=</op:operator> <name pos:line="25" pos:column="23">parent</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="26" pos:column="13">Scheduler</name> <op:operator pos:line="26" pos:column="23">=</op:operator> <name pos:line="26" pos:column="25">scheduler</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="27" pos:column="13">_runningTasks</name> <op:operator pos:line="27" pos:column="27">=</op:operator> <lit:literal type="number" pos:line="27" pos:column="29">0</lit:literal></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="28" pos:column="13">ReadyState</name> <op:operator pos:line="28" pos:column="24">=</op:operator> <op:operator pos:line="28" pos:column="26">new</op:operator> <call><name pos:line="28" pos:column="30">ReadyNotifier</name><argument_list pos:line="28" pos:column="43">(<argument><expr><name pos:line="28" pos:column="44">_parent</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <constructor><specifier pos:line="31" pos:column="9">private</specifier> <name pos:line="31" pos:column="17">TaskManager</name><parameter_list pos:line="31" pos:column="28">()</parameter_list> <block pos:line="31" pos:column="31">{ }</block></constructor>
+
+        <comment type="line" pos:line="33" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// Archives are "ready" when they have no running tasks. This property automatically changes to false</comment>
+        <comment type="line" pos:line="35" pos:column="9">/// when the number of running tasks is zero. Whenever the value changes, the &lt;see cref="IsReadyChanged"/&gt; event fires.</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="37" pos:column="9">public</specifier> <name pos:line="37" pos:column="16">bool</name></type> <name pos:line="37" pos:column="21">IsReady</name> <block pos:line="37" pos:column="29">{
+            <function><name pos:line="38" pos:column="13">get</name> <block pos:line="38" pos:column="17">{ <return pos:line="38" pos:column="19">return <expr><name><name pos:line="38" pos:column="26">this</name><op:operator pos:line="38" pos:column="30">.</op:operator><name pos:line="38" pos:column="31">ReadyState</name><op:operator pos:line="38" pos:column="41">.</op:operator><name pos:line="38" pos:column="42">IsReady</name></name></expr>;</return> }</block></function>
+            <function><specifier pos:line="39" pos:column="13">private</specifier> <name pos:line="39" pos:column="21">set</name> <block pos:line="39" pos:column="25">{ <expr_stmt><expr><name><name pos:line="39" pos:column="27">this</name><op:operator pos:line="39" pos:column="31">.</op:operator><name pos:line="39" pos:column="32">ReadyState</name><op:operator pos:line="39" pos:column="42">.</op:operator><name pos:line="39" pos:column="43">IsReady</name></name> <op:operator pos:line="39" pos:column="51">=</op:operator> <name pos:line="39" pos:column="53">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// Task scheduler for the asynchronous methods</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="45" pos:column="9">public</specifier> <name pos:line="45" pos:column="16">TaskScheduler</name></type> <name pos:line="45" pos:column="30">Scheduler</name> <block pos:line="45" pos:column="40">{ <function_decl><name pos:line="45" pos:column="42">get</name>;</function_decl> <function_decl><name pos:line="45" pos:column="47">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="47" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// Runs the specified action on this thread. The action will be run with the following continuations: &lt;see cref="DecrementOnCompletion"/&gt; and &lt;see cref="LogExceptions"/&gt;</comment>
+        <comment type="line" pos:line="49" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="50" pos:column="9">/// &lt;param name="task"&gt;The task to run.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="51" pos:column="9">public</specifier> <name pos:line="51" pos:column="16">void</name></type> <name pos:line="51" pos:column="21">Run</name><parameter_list pos:line="51" pos:column="24">(<param><decl><type><name pos:line="51" pos:column="25">Task</name></type> <name pos:line="51" pos:column="30">task</name></decl></param>)</parameter_list> <block pos:line="51" pos:column="36">{
+            <expr_stmt><expr><call><name pos:line="52" pos:column="13">IncrementTask</name><argument_list pos:line="52" pos:column="26">()</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name pos:line="53" pos:column="13">DecrementOnCompletion</name><argument_list pos:line="53" pos:column="34">(<argument><expr><name pos:line="53" pos:column="35">task</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="54" pos:column="13">task</name><op:operator pos:line="54" pos:column="17">.</op:operator><name pos:line="54" pos:column="18">RunSynchronously</name></name><argument_list pos:line="54" pos:column="34">()</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="57" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="58" pos:column="9">/// Runs the specified action on &lt;see cref="TaskFactory"/&gt;. The action will be run with the following continuations: &lt;see cref="DecrementOnCompletion"/&gt; and &lt;see cref="LogExceptions"/&gt; </comment>
+        <comment type="line" pos:line="59" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="60" pos:column="9">/// &lt;param name="task"&gt;&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="61" pos:column="9">public</specifier> <name pos:line="61" pos:column="16">Task</name></type> <name pos:line="61" pos:column="21">RunAsync</name><parameter_list pos:line="61" pos:column="29">(<param><decl><type><name pos:line="61" pos:column="30">Task</name></type> <name pos:line="61" pos:column="35">task</name></decl></param>)</parameter_list> <block pos:line="61" pos:column="41">{
+            <expr_stmt><expr><call><name pos:line="62" pos:column="13">IncrementTask</name><argument_list pos:line="62" pos:column="26">()</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name pos:line="63" pos:column="13">DecrementOnCompletion</name><argument_list pos:line="63" pos:column="34">(<argument><expr><name pos:line="63" pos:column="35">task</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="64" pos:column="13">task</name><op:operator pos:line="64" pos:column="17">.</op:operator><name pos:line="64" pos:column="18">Start</name></name><argument_list pos:line="64" pos:column="23">(<argument><expr><name><name pos:line="64" pos:column="24">this</name><op:operator pos:line="64" pos:column="28">.</op:operator><name pos:line="64" pos:column="29">Scheduler</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <return pos:line="65" pos:column="13">return <expr><name pos:line="65" pos:column="20">task</name></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="68" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="69" pos:column="9">/// Convenience function for adding a continuation that will call &lt;see cref="DecrementTask"/&gt; upon task completion.</comment>
+        <comment type="line" pos:line="70" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="71" pos:column="9">/// &lt;param name="task"&gt;&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="72" pos:column="9">private</specifier> <name pos:line="72" pos:column="17">void</name></type> <name pos:line="72" pos:column="22">DecrementOnCompletion</name><parameter_list pos:line="72" pos:column="43">(<param><decl><type><name pos:line="72" pos:column="44">Task</name></type> <name pos:line="72" pos:column="49">task</name></decl></param>)</parameter_list> <block pos:line="72" pos:column="55">{
+            <expr_stmt><expr><call><name><name pos:line="73" pos:column="13">task</name><op:operator pos:line="73" pos:column="17">.</op:operator><name pos:line="73" pos:column="18">ContinueWith</name></name><argument_list pos:line="73" pos:column="30">(<argument><expr><lambda><name pos:line="73" pos:column="31">t</name> <op:operator pos:line="73" pos:column="33">=&gt;</op:operator> <call><name pos:line="73" pos:column="36">DecrementTask</name><argument_list pos:line="73" pos:column="49">()</argument_list></call></lambda></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="76" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="77" pos:column="9">/// The number of tasks that are currently running</comment>
+        <comment type="line" pos:line="78" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="79" pos:column="9">protected</specifier> <name pos:line="79" pos:column="19">int</name></type> <name pos:line="79" pos:column="23">CountOfRunningTasks</name> <block pos:line="79" pos:column="43">{
+            <function><name pos:line="80" pos:column="13">get</name> <block pos:line="80" pos:column="17">{ <return pos:line="80" pos:column="19">return <expr><name pos:line="80" pos:column="26">_runningTasks</name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="83" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="84" pos:column="9">/// Increments &lt;see cref="CountOfRunningTasks"/&gt; (called via the &lt;see cref="Run"/&gt; method). If &lt;see cref="IsReady"/&gt; is true, this sets it to false.</comment>
+        <comment type="line" pos:line="85" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="86" pos:column="9">private</specifier> <name pos:line="86" pos:column="17">void</name></type> <name pos:line="86" pos:column="22">IncrementTask</name><parameter_list pos:line="86" pos:column="35">()</parameter_list> <block pos:line="86" pos:column="38">{
+            <expr_stmt><expr><call><name><name pos:line="87" pos:column="13">Interlocked</name><op:operator pos:line="87" pos:column="24">.</op:operator><name pos:line="87" pos:column="25">Increment</name></name><argument_list pos:line="87" pos:column="34">(<argument><expr pos:line="87" pos:column="35">ref <name pos:line="87" pos:column="39">_runningTasks</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="88" pos:column="13">IsReady</name> <op:operator pos:line="88" pos:column="21">=</op:operator> <lit:literal type="boolean" pos:line="88" pos:column="23">false</lit:literal></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="91" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="92" pos:column="9">/// Decrements &lt;see cref="CountOfRunningTasks"/&gt; (called via the &lt;see cref="DecrementOnCompletion"/&gt; which is used in the &lt;see cref="Run"/&gt; method.</comment>
+        <comment type="line" pos:line="93" pos:column="9">/// If the number of tasks becomes zero, then &lt;see cref="IsReady"/&gt; is set to true.</comment>
+        <comment type="line" pos:line="94" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="95" pos:column="9">private</specifier> <name pos:line="95" pos:column="17">void</name></type> <name pos:line="95" pos:column="22">DecrementTask</name><parameter_list pos:line="95" pos:column="35">()</parameter_list> <block pos:line="95" pos:column="38">{
+            <expr_stmt><expr><name pos:line="96" pos:column="13">IsReady</name> <op:operator pos:line="96" pos:column="21">=</op:operator> <op:operator pos:line="96" pos:column="23">(</op:operator><lit:literal type="number" pos:line="96" pos:column="24">0</lit:literal> <op:operator pos:line="96" pos:column="26">&gt;=</op:operator> <call><name><name pos:line="96" pos:column="29">Interlocked</name><op:operator pos:line="96" pos:column="40">.</op:operator><name pos:line="96" pos:column="41">Decrement</name></name><argument_list pos:line="96" pos:column="50">(<argument><expr pos:line="96" pos:column="51">ref <name pos:line="96" pos:column="55">_runningTasks</name></expr></argument>)</argument_list></call><op:operator pos:line="96" pos:column="69">)</op:operator></expr>;</expr_stmt>
+        }</block></function>
+
+        <function><type><specifier pos:line="99" pos:column="9">public</specifier> <name pos:line="99" pos:column="16">void</name></type> <name pos:line="99" pos:column="21">Dispose</name><parameter_list pos:line="99" pos:column="28">()</parameter_list> <block pos:line="99" pos:column="31">{
+            <expr_stmt><expr><call><name><name pos:line="100" pos:column="13">ReadyState</name><op:operator pos:line="100" pos:column="23">.</op:operator><name pos:line="100" pos:column="24">Dispose</name></name><argument_list pos:line="100" pos:column="31">()</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+    }</block></class>
+}</block></namespace>
+</unit>

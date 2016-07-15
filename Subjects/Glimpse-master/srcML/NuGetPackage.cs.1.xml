@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Support\NuGetPackage.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">System</name><op:operator pos:line="1" pos:column="13">.</op:operator><name pos:line="1" pos:column="14">Collections</name><op:operator pos:line="1" pos:column="25">.</op:operator><name pos:line="1" pos:column="26">Generic</name></name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">Glimpse</name><op:operator pos:line="2" pos:column="14">.</op:operator><name pos:line="2" pos:column="15">Core</name><op:operator pos:line="2" pos:column="19">.</op:operator><name pos:line="2" pos:column="20">Extensibility</name></name>;</using>
+
+<namespace pos:line="4" pos:column="1">namespace <name><name pos:line="4" pos:column="11">Glimpse</name><op:operator pos:line="4" pos:column="18">.</op:operator><name pos:line="4" pos:column="19">Core</name><op:operator pos:line="4" pos:column="23">.</op:operator><name pos:line="4" pos:column="24">Support</name></name>
+<block pos:line="5" pos:column="1">{
+    <comment type="line" pos:line="6" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// Helper methods designed to aid in the discovery of which</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// Glimpse nuget packages are currently installed.</comment>
+    <comment type="line" pos:line="9" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="10" pos:column="5">public</specifier> <specifier pos:line="10" pos:column="12">static</specifier> class <name pos:line="10" pos:column="25">NuGetPackage</name>
+    <block pos:line="11" pos:column="5">{
+        <comment type="line" pos:line="12" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// Gets the registered package names and versions.</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// &lt;returns&gt;Found entries.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="16" pos:column="9">public</specifier> <specifier pos:line="16" pos:column="16">static</specifier> <name><name pos:line="16" pos:column="23">IDictionary</name><argument_list pos:line="16" pos:column="34">&lt;<argument><name pos:line="16" pos:column="35">string</name></argument>, <argument><name pos:line="16" pos:column="43">string</name></argument>&gt;</argument_list></name></type> <name pos:line="16" pos:column="51">GetRegisteredPackageVersions</name><parameter_list pos:line="16" pos:column="79">()</parameter_list>
+        <block pos:line="17" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="18" pos:column="13">var</name></type> <name pos:line="18" pos:column="17">nuGetPackageDiscoveryResult</name> <init pos:line="18" pos:column="45">= <expr><call><name><name pos:line="18" pos:column="47">NuGetPackageDiscoverer</name><op:operator pos:line="18" pos:column="69">.</op:operator><name pos:line="18" pos:column="70">Discover</name></name><argument_list pos:line="18" pos:column="78">()</argument_list></call></expr></init></decl>;</decl_stmt>
+            <decl_stmt><decl><type><name pos:line="19" pos:column="13">var</name></type> <name pos:line="19" pos:column="17">packages</name> <init pos:line="19" pos:column="26">= <expr><op:operator pos:line="19" pos:column="28">new</op:operator> <call><name><name pos:line="19" pos:column="32">Dictionary</name><argument_list pos:line="19" pos:column="42">&lt;<argument><name pos:line="19" pos:column="43">string</name></argument>, <argument><name pos:line="19" pos:column="51">string</name></argument>&gt;</argument_list></name><argument_list pos:line="19" pos:column="58">()</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <foreach pos:line="21" pos:column="13">foreach (<init><decl><type><name pos:line="21" pos:column="22">var</name></type> <name pos:line="21" pos:column="26">foundNuGetPackage</name> <range pos:line="21" pos:column="44">in <expr><name><name pos:line="21" pos:column="47">nuGetPackageDiscoveryResult</name><op:operator pos:line="21" pos:column="74">.</op:operator><name pos:line="21" pos:column="75">FoundNuGetPackages</name></name></expr></range></decl></init>)
+            <block pos:line="22" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="23" pos:column="17">var</name></type> <name pos:line="23" pos:column="21">version</name> <init pos:line="23" pos:column="29">= <expr><call><name><name pos:line="23" pos:column="31">foundNuGetPackage</name><op:operator pos:line="23" pos:column="48">.</op:operator><name pos:line="23" pos:column="49">GetVersion</name></name><argument_list pos:line="23" pos:column="59">()</argument_list></call></expr></init></decl>;</decl_stmt>
+                <decl_stmt><decl><type><name pos:line="24" pos:column="17">var</name></type> <name pos:line="24" pos:column="21">id</name> <init pos:line="24" pos:column="24">= <expr><call><name><name pos:line="24" pos:column="26">foundNuGetPackage</name><op:operator pos:line="24" pos:column="43">.</op:operator><name pos:line="24" pos:column="44">GetId</name></name><argument_list pos:line="24" pos:column="49">()</argument_list></call></expr></init></decl>;</decl_stmt>
+
+                <expr_stmt><expr><name><name pos:line="26" pos:column="17">packages</name><index pos:line="26" pos:column="25">[<expr><name pos:line="26" pos:column="26">id</name></expr>]</index></name> <op:operator pos:line="26" pos:column="30">=</op:operator> <name pos:line="26" pos:column="32">version</name></expr>;</expr_stmt>
+            }</block></foreach>
+
+            <return pos:line="29" pos:column="13">return <expr><name pos:line="29" pos:column="20">packages</name></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="32" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="33" pos:column="9">/// Gets the registered packages attribute registration.</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="35" pos:column="9">/// &lt;returns&gt;Found entries.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="36" pos:column="9">public</specifier> <specifier pos:line="36" pos:column="16">static</specifier> <name><name pos:line="36" pos:column="23">IList</name><argument_list pos:line="36" pos:column="28">&lt;<argument><name pos:line="36" pos:column="29">NuGetPackageAttribute</name></argument>&gt;</argument_list></name></type> <name pos:line="36" pos:column="52">GetRegisteredPackages</name><parameter_list pos:line="36" pos:column="73">()</parameter_list>
+        <block pos:line="37" pos:column="9">{
+            <return pos:line="38" pos:column="13">return <expr><call><name><name pos:line="38" pos:column="20">NuGetPackageDiscoverer</name><op:operator pos:line="38" pos:column="42">.</op:operator><name pos:line="38" pos:column="43">Discover</name></name><argument_list pos:line="38" pos:column="51">()</argument_list></call><op:operator pos:line="38" pos:column="53">.</op:operator><name pos:line="38" pos:column="54">FoundNuGetPackages</name></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace>
+</unit>

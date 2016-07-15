@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Tab\Assist\ITabStyleValueT.cs" pos:tabs="8"><namespace pos:line="1" pos:column="1">namespace <name><name pos:line="1" pos:column="11">Glimpse</name><op:operator pos:line="1" pos:column="18">.</op:operator><name pos:line="1" pos:column="19">Core</name><op:operator pos:line="1" pos:column="23">.</op:operator><name pos:line="1" pos:column="24">Tab</name><op:operator pos:line="1" pos:column="27">.</op:operator><name pos:line="1" pos:column="28">Assist</name></name>
+<block pos:line="2" pos:column="1">{
+    <class type="interface"><specifier pos:line="3" pos:column="5">public</specifier> interface <name><name pos:line="3" pos:column="22">ITabStyleValue</name><argument_list pos:line="3" pos:column="36">&lt;<argument><name pos:line="3" pos:column="37">T</name></argument>&gt;</argument_list></name>
+    <block pos:line="4" pos:column="5">{
+        <function_decl><type><name pos:line="5" pos:column="9">T</name></type> <name pos:line="5" pos:column="11">ApplyValueStyle</name><parameter_list pos:line="5" pos:column="26">(<param><decl><type><name pos:line="5" pos:column="27">string</name></type> <name pos:line="5" pos:column="34">format</name></decl></param>)</parameter_list>;</function_decl>
+    }</block></class>
+}</block></namespace>
+</unit>

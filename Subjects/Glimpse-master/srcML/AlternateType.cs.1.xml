@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensibility\AlternateType.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Linq</name></name>;</using>
+
+<namespace pos:line="5" pos:column="1">namespace <name><name pos:line="5" pos:column="11">Glimpse</name><op:operator pos:line="5" pos:column="18">.</op:operator><name pos:line="5" pos:column="19">Core</name><op:operator pos:line="5" pos:column="23">.</op:operator><name pos:line="5" pos:column="24">Extensibility</name></name>
+<block pos:line="6" pos:column="1">{
+    <comment type="line" pos:line="7" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// An abstract &lt;see cref="IAlternateType{T}"/&gt; implementation that handles the most common &lt;c&gt;TryCreate&lt;/c&gt; scenarios.</comment>
+    <comment type="line" pos:line="9" pos:column="5">/// &lt;/summary&gt;</comment>
+    <comment type="line" pos:line="10" pos:column="5">/// &lt;typeparam name="T"&gt;The type to retrieve and alternate for.&lt;/typeparam&gt;</comment>
+    <class><specifier pos:line="11" pos:column="5">public</specifier> <specifier pos:line="11" pos:column="12">abstract</specifier> class <name><name pos:line="11" pos:column="27">AlternateType</name><argument_list pos:line="11" pos:column="40">&lt;<argument><name pos:line="11" pos:column="41">T</name></argument>&gt;</argument_list></name> <super pos:line="11" pos:column="44">: <name><name pos:line="11" pos:column="46">IAlternateType</name><argument_list pos:line="11" pos:column="60">&lt;<argument><name pos:line="11" pos:column="61">T</name></argument>&gt; <where pos:line="11" pos:column="64">where <name pos:line="11" pos:column="70">T</name> : class</where></argument_list></name></super>
+    <block pos:line="12" pos:column="5">{
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// Initializes a new instance of the &lt;see cref="AlternateType{T}" /&gt; class.</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="16" pos:column="9">/// &lt;param name="proxyFactory"&gt;The proxy factory.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="17" pos:column="9">/// &lt;exception cref="System.ArgumentNullException"&gt;Throws and exception if &lt;paramref name="proxyFactory"/&gt; is &lt;c&gt;null&lt;/c&gt;.&lt;/exception&gt;</comment>
+        <constructor><specifier pos:line="18" pos:column="9">protected</specifier> <name pos:line="18" pos:column="19">AlternateType</name><parameter_list pos:line="18" pos:column="32">(<param><decl><type><name pos:line="18" pos:column="33">IProxyFactory</name></type> <name pos:line="18" pos:column="47">proxyFactory</name></decl></param>)</parameter_list>
+        <block pos:line="19" pos:column="9">{
+            <if pos:line="20" pos:column="13">if <condition pos:line="20" pos:column="16">(<expr><name pos:line="20" pos:column="17">proxyFactory</name> <op:operator pos:line="20" pos:column="30">==</op:operator> <name pos:line="20" pos:column="33">null</name></expr>)</condition><then pos:line="20" pos:column="38">
+            <block pos:line="21" pos:column="13">{
+                <throw pos:line="22" pos:column="17">throw <expr><op:operator pos:line="22" pos:column="23">new</op:operator> <call><name pos:line="22" pos:column="27">ArgumentNullException</name><argument_list pos:line="22" pos:column="48">(<argument><expr><lit:literal type="string" pos:line="22" pos:column="49">"proxyFactory"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="25" pos:column="13">ProxyFactory</name> <op:operator pos:line="25" pos:column="26">=</op:operator> <name pos:line="25" pos:column="28">proxyFactory</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// Gets or sets the proxy factory.</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="32" pos:column="9">/// The proxy factory.</comment>
+        <comment type="line" pos:line="33" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="34" pos:column="9">public</specifier> <name pos:line="34" pos:column="16">IProxyFactory</name></type> <name pos:line="34" pos:column="30">ProxyFactory</name> <block pos:line="34" pos:column="43">{ <function_decl><name pos:line="34" pos:column="45">get</name>;</function_decl> <function_decl><name pos:line="34" pos:column="50">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="36" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// Gets all methods for the proxy to override.</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// All methods.</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="42" pos:column="9">public</specifier> <specifier pos:line="42" pos:column="16">abstract</specifier> <name><name pos:line="42" pos:column="25">IEnumerable</name><argument_list pos:line="42" pos:column="36">&lt;<argument><name pos:line="42" pos:column="37">IAlternateMethod</name></argument>&gt;</argument_list></name></type> <name pos:line="42" pos:column="55">AllMethods</name> <block pos:line="42" pos:column="66">{ <function_decl><name pos:line="42" pos:column="68">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="44" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// Tries to create an alternate type.</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// &lt;param name="originalObj"&gt;The original object.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// &lt;param name="newObj"&gt;The new object.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="49" pos:column="9">/// &lt;returns&gt;A proxied implementation of the &lt;paramref name="originalObj"/&gt;.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="50" pos:column="9">public</specifier> <name pos:line="50" pos:column="16">bool</name></type> <name pos:line="50" pos:column="21">TryCreate</name><parameter_list pos:line="50" pos:column="30">(<param><decl><type><name pos:line="50" pos:column="31">T</name></type> <name pos:line="50" pos:column="33">originalObj</name></decl></param>, <param><decl><type><specifier pos:line="50" pos:column="46">out</specifier> <name pos:line="50" pos:column="50">T</name></type> <name pos:line="50" pos:column="52">newObj</name></decl></param>)</parameter_list>
+        <block pos:line="51" pos:column="9">{
+            <return pos:line="52" pos:column="13">return <expr><call><name pos:line="52" pos:column="20">TryCreate</name><argument_list pos:line="52" pos:column="29">(<argument><expr><name pos:line="52" pos:column="30">originalObj</name></expr></argument>, <argument><expr pos:line="52" pos:column="43">out <name pos:line="52" pos:column="47">newObj</name></expr></argument>, <argument><expr><name pos:line="52" pos:column="55">null</name></expr></argument>, <argument><expr><name pos:line="52" pos:column="61">null</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="55" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="56" pos:column="9">/// Tries to create an alternate type with mixins.</comment>
+        <comment type="line" pos:line="57" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="58" pos:column="9">/// &lt;param name="originalObj"&gt;The original object.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="59" pos:column="9">/// &lt;param name="newObj"&gt;The new object.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="60" pos:column="9">/// &lt;param name="mixins"&gt;The mixins.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="61" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="62" pos:column="9">/// A proxied implementation of the &lt;paramref name="originalObj" /&gt;.</comment>
+        <comment type="line" pos:line="63" pos:column="9">/// &lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="64" pos:column="9">public</specifier> <name pos:line="64" pos:column="16">bool</name></type> <name pos:line="64" pos:column="21">TryCreate</name><parameter_list pos:line="64" pos:column="30">(<param><decl><type><name pos:line="64" pos:column="31">T</name></type> <name pos:line="64" pos:column="33">originalObj</name></decl></param>, <param><decl><type><specifier pos:line="64" pos:column="46">out</specifier> <name pos:line="64" pos:column="50">T</name></type> <name pos:line="64" pos:column="52">newObj</name></decl></param>, <param><decl><type><name><name pos:line="64" pos:column="60">IEnumerable</name><argument_list pos:line="64" pos:column="71">&lt;<argument><name pos:line="64" pos:column="72">object</name></argument>&gt;</argument_list></name></type> <name pos:line="64" pos:column="80">mixins</name></decl></param>)</parameter_list>
+        <block pos:line="65" pos:column="9">{
+            <return pos:line="66" pos:column="13">return <expr><call><name pos:line="66" pos:column="20">TryCreate</name><argument_list pos:line="66" pos:column="29">(<argument><expr><name pos:line="66" pos:column="30">originalObj</name></expr></argument>, <argument><expr pos:line="66" pos:column="43">out <name pos:line="66" pos:column="47">newObj</name></expr></argument>, <argument><expr><name pos:line="66" pos:column="55">mixins</name></expr></argument>, <argument><expr><name pos:line="66" pos:column="63">null</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="69" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="70" pos:column="9">/// Tries to create an alternate type with mixins and constructor arguments.</comment>
+        <comment type="line" pos:line="71" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="72" pos:column="9">/// &lt;param name="originalObj"&gt;The original object.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="73" pos:column="9">/// &lt;param name="newObj"&gt;The new object.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="74" pos:column="9">/// &lt;param name="mixins"&gt;The mixins.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="75" pos:column="9">/// &lt;param name="constructorArguments"&gt;The constructor arguments.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="76" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="77" pos:column="9">/// A proxied implementation of the &lt;paramref name="originalObj" /&gt;.</comment>
+        <comment type="line" pos:line="78" pos:column="9">/// &lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="79" pos:column="9">public</specifier> <specifier pos:line="79" pos:column="16">virtual</specifier> <name pos:line="79" pos:column="24">bool</name></type> <name pos:line="79" pos:column="29">TryCreate</name><parameter_list pos:line="79" pos:column="38">(<param><decl><type><name pos:line="79" pos:column="39">T</name></type> <name pos:line="79" pos:column="41">originalObj</name></decl></param>, <param><decl><type><specifier pos:line="79" pos:column="54">out</specifier> <name pos:line="79" pos:column="58">T</name></type> <name pos:line="79" pos:column="60">newObj</name></decl></param>, <param><decl><type><name><name pos:line="79" pos:column="68">IEnumerable</name><argument_list pos:line="79" pos:column="79">&lt;<argument><name pos:line="79" pos:column="80">object</name></argument>&gt;</argument_list></name></type> <name pos:line="79" pos:column="88">mixins</name></decl></param>, <param><decl><type><name><name pos:line="79" pos:column="96">object</name><index pos:line="79" pos:column="102">[]</index></name></type> <name pos:line="79" pos:column="105">constructorArguments</name></decl></param>)</parameter_list>
+        <block pos:line="80" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="81" pos:column="13">var</name></type> <name pos:line="81" pos:column="17">allMethods</name> <init pos:line="81" pos:column="28">= <expr><name pos:line="81" pos:column="30">AllMethods</name></expr></init></decl>;</decl_stmt>
+
+            <if pos:line="83" pos:column="13">if <condition pos:line="83" pos:column="16">(<expr><name pos:line="83" pos:column="17">mixins</name> <op:operator pos:line="83" pos:column="24">==</op:operator> <name pos:line="83" pos:column="27">null</name></expr>)</condition><then pos:line="83" pos:column="32">
+            <block pos:line="84" pos:column="13">{
+                <expr_stmt><expr><name pos:line="85" pos:column="17">mixins</name> <op:operator pos:line="85" pos:column="24">=</op:operator> <call><name><name pos:line="85" pos:column="26">Enumerable</name><op:operator pos:line="85" pos:column="36">.</op:operator><name><name pos:line="85" pos:column="37">Empty</name><argument_list pos:line="85" pos:column="42">&lt;<argument><name pos:line="85" pos:column="43">object</name></argument>&gt;</argument_list></name></name><argument_list pos:line="85" pos:column="50">()</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+
+            <if pos:line="88" pos:column="13">if <condition pos:line="88" pos:column="16">(<expr><call><name><name pos:line="88" pos:column="17">ProxyFactory</name><op:operator pos:line="88" pos:column="29">.</op:operator><name><name pos:line="88" pos:column="30">IsWrapInterfaceEligible</name><argument_list pos:line="88" pos:column="53">&lt;<argument><name pos:line="88" pos:column="54">T</name></argument>&gt;</argument_list></name></name><argument_list pos:line="88" pos:column="56">(<argument><expr><call><name pos:line="88" pos:column="57">typeof</name><argument_list pos:line="88" pos:column="63">(<argument><expr><name pos:line="88" pos:column="64">T</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="88" pos:column="68">
+            <block pos:line="89" pos:column="13">{
+                <expr_stmt><expr><name pos:line="90" pos:column="17">newObj</name> <op:operator pos:line="90" pos:column="24">=</op:operator> <call><name><name pos:line="90" pos:column="26">ProxyFactory</name><op:operator pos:line="90" pos:column="38">.</op:operator><name pos:line="90" pos:column="39">WrapInterface</name></name><argument_list pos:line="90" pos:column="52">(<argument><expr><name pos:line="90" pos:column="53">originalObj</name></expr></argument>, <argument><expr><name pos:line="90" pos:column="66">allMethods</name></expr></argument>, <argument><expr><name pos:line="90" pos:column="78">mixins</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                <return pos:line="91" pos:column="17">return <expr><lit:literal type="boolean" pos:line="91" pos:column="24">true</lit:literal></expr>;</return>
+            }</block></then></if>
+
+            <if pos:line="94" pos:column="13">if <condition pos:line="94" pos:column="16">(<expr><call><name><name pos:line="94" pos:column="17">ProxyFactory</name><op:operator pos:line="94" pos:column="29">.</op:operator><name pos:line="94" pos:column="30">IsWrapClassEligible</name></name><argument_list pos:line="94" pos:column="49">(<argument><expr><call><name pos:line="94" pos:column="50">typeof</name><argument_list pos:line="94" pos:column="56">(<argument><expr><name pos:line="94" pos:column="57">T</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="94" pos:column="61">
+            <block pos:line="95" pos:column="13">{
+                <try pos:line="96" pos:column="17">try
+                <block pos:line="97" pos:column="17">{
+                    <expr_stmt><expr><name pos:line="98" pos:column="21">newObj</name> <op:operator pos:line="98" pos:column="28">=</op:operator> <call><name><name pos:line="98" pos:column="30">ProxyFactory</name><op:operator pos:line="98" pos:column="42">.</op:operator><name pos:line="98" pos:column="43">WrapClass</name></name><argument_list pos:line="98" pos:column="52">(<argument><expr><name pos:line="98" pos:column="53">originalObj</name></expr></argument>, <argument><expr><name pos:line="98" pos:column="66">allMethods</name></expr></argument>, <argument><expr><name pos:line="98" pos:column="78">mixins</name></expr></argument>, <argument><expr><name pos:line="98" pos:column="86">constructorArguments</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                    <return pos:line="99" pos:column="21">return <expr><lit:literal type="boolean" pos:line="99" pos:column="28">true</lit:literal></expr>;</return>
+                }</block>
+                <catch pos:line="101" pos:column="17">catch
+                <block pos:line="102" pos:column="17">{
+                    <expr_stmt><expr><name pos:line="103" pos:column="21">newObj</name> <op:operator pos:line="103" pos:column="28">=</op:operator> <name pos:line="103" pos:column="30">null</name></expr>;</expr_stmt>
+                    <return pos:line="104" pos:column="21">return <expr><lit:literal type="boolean" pos:line="104" pos:column="28">false</lit:literal></expr>;</return>
+                }</block></catch></try>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="108" pos:column="13">newObj</name> <op:operator pos:line="108" pos:column="20">=</op:operator> <name pos:line="108" pos:column="22">null</name></expr>;</expr_stmt>
+            <return pos:line="109" pos:column="13">return <expr><lit:literal type="boolean" pos:line="109" pos:column="20">false</lit:literal></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace>
+</unit>

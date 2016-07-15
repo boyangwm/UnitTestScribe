@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensibility\NuGetPackageAttribute.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Linq</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Reflection</name></name>;</using>
+
+<namespace pos:line="5" pos:column="1">namespace <name><name pos:line="5" pos:column="11">Glimpse</name><op:operator pos:line="5" pos:column="18">.</op:operator><name pos:line="5" pos:column="19">Core</name><op:operator pos:line="5" pos:column="23">.</op:operator><name pos:line="5" pos:column="24">Extensibility</name></name>
+<block pos:line="6" pos:column="1">{
+    <comment type="line" pos:line="7" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// An attribute used to identify the corresponding NuGet package and Id for an assembly.</comment>
+    <comment type="line" pos:line="9" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><attribute pos:line="10" pos:column="5">[<expr><call><name pos:line="10" pos:column="6">AttributeUsage</name><argument_list pos:line="10" pos:column="20">(<argument><expr><name><name pos:line="10" pos:column="21">AttributeTargets</name><op:operator pos:line="10" pos:column="37">.</op:operator><name pos:line="10" pos:column="38">Assembly</name></name></expr></argument>)</argument_list></call></expr>]</attribute>
+    <specifier pos:line="11" pos:column="5">public</specifier> class <name pos:line="11" pos:column="18">NuGetPackageAttribute</name> <super pos:line="11" pos:column="40">: <name pos:line="11" pos:column="42">Attribute</name></super>
+    <block pos:line="12" pos:column="5">{
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// Initializes a new instance of the &lt;see cref="NuGetPackageAttribute" /&gt; class.</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// &lt;/summary&gt;</comment>
+        <constructor><specifier pos:line="16" pos:column="9">public</specifier> <name pos:line="16" pos:column="16">NuGetPackageAttribute</name><parameter_list pos:line="16" pos:column="37">()</parameter_list> <member_list pos:line="16" pos:column="40">: <call><name pos:line="16" pos:column="42">this</name><argument_list pos:line="16" pos:column="46">(<argument><expr><name pos:line="16" pos:column="47">null</name></expr></argument>, <argument><expr><name pos:line="16" pos:column="53">null</name></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="17" pos:column="9">{
+        }</block></constructor>
+
+        <comment type="line" pos:line="20" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="21" pos:column="9">/// Initializes a new instance of the &lt;see cref="NuGetPackageAttribute" /&gt; class.</comment>
+        <comment type="line" pos:line="22" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// &lt;param name="id"&gt;The id.&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="24" pos:column="9">public</specifier> <name pos:line="24" pos:column="16">NuGetPackageAttribute</name><parameter_list pos:line="24" pos:column="37">(<param><decl><type><name pos:line="24" pos:column="38">string</name></type> <name pos:line="24" pos:column="45">id</name></decl></param>)</parameter_list> <member_list pos:line="24" pos:column="49">: <call><name pos:line="24" pos:column="51">this</name><argument_list pos:line="24" pos:column="55">(<argument><expr><name pos:line="24" pos:column="56">id</name></expr></argument>, <argument><expr><name pos:line="24" pos:column="60">null</name></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="25" pos:column="9">{
+        }</block></constructor>
+
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// Initializes a new instance of the &lt;see cref="NuGetPackageAttribute" /&gt; class.</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// &lt;param name="id"&gt;The id.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="32" pos:column="9">/// &lt;param name="version"&gt;The version.&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="33" pos:column="9">public</specifier> <name pos:line="33" pos:column="16">NuGetPackageAttribute</name><parameter_list pos:line="33" pos:column="37">(<param><decl><type><name pos:line="33" pos:column="38">string</name></type> <name pos:line="33" pos:column="45">id</name></decl></param>, <param><decl><type><name pos:line="33" pos:column="49">string</name></type> <name pos:line="33" pos:column="56">version</name></decl></param>)</parameter_list>
+        <block pos:line="34" pos:column="9">{
+            <expr_stmt><expr><name pos:line="35" pos:column="13">Id</name> <op:operator pos:line="35" pos:column="16">=</op:operator> <name pos:line="35" pos:column="18">id</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="36" pos:column="13">Version</name> <op:operator pos:line="36" pos:column="21">=</op:operator> <name pos:line="36" pos:column="23">version</name></expr>;</expr_stmt> 
+        }</block></constructor>
+
+        <decl_stmt><decl><type><specifier pos:line="39" pos:column="9">private</specifier> <name pos:line="39" pos:column="17">string</name></type> <name pos:line="39" pos:column="24">Id</name> <block pos:line="39" pos:column="27">{ <function_decl><name pos:line="39" pos:column="29">get</name>;</function_decl> <function_decl><name pos:line="39" pos:column="34">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="41" pos:column="9">private</specifier> <name pos:line="41" pos:column="17">string</name></type> <name pos:line="41" pos:column="24">Version</name> <block pos:line="41" pos:column="32">{ <function_decl><name pos:line="41" pos:column="34">get</name>;</function_decl> <function_decl><name pos:line="41" pos:column="39">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="43" pos:column="9">private</specifier> <name pos:line="43" pos:column="17">string</name></type> <name pos:line="43" pos:column="24">AssemblyName</name> <block pos:line="43" pos:column="37">{ <function_decl><name pos:line="43" pos:column="39">get</name>;</function_decl> <function_decl><name pos:line="43" pos:column="44">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="45" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// Setup Attribute with Assembly context</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// &lt;param name="assembly"&gt;&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="49" pos:column="9">public</specifier> <name pos:line="49" pos:column="16">void</name></type> <name pos:line="49" pos:column="21">Initialize</name><parameter_list pos:line="49" pos:column="31">(<param><decl><type><name pos:line="49" pos:column="32">Assembly</name></type> <name pos:line="49" pos:column="41">assembly</name></decl></param>)</parameter_list>
+        <block pos:line="50" pos:column="9">{
+            <if pos:line="51" pos:column="13">if <condition pos:line="51" pos:column="16">(<expr><call><name><name pos:line="51" pos:column="17">string</name><op:operator pos:line="51" pos:column="23">.</op:operator><name pos:line="51" pos:column="24">IsNullOrEmpty</name></name><argument_list pos:line="51" pos:column="37">(<argument><expr><name pos:line="51" pos:column="38">Version</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="51" pos:column="47">
+            <block pos:line="52" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="53" pos:column="17">var</name></type> <name pos:line="53" pos:column="21">infoVersion</name> <init pos:line="53" pos:column="33">= <expr><call><name><name pos:line="53" pos:column="35">assembly</name><op:operator pos:line="53" pos:column="43">.</op:operator><name pos:line="53" pos:column="44">GetCustomAttributes</name></name><argument_list pos:line="53" pos:column="63">(<argument><expr><call><name pos:line="53" pos:column="64">typeof</name><argument_list pos:line="53" pos:column="70">(<argument><expr><name pos:line="53" pos:column="71">AssemblyInformationalVersionAttribute</name></expr></argument>)</argument_list></call></expr></argument>, <argument><expr><lit:literal type="boolean" pos:line="53" pos:column="111">false</lit:literal></expr></argument>)</argument_list></call><op:operator pos:line="53" pos:column="117">.</op:operator><call><name><name pos:line="53" pos:column="118">Cast</name><argument_list pos:line="53" pos:column="122">&lt;<argument><name pos:line="53" pos:column="123">AssemblyInformationalVersionAttribute</name></argument>&gt;</argument_list></name><argument_list pos:line="53" pos:column="161">()</argument_list></call><op:operator pos:line="53" pos:column="163">.</op:operator><call><name pos:line="53" pos:column="164">SingleOrDefault</name><argument_list pos:line="53" pos:column="179">()</argument_list></call></expr></init></decl>;</decl_stmt>
+                <expr_stmt><expr><name pos:line="54" pos:column="17">Version</name> <op:operator pos:line="54" pos:column="25">=</op:operator> <name pos:line="54" pos:column="27">infoVersion</name> <op:operator pos:line="54" pos:column="39">!=</op:operator> <name pos:line="54" pos:column="42">null</name> <op:operator pos:line="54" pos:column="47">?</op:operator> <name><name pos:line="54" pos:column="49">infoVersion</name><op:operator pos:line="54" pos:column="60">.</op:operator><name pos:line="54" pos:column="61">InformationalVersion</name></name> <op:operator pos:line="54" pos:column="82">:</op:operator> <call><name><name pos:line="54" pos:column="84">assembly</name><op:operator pos:line="54" pos:column="92">.</op:operator><name pos:line="54" pos:column="93">GetName</name></name><argument_list pos:line="54" pos:column="100">()</argument_list></call><op:operator pos:line="54" pos:column="102">.</op:operator><call><name><name pos:line="54" pos:column="103">Version</name><op:operator pos:line="54" pos:column="110">.</op:operator><name pos:line="54" pos:column="111">ToString</name></name><argument_list pos:line="54" pos:column="119">()</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+
+            <if pos:line="57" pos:column="13">if <condition pos:line="57" pos:column="16">(<expr><call><name><name pos:line="57" pos:column="17">string</name><op:operator pos:line="57" pos:column="23">.</op:operator><name pos:line="57" pos:column="24">IsNullOrEmpty</name></name><argument_list pos:line="57" pos:column="37">(<argument><expr><name pos:line="57" pos:column="38">Id</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="57" pos:column="42">
+            <block pos:line="58" pos:column="13">{
+                <expr_stmt><expr><name pos:line="59" pos:column="17">Id</name> <op:operator pos:line="59" pos:column="20">=</op:operator> <call><name><name pos:line="59" pos:column="22">assembly</name><op:operator pos:line="59" pos:column="30">.</op:operator><name pos:line="59" pos:column="31">GetName</name></name><argument_list pos:line="59" pos:column="38">()</argument_list></call><op:operator pos:line="59" pos:column="40">.</op:operator><name pos:line="59" pos:column="41">Name</name></expr>;</expr_stmt>    
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="62" pos:column="13">AssemblyName</name> <op:operator pos:line="62" pos:column="26">=</op:operator> <call><name><name pos:line="62" pos:column="28">assembly</name><op:operator pos:line="62" pos:column="36">.</op:operator><name pos:line="62" pos:column="37">GetName</name></name><argument_list pos:line="62" pos:column="44">()</argument_list></call><op:operator pos:line="62" pos:column="46">.</op:operator><name pos:line="62" pos:column="47">FullName</name></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="65" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="66" pos:column="9">/// Gets the id.</comment>
+        <comment type="line" pos:line="67" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="68" pos:column="9">/// &lt;returns&gt;The NuGet package Id for the initialized assembly.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="69" pos:column="9">public</specifier> <name pos:line="69" pos:column="16">string</name></type> <name pos:line="69" pos:column="23">GetId</name><parameter_list pos:line="69" pos:column="28">()</parameter_list>
+        <block pos:line="70" pos:column="9">{
+            <return pos:line="71" pos:column="13">return <expr><name pos:line="71" pos:column="20">Id</name></expr>;</return> 
+        }</block></function>
+
+        <comment type="line" pos:line="74" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="75" pos:column="9">/// Gets the version.</comment>
+        <comment type="line" pos:line="76" pos:column="9">/// &lt;/summary&gt; </comment>
+        <comment type="line" pos:line="77" pos:column="9">/// &lt;returns&gt;The NuGet package version for the initialized assembly.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="78" pos:column="9">public</specifier> <name pos:line="78" pos:column="16">string</name></type> <name pos:line="78" pos:column="23">GetVersion</name><parameter_list pos:line="78" pos:column="33">()</parameter_list>
+        <block pos:line="79" pos:column="9">{ 
+            <return pos:line="80" pos:column="13">return <expr><name pos:line="80" pos:column="20">Version</name></expr>;</return>  
+        }</block></function>
+
+        <comment type="line" pos:line="83" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="84" pos:column="9">/// Returns the full name of the assembly that the attribute is in.</comment>
+        <comment type="line" pos:line="85" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="86" pos:column="9">/// &lt;returns&gt;Full name value&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="87" pos:column="9">public</specifier> <name pos:line="87" pos:column="16">string</name></type> <name pos:line="87" pos:column="23">GetAssemblyName</name><parameter_list pos:line="87" pos:column="38">()</parameter_list>
+        <block pos:line="88" pos:column="9">{
+            <return pos:line="89" pos:column="13">return <expr><name pos:line="89" pos:column="20">AssemblyName</name></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

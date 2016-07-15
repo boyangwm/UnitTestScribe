@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Mvc4.MusicStore.Sample\Controllers\StoreController.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">MvcMusicStore</name><op:operator pos:line="1" pos:column="20">.</op:operator><name pos:line="1" pos:column="21">Models</name></name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Linq</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Web</name><op:operator pos:line="3" pos:column="17">.</op:operator><name pos:line="3" pos:column="18">Mvc</name></name>;</using>
+
+<namespace pos:line="5" pos:column="1">namespace <name><name pos:line="5" pos:column="11">MvcMusicStore</name><op:operator pos:line="5" pos:column="24">.</op:operator><name pos:line="5" pos:column="25">Controllers</name></name>
+<block pos:line="6" pos:column="1">{
+    <class><specifier pos:line="7" pos:column="5">public</specifier> class <name pos:line="7" pos:column="18">StoreController</name> <super pos:line="7" pos:column="34">: <name pos:line="7" pos:column="36">Controller</name></super>
+    <block pos:line="8" pos:column="5">{
+        <decl_stmt><decl><type><name pos:line="9" pos:column="9">MusicStoreEntities</name></type> <name pos:line="9" pos:column="28">storeDB</name> <init pos:line="9" pos:column="36">= <expr><op:operator pos:line="9" pos:column="38">new</op:operator> <call><name pos:line="9" pos:column="42">MusicStoreEntities</name><argument_list pos:line="9" pos:column="60">()</argument_list></call></expr></init></decl>;</decl_stmt>
+        <comment type="line" pos:line="10" pos:column="9">//</comment>
+        <comment type="line" pos:line="11" pos:column="9">// GET: /Store/</comment>
+
+        <function><type><specifier pos:line="13" pos:column="9">public</specifier> <name pos:line="13" pos:column="16">ActionResult</name></type> <name pos:line="13" pos:column="29">Index</name><parameter_list pos:line="13" pos:column="34">()</parameter_list>
+        <block pos:line="14" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="15" pos:column="13">var</name></type> <name pos:line="15" pos:column="17">genres</name> <init pos:line="15" pos:column="24">= <expr><call><name><name pos:line="15" pos:column="26">storeDB</name><op:operator pos:line="15" pos:column="33">.</op:operator><name pos:line="15" pos:column="34">Genres</name><op:operator pos:line="15" pos:column="40">.</op:operator><name pos:line="15" pos:column="41">ToList</name></name><argument_list pos:line="15" pos:column="47">()</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <return pos:line="17" pos:column="13">return <expr><call><name pos:line="17" pos:column="20">View</name><argument_list pos:line="17" pos:column="24">(<argument><expr><name pos:line="17" pos:column="25">genres</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+
+        <comment type="line" pos:line="21" pos:column="9">//</comment>
+        <comment type="line" pos:line="22" pos:column="9">// GET: /Store/Browse?genre=Disco</comment>
+
+        <function><type><specifier pos:line="24" pos:column="9">public</specifier> <name pos:line="24" pos:column="16">ActionResult</name></type> <name pos:line="24" pos:column="29">Browse</name><parameter_list pos:line="24" pos:column="35">(<param><decl><type><name pos:line="24" pos:column="36">string</name></type> <name pos:line="24" pos:column="43">genre</name></decl></param>)</parameter_list>
+        <block pos:line="25" pos:column="9">{
+            <comment type="line" pos:line="26" pos:column="13">// Retrieve Genre genre and its Associated associated Albums albums from database</comment>
+            <decl_stmt><decl><type><name pos:line="27" pos:column="13">var</name></type> <name pos:line="27" pos:column="17">genreModel</name> <init pos:line="27" pos:column="28">= <expr><call><name><name pos:line="27" pos:column="30">storeDB</name><op:operator pos:line="27" pos:column="37">.</op:operator><name pos:line="27" pos:column="38">Genres</name><op:operator pos:line="27" pos:column="44">.</op:operator><name pos:line="27" pos:column="45">Include</name></name><argument_list pos:line="27" pos:column="52">(<argument><expr><lit:literal type="string" pos:line="27" pos:column="53">"Albums"</lit:literal></expr></argument>)</argument_list></call>
+                <op:operator pos:line="28" pos:column="17">.</op:operator><call><name pos:line="28" pos:column="18">Single</name><argument_list pos:line="28" pos:column="24">(<argument><expr><lambda><name pos:line="28" pos:column="25">g</name> <op:operator pos:line="28" pos:column="27">=&gt;</op:operator> <name><name pos:line="28" pos:column="30">g</name><op:operator pos:line="28" pos:column="31">.</op:operator><name pos:line="28" pos:column="32">Name</name></name> <op:operator pos:line="28" pos:column="37">==</op:operator> <name pos:line="28" pos:column="40">genre</name></lambda></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <return pos:line="30" pos:column="13">return <expr><call><name pos:line="30" pos:column="20">View</name><argument_list pos:line="30" pos:column="24">(<argument><expr><name pos:line="30" pos:column="25">genreModel</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="33" pos:column="9">public</specifier> <name pos:line="33" pos:column="16">ActionResult</name></type> <name pos:line="33" pos:column="29">Details</name><parameter_list pos:line="33" pos:column="36">(<param><decl><type><name pos:line="33" pos:column="37">int</name></type> <name pos:line="33" pos:column="41">id</name></decl></param>)</parameter_list> 
+        <block pos:line="34" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="35" pos:column="13">var</name></type> <name pos:line="35" pos:column="17">album</name> <init pos:line="35" pos:column="23">= <expr><call><name><name pos:line="35" pos:column="25">storeDB</name><op:operator pos:line="35" pos:column="32">.</op:operator><name pos:line="35" pos:column="33">Albums</name><op:operator pos:line="35" pos:column="39">.</op:operator><name pos:line="35" pos:column="40">Find</name></name><argument_list pos:line="35" pos:column="44">(<argument><expr><name pos:line="35" pos:column="45">id</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <return pos:line="37" pos:column="13">return <expr><call><name pos:line="37" pos:column="20">View</name><argument_list pos:line="37" pos:column="24">(<argument><expr><name pos:line="37" pos:column="25">album</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <function><type><attribute pos:line="40" pos:column="9">[<expr><name pos:line="40" pos:column="10">ChildActionOnly</name></expr>]</attribute>
+        <specifier pos:line="41" pos:column="9">public</specifier> <name pos:line="41" pos:column="16">ActionResult</name></type> <name pos:line="41" pos:column="29">GenreMenu</name><parameter_list pos:line="41" pos:column="38">()</parameter_list>
+        <block pos:line="42" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="43" pos:column="13">var</name></type> <name pos:line="43" pos:column="17">genres</name> <init pos:line="43" pos:column="24">= <expr><call><name><name pos:line="43" pos:column="26">storeDB</name><op:operator pos:line="43" pos:column="33">.</op:operator><name pos:line="43" pos:column="34">Genres</name>
+                <op:operator pos:line="44" pos:column="17">.</op:operator><name pos:line="44" pos:column="18">OrderByDescending</name></name><argument_list pos:line="44" pos:column="35">(
+                    <argument><expr><lambda><name pos:line="45" pos:column="21">g</name> <op:operator pos:line="45" pos:column="23">=&gt;</op:operator> <call><name><name pos:line="45" pos:column="26">g</name><op:operator pos:line="45" pos:column="27">.</op:operator><name pos:line="45" pos:column="28">Albums</name><op:operator pos:line="45" pos:column="34">.</op:operator><name pos:line="45" pos:column="35">Sum</name></name><argument_list pos:line="45" pos:column="38">(
+                    <argument><expr><lambda><name pos:line="46" pos:column="21">a</name> <op:operator pos:line="46" pos:column="23">=&gt;</op:operator> <call><name><name pos:line="46" pos:column="26">a</name><op:operator pos:line="46" pos:column="27">.</op:operator><name pos:line="46" pos:column="28">OrderDetails</name><op:operator pos:line="46" pos:column="40">.</op:operator><name pos:line="46" pos:column="41">Sum</name></name><argument_list pos:line="46" pos:column="44">(
+                    <argument><expr><lambda><name pos:line="47" pos:column="21">od</name> <op:operator pos:line="47" pos:column="24">=&gt;</op:operator> <name><name pos:line="47" pos:column="27">od</name><op:operator pos:line="47" pos:column="29">.</op:operator><name pos:line="47" pos:column="30">Quantity</name></name></lambda></expr></argument>)</argument_list></call></lambda></expr></argument>)</argument_list></call></lambda></expr></argument>)</argument_list></call>
+                <op:operator pos:line="48" pos:column="17">.</op:operator><call><name pos:line="48" pos:column="18">Take</name><argument_list pos:line="48" pos:column="22">(<argument><expr><lit:literal type="number" pos:line="48" pos:column="23">9</lit:literal></expr></argument>)</argument_list></call>
+                <op:operator pos:line="49" pos:column="17">.</op:operator><call><name pos:line="49" pos:column="18">ToList</name><argument_list pos:line="49" pos:column="24">()</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <return pos:line="51" pos:column="13">return <expr><call><name pos:line="51" pos:column="20">PartialView</name><argument_list pos:line="51" pos:column="31">(<argument><expr><name pos:line="51" pos:column="32">genres</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="54" pos:column="9">protected</specifier> <specifier pos:line="54" pos:column="19">override</specifier> <name pos:line="54" pos:column="28">void</name></type> <name pos:line="54" pos:column="33">Dispose</name><parameter_list pos:line="54" pos:column="40">(<param><decl><type><name pos:line="54" pos:column="41">bool</name></type> <name pos:line="54" pos:column="46">disposing</name></decl></param>)</parameter_list>
+        <block pos:line="55" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="56" pos:column="13">storeDB</name><op:operator pos:line="56" pos:column="20">.</op:operator><name pos:line="56" pos:column="21">Dispose</name></name><argument_list pos:line="56" pos:column="28">()</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="57" pos:column="13">base</name><op:operator pos:line="57" pos:column="17">.</op:operator><name pos:line="57" pos:column="18">Dispose</name></name><argument_list pos:line="57" pos:column="25">(<argument><expr><name pos:line="57" pos:column="26">disposing</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

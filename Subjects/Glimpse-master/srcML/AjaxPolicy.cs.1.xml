@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Policy\AjaxPolicy.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">Glimpse</name><op:operator pos:line="2" pos:column="14">.</op:operator><name pos:line="2" pos:column="15">Core</name><op:operator pos:line="2" pos:column="19">.</op:operator><name pos:line="2" pos:column="20">Extensibility</name></name>;</using>
+
+<namespace pos:line="4" pos:column="1">namespace <name><name pos:line="4" pos:column="11">Glimpse</name><op:operator pos:line="4" pos:column="18">.</op:operator><name pos:line="4" pos:column="19">Core</name><op:operator pos:line="4" pos:column="23">.</op:operator><name pos:line="4" pos:column="24">Policy</name></name>
+<block pos:line="5" pos:column="1">{
+    <comment type="line" pos:line="6" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// Policy which will limit Glimpse to only &lt;c&gt;ModifyResponseHeaders&lt;/c&gt; if a Http request is an Ajax request.</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="9" pos:column="5">public</specifier> class <name pos:line="9" pos:column="18">AjaxPolicy</name> <super pos:line="9" pos:column="29">: <name pos:line="9" pos:column="31">IRuntimePolicy</name></super>
+    <block pos:line="10" pos:column="5">{
+        <comment type="line" pos:line="11" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="12" pos:column="9">/// Gets the point in an Http request lifecycle that a policy should execute.</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// The moment to execute, &lt;see cref="AjaxPolicy"/&gt; uses &lt;c&gt;BeginRequest&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="16" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="17" pos:column="9">public</specifier> <name pos:line="17" pos:column="16">RuntimeEvent</name></type> <name pos:line="17" pos:column="29">ExecuteOn</name>
+        <block pos:line="18" pos:column="9">{
+            <function><name pos:line="19" pos:column="13">get</name> <block pos:line="19" pos:column="17">{ <return pos:line="19" pos:column="19">return <expr><name><name pos:line="19" pos:column="26">RuntimeEvent</name><op:operator pos:line="19" pos:column="38">.</op:operator><name pos:line="19" pos:column="39">BeginRequest</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="22" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// Executes the specified policy with the given context.</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;param name="policyContext"&gt;The policy context.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;c&gt;ModifyResponseHeaders&lt;/c&gt; if request is an Ajax request, otherwise &lt;c&gt;On&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;/returns&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;exception cref="System.ArgumentNullException"&gt;Exception thrown if &lt;paramref name="policyContext"/&gt; is &lt;c&gt;null&lt;/c&gt;.&lt;/exception&gt;</comment>
+        <function><type><specifier pos:line="30" pos:column="9">public</specifier> <name pos:line="30" pos:column="16">RuntimePolicy</name></type> <name pos:line="30" pos:column="30">Execute</name><parameter_list pos:line="30" pos:column="37">(<param><decl><type><name pos:line="30" pos:column="38">IRuntimePolicyContext</name></type> <name pos:line="30" pos:column="60">policyContext</name></decl></param>)</parameter_list>
+        <block pos:line="31" pos:column="9">{
+            <if pos:line="32" pos:column="13">if <condition pos:line="32" pos:column="16">(<expr><name pos:line="32" pos:column="17">policyContext</name> <op:operator pos:line="32" pos:column="31">==</op:operator> <name pos:line="32" pos:column="34">null</name></expr>)</condition><then pos:line="32" pos:column="39">
+            <block pos:line="33" pos:column="13">{
+                <throw pos:line="34" pos:column="17">throw <expr><op:operator pos:line="34" pos:column="23">new</op:operator> <call><name pos:line="34" pos:column="27">ArgumentNullException</name><argument_list pos:line="34" pos:column="48">(<argument><expr><lit:literal type="string" pos:line="34" pos:column="49">"policyContext"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <try pos:line="37" pos:column="13">try
+            <block pos:line="38" pos:column="13">{
+                <return pos:line="39" pos:column="17">return <expr><name><name pos:line="39" pos:column="24">policyContext</name><op:operator pos:line="39" pos:column="37">.</op:operator><name pos:line="39" pos:column="38">RequestMetadata</name><op:operator pos:line="39" pos:column="53">.</op:operator><name pos:line="39" pos:column="54">RequestIsAjax</name> <type:modifier pos:line="39" pos:column="68">?</type:modifier></name> <name><name pos:line="39" pos:column="70">RuntimePolicy</name><op:operator pos:line="39" pos:column="83">.</op:operator><name pos:line="39" pos:column="84">ModifyResponseHeaders</name></name> <op:operator pos:line="39" pos:column="106">:</op:operator> <name><name pos:line="39" pos:column="108">RuntimePolicy</name><op:operator pos:line="39" pos:column="121">.</op:operator><name pos:line="39" pos:column="122">On</name></name></expr>;</return>
+            }</block>
+            <catch pos:line="41" pos:column="13">catch <parameter_list pos:line="41" pos:column="19">(<param><decl><type><name pos:line="41" pos:column="20">Exception</name></type> <name pos:line="41" pos:column="30">exception</name></decl></param>)</parameter_list>
+            <block pos:line="42" pos:column="13">{
+                <expr_stmt><expr><call><name><name pos:line="43" pos:column="17">policyContext</name><op:operator pos:line="43" pos:column="30">.</op:operator><name pos:line="43" pos:column="31">Logger</name><op:operator pos:line="43" pos:column="37">.</op:operator><name pos:line="43" pos:column="38">Warn</name></name><argument_list pos:line="43" pos:column="42">(<argument><expr><name><name pos:line="43" pos:column="43">Resources</name><op:operator pos:line="43" pos:column="52">.</op:operator><name pos:line="43" pos:column="53">ExecutePolicyWarning</name></name></expr></argument>, <argument><expr><name pos:line="43" pos:column="75">exception</name></expr></argument>, <argument><expr><call><name pos:line="43" pos:column="86">GetType</name><argument_list pos:line="43" pos:column="93">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                <return pos:line="44" pos:column="17">return <expr><name><name pos:line="44" pos:column="24">RuntimePolicy</name><op:operator pos:line="44" pos:column="37">.</op:operator><name pos:line="44" pos:column="38">ModifyResponseHeaders</name></name></expr>;</return>
+            }</block></catch></try>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

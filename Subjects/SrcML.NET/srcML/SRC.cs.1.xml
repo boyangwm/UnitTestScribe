@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML\Namespaces\SRC.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2010 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Xml</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">System</name><op:operator pos:line="16" pos:column="13">.</op:operator><name pos:line="16" pos:column="14">Xml</name><op:operator pos:line="16" pos:column="17">.</op:operator><name pos:line="16" pos:column="18">Linq</name></name>;</using>
+<using pos:line="17" pos:column="1">using <name><name pos:line="17" pos:column="7">System</name><op:operator pos:line="17" pos:column="13">.</op:operator><name pos:line="17" pos:column="14">IO</name></name>;</using>
+
+<namespace pos:line="19" pos:column="1">namespace <name><name pos:line="19" pos:column="11">ABB</name><op:operator pos:line="19" pos:column="14">.</op:operator><name pos:line="19" pos:column="15">SrcML</name></name> <block pos:line="19" pos:column="21">{
+    <comment type="line" pos:line="20" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="21" pos:column="5">/// The SRC class contains all of the XNames for SrcML SRC tags.</comment>
+    <comment type="line" pos:line="22" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><attribute pos:line="23" pos:column="5">[<expr><call><name><name pos:line="23" pos:column="6">System</name><op:operator pos:line="23" pos:column="12">.</op:operator><name pos:line="23" pos:column="13">Diagnostics</name><op:operator pos:line="23" pos:column="24">.</op:operator><name pos:line="23" pos:column="25">CodeAnalysis</name><op:operator pos:line="23" pos:column="37">.</op:operator><name pos:line="23" pos:column="38">SuppressMessage</name></name><argument_list pos:line="23" pos:column="53">(<argument><expr><lit:literal type="string" pos:line="23" pos:column="54">"Microsoft.Naming"</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="23" pos:column="74">"CA1709:IdentifiersShouldBeCasedCorrectly"</lit:literal></expr></argument>, <argument><expr><name pos:line="23" pos:column="118">MessageId</name> <op:operator pos:line="23" pos:column="128">=</op:operator> <lit:literal type="string" pos:line="23" pos:column="130">"SRC"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+    <specifier pos:line="24" pos:column="5">public</specifier> <specifier pos:line="24" pos:column="12">static</specifier> class <name pos:line="24" pos:column="25">SRC</name> <block pos:line="24" pos:column="29">{
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// XNamespace for the SrcML SRC XML namespace</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="28" pos:column="9">public</specifier> <specifier pos:line="28" pos:column="16">static</specifier> <specifier pos:line="28" pos:column="23">readonly</specifier> <name pos:line="28" pos:column="32">XNamespace</name></type> <name pos:line="28" pos:column="43">NS</name> <init pos:line="28" pos:column="46">= <expr><lit:literal type="string" pos:line="28" pos:column="48">"http://www.sdml.info/srcML/src"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// XMLNS prefix for the SrcML SRC namespace</comment>
+        <comment type="line" pos:line="32" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="33" pos:column="9">public</specifier> <specifier pos:line="33" pos:column="16">const</specifier> <name pos:line="33" pos:column="22">string</name></type> <name pos:line="33" pos:column="29">Prefix</name> <init pos:line="33" pos:column="36">= <expr><lit:literal type="string" pos:line="33" pos:column="38">"src"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="35" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// markup for the unit tag.</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// </comment>
+        <comment type="line" pos:line="38" pos:column="9">/// The unit tag is the basic Container for SrcML. A Unit can represent either a single source file, or a collection of source files (in which case the XML document will have a single root unit, with many child units).</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// TODO document unit attributes.</comment>
+        <decl_stmt><decl><type><specifier pos:line="41" pos:column="9">public</specifier> <specifier pos:line="41" pos:column="16">static</specifier> <specifier pos:line="41" pos:column="23">readonly</specifier> <name pos:line="41" pos:column="32">XName</name></type> <name pos:line="41" pos:column="38">Unit</name> <init pos:line="41" pos:column="43">= <expr><name pos:line="41" pos:column="45">NS</name> <op:operator pos:line="41" pos:column="48">+</op:operator> <lit:literal type="string" pos:line="41" pos:column="50">"unit"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="43" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// XML Markup for the source code block:</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// </comment>
+        <comment type="line" pos:line="46" pos:column="9">/// &lt;code lang="XML"&gt;&amp;lt;block&amp;gt;{ ...statements... }&amp;lt;block&amp;gt;&lt;/code&gt;</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="48" pos:column="9">public</specifier> <specifier pos:line="48" pos:column="16">static</specifier> <specifier pos:line="48" pos:column="23">readonly</specifier> <name pos:line="48" pos:column="32">XName</name></type> <name pos:line="48" pos:column="38">Block</name> <init pos:line="48" pos:column="44">= <expr><name pos:line="48" pos:column="46">NS</name> <op:operator pos:line="48" pos:column="49">+</op:operator> <lit:literal type="string" pos:line="48" pos:column="51">"block"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="50" pos:column="9">// Comment</comment>
+        <comment type="line" pos:line="51" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="52" pos:column="9">/// markup for the comment tag</comment>
+        <comment type="line" pos:line="53" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// TODO document comment attributes.</comment>
+        <decl_stmt><decl><type><specifier pos:line="55" pos:column="9">public</specifier> <specifier pos:line="55" pos:column="16">static</specifier> <specifier pos:line="55" pos:column="23">readonly</specifier> <name pos:line="55" pos:column="32">XName</name></type> <name pos:line="55" pos:column="38">Comment</name> <init pos:line="55" pos:column="46">= <expr><name pos:line="55" pos:column="48">NS</name> <op:operator pos:line="55" pos:column="51">+</op:operator> <lit:literal type="string" pos:line="55" pos:column="53">"comment"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="57" pos:column="9">// access specifiers</comment>
+        <comment type="line" pos:line="58" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="59" pos:column="9">/// markup for the public access specifier.</comment>
+        <comment type="line" pos:line="60" pos:column="9">/// </comment>
+        <comment type="line" pos:line="61" pos:column="9">/// In C++, the following class:break</comment>
+        <comment type="line" pos:line="62" pos:column="9">/// </comment>
+        <comment type="line" pos:line="63" pos:column="9">/// &lt;code lang="C++"&gt;</comment>
+        <comment type="line" pos:line="64" pos:column="9">/// class A</comment>
+        <comment type="line" pos:line="65" pos:column="9">/// {</comment>
+        <comment type="line" pos:line="66" pos:column="9">/// public:</comment>
+        <comment type="line" pos:line="67" pos:column="9">///     int a;</comment>
+        <comment type="line" pos:line="68" pos:column="9">/// }</comment>
+        <comment type="line" pos:line="69" pos:column="9">/// &lt;/code&gt;</comment>
+        <comment type="line" pos:line="70" pos:column="9">/// </comment>
+        <comment type="line" pos:line="71" pos:column="9">/// will be marked up as</comment>
+        <comment type="line" pos:line="72" pos:column="9">/// </comment>
+        <comment type="line" pos:line="73" pos:column="9">/// &lt;code lang="XML"&gt;</comment>
+        <comment type="line" pos:line="74" pos:column="9">/// &amp;lt;class&amp;gt;class &amp;lt;name&amp;gt;A&amp;lt;/name&amp;gt;</comment>
+        <comment type="line" pos:line="75" pos:column="9">/// &amp;lt;block&amp;gt;{&amp;lt;private type="default"&amp;gt;</comment>
+        <comment type="line" pos:line="76" pos:column="9">/// &amp;lt;/private&amp;gt;&amp;lt;public&amp;gt;public:</comment>
+        <comment type="line" pos:line="77" pos:column="9">/// &amp;lt;function_decl&amp;gt;&amp;lt;type&amp;gt;&amp;lt;name&amp;gt;int&amp;lt;/name&amp;gt;&amp;lt;/type&amp;gt; &amp;lt;name&amp;gt;a&amp;lt;/name&amp;gt;&amp;lt;parameter_list&amp;gt;()&amp;lt;/parameter_list&amp;gt;;&amp;lt;/function_decl&amp;gt;</comment>
+        <comment type="line" pos:line="78" pos:column="9">/// &amp;lt;/public&amp;gt;}&amp;lt;/block&amp;gt;&amp;lt;decl/&amp;gt;&amp;lt;/class&amp;gt;</comment>
+        <comment type="line" pos:line="79" pos:column="9">/// &lt;/code&gt;</comment>
+        <comment type="line" pos:line="80" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="81" pos:column="9">public</specifier> <specifier pos:line="81" pos:column="16">static</specifier> <specifier pos:line="81" pos:column="23">readonly</specifier> <name pos:line="81" pos:column="32">XName</name></type> <name pos:line="81" pos:column="38">Public</name> <init pos:line="81" pos:column="45">= <expr><name pos:line="81" pos:column="47">NS</name> <op:operator pos:line="81" pos:column="50">+</op:operator> <lit:literal type="string" pos:line="81" pos:column="52">"public"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="83" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="84" pos:column="9">/// markup for the private tag</comment>
+        <comment type="line" pos:line="85" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="86" pos:column="9">/// TODO document private attributes.</comment>
+        <decl_stmt><decl><type><specifier pos:line="87" pos:column="9">public</specifier> <specifier pos:line="87" pos:column="16">static</specifier> <specifier pos:line="87" pos:column="23">readonly</specifier> <name pos:line="87" pos:column="32">XName</name></type> <name pos:line="87" pos:column="38">Private</name> <init pos:line="87" pos:column="46">= <expr><name pos:line="87" pos:column="48">NS</name> <op:operator pos:line="87" pos:column="51">+</op:operator> <lit:literal type="string" pos:line="87" pos:column="53">"private"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="89" pos:column="9">/// markup for the public access specifier.</comment>
+        <comment type="line" pos:line="90" pos:column="9">/// </comment>
+        <comment type="line" pos:line="91" pos:column="9">/// In C++, the following class:</comment>
+        <comment type="line" pos:line="92" pos:column="9">/// </comment>
+        <comment type="line" pos:line="93" pos:column="9">/// &lt;code lang="C++"&gt;</comment>
+        <comment type="line" pos:line="94" pos:column="9">/// class A</comment>
+        <comment type="line" pos:line="95" pos:column="9">/// {</comment>
+        <comment type="line" pos:line="96" pos:column="9">/// public:</comment>
+        <comment type="line" pos:line="97" pos:column="9">///     int a;</comment>
+        <comment type="line" pos:line="98" pos:column="9">/// }</comment>
+        <comment type="line" pos:line="99" pos:column="9">/// &lt;/code&gt;</comment>
+        <comment type="line" pos:line="100" pos:column="9">/// </comment>
+        <comment type="line" pos:line="101" pos:column="9">/// will be marked up as</comment>
+        <comment type="line" pos:line="102" pos:column="9">/// </comment>
+        <comment type="line" pos:line="103" pos:column="9">/// &lt;code lang="XML"&gt;</comment>
+        <comment type="line" pos:line="104" pos:column="9">///&amp;lt;class&amp;gt;class &amp;lt;name&amp;gt;A&amp;lt;/name&amp;gt;</comment>
+        <comment type="line" pos:line="105" pos:column="9">///&amp;lt;block&amp;gt;{&amp;lt;private type="default"&amp;gt;</comment>
+        <comment type="line" pos:line="106" pos:column="9">///&amp;lt;/private&amp;gt;&amp;lt;protected&amp;gt;protected:</comment>
+        <comment type="line" pos:line="107" pos:column="9">///	&amp;lt;function_decl&amp;gt;&amp;lt;type&amp;gt;&amp;lt;name&amp;gt;int&amp;lt;/name&amp;gt;&amp;lt;/type&amp;gt; &amp;lt;name&amp;gt;a&amp;lt;/name&amp;gt;&amp;lt;parameter_list&amp;gt;()&amp;lt;/parameter_list&amp;gt;;&amp;lt;/function_decl&amp;gt;</comment>
+        <comment type="line" pos:line="108" pos:column="9">///&amp;lt;/protected&amp;gt;}&amp;lt;/block&amp;gt;&amp;lt;decl/&amp;gt;&amp;lt;/class&amp;gt;</comment>
+        <comment type="line" pos:line="109" pos:column="9">/// &lt;/code&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="110" pos:column="9">public</specifier> <specifier pos:line="110" pos:column="16">static</specifier> <specifier pos:line="110" pos:column="23">readonly</specifier> <name pos:line="110" pos:column="32">XName</name></type> <name pos:line="110" pos:column="38">Protected</name> <init pos:line="110" pos:column="48">= <expr><name pos:line="110" pos:column="50">NS</name> <op:operator pos:line="110" pos:column="53">+</op:operator> <lit:literal type="string" pos:line="110" pos:column="55">"protected"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="112" pos:column="9">// expressions</comment>
+        <comment type="line" pos:line="113" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="114" pos:column="9">/// markup for the expr expression statement tag</comment>
+        <comment type="line" pos:line="115" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="116" pos:column="9">public</specifier> <specifier pos:line="116" pos:column="16">static</specifier> <specifier pos:line="116" pos:column="23">readonly</specifier> <name pos:line="116" pos:column="32">XName</name></type> <name pos:line="116" pos:column="38">ExpressionStatement</name> <init pos:line="116" pos:column="58">= <expr><name pos:line="116" pos:column="60">NS</name> <op:operator pos:line="116" pos:column="63">+</op:operator> <lit:literal type="string" pos:line="116" pos:column="65">"expr_stmt"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="118" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="119" pos:column="9">/// markup for the expr tag</comment>
+        <comment type="line" pos:line="120" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="121" pos:column="9">public</specifier> <specifier pos:line="121" pos:column="16">static</specifier> <specifier pos:line="121" pos:column="23">readonly</specifier> <name pos:line="121" pos:column="32">XName</name></type> <name pos:line="121" pos:column="38">Expression</name> <init pos:line="121" pos:column="49">= <expr><name pos:line="121" pos:column="51">NS</name> <op:operator pos:line="121" pos:column="54">+</op:operator> <lit:literal type="string" pos:line="121" pos:column="56">"expr"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="123" pos:column="9">// declaration</comment>
+        <comment type="line" pos:line="124" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="125" pos:column="9">/// markup for the decl tag</comment>
+        <comment type="line" pos:line="126" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="127" pos:column="9">public</specifier> <specifier pos:line="127" pos:column="16">static</specifier> <specifier pos:line="127" pos:column="23">readonly</specifier> <name pos:line="127" pos:column="32">XName</name></type> <name pos:line="127" pos:column="38">Declaration</name> <init pos:line="127" pos:column="50">= <expr><name pos:line="127" pos:column="52">NS</name> <op:operator pos:line="127" pos:column="55">+</op:operator> <lit:literal type="string" pos:line="127" pos:column="57">"decl"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="129" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="130" pos:column="9">/// markup for the type tag</comment>
+        <comment type="line" pos:line="131" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="132" pos:column="9">public</specifier> <specifier pos:line="132" pos:column="16">static</specifier> <specifier pos:line="132" pos:column="23">readonly</specifier> <name pos:line="132" pos:column="32">XName</name></type> <name pos:line="132" pos:column="38">Type</name> <init pos:line="132" pos:column="43">= <expr><name pos:line="132" pos:column="45">NS</name> <op:operator pos:line="132" pos:column="48">+</op:operator> <lit:literal type="string" pos:line="132" pos:column="50">"type"</lit:literal></expr></init></decl>;</decl_stmt>
+        <comment type="line" pos:line="133" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="134" pos:column="9">/// markup for the name tag</comment>
+        <comment type="line" pos:line="135" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="136" pos:column="9">public</specifier> <specifier pos:line="136" pos:column="16">static</specifier> <specifier pos:line="136" pos:column="23">readonly</specifier> <name pos:line="136" pos:column="32">XName</name></type> <name pos:line="136" pos:column="38">Name</name> <init pos:line="136" pos:column="43">= <expr><name pos:line="136" pos:column="45">NS</name> <op:operator pos:line="136" pos:column="48">+</op:operator> <lit:literal type="string" pos:line="136" pos:column="50">"name"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="138" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="139" pos:column="9">/// markup for the init tag</comment>
+        <comment type="line" pos:line="140" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="141" pos:column="9">public</specifier> <specifier pos:line="141" pos:column="16">static</specifier> <specifier pos:line="141" pos:column="23">readonly</specifier> <name pos:line="141" pos:column="32">XName</name></type> <name pos:line="141" pos:column="38">Init</name> <init pos:line="141" pos:column="43">= <expr><name pos:line="141" pos:column="45">NS</name> <op:operator pos:line="141" pos:column="48">+</op:operator> <lit:literal type="string" pos:line="141" pos:column="50">"init"</lit:literal></expr></init></decl>;</decl_stmt>
+        <comment type="line" pos:line="142" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="143" pos:column="9">/// markup for the index tag</comment>
+        <comment type="line" pos:line="144" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="145" pos:column="9">public</specifier> <specifier pos:line="145" pos:column="16">static</specifier> <specifier pos:line="145" pos:column="23">readonly</specifier> <name pos:line="145" pos:column="32">XName</name></type> <name pos:line="145" pos:column="38">Index</name> <init pos:line="145" pos:column="44">= <expr><name pos:line="145" pos:column="46">NS</name> <op:operator pos:line="145" pos:column="49">+</op:operator> <lit:literal type="string" pos:line="145" pos:column="51">"index"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="147" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="148" pos:column="9">/// markup for the java package tag</comment>
+        <comment type="line" pos:line="149" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="150" pos:column="9">public</specifier> <specifier pos:line="150" pos:column="16">static</specifier> <specifier pos:line="150" pos:column="23">readonly</specifier> <name pos:line="150" pos:column="32">XName</name></type> <name pos:line="150" pos:column="38">Package</name> <init pos:line="150" pos:column="46">= <expr><name pos:line="150" pos:column="48">NS</name> <op:operator pos:line="150" pos:column="51">+</op:operator> <lit:literal type="string" pos:line="150" pos:column="53">"package"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="152" pos:column="9">// declaration statement</comment>
+        <comment type="line" pos:line="153" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="154" pos:column="9">/// markup for the decl_stmt tag</comment>
+        <comment type="line" pos:line="155" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="156" pos:column="9">public</specifier> <specifier pos:line="156" pos:column="16">static</specifier> <specifier pos:line="156" pos:column="23">readonly</specifier> <name pos:line="156" pos:column="32">XName</name></type> <name pos:line="156" pos:column="38">DeclarationStatement</name> <init pos:line="156" pos:column="59">= <expr><name pos:line="156" pos:column="61">NS</name> <op:operator pos:line="156" pos:column="64">+</op:operator> <lit:literal type="string" pos:line="156" pos:column="66">"decl_stmt"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="158" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="159" pos:column="9">/// markup for the typedef tag</comment>
+        <comment type="line" pos:line="160" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="161" pos:column="9">public</specifier> <specifier pos:line="161" pos:column="16">static</specifier> <specifier pos:line="161" pos:column="23">readonly</specifier> <name pos:line="161" pos:column="32">XName</name></type> <name pos:line="161" pos:column="38">Typedef</name> <init pos:line="161" pos:column="46">= <expr><name pos:line="161" pos:column="48">NS</name> <op:operator pos:line="161" pos:column="51">+</op:operator> <lit:literal type="string" pos:line="161" pos:column="53">"typedef"</lit:literal></expr></init></decl>;</decl_stmt>        <comment type="line" pos:line="161" pos:column="71">// typedef</comment>
+
+        <comment type="line" pos:line="163" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="164" pos:column="9">/// markup for the label tag</comment>
+        <comment type="line" pos:line="165" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="166" pos:column="9">public</specifier> <specifier pos:line="166" pos:column="16">static</specifier> <specifier pos:line="166" pos:column="23">readonly</specifier> <name pos:line="166" pos:column="32">XName</name></type> <name pos:line="166" pos:column="38">Label</name> <init pos:line="166" pos:column="44">= <expr><name pos:line="166" pos:column="46">NS</name> <op:operator pos:line="166" pos:column="49">+</op:operator> <lit:literal type="string" pos:line="166" pos:column="51">"label"</lit:literal></expr></init></decl>;</decl_stmt>            <comment type="line" pos:line="166" pos:column="71">// label</comment>
+
+        <comment type="line" pos:line="168" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="169" pos:column="9">/// markup for the goto tag</comment>
+        <comment type="line" pos:line="170" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="171" pos:column="9">public</specifier> <specifier pos:line="171" pos:column="16">static</specifier> <specifier pos:line="171" pos:column="23">readonly</specifier> <name pos:line="171" pos:column="32">XName</name></type> <name pos:line="171" pos:column="38">Goto</name> <init pos:line="171" pos:column="43">= <expr><name pos:line="171" pos:column="45">NS</name> <op:operator pos:line="171" pos:column="48">+</op:operator> <lit:literal type="string" pos:line="171" pos:column="50">"goto"</lit:literal></expr></init></decl>;</decl_stmt>              <comment type="line" pos:line="171" pos:column="71">// goto</comment>
+
+        <comment type="line" pos:line="173" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="174" pos:column="9">/// markup for the asm tag</comment>
+        <comment type="line" pos:line="175" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="176" pos:column="9">public</specifier> <specifier pos:line="176" pos:column="16">static</specifier> <specifier pos:line="176" pos:column="23">readonly</specifier> <name pos:line="176" pos:column="32">XName</name></type> <name pos:line="176" pos:column="38">Asm</name> <init pos:line="176" pos:column="42">= <expr><name pos:line="176" pos:column="44">NS</name> <op:operator pos:line="176" pos:column="47">+</op:operator> <lit:literal type="string" pos:line="176" pos:column="49">"asm"</lit:literal></expr></init></decl>;</decl_stmt>                <comment type="line" pos:line="176" pos:column="71">// asm</comment>
+
+        <comment type="line" pos:line="178" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="179" pos:column="9">/// markup for the enum tag</comment>
+        <comment type="line" pos:line="180" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="181" pos:column="9">public</specifier> <specifier pos:line="181" pos:column="16">static</specifier> <specifier pos:line="181" pos:column="23">readonly</specifier> <name pos:line="181" pos:column="32">XName</name></type> <name pos:line="181" pos:column="38">Enum</name> <init pos:line="181" pos:column="43">= <expr><name pos:line="181" pos:column="45">NS</name> <op:operator pos:line="181" pos:column="48">+</op:operator> <lit:literal type="string" pos:line="181" pos:column="50">"enum"</lit:literal></expr></init></decl>;</decl_stmt>              <comment type="line" pos:line="181" pos:column="71">// enum</comment>
+
+
+        <comment type="line" pos:line="184" pos:column="9">// if statement</comment>
+        <comment type="line" pos:line="185" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="186" pos:column="9">/// markup for the if tag</comment>
+        <comment type="line" pos:line="187" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="188" pos:column="9">public</specifier> <specifier pos:line="188" pos:column="16">static</specifier> <specifier pos:line="188" pos:column="23">readonly</specifier> <name pos:line="188" pos:column="32">XName</name></type> <name pos:line="188" pos:column="38">If</name> <init pos:line="188" pos:column="41">= <expr><name pos:line="188" pos:column="43">NS</name> <op:operator pos:line="188" pos:column="46">+</op:operator> <lit:literal type="string" pos:line="188" pos:column="48">"if"</lit:literal></expr></init></decl>;</decl_stmt>
+        <comment type="line" pos:line="189" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="190" pos:column="9">/// markup for the then block tag</comment>
+        <comment type="line" pos:line="191" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="192" pos:column="9">public</specifier> <specifier pos:line="192" pos:column="16">static</specifier> <specifier pos:line="192" pos:column="23">readonly</specifier> <name pos:line="192" pos:column="32">XName</name></type> <name pos:line="192" pos:column="38">Then</name> <init pos:line="192" pos:column="43">= <expr><name pos:line="192" pos:column="45">NS</name> <op:operator pos:line="192" pos:column="48">+</op:operator> <lit:literal type="string" pos:line="192" pos:column="50">"then"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="194" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="195" pos:column="9">/// markup for the else tag</comment>
+        <comment type="line" pos:line="196" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="197" pos:column="9">public</specifier> <specifier pos:line="197" pos:column="16">static</specifier> <specifier pos:line="197" pos:column="23">readonly</specifier> <name pos:line="197" pos:column="32">XName</name></type> <name pos:line="197" pos:column="38">Else</name> <init pos:line="197" pos:column="43">= <expr><name pos:line="197" pos:column="45">NS</name> <op:operator pos:line="197" pos:column="48">+</op:operator> <lit:literal type="string" pos:line="197" pos:column="50">"else"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="199" pos:column="9">// while statement</comment>
+        <comment type="line" pos:line="200" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="201" pos:column="9">/// markup for the while tag</comment>
+        <comment type="line" pos:line="202" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="203" pos:column="9">public</specifier> <specifier pos:line="203" pos:column="16">static</specifier> <specifier pos:line="203" pos:column="23">readonly</specifier> <name pos:line="203" pos:column="32">XName</name></type> <name pos:line="203" pos:column="38">While</name> <init pos:line="203" pos:column="44">= <expr><name pos:line="203" pos:column="46">NS</name> <op:operator pos:line="203" pos:column="49">+</op:operator> <lit:literal type="string" pos:line="203" pos:column="51">"while"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="205" pos:column="9">// do..while statement</comment>
+        <comment type="line" pos:line="206" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="207" pos:column="9">/// markup for the do tag</comment>
+        <comment type="line" pos:line="208" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="209" pos:column="9">public</specifier> <specifier pos:line="209" pos:column="16">static</specifier> <specifier pos:line="209" pos:column="23">readonly</specifier> <name pos:line="209" pos:column="32">XName</name></type> <name pos:line="209" pos:column="38">Do</name> <init pos:line="209" pos:column="41">= <expr><name pos:line="209" pos:column="43">NS</name> <op:operator pos:line="209" pos:column="46">+</op:operator> <lit:literal type="string" pos:line="209" pos:column="48">"do"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="211" pos:column="9">// for statement</comment>
+        <comment type="line" pos:line="212" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="213" pos:column="9">/// markup for the for tag</comment>
+        <comment type="line" pos:line="214" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="215" pos:column="9">public</specifier> <specifier pos:line="215" pos:column="16">static</specifier> <specifier pos:line="215" pos:column="23">readonly</specifier> <name pos:line="215" pos:column="32">XName</name></type> <name pos:line="215" pos:column="38">For</name> <init pos:line="215" pos:column="42">= <expr><name pos:line="215" pos:column="44">NS</name> <op:operator pos:line="215" pos:column="47">+</op:operator> <lit:literal type="string" pos:line="215" pos:column="49">"for"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="217" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="218" pos:column="9">/// markup for the foreach tag</comment>
+        <comment type="line" pos:line="219" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="220" pos:column="9">public</specifier> <specifier pos:line="220" pos:column="16">static</specifier> <specifier pos:line="220" pos:column="23">readonly</specifier> <name pos:line="220" pos:column="32">XName</name></type> <name pos:line="220" pos:column="38">Foreach</name> <init pos:line="220" pos:column="46">= <expr><name pos:line="220" pos:column="48">NS</name> <op:operator pos:line="220" pos:column="51">+</op:operator> <lit:literal type="string" pos:line="220" pos:column="53">"foreach"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="222" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="223" pos:column="9">/// markup for the incr tag</comment>
+        <comment type="line" pos:line="224" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="225" pos:column="9">public</specifier> <specifier pos:line="225" pos:column="16">static</specifier> <specifier pos:line="225" pos:column="23">readonly</specifier> <name pos:line="225" pos:column="32">XName</name></type> <name pos:line="225" pos:column="38">Increment</name> <init pos:line="225" pos:column="48">= <expr><name pos:line="225" pos:column="50">NS</name> <op:operator pos:line="225" pos:column="53">+</op:operator> <lit:literal type="string" pos:line="225" pos:column="55">"incr"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="227" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="228" pos:column="9">/// markup for the condition tag</comment>
+        <comment type="line" pos:line="229" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="230" pos:column="9">public</specifier> <specifier pos:line="230" pos:column="16">static</specifier> <specifier pos:line="230" pos:column="23">readonly</specifier> <name pos:line="230" pos:column="32">XName</name></type> <name pos:line="230" pos:column="38">Condition</name> <init pos:line="230" pos:column="48">= <expr><name pos:line="230" pos:column="50">NS</name> <op:operator pos:line="230" pos:column="53">+</op:operator> <lit:literal type="string" pos:line="230" pos:column="55">"condition"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="232" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="233" pos:column="9">/// markup for the range tag (used in foreach loops)</comment>
+        <comment type="line" pos:line="234" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="235" pos:column="9">public</specifier> <specifier pos:line="235" pos:column="16">static</specifier> <specifier pos:line="235" pos:column="23">readonly</specifier> <name pos:line="235" pos:column="32">XName</name></type> <name pos:line="235" pos:column="38">Range</name> <init pos:line="235" pos:column="44">= <expr><name pos:line="235" pos:column="46">NS</name> <op:operator pos:line="235" pos:column="49">+</op:operator> <lit:literal type="string" pos:line="235" pos:column="51">"range"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="237" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="238" pos:column="9">/// markup for the switch tag</comment>
+        <comment type="line" pos:line="239" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="240" pos:column="9">public</specifier> <specifier pos:line="240" pos:column="16">static</specifier> <specifier pos:line="240" pos:column="23">readonly</specifier> <name pos:line="240" pos:column="32">XName</name></type> <name pos:line="240" pos:column="38">Switch</name> <init pos:line="240" pos:column="45">= <expr><name pos:line="240" pos:column="47">NS</name> <op:operator pos:line="240" pos:column="50">+</op:operator> <lit:literal type="string" pos:line="240" pos:column="52">"switch"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="242" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="243" pos:column="9">/// markup for the case tag</comment>
+        <comment type="line" pos:line="244" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="245" pos:column="9">public</specifier> <specifier pos:line="245" pos:column="16">static</specifier> <specifier pos:line="245" pos:column="23">readonly</specifier> <name pos:line="245" pos:column="32">XName</name></type> <name pos:line="245" pos:column="38">Case</name> <init pos:line="245" pos:column="43">= <expr><name pos:line="245" pos:column="45">NS</name> <op:operator pos:line="245" pos:column="48">+</op:operator> <lit:literal type="string" pos:line="245" pos:column="50">"case"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="247" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="248" pos:column="9">/// markup for the default tag</comment>
+        <comment type="line" pos:line="249" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="250" pos:column="9">public</specifier> <specifier pos:line="250" pos:column="16">static</specifier> <specifier pos:line="250" pos:column="23">readonly</specifier> <name pos:line="250" pos:column="32">XName</name></type> <name pos:line="250" pos:column="38">Default</name> <init pos:line="250" pos:column="46">= <expr><name pos:line="250" pos:column="48">NS</name> <op:operator pos:line="250" pos:column="51">+</op:operator> <lit:literal type="string" pos:line="250" pos:column="53">"default"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="252" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="253" pos:column="9">/// markup for the break tag</comment>
+        <comment type="line" pos:line="254" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="255" pos:column="9">public</specifier> <specifier pos:line="255" pos:column="16">static</specifier> <specifier pos:line="255" pos:column="23">readonly</specifier> <name pos:line="255" pos:column="32">XName</name></type> <name pos:line="255" pos:column="38">Break</name> <init pos:line="255" pos:column="44">= <expr><name pos:line="255" pos:column="46">NS</name> <op:operator pos:line="255" pos:column="49">+</op:operator> <lit:literal type="string" pos:line="255" pos:column="51">"break"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="257" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="258" pos:column="9">/// markup for the continue tag</comment>
+        <comment type="line" pos:line="259" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="260" pos:column="9">public</specifier> <specifier pos:line="260" pos:column="16">static</specifier> <specifier pos:line="260" pos:column="23">readonly</specifier> <name pos:line="260" pos:column="32">XName</name></type> <name pos:line="260" pos:column="38">Continue</name> <init pos:line="260" pos:column="47">= <expr><name pos:line="260" pos:column="49">NS</name> <op:operator pos:line="260" pos:column="52">+</op:operator> <lit:literal type="string" pos:line="260" pos:column="54">"continue"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="262" pos:column="9">// function call</comment>
+        <comment type="line" pos:line="263" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="264" pos:column="9">/// markup for the call tag</comment>
+        <comment type="line" pos:line="265" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="266" pos:column="9">public</specifier> <specifier pos:line="266" pos:column="16">static</specifier> <specifier pos:line="266" pos:column="23">readonly</specifier> <name pos:line="266" pos:column="32">XName</name></type> <name pos:line="266" pos:column="38">Call</name> <init pos:line="266" pos:column="43">= <expr><name pos:line="266" pos:column="45">NS</name> <op:operator pos:line="266" pos:column="48">+</op:operator> <lit:literal type="string" pos:line="266" pos:column="50">"call"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="268" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="269" pos:column="9">/// markup for the argument_list tag</comment>
+        <comment type="line" pos:line="270" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="271" pos:column="9">public</specifier> <specifier pos:line="271" pos:column="16">static</specifier> <specifier pos:line="271" pos:column="23">readonly</specifier> <name pos:line="271" pos:column="32">XName</name></type> <name pos:line="271" pos:column="38">ArgumentList</name> <init pos:line="271" pos:column="51">= <expr><name pos:line="271" pos:column="53">NS</name> <op:operator pos:line="271" pos:column="56">+</op:operator> <lit:literal type="string" pos:line="271" pos:column="58">"argument_list"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="273" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="274" pos:column="9">/// markup for the argument tag</comment>
+        <comment type="line" pos:line="275" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="276" pos:column="9">public</specifier> <specifier pos:line="276" pos:column="16">static</specifier> <specifier pos:line="276" pos:column="23">readonly</specifier> <name pos:line="276" pos:column="32">XName</name></type> <name pos:line="276" pos:column="38">Argument</name> <init pos:line="276" pos:column="47">= <expr><name pos:line="276" pos:column="49">NS</name> <op:operator pos:line="276" pos:column="52">+</op:operator> <lit:literal type="string" pos:line="276" pos:column="54">"argument"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="278" pos:column="9">// functions</comment>
+        <comment type="line" pos:line="279" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="280" pos:column="9">/// markup for the function_prototype tag</comment>
+        <comment type="line" pos:line="281" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="282" pos:column="9">public</specifier> <specifier pos:line="282" pos:column="16">static</specifier> <specifier pos:line="282" pos:column="23">readonly</specifier> <name pos:line="282" pos:column="32">XName</name></type> <name pos:line="282" pos:column="38">FunctionPrototype</name> <init pos:line="282" pos:column="56">= <expr><name pos:line="282" pos:column="58">NS</name> <op:operator pos:line="282" pos:column="61">+</op:operator> <lit:literal type="string" pos:line="282" pos:column="63">"function_prototype"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="284" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="285" pos:column="9">/// markup for the function tag</comment>
+        <comment type="line" pos:line="286" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="287" pos:column="9">public</specifier> <specifier pos:line="287" pos:column="16">static</specifier> <specifier pos:line="287" pos:column="23">readonly</specifier> <name pos:line="287" pos:column="32">XName</name></type> <name pos:line="287" pos:column="38">Function</name> <init pos:line="287" pos:column="47">= <expr><name pos:line="287" pos:column="49">NS</name> <op:operator pos:line="287" pos:column="52">+</op:operator> <lit:literal type="string" pos:line="287" pos:column="54">"function"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="289" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="290" pos:column="9">/// markup for the  function_decl tag</comment>
+        <comment type="line" pos:line="291" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="292" pos:column="9">public</specifier> <specifier pos:line="292" pos:column="16">static</specifier> <specifier pos:line="292" pos:column="23">readonly</specifier> <name pos:line="292" pos:column="32">XName</name></type> <name pos:line="292" pos:column="38">FunctionDeclaration</name> <init pos:line="292" pos:column="58">= <expr><name pos:line="292" pos:column="60">NS</name> <op:operator pos:line="292" pos:column="63">+</op:operator> <lit:literal type="string" pos:line="292" pos:column="65">"function_decl"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="294" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="295" pos:column="9">/// markup for the parameter_list tag</comment>
+        <comment type="line" pos:line="296" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="297" pos:column="9">public</specifier> <specifier pos:line="297" pos:column="16">static</specifier> <specifier pos:line="297" pos:column="23">readonly</specifier> <name pos:line="297" pos:column="32">XName</name></type> <name pos:line="297" pos:column="38">ParameterList</name> <init pos:line="297" pos:column="52">= <expr><name pos:line="297" pos:column="54">NS</name> <op:operator pos:line="297" pos:column="57">+</op:operator> <lit:literal type="string" pos:line="297" pos:column="59">"parameter_list"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="299" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="300" pos:column="9">/// markup for the param tag</comment>
+        <comment type="line" pos:line="301" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="302" pos:column="9">public</specifier> <specifier pos:line="302" pos:column="16">static</specifier> <specifier pos:line="302" pos:column="23">readonly</specifier> <name pos:line="302" pos:column="32">XName</name></type> <name pos:line="302" pos:column="38">Parameter</name> <init pos:line="302" pos:column="48">= <expr><name pos:line="302" pos:column="50">NS</name> <op:operator pos:line="302" pos:column="53">+</op:operator> <lit:literal type="string" pos:line="302" pos:column="55">"param"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="304" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="305" pos:column="9">/// markup for the specifier tag</comment>
+        <comment type="line" pos:line="306" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="307" pos:column="9">public</specifier> <specifier pos:line="307" pos:column="16">static</specifier> <specifier pos:line="307" pos:column="23">readonly</specifier> <name pos:line="307" pos:column="32">XName</name></type> <name pos:line="307" pos:column="38">Specifier</name> <init pos:line="307" pos:column="48">= <expr><name pos:line="307" pos:column="50">NS</name> <op:operator pos:line="307" pos:column="53">+</op:operator> <lit:literal type="string" pos:line="307" pos:column="55">"specifier"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="309" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="310" pos:column="9">/// markup for the return tag</comment>
+        <comment type="line" pos:line="311" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="312" pos:column="9">public</specifier> <specifier pos:line="312" pos:column="16">static</specifier> <specifier pos:line="312" pos:column="23">readonly</specifier> <name pos:line="312" pos:column="32">XName</name></type> <name pos:line="312" pos:column="38">Return</name> <init pos:line="312" pos:column="45">= <expr><name pos:line="312" pos:column="47">NS</name> <op:operator pos:line="312" pos:column="50">+</op:operator> <lit:literal type="string" pos:line="312" pos:column="52">"return"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="314" pos:column="9">// class elements</comment>
+        <comment type="line" pos:line="315" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="316" pos:column="9">/// markup for the class tag</comment>
+        <comment type="line" pos:line="317" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="318" pos:column="9">public</specifier> <specifier pos:line="318" pos:column="16">static</specifier> <specifier pos:line="318" pos:column="23">readonly</specifier> <name pos:line="318" pos:column="32">XName</name></type> <name pos:line="318" pos:column="38">Class</name> <init pos:line="318" pos:column="44">= <expr><name pos:line="318" pos:column="46">NS</name> <op:operator pos:line="318" pos:column="49">+</op:operator> <lit:literal type="string" pos:line="318" pos:column="51">"class"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="320" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="321" pos:column="9">/// markup for the class_decl tag</comment>
+        <comment type="line" pos:line="322" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="323" pos:column="9">public</specifier> <specifier pos:line="323" pos:column="16">static</specifier> <specifier pos:line="323" pos:column="23">readonly</specifier> <name pos:line="323" pos:column="32">XName</name></type> <name pos:line="323" pos:column="38">ClassDeclaration</name> <init pos:line="323" pos:column="55">= <expr><name pos:line="323" pos:column="57">NS</name> <op:operator pos:line="323" pos:column="60">+</op:operator> <lit:literal type="string" pos:line="323" pos:column="62">"class_decl"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="325" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="326" pos:column="9">/// markup for the struct tag</comment>
+        <comment type="line" pos:line="327" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="328" pos:column="9">public</specifier> <specifier pos:line="328" pos:column="16">static</specifier> <specifier pos:line="328" pos:column="23">readonly</specifier> <name pos:line="328" pos:column="32">XName</name></type> <name pos:line="328" pos:column="38">Struct</name> <init pos:line="328" pos:column="45">= <expr><name pos:line="328" pos:column="47">NS</name> <op:operator pos:line="328" pos:column="50">+</op:operator> <lit:literal type="string" pos:line="328" pos:column="52">"struct"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="330" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="331" pos:column="9">/// markup for the struct_decl tag</comment>
+        <comment type="line" pos:line="332" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="333" pos:column="9">public</specifier> <specifier pos:line="333" pos:column="16">static</specifier> <specifier pos:line="333" pos:column="23">readonly</specifier> <name pos:line="333" pos:column="32">XName</name></type> <name pos:line="333" pos:column="38">StructDeclaration</name> <init pos:line="333" pos:column="56">= <expr><name pos:line="333" pos:column="58">NS</name> <op:operator pos:line="333" pos:column="61">+</op:operator> <lit:literal type="string" pos:line="333" pos:column="63">"struct_decl"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="335" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="336" pos:column="9">/// markup for the union tag</comment>
+        <comment type="line" pos:line="337" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="338" pos:column="9">public</specifier> <specifier pos:line="338" pos:column="16">static</specifier> <specifier pos:line="338" pos:column="23">readonly</specifier> <name pos:line="338" pos:column="32">XName</name></type> <name pos:line="338" pos:column="38">Union</name> <init pos:line="338" pos:column="44">= <expr><name pos:line="338" pos:column="46">NS</name> <op:operator pos:line="338" pos:column="49">+</op:operator> <lit:literal type="string" pos:line="338" pos:column="51">"union"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="340" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="341" pos:column="9">/// markup for the union_decl tag</comment>
+        <comment type="line" pos:line="342" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="343" pos:column="9">public</specifier> <specifier pos:line="343" pos:column="16">static</specifier> <specifier pos:line="343" pos:column="23">readonly</specifier> <name pos:line="343" pos:column="32">XName</name></type> <name pos:line="343" pos:column="38">UnionDeclaration</name> <init pos:line="343" pos:column="55">= <expr><name pos:line="343" pos:column="57">NS</name> <op:operator pos:line="343" pos:column="60">+</op:operator> <lit:literal type="string" pos:line="343" pos:column="62">"union_decl"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="345" pos:column="9">// methods</comment>
+        <comment type="line" pos:line="346" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="347" pos:column="9">/// markup for the Constructor tag</comment>
+        <comment type="line" pos:line="348" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="349" pos:column="9">public</specifier> <specifier pos:line="349" pos:column="16">static</specifier> <specifier pos:line="349" pos:column="23">readonly</specifier> <name pos:line="349" pos:column="32">XName</name></type> <name pos:line="349" pos:column="38">Constructor</name> <init pos:line="349" pos:column="50">= <expr><name pos:line="349" pos:column="52">NS</name> <op:operator pos:line="349" pos:column="55">+</op:operator> <lit:literal type="string" pos:line="349" pos:column="57">"constructor"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="351" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="352" pos:column="9">/// markup for the member_list tag</comment>
+        <comment type="line" pos:line="353" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="354" pos:column="9">public</specifier> <specifier pos:line="354" pos:column="16">static</specifier> <specifier pos:line="354" pos:column="23">readonly</specifier> <name pos:line="354" pos:column="32">XName</name></type> <name pos:line="354" pos:column="38">MemberList</name> <init pos:line="354" pos:column="49">= <expr><name pos:line="354" pos:column="51">NS</name> <op:operator pos:line="354" pos:column="54">+</op:operator> <lit:literal type="string" pos:line="354" pos:column="56">"member_list"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="356" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="357" pos:column="9">/// markup for the constructor_decl tag</comment>
+        <comment type="line" pos:line="358" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="359" pos:column="9">public</specifier> <specifier pos:line="359" pos:column="16">static</specifier> <specifier pos:line="359" pos:column="23">readonly</specifier> <name pos:line="359" pos:column="32">XName</name></type> <name pos:line="359" pos:column="38">ConstructorDeclaration</name> <init pos:line="359" pos:column="61">= <expr><name pos:line="359" pos:column="63">NS</name> <op:operator pos:line="359" pos:column="66">+</op:operator> <lit:literal type="string" pos:line="359" pos:column="68">"constructor_decl"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="361" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="362" pos:column="9">/// markup for the destructor tag</comment>
+        <comment type="line" pos:line="363" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="364" pos:column="9">public</specifier> <specifier pos:line="364" pos:column="16">static</specifier> <specifier pos:line="364" pos:column="23">readonly</specifier> <name pos:line="364" pos:column="32">XName</name></type> <name pos:line="364" pos:column="38">Destructor</name> <init pos:line="364" pos:column="49">= <expr><name pos:line="364" pos:column="51">NS</name> <op:operator pos:line="364" pos:column="54">+</op:operator> <lit:literal type="string" pos:line="364" pos:column="56">"destructor"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="366" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="367" pos:column="9">/// markup for the destructor_decl tag</comment>
+        <comment type="line" pos:line="368" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="369" pos:column="9">public</specifier> <specifier pos:line="369" pos:column="16">static</specifier> <specifier pos:line="369" pos:column="23">readonly</specifier> <name pos:line="369" pos:column="32">XName</name></type> <name pos:line="369" pos:column="38">DestructorDeclaration</name> <init pos:line="369" pos:column="60">= <expr><name pos:line="369" pos:column="62">NS</name> <op:operator pos:line="369" pos:column="65">+</op:operator> <lit:literal type="string" pos:line="369" pos:column="67">"destructor_decl"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="371" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="372" pos:column="9">/// markup for the super tag</comment>
+        <comment type="line" pos:line="373" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="374" pos:column="9">public</specifier> <specifier pos:line="374" pos:column="16">static</specifier> <specifier pos:line="374" pos:column="23">readonly</specifier> <name pos:line="374" pos:column="32">XName</name></type> <name pos:line="374" pos:column="38">Super</name> <init pos:line="374" pos:column="44">= <expr><name pos:line="374" pos:column="46">NS</name> <op:operator pos:line="374" pos:column="49">+</op:operator> <lit:literal type="string" pos:line="374" pos:column="51">"super"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="376" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="377" pos:column="9">/// markup for the extends java tag</comment>
+        <comment type="line" pos:line="378" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="379" pos:column="9">public</specifier> <specifier pos:line="379" pos:column="16">static</specifier> <specifier pos:line="379" pos:column="23">readonly</specifier> <name pos:line="379" pos:column="32">XName</name></type> <name pos:line="379" pos:column="38">Extends</name> <init pos:line="379" pos:column="46">= <expr><name pos:line="379" pos:column="48">NS</name> <op:operator pos:line="379" pos:column="51">+</op:operator> <lit:literal type="string" pos:line="379" pos:column="53">"extends"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="381" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="382" pos:column="9">/// markup for the implements java tag</comment>
+        <comment type="line" pos:line="383" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="384" pos:column="9">public</specifier> <specifier pos:line="384" pos:column="16">static</specifier> <specifier pos:line="384" pos:column="23">readonly</specifier> <name pos:line="384" pos:column="32">XName</name></type> <name pos:line="384" pos:column="38">Implements</name> <init pos:line="384" pos:column="49">= <expr><name pos:line="384" pos:column="51">NS</name> <op:operator pos:line="384" pos:column="54">+</op:operator> <lit:literal type="string" pos:line="384" pos:column="56">"implements"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="386" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="387" pos:column="9">/// markup for the import java tag</comment>
+        <comment type="line" pos:line="388" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="389" pos:column="9">public</specifier> <specifier pos:line="389" pos:column="16">static</specifier> <specifier pos:line="389" pos:column="23">readonly</specifier> <name pos:line="389" pos:column="32">XName</name></type> <name pos:line="389" pos:column="38">Import</name> <init pos:line="389" pos:column="45">= <expr><name pos:line="389" pos:column="47">NS</name> <op:operator pos:line="389" pos:column="50">+</op:operator> <lit:literal type="string" pos:line="389" pos:column="52">"import"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="391" pos:column="9">// exception handling elements</comment>
+        <comment type="line" pos:line="392" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="393" pos:column="9">/// markup for the try tag</comment>
+        <comment type="line" pos:line="394" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="395" pos:column="9">public</specifier> <specifier pos:line="395" pos:column="16">static</specifier> <specifier pos:line="395" pos:column="23">readonly</specifier> <name pos:line="395" pos:column="32">XName</name></type> <name pos:line="395" pos:column="38">Try</name> <init pos:line="395" pos:column="42">= <expr><name pos:line="395" pos:column="44">NS</name> <op:operator pos:line="395" pos:column="47">+</op:operator> <lit:literal type="string" pos:line="395" pos:column="49">"try"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="397" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="398" pos:column="9">/// markup for the throw tag</comment>
+        <comment type="line" pos:line="399" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="400" pos:column="9">public</specifier> <specifier pos:line="400" pos:column="16">static</specifier> <specifier pos:line="400" pos:column="23">readonly</specifier> <name pos:line="400" pos:column="32">XName</name></type> <name pos:line="400" pos:column="38">Throw</name> <init pos:line="400" pos:column="44">= <expr><name pos:line="400" pos:column="46">NS</name> <op:operator pos:line="400" pos:column="49">+</op:operator> <lit:literal type="string" pos:line="400" pos:column="51">"throw"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="402" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="403" pos:column="9">/// markup for the catch tag</comment>
+        <comment type="line" pos:line="404" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="405" pos:column="9">public</specifier> <specifier pos:line="405" pos:column="16">static</specifier> <specifier pos:line="405" pos:column="23">readonly</specifier> <name pos:line="405" pos:column="32">XName</name></type> <name pos:line="405" pos:column="38">Catch</name> <init pos:line="405" pos:column="44">= <expr><name pos:line="405" pos:column="46">NS</name> <op:operator pos:line="405" pos:column="49">+</op:operator> <lit:literal type="string" pos:line="405" pos:column="51">"catch"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="407" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="408" pos:column="9">/// markup for the finally tag</comment>
+        <comment type="line" pos:line="409" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="410" pos:column="9">public</specifier> <specifier pos:line="410" pos:column="16">static</specifier> <specifier pos:line="410" pos:column="23">readonly</specifier> <name pos:line="410" pos:column="32">XName</name></type> <name pos:line="410" pos:column="38">Finally</name> <init pos:line="410" pos:column="46">= <expr><name pos:line="410" pos:column="48">NS</name> <op:operator pos:line="410" pos:column="51">+</op:operator> <lit:literal type="string" pos:line="410" pos:column="53">"finally"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="412" pos:column="9">// template elements</comment>
+        <comment type="line" pos:line="413" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="414" pos:column="9">/// markup for the template tag</comment>
+        <comment type="line" pos:line="415" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="416" pos:column="9">public</specifier> <specifier pos:line="416" pos:column="16">static</specifier> <specifier pos:line="416" pos:column="23">readonly</specifier> <name pos:line="416" pos:column="32">XName</name></type> <name pos:line="416" pos:column="38">Template</name> <init pos:line="416" pos:column="47">= <expr><name pos:line="416" pos:column="49">NS</name> <op:operator pos:line="416" pos:column="52">+</op:operator> <lit:literal type="string" pos:line="416" pos:column="54">"template"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="418" pos:column="9">// namespace elements</comment>
+        <comment type="line" pos:line="419" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="420" pos:column="9">/// markup for the namespace tag</comment>
+        <comment type="line" pos:line="421" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="422" pos:column="9">public</specifier> <specifier pos:line="422" pos:column="16">static</specifier> <specifier pos:line="422" pos:column="23">readonly</specifier> <name pos:line="422" pos:column="32">XName</name></type> <name pos:line="422" pos:column="38">Namespace</name> <init pos:line="422" pos:column="48">= <expr><name pos:line="422" pos:column="50">NS</name> <op:operator pos:line="422" pos:column="53">+</op:operator> <lit:literal type="string" pos:line="422" pos:column="55">"namespace"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="424" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="425" pos:column="9">/// markup for the using tag</comment>
+        <comment type="line" pos:line="426" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="427" pos:column="9">public</specifier> <specifier pos:line="427" pos:column="16">static</specifier> <specifier pos:line="427" pos:column="23">readonly</specifier> <name pos:line="427" pos:column="32">XName</name></type> <name pos:line="427" pos:column="38">Using</name> <init pos:line="427" pos:column="44">= <expr><name pos:line="427" pos:column="46">NS</name> <op:operator pos:line="427" pos:column="49">+</op:operator> <lit:literal type="string" pos:line="427" pos:column="51">"using"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="429" pos:column="9">/// &lt;summary&gt; markup for the extern tag &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="430" pos:column="9">public</specifier> <specifier pos:line="430" pos:column="16">static</specifier> <specifier pos:line="430" pos:column="23">readonly</specifier> <name pos:line="430" pos:column="32">XName</name></type> <name pos:line="430" pos:column="38">Extern</name> <init pos:line="430" pos:column="45">= <expr><name pos:line="430" pos:column="47">NS</name> <op:operator pos:line="430" pos:column="50">+</op:operator> <lit:literal type="string" pos:line="430" pos:column="52">"extern"</lit:literal></expr></init></decl>;</decl_stmt> <comment type="line" pos:line="430" pos:column="62">// extern</comment>
+
+        <comment type="line" pos:line="432" pos:column="9">/// &lt;summary&gt; markup for the macro tag &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="433" pos:column="9">public</specifier> <specifier pos:line="433" pos:column="16">static</specifier> <specifier pos:line="433" pos:column="23">readonly</specifier> <name pos:line="433" pos:column="32">XName</name></type> <name pos:line="433" pos:column="38">Macro</name> <init pos:line="433" pos:column="44">= <expr><name pos:line="433" pos:column="46">NS</name> <op:operator pos:line="433" pos:column="49">+</op:operator> <lit:literal type="string" pos:line="433" pos:column="51">"macro"</lit:literal></expr></init></decl>;</decl_stmt> <comment type="line" pos:line="433" pos:column="60">// macro</comment>
+
+        <comment type="line" pos:line="435" pos:column="9">/// &lt;summary&gt; markup for the empty_stmt tag &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="436" pos:column="9">public</specifier> <specifier pos:line="436" pos:column="16">static</specifier> <specifier pos:line="436" pos:column="23">readonly</specifier> <name pos:line="436" pos:column="32">XName</name></type> <name pos:line="436" pos:column="38">EmptyStatement</name> <init pos:line="436" pos:column="53">= <expr><name pos:line="436" pos:column="55">NS</name> <op:operator pos:line="436" pos:column="58">+</op:operator> <lit:literal type="string" pos:line="436" pos:column="60">"empty_stmt"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="438" pos:column="9">/// &lt;summary&gt; markup for the sizeof tag &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="439" pos:column="9">public</specifier> <specifier pos:line="439" pos:column="16">static</specifier> <specifier pos:line="439" pos:column="23">readonly</specifier> <name pos:line="439" pos:column="32">XName</name></type> <name pos:line="439" pos:column="38">SizeOf</name> <init pos:line="439" pos:column="45">= <expr><name pos:line="439" pos:column="47">NS</name> <op:operator pos:line="439" pos:column="50">+</op:operator> <lit:literal type="string" pos:line="439" pos:column="52">"sizeof"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="441" pos:column="9">/// &lt;summary&gt; markup for the escape tag &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="442" pos:column="9">public</specifier> <specifier pos:line="442" pos:column="16">static</specifier> <specifier pos:line="442" pos:column="23">readonly</specifier> <name pos:line="442" pos:column="32">XName</name></type> <name pos:line="442" pos:column="38">Escape</name> <init pos:line="442" pos:column="45">= <expr><name pos:line="442" pos:column="47">NS</name> <op:operator pos:line="442" pos:column="50">+</op:operator> <lit:literal type="string" pos:line="442" pos:column="52">"escape"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="444" pos:column="9">/// &lt;summary&gt; markup for the synchronized tag in Java &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="445" pos:column="9">public</specifier> <specifier pos:line="445" pos:column="16">static</specifier> <specifier pos:line="445" pos:column="23">readonly</specifier> <name pos:line="445" pos:column="32">XName</name></type> <name pos:line="445" pos:column="38">Synchronized</name> <init pos:line="445" pos:column="51">= <expr><name pos:line="445" pos:column="53">NS</name> <op:operator pos:line="445" pos:column="56">+</op:operator> <lit:literal type="string" pos:line="445" pos:column="58">"synchronized"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="447" pos:column="9">/// &lt;summary&gt; markup for the attribute tag &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="448" pos:column="9">public</specifier> <specifier pos:line="448" pos:column="16">static</specifier> <specifier pos:line="448" pos:column="23">readonly</specifier> <name pos:line="448" pos:column="32">XName</name></type> <name pos:line="448" pos:column="38">Attribute</name> <init pos:line="448" pos:column="48">= <expr><name pos:line="448" pos:column="50">NS</name> <op:operator pos:line="448" pos:column="53">+</op:operator> <lit:literal type="string" pos:line="448" pos:column="55">"attribute"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="450" pos:column="9">/// &lt;summary&gt; markup for the unchecked tag in C# &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="451" pos:column="9">public</specifier> <specifier pos:line="451" pos:column="16">static</specifier> <specifier pos:line="451" pos:column="23">readonly</specifier> <name pos:line="451" pos:column="32">XName</name></type> <name pos:line="451" pos:column="38">Unchecked</name> <init pos:line="451" pos:column="48">= <expr><name pos:line="451" pos:column="50">NS</name> <op:operator pos:line="451" pos:column="53">+</op:operator> <lit:literal type="string" pos:line="451" pos:column="55">"unchecked"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="453" pos:column="9">/// &lt;summary&gt; markup for the lock tag in C# &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="454" pos:column="9">public</specifier> <specifier pos:line="454" pos:column="16">static</specifier> <specifier pos:line="454" pos:column="23">readonly</specifier> <name pos:line="454" pos:column="32">XName</name></type> <name pos:line="454" pos:column="38">Lock</name> <init pos:line="454" pos:column="43">= <expr><name pos:line="454" pos:column="45">NS</name> <op:operator pos:line="454" pos:column="48">+</op:operator> <lit:literal type="string" pos:line="454" pos:column="50">"lock"</lit:literal></expr></init></decl>;</decl_stmt>
+    }</block></class>
+}</block></namespace>
+</unit>

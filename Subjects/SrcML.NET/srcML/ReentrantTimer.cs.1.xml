@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML\Utilities\ReentrantTimer.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2013 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - Initial implementation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Threading</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Threading</name><op:operator pos:line="14" pos:column="23">.</op:operator><name pos:line="14" pos:column="24">Tasks</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Timers</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name pos:line="16" pos:column="7">Timer</name> <init pos:line="16" pos:column="13">= <expr><name><name pos:line="16" pos:column="15">System</name><op:operator pos:line="16" pos:column="21">.</op:operator><name pos:line="16" pos:column="22">Timers</name><op:operator pos:line="16" pos:column="28">.</op:operator><name pos:line="16" pos:column="29">Timer</name></name></expr></init>;</using>
+
+<namespace pos:line="18" pos:column="1">namespace <name><name pos:line="18" pos:column="11">ABB</name><op:operator pos:line="18" pos:column="14">.</op:operator><name pos:line="18" pos:column="15">SrcML</name><op:operator pos:line="18" pos:column="20">.</op:operator><name pos:line="18" pos:column="21">Utilities</name></name> <block pos:line="18" pos:column="31">{
+
+    <comment type="line" pos:line="20" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="21" pos:column="5">/// &lt;para&gt;The reentrant timer provides a reentrant aware timer similar to the example provided in &lt;see cref="Timer.Stop()"/&gt;.</comment>
+    <comment type="line" pos:line="22" pos:column="5">/// It provides an interface very similar to Timer. It is not, however, a direct sub-class.&lt;/para&gt;</comment>
+    <comment type="line" pos:line="23" pos:column="5">/// &lt;para&gt;It operates in a similar fashion to the Timer class. If you subscribe to the &lt;see cref="Elapsed"/&gt; method, your event handler will</comment>
+    <comment type="line" pos:line="24" pos:column="5">/// execute every &lt;see cref="Interval"/&gt;. It differs from &lt;see cref="Timer"/&gt; in that the event handlers will only execute if they are not already</comment>
+    <comment type="line" pos:line="25" pos:column="5">/// executing.&lt;/para&gt;</comment>
+    <comment type="line" pos:line="26" pos:column="5">/// &lt;para&gt;ReentrantTimer provides an additional method: &lt;see cref="ExecuteWhenIdle(Action)"/&gt;. This method will wait for the timer to become idle</comment>
+    <comment type="line" pos:line="27" pos:column="5">/// before trying to execute the specified action.&lt;/para&gt;</comment>
+    <comment type="line" pos:line="28" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="29" pos:column="5">public</specifier> class <name pos:line="29" pos:column="18">ReentrantTimer</name> <super pos:line="29" pos:column="33">: <name pos:line="29" pos:column="35">IDisposable</name></super> <block pos:line="29" pos:column="47">{
+        <decl_stmt><decl><type><specifier pos:line="30" pos:column="9">private</specifier> <specifier pos:line="30" pos:column="17">const</specifier> <name pos:line="30" pos:column="23">int</name></type> <name pos:line="30" pos:column="27">RUNNING</name> <init pos:line="30" pos:column="35">= <expr><lit:literal type="number" pos:line="30" pos:column="37">1</lit:literal></expr></init></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="31" pos:column="9">private</specifier> <specifier pos:line="31" pos:column="17">const</specifier> <name pos:line="31" pos:column="23">int</name></type> <name pos:line="31" pos:column="27">IDLE</name> <init pos:line="31" pos:column="32">= <expr><lit:literal type="number" pos:line="31" pos:column="34">0</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="33" pos:column="9">private</specifier> <name pos:line="33" pos:column="17">int</name></type> <name pos:line="33" pos:column="21">syncPoint</name></decl>;</decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="35" pos:column="9">private</specifier> <name pos:line="35" pos:column="17">Timer</name></type> <name pos:line="35" pos:column="23">_timer</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="36" pos:column="9">private</specifier> <specifier pos:line="36" pos:column="17">readonly</specifier> <name pos:line="36" pos:column="26">Action</name></type> <name pos:line="36" pos:column="33">_timerAction</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="37" pos:column="9">private</specifier> <name pos:line="37" pos:column="17">TaskScheduler</name></type> <name pos:line="37" pos:column="31">_scheduler</name></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// A client can subscribe to this event in order to execute in &lt;see cref="Interval"/&gt;. If &lt;see cref="AutoReset"/&gt; is set to false, then this event</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// will be raised only once. Elapsed will not execute if either of the following are currently executing:</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;list type="ordered"&gt;</comment>
+        <comment type="line" pos:line="43" pos:column="9">///     &lt;item&gt;A previously raised elapsed event&lt;/item&gt;</comment>
+        <comment type="line" pos:line="44" pos:column="9">///     &lt;item&gt;A call to &lt;see cref="ExecuteWhenIdle(Action)"/&gt;&lt;/item&gt;</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// &lt;/list&gt;</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="47" pos:column="9">public</specifier> <specifier pos:line="47" pos:column="16">event</specifier> <name pos:line="47" pos:column="22">ElapsedEventHandler</name></type> <name pos:line="47" pos:column="42">Elapsed</name></decl>;</decl_stmt>
+
+        <constructor><specifier pos:line="49" pos:column="9">public</specifier> <name pos:line="49" pos:column="16">ReentrantTimer</name><parameter_list pos:line="49" pos:column="30">(<param><decl><type><name pos:line="49" pos:column="31">double</name></type> <name pos:line="49" pos:column="38">interval</name></decl></param>, <param><decl><type><name pos:line="49" pos:column="48">Action</name></type> <name pos:line="49" pos:column="55">action</name></decl></param>, <param><decl><type><name pos:line="49" pos:column="63">TaskScheduler</name></type> <name pos:line="49" pos:column="77">scheduler</name></decl></param>)</parameter_list> <block pos:line="49" pos:column="88">{
+            <expr_stmt><expr><name><name pos:line="50" pos:column="13">this</name><op:operator pos:line="50" pos:column="17">.</op:operator><name pos:line="50" pos:column="18">_timer</name></name> <op:operator pos:line="50" pos:column="25">=</op:operator> <op:operator pos:line="50" pos:column="27">new</op:operator> <call><name pos:line="50" pos:column="31">Timer</name><argument_list pos:line="50" pos:column="36">(<argument><expr><name pos:line="50" pos:column="37">interval</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="51" pos:column="13">this</name><op:operator pos:line="51" pos:column="17">.</op:operator><name pos:line="51" pos:column="18">_timerAction</name></name> <op:operator pos:line="51" pos:column="31">=</op:operator> <name pos:line="51" pos:column="33">action</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="52" pos:column="13">this</name><op:operator pos:line="52" pos:column="17">.</op:operator><name pos:line="52" pos:column="18">_scheduler</name></name> <op:operator pos:line="52" pos:column="29">=</op:operator> <name pos:line="52" pos:column="31">scheduler</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="53" pos:column="13">this</name><op:operator pos:line="53" pos:column="17">.</op:operator><name pos:line="53" pos:column="18">_timer</name><op:operator pos:line="53" pos:column="24">.</op:operator><name pos:line="53" pos:column="25">Elapsed</name></name> <op:operator pos:line="53" pos:column="33">+=</op:operator> <name pos:line="53" pos:column="36">_timer_Elapsed</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="56" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="57" pos:column="9">/// Create a reentrant timer with an &lt;see cref="Interval"/&gt; of 100ms.</comment>
+        <comment type="line" pos:line="58" pos:column="9">/// &lt;/summary&gt;</comment>
+        <constructor><specifier pos:line="59" pos:column="9">public</specifier> <name pos:line="59" pos:column="16">ReentrantTimer</name><parameter_list pos:line="59" pos:column="30">(<param><decl><type><name pos:line="59" pos:column="31">Action</name></type> <name pos:line="59" pos:column="38">action</name></decl></param>, <param><decl><type><name pos:line="59" pos:column="46">TaskScheduler</name></type> <name pos:line="59" pos:column="60">scheduler</name></decl></param>)</parameter_list>
+            <member_list pos:line="60" pos:column="13">: <call><name pos:line="60" pos:column="15">this</name><argument_list pos:line="60" pos:column="19">(<argument><expr><lit:literal type="number" pos:line="60" pos:column="20">100</lit:literal></expr></argument>, <argument><expr><name pos:line="60" pos:column="25">action</name></expr></argument>, <argument><expr><name pos:line="60" pos:column="33">scheduler</name></expr></argument>)</argument_list></call> </member_list><block pos:line="60" pos:column="44">{ }</block></constructor>
+
+        <constructor><specifier pos:line="62" pos:column="9">public</specifier> <name pos:line="62" pos:column="16">ReentrantTimer</name><parameter_list pos:line="62" pos:column="30">(<param><decl><type><name pos:line="62" pos:column="31">Action</name></type> <name pos:line="62" pos:column="38">action</name></decl></param>)</parameter_list>
+            <member_list pos:line="63" pos:column="13">: <call><name pos:line="63" pos:column="15">this</name><argument_list pos:line="63" pos:column="19">(<argument><expr><lit:literal type="number" pos:line="63" pos:column="20">100</lit:literal></expr></argument>, <argument><expr><name pos:line="63" pos:column="25">action</name></expr></argument>, <argument><expr><name><name pos:line="63" pos:column="33">TaskScheduler</name><op:operator pos:line="63" pos:column="46">.</op:operator><name pos:line="63" pos:column="47">Default</name></name></expr></argument>)</argument_list></call> </member_list><block pos:line="63" pos:column="56">{ }</block></constructor>
+
+        <comment type="line" pos:line="65" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="66" pos:column="9">/// If auto reset is set to true, the timer will automatically reset. If false, it will only trigger false.</comment>
+        <comment type="line" pos:line="67" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="68" pos:column="9">public</specifier> <name pos:line="68" pos:column="16">bool</name></type> <name pos:line="68" pos:column="21">AutoReset</name> <block pos:line="68" pos:column="31">{
+            <function><name pos:line="69" pos:column="13">get</name> <block pos:line="69" pos:column="17">{ <return pos:line="69" pos:column="19">return <expr><name><name pos:line="69" pos:column="26">this</name><op:operator pos:line="69" pos:column="30">.</op:operator><name pos:line="69" pos:column="31">_timer</name><op:operator pos:line="69" pos:column="37">.</op:operator><name pos:line="69" pos:column="38">AutoReset</name></name></expr>;</return> }</block></function>
+            <function><name pos:line="70" pos:column="13">set</name> <block pos:line="70" pos:column="17">{ <expr_stmt><expr><name><name pos:line="70" pos:column="19">this</name><op:operator pos:line="70" pos:column="23">.</op:operator><name pos:line="70" pos:column="24">_timer</name><op:operator pos:line="70" pos:column="30">.</op:operator><name pos:line="70" pos:column="31">AutoReset</name></name> <op:operator pos:line="70" pos:column="41">=</op:operator> <name pos:line="70" pos:column="43">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="73" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="74" pos:column="9">/// Setting enabled to true causes the timer to start. Setting it to false causes it to stop.</comment>
+        <comment type="line" pos:line="75" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="76" pos:column="9">public</specifier> <name pos:line="76" pos:column="16">bool</name></type> <name pos:line="76" pos:column="21">Enabled</name> <block pos:line="76" pos:column="29">{
+            <function><name pos:line="77" pos:column="13">get</name> <block pos:line="77" pos:column="17">{ <return pos:line="77" pos:column="19">return <expr><name><name pos:line="77" pos:column="26">this</name><op:operator pos:line="77" pos:column="30">.</op:operator><name pos:line="77" pos:column="31">_timer</name><op:operator pos:line="77" pos:column="37">.</op:operator><name pos:line="77" pos:column="38">Enabled</name></name></expr>;</return> }</block></function>
+            <function><name pos:line="78" pos:column="13">set</name> <block pos:line="78" pos:column="17">{ <expr_stmt><expr><name><name pos:line="78" pos:column="19">this</name><op:operator pos:line="78" pos:column="23">.</op:operator><name pos:line="78" pos:column="24">_timer</name><op:operator pos:line="78" pos:column="30">.</op:operator><name pos:line="78" pos:column="31">Enabled</name></name> <op:operator pos:line="78" pos:column="39">=</op:operator> <name pos:line="78" pos:column="41">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="81" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="82" pos:column="9">/// The interval at which the timer is triggered in milliseconds.</comment>
+        <comment type="line" pos:line="83" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="84" pos:column="9">public</specifier> <name pos:line="84" pos:column="16">double</name></type> <name pos:line="84" pos:column="23">Interval</name> <block pos:line="84" pos:column="32">{
+            <function><name pos:line="85" pos:column="13">get</name> <block pos:line="85" pos:column="17">{ <return pos:line="85" pos:column="19">return <expr><name><name pos:line="85" pos:column="26">_timer</name><op:operator pos:line="85" pos:column="32">.</op:operator><name pos:line="85" pos:column="33">Interval</name></name></expr>;</return> }</block></function>
+            <function><name pos:line="86" pos:column="13">set</name> <block pos:line="86" pos:column="17">{ <expr_stmt><expr><name><name pos:line="86" pos:column="19">_timer</name><op:operator pos:line="86" pos:column="25">.</op:operator><name pos:line="86" pos:column="26">Interval</name></name> <op:operator pos:line="86" pos:column="35">=</op:operator> <name pos:line="86" pos:column="37">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="89" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="90" pos:column="9">/// Waits for the timer to be idle (i.e. not executing anything) and then executes &lt;paramref name="action"/&gt;</comment>
+        <comment type="line" pos:line="91" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="92" pos:column="9">/// &lt;param name="action"&gt;The action to execute&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="93" pos:column="9">public</specifier> <name pos:line="93" pos:column="16">Task</name></type> <name pos:line="93" pos:column="21">ExecuteWhenIdle</name><parameter_list pos:line="93" pos:column="36">(<param><decl><type><name pos:line="93" pos:column="37">Action</name></type> <name pos:line="93" pos:column="44">action</name></decl></param>)</parameter_list> <block pos:line="93" pos:column="52">{
+            <decl_stmt><decl><type><name pos:line="94" pos:column="13">var</name></type> <name pos:line="94" pos:column="17">task</name> <init pos:line="94" pos:column="22">= <expr><op:operator pos:line="94" pos:column="24">new</op:operator> <call><name pos:line="94" pos:column="28">Task</name><argument_list pos:line="94" pos:column="32">(<argument><expr><lambda><parameter_list pos:line="94" pos:column="33">()</parameter_list> <op:operator pos:line="94" pos:column="36">=&gt;</op:operator> <block pos:line="94" pos:column="39">{
+                <while pos:line="95" pos:column="17">while<condition pos:line="95" pos:column="22">(<expr><name pos:line="95" pos:column="23">RUNNING</name> <op:operator pos:line="95" pos:column="31">==</op:operator> <call><name><name pos:line="95" pos:column="34">Interlocked</name><op:operator pos:line="95" pos:column="45">.</op:operator><name pos:line="95" pos:column="46">CompareExchange</name></name><argument_list pos:line="95" pos:column="61">(<argument><expr pos:line="95" pos:column="62">ref <name pos:line="95" pos:column="66">syncPoint</name></expr></argument>, <argument><expr><name pos:line="95" pos:column="77">RUNNING</name></expr></argument>, <argument><expr><name pos:line="95" pos:column="86">IDLE</name></expr></argument>)</argument_list></call></expr>)</condition> <block pos:line="95" pos:column="93">{
+                    <expr_stmt><expr><call><name><name pos:line="96" pos:column="21">Thread</name><op:operator pos:line="96" pos:column="27">.</op:operator><name pos:line="96" pos:column="28">Sleep</name></name><argument_list pos:line="96" pos:column="33">(<argument><expr><lit:literal type="number" pos:line="96" pos:column="34">1</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                }</block></while>
+                <expr_stmt><expr><call><name pos:line="98" pos:column="17">action</name><argument_list pos:line="98" pos:column="23">()</argument_list></call></expr>;</expr_stmt>
+            }</block></lambda></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+            <expr_stmt><expr><call><name pos:line="100" pos:column="13">SetSyncToIdleOnCompletion</name><argument_list pos:line="100" pos:column="38">(<argument><expr><name pos:line="100" pos:column="39">task</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="101" pos:column="13">task</name><op:operator pos:line="101" pos:column="17">.</op:operator><name pos:line="101" pos:column="18">Start</name></name><argument_list pos:line="101" pos:column="23">(<argument><expr><name pos:line="101" pos:column="24">_scheduler</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <return pos:line="102" pos:column="13">return <expr><name pos:line="102" pos:column="20">task</name></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="105" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="106" pos:column="9">/// This is identical to setting &lt;see cref="Enabled"/&gt; to true.</comment>
+        <comment type="line" pos:line="107" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="108" pos:column="9">public</specifier> <name pos:line="108" pos:column="16">void</name></type> <name pos:line="108" pos:column="21">Start</name><parameter_list pos:line="108" pos:column="26">()</parameter_list> <block pos:line="108" pos:column="29">{
+            <expr_stmt><expr><call><name><name pos:line="109" pos:column="13">_timer</name><op:operator pos:line="109" pos:column="19">.</op:operator><name pos:line="109" pos:column="20">Start</name></name><argument_list pos:line="109" pos:column="25">()</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="112" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="113" pos:column="9">/// This is identical to setting &lt;see cref="Enabled"/&gt; to false.</comment>
+        <comment type="line" pos:line="114" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="115" pos:column="9">public</specifier> <name pos:line="115" pos:column="16">void</name></type> <name pos:line="115" pos:column="21">Stop</name><parameter_list pos:line="115" pos:column="25">()</parameter_list> <block pos:line="115" pos:column="28">{
+            <expr_stmt><expr><call><name><name pos:line="116" pos:column="13">_timer</name><op:operator pos:line="116" pos:column="19">.</op:operator><name pos:line="116" pos:column="20">Stop</name></name><argument_list pos:line="116" pos:column="24">()</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="119" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="120" pos:column="9">/// Disposes of this object</comment>
+        <comment type="line" pos:line="121" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="122" pos:column="9">public</specifier> <name pos:line="122" pos:column="16">void</name></type> <name pos:line="122" pos:column="21">Dispose</name><parameter_list pos:line="122" pos:column="28">()</parameter_list> <block pos:line="122" pos:column="31">{
+            <expr_stmt><expr><call><name><name pos:line="123" pos:column="13">_timer</name><op:operator pos:line="123" pos:column="19">.</op:operator><name pos:line="123" pos:column="20">Dispose</name></name><argument_list pos:line="123" pos:column="27">()</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="126" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="127" pos:column="9">/// Executed when &lt;see cref="Elapsed"/&gt; is triggered</comment>
+        <comment type="line" pos:line="128" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="129" pos:column="9">/// &lt;param name="e"&gt;The event arguments&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="130" pos:column="9">protected</specifier> <name pos:line="130" pos:column="19">void</name></type> <name pos:line="130" pos:column="24">OnElapsed</name><parameter_list pos:line="130" pos:column="33">(<param><decl><type><name pos:line="130" pos:column="34">ElapsedEventArgs</name></type> <name pos:line="130" pos:column="51">e</name></decl></param>)</parameter_list> <block pos:line="130" pos:column="54">{
+            <decl_stmt><decl><type><name pos:line="131" pos:column="13">ElapsedEventHandler</name></type> <name pos:line="131" pos:column="33">handler</name> <init pos:line="131" pos:column="41">= <expr><name pos:line="131" pos:column="43">Elapsed</name></expr></init></decl>;</decl_stmt>
+            <if pos:line="132" pos:column="13">if<condition pos:line="132" pos:column="15">(<expr><name pos:line="132" pos:column="16">handler</name> <op:operator pos:line="132" pos:column="24">!=</op:operator> <name pos:line="132" pos:column="27">null</name></expr>)</condition><then pos:line="132" pos:column="32"> <block pos:line="132" pos:column="33">{
+                <expr_stmt><expr><call><name pos:line="133" pos:column="17">handler</name><argument_list pos:line="133" pos:column="24">(<argument><expr><name pos:line="133" pos:column="25">this</name></expr></argument>, <argument><expr><name pos:line="133" pos:column="31">e</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+        }</block></function>
+
+        <function><type><specifier pos:line="137" pos:column="9">private</specifier> <name pos:line="137" pos:column="17">void</name></type> <name pos:line="137" pos:column="22">SetSyncToIdleOnCompletion</name><parameter_list pos:line="137" pos:column="47">(<param><decl><type><name pos:line="137" pos:column="48">Task</name></type> <name pos:line="137" pos:column="53">task</name></decl></param>)</parameter_list> <block pos:line="137" pos:column="59">{
+            <expr_stmt><expr><call><name><name pos:line="138" pos:column="13">task</name><op:operator pos:line="138" pos:column="17">.</op:operator><name pos:line="138" pos:column="18">ContinueWith</name></name><argument_list pos:line="138" pos:column="30">(<argument><expr><lambda><name pos:line="138" pos:column="31">t</name> <op:operator pos:line="138" pos:column="33">=&gt;</op:operator> <name pos:line="138" pos:column="36">syncPoint</name> <op:operator pos:line="138" pos:column="46">=</op:operator> <name pos:line="138" pos:column="48">IDLE</name></lambda></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+        
+        <function><type><specifier pos:line="141" pos:column="9">private</specifier> <name pos:line="141" pos:column="17">void</name></type> <name pos:line="141" pos:column="22">_timer_Elapsed</name><parameter_list pos:line="141" pos:column="36">(<param><decl><type><name pos:line="141" pos:column="37">object</name></type> <name pos:line="141" pos:column="44">sender</name></decl></param>, <param><decl><type><name pos:line="141" pos:column="52">ElapsedEventArgs</name></type> <name pos:line="141" pos:column="69">e</name></decl></param>)</parameter_list> <block pos:line="141" pos:column="72">{
+            <decl_stmt><decl><type><name pos:line="142" pos:column="13">int</name></type> <name pos:line="142" pos:column="17">sync</name> <init pos:line="142" pos:column="22">= <expr><call><name><name pos:line="142" pos:column="24">Interlocked</name><op:operator pos:line="142" pos:column="35">.</op:operator><name pos:line="142" pos:column="36">CompareExchange</name></name><argument_list pos:line="142" pos:column="51">(<argument><expr pos:line="142" pos:column="52">ref <name pos:line="142" pos:column="56">syncPoint</name></expr></argument>, <argument><expr><name pos:line="142" pos:column="67">RUNNING</name></expr></argument>, <argument><expr><name pos:line="142" pos:column="76">IDLE</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+            
+            <if pos:line="144" pos:column="13">if<condition pos:line="144" pos:column="15">(<expr><name pos:line="144" pos:column="16">IDLE</name> <op:operator pos:line="144" pos:column="21">==</op:operator> <name pos:line="144" pos:column="24">sync</name></expr>)</condition><then pos:line="144" pos:column="29"> <block pos:line="144" pos:column="30">{
+                <decl_stmt><decl><type><name pos:line="145" pos:column="17">var</name></type> <name pos:line="145" pos:column="21">task</name> <init pos:line="145" pos:column="26">= <expr><op:operator pos:line="145" pos:column="28">new</op:operator> <call><name pos:line="145" pos:column="32">Task</name><argument_list pos:line="145" pos:column="36">(<argument><expr><name pos:line="145" pos:column="37">_timerAction</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+                <expr_stmt><expr><call><name pos:line="146" pos:column="17">SetSyncToIdleOnCompletion</name><argument_list pos:line="146" pos:column="42">(<argument><expr><name pos:line="146" pos:column="43">task</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                <expr_stmt><expr><call><name><name pos:line="147" pos:column="17">task</name><op:operator pos:line="147" pos:column="21">.</op:operator><name pos:line="147" pos:column="22">Start</name></name><argument_list pos:line="147" pos:column="27">(<argument><expr><name><name pos:line="147" pos:column="28">this</name><op:operator pos:line="147" pos:column="32">.</op:operator><name pos:line="147" pos:column="33">_scheduler</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

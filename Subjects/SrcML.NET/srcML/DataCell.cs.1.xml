@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\VisualStudio\ABB.SrcML.VisualStudio.PreviewAddIn\DataCell.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2011 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Linq</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Xml</name><op:operator pos:line="14" pos:column="17">.</op:operator><name pos:line="14" pos:column="18">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">SDML</name><op:operator pos:line="15" pos:column="11">.</op:operator><name pos:line="15" pos:column="12">SrcMLVSAddin</name><op:operator pos:line="15" pos:column="24">.</op:operator><name pos:line="15" pos:column="25">SyntaticCategory</name></name>;</using>
+
+<namespace pos:line="17" pos:column="1">namespace <name><name pos:line="17" pos:column="11">ABB</name><op:operator pos:line="17" pos:column="14">.</op:operator><name pos:line="17" pos:column="15">SrcML</name><op:operator pos:line="17" pos:column="20">.</op:operator><name pos:line="17" pos:column="21">VisualStudio</name><op:operator pos:line="17" pos:column="33">.</op:operator><name pos:line="17" pos:column="34">PreviewAddIn</name></name>
+<block pos:line="18" pos:column="1">{
+    <class pos:line="19" pos:column="5">class <name pos:line="19" pos:column="11">DataEnabledAnnotation</name>
+    <block pos:line="20" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="21" pos:column="9">public</specifier> <name pos:line="21" pos:column="16">bool</name></type> <name pos:line="21" pos:column="21">Enabled</name> <block pos:line="21" pos:column="29">{ <function_decl><name pos:line="21" pos:column="31">get</name>;</function_decl> <function_decl><name pos:line="21" pos:column="36">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <constructor><specifier pos:line="23" pos:column="9">public</specifier> <name pos:line="23" pos:column="16">DataEnabledAnnotation</name><parameter_list pos:line="23" pos:column="37">()</parameter_list>
+            <member_list pos:line="24" pos:column="13">: <call><name pos:line="24" pos:column="15">this</name><argument_list pos:line="24" pos:column="19">(<argument><expr><lit:literal type="boolean" pos:line="24" pos:column="20">false</lit:literal></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="25" pos:column="9">{
+
+        }</block></constructor>
+        <constructor><specifier pos:line="28" pos:column="9">public</specifier> <name pos:line="28" pos:column="16">DataEnabledAnnotation</name><parameter_list pos:line="28" pos:column="37">(<param><decl><type><name pos:line="28" pos:column="38">bool</name></type> <name pos:line="28" pos:column="43">startingValue</name></decl></param>)</parameter_list>
+        <block pos:line="29" pos:column="9">{
+            <expr_stmt><expr><name><name pos:line="30" pos:column="13">this</name><op:operator pos:line="30" pos:column="17">.</op:operator><name pos:line="30" pos:column="18">Enabled</name></name> <op:operator pos:line="30" pos:column="26">=</op:operator> <name pos:line="30" pos:column="28">startingValue</name></expr>;</expr_stmt>
+        }</block></constructor>
+    }</block></class>
+
+    <class pos:line="34" pos:column="5">class <name pos:line="34" pos:column="11">DataTransformAnnotation</name>
+    <block pos:line="35" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="36" pos:column="9">public</specifier> <name pos:line="36" pos:column="16">XElement</name></type> <name pos:line="36" pos:column="25">TransformedXml</name> <block pos:line="36" pos:column="40">{ <function_decl><name pos:line="36" pos:column="42">get</name>;</function_decl> <function_decl><name pos:line="36" pos:column="47">set</name>;</function_decl> }</block></decl></decl_stmt>
+        
+        <constructor><specifier pos:line="38" pos:column="9">public</specifier> <name pos:line="38" pos:column="16">DataTransformAnnotation</name><parameter_list pos:line="38" pos:column="39">(<param><decl><type><name pos:line="38" pos:column="40">XElement</name></type> <name pos:line="38" pos:column="49">transformedXml</name></decl></param>)</parameter_list>
+        <block pos:line="39" pos:column="9">{
+            <expr_stmt><expr><name pos:line="40" pos:column="13">TransformedXml</name> <op:operator pos:line="40" pos:column="28">=</op:operator> <name pos:line="40" pos:column="30">transformedXml</name></expr>;</expr_stmt>
+        }</block></constructor>
+    }</block></class>
+    <class pos:line="43" pos:column="5">class <name pos:line="43" pos:column="11">DataCell</name>
+    <block pos:line="44" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="45" pos:column="9">private</specifier> <name pos:line="45" pos:column="17">SrcMLFile</name></type> <name pos:line="45" pos:column="27">doc</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="46" pos:column="9">private</specifier> <name pos:line="46" pos:column="17">XElement</name></type> <name pos:line="46" pos:column="26">node</name></decl>;</decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="48" pos:column="9">private</specifier> <name pos:line="48" pos:column="17">string</name></type> <name pos:line="48" pos:column="24">text</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="49" pos:column="9">private</specifier> <name pos:line="49" pos:column="17">string</name></type> <name pos:line="49" pos:column="24">transformedText</name></decl>;</decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="51" pos:column="9">private</specifier> <name pos:line="51" pos:column="17">string</name></type> <name pos:line="51" pos:column="24">location</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="52" pos:column="9">private</specifier> <name pos:line="52" pos:column="17">int</name></type> <name pos:line="52" pos:column="21">lineNumber</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="53" pos:column="9">private</specifier> <name pos:line="53" pos:column="17">int</name></type> <name pos:line="53" pos:column="21">endLineNumber</name></decl>;</decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="55" pos:column="9">private</specifier> <name pos:line="55" pos:column="17">ITransform</name></type> <name pos:line="55" pos:column="28">transform</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="56" pos:column="9">private</specifier> <name pos:line="56" pos:column="17">string</name></type> <name pos:line="56" pos:column="24">error</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="57" pos:column="9">private</specifier> <name pos:line="57" pos:column="17">SyntaticOccurance</name></type> <name pos:line="57" pos:column="35">occurrence</name></decl>;</decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="59" pos:column="9">public</specifier> <name pos:line="59" pos:column="16">ITransform</name></type> <name pos:line="59" pos:column="27">Transform</name>
+        <block pos:line="60" pos:column="9">{
+            <function><name pos:line="61" pos:column="13">get</name> <block pos:line="61" pos:column="17">{ <return pos:line="61" pos:column="19">return <expr><name><name pos:line="61" pos:column="26">this</name><op:operator pos:line="61" pos:column="30">.</op:operator><name pos:line="61" pos:column="31">transform</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="64" pos:column="9">public</specifier> <name pos:line="64" pos:column="16">Boolean</name></type> <name pos:line="64" pos:column="24">Enabled</name>
+        <block pos:line="65" pos:column="9">{
+            <function><name pos:line="66" pos:column="13">get</name>
+            <block pos:line="67" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="68" pos:column="17">var</name></type> <name pos:line="68" pos:column="21">annotation</name> <init pos:line="68" pos:column="32">= <expr><call><name><name pos:line="68" pos:column="34">Xml</name><op:operator pos:line="68" pos:column="37">.</op:operator><name><name pos:line="68" pos:column="38">Annotation</name><argument_list pos:line="68" pos:column="48">&lt;<argument><name pos:line="68" pos:column="49">DataEnabledAnnotation</name></argument>&gt;</argument_list></name></name><argument_list pos:line="68" pos:column="71">()</argument_list></call></expr></init></decl>;</decl_stmt>
+                <if pos:line="69" pos:column="17">if <condition pos:line="69" pos:column="20">(<expr><name pos:line="69" pos:column="21">null</name> <op:operator pos:line="69" pos:column="26">==</op:operator> <name pos:line="69" pos:column="29">annotation</name></expr>)</condition><then pos:line="69" pos:column="40">
+                    <return pos:line="70" pos:column="21">return <expr><lit:literal type="boolean" pos:line="70" pos:column="28">false</lit:literal></expr>;</return></then></if>
+                <return pos:line="71" pos:column="17">return <expr><name><name pos:line="71" pos:column="24">annotation</name><op:operator pos:line="71" pos:column="34">.</op:operator><name pos:line="71" pos:column="35">Enabled</name></name></expr>;</return>
+            }</block></function>
+            <function><name pos:line="73" pos:column="13">set</name>
+            <block pos:line="74" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="75" pos:column="17">var</name></type> <name pos:line="75" pos:column="21">annotation</name> <init pos:line="75" pos:column="32">= <expr><call><name><name pos:line="75" pos:column="34">Xml</name><op:operator pos:line="75" pos:column="37">.</op:operator><name><name pos:line="75" pos:column="38">Annotation</name><argument_list pos:line="75" pos:column="48">&lt;<argument><name pos:line="75" pos:column="49">DataEnabledAnnotation</name></argument>&gt;</argument_list></name></name><argument_list pos:line="75" pos:column="71">()</argument_list></call></expr></init></decl>;</decl_stmt>
+                <if pos:line="76" pos:column="17">if <condition pos:line="76" pos:column="20">(<expr><name pos:line="76" pos:column="21">null</name> <op:operator pos:line="76" pos:column="26">!=</op:operator> <name pos:line="76" pos:column="29">annotation</name></expr>)</condition><then pos:line="76" pos:column="40">
+                <block pos:line="77" pos:column="17">{
+                    <if pos:line="78" pos:column="21">if <condition pos:line="78" pos:column="24">(<expr><name><name pos:line="78" pos:column="25">annotation</name><op:operator pos:line="78" pos:column="35">.</op:operator><name pos:line="78" pos:column="36">Enabled</name> <type:modifier pos:line="78" pos:column="44">&amp;&amp;</type:modifier></name> <op:operator pos:line="78" pos:column="47">!</op:operator><name pos:line="78" pos:column="48">value</name></expr>)</condition><then pos:line="78" pos:column="54">
+                        <expr_stmt><expr><call><name pos:line="79" pos:column="25">Revert</name><argument_list pos:line="79" pos:column="31">()</argument_list></call></expr>;</expr_stmt></then>
+                    <else pos:line="80" pos:column="21">else <if pos:line="80" pos:column="26">if<condition pos:line="80" pos:column="28">(<expr><op:operator pos:line="80" pos:column="29">!</op:operator><name><name pos:line="80" pos:column="30">annotation</name><op:operator pos:line="80" pos:column="40">.</op:operator><name pos:line="80" pos:column="41">Enabled</name> <type:modifier pos:line="80" pos:column="49">&amp;&amp;</type:modifier></name> <name pos:line="80" pos:column="52">value</name></expr>)</condition><then pos:line="80" pos:column="58">
+                        <expr_stmt><expr><call><name pos:line="81" pos:column="25">ExecuteTransform</name><argument_list pos:line="81" pos:column="41">()</argument_list></call></expr>;</expr_stmt></then></if></else></if>
+                    <expr_stmt><expr><name><name pos:line="82" pos:column="21">annotation</name><op:operator pos:line="82" pos:column="31">.</op:operator><name pos:line="82" pos:column="32">Enabled</name></name> <op:operator pos:line="82" pos:column="40">=</op:operator> <name pos:line="82" pos:column="42">value</name></expr>;</expr_stmt>
+                }</block></then></if>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="87" pos:column="9">public</specifier> <name pos:line="87" pos:column="16">XElement</name></type> <name pos:line="87" pos:column="25">Xml</name>
+        <block pos:line="88" pos:column="9">{
+            <function><name pos:line="89" pos:column="13">get</name> <block pos:line="89" pos:column="17">{ <return pos:line="89" pos:column="19">return <expr><name><name pos:line="89" pos:column="26">this</name><op:operator pos:line="89" pos:column="30">.</op:operator><name pos:line="89" pos:column="31">node</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="92" pos:column="9">public</specifier> <name pos:line="92" pos:column="16">XElement</name></type> <name pos:line="92" pos:column="25">TransformedXml</name>
+        <block pos:line="93" pos:column="9">{
+            <function><name pos:line="94" pos:column="13">get</name>
+            <block pos:line="95" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="96" pos:column="17">var</name></type> <name pos:line="96" pos:column="21">annotation</name> <init pos:line="96" pos:column="32">= <expr><call><name><name pos:line="96" pos:column="34">Xml</name><op:operator pos:line="96" pos:column="37">.</op:operator><name><name pos:line="96" pos:column="38">Annotation</name><argument_list pos:line="96" pos:column="48">&lt;<argument><name pos:line="96" pos:column="49">DataTransformAnnotation</name></argument>&gt;</argument_list></name></name><argument_list pos:line="96" pos:column="73">()</argument_list></call></expr></init></decl>;</decl_stmt>
+                <if pos:line="97" pos:column="17">if <condition pos:line="97" pos:column="20">(<expr><name pos:line="97" pos:column="21">null</name> <op:operator pos:line="97" pos:column="26">!=</op:operator> <name pos:line="97" pos:column="29">annotation</name></expr>)</condition><then pos:line="97" pos:column="40">
+                    <return pos:line="98" pos:column="21">return <expr><name><name pos:line="98" pos:column="28">annotation</name><op:operator pos:line="98" pos:column="38">.</op:operator><name pos:line="98" pos:column="39">TransformedXml</name></name></expr>;</return></then></if>
+                <return pos:line="99" pos:column="17">return <expr><name pos:line="99" pos:column="24">null</name></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="103" pos:column="9">public</specifier> <name pos:line="103" pos:column="16">string</name></type> <name pos:line="103" pos:column="23">Location</name>
+        <block pos:line="104" pos:column="9">{
+            <function><name pos:line="105" pos:column="13">get</name> 
+            <block pos:line="106" pos:column="13">{
+                <if pos:line="107" pos:column="17">if<condition pos:line="107" pos:column="19">(<expr><name pos:line="107" pos:column="20">lineNumber</name> <op:operator pos:line="107" pos:column="31">&lt;</op:operator> <lit:literal type="number" pos:line="107" pos:column="33">0</lit:literal></expr>)</condition><then pos:line="107" pos:column="35">
+                    <return pos:line="108" pos:column="21">return <expr><name><name pos:line="108" pos:column="28">this</name><op:operator pos:line="108" pos:column="32">.</op:operator><name pos:line="108" pos:column="33">FilePath</name></name></expr>;</return></then></if>
+                <return pos:line="109" pos:column="17">return <expr><call><name><name pos:line="109" pos:column="24">String</name><op:operator pos:line="109" pos:column="30">.</op:operator><name pos:line="109" pos:column="31">Format</name></name><argument_list pos:line="109" pos:column="37">(<argument><expr><lit:literal type="string" pos:line="109" pos:column="38">"{0}:{1}"</lit:literal></expr></argument>, <argument><expr><name><name pos:line="109" pos:column="49">this</name><op:operator pos:line="109" pos:column="53">.</op:operator><name pos:line="109" pos:column="54">location</name></name></expr></argument>, <argument><expr><name><name pos:line="109" pos:column="64">this</name><op:operator pos:line="109" pos:column="68">.</op:operator><name pos:line="109" pos:column="69">lineNumber</name></name></expr></argument>)</argument_list></call></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="113" pos:column="9">public</specifier> <name pos:line="113" pos:column="16">int</name></type> <name pos:line="113" pos:column="20">LineNumber</name>
+        <block pos:line="114" pos:column="9">{
+            <function><name pos:line="115" pos:column="13">get</name>
+            <block pos:line="116" pos:column="13">{
+                <return pos:line="117" pos:column="17">return <expr><name><name pos:line="117" pos:column="24">this</name><op:operator pos:line="117" pos:column="28">.</op:operator><name pos:line="117" pos:column="29">lineNumber</name></name></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="121" pos:column="9">public</specifier> <name pos:line="121" pos:column="16">int</name></type> <name pos:line="121" pos:column="20">EndLineNumber</name>
+        <block pos:line="122" pos:column="9">{
+            <function><name pos:line="123" pos:column="13">get</name>
+            <block pos:line="124" pos:column="13">{
+                <return pos:line="125" pos:column="17">return <expr><name><name pos:line="125" pos:column="24">this</name><op:operator pos:line="125" pos:column="28">.</op:operator><name pos:line="125" pos:column="29">endLineNumber</name></name></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="129" pos:column="9">public</specifier> <name pos:line="129" pos:column="16">string</name></type> <name pos:line="129" pos:column="23">FilePath</name>
+        <block pos:line="130" pos:column="9">{
+            <function><name pos:line="131" pos:column="13">get</name>
+            <block pos:line="132" pos:column="13">{
+                <return pos:line="133" pos:column="17">return <expr><name><name pos:line="133" pos:column="24">this</name><op:operator pos:line="133" pos:column="28">.</op:operator><name pos:line="133" pos:column="29">location</name></name></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="137" pos:column="9">public</specifier> <name pos:line="137" pos:column="16">string</name></type> <name pos:line="137" pos:column="23">Text</name>
+        <block pos:line="138" pos:column="9">{
+            <function><name pos:line="139" pos:column="13">get</name> <block pos:line="139" pos:column="17">{ <return pos:line="139" pos:column="19">return <expr><name pos:line="139" pos:column="26">text</name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="142" pos:column="9">public</specifier> <name pos:line="142" pos:column="16">string</name></type> <name pos:line="142" pos:column="23">TransformedText</name>
+        <block pos:line="143" pos:column="9">{
+            <function><name pos:line="144" pos:column="13">get</name>
+            <block pos:line="145" pos:column="13">{
+                <if pos:line="146" pos:column="17">if <condition pos:line="146" pos:column="20">(<expr><name pos:line="146" pos:column="21">null</name> <op:operator pos:line="146" pos:column="26">==</op:operator> <name pos:line="146" pos:column="29">TransformedXml</name></expr>)</condition><then pos:line="146" pos:column="44">
+                    <return pos:line="147" pos:column="21">return <expr><name pos:line="147" pos:column="28">error</name></expr>;</return></then></if>
+                <return pos:line="148" pos:column="17">return <expr><name pos:line="148" pos:column="24">transformedText</name></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="152" pos:column="9">public</specifier> <name pos:line="152" pos:column="16">string</name></type> <name pos:line="152" pos:column="23">Category</name>
+        <block pos:line="153" pos:column="9">{
+            <function><name pos:line="154" pos:column="13">get</name>
+            <block pos:line="155" pos:column="13">{
+                <return pos:line="156" pos:column="17">return <expr><name><name pos:line="156" pos:column="24">this</name><op:operator pos:line="156" pos:column="28">.</op:operator><name pos:line="156" pos:column="29">occurrence</name><op:operator pos:line="156" pos:column="39">.</op:operator><name pos:line="156" pos:column="40">CategoryAsXPath</name></name></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+        <constructor><specifier pos:line="159" pos:column="9">public</specifier> <name pos:line="159" pos:column="16">DataCell</name><parameter_list pos:line="159" pos:column="24">(<param><decl><type><name pos:line="159" pos:column="25">SrcMLFile</name></type> <name pos:line="159" pos:column="35">doc</name></decl></param>, <param><decl><type><name pos:line="159" pos:column="40">XElement</name></type> <name pos:line="159" pos:column="49">xe</name></decl></param>, <param><decl><type><name pos:line="159" pos:column="53">ITransform</name></type> <name pos:line="159" pos:column="64">transform</name></decl></param>, <param><decl><type><name pos:line="159" pos:column="75">SyntaticOccurance</name></type> <name pos:line="159" pos:column="93">occurrence</name></decl></param>)</parameter_list>
+        <block pos:line="160" pos:column="9">{
+            <expr_stmt><expr><name><name pos:line="161" pos:column="13">this</name><op:operator pos:line="161" pos:column="17">.</op:operator><name pos:line="161" pos:column="18">doc</name></name> <op:operator pos:line="161" pos:column="22">=</op:operator> <name pos:line="161" pos:column="24">doc</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="162" pos:column="13">this</name><op:operator pos:line="162" pos:column="17">.</op:operator><name pos:line="162" pos:column="18">node</name></name> <op:operator pos:line="162" pos:column="23">=</op:operator> <name pos:line="162" pos:column="25">xe</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="163" pos:column="13">this</name><op:operator pos:line="163" pos:column="17">.</op:operator><name pos:line="163" pos:column="18">transform</name></name> <op:operator pos:line="163" pos:column="28">=</op:operator> <name pos:line="163" pos:column="30">transform</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="164" pos:column="13">this</name><op:operator pos:line="164" pos:column="17">.</op:operator><name pos:line="164" pos:column="18">occurrence</name></name> <op:operator pos:line="164" pos:column="29">=</op:operator> <name pos:line="164" pos:column="31">occurrence</name></expr>;</expr_stmt>
+
+            <expr_stmt><expr><call><name><name pos:line="166" pos:column="13">this</name><op:operator pos:line="166" pos:column="17">.</op:operator><name pos:line="166" pos:column="18">Xml</name><op:operator pos:line="166" pos:column="21">.</op:operator><name pos:line="166" pos:column="22">AddAnnotation</name></name><argument_list pos:line="166" pos:column="35">(<argument><expr><op:operator pos:line="166" pos:column="36">new</op:operator> <call><name pos:line="166" pos:column="40">DataEnabledAnnotation</name><argument_list pos:line="166" pos:column="61">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+            <expr_stmt><expr><name><name pos:line="168" pos:column="13">this</name><op:operator pos:line="168" pos:column="17">.</op:operator><name pos:line="168" pos:column="18">location</name></name> <op:operator pos:line="168" pos:column="27">=</op:operator> <call><name><name pos:line="168" pos:column="29">doc</name><op:operator pos:line="168" pos:column="32">.</op:operator><name pos:line="168" pos:column="33">RelativePath</name></name><argument_list pos:line="168" pos:column="45">(<argument><expr><name pos:line="168" pos:column="46">node</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="169" pos:column="13">this</name><op:operator pos:line="169" pos:column="17">.</op:operator><name pos:line="169" pos:column="18">lineNumber</name></name> <op:operator pos:line="169" pos:column="29">=</op:operator> <call><name><name pos:line="169" pos:column="31">xe</name><op:operator pos:line="169" pos:column="33">.</op:operator><name pos:line="169" pos:column="34">GetSrcLineNumber</name></name><argument_list pos:line="169" pos:column="50">()</argument_list></call></expr>;</expr_stmt>
+            <if pos:line="170" pos:column="13">if <condition pos:line="170" pos:column="16">(<expr><call><name><name pos:line="170" pos:column="17">xe</name><op:operator pos:line="170" pos:column="19">.</op:operator><name pos:line="170" pos:column="20">Descendants</name></name><argument_list pos:line="170" pos:column="31">()</argument_list></call><op:operator pos:line="170" pos:column="33">.</op:operator><call><name pos:line="170" pos:column="34">Any</name><argument_list pos:line="170" pos:column="37">()</argument_list></call></expr>)</condition><then pos:line="170" pos:column="40">
+            <block pos:line="171" pos:column="13">{
+                <expr_stmt><expr><name><name pos:line="172" pos:column="17">this</name><op:operator pos:line="172" pos:column="21">.</op:operator><name pos:line="172" pos:column="22">endLineNumber</name></name> <op:operator pos:line="172" pos:column="36">=</op:operator> <call><name><name pos:line="172" pos:column="38">xe</name><op:operator pos:line="172" pos:column="40">.</op:operator><name pos:line="172" pos:column="41">Descendants</name></name><argument_list pos:line="172" pos:column="52">()</argument_list></call><op:operator pos:line="172" pos:column="54">.</op:operator><call><name pos:line="172" pos:column="55">Last</name><argument_list pos:line="172" pos:column="59">()</argument_list></call><op:operator pos:line="172" pos:column="61">.</op:operator><call><name pos:line="172" pos:column="62">GetSrcLineNumber</name><argument_list pos:line="172" pos:column="78">()</argument_list></call></expr>;</expr_stmt>
+            }</block></then>
+            <else pos:line="174" pos:column="13">else
+            <block pos:line="175" pos:column="13">{
+                <expr_stmt><expr><name><name pos:line="176" pos:column="17">this</name><op:operator pos:line="176" pos:column="21">.</op:operator><name pos:line="176" pos:column="22">endLineNumber</name></name> <op:operator pos:line="176" pos:column="36">=</op:operator> <name><name pos:line="176" pos:column="38">this</name><op:operator pos:line="176" pos:column="42">.</op:operator><name pos:line="176" pos:column="43">lineNumber</name></name></expr>;</expr_stmt>
+            }</block></else></if>
+
+            <if pos:line="179" pos:column="13">if <condition pos:line="179" pos:column="16">(<expr><name pos:line="179" pos:column="17">null</name> <op:operator pos:line="179" pos:column="22">!=</op:operator> <name><name pos:line="179" pos:column="25">this</name><op:operator pos:line="179" pos:column="29">.</op:operator><name pos:line="179" pos:column="30">Xml</name> <type:modifier pos:line="179" pos:column="34">&amp;&amp;</type:modifier></name> <name pos:line="179" pos:column="37">null</name> <op:operator pos:line="179" pos:column="42">!=</op:operator> <name><name pos:line="179" pos:column="45">this</name><op:operator pos:line="179" pos:column="49">.</op:operator><name pos:line="179" pos:column="50">Transform</name></name></expr>)</condition><then pos:line="179" pos:column="60">
+            <block pos:line="180" pos:column="13">{
+                <try pos:line="181" pos:column="17">try
+                <block pos:line="182" pos:column="17">{
+                    <expr_stmt><expr><name><name pos:line="183" pos:column="21">this</name><op:operator pos:line="183" pos:column="25">.</op:operator><name pos:line="183" pos:column="26">text</name></name> <op:operator pos:line="183" pos:column="31">=</op:operator> <call><name><name pos:line="183" pos:column="33">Xml</name><op:operator pos:line="183" pos:column="36">.</op:operator><name pos:line="183" pos:column="37">ToSource</name></name><argument_list pos:line="183" pos:column="45">(<argument><expr><lit:literal type="number" pos:line="183" pos:column="46">4</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                    <decl_stmt><decl><type><name pos:line="184" pos:column="21">var</name></type> <name pos:line="184" pos:column="25">nodeCopy</name> <init pos:line="184" pos:column="34">= <expr><op:operator pos:line="184" pos:column="36">new</op:operator> <call><name pos:line="184" pos:column="40">XElement</name><argument_list pos:line="184" pos:column="48">(<argument><expr><name><name pos:line="184" pos:column="49">this</name><op:operator pos:line="184" pos:column="53">.</op:operator><name pos:line="184" pos:column="54">node</name></name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+                    <decl_stmt><decl><type><name pos:line="185" pos:column="21">var</name></type> <name pos:line="185" pos:column="25">transformedNode</name> <init pos:line="185" pos:column="41">= <expr><call><name><name pos:line="185" pos:column="43">this</name><op:operator pos:line="185" pos:column="47">.</op:operator><name pos:line="185" pos:column="48">transform</name><op:operator pos:line="185" pos:column="57">.</op:operator><name pos:line="185" pos:column="58">Transform</name></name><argument_list pos:line="185" pos:column="67">(<argument><expr><name pos:line="185" pos:column="68">nodeCopy</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+                    <expr_stmt><expr><call><name><name pos:line="186" pos:column="21">this</name><op:operator pos:line="186" pos:column="25">.</op:operator><name pos:line="186" pos:column="26">Xml</name><op:operator pos:line="186" pos:column="29">.</op:operator><name pos:line="186" pos:column="30">AddAnnotation</name></name><argument_list pos:line="186" pos:column="43">(<argument><expr><op:operator pos:line="186" pos:column="44">new</op:operator> <call><name pos:line="186" pos:column="48">DataTransformAnnotation</name><argument_list pos:line="186" pos:column="71">(<argument><expr><name pos:line="186" pos:column="72">transformedNode</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                    <expr_stmt><expr><name pos:line="187" pos:column="21">transformedText</name> <op:operator pos:line="187" pos:column="37">=</op:operator> <call><name><name pos:line="187" pos:column="39">transformedNode</name><op:operator pos:line="187" pos:column="54">.</op:operator><name pos:line="187" pos:column="55">ToSource</name></name><argument_list pos:line="187" pos:column="63">(<argument><expr><lit:literal type="number" pos:line="187" pos:column="64">4</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                }</block>
+                <catch pos:line="189" pos:column="17">catch <parameter_list pos:line="189" pos:column="23">(<param><decl><type><name pos:line="189" pos:column="24">Exception</name></type> <name pos:line="189" pos:column="34">e</name></decl></param>)</parameter_list>
+                <block pos:line="190" pos:column="17">{
+                    <expr_stmt><expr><name pos:line="191" pos:column="21">error</name> <op:operator pos:line="191" pos:column="27">=</op:operator> <call><name><name pos:line="191" pos:column="29">String</name><op:operator pos:line="191" pos:column="35">.</op:operator><name pos:line="191" pos:column="36">Format</name></name><argument_list pos:line="191" pos:column="42">(<argument><expr><lit:literal type="string" pos:line="191" pos:column="43">"{0}: {1} ({2})"</lit:literal></expr></argument>, <argument><expr><name><name pos:line="191" pos:column="61">e</name><op:operator pos:line="191" pos:column="62">.</op:operator><name pos:line="191" pos:column="63">Source</name></name></expr></argument>, <argument><expr><name><name pos:line="191" pos:column="71">e</name><op:operator pos:line="191" pos:column="72">.</op:operator><name pos:line="191" pos:column="73">Message</name></name></expr></argument>, <argument><expr><call><name><name pos:line="191" pos:column="82">e</name><op:operator pos:line="191" pos:column="83">.</op:operator><name pos:line="191" pos:column="84">GetType</name></name><argument_list pos:line="191" pos:column="91">()</argument_list></call><op:operator pos:line="191" pos:column="93">.</op:operator><call><name pos:line="191" pos:column="94">ToString</name><argument_list pos:line="191" pos:column="102">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                    <expr_stmt><expr><name><name pos:line="192" pos:column="21">this</name><op:operator pos:line="192" pos:column="25">.</op:operator><name pos:line="192" pos:column="26">Enabled</name></name> <op:operator pos:line="192" pos:column="34">=</op:operator> <lit:literal type="boolean" pos:line="192" pos:column="36">false</lit:literal></expr>;</expr_stmt>
+                }</block></catch></try>
+            }</block></then></if>
+        }</block></constructor>
+
+        <decl_stmt><decl><type><specifier pos:line="197" pos:column="9">public</specifier> <name pos:line="197" pos:column="16">SrcMLFile</name></type> <name pos:line="197" pos:column="26">Document</name>
+        <block pos:line="198" pos:column="9">{
+            <function><name pos:line="199" pos:column="13">get</name> <block pos:line="199" pos:column="17">{ <return pos:line="199" pos:column="19">return <expr><name><name pos:line="199" pos:column="26">this</name><op:operator pos:line="199" pos:column="30">.</op:operator><name pos:line="199" pos:column="31">doc</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <function><type><specifier pos:line="202" pos:column="9">public</specifier> <name pos:line="202" pos:column="16">void</name></type> <name pos:line="202" pos:column="21">ExecuteTransform</name><parameter_list pos:line="202" pos:column="37">()</parameter_list>
+        <block pos:line="203" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="204" pos:column="13">this</name><op:operator pos:line="204" pos:column="17">.</op:operator><name pos:line="204" pos:column="18">Xml</name><op:operator pos:line="204" pos:column="21">.</op:operator><name pos:line="204" pos:column="22">ReplaceWith</name></name><argument_list pos:line="204" pos:column="33">(<argument><expr><name><name pos:line="204" pos:column="34">this</name><op:operator pos:line="204" pos:column="38">.</op:operator><name pos:line="204" pos:column="39">TransformedXml</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <function><type><specifier pos:line="207" pos:column="9">public</specifier> <name pos:line="207" pos:column="16">void</name></type> <name pos:line="207" pos:column="21">Revert</name><parameter_list pos:line="207" pos:column="27">()</parameter_list>
+        <block pos:line="208" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="209" pos:column="13">this</name><op:operator pos:line="209" pos:column="17">.</op:operator><name pos:line="209" pos:column="18">TransformedXml</name><op:operator pos:line="209" pos:column="32">.</op:operator><name pos:line="209" pos:column="33">ReplaceWith</name></name><argument_list pos:line="209" pos:column="44">(<argument><expr><name><name pos:line="209" pos:column="45">this</name><op:operator pos:line="209" pos:column="49">.</op:operator><name pos:line="209" pos:column="50">Xml</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+    }</block></class>
+}</block></namespace>
+</unit>

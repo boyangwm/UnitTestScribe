@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\office10\msoiv.h" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/*-----------------------------------------------------------------------------
+ filename: msoiv.h
+ summary : This file contains the #defines used for the Office 9 Instrumented
+           version.
+ last mod: July 9, 1998
+------------------------------------------------------------------- t-benyu -*/</comment>
+<cpp:ifndef pos:line="7" pos:column="1">#<cpp:directive pos:line="7" pos:column="2">ifndef</cpp:directive> <name pos:line="7" pos:column="9">MSOIV</name></cpp:ifndef>
+<cpp:define pos:line="8" pos:column="1">#<cpp:directive pos:line="8" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="8" pos:column="9">MSOIV</name></cpp:macro></cpp:define>
+
+<cpp:define pos:line="10" pos:column="1">#<cpp:directive pos:line="10" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="10" pos:column="9">PROFILE_ASSISTANT_QUERY</name></cpp:macro> <cpp:value pos:line="10" pos:column="33">10</cpp:value></cpp:define>
+<cpp:define pos:line="11" pos:column="1">#<cpp:directive pos:line="11" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="11" pos:column="9">PROFILE_ALERT_MESSAGE</name></cpp:macro>	<cpp:value pos:line="11" pos:column="33">22</cpp:value></cpp:define>
+<comment type="block" pos:line="12" pos:column="1">/*
+   Format of Logging Callback (PFCNIVLoggingCallback)
+   This typedef is also defined in Profiler.h of the Test Wizard project.
+   Any changes made here must also be made in profiler.h
+*/</comment>
+<typedef pos:line="17" pos:column="1">typedef <function_decl><type><name pos:line="17" pos:column="9">void</name></type> (<name pos:line="17" pos:column="15">__cdecl</name> <type:modifier pos:line="17" pos:column="23">*</type:modifier><name pos:line="17" pos:column="24">PFCNIVLoggingCallback</name>)<parameter_list pos:line="17" pos:column="46">(<param><decl><type><name pos:line="17" pos:column="47">DWORD</name></type> <name pos:line="17" pos:column="53">dwTime</name></decl></param>, <param><decl><type><name pos:line="17" pos:column="61">WORD</name></type> <name pos:line="17" pos:column="66">wType</name></decl></param>, <param><decl><type><name pos:line="17" pos:column="73">WORD</name></type> <name pos:line="17" pos:column="78">wDataLength</name></decl></param>, <param><decl><type><name pos:line="17" pos:column="91">void</name> <type:modifier pos:line="17" pos:column="96">*</type:modifier></type><name pos:line="17" pos:column="97">pData</name></decl></param>)</parameter_list>;</function_decl></typedef>
+
+<cpp:endif pos:line="19" pos:column="1">#<cpp:directive pos:line="19" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="19" pos:column="8">/* MSOIV */</comment>
+</unit>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML.Data\AbstractWorkingSetFactory.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2014 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine(ABB Group) - Initial implementation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Text</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">System</name><op:operator pos:line="16" pos:column="13">.</op:operator><name pos:line="16" pos:column="14">Threading</name><op:operator pos:line="16" pos:column="23">.</op:operator><name pos:line="16" pos:column="24">Tasks</name></name>;</using>
+
+<namespace pos:line="18" pos:column="1">namespace <name><name pos:line="18" pos:column="11">ABB</name><op:operator pos:line="18" pos:column="14">.</op:operator><name pos:line="18" pos:column="15">SrcML</name><op:operator pos:line="18" pos:column="20">.</op:operator><name pos:line="18" pos:column="21">Data</name></name> <block pos:line="18" pos:column="26">{
+    <comment type="line" pos:line="19" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="20" pos:column="5">/// The abstract working set factory creates and sets up &lt;see cref="AbstractWorkingSet"/&gt; objects via the</comment>
+    <comment type="line" pos:line="21" pos:column="5">/// &lt;see cref="CreateWorkingSet(string,DataArchive,TaskFactory)"/&gt; method (and similar methods)</comment>
+    <comment type="line" pos:line="22" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="23" pos:column="5">public</specifier> <specifier pos:line="23" pos:column="12">abstract</specifier> class <name pos:line="23" pos:column="27">AbstractWorkingSetFactory</name> <block pos:line="23" pos:column="53">{
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// Creates a new abstract working set factory</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;/summary&gt;</comment>
+        <constructor><specifier pos:line="27" pos:column="9">protected</specifier> <name pos:line="27" pos:column="19">AbstractWorkingSetFactory</name><parameter_list pos:line="27" pos:column="44">()</parameter_list> <block pos:line="27" pos:column="47">{ }</block></constructor>
+
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// Creates and configures a new working set object</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="32" pos:column="9">/// &lt;param name="basePath"&gt;The base path to store any data required by the working set&lt;/param&gt;</comment>
+        <comment type="line" pos:line="33" pos:column="9">/// &lt;param name="dataArchive"&gt;The data archive that this working set is based on&lt;/param&gt;</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// &lt;returns&gt;A new working set&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="35" pos:column="9">public</specifier> <name pos:line="35" pos:column="16">AbstractWorkingSet</name></type> <name pos:line="35" pos:column="35">CreateWorkingSet</name><parameter_list pos:line="35" pos:column="51">(<param><decl><type><name pos:line="35" pos:column="52">string</name></type> <name pos:line="35" pos:column="59">basePath</name></decl></param>, <param><decl><type><name pos:line="35" pos:column="69">DataArchive</name></type> <name pos:line="35" pos:column="81">dataArchive</name></decl></param>)</parameter_list> <block pos:line="35" pos:column="94">{ <return pos:line="35" pos:column="96">return <expr><call><name pos:line="35" pos:column="103">CreateWorkingSet</name><argument_list pos:line="35" pos:column="119">(<argument><expr><name pos:line="35" pos:column="120">basePath</name></expr></argument>, <argument><expr><name pos:line="35" pos:column="130">dataArchive</name></expr></argument>, <argument><expr><name><name pos:line="35" pos:column="143">Task</name><op:operator pos:line="35" pos:column="147">.</op:operator><name pos:line="35" pos:column="148">Factory</name></name></expr></argument>)</argument_list></call></expr>;</return> }</block></function>
+
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// Creates and configures a new working set object</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;param name="basePath"&gt;The base directory to store any data required by the working set&lt;/param&gt;</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// &lt;param name="dataArchive"&gt;The data archive that this working set is based on&lt;/param&gt;</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;param name="taskFactory"&gt;The task factory to use for any working set tasks&lt;/param&gt;</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// &lt;returns&gt;A new working set&lt;/returns&gt;</comment>
+        <function_decl><type><specifier pos:line="44" pos:column="9">public</specifier> <specifier pos:line="44" pos:column="16">abstract</specifier> <name pos:line="44" pos:column="25">AbstractWorkingSet</name></type> <name pos:line="44" pos:column="44">CreateWorkingSet</name><parameter_list pos:line="44" pos:column="60">(<param><decl><type><name pos:line="44" pos:column="61">string</name></type> <name pos:line="44" pos:column="68">basePath</name></decl></param>, <param><decl><type><name pos:line="44" pos:column="78">DataArchive</name></type> <name pos:line="44" pos:column="90">dataArchive</name></decl></param>, <param><decl><type><name pos:line="44" pos:column="103">TaskFactory</name></type> <name pos:line="44" pos:column="115">taskFactory</name></decl></param>)</parameter_list>;</function_decl>
+    }</block></class>
+
+    <comment type="line" pos:line="47" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="48" pos:column="5">/// Creates a new working set object of type &lt;typeparamref name="TWorkingSetFactory"/&gt;. For this factory the base directory path is unused.</comment>
+    <comment type="line" pos:line="49" pos:column="5">/// &lt;/summary&gt;</comment>
+    <comment type="line" pos:line="50" pos:column="5">/// &lt;typeparam name="TWorkingSetFactory"&gt;The working set type to create&lt;/typeparam&gt;</comment>
+    <class><specifier pos:line="51" pos:column="5">public</specifier> class <name><name pos:line="51" pos:column="18">DefaultWorkingSetFactory</name><argument_list pos:line="51" pos:column="42">&lt;<argument><name pos:line="51" pos:column="43">TWorkingSetFactory</name></argument>&gt;</argument_list></name> <super pos:line="51" pos:column="63">: <name pos:line="51" pos:column="65">AbstractWorkingSetFactory</name></super> <where pos:line="51" pos:column="91">where <name pos:line="51" pos:column="97">TWorkingSetFactory</name> : <name pos:line="51" pos:column="118">AbstractWorkingSet</name>, new()</where> <block pos:line="51" pos:column="144">{
+        <comment type="line" pos:line="52" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="53" pos:column="9">/// Creates and configures a new working set object</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="55" pos:column="9">/// &lt;param name="basePath"&gt;The base directory to store any data required by the working set. This is unused by this factory&lt;/param&gt;</comment>
+        <comment type="line" pos:line="56" pos:column="9">/// &lt;param name="dataArchive"&gt;The data archive that this working set is based on&lt;/param&gt;</comment>
+        <comment type="line" pos:line="57" pos:column="9">/// &lt;param name="taskFactory"&gt;The task factory to use for any working set tasks&lt;/param&gt;</comment>
+        <comment type="line" pos:line="58" pos:column="9">/// &lt;returns&gt;A new working set&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="59" pos:column="9">public</specifier> <specifier pos:line="59" pos:column="16">override</specifier> <name pos:line="59" pos:column="25">AbstractWorkingSet</name></type> <name pos:line="59" pos:column="44">CreateWorkingSet</name><parameter_list pos:line="59" pos:column="60">(<param><decl><type><name pos:line="59" pos:column="61">string</name></type> <name pos:line="59" pos:column="68">basePath</name></decl></param>, <param><decl><type><name pos:line="59" pos:column="78">DataArchive</name></type> <name pos:line="59" pos:column="90">dataArchive</name></decl></param>, <param><decl><type><name pos:line="59" pos:column="103">TaskFactory</name></type> <name pos:line="59" pos:column="115">taskFactory</name></decl></param>)</parameter_list> <block pos:line="59" pos:column="128">{
+            <decl_stmt><decl><type><name pos:line="60" pos:column="13">TWorkingSetFactory</name></type> <name pos:line="60" pos:column="32">factory</name> <init pos:line="60" pos:column="40">= <expr><op:operator pos:line="60" pos:column="42">new</op:operator> <call><name pos:line="60" pos:column="46">TWorkingSetFactory</name><argument_list pos:line="60" pos:column="64">()</argument_list></call></expr></init></decl>;</decl_stmt>
+            <expr_stmt><expr><name><name pos:line="61" pos:column="13">factory</name><op:operator pos:line="61" pos:column="20">.</op:operator><name pos:line="61" pos:column="21">Archive</name></name> <op:operator pos:line="61" pos:column="29">=</op:operator> <name pos:line="61" pos:column="31">dataArchive</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="62" pos:column="13">factory</name><op:operator pos:line="62" pos:column="20">.</op:operator><name pos:line="62" pos:column="21">Factory</name></name> <op:operator pos:line="62" pos:column="29">=</op:operator> <name pos:line="62" pos:column="31">taskFactory</name></expr>;</expr_stmt>
+            <return pos:line="63" pos:column="13">return <expr><name pos:line="63" pos:column="20">factory</name></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace>
+</unit>

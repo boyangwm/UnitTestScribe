@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\SrcML.NET\TestInputs\adjacent_methods.cpp" pos:tabs="8"><function><type><name pos:line="1" pos:column="1">int</name></type> <name pos:line="1" pos:column="5">main</name><parameter_list pos:line="1" pos:column="9">()</parameter_list><block pos:line="1" pos:column="11">{ }</block></function>
+
+<function><type><name pos:line="3" pos:column="1">int</name></type> <name pos:line="3" pos:column="5">Foo</name><parameter_list pos:line="3" pos:column="8">()</parameter_list> <block pos:line="3" pos:column="11">{ }</block></function>
+</unit>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\ideodl.h" pos:tabs="8"><comment type="line" pos:line="1" pos:column="1">//---------------------------------------------------------------------------</comment>
+<comment type="line" pos:line="2" pos:column="1">//ideodl.h</comment>
+<comment type="line" pos:line="3" pos:column="1">//</comment>
+<comment type="line" pos:line="4" pos:column="1">//  Copyright (C) 1994, Microsoft Corporation.  All Rights Reserved.</comment>
+<comment type="line" pos:line="5" pos:column="1">//</comment>
+<comment type="line" pos:line="6" pos:column="1">//Purpose:</comment>
+<comment type="line" pos:line="7" pos:column="1">//  Defines macros that are used in the .ODL file and in the code.</comment>
+<comment type="line" pos:line="8" pos:column="1">//</comment>
+<comment type="line" pos:line="9" pos:column="1">//---------------------------------------------------------------------------</comment>
+
+<comment type="line" pos:line="11" pos:column="1">// Event dispids that are needed in the ODL and in the code that</comment>
+<comment type="line" pos:line="12" pos:column="1">// fires the events</comment>
+<cpp:define pos:line="13" pos:column="1">#<cpp:directive pos:line="13" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="13" pos:column="9">DISPID_MENULINEEVENTS_AFTERCLICK</name></cpp:macro> <cpp:value pos:line="13" pos:column="42">1</cpp:value></cpp:define>
+
+
+<cpp:define pos:line="16" pos:column="1">#<cpp:directive pos:line="16" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="16" pos:column="9">DISPID_FCEVENTS_AFTERADDFILE</name></cpp:macro> <cpp:value pos:line="16" pos:column="38">1</cpp:value></cpp:define>
+<cpp:define pos:line="17" pos:column="1">#<cpp:directive pos:line="17" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="17" pos:column="9">DISPID_FCEVENTS_AFTERCHANGEFILENAME</name></cpp:macro> <cpp:value pos:line="17" pos:column="45">2</cpp:value></cpp:define>
+<cpp:define pos:line="18" pos:column="1">#<cpp:directive pos:line="18" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="18" pos:column="9">DISPID_FCEVENTS_AFTERCLOSEFILE</name></cpp:macro> <cpp:value pos:line="18" pos:column="40">3</cpp:value></cpp:define>
+<cpp:define pos:line="19" pos:column="1">#<cpp:directive pos:line="19" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="19" pos:column="9">DISPID_FCEVENTS_AFTERWRITEFILE</name></cpp:macro> <cpp:value pos:line="19" pos:column="40">4</cpp:value></cpp:define>
+<cpp:define pos:line="20" pos:column="1">#<cpp:directive pos:line="20" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="20" pos:column="9">DISPID_FCEVENTS_AFTERREMOVEFILE</name></cpp:macro> <cpp:value pos:line="20" pos:column="41">5</cpp:value></cpp:define>
+<cpp:define pos:line="21" pos:column="1">#<cpp:directive pos:line="21" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="21" pos:column="9">DISPID_FCEVENTS_BEFORELOADFILE</name></cpp:macro> <cpp:value pos:line="21" pos:column="40">6</cpp:value></cpp:define>
+<cpp:define pos:line="22" pos:column="1">#<cpp:directive pos:line="22" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="22" pos:column="9">DISPID_FCEVENTS_DOGETADDFILENAME</name></cpp:macro> <cpp:value pos:line="22" pos:column="42">7</cpp:value></cpp:define>
+<cpp:define pos:line="23" pos:column="1">#<cpp:directive pos:line="23" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="23" pos:column="9">DISPID_FCEVENTS_DOGETNEWFILENAME</name></cpp:macro> <cpp:value pos:line="23" pos:column="42">8</cpp:value></cpp:define>
+<cpp:define pos:line="24" pos:column="1">#<cpp:directive pos:line="24" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="24" pos:column="9">DISPID_FCEVENTS_DOGETOPENPROJECTNAME</name></cpp:macro> <cpp:value pos:line="24" pos:column="46">9</cpp:value></cpp:define>
+<cpp:define pos:line="25" pos:column="1">#<cpp:directive pos:line="25" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="25" pos:column="9">DISPID_FCEVENTS_REQUESTCHANGEFILENAME</name></cpp:macro> <cpp:value pos:line="25" pos:column="47">10</cpp:value></cpp:define>
+<cpp:define pos:line="26" pos:column="1">#<cpp:directive pos:line="26" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="26" pos:column="9">DISPID_FCEVENTS_REQUESTWRITEFILE</name></cpp:macro> <cpp:value pos:line="26" pos:column="42">11</cpp:value></cpp:define>
+<cpp:define pos:line="27" pos:column="1">#<cpp:directive pos:line="27" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="27" pos:column="9">DISPID_FCEVENTS_AFTERNEWPROJECT</name></cpp:macro> <cpp:value pos:line="27" pos:column="41">12</cpp:value></cpp:define>
+</unit>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\VisualStudio\ABB.SrcML.VisualStudio.SrcMLService\IWorkingSetRegistrarService.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2014 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - Initial implementation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name><name pos:line="12" pos:column="7">ABB</name><op:operator pos:line="12" pos:column="10">.</op:operator><name pos:line="12" pos:column="11">SrcML</name><op:operator pos:line="12" pos:column="16">.</op:operator><name pos:line="12" pos:column="17">Data</name></name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">ABB</name><op:operator pos:line="13" pos:column="10">.</op:operator><name pos:line="13" pos:column="11">VisualStudio</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name pos:line="14" pos:column="7">System</name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Collections</name><op:operator pos:line="15" pos:column="25">.</op:operator><name pos:line="15" pos:column="26">Generic</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">System</name><op:operator pos:line="16" pos:column="13">.</op:operator><name pos:line="16" pos:column="14">Collections</name><op:operator pos:line="16" pos:column="25">.</op:operator><name pos:line="16" pos:column="26">ObjectModel</name></name>;</using>
+<using pos:line="17" pos:column="1">using <name><name pos:line="17" pos:column="7">System</name><op:operator pos:line="17" pos:column="13">.</op:operator><name pos:line="17" pos:column="14">Linq</name></name>;</using>
+<using pos:line="18" pos:column="1">using <name><name pos:line="18" pos:column="7">System</name><op:operator pos:line="18" pos:column="13">.</op:operator><name pos:line="18" pos:column="14">Runtime</name><op:operator pos:line="18" pos:column="21">.</op:operator><name pos:line="18" pos:column="22">InteropServices</name></name>;</using>
+<using pos:line="19" pos:column="1">using <name><name pos:line="19" pos:column="7">System</name><op:operator pos:line="19" pos:column="13">.</op:operator><name pos:line="19" pos:column="14">Text</name></name>;</using>
+
+<namespace pos:line="21" pos:column="1">namespace <name><name pos:line="21" pos:column="11">ABB</name><op:operator pos:line="21" pos:column="14">.</op:operator><name pos:line="21" pos:column="15">SrcML</name><op:operator pos:line="21" pos:column="20">.</op:operator><name pos:line="21" pos:column="21">VisualStudio</name></name> <block pos:line="21" pos:column="34">{
+    <comment type="line" pos:line="22" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="23" pos:column="5">/// The working set registrar service lets 3rd party developers provide &lt;see cref="AbstractWorkingSet"/&gt; implementations</comment>
+    <comment type="line" pos:line="24" pos:column="5">/// for the &lt;see cref="SrcMLDataService"/&gt;. You register a working set implementation by writing an &lt;see cref="AbstractWorkingSetFactory"/&gt;</comment>
+    <comment type="line" pos:line="25" pos:column="5">/// and then calling &lt;see cref="RegisterWorkingSetFactory(AbstractWorkingSetFactory)"/&gt; in &lt;see cref="Microsoft.VisualStudio.Shell.Package.Initialize"/&gt;</comment>
+    <comment type="line" pos:line="26" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class type="interface"><attribute pos:line="27" pos:column="5">[<expr><call><name pos:line="27" pos:column="6">Guid</name><argument_list pos:line="27" pos:column="10">(<argument><expr><name><name pos:line="27" pos:column="11">GuidList</name><op:operator pos:line="27" pos:column="19">.</op:operator><name pos:line="27" pos:column="20">IWorkingSetRegistrarServiceId</name></name></expr></argument>)</argument_list></call></expr><op:operator pos:line="27" pos:column="50">,</op:operator> <expr><call><name pos:line="27" pos:column="52">ComVisible</name><argument_list pos:line="27" pos:column="62">(<argument><expr><lit:literal type="boolean" pos:line="27" pos:column="63">true</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+    <specifier pos:line="28" pos:column="5">public</specifier> interface <name pos:line="28" pos:column="22">IWorkingSetRegistrarService</name> <block pos:line="28" pos:column="50">{
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// The default working set factory</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="32" pos:column="9">AbstractWorkingSetFactory</name></type> <name pos:line="32" pos:column="35">Default</name> <block pos:line="32" pos:column="43">{ <function_decl><name pos:line="32" pos:column="45">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="34" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="35" pos:column="9">/// Registered working set factories</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><name><name pos:line="37" pos:column="9">ObservableCollection</name><argument_list pos:line="37" pos:column="29">&lt;<argument><name pos:line="37" pos:column="30">AbstractWorkingSetFactory</name></argument>&gt;</argument_list></name></type> <name pos:line="37" pos:column="57">WorkingSetFactories</name> <block pos:line="37" pos:column="77">{ <function_decl><name pos:line="37" pos:column="79">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// This event will be raised whenever a working set factory is added to &lt;see cref="WorkingSetFactories"/&gt;</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="42" pos:column="9">event</specifier> <name><name pos:line="42" pos:column="15">EventHandler</name><argument_list pos:line="42" pos:column="27">&lt;<argument><name pos:line="42" pos:column="28">WorkingSetFactoryAddedEventArgs</name></argument>&gt;</argument_list></name></type> <name pos:line="42" pos:column="61">WorkingSetFactoryAdded</name></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="44" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// Registers a new working set factory and makes it the default</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// &lt;param name="factory"&gt;&lt;/param&gt;</comment>
+        <function_decl><type><name pos:line="48" pos:column="9">void</name></type> <name pos:line="48" pos:column="14">RegisterWorkingSetFactory</name><parameter_list pos:line="48" pos:column="39">(<param><decl><type><name pos:line="48" pos:column="40">AbstractWorkingSetFactory</name></type> <name pos:line="48" pos:column="66">factory</name></decl></param>)</parameter_list>;</function_decl>
+    }</block></class>
+
+    <comment type="line" pos:line="51" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="52" pos:column="5">/// Service interface for &lt;see cref="IWorkingSetRegistrarService"/&gt;</comment>
+    <comment type="line" pos:line="53" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class type="interface"><attribute pos:line="54" pos:column="5">[<expr><call><name pos:line="54" pos:column="6">Guid</name><argument_list pos:line="54" pos:column="10">(<argument><expr><name><name pos:line="54" pos:column="11">GuidList</name><op:operator pos:line="54" pos:column="19">.</op:operator><name pos:line="54" pos:column="20">SWorkingSetRegistrarServiceId</name></name></expr></argument>)</argument_list></call></expr>]</attribute>
+    <specifier pos:line="55" pos:column="5">public</specifier> interface <name pos:line="55" pos:column="22">SWorkingSetRegistrarService</name> <block pos:line="55" pos:column="50">{ }</block></class>
+}</block></namespace>
+</unit>

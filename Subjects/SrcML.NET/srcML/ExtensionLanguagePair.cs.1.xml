@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\Tools\ABB.SrcML.Tools.Converter\ExtensionLanguagePair.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2010 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Text</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">ABB</name><op:operator pos:line="16" pos:column="10">.</op:operator><name pos:line="16" pos:column="11">SrcML</name></name>;</using>
+
+<namespace pos:line="18" pos:column="1">namespace <name><name pos:line="18" pos:column="11">ABB</name><op:operator pos:line="18" pos:column="14">.</op:operator><name pos:line="18" pos:column="15">SrcML</name><op:operator pos:line="18" pos:column="20">.</op:operator><name pos:line="18" pos:column="21">Tools</name><op:operator pos:line="18" pos:column="26">.</op:operator><name pos:line="18" pos:column="27">Converter</name></name>
+<block pos:line="19" pos:column="1">{
+    <class pos:line="20" pos:column="5">class <name pos:line="20" pos:column="11">ExtensionLanguagePair</name>
+    <block pos:line="21" pos:column="5">{
+        <constructor><specifier pos:line="22" pos:column="9">public</specifier> <name pos:line="22" pos:column="16">ExtensionLanguagePair</name><parameter_list pos:line="22" pos:column="37">(<param><decl><type><name pos:line="22" pos:column="38">string</name></type> <name pos:line="22" pos:column="45">extension</name></decl></param>, <param><decl><type><name pos:line="22" pos:column="56">Language</name></type> <name pos:line="22" pos:column="65">language</name></decl></param>)</parameter_list>
+        <block pos:line="23" pos:column="9">{
+            <expr_stmt><expr><name pos:line="24" pos:column="13">Extension</name> <op:operator pos:line="24" pos:column="23">=</op:operator> <name pos:line="24" pos:column="25">extension</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="25" pos:column="13">Language</name> <op:operator pos:line="25" pos:column="22">=</op:operator> <name pos:line="25" pos:column="24">language</name></expr>;</expr_stmt>
+        }</block></constructor>
+        <decl_stmt><decl><type><specifier pos:line="27" pos:column="9">public</specifier> <name pos:line="27" pos:column="16">string</name></type> <name pos:line="27" pos:column="23">Extension</name> <block pos:line="27" pos:column="33">{ <function_decl><name pos:line="27" pos:column="35">get</name>;</function_decl> <function_decl><name pos:line="27" pos:column="40">set</name>;</function_decl> }</block></decl></decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="28" pos:column="9">public</specifier> <name pos:line="28" pos:column="16">Language</name></type> <name pos:line="28" pos:column="25">Language</name> <block pos:line="28" pos:column="34">{ <function_decl><name pos:line="28" pos:column="36">get</name>;</function_decl> <function_decl><name pos:line="28" pos:column="41">set</name>;</function_decl> }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace>
+</unit>

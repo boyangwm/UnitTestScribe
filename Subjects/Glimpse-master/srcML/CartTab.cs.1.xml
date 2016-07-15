@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Mvc3.MusicStore.Sample\Framework\CartTab.cs" pos:tabs="8"><comment type="line" pos:line="1" pos:column="1">//using System.Linq;</comment>
+<comment type="line" pos:line="2" pos:column="1">//using Glimpse.AspNet.Extensibility; </comment>
+<comment type="line" pos:line="3" pos:column="1">//using Glimpse.AspNet.Extensions;</comment>
+<comment type="line" pos:line="4" pos:column="1">//using Glimpse.Core.Extensibility;</comment>
+<comment type="line" pos:line="5" pos:column="1">//using Glimpse.Core.Tab.Assist;</comment>
+<comment type="line" pos:line="6" pos:column="1">//using MvcMusicStore.Models;</comment>
+
+<comment type="line" pos:line="8" pos:column="1">//namespace MvcMusicStore.Framework</comment>
+<comment type="line" pos:line="9" pos:column="1">//{</comment>
+<comment type="line" pos:line="10" pos:column="1">//    public class CartTab : AspNetTab, ITabLayout, ILayoutControl</comment>
+<comment type="line" pos:line="11" pos:column="1">//    {</comment>
+<comment type="line" pos:line="12" pos:column="1">//        private static readonly object Layout = TabLayout.Create()</comment>
+<comment type="line" pos:line="13" pos:column="1">//                .Cell("items", TabLayout.Create().Row(r =&gt;</comment>
+<comment type="line" pos:line="14" pos:column="1">//                    {</comment>
+<comment type="line" pos:line="15" pos:column="1">//                        r.Cell("{{albumTitle}} ({{albumId}})").AsKey().WithTitle("Album (Id)");</comment>
+<comment type="line" pos:line="16" pos:column="1">//                        r.Cell("albumPrice").AlignRight().Prefix("$").WidthInPixels(100).WithTitle("Price");</comment>
+<comment type="line" pos:line="17" pos:column="1">//                        r.Cell("genreName").WithTitle("Genre");</comment>
+<comment type="line" pos:line="18" pos:column="1">//                        r.Cell("artistName").WithTitle("Artist");</comment>
+<comment type="line" pos:line="19" pos:column="1">//                        r.Cell("count").Class("mono").WidthInPixels(70).WithTitle("Count");</comment>
+<comment type="line" pos:line="20" pos:column="1">//                        r.Cell("dateCreated").WithTitle("Added");</comment>
+<comment type="line" pos:line="21" pos:column="1">//                        r.Cell("recordId").WithTitle("Record Id");</comment>
+<comment type="line" pos:line="22" pos:column="1">//                    })).Build();</comment>
+         
+<comment type="line" pos:line="24" pos:column="1">//        public override string Name</comment>
+<comment type="line" pos:line="25" pos:column="1">//        {</comment>
+<comment type="line" pos:line="26" pos:column="1">//            get { return "Cart"; }</comment>
+<comment type="line" pos:line="27" pos:column="1">//        }</comment>
+
+<comment type="line" pos:line="29" pos:column="1">//        public bool KeysHeadings</comment>
+<comment type="line" pos:line="30" pos:column="1">//        {</comment>
+<comment type="line" pos:line="31" pos:column="1">//            get { return true; }</comment>
+<comment type="line" pos:line="32" pos:column="1">//        }</comment>
+
+<comment type="line" pos:line="34" pos:column="1">//        public override object GetData(ITabContext context)</comment>
+<comment type="line" pos:line="35" pos:column="1">//        {</comment>
+<comment type="line" pos:line="36" pos:column="1">//            var httpContext = context.GetHttpContext();</comment>
+
+<comment type="line" pos:line="38" pos:column="1">//            var cart = ShoppingCart.GetCart(httpContext);</comment>
+<comment type="line" pos:line="39" pos:column="1">//            var items = cart.GetCartDetials();</comment>
+
+<comment type="line" pos:line="41" pos:column="1">//            var root = new</comment>
+<comment type="line" pos:line="42" pos:column="1">//            {</comment>
+<comment type="line" pos:line="43" pos:column="1">//                Details = new {</comment>
+<comment type="line" pos:line="44" pos:column="1">//                        CartId = ShoppingCart.GetCartId(httpContext), </comment>
+<comment type="line" pos:line="45" pos:column="1">//                        Total = items.Any() ? items.Sum(x =&gt; x.AlbumPrice).ToString() : "--"</comment>
+<comment type="line" pos:line="46" pos:column="1">//                    },</comment>
+<comment type="line" pos:line="47" pos:column="1">//                Items = items</comment>
+<comment type="line" pos:line="48" pos:column="1">//            };</comment>
+
+<comment type="line" pos:line="50" pos:column="1">//            return root;</comment>
+<comment type="line" pos:line="51" pos:column="1">//        }</comment>
+
+<comment type="line" pos:line="53" pos:column="1">//        public override RuntimeEvent ExecuteOn</comment>
+<comment type="line" pos:line="54" pos:column="1">//        {</comment>
+<comment type="line" pos:line="55" pos:column="1">//            get { return RuntimeEvent.EndSessionAccess; }</comment>
+<comment type="line" pos:line="56" pos:column="1">//        }</comment>
+
+<comment type="line" pos:line="58" pos:column="1">//        public object GetLayout()</comment>
+<comment type="line" pos:line="59" pos:column="1">//        {</comment>
+<comment type="line" pos:line="60" pos:column="1">//            return Layout;</comment>
+<comment type="line" pos:line="61" pos:column="1">//        }</comment>
+<comment type="line" pos:line="62" pos:column="1">//    }</comment>
+<comment type="line" pos:line="63" pos:column="1">//}</comment></unit>

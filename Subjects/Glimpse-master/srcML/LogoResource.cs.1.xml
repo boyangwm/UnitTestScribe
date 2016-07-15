@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Resource\LogoResource.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">Glimpse</name><op:operator pos:line="2" pos:column="14">.</op:operator><name pos:line="2" pos:column="15">Core</name><op:operator pos:line="2" pos:column="19">.</op:operator><name pos:line="2" pos:column="20">Extensibility</name></name>;</using>
+
+<namespace pos:line="4" pos:column="1">namespace <name><name pos:line="4" pos:column="11">Glimpse</name><op:operator pos:line="4" pos:column="18">.</op:operator><name pos:line="4" pos:column="19">Core</name><op:operator pos:line="4" pos:column="23">.</op:operator><name pos:line="4" pos:column="24">Resource</name></name>
+<block pos:line="5" pos:column="1">{
+    <comment type="line" pos:line="6" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// The &lt;see cref="IResource"/&gt; implementation responsible for providing the Glimpse client the Glimpse logo.</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><attribute pos:line="9" pos:column="5">[<expr><call><name pos:line="9" pos:column="6">Obsolete</name><argument_list pos:line="9" pos:column="14">(<argument><expr><lit:literal type="string" pos:line="9" pos:column="15">"This resource should not be requested anymore, but rather the LogosResource"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+    <specifier pos:line="10" pos:column="5">public</specifier> class <name pos:line="10" pos:column="18">LogoResource</name> <super pos:line="10" pos:column="31">: <name pos:line="10" pos:column="33">FileResource</name>, <name pos:line="10" pos:column="47">IKey</name></super>
+    <block pos:line="11" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="12" pos:column="9">internal</specifier> <specifier pos:line="12" pos:column="18">const</specifier> <name pos:line="12" pos:column="24">string</name></type> <name pos:line="12" pos:column="31">InternalName</name> <init pos:line="12" pos:column="44">= <expr><lit:literal type="string" pos:line="12" pos:column="46">"glimpse_logo"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="14" pos:column="9">private</specifier> <name pos:line="14" pos:column="17">EmbeddedResourceInfo</name></type> <name pos:line="14" pos:column="38">GlimpseTextLogoEmbeddedResourceInfo</name> <block pos:line="14" pos:column="74">{ <function_decl><name pos:line="14" pos:column="76">get</name>;</function_decl> <function_decl><name pos:line="14" pos:column="81">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="16" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="17" pos:column="9">/// Initializes a new instance of the &lt;see cref="LogoResource" /&gt; class.</comment>
+        <comment type="line" pos:line="18" pos:column="9">/// &lt;/summary&gt;</comment>
+        <constructor><specifier pos:line="19" pos:column="9">public</specifier> <name pos:line="19" pos:column="16">LogoResource</name><parameter_list pos:line="19" pos:column="28">()</parameter_list>
+        <block pos:line="20" pos:column="9">{
+            <expr_stmt><expr><name pos:line="21" pos:column="13">Name</name> <op:operator pos:line="21" pos:column="18">=</op:operator> <name pos:line="21" pos:column="20">InternalName</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="22" pos:column="13">GlimpseTextLogoEmbeddedResourceInfo</name> <op:operator pos:line="22" pos:column="49">=</op:operator> <op:operator pos:line="22" pos:column="51">new</op:operator> <call><name pos:line="22" pos:column="55">EmbeddedResourceInfo</name><argument_list pos:line="22" pos:column="75">(<argument><expr><call><name><name pos:line="22" pos:column="76">this</name><op:operator pos:line="22" pos:column="80">.</op:operator><name pos:line="22" pos:column="81">GetType</name></name><argument_list pos:line="22" pos:column="88">()</argument_list></call><op:operator pos:line="22" pos:column="90">.</op:operator><name pos:line="22" pos:column="91">Assembly</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="22" pos:column="101">"Glimpse.Core.EmbeddedResources.glimpse_text_logo.png"</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="22" pos:column="157">"image/png"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// Gets the key.</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// The key. Only valid JavaScript identifiers should be used for future compatibility.</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="31" pos:column="9">public</specifier> <name pos:line="31" pos:column="16">string</name></type> <name pos:line="31" pos:column="23">Key</name>
+        <block pos:line="32" pos:column="9">{
+            <function><name pos:line="33" pos:column="13">get</name> <block pos:line="33" pos:column="17">{ <return pos:line="33" pos:column="19">return <expr><name pos:line="33" pos:column="26">Name</name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="36" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// Returns the embedded resource that represents the Glimpse text logo which will be returned during the execution of the &lt;see cref="FileResource"/&gt;</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;param name="context"&gt;The resource context&lt;/param&gt;</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;returns&gt;Information about the embedded Glimpse text logo&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="41" pos:column="9">protected</specifier> <specifier pos:line="41" pos:column="19">override</specifier> <name pos:line="41" pos:column="28">EmbeddedResourceInfo</name></type> <name pos:line="41" pos:column="49">GetEmbeddedResourceInfo</name><parameter_list pos:line="41" pos:column="72">(<param><decl><type><name pos:line="41" pos:column="73">IResourceContext</name></type> <name pos:line="41" pos:column="90">context</name></decl></param>)</parameter_list>
+        <block pos:line="42" pos:column="9">{
+            <return pos:line="43" pos:column="13">return <expr><name pos:line="43" pos:column="20">GlimpseTextLogoEmbeddedResourceInfo</name></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

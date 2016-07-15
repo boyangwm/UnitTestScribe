@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Framework\IRequestMetadata.cs" pos:tabs="8"><namespace pos:line="1" pos:column="1">namespace <name><name pos:line="1" pos:column="11">Glimpse</name><op:operator pos:line="1" pos:column="18">.</op:operator><name pos:line="1" pos:column="19">Core</name><op:operator pos:line="1" pos:column="23">.</op:operator><name pos:line="1" pos:column="24">Framework</name></name>
+<block pos:line="2" pos:column="1">{
+    <comment type="line" pos:line="3" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="4" pos:column="5">/// Defines properties that describe the metadata associated with a request</comment>
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class type="interface"><specifier pos:line="6" pos:column="5">public</specifier> interface <name pos:line="6" pos:column="22">IRequestMetadata</name>
+    <block pos:line="7" pos:column="5">{
+        <comment type="line" pos:line="8" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="9" pos:column="9">/// Gets the request URI.</comment>
+        <comment type="line" pos:line="10" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="11" pos:column="9">/// &lt;value&gt;The request URI.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="12" pos:column="9">string</name></type> <name pos:line="12" pos:column="16">RequestUri</name> <block pos:line="12" pos:column="27">{ <function_decl><name pos:line="12" pos:column="29">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="14" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// Gets the request HTTP method.</comment>
+        <comment type="line" pos:line="16" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="17" pos:column="9">/// &lt;value&gt;The request HTTP method.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="18" pos:column="9">string</name></type> <name pos:line="18" pos:column="16">RequestHttpMethod</name> <block pos:line="18" pos:column="34">{ <function_decl><name pos:line="18" pos:column="36">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="20" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="21" pos:column="9">/// Gets the response status code.</comment>
+        <comment type="line" pos:line="22" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// &lt;value&gt;The response status code.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="24" pos:column="9">int</name></type> <name pos:line="24" pos:column="13">ResponseStatusCode</name> <block pos:line="24" pos:column="32">{ <function_decl><name pos:line="24" pos:column="34">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// Gets the type of the response content.</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;value&gt;The type of the response content.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="30" pos:column="9">string</name></type> <name pos:line="30" pos:column="16">ResponseContentType</name> <block pos:line="30" pos:column="36">{ <function_decl><name pos:line="30" pos:column="38">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="32" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="33" pos:column="9">/// Gets a value indicating whether request is ajax.</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="35" pos:column="9">/// &lt;value&gt;&lt;c&gt;true&lt;/c&gt; if request is ajax; otherwise, &lt;c&gt;false&lt;/c&gt;.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="36" pos:column="9">bool</name></type> <name pos:line="36" pos:column="14">RequestIsAjax</name> <block pos:line="36" pos:column="28">{ <function_decl><name pos:line="36" pos:column="30">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="38" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// Gets the client id.</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// &lt;value&gt;The client id.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="42" pos:column="9">string</name></type> <name pos:line="42" pos:column="16">ClientId</name> <block pos:line="42" pos:column="25">{ <function_decl><name pos:line="42" pos:column="27">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="44" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// Gets the cookie.</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// &lt;param name="name"&gt;The name.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// &lt;returns&gt;Value of the Http cookie.&lt;/returns&gt;</comment>
+        <function_decl><type><name pos:line="49" pos:column="9">string</name></type> <name pos:line="49" pos:column="16">GetCookie</name><parameter_list pos:line="49" pos:column="25">(<param><decl><type><name pos:line="49" pos:column="26">string</name></type> <name pos:line="49" pos:column="33">name</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="51" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="52" pos:column="9">/// Gets the HTTP header.</comment>
+        <comment type="line" pos:line="53" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// &lt;param name="name"&gt;The name.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="55" pos:column="9">/// &lt;returns&gt;Value of the Http header.&lt;/returns&gt;</comment>
+        <function_decl><type><name pos:line="56" pos:column="9">string</name></type> <name pos:line="56" pos:column="16">GetHttpHeader</name><parameter_list pos:line="56" pos:column="29">(<param><decl><type><name pos:line="56" pos:column="30">string</name></type> <name pos:line="56" pos:column="37">name</name></decl></param>)</parameter_list>;</function_decl>
+    }</block></class>
+}</block></namespace></unit>

@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\PMUResourceManager.h" pos:tabs="8"><cpp:pragma pos:line="1" pos:column="1">#<cpp:directive pos:line="1" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+<comment type="line" pos:line="2" pos:column="1">//--------------------------------------------------------------------------</comment>
+<comment type="line" pos:line="3" pos:column="1">// Microsoft Visual Studio Sampling Profiler Driver</comment>
+<comment type="line" pos:line="4" pos:column="1">//</comment>
+<comment type="line" pos:line="5" pos:column="1">// Copyright (c) 2005 Microsoft Corporation Inc.</comment>
+<comment type="line" pos:line="6" pos:column="1">// All rights reserved</comment>
+<comment type="line" pos:line="7" pos:column="1">//</comment>
+<comment type="line" pos:line="8" pos:column="1">// PMUResourceManager.h</comment>
+<comment type="line" pos:line="9" pos:column="1">//</comment>
+<comment type="line" pos:line="10" pos:column="1">// PMU resource management.</comment>
+<comment type="line" pos:line="11" pos:column="1">//</comment>
+<comment type="line" pos:line="12" pos:column="1">//---------------------------------------------------------------------------</comment>
+
+<cpp:ifdef pos:line="14" pos:column="1">#<cpp:directive pos:line="14" pos:column="2">ifdef</cpp:directive> <name pos:line="14" pos:column="8">__cplusplus</name></cpp:ifdef>
+<extern pos:line="15" pos:column="1">extern <lit:literal type="string" pos:line="15" pos:column="8">"C"</lit:literal> <block pos:line="15" pos:column="12">{
+<cpp:endif pos:line="16" pos:column="1">#<cpp:directive pos:line="16" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:include pos:line="18" pos:column="1">#<cpp:directive pos:line="18" pos:column="2">include</cpp:directive> <cpp:file pos:line="18" pos:column="10">&lt;ntddk.h&gt;</cpp:file></cpp:include>
+
+<comment type="block" pos:line="20" pos:column="1">/*---------------------------------------------------------------------------
+
+Usage:
+	
+	Any driver wishing to politely share the PMU should use the Performance 
+	Monitoring Unit Resource Manager (PmuRm) API in this module.
+
+    The driver must initialize the PmuRm using PmuRmInit.  It must
+    deinitialize using PmuRmUninit.  Typically this would be done in 
+    DriverEntry and DriverUnload.
+    
+    Each entity in the driver that wishes to participate in the PmuRm 
+    framework must call PmuRmParticipate.  Participation is resigned using
+    PmuRmResign.  This could be done in a driver's AddDevice/RemoveDevice
+    routines, for instance if multiple devices will participate independently
+    in the management scheme.
+    
+    When a participant wishes to acquire PMU resources, it calls
+    PmuRmAcquire, passing the affinity mask for the processors on which it
+    will acquire resources, along with an optional timeout.  This call
+    will block until the timeout expires or the resources are acquired.
+    
+    The participant must eventually release the resource using PmuRmRelease.
+    
+Example:
+
+    // Assuming driver exposes a single device
+    
+    DEVICE_OBJECT MyDevice;
+    UNICODE_STRING MyFriendlyName;
+    
+    PPMURM_PARTICIPANT Participant;
+    
+    NTSTATUS
+    DriverEntry(PDRIVER_OBJECT DriverObject, PUNICODE_STRING RegPath)
+    {
+        NTSTATUS Status;
+        
+        // Initialize PmuRm.
+        Status = PmuRmInit();
+        
+        if ( !NT_SUCCESS( Status ) )
+            // bail...
+        
+        // Create the device
+        IoCreateDevice(..., &amp;DeviceObject);
+        
+        // Create a PmuRmParticipant
+        RtlInitUnicodeString(&amp;MyFriendlyName, L"My Excellent Driver");
+        
+        Status = PmuRmParticipate(
+                    DriverObject,
+                    DeviceObject,
+                    &amp;MyFriendlyName,
+                    &amp;Participant);
+                    
+        if ( !NT_SUCCESS( Status ) )
+            // bail...
+    
+        ...
+    }    
+
+    NTSTATUS
+    DriverUnload()
+    {
+        PmuRmResign(Participant);
+        PmuRmUninit();
+        [...]
+    }
+    
+    NTSTATUS
+    DeviceIoctl(DEVICE_OBJECT *	Device, IRP * Irp)
+    {
+        [...]
+        
+        case IOCTL_GET_PMU:
+
+            // Wait 10 seconds
+            LARGE_INTEGER   Timeout;
+            Timeout.QuadPart = -(10 * 1000 * 1000 * 10);
+
+            // Get PMUs for CPUs 0 and 1
+            Status = PmuRmAcquire(Participant, 0x000000003, &amp;Timeout, NULL);
+            
+            break;
+            
+        case IOCTL_RETURN_PMU:
+        
+            // Return CPUs 0 and 1
+            PmuRmRelease(0x00000003);
+            
+            break;
+            
+        [...]
+    }
+    
+    
+---------------------------------------------------------------------------*/</comment>
+
+
+<typedef pos:line="120" pos:column="1">typedef <type pos:line="120" pos:column="9">struct <name pos:line="120" pos:column="16">_PMURM_PARTICIPANT</name></type> <name pos:line="120" pos:column="35">PMURM_PARTICIPANT</name><op:operator pos:line="120" pos:column="52">,</op:operator> <type:modifier pos:line="120" pos:column="54">*</type:modifier><name pos:line="120" pos:column="55">PPMURM_PARTICIPANT</name>;</typedef>
+
+
+<function_decl><type><name pos:line="123" pos:column="1">NTSTATUS</name>
+<name pos:line="124" pos:column="1">NTAPI</name></type>
+<name pos:line="125" pos:column="1">PmuRmInit</name><parameter_list pos:line="125" pos:column="10">(
+	<param><decl><type><name pos:line="126" pos:column="9">VOID</name></type></decl></param>
+	)</parameter_list>;</function_decl>
+<comment type="block" pos:line="128" pos:column="1">/*++
+
+Routine Description:
+
+    This function initializes the PMU resource manager.
+
+Arguments:
+
+Return Value:
+
+    NTSTATUS.
+
+Notes:
+
+    Must be called at PASSIVE_LEVEL.
+    
+--*/</comment>
+
+
+	
+<function_decl><type><name pos:line="148" pos:column="1">NTSTATUS</name>
+<name pos:line="149" pos:column="1">NTAPI</name></type>
+<name pos:line="150" pos:column="1">PmuRmUninit</name><parameter_list pos:line="150" pos:column="12">(
+	<param><decl><type><name pos:line="151" pos:column="9">VOID</name></type></decl></param>
+	)</parameter_list>;</function_decl>
+<comment type="block" pos:line="153" pos:column="1">/*++
+
+Routine Description:
+
+    This function is used to release the PMU resource manager.
+
+Arguments:
+
+Return Value:
+
+    NTSTATUS.
+
+Notes:
+
+    Must be called at PASSIVE_LEVEL.
+
+--*/</comment>
+
+
+	
+<function_decl><type><name pos:line="173" pos:column="1">NTSTATUS</name>
+<name pos:line="174" pos:column="1">NTAPI</name></type>
+<name pos:line="175" pos:column="1">PmuRmParticipate</name><parameter_list pos:line="175" pos:column="17">(
+    <param><decl><type><name pos:line="176" pos:column="5">IN</name>  <name pos:line="176" pos:column="9">PDRIVER_OBJECT</name></type>       <name pos:line="176" pos:column="30">DriverObject</name></decl></param>,
+    <param><decl><type><name pos:line="177" pos:column="5">IN</name>  <name pos:line="177" pos:column="9">PDEVICE_OBJECT</name>       <name pos:line="177" pos:column="30">DeviceObject</name></type> <name pos:line="177" pos:column="43">OPTIONAL</name></decl></param>,
+    <param><decl><type><name pos:line="178" pos:column="5">IN</name>  <name pos:line="178" pos:column="9">PUNICODE_STRING</name></type>      <name pos:line="178" pos:column="30">FriendlyName</name></decl></param>,
+    <param><decl><type><name pos:line="179" pos:column="5">OUT</name> <name pos:line="179" pos:column="9">PPMURM_PARTICIPANT</name> <type:modifier pos:line="179" pos:column="28">*</type:modifier></type> <name pos:line="179" pos:column="30">Participant</name></decl></param>
+    )</parameter_list>;</function_decl>
+<comment type="block" pos:line="181" pos:column="1">/*++
+
+Routine Description:
+
+    This function registers a participant in the resource management scheme.
+
+Arguments:
+
+    DriverObject - Specifies the associated driver for the participant.
+    
+    DeviceObject - Specifies the associated device for the participant.  This
+        parameter can be NULL if there is no associated device.
+                   
+    FriendlyName - Specifies a friendly name for the participant.  This string
+        will be used in warning messages from other participants.
+        
+    Participant - PPMURM_PARTICIPANT pointer that will receive an initialized
+        structure to be used in other PMURM calls.
+
+Return Value:
+
+    NTSTATUS.
+
+Notes:
+
+    Must be called at PASSIVE_LEVEL.
+
+--*/</comment>
+
+
+
+<function_decl><type><name pos:line="212" pos:column="1">NTSTATUS</name>
+<name pos:line="213" pos:column="1">NTAPI</name></type>
+<name pos:line="214" pos:column="1">PmuRmResign</name><parameter_list pos:line="214" pos:column="12">(
+    <param><decl><type><name pos:line="215" pos:column="5">IN</name>  <name pos:line="215" pos:column="9">PPMURM_PARTICIPANT</name></type>  <name pos:line="215" pos:column="29">Participant</name></decl></param>
+    )</parameter_list>;</function_decl>
+<comment type="block" pos:line="217" pos:column="1">/*++
+
+Routine Description:
+
+    This function removes a participant in the resource management scheme.
+
+Arguments:
+
+    Participant - The original PMURM_PARTICIPANT pointer returned from 
+        PmuRmParticipate.
+
+Return Value:
+
+    NTSTATUS.
+
+Notes:
+
+    Must be called at PASSIVE_LEVEL.
+
+--*/</comment>
+
+
+
+<function_decl><type><name pos:line="240" pos:column="1">NTSTATUS</name>
+<name pos:line="241" pos:column="1">NTAPI</name></type>
+<name pos:line="242" pos:column="1">PmuRmAcquire</name><parameter_list pos:line="242" pos:column="13">(
+    <param><decl><type><name pos:line="243" pos:column="5">IN</name>  <name pos:line="243" pos:column="9">PPMURM_PARTICIPANT</name></type>  <name pos:line="243" pos:column="29">Participant</name></decl></param>,
+	<param><decl><type><name pos:line="244" pos:column="9">IN</name>	<name pos:line="244" pos:column="17">KAFFINITY</name></type>           <name pos:line="244" pos:column="37">CpuMask</name></decl></param>,
+    <param><decl><type><name pos:line="245" pos:column="5">IN</name>  <name pos:line="245" pos:column="9">PLARGE_INTEGER</name>      <name pos:line="245" pos:column="29">Timeout</name></type>      <name pos:line="245" pos:column="42">OPTIONAL</name></decl></param>,
+    <param><decl><type><name pos:line="246" pos:column="5">OUT</name> <name pos:line="246" pos:column="9">PUNICODE_STRING</name>     <name pos:line="246" pos:column="29">NoVoteText</name></type>   <name pos:line="246" pos:column="42">OPTIONAL</name></decl></param>
+	)</parameter_list>;</function_decl>
+<comment type="block" pos:line="248" pos:column="1">/*++
+
+Routine Description:
+
+    This function attempts to acquire PMU resources for the given CPUs.
+
+Arguments:
+
+    Participant - The PMURM_PARTICIPANT pointer returned from PmuRmParticipate.
+
+    CpuMask - A bit mask indicating which CPUs to acquire PMU resources for.
+    
+    Timeout - An optional timeout value.  The semantics of this value are the 
+        same as the timeout parameter to KeWaitForSingleObject.  If omitted, 
+        this function blocks until the PMU resources become available.  If set 
+        to zero, the function returns success or failure immediately.  A 
+        negative value implies a relative timeout, based from the current time,
+        and a positive value describes an absolute time.  
+                   
+    NoVoteText - If the function fails because the resource is currently held,
+        this string will hold the friendly name of the participant that holds 
+        the resource.
+
+Return Value:
+
+    NTSTATUS.
+
+Notes:
+
+    Must be called at PASSIVE_LEVEL.
+
+--*/</comment>
+
+
+
+<function_decl><type><name pos:line="283" pos:column="1">NTSTATUS</name>
+<name pos:line="284" pos:column="1">NTAPI</name></type>
+<name pos:line="285" pos:column="1">PmuRmRelease</name><parameter_list pos:line="285" pos:column="13">(
+    <param><decl><type><name pos:line="286" pos:column="5">IN</name>  <name pos:line="286" pos:column="9">PPMURM_PARTICIPANT</name></type>  <name pos:line="286" pos:column="29">Participant</name></decl></param>,
+	<param><decl><type><name pos:line="287" pos:column="9">IN</name>  <name pos:line="287" pos:column="13">KAFFINITY</name></type>	        <name pos:line="287" pos:column="33">CpuMask</name></decl></param>
+	)</parameter_list>;</function_decl>
+<comment type="block" pos:line="289" pos:column="1">/*++
+
+Routine Description:
+
+    This function returns PMU resources for the given CPUs.
+
+Arguments:
+
+    Participant - The PMURM_PARTICIPANT pointer returned from PmuRmParticipate.
+
+    CpuMask - A bit mask indicating which CPUs to return PMU resources for.
+
+Return Value:
+
+    NTSTATUS.
+
+Notes:
+
+    Must be called at PASSIVE_LEVEL.
+
+--*/</comment>
+
+
+<cpp:ifdef pos:line="312" pos:column="1">#<cpp:directive pos:line="312" pos:column="2">ifdef</cpp:directive> <name pos:line="312" pos:column="8">__cplusplus</name></cpp:ifdef>
+}</block></extern>
+<cpp:endif pos:line="314" pos:column="1">#<cpp:directive pos:line="314" pos:column="2">endif</cpp:directive></cpp:endif>
+</unit>

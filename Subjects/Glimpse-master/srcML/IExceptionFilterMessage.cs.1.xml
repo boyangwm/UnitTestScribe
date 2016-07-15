@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Mvc\Message\IExceptionFilterMessage.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Mvc</name><op:operator pos:line="3" pos:column="22">.</op:operator><name pos:line="3" pos:column="23">Message</name></name>
+<block pos:line="4" pos:column="1">{
+    <class type="interface"><specifier pos:line="5" pos:column="5">public</specifier> interface <name pos:line="5" pos:column="22">IExceptionFilterMessage</name> <super pos:line="5" pos:column="46">: <name pos:line="5" pos:column="48">IFilterMessage</name></super>
+    <block pos:line="6" pos:column="5">{
+        <decl_stmt><decl><type><name pos:line="7" pos:column="9">Type</name></type> <name pos:line="7" pos:column="14">ExceptionType</name> <block pos:line="7" pos:column="28">{ <function_decl><name pos:line="7" pos:column="30">get</name>;</function_decl> <function_decl><name pos:line="7" pos:column="35">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><name pos:line="9" pos:column="9">bool</name></type> <name pos:line="9" pos:column="14">ExceptionHandled</name> <block pos:line="9" pos:column="31">{ <function_decl><name pos:line="9" pos:column="33">get</name>;</function_decl> <function_decl><name pos:line="9" pos:column="38">set</name>;</function_decl> }</block></decl></decl_stmt>
+    }</block></class>
+
+    <class><specifier pos:line="12" pos:column="5">public</specifier> <specifier pos:line="12" pos:column="12">static</specifier> class <name pos:line="12" pos:column="25">ExceptionBasedFilterMessageExtension</name>
+    <block pos:line="13" pos:column="5">{
+        <function><type><specifier pos:line="14" pos:column="9">public</specifier> <specifier pos:line="14" pos:column="16">static</specifier> <name pos:line="14" pos:column="23">T</name></type> <name><name pos:line="14" pos:column="25">AsExceptionFilterMessage</name><argument_list pos:line="14" pos:column="49">&lt;<argument><name pos:line="14" pos:column="50">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="14" pos:column="52">(<param><decl><type><name pos:line="14" pos:column="53">this</name> <name pos:line="14" pos:column="58">T</name></type> <name pos:line="14" pos:column="60">message</name></decl></param>, <param><decl><type><name pos:line="14" pos:column="69">Type</name></type> <name pos:line="14" pos:column="74">exceptionType</name></decl></param>, <param><decl><type><name pos:line="14" pos:column="89">bool</name></type> <name pos:line="14" pos:column="94">exceptionHandled</name></decl></param>)</parameter_list>
+            <where pos:line="15" pos:column="13">where <name pos:line="15" pos:column="19">T</name> : <name pos:line="15" pos:column="23">IExceptionFilterMessage</name></where>
+        <block pos:line="16" pos:column="9">{
+            <expr_stmt><expr><name><name pos:line="17" pos:column="13">message</name><op:operator pos:line="17" pos:column="20">.</op:operator><name pos:line="17" pos:column="21">ExceptionType</name></name> <op:operator pos:line="17" pos:column="35">=</op:operator> <name pos:line="17" pos:column="37">exceptionType</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="18" pos:column="13">message</name><op:operator pos:line="18" pos:column="20">.</op:operator><name pos:line="18" pos:column="21">ExceptionHandled</name></name> <op:operator pos:line="18" pos:column="38">=</op:operator> <name pos:line="18" pos:column="40">exceptionHandled</name></expr>;</expr_stmt>
+
+            <return pos:line="20" pos:column="13">return <expr><name pos:line="20" pos:column="20">message</name></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\MnuHelpIds.h" pos:tabs="8" pos:line="1" pos:column="1">	<comment type="line" pos:line="1" pos:column="9">//----------------------------------------------------------------------------</comment>
+<comment type="line" pos:line="2" pos:column="1">//</comment>
+<comment type="line" pos:line="3" pos:column="1">//  Microsoft Visual Studio</comment>
+<comment type="line" pos:line="4" pos:column="1">//</comment>
+<comment type="line" pos:line="5" pos:column="1">//  Microsoft Confidential</comment>
+<comment type="line" pos:line="6" pos:column="1">//  Copyright 1997-1998 Microsoft Corporation.  All Rights Reserved.</comment>
+<comment type="line" pos:line="7" pos:column="1">//</comment>
+<comment type="line" pos:line="8" pos:column="1">//  File:	menucmds.h</comment>
+<comment type="line" pos:line="9" pos:column="1">//	Area:	Help Package Commands</comment>
+<comment type="line" pos:line="10" pos:column="1">//</comment>
+<comment type="line" pos:line="11" pos:column="1">//  Contents:</comment>
+<comment type="line" pos:line="12" pos:column="1">//		Helps System Package Menu, Group, Command IDs</comment>
+<comment type="line" pos:line="13" pos:column="1">//</comment>
+<comment type="line" pos:line="14" pos:column="1">//----------------------------------------------------------------------------</comment>
+<cpp:ifndef pos:line="15" pos:column="1">#<cpp:directive pos:line="15" pos:column="2">ifndef</cpp:directive> <name pos:line="15" pos:column="9">__HELPIDS_H_</name></cpp:ifndef>
+<cpp:define pos:line="16" pos:column="1">#<cpp:directive pos:line="16" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="16" pos:column="9">__HELPIDS_H_</name></cpp:macro></cpp:define>
+
+
+<cpp:ifndef pos:line="19" pos:column="1">#<cpp:directive pos:line="19" pos:column="2">ifndef</cpp:directive> <name pos:line="19" pos:column="9">NOGUIDS</name></cpp:ifndef>
+
+<cpp:ifdef pos:line="21" pos:column="1">#<cpp:directive pos:line="21" pos:column="2">ifdef</cpp:directive> <name pos:line="21" pos:column="8">DEFINE_GUID</name></cpp:ifdef>
+  <comment type="line" pos:line="22" pos:column="3">// WB package object CLSID</comment>
+  <expr_stmt><expr><call><name pos:line="23" pos:column="3">DEFINE_GUID</name> <argument_list pos:line="23" pos:column="15">(<argument><expr><name pos:line="23" pos:column="16">guidHelpCmdId</name></expr></argument>,
+    <argument><expr><lit:literal type="number" pos:line="24" pos:column="5">0x4a79114a</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="24" pos:column="17">0x19e4</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="24" pos:column="25">0x11d3</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="24" pos:column="33">0xb8</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="24" pos:column="39">0x6b</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="24" pos:column="45">0x0</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="24" pos:column="50">0xc0</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="24" pos:column="56">0x4f</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="24" pos:column="62">0x79</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="24" pos:column="68">0xf8</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="24" pos:column="74">0x2</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+  <expr_stmt><expr><call><name pos:line="26" pos:column="3">DEFINE_GUID</name> <argument_list pos:line="26" pos:column="15">(<argument><expr><name pos:line="26" pos:column="16">guidHelpGrpId</name></expr></argument>,
+    <argument><expr><lit:literal type="number" pos:line="27" pos:column="5">0x4a79114b</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="27" pos:column="17">0x19e4</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="27" pos:column="25">0x11d3</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="27" pos:column="33">0xb8</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="27" pos:column="39">0x6b</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="27" pos:column="45">0x0</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="27" pos:column="50">0xc0</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="27" pos:column="56">0x4f</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="27" pos:column="62">0x79</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="27" pos:column="68">0xf8</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="27" pos:column="74">0x2</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+  <expr_stmt><expr><call><name pos:line="29" pos:column="3">DEFINE_GUID</name> <argument_list pos:line="29" pos:column="15">(<argument><expr><name pos:line="29" pos:column="16">guidHelpPkg</name></expr></argument>,
+    <argument><expr><lit:literal type="number" pos:line="30" pos:column="5">0x4a791146</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="30" pos:column="17">0x19e4</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="30" pos:column="25">0x11d3</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="30" pos:column="33">0xb8</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="30" pos:column="39">0x6b</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="30" pos:column="45">0x0</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="30" pos:column="50">0xc0</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="30" pos:column="56">0x4f</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="30" pos:column="62">0x79</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="30" pos:column="68">0xf8</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="30" pos:column="74">0x2</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+  <comment type="line" pos:line="32" pos:column="3">// This is the GUID used by Search Window to do web toolbar visibility. It should be in sync with</comment>
+  <comment type="line" pos:line="33" pos:column="3">// VsCoreResIds (defined in \env\vscore\package\vscorepackage.cs</comment>
+  <comment type="line" pos:line="34" pos:column="3">// {E2F8DA06-F098-4508-B732-D8684EC10972}</comment>
+  <expr_stmt><expr><call><name pos:line="35" pos:column="3">DEFINE_GUID</name> <argument_list pos:line="35" pos:column="15">(<argument><expr><name pos:line="35" pos:column="16">guidHelpSearchCmdUI</name></expr></argument>, 
+    <argument><expr><lit:literal type="number" pos:line="36" pos:column="5">0xe2f8da06</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="36" pos:column="17">0xf098</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="36" pos:column="25">0x4508</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="36" pos:column="33">0xb7</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="36" pos:column="39">0x32</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="36" pos:column="45">0xd8</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="36" pos:column="51">0x68</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="36" pos:column="57">0x4e</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="36" pos:column="63">0xc1</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="36" pos:column="69">0x9</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="36" pos:column="74">0x72</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+<cpp:else pos:line="38" pos:column="1">#<cpp:directive pos:line="38" pos:column="2">else</cpp:directive></cpp:else>
+<comment type="line" pos:line="39" pos:column="1">// {4A79114A-19E4-11d3-B86B-00C04F79F802}</comment>
+<cpp:define pos:line="40" pos:column="1">#<cpp:directive pos:line="40" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="40" pos:column="9">guidHelpCmdId</name></cpp:macro>    <cpp:value pos:line="40" pos:column="26">{0x4a79114a, 0x19e4, 0x11d3, {0xb8, 0x6b, 0x0, 0xc0, 0x4f, 0x79, 0xf8, 0x2 }}</cpp:value></cpp:define>
+
+<comment type="line" pos:line="42" pos:column="1">// {4A79114B-19E4-11d3-B86B-00C04F79F802}</comment>
+<cpp:define pos:line="43" pos:column="1">#<cpp:directive pos:line="43" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="43" pos:column="9">guidHelpGrpId</name></cpp:macro>    <cpp:value pos:line="43" pos:column="26">{0x4a79114b, 0x19e4, 0x11d3, {0xb8, 0x6b, 0x0, 0xc0, 0x4f, 0x79, 0xf8, 0x2 }}</cpp:value></cpp:define>
+
+
+<comment type="line" pos:line="46" pos:column="1">// The following is the same as CLSID_HelpPackage but for consumption by CTC.</comment>
+<comment type="line" pos:line="47" pos:column="1">// {4A791146-19E4-11d3-B86B-00C04F79F802}</comment>
+<cpp:define pos:line="48" pos:column="1">#<cpp:directive pos:line="48" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="48" pos:column="9">guidHelpPkg</name></cpp:macro>			<cpp:value pos:line="48" pos:column="41">{0x4a791146, 0x19e4, 0x11d3, {0xb8, 0x6b, 0x0, 0xc0, 0x4f, 0x79, 0xf8, 0x2}}</cpp:value></cpp:define>
+
+<comment type="line" pos:line="50" pos:column="1">// This is the GUID used by Search Window to do web toolbar visibility. It should be in sync with</comment>
+<comment type="line" pos:line="51" pos:column="1">// VsCoreResIds (defined in \env\vscore\package\vscorepackage.cs</comment>
+<comment type="line" pos:line="52" pos:column="1">// {E2F8DA06-F098-4508-B732-D8684EC10972}</comment>
+<cpp:define pos:line="53" pos:column="1">#<cpp:directive pos:line="53" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="53" pos:column="9">guidHelpSearchCmdUI</name></cpp:macro> <cpp:value pos:line="53" pos:column="29">{0xe2f8da06, 0xf098, 0x4508, { 0xb7, 0x32, 0xd8, 0x68, 0x4e, 0xc1, 0x9, 0x72}}</cpp:value></cpp:define>
+
+<cpp:endif pos:line="55" pos:column="1">#<cpp:directive pos:line="55" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="55" pos:column="8">//DEFINE_GUID</comment>
+
+<cpp:endif pos:line="57" pos:column="1">#<cpp:directive pos:line="57" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="57" pos:column="8">//NOGUIDS</comment>
+
+	
+<comment type="line" pos:line="60" pos:column="1">// Menus</comment>
+<cpp:define pos:line="61" pos:column="1">#<cpp:directive pos:line="61" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="61" pos:column="9">IDM_HELP_CONTENTS</name></cpp:macro>           <cpp:value pos:line="61" pos:column="37">0x0001</cpp:value></cpp:define>
+<cpp:define pos:line="62" pos:column="1">#<cpp:directive pos:line="62" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="62" pos:column="9">IDM_HELP_KEYWORDS</name></cpp:macro>           <cpp:value pos:line="62" pos:column="37">0x0002</cpp:value></cpp:define>
+<cpp:define pos:line="63" pos:column="1">#<cpp:directive pos:line="63" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="63" pos:column="9">IDM_HELP_SEARCH</name></cpp:macro>             <cpp:value pos:line="63" pos:column="37">0x0003</cpp:value></cpp:define>
+
+<cpp:define pos:line="65" pos:column="1">#<cpp:directive pos:line="65" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="65" pos:column="9">IDM_HELP_MENU_MSONTHWEB</name></cpp:macro>     <cpp:value pos:line="65" pos:column="37">0x0100</cpp:value></cpp:define>
+
+<cpp:define pos:line="67" pos:column="1">#<cpp:directive pos:line="67" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="67" pos:column="9">IDM_HLPTOC_CTX</name></cpp:macro>		    <cpp:value pos:line="67" pos:column="37">0x0200</cpp:value></cpp:define>
+<cpp:define pos:line="68" pos:column="1">#<cpp:directive pos:line="68" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="68" pos:column="9">IDM_HELP_RESLIST_CTX</name></cpp:macro>        <cpp:value pos:line="68" pos:column="37">0x0300</cpp:value></cpp:define>
+<cpp:define pos:line="69" pos:column="1">#<cpp:directive pos:line="69" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="69" pos:column="9">IDM_HELP_RESLIST_CTX_SORTBY</name></cpp:macro> <cpp:value pos:line="69" pos:column="37">0x0400</cpp:value></cpp:define>
+
+<comment type="line" pos:line="71" pos:column="1">// Groups</comment>
+<cpp:define pos:line="72" pos:column="1">#<cpp:directive pos:line="72" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="72" pos:column="9">IDG_HELP_GRP</name></cpp:macro>                       <cpp:value pos:line="72" pos:column="44">0x0010</cpp:value></cpp:define>
+<cpp:define pos:line="73" pos:column="1">#<cpp:directive pos:line="73" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="73" pos:column="9">IDG_HELP_FEEDBACK_GRP</name></cpp:macro>              <cpp:value pos:line="73" pos:column="44">0x0040</cpp:value></cpp:define>
+
+<cpp:define pos:line="75" pos:column="1">#<cpp:directive pos:line="75" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="75" pos:column="9">IDG_HLPTOC_CTX_PRINT</name></cpp:macro>        <cpp:value pos:line="75" pos:column="37">0x0050</cpp:value></cpp:define>
+
+<cpp:define pos:line="77" pos:column="1">#<cpp:directive pos:line="77" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="77" pos:column="9">IDG_HELP_RESLIST_CTX_SORTBY</name></cpp:macro> <cpp:value pos:line="77" pos:column="37">0x0060</cpp:value></cpp:define>
+<cpp:define pos:line="78" pos:column="1">#<cpp:directive pos:line="78" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="78" pos:column="9">IDG_HELP_RESLIST_CTX_COLUMNS</name></cpp:macro> <cpp:value pos:line="78" pos:column="38">0x0070</cpp:value></cpp:define>
+
+<cpp:define pos:line="80" pos:column="1">#<cpp:directive pos:line="80" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="80" pos:column="9">IDG_HELP_MSONTHEWEB_NEWS</name></cpp:macro>    <cpp:value pos:line="80" pos:column="37">0x0100</cpp:value></cpp:define>
+<cpp:define pos:line="81" pos:column="1">#<cpp:directive pos:line="81" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="81" pos:column="9">IDG_HELP_MSONTHEWEB_INFO</name></cpp:macro>    <cpp:value pos:line="81" pos:column="37">0x0200</cpp:value></cpp:define>
+<cpp:define pos:line="82" pos:column="1">#<cpp:directive pos:line="82" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="82" pos:column="9">IDG_HELP_MSONTHEWEB_HOME</name></cpp:macro>    <cpp:value pos:line="82" pos:column="37">0x0300</cpp:value></cpp:define>
+
+
+<comment type="line" pos:line="85" pos:column="1">//Command IDs</comment>
+<cpp:define pos:line="86" pos:column="1">#<cpp:directive pos:line="86" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="86" pos:column="9">icmdHelpViewer</name></cpp:macro>                <cpp:value pos:line="86" pos:column="39">0x0100</cpp:value></cpp:define>
+<cpp:define pos:line="87" pos:column="1">#<cpp:directive pos:line="87" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="87" pos:column="9">icmdHelpAskAQuestion</name></cpp:macro>          <cpp:value pos:line="87" pos:column="39">0x0106</cpp:value></cpp:define>
+<cpp:define pos:line="88" pos:column="1">#<cpp:directive pos:line="88" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="88" pos:column="9">icmdHelpSendFeedback</name></cpp:macro>          <cpp:value pos:line="88" pos:column="39">0x0107</cpp:value></cpp:define>
+<cpp:define pos:line="89" pos:column="1">#<cpp:directive pos:line="89" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="89" pos:column="9">icmdHelpSearchControls</name></cpp:macro>        <cpp:value pos:line="89" pos:column="39">0x010B</cpp:value></cpp:define>
+<cpp:define pos:line="90" pos:column="1">#<cpp:directive pos:line="90" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="90" pos:column="9">icmdHelpSearchAddins</name></cpp:macro>          <cpp:value pos:line="90" pos:column="39">0x010C</cpp:value></cpp:define>
+<cpp:define pos:line="91" pos:column="1">#<cpp:directive pos:line="91" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="91" pos:column="9">icmdHelpSearchSamples</name></cpp:macro>         <cpp:value pos:line="91" pos:column="39">0x010D</cpp:value></cpp:define>
+<cpp:define pos:line="92" pos:column="1">#<cpp:directive pos:line="92" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="92" pos:column="9">icmdHelpSearchSnippets</name></cpp:macro>        <cpp:value pos:line="92" pos:column="39">0x010E</cpp:value></cpp:define>
+<cpp:define pos:line="93" pos:column="1">#<cpp:directive pos:line="93" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="93" pos:column="9">icmdHelpSearchStarterKits</name></cpp:macro>     <cpp:value pos:line="93" pos:column="39">0x010F</cpp:value></cpp:define>
+
+<cpp:define pos:line="95" pos:column="1">#<cpp:directive pos:line="95" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="95" pos:column="9">icmdHelpForceSelfDestruct</name></cpp:macro>   <cpp:value pos:line="95" pos:column="37">0x011C</cpp:value></cpp:define>
+
+<cpp:define pos:line="97" pos:column="1">#<cpp:directive pos:line="97" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="97" pos:column="9">icmdHelpManager</name></cpp:macro>               <cpp:value pos:line="97" pos:column="39">0x011D</cpp:value></cpp:define>
+
+<cpp:define pos:line="99" pos:column="1">#<cpp:directive pos:line="99" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="99" pos:column="9">icmdHelpManager</name></cpp:macro>               <cpp:value pos:line="99" pos:column="39">0x011D</cpp:value></cpp:define>
+
+<comment type="line" pos:line="101" pos:column="1">// TOC contex menu                  </comment>
+<cpp:define pos:line="102" pos:column="1">#<cpp:directive pos:line="102" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="102" pos:column="9">icmdPrintTopic</name></cpp:macro>              <cpp:value pos:line="102" pos:column="37">0x0120</cpp:value></cpp:define>
+<cpp:define pos:line="103" pos:column="1">#<cpp:directive pos:line="103" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="103" pos:column="9">icmdPrintChildren</name></cpp:macro>           <cpp:value pos:line="103" pos:column="37">0x0121</cpp:value></cpp:define>
+
+<cpp:define pos:line="105" pos:column="1">#<cpp:directive pos:line="105" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="105" pos:column="9">icmdSortByCol1</name></cpp:macro>              <cpp:value pos:line="105" pos:column="37">0x0130</cpp:value></cpp:define>
+<cpp:define pos:line="106" pos:column="1">#<cpp:directive pos:line="106" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="106" pos:column="9">icmdSortByCol2</name></cpp:macro>              <cpp:value pos:line="106" pos:column="37">0x0131</cpp:value></cpp:define>
+<cpp:define pos:line="107" pos:column="1">#<cpp:directive pos:line="107" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="107" pos:column="9">icmdSortByCol3</name></cpp:macro>              <cpp:value pos:line="107" pos:column="37">0x0132</cpp:value></cpp:define>
+<cpp:define pos:line="108" pos:column="1">#<cpp:directive pos:line="108" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="108" pos:column="9">icmdSortByCol4</name></cpp:macro>              <cpp:value pos:line="108" pos:column="37">0x0133</cpp:value></cpp:define>
+<cpp:define pos:line="109" pos:column="1">#<cpp:directive pos:line="109" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="109" pos:column="9">icmdSortByCol5</name></cpp:macro>              <cpp:value pos:line="109" pos:column="37">0x0134</cpp:value></cpp:define>
+<cpp:define pos:line="110" pos:column="1">#<cpp:directive pos:line="110" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="110" pos:column="9">icmdSortByCol6</name></cpp:macro>              <cpp:value pos:line="110" pos:column="37">0x0135</cpp:value></cpp:define>
+<cpp:define pos:line="111" pos:column="1">#<cpp:directive pos:line="111" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="111" pos:column="9">icmdSortByCol7</name></cpp:macro>              <cpp:value pos:line="111" pos:column="37">0x0136</cpp:value></cpp:define>
+<cpp:define pos:line="112" pos:column="1">#<cpp:directive pos:line="112" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="112" pos:column="9">icmdSortByCol8</name></cpp:macro>              <cpp:value pos:line="112" pos:column="37">0x0137</cpp:value></cpp:define>
+<cpp:define pos:line="113" pos:column="1">#<cpp:directive pos:line="113" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="113" pos:column="9">icmdSortByCol9</name></cpp:macro>              <cpp:value pos:line="113" pos:column="37">0x0138</cpp:value></cpp:define>
+<cpp:define pos:line="114" pos:column="1">#<cpp:directive pos:line="114" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="114" pos:column="9">icmdSortByCol10</name></cpp:macro>             <cpp:value pos:line="114" pos:column="37">0x0139</cpp:value></cpp:define>
+
+<cpp:define pos:line="116" pos:column="1">#<cpp:directive pos:line="116" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="116" pos:column="9">icmdSortByColMin</name></cpp:macro>            <cpp:value pos:line="116" pos:column="37">icmdSortByCol1</cpp:value></cpp:define>
+<cpp:define pos:line="117" pos:column="1">#<cpp:directive pos:line="117" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="117" pos:column="9">icmdSortByColMax</name></cpp:macro>            <cpp:value pos:line="117" pos:column="37">icmdSortByCol10</cpp:value></cpp:define>
+
+<cpp:define pos:line="119" pos:column="1">#<cpp:directive pos:line="119" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="119" pos:column="9">icmdHelpF1AsyncComplete</name></cpp:macro>     <cpp:value pos:line="119" pos:column="37">0x0300</cpp:value></cpp:define>
+
+<comment type="line" format="doxygen" pos:line="121" pos:column="1">///////////////////////////////////////////////////////////////////////////////</comment>
+<comment type="line" pos:line="122" pos:column="1">//Tool window Bitmap IDs</comment>
+
+<cpp:define pos:line="124" pos:column="1">#<cpp:directive pos:line="124" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="124" pos:column="9">bmpidVsHelpContents</name></cpp:macro>           <cpp:value pos:line="124" pos:column="39">1</cpp:value></cpp:define>
+<cpp:define pos:line="125" pos:column="1">#<cpp:directive pos:line="125" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="125" pos:column="9">bmpidVsHelpIndex</name></cpp:macro>              <cpp:value pos:line="125" pos:column="39">2</cpp:value></cpp:define>
+<cpp:define pos:line="126" pos:column="1">#<cpp:directive pos:line="126" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="126" pos:column="9">bmpidVsHelpIndexResults</name></cpp:macro>       <cpp:value pos:line="126" pos:column="39">3</cpp:value></cpp:define>
+<cpp:define pos:line="127" pos:column="1">#<cpp:directive pos:line="127" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="127" pos:column="9">bmpidFavWindow</name></cpp:macro>                <cpp:value pos:line="127" pos:column="39">4</cpp:value></cpp:define>
+<cpp:define pos:line="128" pos:column="1">#<cpp:directive pos:line="128" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="128" pos:column="9">bmpidHowDoIWindow</name></cpp:macro>             <cpp:value pos:line="128" pos:column="39">5</cpp:value></cpp:define>
+<cpp:define pos:line="129" pos:column="1">#<cpp:directive pos:line="129" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="129" pos:column="9">bmpidSearchWindow</name></cpp:macro>             <cpp:value pos:line="129" pos:column="39">6</cpp:value></cpp:define>
+<cpp:define pos:line="130" pos:column="1">#<cpp:directive pos:line="130" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="130" pos:column="9">bmpidDynamicHelpWindow</name></cpp:macro>        <cpp:value pos:line="130" pos:column="39">7</cpp:value></cpp:define>
+<cpp:define pos:line="131" pos:column="1">#<cpp:directive pos:line="131" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="131" pos:column="9">bmpidWebBrowserWindow</name></cpp:macro>         <cpp:value pos:line="131" pos:column="39">8</cpp:value></cpp:define>
+
+
+<comment type="line" format="doxygen" pos:line="134" pos:column="1">///////////////////////////////////////////////////////////////////////////////</comment>
+<comment type="line" pos:line="135" pos:column="1">//Menu cmds Bitmap IDs</comment>
+
+<cpp:define pos:line="137" pos:column="1">#<cpp:directive pos:line="137" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="137" pos:column="9">bmpidVsHelpContentsCmd</name></cpp:macro>              <cpp:value pos:line="137" pos:column="45">1</cpp:value></cpp:define>
+<cpp:define pos:line="138" pos:column="1">#<cpp:directive pos:line="138" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="138" pos:column="9">bmpidVsHelpIndexCmd</name></cpp:macro>                 <cpp:value pos:line="138" pos:column="45">2</cpp:value></cpp:define>
+<cpp:define pos:line="139" pos:column="1">#<cpp:directive pos:line="139" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="139" pos:column="9">bmpidVsHelpSearchCmd</name></cpp:macro>                <cpp:value pos:line="139" pos:column="45">3</cpp:value></cpp:define>
+<cpp:define pos:line="140" pos:column="1">#<cpp:directive pos:line="140" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="140" pos:column="9">bmpidVsHelpIndexResultsCmd</name></cpp:macro>          <cpp:value pos:line="140" pos:column="45">4</cpp:value></cpp:define>
+<cpp:define pos:line="141" pos:column="1">#<cpp:directive pos:line="141" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="141" pos:column="9">bmpidVsHelpSearchResultsCmd</name></cpp:macro>         <cpp:value pos:line="141" pos:column="45">5</cpp:value></cpp:define>
+<cpp:define pos:line="142" pos:column="1">#<cpp:directive pos:line="142" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="142" pos:column="9">bmpidVSHelpFavWindowCmd</name></cpp:macro>             <cpp:value pos:line="142" pos:column="45">6</cpp:value></cpp:define>
+<cpp:define pos:line="143" pos:column="1">#<cpp:directive pos:line="143" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="143" pos:column="9">bmpidVSHelpFavAddCmd</name></cpp:macro>                <cpp:value pos:line="143" pos:column="45">7</cpp:value></cpp:define>
+<cpp:define pos:line="144" pos:column="1">#<cpp:directive pos:line="144" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="144" pos:column="9">bmpidVSHelpSaveSearchCmd</name></cpp:macro>            <cpp:value pos:line="144" pos:column="45">8</cpp:value></cpp:define>
+<cpp:define pos:line="145" pos:column="1">#<cpp:directive pos:line="145" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="145" pos:column="9">bmpidVSHelpAskAQuestionCmd</name></cpp:macro>          <cpp:value pos:line="145" pos:column="45">9</cpp:value></cpp:define>
+<cpp:define pos:line="146" pos:column="1">#<cpp:directive pos:line="146" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="146" pos:column="9">bmpidVSHelpCheckQuestionStatusCmd</name></cpp:macro>   <cpp:value pos:line="146" pos:column="45">10</cpp:value></cpp:define>
+<cpp:define pos:line="147" pos:column="1">#<cpp:directive pos:line="147" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="147" pos:column="9">bmpidVSHelpSendProductFeedbackCmd</name></cpp:macro>   <cpp:value pos:line="147" pos:column="45">11</cpp:value></cpp:define>
+<cpp:define pos:line="148" pos:column="1">#<cpp:directive pos:line="148" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="148" pos:column="9">bmpidVSHelpHowDoICmd</name></cpp:macro>                <cpp:value pos:line="148" pos:column="45">12</cpp:value></cpp:define>
+
+
+<cpp:endif pos:line="151" pos:column="1">#<cpp:directive pos:line="151" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="151" pos:column="8">//__HELPIDS_H_</comment>
+</unit>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.WebForms.WingTip.Sample\Account\OpenAuthProviders.ascx.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Web</name></name>;</using>
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">Microsoft</name><op:operator pos:line="4" pos:column="16">.</op:operator><name pos:line="4" pos:column="17">AspNet</name><op:operator pos:line="4" pos:column="23">.</op:operator><name pos:line="4" pos:column="24">Membership</name><op:operator pos:line="4" pos:column="34">.</op:operator><name pos:line="4" pos:column="35">OpenAuth</name></name>;</using>
+
+<namespace pos:line="6" pos:column="1">namespace <name><name pos:line="6" pos:column="11">WingtipToys</name><op:operator pos:line="6" pos:column="22">.</op:operator><name pos:line="6" pos:column="23">Account</name></name>
+<block pos:line="7" pos:column="1">{
+    <class><specifier pos:line="8" pos:column="5">public</specifier> <specifier pos:line="8" pos:column="12">partial</specifier> class <name pos:line="8" pos:column="26">OpenAuthProviders</name> <super pos:line="8" pos:column="44">: <name><name pos:line="8" pos:column="46">System</name><op:operator pos:line="8" pos:column="52">.</op:operator><name pos:line="8" pos:column="53">Web</name><op:operator pos:line="8" pos:column="56">.</op:operator><name pos:line="8" pos:column="57">UI</name><op:operator pos:line="8" pos:column="59">.</op:operator><name pos:line="8" pos:column="60">UserControl</name></name></super>
+    <block pos:line="9" pos:column="5">{
+        <function><type><specifier pos:line="10" pos:column="9">protected</specifier> <name pos:line="10" pos:column="19">void</name></type> <name pos:line="10" pos:column="24">Page_Load</name><parameter_list pos:line="10" pos:column="33">(<param><decl><type><name pos:line="10" pos:column="34">object</name></type> <name pos:line="10" pos:column="41">sender</name></decl></param>, <param><decl><type><name pos:line="10" pos:column="49">EventArgs</name></type> <name pos:line="10" pos:column="59">e</name></decl></param>)</parameter_list>
+        <block pos:line="11" pos:column="9">{
+
+            <if pos:line="13" pos:column="13">if <condition pos:line="13" pos:column="16">(<expr><name pos:line="13" pos:column="17">IsPostBack</name></expr>)</condition><then pos:line="13" pos:column="28">
+            <block pos:line="14" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="15" pos:column="17">var</name></type> <name pos:line="15" pos:column="21">provider</name> <init pos:line="15" pos:column="30">= <expr><name><name pos:line="15" pos:column="32">Request</name><op:operator pos:line="15" pos:column="39">.</op:operator><name pos:line="15" pos:column="40">Form</name><index pos:line="15" pos:column="44">[<expr><lit:literal type="string" pos:line="15" pos:column="45">"provider"</lit:literal></expr>]</index></name></expr></init></decl>;</decl_stmt>
+                <if pos:line="16" pos:column="17">if <condition pos:line="16" pos:column="20">(<expr><name pos:line="16" pos:column="21">provider</name> <op:operator pos:line="16" pos:column="30">==</op:operator> <name pos:line="16" pos:column="33">null</name></expr>)</condition><then pos:line="16" pos:column="38">
+                <block pos:line="17" pos:column="17">{
+                    <return pos:line="18" pos:column="21">return;</return>
+                }</block></then></if>
+
+                <decl_stmt><decl><type><name pos:line="21" pos:column="17">var</name></type> <name pos:line="21" pos:column="21">redirectUrl</name> <init pos:line="21" pos:column="33">= <expr><lit:literal type="string" pos:line="21" pos:column="35">"~/Account/RegisterExternalLogin.aspx"</lit:literal></expr></init></decl>;</decl_stmt>
+                <if pos:line="22" pos:column="17">if <condition pos:line="22" pos:column="20">(<expr><op:operator pos:line="22" pos:column="21">!</op:operator><call><name><name pos:line="22" pos:column="22">String</name><op:operator pos:line="22" pos:column="28">.</op:operator><name pos:line="22" pos:column="29">IsNullOrEmpty</name></name><argument_list pos:line="22" pos:column="42">(<argument><expr><name pos:line="22" pos:column="43">ReturnUrl</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="22" pos:column="54">
+                <block pos:line="23" pos:column="17">{
+                    <decl_stmt><decl><type><name pos:line="24" pos:column="21">var</name></type> <name pos:line="24" pos:column="25">resolvedReturnUrl</name> <init pos:line="24" pos:column="43">= <expr><call><name pos:line="24" pos:column="45">ResolveUrl</name><argument_list pos:line="24" pos:column="55">(<argument><expr><name pos:line="24" pos:column="56">ReturnUrl</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+                    <expr_stmt><expr><name pos:line="25" pos:column="21">redirectUrl</name> <op:operator pos:line="25" pos:column="33">+=</op:operator> <lit:literal type="string" pos:line="25" pos:column="36">"?ReturnUrl="</lit:literal> <op:operator pos:line="25" pos:column="50">+</op:operator> <call><name><name pos:line="25" pos:column="52">HttpUtility</name><op:operator pos:line="25" pos:column="63">.</op:operator><name pos:line="25" pos:column="64">UrlEncode</name></name><argument_list pos:line="25" pos:column="73">(<argument><expr><name pos:line="25" pos:column="74">resolvedReturnUrl</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                }</block></then></if>
+
+                <expr_stmt><expr><call><name><name pos:line="28" pos:column="17">OpenAuth</name><op:operator pos:line="28" pos:column="25">.</op:operator><name pos:line="28" pos:column="26">RequestAuthentication</name></name><argument_list pos:line="28" pos:column="47">(<argument><expr><name pos:line="28" pos:column="48">provider</name></expr></argument>, <argument><expr><name pos:line="28" pos:column="58">redirectUrl</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+        }</block></function>
+
+
+
+        <decl_stmt><decl><type><specifier pos:line="34" pos:column="9">public</specifier> <name pos:line="34" pos:column="16">string</name></type> <name pos:line="34" pos:column="23">ReturnUrl</name> <block pos:line="34" pos:column="33">{ <function_decl><name pos:line="34" pos:column="35">get</name>;</function_decl> <function_decl><name pos:line="34" pos:column="40">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+
+        <function><type><specifier pos:line="37" pos:column="9">public</specifier> <name><name pos:line="37" pos:column="16">IEnumerable</name><argument_list pos:line="37" pos:column="27">&lt;<argument><name pos:line="37" pos:column="28">ProviderDetails</name></argument>&gt;</argument_list></name></type> <name pos:line="37" pos:column="45">GetProviderNames</name><parameter_list pos:line="37" pos:column="61">()</parameter_list>
+        <block pos:line="38" pos:column="9">{
+            <return pos:line="39" pos:column="13">return <expr><call><name><name pos:line="39" pos:column="20">OpenAuth</name><op:operator pos:line="39" pos:column="28">.</op:operator><name pos:line="39" pos:column="29">AuthenticationClients</name><op:operator pos:line="39" pos:column="50">.</op:operator><name pos:line="39" pos:column="51">GetAll</name></name><argument_list pos:line="39" pos:column="57">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+    }</block></class>
+}</block></namespace></unit>

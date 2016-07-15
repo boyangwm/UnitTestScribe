@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensibility\IResource.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">System</name><op:operator pos:line="1" pos:column="13">.</op:operator><name pos:line="1" pos:column="14">Collections</name><op:operator pos:line="1" pos:column="25">.</op:operator><name pos:line="1" pos:column="26">Generic</name></name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Core</name><op:operator pos:line="3" pos:column="23">.</op:operator><name pos:line="3" pos:column="24">Extensibility</name></name>
+<block pos:line="4" pos:column="1">{
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="6" pos:column="5">/// &lt;para&gt;</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// &lt;c&gt;IResource&lt;/c&gt; provides Glimpse clients with data and assets for rendering to the end user.</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// &lt;/para&gt;</comment>
+    <comment type="line" pos:line="9" pos:column="5">/// &lt;para&gt;</comment>
+    <comment type="line" pos:line="10" pos:column="5">/// When implemented, a resource will be discovered and added to the collection of resources. </comment>
+    <comment type="line" pos:line="11" pos:column="5">/// &lt;/para&gt;</comment>
+    <comment type="line" pos:line="12" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class type="interface"><specifier pos:line="13" pos:column="5">public</specifier> interface <name pos:line="13" pos:column="22">IResource</name>
+    <block pos:line="14" pos:column="5">{
+        <comment type="line" pos:line="15" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="16" pos:column="9">/// Gets the name of the resource.</comment>
+        <comment type="line" pos:line="17" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="18" pos:column="9">/// &lt;value&gt;The name.&lt;/value&gt;</comment>
+        <comment type="line" pos:line="19" pos:column="9">/// &lt;remarks&gt;Resource name's should be unique across a given web application. If multiple &lt;see cref="IResource"/&gt; implementations contain the same name, Glimpse may throw an exception resulting in an Http 500 Server Error.&lt;/remarks&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="20" pos:column="9">string</name></type> <name pos:line="20" pos:column="16">Name</name> <block pos:line="20" pos:column="21">{ <function_decl><name pos:line="20" pos:column="23">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="22" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// Gets the required or optional parameters that a resource needs as processing input.</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;value&gt;The parameters.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name><name pos:line="26" pos:column="9">IEnumerable</name><argument_list pos:line="26" pos:column="20">&lt;<argument><name pos:line="26" pos:column="21">ResourceParameterMetadata</name></argument>&gt;</argument_list></name></type> <name pos:line="26" pos:column="48">Parameters</name> <block pos:line="26" pos:column="59">{ <function_decl><name pos:line="26" pos:column="61">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// Executes the specified resource with the specific context.</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// &lt;param name="context"&gt;The context.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="32" pos:column="9">/// &lt;returns&gt;&lt;see cref="IResourceResult"/&gt; that can be executed when the Http response is ready to be returned.&lt;/returns&gt;</comment>
+        <function_decl><type><name pos:line="33" pos:column="9">IResourceResult</name></type> <name pos:line="33" pos:column="25">Execute</name><parameter_list pos:line="33" pos:column="32">(<param><decl><type><name pos:line="33" pos:column="33">IResourceContext</name></type> <name pos:line="33" pos:column="50">context</name></decl></param>)</parameter_list>;</function_decl>
+    }</block></class>
+}</block></namespace>
+</unit>

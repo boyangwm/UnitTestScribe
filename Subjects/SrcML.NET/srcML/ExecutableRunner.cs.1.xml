@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML\Utilities\ExecutableRunner.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2010 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Text</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">System</name><op:operator pos:line="16" pos:column="13">.</op:operator><name pos:line="16" pos:column="14">IO</name></name>;</using>
+<using pos:line="17" pos:column="1">using <name><name pos:line="17" pos:column="7">System</name><op:operator pos:line="17" pos:column="13">.</op:operator><name pos:line="17" pos:column="14">Collections</name><op:operator pos:line="17" pos:column="25">.</op:operator><name pos:line="17" pos:column="26">ObjectModel</name></name>;</using>
+
+<namespace pos:line="19" pos:column="1">namespace <name><name pos:line="19" pos:column="11">ABB</name><op:operator pos:line="19" pos:column="14">.</op:operator><name pos:line="19" pos:column="15">SrcML</name><op:operator pos:line="19" pos:column="20">.</op:operator><name pos:line="19" pos:column="21">Utilities</name></name>
+<block pos:line="20" pos:column="1">{
+    <comment type="line" pos:line="21" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="22" pos:column="5">/// Wrapper class for running executables with given command line arguments</comment>
+    <comment type="line" pos:line="23" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="24" pos:column="5">public</specifier> class <name pos:line="24" pos:column="18">ExecutableRunner</name>
+    <block pos:line="25" pos:column="5">{
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// Initializes a new instance of the &lt;see cref="ExecutableRunner"/&gt; class.</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;param name="applicationDirectory"&gt;The application directory.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;param name="executableName"&gt;Name of the executable.&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="31" pos:column="9">public</specifier> <name pos:line="31" pos:column="16">ExecutableRunner</name><parameter_list pos:line="31" pos:column="32">(<param><decl><type><name pos:line="31" pos:column="33">string</name></type> <name pos:line="31" pos:column="40">applicationDirectory</name></decl></param>, <param><decl><type><name pos:line="31" pos:column="62">string</name></type> <name pos:line="31" pos:column="69">executableName</name></decl></param>)</parameter_list>
+        <block pos:line="32" pos:column="9">{
+            <expr_stmt><expr><name><name pos:line="33" pos:column="13">this</name><op:operator pos:line="33" pos:column="17">.</op:operator><name pos:line="33" pos:column="18">ApplicationDirectory</name></name> <op:operator pos:line="33" pos:column="39">=</op:operator> <name pos:line="33" pos:column="41">applicationDirectory</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="34" pos:column="13">this</name><op:operator pos:line="34" pos:column="17">.</op:operator><name pos:line="34" pos:column="18">ExecutableName</name></name> <op:operator pos:line="34" pos:column="33">=</op:operator> <name pos:line="34" pos:column="35">executableName</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// Gets or sets the name of the executable.</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// The name of the executable.</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="43" pos:column="9">public</specifier> <name pos:line="43" pos:column="16">string</name></type> <name pos:line="43" pos:column="23">ExecutableName</name>
+        <block pos:line="44" pos:column="9">{
+            <function_decl><name pos:line="45" pos:column="13">get</name>;</function_decl>
+            <function_decl><name pos:line="46" pos:column="13">set</name>;</function_decl>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="49" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="50" pos:column="9">/// Gets or sets the application directory.</comment>
+        <comment type="line" pos:line="51" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="52" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="53" pos:column="9">/// The application directory.</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="55" pos:column="9">public</specifier> <name pos:line="55" pos:column="16">string</name></type> <name pos:line="55" pos:column="23">ApplicationDirectory</name>
+        <block pos:line="56" pos:column="9">{
+            <function_decl><name pos:line="57" pos:column="13">get</name>;</function_decl>
+            <function_decl><name pos:line="58" pos:column="13">set</name>;</function_decl>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="61" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="62" pos:column="9">/// Gets the executable path.</comment>
+        <comment type="line" pos:line="63" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="64" pos:column="9">public</specifier> <name pos:line="64" pos:column="16">string</name></type> <name pos:line="64" pos:column="23">ExecutablePath</name>
+        <block pos:line="65" pos:column="9">{
+            <function><name pos:line="66" pos:column="13">get</name>
+            <block pos:line="67" pos:column="13">{
+                <return pos:line="68" pos:column="17">return <expr><call><name><name pos:line="68" pos:column="24">Path</name><op:operator pos:line="68" pos:column="28">.</op:operator><name pos:line="68" pos:column="29">Combine</name></name><argument_list pos:line="68" pos:column="36">(<argument><expr><name><name pos:line="68" pos:column="37">this</name><op:operator pos:line="68" pos:column="41">.</op:operator><name pos:line="68" pos:column="42">ApplicationDirectory</name></name></expr></argument>, <argument><expr><name><name pos:line="68" pos:column="64">this</name><op:operator pos:line="68" pos:column="68">.</op:operator><name pos:line="68" pos:column="69">ExecutableName</name></name></expr></argument>)</argument_list></call></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="72" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="73" pos:column="9">/// Runs this executable with the specified arguments.</comment>
+        <comment type="line" pos:line="74" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="75" pos:column="9">/// &lt;param name="arguments"&gt;The arguments.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="76" pos:column="9">public</specifier> <name pos:line="76" pos:column="16">void</name></type> <name pos:line="76" pos:column="21">Run</name><parameter_list pos:line="76" pos:column="24">(<param><decl><type><name><name pos:line="76" pos:column="25">Collection</name><argument_list pos:line="76" pos:column="35">&lt;<argument><name pos:line="76" pos:column="36">string</name></argument>&gt;</argument_list></name></type> <name pos:line="76" pos:column="44">arguments</name></decl></param>)</parameter_list>
+        <block pos:line="77" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="78" pos:column="13">var</name></type> <name pos:line="78" pos:column="17">argumentString</name> <init pos:line="78" pos:column="32">= <expr><call><name><name pos:line="78" pos:column="34">KsuAdapter</name><op:operator pos:line="78" pos:column="44">.</op:operator><name pos:line="78" pos:column="45">MakeArgumentString</name></name><argument_list pos:line="78" pos:column="63">(<argument><expr><name pos:line="78" pos:column="64">arguments</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <expr_stmt><expr><call><name><name pos:line="80" pos:column="13">this</name><op:operator pos:line="80" pos:column="17">.</op:operator><name pos:line="80" pos:column="18">Run</name></name><argument_list pos:line="80" pos:column="21">(<argument><expr><name pos:line="80" pos:column="22">argumentString</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="83" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="84" pos:column="9">/// Runs this executable with the specified argument text.</comment>
+        <comment type="line" pos:line="85" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="86" pos:column="9">/// &lt;param name="argumentText"&gt;The argument text.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="87" pos:column="9">public</specifier> <name pos:line="87" pos:column="16">void</name></type> <name pos:line="87" pos:column="21">Run</name><parameter_list pos:line="87" pos:column="24">(<param><decl><type><name pos:line="87" pos:column="25">string</name></type> <name pos:line="87" pos:column="32">argumentText</name></decl></param>)</parameter_list>
+        <block pos:line="88" pos:column="9">{
+            <try pos:line="89" pos:column="13">try
+            <block pos:line="90" pos:column="13">{
+                <expr_stmt><expr><call><name><name pos:line="91" pos:column="17">KsuAdapter</name><op:operator pos:line="91" pos:column="27">.</op:operator><name pos:line="91" pos:column="28">RunExecutable</name></name><argument_list pos:line="91" pos:column="41">(<argument><expr><name><name pos:line="91" pos:column="42">this</name><op:operator pos:line="91" pos:column="46">.</op:operator><name pos:line="91" pos:column="47">ExecutablePath</name></name></expr></argument>, <argument><expr><name pos:line="91" pos:column="63">argumentText</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block>
+            <catch pos:line="93" pos:column="13">catch <parameter_list pos:line="93" pos:column="19">(<param><decl><type><name pos:line="93" pos:column="20">SrcMLRuntimeException</name></type></decl></param>)</parameter_list>
+            <block pos:line="94" pos:column="13">{
+                <throw pos:line="95" pos:column="17">throw;</throw>
+            }</block></catch></try>
+        }</block></function>
+
+        <comment type="line" pos:line="99" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="100" pos:column="9">/// Runs this executable with the specified arguments and additional input passed in on standard input.</comment>
+        <comment type="line" pos:line="101" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="102" pos:column="9">/// &lt;param name="arguments"&gt;The arguments.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="103" pos:column="9">/// &lt;param name="standardInput"&gt;The standard input.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="104" pos:column="9">/// &lt;returns&gt;&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="105" pos:column="9">public</specifier> <name pos:line="105" pos:column="16">string</name></type> <name pos:line="105" pos:column="23">Run</name><parameter_list pos:line="105" pos:column="26">(<param><decl><type><name><name pos:line="105" pos:column="27">Collection</name><argument_list pos:line="105" pos:column="37">&lt;<argument><name pos:line="105" pos:column="38">string</name></argument>&gt;</argument_list></name></type> <name pos:line="105" pos:column="46">arguments</name></decl></param>, <param><decl><type><name pos:line="105" pos:column="57">string</name></type> <name pos:line="105" pos:column="64">standardInput</name></decl></param>)</parameter_list>
+        <block pos:line="106" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="107" pos:column="13">var</name></type> <name pos:line="107" pos:column="17">argumentString</name> <init pos:line="107" pos:column="32">= <expr><call><name><name pos:line="107" pos:column="34">KsuAdapter</name><op:operator pos:line="107" pos:column="44">.</op:operator><name pos:line="107" pos:column="45">MakeArgumentString</name></name><argument_list pos:line="107" pos:column="63">(<argument><expr><name pos:line="107" pos:column="64">arguments</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <return pos:line="109" pos:column="13">return <expr><call><name><name pos:line="109" pos:column="20">this</name><op:operator pos:line="109" pos:column="24">.</op:operator><name pos:line="109" pos:column="25">Run</name></name><argument_list pos:line="109" pos:column="28">(<argument><expr><name pos:line="109" pos:column="29">argumentString</name></expr></argument>, <argument><expr><name pos:line="109" pos:column="45">standardInput</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="112" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="113" pos:column="9">/// Runs this executable with the specified argument text and additional input passed in on standard input.</comment>
+        <comment type="line" pos:line="114" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="115" pos:column="9">/// &lt;param name="argumentText"&gt;The argument text.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="116" pos:column="9">/// &lt;param name="standardInput"&gt;The standard input.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="117" pos:column="9">/// &lt;returns&gt;&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="118" pos:column="9">public</specifier> <name pos:line="118" pos:column="16">string</name></type> <name pos:line="118" pos:column="23">Run</name><parameter_list pos:line="118" pos:column="26">(<param><decl><type><name pos:line="118" pos:column="27">string</name></type> <name pos:line="118" pos:column="34">argumentText</name></decl></param>, <param><decl><type><name pos:line="118" pos:column="48">string</name></type> <name pos:line="118" pos:column="55">standardInput</name></decl></param>)</parameter_list>
+        <block pos:line="119" pos:column="9">{
+            <try pos:line="120" pos:column="13">try
+            <block pos:line="121" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="122" pos:column="17">var</name></type> <name pos:line="122" pos:column="21">output</name> <init pos:line="122" pos:column="28">= <expr><call><name><name pos:line="122" pos:column="30">KsuAdapter</name><op:operator pos:line="122" pos:column="40">.</op:operator><name pos:line="122" pos:column="41">RunExecutable</name></name><argument_list pos:line="122" pos:column="54">(<argument><expr><name><name pos:line="122" pos:column="55">this</name><op:operator pos:line="122" pos:column="59">.</op:operator><name pos:line="122" pos:column="60">ExecutablePath</name></name></expr></argument>, <argument><expr><name pos:line="122" pos:column="76">argumentText</name></expr></argument>, <argument><expr><name pos:line="122" pos:column="90">standardInput</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+                <return pos:line="123" pos:column="17">return <expr><name pos:line="123" pos:column="24">output</name></expr>;</return>
+            }</block>
+            <catch pos:line="125" pos:column="13">catch <parameter_list pos:line="125" pos:column="19">(<param><decl><type><name pos:line="125" pos:column="20">SrcMLRuntimeException</name></type></decl></param>)</parameter_list>
+            <block pos:line="126" pos:column="13">{
+                <throw pos:line="127" pos:column="17">throw;</throw>
+            }</block></catch></try>
+        }</block></function>
+    }</block></class>
+}</block></namespace>
+</unit>

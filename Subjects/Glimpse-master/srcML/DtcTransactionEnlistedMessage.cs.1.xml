@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Ado\Message\DtcTransactionEnlistedMessage.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Transactions</name></name>;</using>
+
+<namespace pos:line="4" pos:column="1">namespace <name><name pos:line="4" pos:column="11">Glimpse</name><op:operator pos:line="4" pos:column="18">.</op:operator><name pos:line="4" pos:column="19">Ado</name><op:operator pos:line="4" pos:column="22">.</op:operator><name pos:line="4" pos:column="23">Message</name></name>
+<block pos:line="5" pos:column="1">{
+    <class><specifier pos:line="6" pos:column="5">public</specifier> class <name pos:line="6" pos:column="18">DtcTransactionEnlistedMessage</name> <super pos:line="6" pos:column="48">: <name pos:line="6" pos:column="50">AdoMessage</name></super>
+    <block pos:line="7" pos:column="5">{
+        <constructor><specifier pos:line="8" pos:column="9">public</specifier> <name pos:line="8" pos:column="16">DtcTransactionEnlistedMessage</name><parameter_list pos:line="8" pos:column="45">(<param><decl><type><name pos:line="8" pos:column="46">Guid</name></type> <name pos:line="8" pos:column="51">connectionId</name></decl></param>, <param><decl><type><name pos:line="8" pos:column="65">IsolationLevel</name></type> <name pos:line="8" pos:column="80">level</name></decl></param>)</parameter_list> <member_list pos:line="8" pos:column="87">: <call><name pos:line="8" pos:column="89">base</name><argument_list pos:line="8" pos:column="93">(<argument><expr><name pos:line="8" pos:column="94">connectionId</name></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="9" pos:column="9">{
+            <expr_stmt><expr><name pos:line="10" pos:column="13">IsolationLevel</name> <op:operator pos:line="10" pos:column="28">=</op:operator> <name pos:line="10" pos:column="30">level</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <decl_stmt><decl><type><specifier pos:line="13" pos:column="9">public</specifier> <name pos:line="13" pos:column="16">IsolationLevel</name></type> <name pos:line="13" pos:column="31">IsolationLevel</name> <block pos:line="13" pos:column="46">{ <function_decl><name pos:line="13" pos:column="48">get</name>;</function_decl> <function_decl><specifier pos:line="13" pos:column="53">protected</specifier> <name pos:line="13" pos:column="63">set</name>;</function_decl> }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace></unit>

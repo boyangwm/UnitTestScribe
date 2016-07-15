@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML\Utilities\ReadOnlyDictionary.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2010 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Text</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">System</name><op:operator pos:line="16" pos:column="13">.</op:operator><name pos:line="16" pos:column="14">Runtime</name><op:operator pos:line="16" pos:column="21">.</op:operator><name pos:line="16" pos:column="22">Serialization</name></name>;</using>
+
+<namespace pos:line="18" pos:column="1">namespace <name><name pos:line="18" pos:column="11">ABB</name><op:operator pos:line="18" pos:column="14">.</op:operator><name pos:line="18" pos:column="15">SrcML</name><op:operator pos:line="18" pos:column="20">.</op:operator><name pos:line="18" pos:column="21">Utilities</name></name>
+<block pos:line="19" pos:column="1">{
+	<comment type="line" pos:line="20" pos:column="9">/// &lt;summary&gt;</comment>
+	<comment type="line" pos:line="21" pos:column="9">/// ReadOnlyDictionary provides a read-only wrapper (similar to ReadOnlyCollection) for dictionaries.</comment>
+	<comment type="line" pos:line="22" pos:column="9">/// If the dictionary is consistently accessed through this class, then NotSupportedExceptions will be thrown whenever the class is modified.</comment>
+	<comment type="line" pos:line="23" pos:column="9">/// &lt;/summary&gt;</comment>
+	<comment type="line" pos:line="24" pos:column="9">/// &lt;typeparam name="TKey"&gt;The key type&lt;/typeparam&gt;</comment>
+	<comment type="line" pos:line="25" pos:column="9">/// &lt;typeparam name="TValue"&gt;The value type&lt;/typeparam&gt;</comment>
+	<class><specifier pos:line="26" pos:column="9">public</specifier> class <name><name pos:line="26" pos:column="22">ReadOnlyDictionary</name><argument_list pos:line="26" pos:column="40">&lt;<argument><name pos:line="26" pos:column="41">TKey</name></argument>, <argument><name pos:line="26" pos:column="47">TValue</name></argument>&gt;</argument_list></name> <super pos:line="26" pos:column="55">: <name><name pos:line="26" pos:column="57">IDictionary</name><argument_list pos:line="26" pos:column="68">&lt;<argument><name pos:line="26" pos:column="69">TKey</name></argument>, <argument><name pos:line="26" pos:column="75">TValue</name></argument>&gt;</argument_list></name></super>
+	<block pos:line="27" pos:column="9">{
+		<decl_stmt><decl><type><specifier pos:line="28" pos:column="17">private</specifier> <specifier pos:line="28" pos:column="25">readonly</specifier> <name><name pos:line="28" pos:column="34">IDictionary</name><argument_list pos:line="28" pos:column="45">&lt;<argument><name pos:line="28" pos:column="46">TKey</name></argument>, <argument><name pos:line="28" pos:column="52">TValue</name></argument>&gt;</argument_list></name></type> <name pos:line="28" pos:column="60">dictionary</name></decl>;</decl_stmt>
+
+		<comment type="line" pos:line="30" pos:column="17">/// &lt;summary&gt;</comment>
+		<comment type="line" pos:line="31" pos:column="17">/// Create a new ReadOnlyDictionary that with the given dictionary</comment>
+		<comment type="line" pos:line="32" pos:column="17">/// &lt;/summary&gt;</comment>
+		<comment type="line" pos:line="33" pos:column="17">/// &lt;param name="dictionary"&gt;The dictionary to provide a read-only interface for&lt;/param&gt;</comment>
+		<constructor><specifier pos:line="34" pos:column="17">public</specifier> <name pos:line="34" pos:column="24">ReadOnlyDictionary</name><parameter_list pos:line="34" pos:column="42">(<param><decl><type><name><name pos:line="34" pos:column="43">IDictionary</name><argument_list pos:line="34" pos:column="54">&lt;<argument><name pos:line="34" pos:column="55">TKey</name></argument>,<argument><name pos:line="34" pos:column="60">TValue</name></argument>&gt;</argument_list></name></type> <name pos:line="34" pos:column="68">dictionary</name></decl></param>)</parameter_list>
+		<block pos:line="35" pos:column="17">{
+			<expr_stmt><expr><name><name pos:line="36" pos:column="25">this</name><op:operator pos:line="36" pos:column="29">.</op:operator><name pos:line="36" pos:column="30">dictionary</name></name> <op:operator pos:line="36" pos:column="41">=</op:operator> <name pos:line="36" pos:column="43">dictionary</name></expr>;</expr_stmt>
+		}</block></constructor>
+
+		<constructor><specifier pos:line="39" pos:column="17">private</specifier> <name pos:line="39" pos:column="25">ReadOnlyDictionary</name><parameter_list pos:line="39" pos:column="43">()</parameter_list>
+		<block pos:line="40" pos:column="17">{
+
+		}</block></constructor>
+
+<cpp:region pos:line="44" pos:column="1">#<cpp:directive pos:line="44" pos:column="2">region</cpp:directive> IDictionary&lt;TKey,TValue&gt; Members</cpp:region>
+
+		<comment type="line" pos:line="46" pos:column="17">/// &lt;summary&gt;</comment>
+		<comment type="line" pos:line="47" pos:column="17">/// Not supported</comment>
+		<comment type="line" pos:line="48" pos:column="17">/// &lt;/summary&gt;</comment>
+		<comment type="line" pos:line="49" pos:column="17">/// &lt;param name="key"&gt;&lt;/param&gt;</comment>
+		<comment type="line" pos:line="50" pos:column="17">/// &lt;param name="value"&gt;&lt;/param&gt;</comment>
+		<function><type><specifier pos:line="51" pos:column="17">public</specifier> <name pos:line="51" pos:column="24">void</name></type>  <name pos:line="51" pos:column="30">Add</name><parameter_list pos:line="51" pos:column="33">(<param><decl><type><name pos:line="51" pos:column="34">TKey</name></type> <name pos:line="51" pos:column="39">key</name></decl></param>, <param><decl><type><name pos:line="51" pos:column="44">TValue</name></type> <name pos:line="51" pos:column="51">value</name></decl></param>)</parameter_list>
+		<block pos:line="52" pos:column="17">{
+			<throw pos:line="53" pos:column="25">throw <expr><op:operator pos:line="53" pos:column="31">new</op:operator> <call><name pos:line="53" pos:column="35">NotSupportedException</name><argument_list pos:line="53" pos:column="56">(<argument><expr><lit:literal type="string" pos:line="53" pos:column="57">"This is a read-only dictionary."</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+		}</block></function>
+
+		<comment type="line" pos:line="56" pos:column="17">/// &lt;summary&gt;</comment>
+		<comment type="line" pos:line="57" pos:column="17">/// True if this dictionary contains &lt;paramref name="key"/&gt;</comment>
+		<comment type="line" pos:line="58" pos:column="17">/// &lt;/summary&gt;</comment>
+		<comment type="line" pos:line="59" pos:column="17">/// &lt;param name="key"&gt;the key to check for&lt;/param&gt;</comment>
+		<comment type="line" pos:line="60" pos:column="17">/// &lt;returns&gt;true if present; false otherwise&lt;/returns&gt;</comment>
+		<function><type><specifier pos:line="61" pos:column="17">public</specifier> <name pos:line="61" pos:column="24">bool</name></type>  <name pos:line="61" pos:column="30">ContainsKey</name><parameter_list pos:line="61" pos:column="41">(<param><decl><type><name pos:line="61" pos:column="42">TKey</name></type> <name pos:line="61" pos:column="47">key</name></decl></param>)</parameter_list>
+		<block pos:line="62" pos:column="17">{
+			<return pos:line="63" pos:column="25">return <expr><call><name><name pos:line="63" pos:column="32">dictionary</name><op:operator pos:line="63" pos:column="42">.</op:operator><name pos:line="63" pos:column="43">ContainsKey</name></name><argument_list pos:line="63" pos:column="54">(<argument><expr><name pos:line="63" pos:column="55">key</name></expr></argument>)</argument_list></call></expr>;</return>
+		}</block></function>
+
+		<comment type="line" pos:line="66" pos:column="17">/// &lt;summary&gt;</comment>
+		<comment type="line" pos:line="67" pos:column="17">/// a collection of the keys in this dictionary</comment>
+		<comment type="line" pos:line="68" pos:column="17">/// &lt;/summary&gt;</comment>
+		<decl_stmt><decl><type><specifier pos:line="69" pos:column="17">public</specifier> <name><name pos:line="69" pos:column="24">ICollection</name><argument_list pos:line="69" pos:column="35">&lt;<argument><name pos:line="69" pos:column="36">TKey</name></argument>&gt;</argument_list></name></type>  <name pos:line="69" pos:column="43">Keys</name>
+		<block pos:line="70" pos:column="17">{
+			<function><name pos:line="71" pos:column="25">get</name> <block pos:line="71" pos:column="29">{ <return pos:line="71" pos:column="31">return <expr><name><name pos:line="71" pos:column="38">dictionary</name><op:operator pos:line="71" pos:column="48">.</op:operator><name pos:line="71" pos:column="49">Keys</name></name></expr>;</return> }</block></function>
+		}</block></decl></decl_stmt>
+
+		<comment type="line" pos:line="74" pos:column="17">/// &lt;summary&gt;</comment>
+		<comment type="line" pos:line="75" pos:column="17">/// Not supported</comment>
+		<comment type="line" pos:line="76" pos:column="17">/// &lt;/summary&gt;</comment>
+		<comment type="line" pos:line="77" pos:column="17">/// &lt;param name="key"&gt;&lt;/param&gt;</comment>
+		<comment type="line" pos:line="78" pos:column="17">/// &lt;returns&gt;&lt;/returns&gt;</comment>
+		<function><type><specifier pos:line="79" pos:column="17">public</specifier> <name pos:line="79" pos:column="24">bool</name></type>  <name pos:line="79" pos:column="30">Remove</name><parameter_list pos:line="79" pos:column="36">(<param><decl><type><name pos:line="79" pos:column="37">TKey</name></type> <name pos:line="79" pos:column="42">key</name></decl></param>)</parameter_list>
+		<block pos:line="80" pos:column="17">{
+			<throw pos:line="81" pos:column="25">throw <expr><op:operator pos:line="81" pos:column="31">new</op:operator> <call><name pos:line="81" pos:column="35">NotSupportedException</name><argument_list pos:line="81" pos:column="56">(<argument><expr><lit:literal type="string" pos:line="81" pos:column="57">"This is a read-only dictionary."</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+		}</block></function>
+
+		<comment type="line" pos:line="84" pos:column="17">/// &lt;summary&gt;</comment>
+		<comment type="line" pos:line="85" pos:column="17">/// place the value corresponding to &lt;paramref name="key"/&gt; into &lt;paramref name="value"/&gt;.</comment>
+		<comment type="line" pos:line="86" pos:column="17">/// &lt;/summary&gt;</comment>
+		<comment type="line" pos:line="87" pos:column="17">/// &lt;param name="key"&gt;The key to search for&lt;/param&gt;</comment>
+		<comment type="line" pos:line="88" pos:column="17">/// &lt;param name="value"&gt;the out parameter to place the result in&lt;/param&gt;</comment>
+		<comment type="line" pos:line="89" pos:column="17">/// &lt;returns&gt;true if the key is present; false otherwise&lt;/returns&gt;</comment>
+		<function><type><specifier pos:line="90" pos:column="17">public</specifier> <name pos:line="90" pos:column="24">bool</name></type>  <name pos:line="90" pos:column="30">TryGetValue</name><parameter_list pos:line="90" pos:column="41">(<param><decl><type><name pos:line="90" pos:column="42">TKey</name></type> <name pos:line="90" pos:column="47">key</name></decl></param>, <param><decl><type><specifier pos:line="90" pos:column="52">out</specifier> <name pos:line="90" pos:column="56">TValue</name></type> <name pos:line="90" pos:column="63">value</name></decl></param>)</parameter_list>
+		<block pos:line="91" pos:column="17">{
+			<return pos:line="92" pos:column="25">return <expr><call><name><name pos:line="92" pos:column="32">dictionary</name><op:operator pos:line="92" pos:column="42">.</op:operator><name pos:line="92" pos:column="43">TryGetValue</name></name><argument_list pos:line="92" pos:column="54">(<argument><expr><name pos:line="92" pos:column="55">key</name></expr></argument>, <argument><expr pos:line="92" pos:column="60">out <name pos:line="92" pos:column="64">value</name></expr></argument>)</argument_list></call></expr>;</return>
+		}</block></function>
+
+		<comment type="line" pos:line="95" pos:column="17">/// &lt;summary&gt;</comment>
+		<comment type="line" pos:line="96" pos:column="17">/// a collection of the values in this dictionary</comment>
+		<comment type="line" pos:line="97" pos:column="17">/// &lt;/summary&gt;</comment>
+		<decl_stmt><decl><type><specifier pos:line="98" pos:column="17">public</specifier> <name><name pos:line="98" pos:column="24">ICollection</name><argument_list pos:line="98" pos:column="35">&lt;<argument><name pos:line="98" pos:column="36">TValue</name></argument>&gt;</argument_list></name></type>  <name pos:line="98" pos:column="45">Values</name>
+		<block pos:line="99" pos:column="17">{
+			<function><name pos:line="100" pos:column="25">get</name> <block pos:line="100" pos:column="29">{ <return pos:line="100" pos:column="31">return <expr><name><name pos:line="100" pos:column="38">dictionary</name><op:operator pos:line="100" pos:column="48">.</op:operator><name pos:line="100" pos:column="49">Values</name></name></expr>;</return> }</block></function>
+		}</block></decl></decl_stmt>
+
+		<comment type="line" pos:line="103" pos:column="17">/// &lt;summary&gt;</comment>
+		<comment type="line" pos:line="104" pos:column="17">/// Returns the value corresponding to the key</comment>
+		<comment type="line" pos:line="105" pos:column="17">/// The Setter is not supported.</comment>
+		<comment type="line" pos:line="106" pos:column="17">/// &lt;/summary&gt;</comment>
+		<comment type="line" pos:line="107" pos:column="17">/// &lt;param name="key"&gt;The key to search for&lt;/param&gt;</comment>
+		<comment type="line" pos:line="108" pos:column="17">/// &lt;returns&gt;the value corresponding to &lt;paramref name="key"/&gt;&lt;/returns&gt;</comment>
+		<decl_stmt><decl><type><specifier pos:line="109" pos:column="17">public</specifier> <name pos:line="109" pos:column="24">TValue</name></type> <name pos:line="109" pos:column="31">this</name><parameter_list pos:line="109" pos:column="35">[<param><decl><type><name pos:line="109" pos:column="36">TKey</name></type> <name pos:line="109" pos:column="41">key</name></decl></param>]</parameter_list>
+		<block pos:line="110" pos:column="17">{
+			<function><name pos:line="111" pos:column="25">get</name>
+			<block pos:line="112" pos:column="25">{
+				<return pos:line="113" pos:column="33">return <expr><name><name pos:line="113" pos:column="40">dictionary</name><index pos:line="113" pos:column="50">[<expr><name pos:line="113" pos:column="51">key</name></expr>]</index></name></expr>;</return>
+			}</block></function>
+			<function><name pos:line="115" pos:column="25">set</name>
+			<block pos:line="116" pos:column="25">{
+				<throw pos:line="117" pos:column="33">throw <expr><op:operator pos:line="117" pos:column="39">new</op:operator> <call><name pos:line="117" pos:column="43">NotSupportedException</name><argument_list pos:line="117" pos:column="64">(<argument><expr><lit:literal type="string" pos:line="117" pos:column="65">"This is a read-only dictionary."</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+			}</block></function>
+		}</block></decl></decl_stmt>
+	<cpp:endregion pos:line="120" pos:column="9">#<cpp:directive pos:line="120" pos:column="10">endregion</cpp:directive></cpp:endregion>
+
+<cpp:region pos:line="122" pos:column="1">#<cpp:directive pos:line="122" pos:column="2">region</cpp:directive> ICollection&lt;KeyValuePair&lt;TKey,TValue&gt;&gt; Members</cpp:region>
+		<comment type="line" pos:line="123" pos:column="17">/// &lt;summary&gt;</comment>
+		<comment type="line" pos:line="124" pos:column="17">/// Not supported</comment>
+		<comment type="line" pos:line="125" pos:column="17">/// &lt;/summary&gt;</comment>
+		<comment type="line" pos:line="126" pos:column="17">/// &lt;param name="item"&gt;&lt;/param&gt;</comment>
+		<function><type><specifier pos:line="127" pos:column="17">public</specifier> <name pos:line="127" pos:column="24">void</name></type> <name pos:line="127" pos:column="29">Add</name><parameter_list pos:line="127" pos:column="32">(<param><decl><type><name><name pos:line="127" pos:column="33">KeyValuePair</name><argument_list pos:line="127" pos:column="45">&lt;<argument><name pos:line="127" pos:column="46">TKey</name></argument>,<argument><name pos:line="127" pos:column="51">TValue</name></argument>&gt;</argument_list></name></type> <name pos:line="127" pos:column="59">item</name></decl></param>)</parameter_list>
+		<block pos:line="128" pos:column="17">{
+			<throw pos:line="129" pos:column="25">throw <expr><op:operator pos:line="129" pos:column="31">new</op:operator> <call><name pos:line="129" pos:column="35">NotSupportedException</name><argument_list pos:line="129" pos:column="56">(<argument><expr><lit:literal type="string" pos:line="129" pos:column="57">"This collection is read-only."</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+		}</block></function>
+
+		<comment type="line" pos:line="132" pos:column="17">/// &lt;summary&gt;</comment>
+		<comment type="line" pos:line="133" pos:column="17">/// Not supported</comment>
+		<comment type="line" pos:line="134" pos:column="17">/// &lt;/summary&gt;</comment>
+		<function><type><specifier pos:line="135" pos:column="17">public</specifier> <name pos:line="135" pos:column="24">void</name></type> <name pos:line="135" pos:column="29">Clear</name><parameter_list pos:line="135" pos:column="34">()</parameter_list>
+		<block pos:line="136" pos:column="17">{
+			<throw pos:line="137" pos:column="25">throw <expr><op:operator pos:line="137" pos:column="31">new</op:operator> <call><name pos:line="137" pos:column="35">NotSupportedException</name><argument_list pos:line="137" pos:column="56">(<argument><expr><lit:literal type="string" pos:line="137" pos:column="57">"This collection is read-only."</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+		}</block></function>
+
+		<comment type="line" pos:line="140" pos:column="17">/// &lt;summary&gt;</comment>
+		<comment type="line" pos:line="141" pos:column="17">/// Tests whether or not the Key-Value Pair &lt;paramref name="item"/&gt; is contained in this dictionary</comment>
+		<comment type="line" pos:line="142" pos:column="17">/// &lt;/summary&gt;</comment>
+		<comment type="line" pos:line="143" pos:column="17">/// &lt;param name="item"&gt;the key-value pair to check for&lt;/param&gt;</comment>
+		<comment type="line" pos:line="144" pos:column="17">/// &lt;returns&gt;true if present; false otherwise&lt;/returns&gt;</comment>
+		<function><type><specifier pos:line="145" pos:column="17">public</specifier> <name pos:line="145" pos:column="24">bool</name></type>  <name pos:line="145" pos:column="30">Contains</name><parameter_list pos:line="145" pos:column="38">(<param><decl><type><name><name pos:line="145" pos:column="39">KeyValuePair</name><argument_list pos:line="145" pos:column="51">&lt;<argument><name pos:line="145" pos:column="52">TKey</name></argument>,<argument><name pos:line="145" pos:column="57">TValue</name></argument>&gt;</argument_list></name></type> <name pos:line="145" pos:column="65">item</name></decl></param>)</parameter_list>
+		<block pos:line="146" pos:column="17">{
+			<return pos:line="147" pos:column="25">return <expr><call><name><name pos:line="147" pos:column="32">dictionary</name><op:operator pos:line="147" pos:column="42">.</op:operator><name pos:line="147" pos:column="43">Contains</name></name><argument_list pos:line="147" pos:column="51">(<argument><expr><name pos:line="147" pos:column="52">item</name></expr></argument>)</argument_list></call></expr>;</return>
+		}</block></function>
+
+		<comment type="line" pos:line="150" pos:column="17">/// &lt;summary&gt;</comment>
+		<comment type="line" pos:line="151" pos:column="17">/// Copies the contents of this dictionary to &lt;paramref name="array"/&gt;, starting at &lt;paramref name="arrayIndex"/&gt;</comment>
+		<comment type="line" pos:line="152" pos:column="17">/// &lt;/summary&gt;</comment>
+		<comment type="line" pos:line="153" pos:column="17">/// &lt;param name="array"&gt;The array to copy the Key-Value Pairs to&lt;/param&gt;</comment>
+		<comment type="line" pos:line="154" pos:column="17">/// &lt;param name="arrayIndex"&gt;The index to start copying to&lt;/param&gt;</comment>
+		<function><type><specifier pos:line="155" pos:column="17">public</specifier> <name pos:line="155" pos:column="24">void</name></type>  <name pos:line="155" pos:column="30">CopyTo</name><parameter_list pos:line="155" pos:column="36">(<param><decl><type><name><name><name pos:line="155" pos:column="37">KeyValuePair</name><argument_list pos:line="155" pos:column="49">&lt;<argument><name pos:line="155" pos:column="50">TKey</name></argument>,<argument><name pos:line="155" pos:column="55">TValue</name></argument>&gt;</argument_list></name><index pos:line="155" pos:column="62">[]</index></name></type> <name pos:line="155" pos:column="65">array</name></decl></param>, <param><decl><type><name pos:line="155" pos:column="72">int</name></type> <name pos:line="155" pos:column="76">arrayIndex</name></decl></param>)</parameter_list>
+		<block pos:line="156" pos:column="17">{
+			<expr_stmt><expr><call><name><name pos:line="157" pos:column="25">dictionary</name><op:operator pos:line="157" pos:column="35">.</op:operator><name pos:line="157" pos:column="36">CopyTo</name></name><argument_list pos:line="157" pos:column="42">(<argument><expr><name pos:line="157" pos:column="43">array</name></expr></argument>, <argument><expr><name pos:line="157" pos:column="50">arrayIndex</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+		}</block></function>
+
+		<comment type="line" pos:line="160" pos:column="17">/// &lt;summary&gt;</comment>
+		<comment type="line" pos:line="161" pos:column="17">/// Returns the number of Key-Value Pairs in this dictionary</comment>
+		<comment type="line" pos:line="162" pos:column="17">/// &lt;/summary&gt;</comment>
+		<decl_stmt><decl><type><specifier pos:line="163" pos:column="17">public</specifier> <name pos:line="163" pos:column="24">int</name></type>  <name pos:line="163" pos:column="29">Count</name>
+		<block pos:line="164" pos:column="17">{
+			<function><name pos:line="165" pos:column="25">get</name> <block pos:line="165" pos:column="29">{ <return pos:line="165" pos:column="31">return <expr><name><name pos:line="165" pos:column="38">dictionary</name><op:operator pos:line="165" pos:column="48">.</op:operator><name pos:line="165" pos:column="49">Count</name></name></expr>;</return> }</block></function>
+		}</block></decl></decl_stmt>
+
+		<comment type="line" pos:line="168" pos:column="17">/// &lt;summary&gt;</comment>
+		<comment type="line" pos:line="169" pos:column="17">/// Returns true, as this dictionary is always read-only</comment>
+		<comment type="line" pos:line="170" pos:column="17">/// &lt;/summary&gt;</comment>
+		<decl_stmt><decl><type><specifier pos:line="171" pos:column="17">public</specifier> <name pos:line="171" pos:column="24">bool</name></type>  <name pos:line="171" pos:column="30">IsReadOnly</name>
+		<block pos:line="172" pos:column="17">{
+			<function><name pos:line="173" pos:column="25">get</name> <block pos:line="173" pos:column="29">{ <return pos:line="173" pos:column="31">return <expr><lit:literal type="boolean" pos:line="173" pos:column="38">true</lit:literal></expr>;</return> }</block></function>
+		}</block></decl></decl_stmt>
+
+		<comment type="line" pos:line="176" pos:column="17">/// &lt;summary&gt;</comment>
+		<comment type="line" pos:line="177" pos:column="17">/// Not supported</comment>
+		<comment type="line" pos:line="178" pos:column="17">/// &lt;/summary&gt;</comment>
+		<comment type="line" pos:line="179" pos:column="17">/// &lt;param name="item"&gt;&lt;/param&gt;</comment>
+		<comment type="line" pos:line="180" pos:column="17">/// &lt;returns&gt;&lt;/returns&gt;</comment>
+		<function><type><specifier pos:line="181" pos:column="17">public</specifier> <name pos:line="181" pos:column="24">bool</name></type>  <name pos:line="181" pos:column="30">Remove</name><parameter_list pos:line="181" pos:column="36">(<param><decl><type><name><name pos:line="181" pos:column="37">KeyValuePair</name><argument_list pos:line="181" pos:column="49">&lt;<argument><name pos:line="181" pos:column="50">TKey</name></argument>,<argument><name pos:line="181" pos:column="55">TValue</name></argument>&gt;</argument_list></name></type> <name pos:line="181" pos:column="63">item</name></decl></param>)</parameter_list>
+		<block pos:line="182" pos:column="17">{
+			<throw pos:line="183" pos:column="25">throw <expr><op:operator pos:line="183" pos:column="31">new</op:operator> <call><name pos:line="183" pos:column="35">NotSupportedException</name><argument_list pos:line="183" pos:column="56">(<argument><expr><lit:literal type="string" pos:line="183" pos:column="57">"This collection is read-only."</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+		}</block></function>
+
+<cpp:endregion pos:line="186" pos:column="1">#<cpp:directive pos:line="186" pos:column="2">endregion</cpp:directive></cpp:endregion>
+
+<cpp:region pos:line="188" pos:column="1">#<cpp:directive pos:line="188" pos:column="2">region</cpp:directive> IEnumerable&lt;KeyValuePair&lt;TKey,TValue&gt;&gt; Members</cpp:region>
+
+		<comment type="line" pos:line="190" pos:column="17">/// &lt;summary&gt;</comment>
+		<comment type="line" pos:line="191" pos:column="17">/// Returns an enumerator over the Key-Value Pairs in this dictionary</comment>
+		<comment type="line" pos:line="192" pos:column="17">/// &lt;/summary&gt;</comment>
+		<comment type="line" pos:line="193" pos:column="17">/// &lt;returns&gt;An Enumerator&lt;/returns&gt;</comment>
+		<function><type><specifier pos:line="194" pos:column="17">public</specifier> <name><name pos:line="194" pos:column="24">IEnumerator</name><argument_list pos:line="194" pos:column="35">&lt;<argument><name><name pos:line="194" pos:column="36">KeyValuePair</name><argument_list pos:line="194" pos:column="48">&lt;<argument><name pos:line="194" pos:column="49">TKey</name></argument>,<argument><name pos:line="194" pos:column="54">TValue</name></argument>&gt;</argument_list></name></argument>&gt;</argument_list></name></type>  <name pos:line="194" pos:column="64">GetEnumerator</name><parameter_list pos:line="194" pos:column="77">()</parameter_list>
+		<block pos:line="195" pos:column="17">{
+			<return pos:line="196" pos:column="25">return <expr><call><name><name pos:line="196" pos:column="32">dictionary</name><op:operator pos:line="196" pos:column="42">.</op:operator><name pos:line="196" pos:column="43">GetEnumerator</name></name><argument_list pos:line="196" pos:column="56">()</argument_list></call></expr>;</return>
+		}</block></function>
+
+<cpp:endregion pos:line="199" pos:column="1">#<cpp:directive pos:line="199" pos:column="2">endregion</cpp:directive></cpp:endregion>
+
+<cpp:region pos:line="201" pos:column="1">#<cpp:directive pos:line="201" pos:column="2">region</cpp:directive> IEnumerable Members</cpp:region>
+		<comment type="line" pos:line="202" pos:column="17">/// &lt;summary&gt;</comment>
+		<comment type="line" pos:line="203" pos:column="17">/// Returns an enumerator over the Key-Value Pairs in this dictionary</comment>
+		<comment type="line" pos:line="204" pos:column="17">/// &lt;/summary&gt;</comment>
+		<comment type="line" pos:line="205" pos:column="17">/// &lt;returns&gt;An Enumerator&lt;/returns&gt;</comment>
+		<function><type><name><name pos:line="206" pos:column="17">System</name><op:operator pos:line="206" pos:column="23">.</op:operator><name pos:line="206" pos:column="24">Collections</name><op:operator pos:line="206" pos:column="35">.</op:operator><name pos:line="206" pos:column="36">IEnumerator</name></name></type>  <name><name pos:line="206" pos:column="49">System</name><op:operator pos:line="206" pos:column="55">.</op:operator><name pos:line="206" pos:column="56">Collections</name><op:operator pos:line="206" pos:column="67">.</op:operator><name pos:line="206" pos:column="68">IEnumerable</name><op:operator pos:line="206" pos:column="79">.</op:operator><name pos:line="206" pos:column="80">GetEnumerator</name></name><parameter_list pos:line="206" pos:column="93">()</parameter_list>
+		<block pos:line="207" pos:column="17">{
+			<return pos:line="208" pos:column="25">return <expr><call><name><name pos:line="208" pos:column="32">dictionary</name><op:operator pos:line="208" pos:column="42">.</op:operator><name pos:line="208" pos:column="43">GetEnumerator</name></name><argument_list pos:line="208" pos:column="56">()</argument_list></call></expr>;</return>
+		}</block></function>
+
+<cpp:endregion pos:line="211" pos:column="1">#<cpp:directive pos:line="211" pos:column="2">endregion</cpp:directive></cpp:endregion>
+	}</block></class>
+}</block></namespace>
+</unit>

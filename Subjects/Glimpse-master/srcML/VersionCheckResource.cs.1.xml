@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Resource\VersionCheckResource.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Configuration</name></name>;</using>
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">System</name><op:operator pos:line="4" pos:column="13">.</op:operator><name pos:line="4" pos:column="14">Linq</name></name>;</using>
+<using pos:line="5" pos:column="1">using <name><name pos:line="5" pos:column="7">Glimpse</name><op:operator pos:line="5" pos:column="14">.</op:operator><name pos:line="5" pos:column="15">Core</name><op:operator pos:line="5" pos:column="19">.</op:operator><name pos:line="5" pos:column="20">Extensibility</name></name>;</using>
+<using pos:line="6" pos:column="1">using <name><name pos:line="6" pos:column="7">Glimpse</name><op:operator pos:line="6" pos:column="14">.</op:operator><name pos:line="6" pos:column="15">Core</name><op:operator pos:line="6" pos:column="19">.</op:operator><name pos:line="6" pos:column="20">Extensions</name></name>;</using>
+<using pos:line="7" pos:column="1">using <name><name pos:line="7" pos:column="7">Glimpse</name><op:operator pos:line="7" pos:column="14">.</op:operator><name pos:line="7" pos:column="15">Core</name><op:operator pos:line="7" pos:column="19">.</op:operator><name pos:line="7" pos:column="20">Framework</name></name>;</using>
+<using pos:line="8" pos:column="1">using <name><name pos:line="8" pos:column="7">Glimpse</name><op:operator pos:line="8" pos:column="14">.</op:operator><name pos:line="8" pos:column="15">Core</name><op:operator pos:line="8" pos:column="19">.</op:operator><name pos:line="8" pos:column="20">ResourceResult</name></name>;</using>
+<using pos:line="9" pos:column="1">using <name><name pos:line="9" pos:column="7">Glimpse</name><op:operator pos:line="9" pos:column="14">.</op:operator><name pos:line="9" pos:column="15">Core</name><op:operator pos:line="9" pos:column="19">.</op:operator><name pos:line="9" pos:column="20">Support</name></name>;</using>
+
+<namespace pos:line="11" pos:column="1">namespace <name><name pos:line="11" pos:column="11">Glimpse</name><op:operator pos:line="11" pos:column="18">.</op:operator><name pos:line="11" pos:column="19">Core</name><op:operator pos:line="11" pos:column="23">.</op:operator><name pos:line="11" pos:column="24">Resource</name></name>
+<block pos:line="12" pos:column="1">{
+    <comment type="line" pos:line="13" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="14" pos:column="5">/// The &lt;see cref="IResource"/&gt; implementation responsible for providing the Glimpse client the newest version number of Glimpse.</comment>
+    <comment type="line" pos:line="15" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="16" pos:column="5">public</specifier> class <name pos:line="16" pos:column="18">VersionCheckResource</name> <super pos:line="16" pos:column="39">: <name pos:line="16" pos:column="41">IResource</name>, <name pos:line="16" pos:column="52">IKey</name></super>
+    <block pos:line="17" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="18" pos:column="9">internal</specifier> <specifier pos:line="18" pos:column="18">const</specifier> <name pos:line="18" pos:column="24">string</name></type> <name pos:line="18" pos:column="31">InternalName</name> <init pos:line="18" pos:column="44">= <expr><lit:literal type="string" pos:line="18" pos:column="46">"glimpse_version_check"</lit:literal></expr></init></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="19" pos:column="9">private</specifier> <specifier pos:line="19" pos:column="17">const</specifier> <name pos:line="19" pos:column="23">int</name></type> <name pos:line="19" pos:column="27">OneDay</name> <init pos:line="19" pos:column="34">= <expr><lit:literal type="number" pos:line="19" pos:column="36">86400</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="21" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="22" pos:column="9">/// Gets the name of the resource.</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// The name.</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;/value&gt;</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// Resource name's should be unique across a given web application. If multiple &lt;see cref="IResource" /&gt; implementations contain the same name, Glimpse may throw an exception resulting in an Http 500 Server Error.</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="30" pos:column="9">public</specifier> <name pos:line="30" pos:column="16">string</name></type> <name pos:line="30" pos:column="23">Name</name>
+        <block pos:line="31" pos:column="9">{
+            <function><name pos:line="32" pos:column="13">get</name> <block pos:line="32" pos:column="17">{ <return pos:line="32" pos:column="19">return <expr><name pos:line="32" pos:column="26">InternalName</name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="35" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// Gets the key.</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// The key. Only valid JavaScript identifiers should be used for future compatibility.</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="41" pos:column="9">public</specifier> <name pos:line="41" pos:column="16">string</name></type> <name pos:line="41" pos:column="23">Key</name>
+        <block pos:line="42" pos:column="9">{
+            <function><name pos:line="43" pos:column="13">get</name> <block pos:line="43" pos:column="17">{ <return pos:line="43" pos:column="19">return <expr><name pos:line="43" pos:column="26">Name</name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="46" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// Gets the required or optional parameters that a resource needs as processing input.</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="49" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="50" pos:column="9">/// The parameters.</comment>
+        <comment type="line" pos:line="51" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="52" pos:column="9">public</specifier> <name><name pos:line="52" pos:column="16">IEnumerable</name><argument_list pos:line="52" pos:column="27">&lt;<argument><name pos:line="52" pos:column="28">ResourceParameterMetadata</name></argument>&gt;</argument_list></name></type> <name pos:line="52" pos:column="55">Parameters</name>
+        <block pos:line="53" pos:column="9">{
+            <function><name pos:line="54" pos:column="13">get</name>
+            <block pos:line="55" pos:column="13">{
+                <return pos:line="56" pos:column="17">return <expr><op:operator pos:line="56" pos:column="24">new</op:operator><index pos:line="56" pos:column="27">[]</index> <block pos:line="56" pos:column="30">{ <expr><name><name pos:line="56" pos:column="32">ResourceParameter</name><op:operator pos:line="56" pos:column="49">.</op:operator><name pos:line="56" pos:column="50">Hash</name></name></expr><op:operator pos:line="56" pos:column="54">,</op:operator> <expr><name><name pos:line="56" pos:column="56">ResourceParameter</name><op:operator pos:line="56" pos:column="73">.</op:operator><name pos:line="56" pos:column="74">Timestamp</name></name></expr><op:operator pos:line="56" pos:column="83">,</op:operator> <expr><name><name pos:line="56" pos:column="85">ResourceParameter</name><op:operator pos:line="56" pos:column="102">.</op:operator><name pos:line="56" pos:column="103">Callback</name></name></expr> }</block></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="60" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="61" pos:column="9">/// Executes the specified resource with the specific context.</comment>
+        <comment type="line" pos:line="62" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="63" pos:column="9">/// &lt;param name="context"&gt;The context.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="64" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="65" pos:column="9">///   &lt;see cref="IResourceResult" /&gt; that can be executed when the Http response is ready to be returned.</comment>
+        <comment type="line" pos:line="66" pos:column="9">/// &lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="67" pos:column="9">public</specifier> <name pos:line="67" pos:column="16">IResourceResult</name></type> <name pos:line="67" pos:column="32">Execute</name><parameter_list pos:line="67" pos:column="39">(<param><decl><type><name pos:line="67" pos:column="40">IResourceContext</name></type> <name pos:line="67" pos:column="57">context</name></decl></param>)</parameter_list>
+        <block pos:line="68" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="69" pos:column="13">var</name></type> <name pos:line="69" pos:column="17">packages</name> <init pos:line="69" pos:column="26">= <expr><call><name><name pos:line="69" pos:column="28">NuGetPackage</name><op:operator pos:line="69" pos:column="40">.</op:operator><name pos:line="69" pos:column="41">GetRegisteredPackageVersions</name></name><argument_list pos:line="69" pos:column="69">()</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <decl_stmt><decl><type><name pos:line="71" pos:column="13">var</name></type> <name pos:line="71" pos:column="17">stamp</name> <init pos:line="71" pos:column="23">= <expr><call><name><name pos:line="71" pos:column="25">context</name><op:operator pos:line="71" pos:column="32">.</op:operator><name pos:line="71" pos:column="33">Parameters</name><op:operator pos:line="71" pos:column="43">.</op:operator><name pos:line="71" pos:column="44">GetValueOrDefault</name></name><argument_list pos:line="71" pos:column="61">(<argument><expr><name><name pos:line="71" pos:column="62">ResourceParameter</name><op:operator pos:line="71" pos:column="79">.</op:operator><name pos:line="71" pos:column="80">Timestamp</name><op:operator pos:line="71" pos:column="89">.</op:operator><name pos:line="71" pos:column="90">Name</name></name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+            <decl_stmt><decl><type><name pos:line="72" pos:column="13">var</name></type> <name pos:line="72" pos:column="17">callback</name> <init pos:line="72" pos:column="26">= <expr><call><name><name pos:line="72" pos:column="28">context</name><op:operator pos:line="72" pos:column="35">.</op:operator><name pos:line="72" pos:column="36">Parameters</name><op:operator pos:line="72" pos:column="46">.</op:operator><name pos:line="72" pos:column="47">GetValueOrDefault</name></name><argument_list pos:line="72" pos:column="64">(<argument><expr><name><name pos:line="72" pos:column="65">ResourceParameter</name><op:operator pos:line="72" pos:column="82">.</op:operator><name pos:line="72" pos:column="83">Callback</name><op:operator pos:line="72" pos:column="91">.</op:operator><name pos:line="72" pos:column="92">Name</name></name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <decl_stmt><decl><type><name pos:line="74" pos:column="13">var</name></type> <name pos:line="74" pos:column="17">data</name> <init pos:line="74" pos:column="22">= <expr><op:operator pos:line="74" pos:column="24">new</op:operator> <call><name><name pos:line="74" pos:column="28">Dictionary</name><argument_list pos:line="74" pos:column="38">&lt;<argument><name pos:line="74" pos:column="39">string</name></argument>, <argument><name pos:line="74" pos:column="47">object</name></argument>&gt;</argument_list></name><argument_list pos:line="74" pos:column="54">()</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <if pos:line="76" pos:column="13">if <condition pos:line="76" pos:column="16">(<expr><op:operator pos:line="76" pos:column="17">!</op:operator><call><name><name pos:line="76" pos:column="18">string</name><op:operator pos:line="76" pos:column="24">.</op:operator><name pos:line="76" pos:column="25">IsNullOrEmpty</name></name><argument_list pos:line="76" pos:column="38">(<argument><expr><name pos:line="76" pos:column="39">stamp</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="76" pos:column="46">
+            <block pos:line="77" pos:column="13">{
+                <expr_stmt><expr><call><name><name pos:line="78" pos:column="17">data</name><op:operator pos:line="78" pos:column="21">.</op:operator><name pos:line="78" pos:column="22">Add</name></name><argument_list pos:line="78" pos:column="25">(<argument><expr><lit:literal type="string" pos:line="78" pos:column="26">"stamp"</lit:literal></expr></argument>, <argument><expr><name pos:line="78" pos:column="35">stamp</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+
+            <if pos:line="81" pos:column="13">if <condition pos:line="81" pos:column="16">(<expr><op:operator pos:line="81" pos:column="17">!</op:operator><call><name><name pos:line="81" pos:column="18">string</name><op:operator pos:line="81" pos:column="24">.</op:operator><name pos:line="81" pos:column="25">IsNullOrEmpty</name></name><argument_list pos:line="81" pos:column="38">(<argument><expr><name pos:line="81" pos:column="39">callback</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="81" pos:column="49">
+            <block pos:line="82" pos:column="13">{
+                <expr_stmt><expr><call><name><name pos:line="83" pos:column="17">data</name><op:operator pos:line="83" pos:column="21">.</op:operator><name pos:line="83" pos:column="22">Add</name></name><argument_list pos:line="83" pos:column="25">(<argument><expr><lit:literal type="string" pos:line="83" pos:column="26">"callback"</lit:literal></expr></argument>, <argument><expr><name pos:line="83" pos:column="38">callback</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+
+            <if pos:line="86" pos:column="13">if <condition pos:line="86" pos:column="16">(<expr><name><name pos:line="86" pos:column="17">packages</name><op:operator pos:line="86" pos:column="25">.</op:operator><name pos:line="86" pos:column="26">Count</name></name> <op:operator pos:line="86" pos:column="32">&gt;</op:operator> <lit:literal type="number" pos:line="86" pos:column="34">0</lit:literal></expr>)</condition><then pos:line="86" pos:column="36">
+            <block pos:line="87" pos:column="13">{
+                <expr_stmt><expr><call><name><name pos:line="88" pos:column="17">data</name><op:operator pos:line="88" pos:column="21">.</op:operator><name pos:line="88" pos:column="22">Add</name></name><argument_list pos:line="88" pos:column="25">(<argument><expr><lit:literal type="string" pos:line="88" pos:column="26">"packages"</lit:literal></expr></argument>, <argument><expr><name pos:line="88" pos:column="38">packages</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+
+            <decl_stmt><decl><type><name pos:line="91" pos:column="13">var</name></type> <name pos:line="91" pos:column="17">domain</name> <init pos:line="91" pos:column="24">= <expr><name><name pos:line="91" pos:column="26">ConfigurationManager</name><op:operator pos:line="91" pos:column="46">.</op:operator><name pos:line="91" pos:column="47">AppSettings</name><index pos:line="91" pos:column="58">[<expr><lit:literal type="string" pos:line="91" pos:column="59">"GlimpseVersionCheckAPIDomain"</lit:literal></expr>]</index></name></expr></init></decl>;</decl_stmt>
+            
+            <if pos:line="93" pos:column="13">if <condition pos:line="93" pos:column="16">(<expr><call><name><name pos:line="93" pos:column="17">string</name><op:operator pos:line="93" pos:column="23">.</op:operator><name pos:line="93" pos:column="24">IsNullOrEmpty</name></name><argument_list pos:line="93" pos:column="37">(<argument><expr><name pos:line="93" pos:column="38">domain</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="93" pos:column="46">
+            <block pos:line="94" pos:column="13">{
+                <expr_stmt><expr><name pos:line="95" pos:column="17">domain</name> <op:operator pos:line="95" pos:column="24">=</op:operator> <lit:literal type="string" pos:line="95" pos:column="26">"getGlimpse.com"</lit:literal></expr>;</expr_stmt>
+            }</block></then></if>
+
+            <return pos:line="98" pos:column="13">return <expr><op:operator pos:line="98" pos:column="20">new</op:operator> <call><name pos:line="98" pos:column="24">CacheControlDecorator</name><argument_list pos:line="98" pos:column="45">(<argument><expr><name pos:line="98" pos:column="46">OneDay</name></expr></argument>, <argument><expr><name><name pos:line="98" pos:column="54">CacheSetting</name><op:operator pos:line="98" pos:column="66">.</op:operator><name pos:line="98" pos:column="67">Public</name></name></expr></argument>, <argument><expr><op:operator pos:line="98" pos:column="75">new</op:operator> <call><name pos:line="98" pos:column="79">RedirectResourceResult</name><argument_list pos:line="98" pos:column="101">(<argument><expr><lit:literal type="string" pos:line="98" pos:column="102">@"//"</lit:literal> <op:operator pos:line="98" pos:column="108">+</op:operator> <name pos:line="98" pos:column="110">domain</name> <op:operator pos:line="98" pos:column="117">+</op:operator> <lit:literal type="string" pos:line="98" pos:column="119">"/Api/Version/Check{?packages*}{&amp;stamp}{&amp;callback}"</lit:literal></expr></argument>, <argument><expr><name pos:line="98" pos:column="172">data</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

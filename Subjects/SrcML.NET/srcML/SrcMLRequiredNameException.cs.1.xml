@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML\Exceptions\SrcMLRequiredNameException.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2010 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Text</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">System</name><op:operator pos:line="16" pos:column="13">.</op:operator><name pos:line="16" pos:column="14">Xml</name><op:operator pos:line="16" pos:column="17">.</op:operator><name pos:line="16" pos:column="18">Linq</name></name>;</using>
+<using pos:line="17" pos:column="1">using <name><name pos:line="17" pos:column="7">System</name><op:operator pos:line="17" pos:column="13">.</op:operator><name pos:line="17" pos:column="14">Collections</name><op:operator pos:line="17" pos:column="25">.</op:operator><name pos:line="17" pos:column="26">ObjectModel</name></name>;</using>
+<using pos:line="18" pos:column="1">using <name><name pos:line="18" pos:column="7">System</name><op:operator pos:line="18" pos:column="13">.</op:operator><name pos:line="18" pos:column="14">Runtime</name><op:operator pos:line="18" pos:column="21">.</op:operator><name pos:line="18" pos:column="22">Serialization</name></name>;</using>
+<using pos:line="19" pos:column="1">using <name><name pos:line="19" pos:column="7">System</name><op:operator pos:line="19" pos:column="13">.</op:operator><name pos:line="19" pos:column="14">Globalization</name></name>;</using>
+
+<namespace pos:line="21" pos:column="1">namespace <name><name pos:line="21" pos:column="11">ABB</name><op:operator pos:line="21" pos:column="14">.</op:operator><name pos:line="21" pos:column="15">SrcML</name></name>
+<block pos:line="22" pos:column="1">{
+    <comment type="line" pos:line="23" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="24" pos:column="5">/// This exception is thrown whenever a function recieves an XElement parameter with an invalid XName.</comment>
+    <comment type="line" pos:line="25" pos:column="5">/// &lt;see cref="ABB.SrcML.SrcMLHelper.ThrowExceptionOnInvalidName(System.Xml.Linq.XName,System.Xml.Linq.XName)"&gt;for the typical way of checking for and throwing this exception.&lt;/see&gt;</comment>
+    <comment type="line" pos:line="26" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><attribute pos:line="27" pos:column="5">[<expr><name pos:line="27" pos:column="6">Serializable</name></expr>]</attribute>
+    <specifier pos:line="28" pos:column="5">public</specifier> <specifier pos:line="28" pos:column="12">sealed</specifier> class <name pos:line="28" pos:column="25">SrcMLRequiredNameException</name> <super pos:line="28" pos:column="52">: <name pos:line="28" pos:column="54">SrcMLException</name></super>
+    <block pos:line="29" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="30" pos:column="9">private</specifier> <name><name pos:line="30" pos:column="17">ICollection</name><argument_list pos:line="30" pos:column="28">&lt;<argument><name pos:line="30" pos:column="29">XName</name></argument>&gt;</argument_list></name></type> <name pos:line="30" pos:column="36">validNames</name></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="32" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="33" pos:column="9">/// Initializes a new instance of the &lt;see cref="SrcMLRequiredNameException"/&gt; class.</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// &lt;/summary&gt;</comment>
+        <constructor><specifier pos:line="35" pos:column="9">public</specifier> <name pos:line="35" pos:column="16">SrcMLRequiredNameException</name><parameter_list pos:line="35" pos:column="42">()</parameter_list>
+            <member_list pos:line="36" pos:column="13">: <call><name pos:line="36" pos:column="15">base</name><argument_list pos:line="36" pos:column="19">(<argument><expr><lit:literal type="string" pos:line="36" pos:column="20">"An unknown name is required"</lit:literal></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="37" pos:column="9">{
+
+        }</block></constructor>
+
+        <comment type="line" pos:line="41" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// Initializes a new instance of the &lt;see cref="SrcMLRequiredNameException"/&gt; class.</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="45" pos:column="9">public</specifier> <name pos:line="45" pos:column="16">SrcMLRequiredNameException</name><parameter_list pos:line="45" pos:column="42">(<param><decl><type><name pos:line="45" pos:column="43">string</name></type> <name pos:line="45" pos:column="50">message</name></decl></param>)</parameter_list>
+            <member_list pos:line="46" pos:column="13">: <call><name pos:line="46" pos:column="15">base</name><argument_list pos:line="46" pos:column="19">(<argument><expr><name pos:line="46" pos:column="20">message</name></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="47" pos:column="9">{
+
+        }</block></constructor>
+
+        <comment type="line" pos:line="51" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="52" pos:column="9">/// Initializes a new instance of the &lt;see cref="SrcMLRequiredNameException"/&gt; class.</comment>
+        <comment type="line" pos:line="53" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="55" pos:column="9">/// &lt;param name="innerException"&gt;The inner exception.&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="56" pos:column="9">public</specifier> <name pos:line="56" pos:column="16">SrcMLRequiredNameException</name><parameter_list pos:line="56" pos:column="42">(<param><decl><type><name pos:line="56" pos:column="43">string</name></type> <name pos:line="56" pos:column="50">message</name></decl></param>, <param><decl><type><name pos:line="56" pos:column="59">Exception</name></type> <name pos:line="56" pos:column="69">innerException</name></decl></param>)</parameter_list>
+            <member_list pos:line="57" pos:column="13">: <call><name pos:line="57" pos:column="15">base</name><argument_list pos:line="57" pos:column="19">(<argument><expr><name pos:line="57" pos:column="20">message</name></expr></argument>, <argument><expr><name pos:line="57" pos:column="29">innerException</name></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="58" pos:column="9">{
+
+        }</block></constructor>
+
+        <comment type="line" pos:line="62" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="63" pos:column="9">/// Initializes a new instance of the &lt;see cref="SrcMLRequiredNameException"/&gt; class.</comment>
+        <comment type="line" pos:line="64" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="65" pos:column="9">/// &lt;param name="validNames"&gt;The valid names.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="66" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="67" pos:column="9">public</specifier> <name pos:line="67" pos:column="16">SrcMLRequiredNameException</name><parameter_list pos:line="67" pos:column="42">(<param><decl><type><name><name pos:line="67" pos:column="43">ICollection</name><argument_list pos:line="67" pos:column="54">&lt;<argument><name pos:line="67" pos:column="55">XName</name></argument>&gt;</argument_list></name></type> <name pos:line="67" pos:column="62">validNames</name></decl></param>, <param><decl><type><name pos:line="67" pos:column="74">string</name></type> <name pos:line="67" pos:column="81">message</name></decl></param>)</parameter_list>
+            <member_list pos:line="68" pos:column="13">: <call><name pos:line="68" pos:column="15">base</name><argument_list pos:line="68" pos:column="19">(<argument><expr><name pos:line="68" pos:column="20">message</name></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="69" pos:column="9">{
+            <expr_stmt><expr><name><name pos:line="70" pos:column="13">this</name><op:operator pos:line="70" pos:column="17">.</op:operator><name pos:line="70" pos:column="18">validNames</name></name> <op:operator pos:line="70" pos:column="29">=</op:operator> <name pos:line="70" pos:column="31">validNames</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="73" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="74" pos:column="9">/// Creates the exception with the given XName and message.</comment>
+        <comment type="line" pos:line="75" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="76" pos:column="9">/// &lt;param name="expectedName"&gt;The expected XName&lt;/param&gt;</comment>
+        <comment type="line" pos:line="77" pos:column="9">/// &lt;param name="message"&gt;A message describing what went wrong&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="78" pos:column="9">public</specifier> <name pos:line="78" pos:column="16">SrcMLRequiredNameException</name><parameter_list pos:line="78" pos:column="42">(<param><decl><type><name pos:line="78" pos:column="43">XName</name></type> <name pos:line="78" pos:column="49">expectedName</name></decl></param>, <param><decl><type><name pos:line="78" pos:column="63">string</name></type> <name pos:line="78" pos:column="70">message</name></decl></param>)</parameter_list>
+            <member_list pos:line="79" pos:column="13">: <call><name pos:line="79" pos:column="15">this</name><argument_list pos:line="79" pos:column="19">(<argument><expr><op:operator pos:line="79" pos:column="20">new</op:operator> <call><name><name pos:line="79" pos:column="24">Collection</name><argument_list pos:line="79" pos:column="34">&lt;<argument><name pos:line="79" pos:column="35">XName</name></argument>&gt;</argument_list></name><argument_list pos:line="79" pos:column="41">()</argument_list></call> <block pos:line="79" pos:column="44">{ <expr><name pos:line="79" pos:column="46">expectedName</name></expr> }</block></expr></argument>, <argument><expr><name pos:line="79" pos:column="62">message</name></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="80" pos:column="9">{
+            
+        }</block></constructor>
+
+        <comment type="line" pos:line="84" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="85" pos:column="9">/// Creates the exception with the given collection of XNames and a default message</comment>
+        <comment type="line" pos:line="86" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="87" pos:column="9">/// &lt;param name="validNames"&gt;collection of valid names&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="88" pos:column="9">public</specifier> <name pos:line="88" pos:column="16">SrcMLRequiredNameException</name><parameter_list pos:line="88" pos:column="42">(<param><decl><type><name><name pos:line="88" pos:column="43">ICollection</name><argument_list pos:line="88" pos:column="54">&lt;<argument><name pos:line="88" pos:column="55">XName</name></argument>&gt;</argument_list></name></type> <name pos:line="88" pos:column="62">validNames</name></decl></param>)</parameter_list>
+            <member_list pos:line="89" pos:column="13">: <call><name pos:line="89" pos:column="15">this</name><argument_list pos:line="89" pos:column="19">(<argument><expr><name pos:line="89" pos:column="20">validNames</name></expr></argument>, <argument><expr><call><name><name pos:line="89" pos:column="32">String</name><op:operator pos:line="89" pos:column="38">.</op:operator><name pos:line="89" pos:column="39">Format</name></name><argument_list pos:line="89" pos:column="45">(<argument><expr><name><name pos:line="89" pos:column="46">CultureInfo</name><op:operator pos:line="89" pos:column="57">.</op:operator><name pos:line="89" pos:column="58">CurrentCulture</name></name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="89" pos:column="74">"Name must be from the following list: {0}"</lit:literal></expr></argument>, <argument><expr><call><name pos:line="89" pos:column="119">ConvertCollectionToString</name><argument_list pos:line="89" pos:column="144">(<argument><expr><name pos:line="89" pos:column="145">validNames</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="90" pos:column="9">{
+
+        }</block></constructor>
+
+        <comment type="line" pos:line="94" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="95" pos:column="9">/// Creates the exception with the given XName and a default message</comment>
+        <comment type="line" pos:line="96" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="97" pos:column="9">/// &lt;param name="expectedName"&gt;The expected XName&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="98" pos:column="9">public</specifier> <name pos:line="98" pos:column="16">SrcMLRequiredNameException</name><parameter_list pos:line="98" pos:column="42">(<param><decl><type><name pos:line="98" pos:column="43">XName</name></type> <name pos:line="98" pos:column="49">expectedName</name></decl></param>)</parameter_list>
+            <member_list pos:line="99" pos:column="13">: <call><name pos:line="99" pos:column="15">this</name><argument_list pos:line="99" pos:column="19">(<argument><expr><name pos:line="99" pos:column="20">expectedName</name></expr></argument> , <argument><expr><call><name><name pos:line="99" pos:column="35">String</name><op:operator pos:line="99" pos:column="41">.</op:operator><name pos:line="99" pos:column="42">Format</name></name><argument_list pos:line="99" pos:column="48">(<argument><expr><name><name pos:line="99" pos:column="49">CultureInfo</name><op:operator pos:line="99" pos:column="60">.</op:operator><name pos:line="99" pos:column="61">CurrentCulture</name></name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="99" pos:column="77">"Name is expected to be {0}"</lit:literal></expr></argument>, <argument><expr><name pos:line="99" pos:column="107">expectedName</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="100" pos:column="9">{
+
+        }</block></constructor>
+
+        <constructor><specifier pos:line="104" pos:column="9">private</specifier> <name pos:line="104" pos:column="17">SrcMLRequiredNameException</name><parameter_list pos:line="104" pos:column="43">(<param><decl><type><name pos:line="104" pos:column="44">SerializationInfo</name></type> <name pos:line="104" pos:column="62">serializationInfo</name></decl></param>, <param><decl><type><name pos:line="104" pos:column="81">StreamingContext</name></type> <name pos:line="104" pos:column="98">context</name></decl></param>)</parameter_list>
+            <member_list pos:line="105" pos:column="13">: <call><name pos:line="105" pos:column="15">base</name><argument_list pos:line="105" pos:column="19">(<argument><expr><name pos:line="105" pos:column="20">serializationInfo</name></expr></argument>, <argument><expr><name pos:line="105" pos:column="39">context</name></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="106" pos:column="9">{
+
+        }</block></constructor>
+
+        <comment type="line" pos:line="110" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="111" pos:column="9">/// When overridden in a derived class, sets the &lt;see cref="T:System.Runtime.Serialization.SerializationInfo"/&gt; with information about the exception.</comment>
+        <comment type="line" pos:line="112" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="113" pos:column="9">/// &lt;param name="info"&gt;The &lt;see cref="T:System.Runtime.Serialization.SerializationInfo"/&gt; that holds the serialized object data about the exception being thrown.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="114" pos:column="9">/// &lt;param name="context"&gt;The &lt;see cref="T:System.Runtime.Serialization.StreamingContext"/&gt; that contains contextual information about the source or destination.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="115" pos:column="9">/// &lt;exception cref="T:System.ArgumentNullException"&gt;The &lt;paramref name="info"/&gt; parameter is a null reference (Nothing in Visual Basic). &lt;/exception&gt;</comment>
+        <comment type="line" pos:line="116" pos:column="9">///   </comment>
+        <comment type="line" pos:line="117" pos:column="9">/// &lt;PermissionSet&gt;</comment>
+        <comment type="line" pos:line="118" pos:column="9">///   &lt;IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Read="*AllFiles*" PathDiscovery="*AllFiles*"/&gt;</comment>
+        <comment type="line" pos:line="119" pos:column="9">///   &lt;IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="SerializationFormatter"/&gt;</comment>
+        <comment type="line" pos:line="120" pos:column="9">///   &lt;/PermissionSet&gt;</comment>
+        <function><type><specifier pos:line="121" pos:column="9">public</specifier> <specifier pos:line="121" pos:column="16">override</specifier> <name pos:line="121" pos:column="25">void</name></type> <name pos:line="121" pos:column="30">GetObjectData</name><parameter_list pos:line="121" pos:column="43">(<param><decl><type><name pos:line="121" pos:column="44">SerializationInfo</name></type> <name pos:line="121" pos:column="62">info</name></decl></param>, <param><decl><type><name pos:line="121" pos:column="68">StreamingContext</name></type> <name pos:line="121" pos:column="85">context</name></decl></param>)</parameter_list>
+        <block pos:line="122" pos:column="9">{
+            <if pos:line="123" pos:column="13">if <condition pos:line="123" pos:column="16">(<expr><name pos:line="123" pos:column="17">null</name> <op:operator pos:line="123" pos:column="22">==</op:operator> <name pos:line="123" pos:column="25">info</name></expr>)</condition><then pos:line="123" pos:column="30">
+                <throw pos:line="124" pos:column="17">throw <expr><op:operator pos:line="124" pos:column="23">new</op:operator> <call><name pos:line="124" pos:column="27">ArgumentNullException</name><argument_list pos:line="124" pos:column="48">(<argument><expr><lit:literal type="string" pos:line="124" pos:column="49">"info"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw></then></if>
+
+            <expr_stmt><expr><call><name><name pos:line="126" pos:column="13">base</name><op:operator pos:line="126" pos:column="17">.</op:operator><name pos:line="126" pos:column="18">GetObjectData</name></name><argument_list pos:line="126" pos:column="31">(<argument><expr><name pos:line="126" pos:column="32">info</name></expr></argument>, <argument><expr><name pos:line="126" pos:column="38">context</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="127" pos:column="13">info</name><op:operator pos:line="127" pos:column="17">.</op:operator><name pos:line="127" pos:column="18">AddValue</name></name><argument_list pos:line="127" pos:column="26">(<argument><expr><lit:literal type="string" pos:line="127" pos:column="27">"ExpectedNames"</lit:literal></expr></argument>, <argument><expr><name pos:line="127" pos:column="44">ExpectedNames</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+        <comment type="line" pos:line="129" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="130" pos:column="9">/// The collection of required names</comment>
+        <comment type="line" pos:line="131" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="132" pos:column="9">public</specifier> <name><name pos:line="132" pos:column="16">ICollection</name><argument_list pos:line="132" pos:column="27">&lt;<argument><name pos:line="132" pos:column="28">XName</name></argument>&gt;</argument_list></name></type> <name pos:line="132" pos:column="35">ExpectedNames</name>
+        <block pos:line="133" pos:column="9">{
+            <function><name pos:line="134" pos:column="13">get</name>
+            <block pos:line="135" pos:column="13">{
+                <return pos:line="136" pos:column="17">return <expr><name><name pos:line="136" pos:column="24">this</name><op:operator pos:line="136" pos:column="28">.</op:operator><name pos:line="136" pos:column="29">validNames</name></name></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <function><type><specifier pos:line="140" pos:column="9">private</specifier> <specifier pos:line="140" pos:column="17">static</specifier> <name pos:line="140" pos:column="24">string</name></type> <name pos:line="140" pos:column="31">ConvertCollectionToString</name><parameter_list pos:line="140" pos:column="56">(<param><decl><type><name><name pos:line="140" pos:column="57">ICollection</name><argument_list pos:line="140" pos:column="68">&lt;<argument><name pos:line="140" pos:column="69">XName</name></argument>&gt;</argument_list></name></type> <name pos:line="140" pos:column="76">names</name></decl></param>)</parameter_list>
+        <block pos:line="141" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="142" pos:column="13">StringBuilder</name></type> <name pos:line="142" pos:column="27">builder</name> <init pos:line="142" pos:column="35">= <expr><op:operator pos:line="142" pos:column="37">new</op:operator> <call><name pos:line="142" pos:column="41">StringBuilder</name><argument_list pos:line="142" pos:column="54">()</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <foreach pos:line="144" pos:column="13">foreach (<init><decl><type><name pos:line="144" pos:column="22">var</name></type> <name pos:line="144" pos:column="26">name</name> <range pos:line="144" pos:column="31">in <expr><name pos:line="144" pos:column="34">names</name></expr></range></decl></init>)
+            <block pos:line="145" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="146" pos:column="17">var</name></type> <name pos:line="146" pos:column="21">ns</name> <init pos:line="146" pos:column="24">= <expr><call><name><name pos:line="146" pos:column="26">SrcMLNamespaces</name><op:operator pos:line="146" pos:column="41">.</op:operator><name pos:line="146" pos:column="42">LookupPrefix</name></name><argument_list pos:line="146" pos:column="54">(<argument><expr><name><name pos:line="146" pos:column="55">name</name><op:operator pos:line="146" pos:column="59">.</op:operator><name pos:line="146" pos:column="60">Namespace</name><op:operator pos:line="146" pos:column="69">.</op:operator><name pos:line="146" pos:column="70">NamespaceName</name></name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+                <expr_stmt><expr><call><name><name pos:line="147" pos:column="17">builder</name><op:operator pos:line="147" pos:column="24">.</op:operator><name pos:line="147" pos:column="25">AppendFormat</name></name><argument_list pos:line="147" pos:column="37">(<argument><expr><lit:literal type="string" pos:line="147" pos:column="38">", {0}:{1}"</lit:literal></expr></argument>, <argument><expr><name pos:line="147" pos:column="51">ns</name></expr></argument>, <argument><expr><name><name pos:line="147" pos:column="55">name</name><op:operator pos:line="147" pos:column="59">.</op:operator><name pos:line="147" pos:column="60">LocalName</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></foreach>
+            <expr_stmt><expr><call><name><name pos:line="149" pos:column="13">builder</name><op:operator pos:line="149" pos:column="20">.</op:operator><name pos:line="149" pos:column="21">Remove</name></name><argument_list pos:line="149" pos:column="27">(<argument><expr><lit:literal type="number" pos:line="149" pos:column="28">0</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="149" pos:column="31">2</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <return pos:line="150" pos:column="13">return <expr><call><name><name pos:line="150" pos:column="20">builder</name><op:operator pos:line="150" pos:column="27">.</op:operator><name pos:line="150" pos:column="28">ToString</name></name><argument_list pos:line="150" pos:column="36">()</argument_list></call></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace>
+</unit>

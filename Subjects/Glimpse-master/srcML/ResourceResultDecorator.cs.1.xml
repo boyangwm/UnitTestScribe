@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensibility\ResourceResultDecorator.cs" pos:tabs="8"><namespace pos:line="1" pos:column="1">namespace <name><name pos:line="1" pos:column="11">Glimpse</name><op:operator pos:line="1" pos:column="18">.</op:operator><name pos:line="1" pos:column="19">Core</name><op:operator pos:line="1" pos:column="23">.</op:operator><name pos:line="1" pos:column="24">Extensibility</name></name>
+<block pos:line="2" pos:column="1">{
+    <comment type="line" pos:line="3" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="4" pos:column="5">/// An &lt;see cref="IResourceResult"/&gt; abstraction for adding additional functionality to &lt;see cref="IResourceResult"/&gt; via the common &lt;see href="http://en.wikipedia.org/wiki/Decorator_pattern"&gt;decorator pattern&lt;/see&gt;.</comment>
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="6" pos:column="5">public</specifier> <specifier pos:line="6" pos:column="12">abstract</specifier> class <name pos:line="6" pos:column="27">ResourceResultDecorator</name> <super pos:line="6" pos:column="51">: <name pos:line="6" pos:column="53">IResourceResult</name>, <name><name pos:line="6" pos:column="70">IWrapper</name><argument_list pos:line="6" pos:column="78">&lt;<argument><name pos:line="6" pos:column="79">IResourceResult</name></argument>&gt;</argument_list></name></super>
+    <block pos:line="7" pos:column="5">{
+        <comment type="line" pos:line="8" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="9" pos:column="9">/// Initializes a new instance of the &lt;see cref="ResourceResultDecorator" /&gt; class.</comment>
+        <comment type="line" pos:line="10" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="11" pos:column="9">/// &lt;param name="wrappedResourceResult"&gt;The wrapped resource result.&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="12" pos:column="9">protected</specifier> <name pos:line="12" pos:column="19">ResourceResultDecorator</name><parameter_list pos:line="12" pos:column="42">(<param><decl><type><name pos:line="12" pos:column="43">IResourceResult</name></type> <name pos:line="12" pos:column="59">wrappedResourceResult</name></decl></param>)</parameter_list>
+        <block pos:line="13" pos:column="9">{
+            <expr_stmt><expr><name pos:line="14" pos:column="13">WrappedResourceResult</name> <op:operator pos:line="14" pos:column="35">=</op:operator> <name pos:line="14" pos:column="37">wrappedResourceResult</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="17" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="18" pos:column="9">/// Gets or sets the wrapped resource result.</comment>
+        <comment type="line" pos:line="19" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="20" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="21" pos:column="9">/// The wrapped resource result.</comment>
+        <comment type="line" pos:line="22" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="23" pos:column="9">protected</specifier> <name pos:line="23" pos:column="19">IResourceResult</name></type> <name pos:line="23" pos:column="35">WrappedResourceResult</name> <block pos:line="23" pos:column="57">{ <function_decl><name pos:line="23" pos:column="59">get</name>;</function_decl> <function_decl><name pos:line="23" pos:column="64">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// Gets the wrapped object.</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// Returned the wrapped object.</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="31" pos:column="9">public</specifier> <name pos:line="31" pos:column="16">IResourceResult</name></type> <name pos:line="31" pos:column="32">GetWrappedObject</name><parameter_list pos:line="31" pos:column="48">()</parameter_list>
+        <block pos:line="32" pos:column="9">{
+            <return pos:line="33" pos:column="13">return <expr><name pos:line="33" pos:column="20">WrappedResourceResult</name></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="36" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// Executes the resource result with the specified context.</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;param name="context"&gt;The context.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="40" pos:column="9">public</specifier> <name pos:line="40" pos:column="16">void</name></type> <name pos:line="40" pos:column="21">Execute</name><parameter_list pos:line="40" pos:column="28">(<param><decl><type><name pos:line="40" pos:column="29">IResourceResultContext</name></type> <name pos:line="40" pos:column="52">context</name></decl></param>)</parameter_list>
+        <block pos:line="41" pos:column="9">{
+            <expr_stmt><expr><call><name pos:line="42" pos:column="13">Decorate</name><argument_list pos:line="42" pos:column="21">(<argument><expr><name pos:line="42" pos:column="22">context</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="43" pos:column="13">WrappedResourceResult</name><op:operator pos:line="43" pos:column="34">.</op:operator><name pos:line="43" pos:column="35">Execute</name></name><argument_list pos:line="43" pos:column="42">(<argument><expr><name pos:line="43" pos:column="43">context</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="46" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// Decorates the specified context.</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="49" pos:column="9">/// &lt;param name="context"&gt;The context.&lt;/param&gt;</comment>
+        <function_decl><type><specifier pos:line="50" pos:column="9">protected</specifier> <specifier pos:line="50" pos:column="19">abstract</specifier> <name pos:line="50" pos:column="28">void</name></type> <name pos:line="50" pos:column="33">Decorate</name><parameter_list pos:line="50" pos:column="41">(<param><decl><type><name pos:line="50" pos:column="42">IResourceResultContext</name></type> <name pos:line="50" pos:column="65">context</name></decl></param>)</parameter_list>;</function_decl>
+    }</block></class>
+}</block></namespace></unit>

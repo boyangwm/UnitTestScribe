@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML.Data\AccessModifier.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2013 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *    Patrick Francis (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="13" pos:column="1">using <name pos:line="13" pos:column="7">System</name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Collections</name><op:operator pos:line="14" pos:column="25">.</op:operator><name pos:line="14" pos:column="26">Generic</name></name>;</using>
+<namespace pos:line="15" pos:column="1">namespace <name><name pos:line="15" pos:column="11">ABB</name><op:operator pos:line="15" pos:column="14">.</op:operator><name pos:line="15" pos:column="15">SrcML</name><op:operator pos:line="15" pos:column="20">.</op:operator><name pos:line="15" pos:column="21">Data</name></name> <block pos:line="15" pos:column="26">{
+
+    <comment type="line" pos:line="17" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="18" pos:column="5">/// Enumerates the types of protection encountered in the supported programming languages</comment>
+    <comment type="line" pos:line="19" pos:column="5">/// &lt;/summary&gt;</comment>
+    <enum><specifier pos:line="20" pos:column="5">public</specifier> enum <macro><name pos:line="20" pos:column="17">AccessModifier</name></macro> <block pos:line="20" pos:column="32">{
+
+        <comment type="line" pos:line="22" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// None indicates that no access modifier was provided</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl><name pos:line="25" pos:column="9">None</name> <init pos:line="25" pos:column="14">= <expr><lit:literal type="number" pos:line="25" pos:column="16">0</lit:literal></expr></init></decl><op:operator pos:line="25" pos:column="17">,</op:operator>
+
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// Private</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl><name pos:line="30" pos:column="9">Private</name></decl><op:operator pos:line="30" pos:column="16">,</op:operator>
+
+        <comment type="line" pos:line="32" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="33" pos:column="9">/// Internal</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl><name pos:line="35" pos:column="9">Internal</name></decl><op:operator pos:line="35" pos:column="17">,</op:operator>
+
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// Protected</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl><name pos:line="40" pos:column="9">Protected</name></decl><op:operator pos:line="40" pos:column="18">,</op:operator>
+
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// Protected Internal, used in C#</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl><name pos:line="45" pos:column="9">ProtectedInternal</name></decl><op:operator pos:line="45" pos:column="26">,</op:operator>
+
+        <comment type="line" pos:line="47" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// Public</comment>
+        <comment type="line" pos:line="49" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl><name pos:line="50" pos:column="9">Public</name></decl><op:operator pos:line="50" pos:column="15">,</op:operator>
+    }</block>
+
+    <comment type="line" pos:line="53" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="54" pos:column="5">/// Contains extension methods for the AccessModifier enum.</comment>
+    <comment type="line" pos:line="55" pos:column="5">/// &lt;/summary&gt;</comment>
+    <decl pos:line="56" pos:column="5">public static <name pos:line="56" pos:column="19">class</name> <name pos:line="56" pos:column="25">AccessModifierExtensions</name> <block pos:line="56" pos:column="50">{
+
+        <comment type="line" pos:line="58" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="59" pos:column="9">/// Converts the enum value to its programming language keyword equivalent.</comment>
+        <comment type="line" pos:line="60" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="61" pos:column="9">public</specifier> <specifier pos:line="61" pos:column="16">static</specifier> <name pos:line="61" pos:column="23">string</name></type> <name pos:line="61" pos:column="30">ToKeywordString</name><parameter_list pos:line="61" pos:column="45">(<param><decl><type><name pos:line="61" pos:column="46">this</name> <name pos:line="61" pos:column="51">AccessModifier</name></type> <name pos:line="61" pos:column="66">am</name></decl></param>)</parameter_list> <block pos:line="61" pos:column="70">{
+            <switch pos:line="62" pos:column="13">switch<condition pos:line="62" pos:column="19">(<expr><name pos:line="62" pos:column="20">am</name></expr>)</condition> <block pos:line="62" pos:column="24">{
+                <case pos:line="63" pos:column="17">case <expr><name><name pos:line="63" pos:column="22">AccessModifier</name><op:operator pos:line="63" pos:column="36">.</op:operator><name pos:line="63" pos:column="37">None</name></name></expr>:
+                    <return pos:line="64" pos:column="21">return <expr><name><name pos:line="64" pos:column="28">string</name><op:operator pos:line="64" pos:column="34">.</op:operator><name pos:line="64" pos:column="35">Empty</name></name></expr>;</return>
+
+                </case><case pos:line="66" pos:column="17">case <expr><name><name pos:line="66" pos:column="22">AccessModifier</name><op:operator pos:line="66" pos:column="36">.</op:operator><name pos:line="66" pos:column="37">Public</name></name></expr>:
+                    <return pos:line="67" pos:column="21">return <expr><lit:literal type="string" pos:line="67" pos:column="28">"public"</lit:literal></expr>;</return>
+
+                </case><case pos:line="69" pos:column="17">case <expr><name><name pos:line="69" pos:column="22">AccessModifier</name><op:operator pos:line="69" pos:column="36">.</op:operator><name pos:line="69" pos:column="37">ProtectedInternal</name></name></expr>:
+                    <return pos:line="70" pos:column="21">return <expr><lit:literal type="string" pos:line="70" pos:column="28">"protected internal"</lit:literal></expr>;</return>
+
+                </case><case pos:line="72" pos:column="17">case <expr><name><name pos:line="72" pos:column="22">AccessModifier</name><op:operator pos:line="72" pos:column="36">.</op:operator><name pos:line="72" pos:column="37">Protected</name></name></expr>:
+                    <return pos:line="73" pos:column="21">return <expr><lit:literal type="string" pos:line="73" pos:column="28">"protected"</lit:literal></expr>;</return>
+
+                </case><case pos:line="75" pos:column="17">case <expr><name><name pos:line="75" pos:column="22">AccessModifier</name><op:operator pos:line="75" pos:column="36">.</op:operator><name pos:line="75" pos:column="37">Internal</name></name></expr>:
+                    <return pos:line="76" pos:column="21">return <expr><lit:literal type="string" pos:line="76" pos:column="28">"internal"</lit:literal></expr>;</return>
+
+                </case><case pos:line="78" pos:column="17">case <expr><name><name pos:line="78" pos:column="22">AccessModifier</name><op:operator pos:line="78" pos:column="36">.</op:operator><name pos:line="78" pos:column="37">Private</name></name></expr>:
+                    <return pos:line="79" pos:column="21">return <expr><lit:literal type="string" pos:line="79" pos:column="28">"private"</lit:literal></expr>;</return>
+
+                </case><default pos:line="81" pos:column="17">default:
+                    <return pos:line="82" pos:column="21">return <expr><call><name><name pos:line="82" pos:column="28">am</name><op:operator pos:line="82" pos:column="30">.</op:operator><name pos:line="82" pos:column="31">ToString</name></name><argument_list pos:line="82" pos:column="39">()</argument_list></call></expr>;</return>
+            </default>}</block></switch>
+        }</block></function>
+
+        <comment type="line" pos:line="86" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="87" pos:column="9">/// Converts a keyword string to its enum value.</comment>
+        <comment type="line" pos:line="88" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="89" pos:column="9">public</specifier> <specifier pos:line="89" pos:column="16">static</specifier> <name pos:line="89" pos:column="23">AccessModifier</name></type> <name pos:line="89" pos:column="38">FromKeywordString</name><parameter_list pos:line="89" pos:column="55">(<param><decl><type><name pos:line="89" pos:column="56">string</name></type> <name pos:line="89" pos:column="63">am</name></decl></param>)</parameter_list> <block pos:line="89" pos:column="67">{
+            <decl_stmt><decl><type><name><name pos:line="90" pos:column="13">Dictionary</name><argument_list pos:line="90" pos:column="23">&lt;<argument><name pos:line="90" pos:column="24">string</name></argument>, <argument><name pos:line="90" pos:column="32">AccessModifier</name></argument>&gt;</argument_list></name></type> <name pos:line="90" pos:column="48">mapping</name> <init pos:line="90" pos:column="56">= <expr><op:operator pos:line="90" pos:column="58">new</op:operator> <call><name><name pos:line="90" pos:column="62">Dictionary</name><argument_list pos:line="90" pos:column="72">&lt;<argument><name pos:line="90" pos:column="73">string</name></argument>,<argument><name pos:line="90" pos:column="80">AccessModifier</name></argument>&gt;</argument_list></name><argument_list pos:line="90" pos:column="95">()</argument_list></call> <block pos:line="90" pos:column="98">{
+                <expr><block pos:line="91" pos:column="17">{ <expr><lit:literal type="string" pos:line="91" pos:column="19">"public"</lit:literal></expr>, <expr><name><name pos:line="91" pos:column="29">AccessModifier</name><op:operator pos:line="91" pos:column="43">.</op:operator><name pos:line="91" pos:column="44">Public</name></name></expr> }</block></expr>,
+                <expr><block pos:line="92" pos:column="17">{ <expr><lit:literal type="string" pos:line="92" pos:column="19">"protected internal"</lit:literal></expr>, <expr><name><name pos:line="92" pos:column="41">AccessModifier</name><op:operator pos:line="92" pos:column="55">.</op:operator><name pos:line="92" pos:column="56">ProtectedInternal</name></name></expr> }</block></expr>,
+                <expr><block pos:line="93" pos:column="17">{ <expr><lit:literal type="string" pos:line="93" pos:column="19">"protected"</lit:literal></expr>, <expr><name><name pos:line="93" pos:column="32">AccessModifier</name><op:operator pos:line="93" pos:column="46">.</op:operator><name pos:line="93" pos:column="47">Protected</name></name></expr> }</block></expr>,
+                <expr><block pos:line="94" pos:column="17">{ <expr><lit:literal type="string" pos:line="94" pos:column="19">"internal"</lit:literal></expr>, <expr><name><name pos:line="94" pos:column="31">AccessModifier</name><op:operator pos:line="94" pos:column="45">.</op:operator><name pos:line="94" pos:column="46">Internal</name></name></expr> }</block></expr>,
+                <expr><block pos:line="95" pos:column="17">{ <expr><lit:literal type="string" pos:line="95" pos:column="19">"private"</lit:literal></expr>, <expr><name><name pos:line="95" pos:column="30">AccessModifier</name><op:operator pos:line="95" pos:column="44">.</op:operator><name pos:line="95" pos:column="45">Private</name></name></expr> }</block></expr>,
+            }</block></expr></init></decl>;</decl_stmt>
+            <decl_stmt><decl><type><name pos:line="97" pos:column="13">AccessModifier</name></type> <name pos:line="97" pos:column="28">output</name></decl>;</decl_stmt>
+            <if pos:line="98" pos:column="13">if<condition pos:line="98" pos:column="15">(<expr><op:operator pos:line="98" pos:column="16">!</op:operator><call><name><name pos:line="98" pos:column="17">String</name><op:operator pos:line="98" pos:column="23">.</op:operator><name pos:line="98" pos:column="24">IsNullOrEmpty</name></name><argument_list pos:line="98" pos:column="37">(<argument><expr><name pos:line="98" pos:column="38">am</name></expr></argument>)</argument_list></call> <op:operator pos:line="98" pos:column="42">&amp;&amp;</op:operator> <call><name><name pos:line="98" pos:column="45">mapping</name><op:operator pos:line="98" pos:column="52">.</op:operator><name pos:line="98" pos:column="53">TryGetValue</name></name><argument_list pos:line="98" pos:column="64">(<argument><expr><name pos:line="98" pos:column="65">am</name></expr></argument>, <argument><expr pos:line="98" pos:column="69">out <name pos:line="98" pos:column="73">output</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="98" pos:column="81"> <block pos:line="98" pos:column="82">{
+                <return pos:line="99" pos:column="17">return <expr><name pos:line="99" pos:column="24">output</name></expr>;</return>
+            }</block></then></if>
+            <return pos:line="101" pos:column="13">return <expr><name><name pos:line="101" pos:column="20">AccessModifier</name><op:operator pos:line="101" pos:column="34">.</op:operator><name pos:line="101" pos:column="35">None</name></name></expr>;</return>
+        }</block></function>
+    }</block></decl>
+<decl/></enum>}</block></namespace></unit>

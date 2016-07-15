@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML\IsReadyChangedEventArgs.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2013 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - Initial implementation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Text</name></name>;</using>
+
+<namespace pos:line="17" pos:column="1">namespace <name><name pos:line="17" pos:column="11">ABB</name><op:operator pos:line="17" pos:column="14">.</op:operator><name pos:line="17" pos:column="15">SrcML</name></name> <block pos:line="17" pos:column="21">{
+    <comment type="line" pos:line="18" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="19" pos:column="5">/// Event arguments for IsReady changed events</comment>
+    <comment type="line" pos:line="20" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="21" pos:column="5">public</specifier> class <name pos:line="21" pos:column="18">IsReadyChangedEventArgs</name> <super pos:line="21" pos:column="42">: <name pos:line="21" pos:column="44">EventArgs</name></super> <block pos:line="21" pos:column="54">{
+        <comment type="line" pos:line="22" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// The updated ready state</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="25" pos:column="9">public</specifier> <name pos:line="25" pos:column="16">bool</name></type> <name pos:line="25" pos:column="21">ReadyState</name> <block pos:line="25" pos:column="32">{ <function_decl><name pos:line="25" pos:column="34">get</name>;</function_decl> <function_decl><specifier pos:line="25" pos:column="39">private</specifier> <name pos:line="25" pos:column="47">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// Default constructor</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;/summary&gt;</comment>
+        <constructor><specifier pos:line="30" pos:column="9">protected</specifier> <name pos:line="30" pos:column="19">IsReadyChangedEventArgs</name><parameter_list pos:line="30" pos:column="42">()</parameter_list> <block pos:line="30" pos:column="45">{ }</block></constructor>
+
+        <comment type="line" pos:line="32" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="33" pos:column="9">/// Constructs a new object</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="35" pos:column="9">/// &lt;param name="updatedReadyState"&gt;The updated ready state&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="36" pos:column="9">public</specifier> <name pos:line="36" pos:column="16">IsReadyChangedEventArgs</name><parameter_list pos:line="36" pos:column="39">(<param><decl><type><name pos:line="36" pos:column="40">bool</name></type> <name pos:line="36" pos:column="45">updatedReadyState</name></decl></param>)</parameter_list> <block pos:line="36" pos:column="64">{
+            <expr_stmt><expr><name><name pos:line="37" pos:column="13">this</name><op:operator pos:line="37" pos:column="17">.</op:operator><name pos:line="37" pos:column="18">ReadyState</name></name> <op:operator pos:line="37" pos:column="29">=</op:operator> <name pos:line="37" pos:column="31">updatedReadyState</name></expr>;</expr_stmt>
+        }</block></constructor>
+    }</block></class>
+}</block></namespace>
+</unit>

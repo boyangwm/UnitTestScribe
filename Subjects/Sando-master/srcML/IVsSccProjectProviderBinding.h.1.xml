@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\IVsSccProjectProviderBinding.h" pos:tabs="8" pos:line="1" pos:column="1">
+
+<comment type="block" pos:line="3" pos:column="1">/* this ALWAYS GENERATED file contains the definitions for the interfaces */</comment>
+
+
+ <comment type="block" pos:line="6" pos:column="2">/* File created by MIDL compiler version 7.00.0499 */</comment>
+<comment type="block" pos:line="7" pos:column="1">/* Compiler settings for IVsSccProjectProviderBinding.idl:
+    Oicf, W0, Zp8, env=Win32 (32b run)
+    protocol : dce , ms_ext, c_ext, robust
+    error checks: allocation ref bounds_check enum stub_data 
+    VC __declspec() decoration level: 
+         __declspec(uuid()), __declspec(selectany), __declspec(novtable)
+         DECLSPEC_UUID(), MIDL_INTERFACE()
+*/</comment>
+<comment type="line" pos:line="15" pos:column="1">//@@MIDL_FILE_HEADING(  )</comment>
+
+<cpp:pragma pos:line="17" pos:column="1">#<cpp:directive pos:line="17" pos:column="2">pragma</cpp:directive> warning( disable: 4049 )</cpp:pragma>  <comment type="block" pos:line="17" pos:column="35">/* more than 64k source lines */</comment>
+
+
+<comment type="block" pos:line="20" pos:column="1">/* verify that the &lt;rpcndr.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="21" pos:column="1">#<cpp:directive pos:line="21" pos:column="2">ifndef</cpp:directive> <name pos:line="21" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="22" pos:column="1">#<cpp:directive pos:line="22" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="22" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:macro> <cpp:value pos:line="22" pos:column="39">475</cpp:value></cpp:define>
+<cpp:endif pos:line="23" pos:column="1">#<cpp:directive pos:line="23" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="25" pos:column="1">/* verify that the &lt;rpcsal.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="26" pos:column="1">#<cpp:directive pos:line="26" pos:column="2">ifndef</cpp:directive> <name pos:line="26" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="27" pos:column="1">#<cpp:directive pos:line="27" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="27" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:macro> <cpp:value pos:line="27" pos:column="39">100</cpp:value></cpp:define>
+<cpp:endif pos:line="28" pos:column="1">#<cpp:directive pos:line="28" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:include pos:line="30" pos:column="1">#<cpp:directive pos:line="30" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="30" pos:column="10">"rpc.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="31" pos:column="1">#<cpp:directive pos:line="31" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="31" pos:column="10">"rpcndr.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifndef pos:line="33" pos:column="1">#<cpp:directive pos:line="33" pos:column="2">ifndef</cpp:directive> <name pos:line="33" pos:column="9">__RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:error pos:line="34" pos:column="1">#<cpp:directive pos:line="34" pos:column="2">error</cpp:directive> this stub requires an updated version of &lt;rpcndr.h&gt;</cpp:error>
+<cpp:endif pos:line="35" pos:column="1">#<cpp:directive pos:line="35" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="35" pos:column="8">// __RPCNDR_H_VERSION__</comment>
+
+<cpp:ifndef pos:line="37" pos:column="1">#<cpp:directive pos:line="37" pos:column="2">ifndef</cpp:directive> <name pos:line="37" pos:column="9">COM_NO_WINDOWS_H</name></cpp:ifndef>
+<cpp:include pos:line="38" pos:column="1">#<cpp:directive pos:line="38" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="38" pos:column="10">"windows.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="39" pos:column="1">#<cpp:directive pos:line="39" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="39" pos:column="10">"ole2.h"</lit:literal></cpp:file></cpp:include>
+<cpp:endif pos:line="40" pos:column="1">#<cpp:directive pos:line="40" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="40" pos:column="8">/*COM_NO_WINDOWS_H*/</comment>
+
+<cpp:ifndef pos:line="42" pos:column="1">#<cpp:directive pos:line="42" pos:column="2">ifndef</cpp:directive> <name pos:line="42" pos:column="9">__IVsSccProjectProviderBinding_h__</name></cpp:ifndef>
+<cpp:define pos:line="43" pos:column="1">#<cpp:directive pos:line="43" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="43" pos:column="9">__IVsSccProjectProviderBinding_h__</name></cpp:macro></cpp:define>
+
+<cpp:if pos:line="45" pos:column="1">#<cpp:directive pos:line="45" pos:column="2">if</cpp:directive> <expr><call><name pos:line="45" pos:column="5">defined</name><argument_list pos:line="45" pos:column="12">(<argument><expr><name pos:line="45" pos:column="13">_MSC_VER</name></expr></argument>)</argument_list></call> <op:operator pos:line="45" pos:column="23">&amp;&amp;</op:operator> <op:operator pos:line="45" pos:column="26">(</op:operator><name pos:line="45" pos:column="27">_MSC_VER</name> <op:operator pos:line="45" pos:column="36">&gt;=</op:operator> <lit:literal type="number" pos:line="45" pos:column="39">1020</lit:literal><op:operator pos:line="45" pos:column="43">)</op:operator></expr></cpp:if>
+<cpp:pragma pos:line="46" pos:column="1">#<cpp:directive pos:line="46" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+<cpp:endif pos:line="47" pos:column="1">#<cpp:directive pos:line="47" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="49" pos:column="1">/* Forward Declarations */</comment> 
+
+<cpp:ifndef pos:line="51" pos:column="1">#<cpp:directive pos:line="51" pos:column="2">ifndef</cpp:directive> <name pos:line="51" pos:column="9">__IVsSccProjectProviderBinding_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="52" pos:column="1">#<cpp:directive pos:line="52" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="52" pos:column="9">__IVsSccProjectProviderBinding_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="53" pos:column="1">typedef <type><name pos:line="53" pos:column="9">interface</name> <name pos:line="53" pos:column="19">IVsSccProjectProviderBinding</name></type> <name pos:line="53" pos:column="48">IVsSccProjectProviderBinding</name>;</typedef>
+<cpp:endif pos:line="54" pos:column="1">#<cpp:directive pos:line="54" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="54" pos:column="9">/* __IVsSccProjectProviderBinding_FWD_DEFINED__ */</comment>
+
+
+<comment type="block" pos:line="57" pos:column="1">/* header files for imported files */</comment>
+<cpp:include pos:line="58" pos:column="1">#<cpp:directive pos:line="58" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="58" pos:column="10">"objidl.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifdef pos:line="60" pos:column="1">#<cpp:directive pos:line="60" pos:column="2">ifdef</cpp:directive> <name pos:line="60" pos:column="8">__cplusplus</name></cpp:ifdef>
+<extern pos:line="61" pos:column="1">extern <lit:literal type="string" pos:line="61" pos:column="8">"C"</lit:literal><block pos:line="61" pos:column="11">{
+<cpp:endif pos:line="62" pos:column="1">#<cpp:directive pos:line="62" pos:column="2">endif</cpp:directive></cpp:endif> 
+
+
+<comment type="block" pos:line="65" pos:column="1">/* interface __MIDL_itf_IVsSccProjectProviderBinding_0000_0000 */</comment>
+<comment type="block" pos:line="66" pos:column="1">/* [local] */</comment> 
+
+<cpp:pragma pos:line="68" pos:column="1">#<cpp:directive pos:line="68" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+<typedef pos:line="69" pos:column="1">typedef 
+<type><enum pos:line="70" pos:column="1">enum <name pos:line="70" pos:column="6">__VSSCCPROVIDERBINDING</name>
+    <block pos:line="71" pos:column="5">{	<decl><name pos:line="71" pos:column="9">VSSCC_PB_STANDARD</name>	<init pos:line="71" pos:column="33">= <expr><lit:literal type="number" pos:line="71" pos:column="35">0</lit:literal></expr></init></decl><op:operator pos:line="71" pos:column="36">,</op:operator>
+	<decl><name pos:line="72" pos:column="9">VSSCC_PB_CUSTOM_DISABLED</name>	<init pos:line="72" pos:column="41">= <expr><lit:literal type="number" pos:line="72" pos:column="43">1</lit:literal></expr></init></decl><op:operator pos:line="72" pos:column="44">,</op:operator>
+	<decl><name pos:line="73" pos:column="9">VSSCC_PB_CUSTOM</name>	<init pos:line="73" pos:column="25">= <expr><lit:literal type="number" pos:line="73" pos:column="27">2</lit:literal></expr></init></decl><op:operator pos:line="73" pos:column="28">,</op:operator>
+	<decl><name pos:line="74" pos:column="9">VSSCC_PB_STANDARD_DISABLED</name>	<init pos:line="74" pos:column="41">= <expr><lit:literal type="number" pos:line="74" pos:column="43">3</lit:literal></expr></init></decl>
+    }</block></enum></type> 	<name pos:line="75" pos:column="9">VSSCCPROVIDERBINDING</name>;</typedef>
+
+
+<enum pos:line="78" pos:column="1">enum <name pos:line="78" pos:column="6">__VSSCCPROVIDERBINDINGOPTIONS</name>
+    <block pos:line="79" pos:column="5">{	<decl><name pos:line="79" pos:column="9">VSSCC_PBO_CANBROWSESERVERPATH</name>	<init pos:line="79" pos:column="41">= <expr><lit:literal type="number" pos:line="79" pos:column="43">0x1</lit:literal></expr></init></decl><op:operator pos:line="79" pos:column="46">,</op:operator>
+	<decl><name pos:line="80" pos:column="9">VSSCC_PBO_CANEDITSERVERPATH</name>	<init pos:line="80" pos:column="41">= <expr><lit:literal type="number" pos:line="80" pos:column="43">0x2</lit:literal></expr></init></decl><op:operator pos:line="80" pos:column="46">,</op:operator>
+	<decl><name pos:line="81" pos:column="9">VSSCC_PBO_CANDISPLAYSERVERPATH</name>	<init pos:line="81" pos:column="41">= <expr><lit:literal type="number" pos:line="81" pos:column="43">0x4</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+<typedef pos:line="83" pos:column="1">typedef <type><name pos:line="83" pos:column="9">DWORD</name></type> <name pos:line="83" pos:column="15">VSSCCPROVIDERBINDINGOPTIONS</name>;</typedef>
+
+
+
+<decl_stmt><decl><type><specifier pos:line="87" pos:column="1">extern</specifier> <name pos:line="87" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="87" pos:column="22">__MIDL_itf_IVsSccProjectProviderBinding_0000_0000_v0_0_c_ifspec</name></decl>;</decl_stmt>
+<decl_stmt><decl><type><specifier pos:line="88" pos:column="1">extern</specifier> <name pos:line="88" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="88" pos:column="22">__MIDL_itf_IVsSccProjectProviderBinding_0000_0000_v0_0_s_ifspec</name></decl>;</decl_stmt>
+
+<cpp:ifndef pos:line="90" pos:column="1">#<cpp:directive pos:line="90" pos:column="2">ifndef</cpp:directive> <name pos:line="90" pos:column="9">__IVsSccProjectProviderBinding_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="91" pos:column="1">#<cpp:directive pos:line="91" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="91" pos:column="9">__IVsSccProjectProviderBinding_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="93" pos:column="1">/* interface IVsSccProjectProviderBinding */</comment>
+<comment type="block" pos:line="94" pos:column="1">/* [object][unique][version][uuid] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="97" pos:column="1">EXTERN_C</name> <specifier pos:line="97" pos:column="10">const</specifier> <name pos:line="97" pos:column="16">IID</name></type> <name pos:line="97" pos:column="20">IID_IVsSccProjectProviderBinding</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="99" pos:column="1">#<cpp:directive pos:line="99" pos:column="2">if</cpp:directive> <expr><call><name pos:line="99" pos:column="5">defined</name><argument_list pos:line="99" pos:column="12">(<argument><expr><name pos:line="99" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="99" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="99" pos:column="29">!</op:operator><call><name pos:line="99" pos:column="30">defined</name><argument_list pos:line="99" pos:column="37">(<argument><expr><name pos:line="99" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="101" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="101" pos:column="19">(<argument pos:line="101" pos:column="20">"53544c4d-02f8-11d0-8e5e-00a0c911005a"</argument>)</argument_list></macro>
+    <label><name pos:line="102" pos:column="5">IVsSccProjectProviderBinding</name> :</label> <expr_stmt><expr pos:line="102" pos:column="36">public <name pos:line="102" pos:column="43">IUnknown</name>
+    <block pos:line="103" pos:column="5">{
+    <expr pos:line="104" pos:column="5">public<op:operator pos:line="104" pos:column="11">:</op:operator>
+        virtual <name pos:line="105" pos:column="17">HRESULT</name> <name pos:line="105" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="105" pos:column="43">GetProviderBinding</name><argument_list pos:line="105" pos:column="61">( 
+            <comment type="block" pos:line="106" pos:column="13">/* [retval][out] */</comment> <argument pos:line="106" pos:column="33">__RPC__out VSSCCPROVIDERBINDING *pvscpbBinding</argument>)</argument_list></macro> <op:operator pos:line="106" pos:column="81">=</op:operator> <lit:literal type="number" pos:line="106" pos:column="83">0</lit:literal></expr>;
+        
+        <expr pos:line="108" pos:column="9">virtual <name pos:line="108" pos:column="17">HRESULT</name> <name pos:line="108" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="108" pos:column="43">GetProviderService</name><argument_list pos:line="108" pos:column="61">( 
+            <comment type="block" pos:line="109" pos:column="13">/* [retval][out] */</comment> <argument pos:line="109" pos:column="33">__RPC__out GUID *pguidService</argument>)</argument_list></macro> <op:operator pos:line="109" pos:column="64">=</op:operator> <lit:literal type="number" pos:line="109" pos:column="66">0</lit:literal></expr>;
+        
+        <expr pos:line="111" pos:column="9">virtual <name pos:line="111" pos:column="17">HRESULT</name> <name pos:line="111" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="111" pos:column="43">GetProviderSession</name><argument_list pos:line="111" pos:column="61">( 
+            <comment type="block" pos:line="112" pos:column="13">/* [retval][out] */</comment> <argument pos:line="112" pos:column="33">__RPC__deref_out_opt IUnknown **punkSession</argument>)</argument_list></macro> <op:operator pos:line="112" pos:column="78">=</op:operator> <lit:literal type="number" pos:line="112" pos:column="80">0</lit:literal></expr>;
+        
+        <expr pos:line="114" pos:column="9">virtual <name pos:line="114" pos:column="17">HRESULT</name> <name pos:line="114" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="114" pos:column="43">TranslateEnlistmentPath</name><argument_list pos:line="114" pos:column="66">( 
+            <comment type="block" pos:line="115" pos:column="13">/* [in] */</comment> <argument pos:line="115" pos:column="24">__RPC__in LPCOLESTR lpszPath</argument>,
+            <comment type="block" pos:line="116" pos:column="13">/* [out] */</comment> <argument pos:line="116" pos:column="25">__RPC__out BOOL *pfAlternateIsDisplay</argument>,
+            <comment type="block" pos:line="117" pos:column="13">/* [out] */</comment> <argument pos:line="117" pos:column="25">__RPC__deref_out_opt BSTR *pbstrAlternatePath</argument>)</argument_list></macro> <op:operator pos:line="117" pos:column="72">=</op:operator> <lit:literal type="number" pos:line="117" pos:column="74">0</lit:literal></expr>;
+        
+        <expr pos:line="119" pos:column="9">virtual <name pos:line="119" pos:column="17">HRESULT</name> <name pos:line="119" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="119" pos:column="43">GetProviderBindingOptions</name><argument_list pos:line="119" pos:column="68">( 
+            <comment type="block" pos:line="120" pos:column="13">/* [retval][out] */</comment> <argument pos:line="120" pos:column="33">__RPC__out VSSCCPROVIDERBINDINGOPTIONS *pvscpboOptions</argument>)</argument_list></macro> <op:operator pos:line="120" pos:column="89">=</op:operator> <lit:literal type="number" pos:line="120" pos:column="91">0</lit:literal></expr>;
+        
+        <expr pos:line="122" pos:column="9">virtual <name pos:line="122" pos:column="17">HRESULT</name> <name pos:line="122" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="122" pos:column="43">ValidateServerPathEdit</name><argument_list pos:line="122" pos:column="65">( 
+            <comment type="block" pos:line="123" pos:column="13">/* [in] */</comment> <argument pos:line="123" pos:column="24">BOOL fQuick</argument>,
+            <comment type="block" pos:line="124" pos:column="13">/* [in] */</comment> <argument pos:line="124" pos:column="24">__RPC__in LPCOLESTR lpszServerPath</argument>,
+            <comment type="block" pos:line="125" pos:column="13">/* [retval][out] */</comment> <argument pos:line="125" pos:column="33">__RPC__out BOOL *pfValidServer</argument>)</argument_list></macro> <op:operator pos:line="125" pos:column="65">=</op:operator> <lit:literal type="number" pos:line="125" pos:column="67">0</lit:literal></expr>;
+        
+        <expr pos:line="127" pos:column="9">virtual <name pos:line="127" pos:column="17">HRESULT</name> <name pos:line="127" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="127" pos:column="43">BrowseServerPath</name><argument_list pos:line="127" pos:column="59">( 
+            <comment type="block" pos:line="128" pos:column="13">/* [in] */</comment> <argument pos:line="128" pos:column="24">__RPC__in LPCOLESTR lpszServerPath</argument>,
+            <comment type="block" pos:line="129" pos:column="13">/* [retval][out] */</comment> <argument pos:line="129" pos:column="33">__RPC__deref_out_opt BSTR *pbstrNewServerPath</argument>)</argument_list></macro> <op:operator pos:line="129" pos:column="80">=</op:operator> <lit:literal type="number" pos:line="129" pos:column="82">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="133" pos:column="1">#<cpp:directive pos:line="133" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="133" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="135" pos:column="5">typedef <type><struct pos:line="135" pos:column="13">struct <name pos:line="135" pos:column="20">IVsSccProjectProviderBindingVtbl</name>
+    <block pos:line="136" pos:column="5">{<public type="default" pos:line="136" pos:column="6">
+        <function_decl><type><name pos:line="137" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="139" pos:column="9">HRESULT</name></type> ( <name pos:line="139" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="139" pos:column="37">*</type:modifier><name pos:line="139" pos:column="38">QueryInterface</name> )<parameter_list pos:line="139" pos:column="54">( 
+            <param><decl><type><name pos:line="140" pos:column="13">IVsSccProjectProviderBinding</name> <type:modifier pos:line="140" pos:column="42">*</type:modifier></type> <name pos:line="140" pos:column="44">This</name></decl></param>,
+            <comment type="block" pos:line="141" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="141" pos:column="24">__RPC__in</name> <name pos:line="141" pos:column="34">REFIID</name></type> <name pos:line="141" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="142" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="143" pos:column="13">__RPC__deref_out</name>  <name pos:line="143" pos:column="31">void</name> <type:modifier pos:line="143" pos:column="36">*</type:modifier><type:modifier pos:line="143" pos:column="37">*</type:modifier></type><name pos:line="143" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="145" pos:column="9">ULONG</name></type> ( <name pos:line="145" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="145" pos:column="35">*</type:modifier><name pos:line="145" pos:column="36">AddRef</name> )<parameter_list pos:line="145" pos:column="44">( 
+            <param><decl><type><name pos:line="146" pos:column="13">IVsSccProjectProviderBinding</name> <type:modifier pos:line="146" pos:column="42">*</type:modifier></type> <name pos:line="146" pos:column="44">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="148" pos:column="9">ULONG</name></type> ( <name pos:line="148" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="148" pos:column="35">*</type:modifier><name pos:line="148" pos:column="36">Release</name> )<parameter_list pos:line="148" pos:column="45">( 
+            <param><decl><type><name pos:line="149" pos:column="13">IVsSccProjectProviderBinding</name> <type:modifier pos:line="149" pos:column="42">*</type:modifier></type> <name pos:line="149" pos:column="44">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="151" pos:column="9">HRESULT</name></type> ( <name pos:line="151" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="151" pos:column="37">*</type:modifier><name pos:line="151" pos:column="38">GetProviderBinding</name> )<parameter_list pos:line="151" pos:column="58">( 
+            <param><decl><type><name pos:line="152" pos:column="13">IVsSccProjectProviderBinding</name> <type:modifier pos:line="152" pos:column="42">*</type:modifier></type> <name pos:line="152" pos:column="44">This</name></decl></param>,
+            <comment type="block" pos:line="153" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="153" pos:column="33">__RPC__out</name> <name pos:line="153" pos:column="44">VSSCCPROVIDERBINDING</name> <type:modifier pos:line="153" pos:column="65">*</type:modifier></type><name pos:line="153" pos:column="66">pvscpbBinding</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="155" pos:column="9">HRESULT</name></type> ( <name pos:line="155" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="155" pos:column="37">*</type:modifier><name pos:line="155" pos:column="38">GetProviderService</name> )<parameter_list pos:line="155" pos:column="58">( 
+            <param><decl><type><name pos:line="156" pos:column="13">IVsSccProjectProviderBinding</name> <type:modifier pos:line="156" pos:column="42">*</type:modifier></type> <name pos:line="156" pos:column="44">This</name></decl></param>,
+            <comment type="block" pos:line="157" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="157" pos:column="33">__RPC__out</name> <name pos:line="157" pos:column="44">GUID</name> <type:modifier pos:line="157" pos:column="49">*</type:modifier></type><name pos:line="157" pos:column="50">pguidService</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="159" pos:column="9">HRESULT</name></type> ( <name pos:line="159" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="159" pos:column="37">*</type:modifier><name pos:line="159" pos:column="38">GetProviderSession</name> )<parameter_list pos:line="159" pos:column="58">( 
+            <param><decl><type><name pos:line="160" pos:column="13">IVsSccProjectProviderBinding</name> <type:modifier pos:line="160" pos:column="42">*</type:modifier></type> <name pos:line="160" pos:column="44">This</name></decl></param>,
+            <comment type="block" pos:line="161" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="161" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="161" pos:column="54">IUnknown</name> <type:modifier pos:line="161" pos:column="63">*</type:modifier><type:modifier pos:line="161" pos:column="64">*</type:modifier></type><name pos:line="161" pos:column="65">punkSession</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="163" pos:column="9">HRESULT</name></type> ( <name pos:line="163" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="163" pos:column="37">*</type:modifier><name pos:line="163" pos:column="38">TranslateEnlistmentPath</name> )<parameter_list pos:line="163" pos:column="63">( 
+            <param><decl><type><name pos:line="164" pos:column="13">IVsSccProjectProviderBinding</name> <type:modifier pos:line="164" pos:column="42">*</type:modifier></type> <name pos:line="164" pos:column="44">This</name></decl></param>,
+            <comment type="block" pos:line="165" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="165" pos:column="24">__RPC__in</name> <name pos:line="165" pos:column="34">LPCOLESTR</name></type> <name pos:line="165" pos:column="44">lpszPath</name></decl></param>,
+            <comment type="block" pos:line="166" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="166" pos:column="25">__RPC__out</name> <name pos:line="166" pos:column="36">BOOL</name> <type:modifier pos:line="166" pos:column="41">*</type:modifier></type><name pos:line="166" pos:column="42">pfAlternateIsDisplay</name></decl></param>,
+            <comment type="block" pos:line="167" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="167" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="167" pos:column="46">BSTR</name> <type:modifier pos:line="167" pos:column="51">*</type:modifier></type><name pos:line="167" pos:column="52">pbstrAlternatePath</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="169" pos:column="9">HRESULT</name></type> ( <name pos:line="169" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="169" pos:column="37">*</type:modifier><name pos:line="169" pos:column="38">GetProviderBindingOptions</name> )<parameter_list pos:line="169" pos:column="65">( 
+            <param><decl><type><name pos:line="170" pos:column="13">IVsSccProjectProviderBinding</name> <type:modifier pos:line="170" pos:column="42">*</type:modifier></type> <name pos:line="170" pos:column="44">This</name></decl></param>,
+            <comment type="block" pos:line="171" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="171" pos:column="33">__RPC__out</name> <name pos:line="171" pos:column="44">VSSCCPROVIDERBINDINGOPTIONS</name> <type:modifier pos:line="171" pos:column="72">*</type:modifier></type><name pos:line="171" pos:column="73">pvscpboOptions</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="173" pos:column="9">HRESULT</name></type> ( <name pos:line="173" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="173" pos:column="37">*</type:modifier><name pos:line="173" pos:column="38">ValidateServerPathEdit</name> )<parameter_list pos:line="173" pos:column="62">( 
+            <param><decl><type><name pos:line="174" pos:column="13">IVsSccProjectProviderBinding</name> <type:modifier pos:line="174" pos:column="42">*</type:modifier></type> <name pos:line="174" pos:column="44">This</name></decl></param>,
+            <comment type="block" pos:line="175" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="175" pos:column="24">BOOL</name></type> <name pos:line="175" pos:column="29">fQuick</name></decl></param>,
+            <comment type="block" pos:line="176" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="176" pos:column="24">__RPC__in</name> <name pos:line="176" pos:column="34">LPCOLESTR</name></type> <name pos:line="176" pos:column="44">lpszServerPath</name></decl></param>,
+            <comment type="block" pos:line="177" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="177" pos:column="33">__RPC__out</name> <name pos:line="177" pos:column="44">BOOL</name> <type:modifier pos:line="177" pos:column="49">*</type:modifier></type><name pos:line="177" pos:column="50">pfValidServer</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="179" pos:column="9">HRESULT</name></type> ( <name pos:line="179" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="179" pos:column="37">*</type:modifier><name pos:line="179" pos:column="38">BrowseServerPath</name> )<parameter_list pos:line="179" pos:column="56">( 
+            <param><decl><type><name pos:line="180" pos:column="13">IVsSccProjectProviderBinding</name> <type:modifier pos:line="180" pos:column="42">*</type:modifier></type> <name pos:line="180" pos:column="44">This</name></decl></param>,
+            <comment type="block" pos:line="181" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="181" pos:column="24">__RPC__in</name> <name pos:line="181" pos:column="34">LPCOLESTR</name></type> <name pos:line="181" pos:column="44">lpszServerPath</name></decl></param>,
+            <comment type="block" pos:line="182" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="182" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="182" pos:column="54">BSTR</name> <type:modifier pos:line="182" pos:column="59">*</type:modifier></type><name pos:line="182" pos:column="60">pbstrNewServerPath</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="184" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="185" pos:column="7">IVsSccProjectProviderBindingVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="187" pos:column="5">interface</name></type> <name pos:line="187" pos:column="15">IVsSccProjectProviderBinding</name>
+    <argument_list pos:line="188" pos:column="5">{
+        <argument><expr><name pos:line="189" pos:column="9">CONST_VTBL</name> struct <name pos:line="189" pos:column="27">IVsSccProjectProviderBindingVtbl</name> <op:operator pos:line="189" pos:column="60">*</op:operator><name pos:line="189" pos:column="61">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="194" pos:column="1">#<cpp:directive pos:line="194" pos:column="2">ifdef</cpp:directive> <name pos:line="194" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="197" pos:column="1">#<cpp:directive pos:line="197" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="197" pos:column="9">IVsSccProjectProviderBinding_QueryInterface</name><parameter_list pos:line="197" pos:column="52">(<param><type><name pos:line="197" pos:column="53">This</name></type></param>,<param><type><name pos:line="197" pos:column="58">riid</name></type></param>,<param><type><name pos:line="197" pos:column="63">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="198" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="200" pos:column="1">#<cpp:directive pos:line="200" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="200" pos:column="9">IVsSccProjectProviderBinding_AddRef</name><parameter_list pos:line="200" pos:column="44">(<param><type><name pos:line="200" pos:column="45">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="201" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="203" pos:column="1">#<cpp:directive pos:line="203" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="203" pos:column="9">IVsSccProjectProviderBinding_Release</name><parameter_list pos:line="203" pos:column="45">(<param><type><name pos:line="203" pos:column="46">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="204" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="207" pos:column="1">#<cpp:directive pos:line="207" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="207" pos:column="9">IVsSccProjectProviderBinding_GetProviderBinding</name><parameter_list pos:line="207" pos:column="56">(<param><type><name pos:line="207" pos:column="57">This</name></type></param>,<param><type><name pos:line="207" pos:column="62">pvscpbBinding</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="208" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetProviderBinding(This,pvscpbBinding) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="210" pos:column="1">#<cpp:directive pos:line="210" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="210" pos:column="9">IVsSccProjectProviderBinding_GetProviderService</name><parameter_list pos:line="210" pos:column="56">(<param><type><name pos:line="210" pos:column="57">This</name></type></param>,<param><type><name pos:line="210" pos:column="62">pguidService</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="211" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetProviderService(This,pguidService) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="213" pos:column="1">#<cpp:directive pos:line="213" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="213" pos:column="9">IVsSccProjectProviderBinding_GetProviderSession</name><parameter_list pos:line="213" pos:column="56">(<param><type><name pos:line="213" pos:column="57">This</name></type></param>,<param><type><name pos:line="213" pos:column="62">punkSession</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="214" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetProviderSession(This,punkSession) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="216" pos:column="1">#<cpp:directive pos:line="216" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="216" pos:column="9">IVsSccProjectProviderBinding_TranslateEnlistmentPath</name><parameter_list pos:line="216" pos:column="61">(<param><type><name pos:line="216" pos:column="62">This</name></type></param>,<param><type><name pos:line="216" pos:column="67">lpszPath</name></type></param>,<param><type><name pos:line="216" pos:column="76">pfAlternateIsDisplay</name></type></param>,<param><type><name pos:line="216" pos:column="97">pbstrAlternatePath</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="217" pos:column="5">( (This)-&gt;lpVtbl -&gt; TranslateEnlistmentPath(This,lpszPath,pfAlternateIsDisplay,pbstrAlternatePath) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="219" pos:column="1">#<cpp:directive pos:line="219" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="219" pos:column="9">IVsSccProjectProviderBinding_GetProviderBindingOptions</name><parameter_list pos:line="219" pos:column="63">(<param><type><name pos:line="219" pos:column="64">This</name></type></param>,<param><type><name pos:line="219" pos:column="69">pvscpboOptions</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="220" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetProviderBindingOptions(This,pvscpboOptions) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="222" pos:column="1">#<cpp:directive pos:line="222" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="222" pos:column="9">IVsSccProjectProviderBinding_ValidateServerPathEdit</name><parameter_list pos:line="222" pos:column="60">(<param><type><name pos:line="222" pos:column="61">This</name></type></param>,<param><type><name pos:line="222" pos:column="66">fQuick</name></type></param>,<param><type><name pos:line="222" pos:column="73">lpszServerPath</name></type></param>,<param><type><name pos:line="222" pos:column="88">pfValidServer</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="223" pos:column="5">( (This)-&gt;lpVtbl -&gt; ValidateServerPathEdit(This,fQuick,lpszServerPath,pfValidServer) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="225" pos:column="1">#<cpp:directive pos:line="225" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="225" pos:column="9">IVsSccProjectProviderBinding_BrowseServerPath</name><parameter_list pos:line="225" pos:column="54">(<param><type><name pos:line="225" pos:column="55">This</name></type></param>,<param><type><name pos:line="225" pos:column="60">lpszServerPath</name></type></param>,<param><type><name pos:line="225" pos:column="75">pbstrNewServerPath</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="226" pos:column="5">( (This)-&gt;lpVtbl -&gt; BrowseServerPath(This,lpszServerPath,pbstrNewServerPath) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="228" pos:column="1">#<cpp:directive pos:line="228" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="228" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="231" pos:column="1">#<cpp:directive pos:line="231" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="231" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="236" pos:column="1">#<cpp:directive pos:line="236" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="236" pos:column="9">/* __IVsSccProjectProviderBinding_INTERFACE_DEFINED__ */</comment>
+
+
+<comment type="block" pos:line="239" pos:column="1">/* Additional Prototypes for ALL interfaces */</comment>
+
+<function_decl><type><name pos:line="241" pos:column="1">unsigned</name> <name pos:line="241" pos:column="10">long</name>             <name pos:line="241" pos:column="27">__RPC_USER</name></type>  <name pos:line="241" pos:column="39">BSTR_UserSize</name><parameter_list pos:line="241" pos:column="52">(     <param><decl><type><name pos:line="241" pos:column="58">unsigned</name></type> <name pos:line="241" pos:column="67">long</name> <type:modifier pos:line="241" pos:column="72">*</type:modifier></decl></param>, <param><decl><type><name pos:line="241" pos:column="75">unsigned</name></type> <name pos:line="241" pos:column="84">long</name></decl></param>            , <param><decl><type><name pos:line="241" pos:column="102">BSTR</name> <type:modifier pos:line="241" pos:column="107">*</type:modifier></type></decl></param> )</parameter_list>;</function_decl> 
+<function_decl><type><name pos:line="242" pos:column="1">unsigned</name> <name pos:line="242" pos:column="10">char</name> <type:modifier pos:line="242" pos:column="15">*</type:modifier> <name pos:line="242" pos:column="17">__RPC_USER</name></type>  <name pos:line="242" pos:column="29">BSTR_UserMarshal</name><parameter_list pos:line="242" pos:column="45">(  <param><decl><type><name pos:line="242" pos:column="48">unsigned</name></type> <name pos:line="242" pos:column="57">long</name> <type:modifier pos:line="242" pos:column="62">*</type:modifier></decl></param>, <param><decl><type><name pos:line="242" pos:column="65">unsigned</name></type> <name pos:line="242" pos:column="74">char</name> <type:modifier pos:line="242" pos:column="79">*</type:modifier></decl></param>, <param><decl><type><name pos:line="242" pos:column="82">BSTR</name> <type:modifier pos:line="242" pos:column="87">*</type:modifier></type></decl></param> )</parameter_list>;</function_decl> 
+<function_decl><type><name pos:line="243" pos:column="1">unsigned</name> <name pos:line="243" pos:column="10">char</name> <type:modifier pos:line="243" pos:column="15">*</type:modifier> <name pos:line="243" pos:column="17">__RPC_USER</name></type>  <name pos:line="243" pos:column="29">BSTR_UserUnmarshal</name><parameter_list pos:line="243" pos:column="47">(<param><decl><type><name pos:line="243" pos:column="48">unsigned</name></type> <name pos:line="243" pos:column="57">long</name> <type:modifier pos:line="243" pos:column="62">*</type:modifier></decl></param>, <param><decl><type><name pos:line="243" pos:column="65">unsigned</name></type> <name pos:line="243" pos:column="74">char</name> <type:modifier pos:line="243" pos:column="79">*</type:modifier></decl></param>, <param><decl><type><name pos:line="243" pos:column="82">BSTR</name> <type:modifier pos:line="243" pos:column="87">*</type:modifier></type></decl></param> )</parameter_list>;</function_decl> 
+<function_decl><type><name pos:line="244" pos:column="1">void</name>                      <name pos:line="244" pos:column="27">__RPC_USER</name></type>  <name pos:line="244" pos:column="39">BSTR_UserFree</name><parameter_list pos:line="244" pos:column="52">(     <param><decl><type><name pos:line="244" pos:column="58">unsigned</name></type> <name pos:line="244" pos:column="67">long</name> <type:modifier pos:line="244" pos:column="72">*</type:modifier></decl></param>, <param><decl><type><name pos:line="244" pos:column="75">BSTR</name> <type:modifier pos:line="244" pos:column="80">*</type:modifier></type></decl></param> )</parameter_list>;</function_decl> 
+
+<comment type="block" pos:line="246" pos:column="1">/* end of Additional Prototypes */</comment>
+
+<cpp:ifdef pos:line="248" pos:column="1">#<cpp:directive pos:line="248" pos:column="2">ifdef</cpp:directive> <name pos:line="248" pos:column="8">__cplusplus</name></cpp:ifdef>
+}</block></extern>
+<cpp:endif pos:line="250" pos:column="1">#<cpp:directive pos:line="250" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:endif pos:line="252" pos:column="1">#<cpp:directive pos:line="252" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+</unit>

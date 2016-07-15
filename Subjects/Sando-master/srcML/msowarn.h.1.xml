@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\office10\msowarn.h" pos:tabs="8"><comment type="block" format="doxygen" pos:line="1" pos:column="1">/*************************************************************************
+	msowarn.h
+	
+	Owner: michmarc
+	Copyright (c) 1999 Microsoft Corporation
+	
+	File that contains all of the pragmas necessary to make
+	/W4 /WX work with Office builds
+*************************************************************************/</comment>
+
+<cpp:ifndef pos:line="11" pos:column="1">#<cpp:directive pos:line="11" pos:column="2">ifndef</cpp:directive> <name pos:line="11" pos:column="9">_MSO_WARN</name></cpp:ifndef>
+<cpp:define pos:line="12" pos:column="1">#<cpp:directive pos:line="12" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="12" pos:column="9">_MSO_WARN</name></cpp:macro></cpp:define>
+<cpp:pragma pos:line="13" pos:column="1">#<cpp:directive pos:line="13" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+
+<comment type="line" pos:line="15" pos:column="1">// Warnings that need fixing to make things /W4 clean</comment>
+
+<comment type="line" pos:line="17" pos:column="1">// Always useless</comment>
+<cpp:pragma pos:line="18" pos:column="1">#<cpp:directive pos:line="18" pos:column="2">pragma</cpp:directive> warning(disable:4049)</cpp:pragma>   <comment type="line" pos:line="18" pos:column="33">// Compiler limit -- no more line number info</comment>
+<cpp:pragma pos:line="19" pos:column="1">#<cpp:directive pos:line="19" pos:column="2">pragma</cpp:directive> warning(disable:4054)</cpp:pragma>   <comment type="line" pos:line="19" pos:column="33">// Casting function pointer to data pointer</comment>
+<cpp:pragma pos:line="20" pos:column="1">#<cpp:directive pos:line="20" pos:column="2">pragma</cpp:directive> warning(disable:4055)</cpp:pragma>   <comment type="line" pos:line="20" pos:column="33">// Casting data pointer to function pointer</comment>
+<cpp:pragma pos:line="21" pos:column="1">#<cpp:directive pos:line="21" pos:column="2">pragma</cpp:directive> warning(disable:4100)</cpp:pragma>   <comment type="line" pos:line="21" pos:column="33">// Unreferenced formal parameter</comment>
+<cpp:pragma pos:line="22" pos:column="1">#<cpp:directive pos:line="22" pos:column="2">pragma</cpp:directive> warning(disable:4102)</cpp:pragma>   <comment type="line" pos:line="22" pos:column="33">// Unreferenced label</comment>
+<cpp:pragma pos:line="23" pos:column="1">#<cpp:directive pos:line="23" pos:column="2">pragma</cpp:directive> warning(disable:4115)</cpp:pragma>   <comment type="line" pos:line="23" pos:column="33">// Named type definition in parenthesis</comment>
+<cpp:pragma pos:line="24" pos:column="1">#<cpp:directive pos:line="24" pos:column="2">pragma</cpp:directive> warning(disable:4121)</cpp:pragma>   <comment type="line" pos:line="24" pos:column="33">// structure sensitive to packing</comment>
+<cpp:pragma pos:line="25" pos:column="1">#<cpp:directive pos:line="25" pos:column="2">pragma</cpp:directive> warning(disable:4152)</cpp:pragma>   <comment type="line" pos:line="25" pos:column="33">// Microsoft extension -- fn/data pointer conv</comment>
+<cpp:pragma pos:line="26" pos:column="1">#<cpp:directive pos:line="26" pos:column="2">pragma</cpp:directive> warning(disable:4168)</cpp:pragma>   <comment type="line" pos:line="26" pos:column="33">// Compiler limit -- out of debug types</comment>
+<cpp:pragma pos:line="27" pos:column="1">#<cpp:directive pos:line="27" pos:column="2">pragma</cpp:directive> warning(disable:4200)</cpp:pragma>   <comment type="line" pos:line="27" pos:column="33">// Microsoft extension -- Zero sized array</comment>
+<cpp:pragma pos:line="28" pos:column="1">#<cpp:directive pos:line="28" pos:column="2">pragma</cpp:directive> warning(disable:4201)</cpp:pragma>   <comment type="line" pos:line="28" pos:column="33">// Microsoft extension -- Nameless struct/union</comment>
+<cpp:pragma pos:line="29" pos:column="1">#<cpp:directive pos:line="29" pos:column="2">pragma</cpp:directive> warning(disable:4204)</cpp:pragma>   <comment type="line" pos:line="29" pos:column="33">// Microsoft extension -- Nonconst agg initializer</comment>
+<cpp:pragma pos:line="30" pos:column="1">#<cpp:directive pos:line="30" pos:column="2">pragma</cpp:directive> warning(disable:4206)</cpp:pragma>   <comment type="line" pos:line="30" pos:column="33">// Microsoft extension -- Source file is empty</comment>
+<cpp:pragma pos:line="31" pos:column="1">#<cpp:directive pos:line="31" pos:column="2">pragma</cpp:directive> warning(disable:4207)</cpp:pragma>   <comment type="line" pos:line="31" pos:column="33">// Microsoft extension -- Extended initializer form</comment>
+<cpp:pragma pos:line="32" pos:column="1">#<cpp:directive pos:line="32" pos:column="2">pragma</cpp:directive> warning(disable:4211)</cpp:pragma>   <comment type="line" pos:line="32" pos:column="33">// Microsoft extension -- Extern to static</comment>
+<cpp:pragma pos:line="33" pos:column="1">#<cpp:directive pos:line="33" pos:column="2">pragma</cpp:directive> warning(disable:4213)</cpp:pragma>   <comment type="line" pos:line="33" pos:column="33">// Microsoft extension -- Cast on LValue</comment>
+<cpp:pragma pos:line="34" pos:column="1">#<cpp:directive pos:line="34" pos:column="2">pragma</cpp:directive> warning(disable:4214)</cpp:pragma>   <comment type="line" pos:line="34" pos:column="33">// Microsoft extension -- Bitfield not int</comment>
+<cpp:pragma pos:line="35" pos:column="1">#<cpp:directive pos:line="35" pos:column="2">pragma</cpp:directive> warning(disable:4221)</cpp:pragma>   <comment type="line" pos:line="35" pos:column="33">// Microsoft extension -- Init with addr of local</comment>
+<cpp:pragma pos:line="36" pos:column="1">#<cpp:directive pos:line="36" pos:column="2">pragma</cpp:directive> warning(disable:4239)</cpp:pragma>   <comment type="line" pos:line="36" pos:column="33">// Microsoft extension -- nonconst reference to nonlvalue</comment>
+<cpp:pragma pos:line="37" pos:column="1">#<cpp:directive pos:line="37" pos:column="2">pragma</cpp:directive> warning(disable:4238)</cpp:pragma>   <comment type="line" pos:line="37" pos:column="33">// Microsoft extension -- class rvalue as lvalue</comment>
+<cpp:pragma pos:line="38" pos:column="1">#<cpp:directive pos:line="38" pos:column="2">pragma</cpp:directive> warning(disable:4305)</cpp:pragma>   <comment type="line" pos:line="38" pos:column="33">// Casting causes truncation</comment>
+<cpp:pragma pos:line="39" pos:column="1">#<cpp:directive pos:line="39" pos:column="2">pragma</cpp:directive> warning(disable:4509)</cpp:pragma>   <comment type="line" pos:line="39" pos:column="33">// Microsoft extension -- SEH and destructors</comment>
+<cpp:pragma pos:line="40" pos:column="1">#<cpp:directive pos:line="40" pos:column="2">pragma</cpp:directive> warning(disable:4510)</cpp:pragma>   <comment type="line" pos:line="40" pos:column="33">// Default constructor could not be generated</comment>
+<cpp:pragma pos:line="41" pos:column="1">#<cpp:directive pos:line="41" pos:column="2">pragma</cpp:directive> warning(disable:4511)</cpp:pragma>   <comment type="line" pos:line="41" pos:column="33">// Copy constructor could not be generated</comment>
+<cpp:pragma pos:line="42" pos:column="1">#<cpp:directive pos:line="42" pos:column="2">pragma</cpp:directive> warning(disable:4512)</cpp:pragma>   <comment type="line" pos:line="42" pos:column="33">// Assignment operator could not be generated</comment>
+<cpp:pragma pos:line="43" pos:column="1">#<cpp:directive pos:line="43" pos:column="2">pragma</cpp:directive> warning(disable:4513)</cpp:pragma>   <comment type="line" pos:line="43" pos:column="33">// Destructor could not be generated</comment>
+<cpp:pragma pos:line="44" pos:column="1">#<cpp:directive pos:line="44" pos:column="2">pragma</cpp:directive> warning(disable:4514)</cpp:pragma>   <comment type="line" pos:line="44" pos:column="33">// Unreferenced inline function removed</comment>
+<cpp:pragma pos:line="45" pos:column="1">#<cpp:directive pos:line="45" pos:column="2">pragma</cpp:directive> warning(disable:4527)</cpp:pragma>   <comment type="line" pos:line="45" pos:column="33">// User defined destructor required</comment>
+<cpp:pragma pos:line="46" pos:column="1">#<cpp:directive pos:line="46" pos:column="2">pragma</cpp:directive> warning(disable:4610)</cpp:pragma>   <comment type="line" pos:line="46" pos:column="33">// User defined constructor required</comment>
+<cpp:pragma pos:line="47" pos:column="1">#<cpp:directive pos:line="47" pos:column="2">pragma</cpp:directive> warning(disable:4611)</cpp:pragma>   <comment type="line" pos:line="47" pos:column="33">// Setjmp/C++ destruction interaction unportable</comment>
+<cpp:pragma pos:line="48" pos:column="1">#<cpp:directive pos:line="48" pos:column="2">pragma</cpp:directive> warning(disable:4710)</cpp:pragma>   <comment type="line" pos:line="48" pos:column="33">// Inline function not inlined</comment>
+<cpp:pragma pos:line="49" pos:column="1">#<cpp:directive pos:line="49" pos:column="2">pragma</cpp:directive> warning(disable:4798)</cpp:pragma>   <comment type="line" pos:line="49" pos:column="33">// Native code instead of PCode generated</comment>
+
+<cpp:if pos:line="51" pos:column="1">#<cpp:directive pos:line="51" pos:column="2">if</cpp:directive> <expr><name pos:line="51" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+<cpp:pragma pos:line="52" pos:column="1">#<cpp:directive pos:line="52" pos:column="2">pragma</cpp:directive> warning(disable:4124)</cpp:pragma>	  <comment type="line" pos:line="52" pos:column="35">// Stack checking and __fastcall mixed</comment>
+<cpp:endif pos:line="53" pos:column="1">#<cpp:directive pos:line="53" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="line" pos:line="55" pos:column="1">// Currently useless, but could be made useful</comment>
+<cpp:pragma pos:line="56" pos:column="1">#<cpp:directive pos:line="56" pos:column="2">pragma</cpp:directive> warning(disable:4018)</cpp:pragma>   <comment type="line" pos:line="56" pos:column="33">// Signed/unsigned comparison mismatch.  Might be useful, except that all</comment>
+                                <comment type="line" pos:line="57" pos:column="33">// arguments smaller than int are promoted to signed int, so byte==(byte+byte) generates this.</comment>
+<cpp:pragma pos:line="58" pos:column="1">#<cpp:directive pos:line="58" pos:column="2">pragma</cpp:directive> warning(disable:4127)</cpp:pragma>   <comment type="line" pos:line="58" pos:column="33">// Conditional is constant.  Might be useful, but many asserts are constantly true</comment>
+                                <comment type="line" pos:line="59" pos:column="33">//    and "while (1) {}" and "for(A;;B)" constructs generate this warning as well.</comment>
+<cpp:pragma pos:line="60" pos:column="1">#<cpp:directive pos:line="60" pos:column="2">pragma</cpp:directive> warning(disable:4245)</cpp:pragma>   <comment type="line" pos:line="60" pos:column="33">// Signed/unsigned asignment mismatch.  Might be useful, except that all</comment>
+                                <comment type="line" pos:line="61" pos:column="33">// arguments smaller than int are promoted to signed int, so byte=byte+byte generates this.</comment>
+<cpp:pragma pos:line="62" pos:column="1">#<cpp:directive pos:line="62" pos:column="2">pragma</cpp:directive> warning(disable:4268)</cpp:pragma>   <comment type="line" pos:line="62" pos:column="33">// const static/global initilzed with compiler generated default constructor</comment>
+                                <comment type="line" pos:line="63" pos:column="33">//    seems that "extern "C" const ClassName cn;" can generate this, even though this is</comment>
+                                <comment type="line" pos:line="64" pos:column="33">//    a declaration, not a definition</comment>
+<cpp:pragma pos:line="65" pos:column="1">#<cpp:directive pos:line="65" pos:column="2">pragma</cpp:directive> warning(disable:4310)</cpp:pragma>   <comment type="line" pos:line="65" pos:column="33">// Cast truncates constant value (problem because LOBYTE(0x113) generates this)</comment>
+                                <comment type="line" pos:line="66" pos:column="33">// and there is often no way to work around the warning</comment>
+<cpp:pragma pos:line="67" pos:column="1">#<cpp:directive pos:line="67" pos:column="2">pragma</cpp:directive> warning(disable:4414)</cpp:pragma>   <comment type="line" pos:line="67" pos:column="33">// __asm short jump converted to near jump.  Currently a compiler bug causes</comment>
+								<comment type="line" pos:line="68" pos:column="65">// the 'near' and 'far' keywords to be thrown out, making it impossible to declare</comment>
+								<comment type="line" pos:line="69" pos:column="65">// a jump in inline assembly that is anything except short.</comment>
+<cpp:pragma pos:line="70" pos:column="1">#<cpp:directive pos:line="70" pos:column="2">pragma</cpp:directive> warning(disable:4702)</cpp:pragma>   <comment type="line" pos:line="70" pos:column="33">// Unreachable code.  Can't be eliminated because this warning</comment>
+                                <comment type="line" pos:line="71" pos:column="33">// can be generated against compiler created code at the end of a block</comment>
+
+<comment type="line" pos:line="73" pos:column="1">// REVIEW -- should these be re-enabled?</comment>
+<cpp:pragma pos:line="74" pos:column="1">#<cpp:directive pos:line="74" pos:column="2">pragma</cpp:directive> warning(disable:4211)</cpp:pragma>   <comment type="line" pos:line="74" pos:column="33">// Redefined extern to static </comment>
+<cpp:pragma pos:line="75" pos:column="1">#<cpp:directive pos:line="75" pos:column="2">pragma</cpp:directive> warning(disable:4505)</cpp:pragma>   <comment type="line" pos:line="75" pos:column="33">// Unreferenced static function removed (happens in ATL code)</comment>
+
+<cpp:endif pos:line="77" pos:column="1">#<cpp:directive pos:line="77" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="77" pos:column="8">/* _MSO_WARN */</comment>
+</unit>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Tab\Assist\TabSection.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">System</name><op:operator pos:line="1" pos:column="13">.</op:operator><name pos:line="1" pos:column="14">Collections</name><op:operator pos:line="1" pos:column="25">.</op:operator><name pos:line="1" pos:column="26">Generic</name></name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Linq</name></name>;</using>
+
+<namespace pos:line="4" pos:column="1">namespace <name><name pos:line="4" pos:column="11">Glimpse</name><op:operator pos:line="4" pos:column="18">.</op:operator><name pos:line="4" pos:column="19">Core</name><op:operator pos:line="4" pos:column="23">.</op:operator><name pos:line="4" pos:column="24">Tab</name><op:operator pos:line="4" pos:column="27">.</op:operator><name pos:line="4" pos:column="28">Assist</name></name>
+<block pos:line="5" pos:column="1">{
+    <class><specifier pos:line="6" pos:column="5">public</specifier> class <name pos:line="6" pos:column="18">TabSection</name> <super pos:line="6" pos:column="29">: <name pos:line="6" pos:column="31">ITabBuild</name></super>
+    <block pos:line="7" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="8" pos:column="9">private</specifier> <specifier pos:line="8" pos:column="17">readonly</specifier> <name><name pos:line="8" pos:column="26">List</name><argument_list pos:line="8" pos:column="30">&lt;<argument><name pos:line="8" pos:column="31">TabSectionRow</name></argument>&gt;</argument_list></name></type> <name pos:line="8" pos:column="46">rows</name> <init pos:line="8" pos:column="51">= <expr><op:operator pos:line="8" pos:column="53">new</op:operator> <call><name><name pos:line="8" pos:column="57">List</name><argument_list pos:line="8" pos:column="61">&lt;<argument><name pos:line="8" pos:column="62">TabSectionRow</name></argument>&gt;</argument_list></name><argument_list pos:line="8" pos:column="76">()</argument_list></call></expr></init></decl>;</decl_stmt>
+
+        <constructor><specifier pos:line="10" pos:column="9">public</specifier> <name pos:line="10" pos:column="16">TabSection</name><parameter_list pos:line="10" pos:column="26">()</parameter_list>
+        <block pos:line="11" pos:column="9">{
+        }</block></constructor>
+
+        <constructor><specifier pos:line="14" pos:column="9">public</specifier> <name pos:line="14" pos:column="16">TabSection</name><parameter_list pos:line="14" pos:column="26">(<param><decl><type><specifier pos:line="14" pos:column="27">params</specifier> <name><name pos:line="14" pos:column="34">string</name><index pos:line="14" pos:column="40">[]</index></name></type> <name pos:line="14" pos:column="43">headers</name></decl></param>)</parameter_list>
+        <block pos:line="15" pos:column="9">{
+            <if pos:line="16" pos:column="13">if <condition pos:line="16" pos:column="16">(<expr><call><name><name pos:line="16" pos:column="17">headers</name><op:operator pos:line="16" pos:column="24">.</op:operator><name pos:line="16" pos:column="25">Any</name></name><argument_list pos:line="16" pos:column="28">()</argument_list></call></expr>)</condition><then pos:line="16" pos:column="31">
+            <block pos:line="17" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="18" pos:column="17">var</name></type> <name pos:line="18" pos:column="21">row</name> <init pos:line="18" pos:column="25">= <expr><call><name pos:line="18" pos:column="27">AddRow</name><argument_list pos:line="18" pos:column="33">()</argument_list></call></expr></init></decl>;</decl_stmt>
+                <foreach pos:line="19" pos:column="17">foreach (<init><decl><type><name pos:line="19" pos:column="26">var</name></type> <name pos:line="19" pos:column="30">header</name> <range pos:line="19" pos:column="37">in <expr><name pos:line="19" pos:column="40">headers</name></expr></range></decl></init>)
+                <block pos:line="20" pos:column="17">{
+                    <expr_stmt><expr><call><name><name pos:line="21" pos:column="21">row</name><op:operator pos:line="21" pos:column="24">.</op:operator><name pos:line="21" pos:column="25">Column</name></name><argument_list pos:line="21" pos:column="31">(<argument><expr><name pos:line="21" pos:column="32">header</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                }</block></foreach>
+            }</block></then></if>
+        }</block></constructor>
+
+        <decl_stmt><decl><type><specifier pos:line="26" pos:column="9">public</specifier> <name><name pos:line="26" pos:column="16">IEnumerable</name><argument_list pos:line="26" pos:column="27">&lt;<argument><name pos:line="26" pos:column="28">TabSectionRow</name></argument>&gt;</argument_list></name></type> <name pos:line="26" pos:column="43">Rows</name>
+        <block pos:line="27" pos:column="9">{
+            <function><name pos:line="28" pos:column="13">get</name> <block pos:line="28" pos:column="17">{ <return pos:line="28" pos:column="19">return <expr><name pos:line="28" pos:column="26">rows</name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <function><type><specifier pos:line="31" pos:column="9">public</specifier> <name pos:line="31" pos:column="16">TabSectionRow</name></type> <name pos:line="31" pos:column="30">AddRow</name><parameter_list pos:line="31" pos:column="36">()</parameter_list>
+        <block pos:line="32" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="33" pos:column="13">var</name></type> <name pos:line="33" pos:column="17">row</name> <init pos:line="33" pos:column="21">= <expr><op:operator pos:line="33" pos:column="23">new</op:operator> <call><name pos:line="33" pos:column="27">TabSectionRow</name><argument_list pos:line="33" pos:column="40">()</argument_list></call></expr></init></decl>;</decl_stmt>
+            <expr_stmt><expr><call><name><name pos:line="34" pos:column="13">rows</name><op:operator pos:line="34" pos:column="17">.</op:operator><name pos:line="34" pos:column="18">Add</name></name><argument_list pos:line="34" pos:column="21">(<argument><expr><name pos:line="34" pos:column="22">row</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <return pos:line="35" pos:column="13">return <expr><name pos:line="35" pos:column="20">row</name></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="38" pos:column="9">public</specifier> <name pos:line="38" pos:column="16">object</name></type> <name pos:line="38" pos:column="23">Build</name><parameter_list pos:line="38" pos:column="28">()</parameter_list>
+        <block pos:line="39" pos:column="9">{ 
+            <return pos:line="40" pos:column="13">return <expr><call><name><name pos:line="40" pos:column="20">rows</name><op:operator pos:line="40" pos:column="24">.</op:operator><name pos:line="40" pos:column="25">Select</name></name><argument_list pos:line="40" pos:column="31">(<argument><expr><lambda><name pos:line="40" pos:column="32">r</name> <op:operator pos:line="40" pos:column="34">=&gt;</op:operator> <call><name><name pos:line="40" pos:column="37">r</name><op:operator pos:line="40" pos:column="38">.</op:operator><name pos:line="40" pos:column="39">Build</name></name><argument_list pos:line="40" pos:column="44">()</argument_list></call></lambda></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function> 
+    }</block></class>
+}</block></namespace></unit>

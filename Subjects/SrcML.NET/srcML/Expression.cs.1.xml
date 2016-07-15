@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML.Data\Expression.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2014 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Patrick Francis (ABB Group) - initial API, implementation, &amp; documentation
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="13" pos:column="1">using <name pos:line="13" pos:column="7">System</name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Collections</name><op:operator pos:line="14" pos:column="25">.</op:operator><name pos:line="14" pos:column="26">Generic</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Collections</name><op:operator pos:line="15" pos:column="25">.</op:operator><name pos:line="15" pos:column="26">ObjectModel</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">System</name><op:operator pos:line="16" pos:column="13">.</op:operator><name pos:line="16" pos:column="14">Linq</name></name>;</using>
+<using pos:line="17" pos:column="1">using <name><name pos:line="17" pos:column="7">System</name><op:operator pos:line="17" pos:column="13">.</op:operator><name pos:line="17" pos:column="14">Text</name></name>;</using>
+<using pos:line="18" pos:column="1">using <name><name pos:line="18" pos:column="7">System</name><op:operator pos:line="18" pos:column="13">.</op:operator><name pos:line="18" pos:column="14">Xml</name></name>;</using>
+
+<namespace pos:line="20" pos:column="1">namespace <name><name pos:line="20" pos:column="11">ABB</name><op:operator pos:line="20" pos:column="14">.</op:operator><name pos:line="20" pos:column="15">SrcML</name><op:operator pos:line="20" pos:column="20">.</op:operator><name pos:line="20" pos:column="21">Data</name></name> <block pos:line="20" pos:column="26">{
+    <comment type="line" pos:line="21" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="22" pos:column="5">/// Represents an expression in a program.</comment>
+    <comment type="line" pos:line="23" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="24" pos:column="5">public</specifier> class <name pos:line="24" pos:column="18">Expression</name> <super pos:line="24" pos:column="29">: <name pos:line="24" pos:column="31">AbstractProgramElement</name></super> <block pos:line="24" pos:column="54">{
+        <decl_stmt><decl><type><specifier pos:line="25" pos:column="9">private</specifier> <name><name pos:line="25" pos:column="17">List</name><argument_list pos:line="25" pos:column="21">&lt;<argument><name pos:line="25" pos:column="22">Expression</name></argument>&gt;</argument_list></name></type> <name pos:line="25" pos:column="34">componentsList</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="26" pos:column="9">private</specifier> <name pos:line="26" pos:column="17">Statement</name></type> <name pos:line="26" pos:column="27">parentStmt</name></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;summary&gt; The XML name for Expression. &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="29" pos:column="9">public</specifier> <specifier pos:line="29" pos:column="16">const</specifier> <name pos:line="29" pos:column="22">string</name></type> <name pos:line="29" pos:column="29">XmlName</name> <init pos:line="29" pos:column="37">= <expr><lit:literal type="string" pos:line="29" pos:column="39">"Expression"</lit:literal></expr></init></decl>;</decl_stmt>
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;summary&gt; The XML name for &lt;see cref="Components"/&gt;. &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="31" pos:column="9">public</specifier> <specifier pos:line="31" pos:column="16">const</specifier> <name pos:line="31" pos:column="22">string</name></type> <name pos:line="31" pos:column="29">XmlComponentsName</name> <init pos:line="31" pos:column="47">= <expr><lit:literal type="string" pos:line="31" pos:column="49">"Components"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="33" pos:column="9">/// &lt;summary&gt; Creates a new empty Expression. &lt;/summary&gt;</comment>
+        <constructor><specifier pos:line="34" pos:column="9">public</specifier> <name pos:line="34" pos:column="16">Expression</name><parameter_list pos:line="34" pos:column="26">()</parameter_list> <block pos:line="34" pos:column="29">{
+            <expr_stmt><expr><name pos:line="35" pos:column="13">componentsList</name> <op:operator pos:line="35" pos:column="28">=</op:operator> <op:operator pos:line="35" pos:column="30">new</op:operator> <call><name><name pos:line="35" pos:column="34">List</name><argument_list pos:line="35" pos:column="38">&lt;<argument><name pos:line="35" pos:column="39">Expression</name></argument>&gt;</argument_list></name><argument_list pos:line="35" pos:column="50">()</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="36" pos:column="13">Components</name> <op:operator pos:line="36" pos:column="24">=</op:operator> <op:operator pos:line="36" pos:column="26">new</op:operator> <call><name><name pos:line="36" pos:column="30">ReadOnlyCollection</name><argument_list pos:line="36" pos:column="48">&lt;<argument><name pos:line="36" pos:column="49">Expression</name></argument>&gt;</argument_list></name><argument_list pos:line="36" pos:column="60">(<argument><expr><name pos:line="36" pos:column="61">componentsList</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;summary&gt; The individual parts that comprise this expression. &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="40" pos:column="9">public</specifier> <name><name pos:line="40" pos:column="16">ReadOnlyCollection</name><argument_list pos:line="40" pos:column="34">&lt;<argument><name pos:line="40" pos:column="35">Expression</name></argument>&gt;</argument_list></name></type> <name pos:line="40" pos:column="47">Components</name> <block pos:line="40" pos:column="58">{ <function_decl><name pos:line="40" pos:column="60">get</name>;</function_decl> <function_decl><specifier pos:line="40" pos:column="65">private</specifier> <name pos:line="40" pos:column="73">set</name>;</function_decl> }</block></decl></decl_stmt>
+        
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;summary&gt; The expression that this sub-expression is a part of, if any. &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="43" pos:column="9">public</specifier> <name pos:line="43" pos:column="16">Expression</name></type> <name pos:line="43" pos:column="27">ParentExpression</name> <block pos:line="43" pos:column="44">{ <function_decl><name pos:line="43" pos:column="46">get</name>;</function_decl> <function_decl><name pos:line="43" pos:column="51">set</name>;</function_decl>}</block></decl></decl_stmt>
+        
+        <comment type="line" pos:line="45" pos:column="9">/// &lt;summary&gt; The statement containing this expression. &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="46" pos:column="9">public</specifier> <specifier pos:line="46" pos:column="16">virtual</specifier> <name pos:line="46" pos:column="24">Statement</name></type> <name pos:line="46" pos:column="34">ParentStatement</name> <block pos:line="46" pos:column="50">{
+            <function><name pos:line="47" pos:column="13">get</name> <block pos:line="47" pos:column="17">{ <return pos:line="47" pos:column="19">return <expr><name pos:line="47" pos:column="26">parentStmt</name></expr>;</return> }</block></function>
+            <function><name pos:line="48" pos:column="13">set</name> <block pos:line="48" pos:column="17">{
+                <expr_stmt><expr><name pos:line="49" pos:column="17">parentStmt</name> <op:operator pos:line="49" pos:column="28">=</op:operator> <name pos:line="49" pos:column="30">value</name></expr>;</expr_stmt>
+                <comment type="line" pos:line="50" pos:column="17">//all sub-expressions should also have the same parent statement</comment>
+                <foreach pos:line="51" pos:column="17">foreach(<init><decl><type><name pos:line="51" pos:column="25">var</name></type> <name pos:line="51" pos:column="29">c</name> <range pos:line="51" pos:column="31">in <expr><name pos:line="51" pos:column="34">componentsList</name></expr></range></decl></init>) <block pos:line="51" pos:column="50">{
+                    <expr_stmt><expr><name><name pos:line="52" pos:column="21">c</name><op:operator pos:line="52" pos:column="22">.</op:operator><name pos:line="52" pos:column="23">ParentStatement</name></name> <op:operator pos:line="52" pos:column="39">=</op:operator> <name pos:line="52" pos:column="41">value</name></expr>;</expr_stmt>
+                }</block></foreach>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="57" pos:column="9">/// &lt;summary&gt; The location in the code where this expression appears. &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="58" pos:column="9">public</specifier> <name pos:line="58" pos:column="16">SrcMLLocation</name></type> <name pos:line="58" pos:column="30">Location</name> <block pos:line="58" pos:column="39">{ <function_decl><name pos:line="58" pos:column="41">get</name>;</function_decl> <function_decl><name pos:line="58" pos:column="46">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="60" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="61" pos:column="9">/// Adds the given Expression to the Components collection. Nothing will be done if &lt;paramref name="component"/&gt; is null.</comment>
+        <comment type="line" pos:line="62" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="63" pos:column="9">/// &lt;param name="component"&gt;The component to add.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="64" pos:column="9">public</specifier> <specifier pos:line="64" pos:column="16">virtual</specifier> <name pos:line="64" pos:column="24">void</name></type> <name pos:line="64" pos:column="29">AddComponent</name><parameter_list pos:line="64" pos:column="41">(<param><decl><type><name pos:line="64" pos:column="42">Expression</name></type> <name pos:line="64" pos:column="53">component</name></decl></param>)</parameter_list> <block pos:line="64" pos:column="64">{
+            <if pos:line="65" pos:column="13">if<condition pos:line="65" pos:column="15">(<expr><name pos:line="65" pos:column="16">null</name> <op:operator pos:line="65" pos:column="21">!=</op:operator> <name pos:line="65" pos:column="24">component</name></expr>)</condition><then pos:line="65" pos:column="34"> <block pos:line="65" pos:column="35">{
+                <expr_stmt><expr><name><name pos:line="66" pos:column="17">component</name><op:operator pos:line="66" pos:column="26">.</op:operator><name pos:line="66" pos:column="27">ParentExpression</name></name> <op:operator pos:line="66" pos:column="44">=</op:operator> <name pos:line="66" pos:column="46">this</name></expr>;</expr_stmt>
+                <expr_stmt><expr><call><name><name pos:line="67" pos:column="17">componentsList</name><op:operator pos:line="67" pos:column="31">.</op:operator><name pos:line="67" pos:column="32">Add</name></name><argument_list pos:line="67" pos:column="35">(<argument><expr><name pos:line="67" pos:column="36">component</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+        }</block></function>
+
+        <comment type="line" pos:line="71" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="72" pos:column="9">/// Adds the given Expressions to the Components collection.</comment>
+        <comment type="line" pos:line="73" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="74" pos:column="9">/// &lt;param name="components"&gt;The components to add.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="75" pos:column="9">public</specifier> <specifier pos:line="75" pos:column="16">virtual</specifier> <name pos:line="75" pos:column="24">void</name></type> <name pos:line="75" pos:column="29">AddComponents</name><parameter_list pos:line="75" pos:column="42">(<param><decl><type><name><name pos:line="75" pos:column="43">IEnumerable</name><argument_list pos:line="75" pos:column="54">&lt;<argument><name pos:line="75" pos:column="55">Expression</name></argument>&gt;</argument_list></name></type> <name pos:line="75" pos:column="67">components</name></decl></param>)</parameter_list> <block pos:line="75" pos:column="79">{
+            <foreach pos:line="76" pos:column="13">foreach(<init><decl><type><name pos:line="76" pos:column="21">var</name></type> <name pos:line="76" pos:column="25">c</name> <range pos:line="76" pos:column="27">in <expr><name pos:line="76" pos:column="30">components</name></expr></range></decl></init>) <block pos:line="76" pos:column="42">{
+                <expr_stmt><expr><call><name pos:line="77" pos:column="17">AddComponent</name><argument_list pos:line="77" pos:column="29">(<argument><expr><name pos:line="77" pos:column="30">c</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></foreach>
+        }</block></function>
+
+        <comment type="line" pos:line="81" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="82" pos:column="9">/// Returns the parent expression.</comment>
+        <comment type="line" pos:line="83" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="84" pos:column="9">protected</specifier> <specifier pos:line="84" pos:column="19">override</specifier> <name pos:line="84" pos:column="28">AbstractProgramElement</name></type> <name pos:line="84" pos:column="51">GetParent</name><parameter_list pos:line="84" pos:column="60">()</parameter_list> <block pos:line="84" pos:column="63">{
+            <return pos:line="85" pos:column="13">return <expr><name pos:line="85" pos:column="20">ParentExpression</name></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="88" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="89" pos:column="9">/// Returns the child expressions.</comment>
+        <comment type="line" pos:line="90" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="91" pos:column="9">protected</specifier> <specifier pos:line="91" pos:column="19">override</specifier> <name><name pos:line="91" pos:column="28">IEnumerable</name><argument_list pos:line="91" pos:column="39">&lt;<argument><name pos:line="91" pos:column="40">AbstractProgramElement</name></argument>&gt;</argument_list></name></type> <name pos:line="91" pos:column="64">GetChildren</name><parameter_list pos:line="91" pos:column="75">()</parameter_list> <block pos:line="91" pos:column="78">{
+            <return pos:line="92" pos:column="13">return <expr><name pos:line="92" pos:column="20">componentsList</name></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="95" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="96" pos:column="9">/// Gets all of the parent expressions of this expression.</comment>
+        <comment type="line" pos:line="97" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="98" pos:column="9">/// &lt;returns&gt;The parents of this expression.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="99" pos:column="9">public</specifier> <specifier pos:line="99" pos:column="16">new</specifier> <name><name pos:line="99" pos:column="20">IEnumerable</name><argument_list pos:line="99" pos:column="31">&lt;<argument><name pos:line="99" pos:column="32">Expression</name></argument>&gt;</argument_list></name></type> <name pos:line="99" pos:column="44">GetAncestors</name><parameter_list pos:line="99" pos:column="56">()</parameter_list> <block pos:line="99" pos:column="59">{
+            <return pos:line="100" pos:column="13">return <expr><call><name><name pos:line="100" pos:column="20">base</name><op:operator pos:line="100" pos:column="24">.</op:operator><name pos:line="100" pos:column="25">GetAncestors</name></name><argument_list pos:line="100" pos:column="37">()</argument_list></call><op:operator pos:line="100" pos:column="39">.</op:operator><call><name><name pos:line="100" pos:column="40">Cast</name><argument_list pos:line="100" pos:column="44">&lt;<argument><name pos:line="100" pos:column="45">Expression</name></argument>&gt;</argument_list></name><argument_list pos:line="100" pos:column="56">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="103" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="104" pos:column="9">/// Gets all of parent expressions of this expression as well as this expression.</comment>
+        <comment type="line" pos:line="105" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="106" pos:column="9">/// &lt;returns&gt;This expression followed by its parents.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="107" pos:column="9">public</specifier> <specifier pos:line="107" pos:column="16">new</specifier> <name><name pos:line="107" pos:column="20">IEnumerable</name><argument_list pos:line="107" pos:column="31">&lt;<argument><name pos:line="107" pos:column="32">Expression</name></argument>&gt;</argument_list></name></type> <name pos:line="107" pos:column="44">GetAncestorsAndSelf</name><parameter_list pos:line="107" pos:column="63">()</parameter_list> <block pos:line="107" pos:column="66">{
+            <return pos:line="108" pos:column="13">return <expr><call><name><name pos:line="108" pos:column="20">base</name><op:operator pos:line="108" pos:column="24">.</op:operator><name pos:line="108" pos:column="25">GetAncestorsAndSelf</name></name><argument_list pos:line="108" pos:column="44">()</argument_list></call><op:operator pos:line="108" pos:column="46">.</op:operator><call><name><name pos:line="108" pos:column="47">Cast</name><argument_list pos:line="108" pos:column="51">&lt;<argument><name pos:line="108" pos:column="52">Expression</name></argument>&gt;</argument_list></name><argument_list pos:line="108" pos:column="63">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="111" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="112" pos:column="9">/// Gets all of the descendant expressions of this expression. This is every expression that is rooted at this expression.</comment>
+        <comment type="line" pos:line="113" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="114" pos:column="9">/// &lt;returns&gt;The descendants of this expression.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="115" pos:column="9">public</specifier> <specifier pos:line="115" pos:column="16">new</specifier> <name><name pos:line="115" pos:column="20">IEnumerable</name><argument_list pos:line="115" pos:column="31">&lt;<argument><name pos:line="115" pos:column="32">Expression</name></argument>&gt;</argument_list></name></type> <name pos:line="115" pos:column="44">GetDescendants</name><parameter_list pos:line="115" pos:column="58">()</parameter_list> <block pos:line="115" pos:column="61">{
+            <return pos:line="116" pos:column="13">return <expr><call><name><name pos:line="116" pos:column="20">base</name><op:operator pos:line="116" pos:column="24">.</op:operator><name pos:line="116" pos:column="25">GetDescendants</name></name><argument_list pos:line="116" pos:column="39">()</argument_list></call><op:operator pos:line="116" pos:column="41">.</op:operator><call><name><name pos:line="116" pos:column="42">Cast</name><argument_list pos:line="116" pos:column="46">&lt;<argument><name pos:line="116" pos:column="47">Expression</name></argument>&gt;</argument_list></name><argument_list pos:line="116" pos:column="58">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="119" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="120" pos:column="9">/// Gets all of the descendants of this expression as well as the expression itself.</comment>
+        <comment type="line" pos:line="121" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="122" pos:column="9">/// &lt;returns&gt;This expression, followed by all of its descendants.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="123" pos:column="9">public</specifier> <specifier pos:line="123" pos:column="16">new</specifier> <name><name pos:line="123" pos:column="20">IEnumerable</name><argument_list pos:line="123" pos:column="31">&lt;<argument><name pos:line="123" pos:column="32">Expression</name></argument>&gt;</argument_list></name></type> <name pos:line="123" pos:column="44">GetDescendantsAndSelf</name><parameter_list pos:line="123" pos:column="65">()</parameter_list> <block pos:line="123" pos:column="68">{
+            <return pos:line="124" pos:column="13">return <expr><call><name><name pos:line="124" pos:column="20">base</name><op:operator pos:line="124" pos:column="24">.</op:operator><name pos:line="124" pos:column="25">GetDescendantsAndSelf</name></name><argument_list pos:line="124" pos:column="46">()</argument_list></call><op:operator pos:line="124" pos:column="48">.</op:operator><call><name><name pos:line="124" pos:column="49">Cast</name><argument_list pos:line="124" pos:column="53">&lt;<argument><name pos:line="124" pos:column="54">Expression</name></argument>&gt;</argument_list></name><argument_list pos:line="124" pos:column="65">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="127" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="128" pos:column="9">/// Returns the siblings of this expression (i.e. the children of its parent) that occur before this expression.</comment>
+        <comment type="line" pos:line="129" pos:column="9">/// The siblings are returned in document order.</comment>
+        <comment type="line" pos:line="130" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="131" pos:column="9">/// &lt;exception cref="InvalidOperationException"&gt;This expression is not a child of its parent.&lt;/exception&gt;</comment>
+        <function><type><specifier pos:line="132" pos:column="9">public</specifier> <specifier pos:line="132" pos:column="16">new</specifier> <name><name pos:line="132" pos:column="20">IEnumerable</name><argument_list pos:line="132" pos:column="31">&lt;<argument><name pos:line="132" pos:column="32">Expression</name></argument>&gt;</argument_list></name></type> <name pos:line="132" pos:column="44">GetSiblingsBeforeSelf</name><parameter_list pos:line="132" pos:column="65">()</parameter_list> <block pos:line="132" pos:column="68">{
+            <return pos:line="133" pos:column="13">return <expr><call><name><name pos:line="133" pos:column="20">base</name><op:operator pos:line="133" pos:column="24">.</op:operator><name pos:line="133" pos:column="25">GetSiblingsBeforeSelf</name></name><argument_list pos:line="133" pos:column="46">()</argument_list></call><op:operator pos:line="133" pos:column="48">.</op:operator><call><name><name pos:line="133" pos:column="49">Cast</name><argument_list pos:line="133" pos:column="53">&lt;<argument><name pos:line="133" pos:column="54">Expression</name></argument>&gt;</argument_list></name><argument_list pos:line="133" pos:column="65">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="136" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="137" pos:column="9">/// Returns the siblings of this expression (i.e. the children of its parent) that occur after this expression.</comment>
+        <comment type="line" pos:line="138" pos:column="9">/// The siblings are returned in document order.</comment>
+        <comment type="line" pos:line="139" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="140" pos:column="9">/// &lt;exception cref="InvalidOperationException"&gt;This expression is not a child of its parent.&lt;/exception&gt;</comment>
+        <function><type><specifier pos:line="141" pos:column="9">public</specifier> <specifier pos:line="141" pos:column="16">new</specifier> <name><name pos:line="141" pos:column="20">IEnumerable</name><argument_list pos:line="141" pos:column="31">&lt;<argument><name pos:line="141" pos:column="32">Expression</name></argument>&gt;</argument_list></name></type> <name pos:line="141" pos:column="44">GetSiblingsAfterSelf</name><parameter_list pos:line="141" pos:column="64">()</parameter_list> <block pos:line="141" pos:column="67">{
+            <return pos:line="142" pos:column="13">return <expr><call><name><name pos:line="142" pos:column="20">base</name><op:operator pos:line="142" pos:column="24">.</op:operator><name pos:line="142" pos:column="25">GetSiblingsAfterSelf</name></name><argument_list pos:line="142" pos:column="45">()</argument_list></call><op:operator pos:line="142" pos:column="47">.</op:operator><call><name><name pos:line="142" pos:column="48">Cast</name><argument_list pos:line="142" pos:column="52">&lt;<argument><name pos:line="142" pos:column="53">Expression</name></argument>&gt;</argument_list></name><argument_list pos:line="142" pos:column="64">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="145" pos:column="9">/// &lt;summary&gt; Returns the XML name for this program element. &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="146" pos:column="9">public</specifier> <specifier pos:line="146" pos:column="16">override</specifier> <name pos:line="146" pos:column="25">string</name></type> <name pos:line="146" pos:column="32">GetXmlName</name><parameter_list pos:line="146" pos:column="42">()</parameter_list> <block pos:line="146" pos:column="45">{ <return pos:line="146" pos:column="47">return <expr><name><name pos:line="146" pos:column="54">Expression</name><op:operator pos:line="146" pos:column="64">.</op:operator><name pos:line="146" pos:column="65">XmlName</name></name></expr>;</return> }</block></function>
+
+        <comment type="line" pos:line="148" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="149" pos:column="9">/// Processes the child of the current reader position into a child of this object.</comment>
+        <comment type="line" pos:line="150" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="151" pos:column="9">/// &lt;param name="reader"&gt;The XML reader&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="152" pos:column="9">protected</specifier> <specifier pos:line="152" pos:column="19">override</specifier> <name pos:line="152" pos:column="28">void</name></type> <name pos:line="152" pos:column="33">ReadXmlChild</name><parameter_list pos:line="152" pos:column="45">(<param><decl><type><name pos:line="152" pos:column="46">XmlReader</name></type> <name pos:line="152" pos:column="56">reader</name></decl></param>)</parameter_list> <block pos:line="152" pos:column="64">{
+            <if pos:line="153" pos:column="13">if<condition pos:line="153" pos:column="15">(<expr><name><name pos:line="153" pos:column="16">SrcMLLocation</name><op:operator pos:line="153" pos:column="29">.</op:operator><name pos:line="153" pos:column="30">XmlName</name></name> <op:operator pos:line="153" pos:column="38">==</op:operator> <name><name pos:line="153" pos:column="41">reader</name><op:operator pos:line="153" pos:column="47">.</op:operator><name pos:line="153" pos:column="48">Name</name></name></expr>)</condition><then pos:line="153" pos:column="53"> <block pos:line="153" pos:column="54">{
+                <expr_stmt><expr><name pos:line="154" pos:column="17">Location</name> <op:operator pos:line="154" pos:column="26">=</op:operator> <call><name><name pos:line="154" pos:column="28">XmlSerialization</name><op:operator pos:line="154" pos:column="44">.</op:operator><name pos:line="154" pos:column="45">DeserializeSrcMLLocation</name></name><argument_list pos:line="154" pos:column="69">(<argument><expr><name pos:line="154" pos:column="70">reader</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then> <else pos:line="155" pos:column="15">else <if pos:line="155" pos:column="20">if<condition pos:line="155" pos:column="22">(<expr><name pos:line="155" pos:column="23">XmlComponentsName</name> <op:operator pos:line="155" pos:column="41">==</op:operator> <name><name pos:line="155" pos:column="44">reader</name><op:operator pos:line="155" pos:column="50">.</op:operator><name pos:line="155" pos:column="51">Name</name></name></expr>)</condition><then pos:line="155" pos:column="56"> <block pos:line="155" pos:column="57">{
+                <expr_stmt><expr><call><name pos:line="156" pos:column="17">AddComponents</name><argument_list pos:line="156" pos:column="30">(<argument><expr><call><name><name pos:line="156" pos:column="31">XmlSerialization</name><op:operator pos:line="156" pos:column="47">.</op:operator><name pos:line="156" pos:column="48">ReadChildExpressions</name></name><argument_list pos:line="156" pos:column="68">(<argument><expr><name pos:line="156" pos:column="69">reader</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if></else></if>
+        }</block></function>
+
+        <comment type="line" pos:line="160" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="161" pos:column="9">/// Writes the contents of this object to &lt;paramref name="writer"/&gt;.</comment>
+        <comment type="line" pos:line="162" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="163" pos:column="9">/// &lt;param name="writer"&gt;The XML writer to write to&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="164" pos:column="9">protected</specifier> <specifier pos:line="164" pos:column="19">override</specifier> <name pos:line="164" pos:column="28">void</name></type> <name pos:line="164" pos:column="33">WriteXmlContents</name><parameter_list pos:line="164" pos:column="49">(<param><decl><type><name pos:line="164" pos:column="50">XmlWriter</name></type> <name pos:line="164" pos:column="60">writer</name></decl></param>)</parameter_list> <block pos:line="164" pos:column="68">{
+            <if pos:line="165" pos:column="13">if<condition pos:line="165" pos:column="15">(<expr><name pos:line="165" pos:column="16">null</name> <op:operator pos:line="165" pos:column="21">!=</op:operator> <name pos:line="165" pos:column="24">Location</name></expr>)</condition><then pos:line="165" pos:column="33"> <block pos:line="165" pos:column="34">{
+                <expr_stmt><expr><call><name><name pos:line="166" pos:column="17">XmlSerialization</name><op:operator pos:line="166" pos:column="33">.</op:operator><name pos:line="166" pos:column="34">WriteElement</name></name><argument_list pos:line="166" pos:column="46">(<argument><expr><name pos:line="166" pos:column="47">writer</name></expr></argument>, <argument><expr><name pos:line="166" pos:column="55">Location</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+            <expr_stmt><expr><call><name><name pos:line="168" pos:column="13">XmlSerialization</name><op:operator pos:line="168" pos:column="29">.</op:operator><name><name pos:line="168" pos:column="30">WriteCollection</name><argument_list pos:line="168" pos:column="45">&lt;<argument><name pos:line="168" pos:column="46">Expression</name></argument>&gt;</argument_list></name></name><argument_list pos:line="168" pos:column="57">(<argument><expr><name pos:line="168" pos:column="58">writer</name></expr></argument>, <argument><expr><name pos:line="168" pos:column="66">XmlComponentsName</name></expr></argument>, <argument><expr><name pos:line="168" pos:column="85">Components</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+		}</block></function>
+		
+        <comment type="line" pos:line="171" pos:column="9">/// &lt;summary&gt; Returns a string representation of this expression. &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="172" pos:column="9">public</specifier> <specifier pos:line="172" pos:column="16">override</specifier> <name pos:line="172" pos:column="25">string</name></type> <name pos:line="172" pos:column="32">ToString</name><parameter_list pos:line="172" pos:column="40">()</parameter_list> <block pos:line="172" pos:column="43">{
+            <return pos:line="173" pos:column="13">return <expr><call><name><name pos:line="173" pos:column="20">string</name><op:operator pos:line="173" pos:column="26">.</op:operator><name pos:line="173" pos:column="27">Join</name></name><argument_list pos:line="173" pos:column="31">(<argument><expr><lit:literal type="string" pos:line="173" pos:column="32">" "</lit:literal></expr></argument>, <argument><expr><name pos:line="173" pos:column="37">componentsList</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="176" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="177" pos:column="9">/// Determines the possible types of this expression.</comment>
+        <comment type="line" pos:line="178" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="179" pos:column="9">/// &lt;returns&gt;An enumerable of the matching TypeDefinitions for this expression's possible types.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="180" pos:column="9">public</specifier> <specifier pos:line="180" pos:column="16">virtual</specifier> <name><name pos:line="180" pos:column="24">IEnumerable</name><argument_list pos:line="180" pos:column="35">&lt;<argument><name pos:line="180" pos:column="36">TypeDefinition</name></argument>&gt;</argument_list></name></type> <name pos:line="180" pos:column="52">ResolveType</name><parameter_list pos:line="180" pos:column="63">()</parameter_list> <block pos:line="180" pos:column="66">{
+            <comment type="line" pos:line="181" pos:column="13">//TODO: implement more fully</comment>
+
+            <if pos:line="183" pos:column="13">if<condition pos:line="183" pos:column="15">(<expr><name><name pos:line="183" pos:column="16">componentsList</name><op:operator pos:line="183" pos:column="30">.</op:operator><name pos:line="183" pos:column="31">Count</name></name> <op:operator pos:line="183" pos:column="37">&gt;</op:operator> <lit:literal type="number" pos:line="183" pos:column="39">0</lit:literal></expr>)</condition><then pos:line="183" pos:column="41"> <block pos:line="183" pos:column="42">{
+                <return pos:line="184" pos:column="17">return <expr><call><name><name pos:line="184" pos:column="24">componentsList</name><op:operator pos:line="184" pos:column="38">.</op:operator><name pos:line="184" pos:column="39">Last</name></name><argument_list pos:line="184" pos:column="43">()</argument_list></call><op:operator pos:line="184" pos:column="45">.</op:operator><call><name pos:line="184" pos:column="46">ResolveType</name><argument_list pos:line="184" pos:column="57">()</argument_list></call></expr>;</return>
+            }</block></then> <else pos:line="185" pos:column="15">else <block pos:line="185" pos:column="20">{
+                <return pos:line="186" pos:column="17">return <expr><call><name><name pos:line="186" pos:column="24">Enumerable</name><op:operator pos:line="186" pos:column="34">.</op:operator><name><name pos:line="186" pos:column="35">Empty</name><argument_list pos:line="186" pos:column="40">&lt;<argument><name pos:line="186" pos:column="41">TypeDefinition</name></argument>&gt;</argument_list></name></name><argument_list pos:line="186" pos:column="56">()</argument_list></call></expr>;</return>
+            }</block></else></if>
+        }</block></function>
+    }</block></class>
+
+    
+}</block></namespace>
+</unit>

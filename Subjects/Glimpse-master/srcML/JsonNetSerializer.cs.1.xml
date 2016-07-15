@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensibility\JsonNetSerializer.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">Newtonsoft</name><op:operator pos:line="3" pos:column="17">.</op:operator><name pos:line="3" pos:column="18">Json</name></name>;</using>
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">Newtonsoft</name><op:operator pos:line="4" pos:column="17">.</op:operator><name pos:line="4" pos:column="18">Json</name><op:operator pos:line="4" pos:column="22">.</op:operator><name pos:line="4" pos:column="23">Serialization</name></name>;</using>
+
+<namespace pos:line="6" pos:column="1">namespace <name><name pos:line="6" pos:column="11">Glimpse</name><op:operator pos:line="6" pos:column="18">.</op:operator><name pos:line="6" pos:column="19">Core</name><op:operator pos:line="6" pos:column="23">.</op:operator><name pos:line="6" pos:column="24">Extensibility</name></name>
+<block pos:line="7" pos:column="1">{
+    <comment type="line" pos:line="8" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="9" pos:column="5">/// An implementation of &lt;see cref="ISerializer"/&gt; which leverages Json.Net.</comment>
+    <comment type="line" pos:line="10" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="11" pos:column="5">public</specifier> class <name pos:line="11" pos:column="18">JsonNetSerializer</name> <super pos:line="11" pos:column="36">: <name pos:line="11" pos:column="38">ISerializer</name></super>
+    <block pos:line="12" pos:column="5">{
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// Initializes a new instance of the &lt;see cref="JsonNetSerializer" /&gt; class.</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="16" pos:column="9">/// &lt;param name="logger"&gt;The logger.&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="17" pos:column="9">public</specifier> <name pos:line="17" pos:column="16">JsonNetSerializer</name><parameter_list pos:line="17" pos:column="33">(<param><decl><type><name pos:line="17" pos:column="34">ILogger</name></type> <name pos:line="17" pos:column="42">logger</name></decl></param>)</parameter_list>
+        <block pos:line="18" pos:column="9">{
+            <expr_stmt><expr><name pos:line="19" pos:column="13">Logger</name> <op:operator pos:line="19" pos:column="20">=</op:operator> <name pos:line="19" pos:column="22">logger</name></expr>;</expr_stmt>
+
+            <expr_stmt><expr><name pos:line="21" pos:column="13">Settings</name> <op:operator pos:line="21" pos:column="22">=</op:operator> <op:operator pos:line="21" pos:column="24">new</op:operator> <name pos:line="21" pos:column="28">JsonSerializerSettings</name>
+            <block pos:line="22" pos:column="13">{
+                <expr><name pos:line="23" pos:column="17">ContractResolver</name> <op:operator pos:line="23" pos:column="34">=</op:operator> <op:operator pos:line="23" pos:column="36">new</op:operator> <call><name pos:line="23" pos:column="40">CamelCasePropertyNamesContractResolver</name><argument_list pos:line="23" pos:column="78">()</argument_list></call></expr><op:operator pos:line="23" pos:column="80">,</op:operator>
+                <expr><name pos:line="24" pos:column="17">Converters</name> <op:operator pos:line="24" pos:column="28">=</op:operator>
+                <block pos:line="25" pos:column="17">{
+                    <expr><op:operator pos:line="26" pos:column="21">new</op:operator> <call><name pos:line="26" pos:column="25">JsonNetConverterDictionaryKeysAreNotPropertyNames</name><argument_list pos:line="26" pos:column="74">()</argument_list></call></expr><op:operator pos:line="26" pos:column="76">,</op:operator>
+                }</block></expr><op:operator pos:line="27" pos:column="18">,</op:operator>
+                <expr><name pos:line="28" pos:column="17">ReferenceLoopHandling</name> <op:operator pos:line="28" pos:column="39">=</op:operator> <name><name pos:line="28" pos:column="41">ReferenceLoopHandling</name><op:operator pos:line="28" pos:column="62">.</op:operator><name pos:line="28" pos:column="63">Ignore</name></name></expr><op:operator pos:line="28" pos:column="69">,</op:operator>
+            }</block></expr>;</expr_stmt>
+
+            <expr_stmt><expr><name><name pos:line="31" pos:column="13">Settings</name><op:operator pos:line="31" pos:column="21">.</op:operator><name pos:line="31" pos:column="22">Error</name></name> <op:operator pos:line="31" pos:column="28">+=</op:operator> <lambda><parameter_list pos:line="31" pos:column="31">(<param><decl><name pos:line="31" pos:column="32">obj</name></decl></param>, <param><decl><name pos:line="31" pos:column="37">args</name></decl></param>)</parameter_list> <op:operator pos:line="31" pos:column="43">=&gt;</op:operator>
+                                  <block pos:line="32" pos:column="35">{
+                                      <expr_stmt><expr><call><name><name pos:line="33" pos:column="39">Logger</name><op:operator pos:line="33" pos:column="45">.</op:operator><name pos:line="33" pos:column="46">Error</name></name><argument_list pos:line="33" pos:column="51">(<argument><expr><lit:literal type="string" pos:line="33" pos:column="52">"Error serializing object."</lit:literal></expr></argument>, <argument><expr><name><name pos:line="33" pos:column="81">args</name><op:operator pos:line="33" pos:column="85">.</op:operator><name pos:line="33" pos:column="86">ErrorContext</name><op:operator pos:line="33" pos:column="98">.</op:operator><name pos:line="33" pos:column="99">Error</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                                      <expr_stmt><expr><name><name pos:line="34" pos:column="39">args</name><op:operator pos:line="34" pos:column="43">.</op:operator><name pos:line="34" pos:column="44">ErrorContext</name><op:operator pos:line="34" pos:column="56">.</op:operator><name pos:line="34" pos:column="57">Handled</name></name> <op:operator pos:line="34" pos:column="65">=</op:operator> <lit:literal type="boolean" pos:line="34" pos:column="67">true</lit:literal></expr>;</expr_stmt>
+                                  }</block></lambda></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <decl_stmt><decl><type><specifier pos:line="38" pos:column="9">private</specifier> <name pos:line="38" pos:column="17">ILogger</name></type> <name pos:line="38" pos:column="25">Logger</name> <block pos:line="38" pos:column="32">{ <function_decl><name pos:line="38" pos:column="34">get</name>;</function_decl> <function_decl><name pos:line="38" pos:column="39">set</name>;</function_decl> }</block></decl></decl_stmt>
+        
+        <decl_stmt><decl><type><specifier pos:line="40" pos:column="9">private</specifier> <name pos:line="40" pos:column="17">JsonSerializerSettings</name></type> <name pos:line="40" pos:column="40">Settings</name> <block pos:line="40" pos:column="49">{ <function_decl><name pos:line="40" pos:column="51">get</name>;</function_decl> <function_decl><name pos:line="40" pos:column="56">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// Serializes the specified object to JSON.</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// &lt;param name="target"&gt;The target to be Serialized.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// Serialized object.</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// &lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="49" pos:column="9">public</specifier> <name pos:line="49" pos:column="16">string</name></type> <name pos:line="49" pos:column="23">Serialize</name><parameter_list pos:line="49" pos:column="32">(<param><decl><type><name pos:line="49" pos:column="33">object</name></type> <name pos:line="49" pos:column="40">target</name></decl></param>)</parameter_list>
+        <block pos:line="50" pos:column="9">{
+            <return pos:line="51" pos:column="13">return <expr><call><name><name pos:line="51" pos:column="20">JsonConvert</name><op:operator pos:line="51" pos:column="31">.</op:operator><name pos:line="51" pos:column="32">SerializeObject</name></name><argument_list pos:line="51" pos:column="47">(<argument><expr><name pos:line="51" pos:column="48">target</name></expr></argument>, <argument><expr><name><name pos:line="51" pos:column="56">Formatting</name><op:operator pos:line="51" pos:column="66">.</op:operator><name pos:line="51" pos:column="67">None</name></name></expr></argument>, <argument><expr><name pos:line="51" pos:column="73">Settings</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="54" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="55" pos:column="9">/// Registers a collection of serialization converters which can conduct custom</comment>
+        <comment type="line" pos:line="56" pos:column="9">/// transformations on given types when processed.</comment>
+        <comment type="line" pos:line="57" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="58" pos:column="9">/// &lt;param name="converters"&gt;The converters.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="59" pos:column="9">/// &lt;exception cref="System.ArgumentNullException"&gt;Throws an exception if &lt;paramref name="converters"/&gt; is &lt;c&gt;null&lt;/c&gt;.&lt;/exception&gt;</comment>
+        <function><type><specifier pos:line="60" pos:column="9">public</specifier> <name pos:line="60" pos:column="16">void</name></type> <name pos:line="60" pos:column="21">RegisterSerializationConverters</name><parameter_list pos:line="60" pos:column="52">(<param><decl><type><name><name pos:line="60" pos:column="53">IEnumerable</name><argument_list pos:line="60" pos:column="64">&lt;<argument><name pos:line="60" pos:column="65">ISerializationConverter</name></argument>&gt;</argument_list></name></type> <name pos:line="60" pos:column="90">converters</name></decl></param>)</parameter_list>
+        <block pos:line="61" pos:column="9">{
+            <if pos:line="62" pos:column="13">if <condition pos:line="62" pos:column="16">(<expr><name pos:line="62" pos:column="17">converters</name> <op:operator pos:line="62" pos:column="28">==</op:operator> <name pos:line="62" pos:column="31">null</name></expr>)</condition><then pos:line="62" pos:column="36">
+            <block pos:line="63" pos:column="13">{
+                <throw pos:line="64" pos:column="17">throw <expr><op:operator pos:line="64" pos:column="23">new</op:operator> <call><name pos:line="64" pos:column="27">ArgumentNullException</name><argument_list pos:line="64" pos:column="48">(<argument><expr><lit:literal type="string" pos:line="64" pos:column="49">"converters"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <decl_stmt><decl><type><name pos:line="67" pos:column="13">var</name></type> <name pos:line="67" pos:column="17">jsonConverters</name> <init pos:line="67" pos:column="32">= <expr><name><name pos:line="67" pos:column="34">Settings</name><op:operator pos:line="67" pos:column="42">.</op:operator><name pos:line="67" pos:column="43">Converters</name></name></expr></init></decl>;</decl_stmt> 
+            <foreach pos:line="68" pos:column="13">foreach (<init><decl><type><name pos:line="68" pos:column="22">var</name></type> <name pos:line="68" pos:column="26">converter</name> <range pos:line="68" pos:column="36">in <expr><name pos:line="68" pos:column="39">converters</name></expr></range></decl></init>)
+            <block pos:line="69" pos:column="13">{
+                <expr_stmt><expr><call><name><name pos:line="70" pos:column="17">jsonConverters</name><op:operator pos:line="70" pos:column="31">.</op:operator><name pos:line="70" pos:column="32">Add</name></name><argument_list pos:line="70" pos:column="35">(<argument><expr><op:operator pos:line="70" pos:column="36">new</op:operator> <call><name pos:line="70" pos:column="40">JsonNetSerializationConverterAdapter</name><argument_list pos:line="70" pos:column="76">(<argument><expr><name pos:line="70" pos:column="77">converter</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></foreach>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

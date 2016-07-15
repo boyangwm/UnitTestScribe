@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\VisualStudio\ABB.SrcML.VisualStudio.SrcMLService\ISrcMLDataService.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2014 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - Initial implementation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name><name pos:line="12" pos:column="7">ABB</name><op:operator pos:line="12" pos:column="10">.</op:operator><name pos:line="12" pos:column="11">SrcML</name><op:operator pos:line="12" pos:column="16">.</op:operator><name pos:line="12" pos:column="17">Data</name></name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">ABB</name><op:operator pos:line="13" pos:column="10">.</op:operator><name pos:line="13" pos:column="11">VisualStudio</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name pos:line="14" pos:column="7">System</name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Collections</name><op:operator pos:line="15" pos:column="25">.</op:operator><name pos:line="15" pos:column="26">Generic</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">System</name><op:operator pos:line="16" pos:column="13">.</op:operator><name pos:line="16" pos:column="14">Linq</name></name>;</using>
+<using pos:line="17" pos:column="1">using <name><name pos:line="17" pos:column="7">System</name><op:operator pos:line="17" pos:column="13">.</op:operator><name pos:line="17" pos:column="14">Runtime</name><op:operator pos:line="17" pos:column="21">.</op:operator><name pos:line="17" pos:column="22">InteropServices</name></name>;</using>
+<using pos:line="18" pos:column="1">using <name><name pos:line="18" pos:column="7">System</name><op:operator pos:line="18" pos:column="13">.</op:operator><name pos:line="18" pos:column="14">Text</name></name>;</using>
+<using pos:line="19" pos:column="1">using <name><name pos:line="19" pos:column="7">System</name><op:operator pos:line="19" pos:column="13">.</op:operator><name pos:line="19" pos:column="14">Xml</name><op:operator pos:line="19" pos:column="17">.</op:operator><name pos:line="19" pos:column="18">Linq</name></name>;</using>
+
+<namespace pos:line="21" pos:column="1">namespace <name><name pos:line="21" pos:column="11">ABB</name><op:operator pos:line="21" pos:column="14">.</op:operator><name pos:line="21" pos:column="15">SrcML</name><op:operator pos:line="21" pos:column="20">.</op:operator><name pos:line="21" pos:column="21">VisualStudio</name></name> <block pos:line="21" pos:column="34">{
+    <comment type="line" pos:line="22" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="23" pos:column="5">/// Provides data services based on ABB.SrcML.Data to Visual Studio client</comment>
+    <comment type="line" pos:line="24" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class type="interface"><attribute pos:line="25" pos:column="5">[<expr><call><name pos:line="25" pos:column="6">Guid</name><argument_list pos:line="25" pos:column="10">(<argument><expr><name><name pos:line="25" pos:column="11">GuidList</name><op:operator pos:line="25" pos:column="19">.</op:operator><name pos:line="25" pos:column="20">ISrcMLDataServiceId</name></name></expr></argument>)</argument_list></call></expr><op:operator pos:line="25" pos:column="40">,</op:operator> <expr><call><name pos:line="25" pos:column="42">ComVisible</name><argument_list pos:line="25" pos:column="52">(<argument><expr><lit:literal type="boolean" pos:line="25" pos:column="53">true</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+    <specifier pos:line="26" pos:column="5">public</specifier> interface <name pos:line="26" pos:column="22">ISrcMLDataService</name> <block pos:line="26" pos:column="40">{
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// Raised when a file changed is processed</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="30" pos:column="9">event</specifier> <name><name pos:line="30" pos:column="15">EventHandler</name><argument_list pos:line="30" pos:column="27">&lt;<argument><name pos:line="30" pos:column="28">FileEventRaisedArgs</name></argument>&gt;</argument_list></name></type> <name pos:line="30" pos:column="49">FileProcessed</name></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="32" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="33" pos:column="9">/// Raised when an update is started</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="35" pos:column="9">event</specifier> <name pos:line="35" pos:column="15">EventHandler</name></type> <name pos:line="35" pos:column="28">UpdateStarted</name></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// Raised when an update is completed</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="40" pos:column="9">event</specifier> <name pos:line="40" pos:column="15">EventHandler</name></type> <name pos:line="40" pos:column="28">UpdateCompleted</name></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// Raised when monitoring is started</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="45" pos:column="9">event</specifier> <name pos:line="45" pos:column="15">EventHandler</name></type> <name pos:line="45" pos:column="28">MonitoringStarted</name></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="47" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// Raised when monitoring is stopped</comment>
+        <comment type="line" pos:line="49" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="50" pos:column="9">event</specifier> <name pos:line="50" pos:column="15">EventHandler</name></type> <name pos:line="50" pos:column="28">MonitoringStopped</name></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="52" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="53" pos:column="9">/// The working set for the current solution</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="55" pos:column="9">AbstractWorkingSet</name></type> <name pos:line="55" pos:column="28">CurrentWorkingSet</name> <block pos:line="55" pos:column="46">{ <function_decl><name pos:line="55" pos:column="48">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="57" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="58" pos:column="9">/// The data archive for the current solution</comment>
+        <comment type="line" pos:line="59" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="60" pos:column="9">DataArchive</name></type> <name pos:line="60" pos:column="21">CurrentDataArchive</name> <block pos:line="60" pos:column="40">{ <function_decl><name pos:line="60" pos:column="42">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="62" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="63" pos:column="9">/// True if the service is currently monitoring; false otherwise (&lt;see cref="MonitoringStarted" /&gt; will be called before</comment>
+        <comment type="line" pos:line="64" pos:column="9">/// this is set to true, and &lt;see cref="MonitoringStopped"/&gt; will be called when it is set to false.</comment>
+        <comment type="line" pos:line="65" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="66" pos:column="9">bool</name></type> <name pos:line="66" pos:column="14">IsMonitoring</name> <block pos:line="66" pos:column="27">{ <function_decl><name pos:line="66" pos:column="29">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="68" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="69" pos:column="9">/// True if the service is currently updating; false otherwise (&lt;see cref="UpdateStarted" /&gt; will be called before</comment>
+        <comment type="line" pos:line="70" pos:column="9">/// this is set to true, and &lt;see cref="UpdateCompleted"/&gt; will be called when it is set to false.</comment>
+        <comment type="line" pos:line="71" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="72" pos:column="9">bool</name></type> <name pos:line="72" pos:column="14">IsUpdating</name> <block pos:line="72" pos:column="25">{ <function_decl><name pos:line="72" pos:column="27">get</name>;</function_decl> }</block></decl></decl_stmt>
+    }</block></class>
+
+    <comment type="line" pos:line="75" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="76" pos:column="5">/// Service interface for &lt;see cref="ISrcMLDataService"/&gt;</comment>
+    <comment type="line" pos:line="77" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class type="interface"><attribute pos:line="78" pos:column="5">[<expr><call><name pos:line="78" pos:column="6">Guid</name><argument_list pos:line="78" pos:column="10">(<argument><expr><name><name pos:line="78" pos:column="11">GuidList</name><op:operator pos:line="78" pos:column="19">.</op:operator><name pos:line="78" pos:column="20">SSrcMLDataServiceId</name></name></expr></argument>)</argument_list></call></expr>]</attribute>
+    <specifier pos:line="79" pos:column="5">public</specifier> interface <name pos:line="79" pos:column="22">SSrcMLDataService</name> <block pos:line="79" pos:column="40">{ }</block></class>
+}</block></namespace>
+</unit>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML\LineInfo.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2010 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+
+<namespace pos:line="16" pos:column="1">namespace <name><name pos:line="16" pos:column="11">ABB</name><op:operator pos:line="16" pos:column="14">.</op:operator><name pos:line="16" pos:column="15">SrcML</name></name>
+<block pos:line="17" pos:column="1">{
+    <comment type="line" pos:line="18" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="19" pos:column="5">/// Class for storing line information for an XNode. LineInfo objects are typically added as annotations to XElements.</comment>
+    <comment type="line" pos:line="20" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="21" pos:column="5">public</specifier> class <name pos:line="21" pos:column="18">LineInfo</name>
+    <block pos:line="22" pos:column="5">{
+        <decl_stmt><decl><type><name pos:line="23" pos:column="9">int</name></type> <name pos:line="23" pos:column="13">number</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><name pos:line="24" pos:column="9">int</name></type> <name pos:line="24" pos:column="13">position</name></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// Create a new LineInfo object with the given line number and position.</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;param name="lineNumber"&gt;the line number&lt;/param&gt;</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;param name="position"&gt;the column number&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="31" pos:column="9">public</specifier> <name pos:line="31" pos:column="16">LineInfo</name><parameter_list pos:line="31" pos:column="24">(<param><decl><type><name pos:line="31" pos:column="25">int</name></type> <name pos:line="31" pos:column="29">lineNumber</name></decl></param>, <param><decl><type><name pos:line="31" pos:column="41">int</name></type> <name pos:line="31" pos:column="45">position</name></decl></param>)</parameter_list>
+        <block pos:line="32" pos:column="9">{
+            <expr_stmt><expr><name><name pos:line="33" pos:column="13">this</name><op:operator pos:line="33" pos:column="17">.</op:operator><name pos:line="33" pos:column="18">number</name></name> <op:operator pos:line="33" pos:column="25">=</op:operator> <name pos:line="33" pos:column="27">lineNumber</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="34" pos:column="13">this</name><op:operator pos:line="34" pos:column="17">.</op:operator><name pos:line="34" pos:column="18">position</name></name> <op:operator pos:line="34" pos:column="27">=</op:operator> <name pos:line="34" pos:column="29">position</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// Line number property. The line in the Xml document that the element appears on.</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="40" pos:column="9">public</specifier> <name pos:line="40" pos:column="16">int</name></type> <name pos:line="40" pos:column="20">LineNumber</name>
+        <block pos:line="41" pos:column="9">{
+            <function><name pos:line="42" pos:column="13">get</name>
+            <block pos:line="43" pos:column="13">{
+                <return pos:line="44" pos:column="17">return <expr><name pos:line="44" pos:column="24">number</name></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="48" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="49" pos:column="9">/// Line position property. The character position in the Xml document that the element appears on.</comment>
+        <comment type="line" pos:line="50" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="51" pos:column="9">public</specifier> <name pos:line="51" pos:column="16">int</name></type> <name pos:line="51" pos:column="20">Position</name>
+        <block pos:line="52" pos:column="9">{
+            <function><name pos:line="53" pos:column="13">get</name>
+            <block pos:line="54" pos:column="13">{
+                <return pos:line="55" pos:column="17">return <expr><name pos:line="55" pos:column="24">position</name></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace>
+</unit>

@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\PooledString.h" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/*--------------------------------------------------------------------------*
+ *
+ *  Microsoft Visual Studio
+ *  Copyright (C) Microsoft Corporation, 1995 - 2008
+ *
+ *  File:       PooledString.h
+ *
+ *  Contents:   Implementation file for CPooledString
+ *
+ *  History:    8-Feb-2008 jeffro    Created
+ *
+ *--------------------------------------------------------------------------*/</comment>
+
+<cpp:pragma pos:line="14" pos:column="1">#<cpp:directive pos:line="14" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+
+<cpp:include pos:line="16" pos:column="1">#<cpp:directive pos:line="16" pos:column="2">include</cpp:directive> <cpp:file pos:line="16" pos:column="10">&lt;map&gt;</cpp:file></cpp:include>
+<cpp:include pos:line="17" pos:column="1">#<cpp:directive pos:line="17" pos:column="2">include</cpp:directive> <cpp:file pos:line="17" pos:column="10">&lt;hash_map&gt;</cpp:file></cpp:include>
+
+
+<macro><name pos:line="20" pos:column="1">_STDEXT_BEGIN</name></macro>
+
+<comment type="block" pos:line="22" pos:column="1">/*
+ * define overloads of stdext::hash_value(CString) so CStrings can be key values 
+ * in hashed collections (stdext::hash_map, stdext::hash_set, etc.)
+ */</comment>
+<template pos:line="26" pos:column="1">template<parameter_list pos:line="26" pos:column="9">&lt;<param><type><typename pos:line="26" pos:column="10">typename</typename></type> <name pos:line="26" pos:column="19">BaseType</name></param>, <param><type><name pos:line="26" pos:column="29">class</name></type> <name pos:line="26" pos:column="35">StringTraits</name></param>&gt;</parameter_list>
+<function><type><specifier pos:line="27" pos:column="1">inline</specifier> <name pos:line="27" pos:column="8">size_t</name></type> <name pos:line="27" pos:column="15">hash_value</name><parameter_list pos:line="27" pos:column="25">(<param><decl><type><specifier pos:line="27" pos:column="26">const</specifier> <name><name pos:line="27" pos:column="32">CStringT</name><argument_list pos:line="27" pos:column="40">&lt;<argument><expr><name pos:line="27" pos:column="41">BaseType</name></expr></argument>, <argument><expr><name pos:line="27" pos:column="51">StringTraits</name></expr></argument>&gt;</argument_list></name><type:modifier pos:line="27" pos:column="64">&amp;</type:modifier></type> <name pos:line="27" pos:column="66">str</name></decl></param>)</parameter_list>
+<block pos:line="28" pos:column="1">{
+    <return pos:line="29" pos:column="5">return <expr><op:operator pos:line="29" pos:column="12">(</op:operator><call><name><name><name pos:line="29" pos:column="13">CElementTraits</name><argument_list pos:line="29" pos:column="27">&lt;<argument><expr><name><name pos:line="29" pos:column="28">CStringT</name><argument_list pos:line="29" pos:column="36">&lt;<argument><expr><name pos:line="29" pos:column="37">BaseType</name></expr></argument>, <argument><expr><name pos:line="29" pos:column="47">StringTraits</name></expr></argument>&gt;</argument_list></name></expr></argument>&gt;</argument_list></name><op:operator pos:line="29" pos:column="61">::</op:operator><name pos:line="29" pos:column="63">Hash</name></name> <argument_list pos:line="29" pos:column="68">(<argument><expr><name pos:line="29" pos:column="69">str</name></expr></argument>)</argument_list></call><op:operator pos:line="29" pos:column="73">)</op:operator></expr>;</return>
+}</block></function></template>
+
+<macro><name pos:line="32" pos:column="1">_STDEXT_END</name></macro>
+
+
+<comment type="block" pos:line="35" pos:column="1">/*+-------------------------------------------------------------------------*
+ * CPooledStringT
+ *
+ * This class is intended to reduce the memory consumed by multiple, identical
+ * CString objects.  The linker will fold identical C-style strings (char* or
+ * wchar_t*) into a single instance, but no such mechanism exists for CStrings.
+ * 
+ * This code:
+ * 
+ *      CString s1 = "Some text";
+ *      CString s2 = "Some text";
+ * 
+ * will result in a single instance of the string "Some text" embedded in the 
+ * binary, but at runtime there will be two dynamically-allocated buffers:
+ * 
+ *          +-----------+
+ *      s1: | m_pszData | ----------+
+ *          +-----------+           |
+ *                                  V
+ *                        +----------------------+
+ *                        | header | "Some text" |
+ *                        +----------------------+
+ *      
+ *          +-----------+
+ *      s2: | m_pszData | ----------+
+ *          +-----------+           |
+ *                                  V
+ *                        +----------------------+
+ *                        | header | "Some text" |
+ *                        +----------------------+
+ * 
+ * CString supports refcounting so if one CString is initialized from another,
+ * we end up with a more efficient story:
+ * 
+ *      CString s1 = "Some text";
+ *      CString s2 = s1;
+ * 
+ * There's still only one copy of "Some text" embedded in the binary, but 
+ * now the runtime memory layout looks like this:
+ * 
+ *          +-----------+
+ *      s1: | m_pszData | ----------+
+ *          +-----------+           |
+ *                                  V
+ *                        +----------------------+
+ *                        | header | "Some text" |
+ *                        +----------------------+
+ *                                  ^
+ *          +-----------+           |
+ *      s2: | m_pszData | ----------+
+ *          +-----------+           
+ * 
+ * CPooledString takes advantage of this.  It maintains a static pool of
+ * strings that are contained by CPooledString objects.  Each string in the
+ * pool as a reference count, independent of the internal refcount maintained
+ * in the header portion of a CString object.  As CPooledStrings are created, 
+ * the pool is searched for a CString matching the content of the CPooledString.  
+ * If it's in the pool already, the refcount is bumped; if it's not there yet 
+ * it's added with a refcount of 1.  As CPooledStrings are destroyed, the 
+ * refcount is decremented and if it goes to zero the CString is removed from 
+ * the pool.
+ * 
+ * Each CPooledString contains a CString and achieves its memory savings by 
+ * ensuring that its contained CString is initialized from the CString in the
+ * pool, taking advantage of CString's internal refcounting system to achieve
+ * the memory sharing.
+ * 
+ * CPooledString isn't intended to be a full-service replacement for CString.
+ * Specifically, CPooledStrings are immutable.  (Well, almost immutable. 
+ * They can be changed by assignment (i.e. by completely replacing the 
+ * contained CString), but not by mutating the contained CString in place.)
+ * It defines a set of constructors and assignment operators, a set of
+ * comparison operators, and implicit conversions to const CString&amp; and
+ * LPCxSTR.  If you want to do other CString-like things (find its length,
+ * tokenize it, extract a substring, etc.), you can obtain a const reference
+ * to the inner string by using the implicit conversion or by using 
+ * GetStringObject.
+ *-----------------------------------------------------------------(jeffro)-*/</comment>
+<template pos:line="113" pos:column="1">template<parameter_list pos:line="113" pos:column="9">&lt;<param><type><name pos:line="113" pos:column="10">class</name></type> <name pos:line="113" pos:column="16">StringType</name></param>&gt;</parameter_list>
+<class pos:line="114" pos:column="1">class <name pos:line="114" pos:column="7">CPooledStringT</name>
+<block pos:line="115" pos:column="1">{<private type="default" pos:line="115" pos:column="2">
+</private><public pos:line="116" pos:column="1">public:
+    <typedef pos:line="117" pos:column="5">typedef <type><typename pos:line="117" pos:column="13">typename</typename> <name pos:line="117" pos:column="22">StringType</name></type>                 <name pos:line="117" pos:column="49">StringType</name>;</typedef>
+    <typedef pos:line="118" pos:column="5">typedef <type><typename pos:line="118" pos:column="13">typename</typename> <name><name pos:line="118" pos:column="22">StringType</name><op:operator pos:line="118" pos:column="32">::</op:operator><name pos:line="118" pos:column="34">XCHAR</name></name></type>          <name pos:line="118" pos:column="49">XCHAR</name>;</typedef>
+    <typedef pos:line="119" pos:column="5">typedef <type><typename pos:line="119" pos:column="13">typename</typename> <name><name pos:line="119" pos:column="22">StringType</name><op:operator pos:line="119" pos:column="32">::</op:operator><name pos:line="119" pos:column="34">PXSTR</name></name></type>          <name pos:line="119" pos:column="49">PXSTR</name>;</typedef>
+    <typedef pos:line="120" pos:column="5">typedef <type><typename pos:line="120" pos:column="13">typename</typename> <name><name pos:line="120" pos:column="22">StringType</name><op:operator pos:line="120" pos:column="32">::</op:operator><name pos:line="120" pos:column="34">PCXSTR</name></name></type>         <name pos:line="120" pos:column="49">PCXSTR</name>;</typedef>
+
+    <typedef pos:line="122" pos:column="5">typedef <type><typename pos:line="122" pos:column="13">typename</typename> <name><name pos:line="122" pos:column="22">stdext</name><op:operator pos:line="122" pos:column="28">::</op:operator><name><name pos:line="122" pos:column="30">hash_map</name><argument_list pos:line="122" pos:column="38">&lt;<argument><expr><name pos:line="122" pos:column="39">StringType</name></expr></argument>, <argument><expr><name pos:line="122" pos:column="51">size_t</name></expr></argument>&gt;</argument_list></name></name></type> <name pos:line="122" pos:column="59">PoolType</name>;</typedef>
+
+    <comment type="block" pos:line="124" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CPooledStringT
+     *
+     * Constructs a CPooledStringT object. 
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <constructor><name pos:line="129" pos:column="5">CPooledStringT</name> <parameter_list pos:line="129" pos:column="20">(<param><decl><type><specifier pos:line="129" pos:column="21">const</specifier> <name pos:line="129" pos:column="27">StringType</name><type:modifier pos:line="129" pos:column="37">&amp;</type:modifier></type> <name pos:line="129" pos:column="39">s</name> <init pos:line="129" pos:column="41">= <expr><call><name pos:line="129" pos:column="43">StringType</name><argument_list pos:line="129" pos:column="53">()</argument_list></call></expr></init></decl></param>)</parameter_list>
+    <block pos:line="130" pos:column="5">{
+        <expr_stmt><expr><call><name pos:line="131" pos:column="9">InitFrom</name> <argument_list pos:line="131" pos:column="18">(<argument><expr><call><name pos:line="131" pos:column="19">Lookup</name> <argument_list pos:line="131" pos:column="26">(<argument><expr><name pos:line="131" pos:column="27">s</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+    }</block></constructor>
+
+    <constructor><name pos:line="134" pos:column="5">CPooledStringT</name> <parameter_list pos:line="134" pos:column="20">(<param><decl><type><specifier pos:line="134" pos:column="21">const</specifier> <name pos:line="134" pos:column="27">CPooledStringT</name><type:modifier pos:line="134" pos:column="41">&amp;</type:modifier></type> <name pos:line="134" pos:column="43">other</name></decl></param>)</parameter_list>
+    <block pos:line="135" pos:column="5">{
+        <expr_stmt><expr><call><name pos:line="136" pos:column="9">InitFrom</name> <argument_list pos:line="136" pos:column="18">(<argument><expr><name><name pos:line="136" pos:column="19">other</name><op:operator pos:line="136" pos:column="24">.</op:operator><name pos:line="136" pos:column="25">m_s</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+    }</block></constructor>
+
+    <constructor><name pos:line="139" pos:column="5">CPooledStringT</name> <parameter_list pos:line="139" pos:column="20">(<param><decl><type><name pos:line="139" pos:column="21">PCXSTR</name></type> <name pos:line="139" pos:column="28">psz</name></decl></param>)</parameter_list>
+    <block pos:line="140" pos:column="5">{
+        <expr_stmt><expr><call><name pos:line="141" pos:column="9">InitFrom</name> <argument_list pos:line="141" pos:column="18">(<argument><expr><call><name pos:line="141" pos:column="19">Lookup</name> <argument_list pos:line="141" pos:column="26">(<argument><expr><call><name pos:line="141" pos:column="27">CCachedInitString</name><argument_list pos:line="141" pos:column="44">(<argument><expr><name pos:line="141" pos:column="45">psz</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+    }</block></constructor>
+
+
+    <comment type="block" pos:line="145" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CPooledStringT::~CPooledStringT
+     *
+     * Destroys a CPooledStringT object.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <destructor><name pos:line="150" pos:column="5">~<name pos:line="150" pos:column="6">CPooledStringT</name></name><parameter_list pos:line="150" pos:column="20">()</parameter_list>
+    <block pos:line="151" pos:column="5">{
+        <expr_stmt><expr><call><name pos:line="152" pos:column="9">Release</name><argument_list pos:line="152" pos:column="16">()</argument_list></call></expr>;</expr_stmt>
+    }</block></destructor>
+
+
+    <comment type="block" pos:line="156" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CPooledStringT::operator=
+     *
+     * Assignment operators.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="161" pos:column="5">CPooledStringT</name><type:modifier pos:line="161" pos:column="19">&amp;</type:modifier></type> <name pos:line="161" pos:column="21">operator=</name> <parameter_list pos:line="161" pos:column="31">(<param><decl><type><specifier pos:line="161" pos:column="32">const</specifier> <name pos:line="161" pos:column="38">StringType</name><type:modifier pos:line="161" pos:column="48">&amp;</type:modifier></type> <name pos:line="161" pos:column="50">s</name></decl></param>)</parameter_list> 
+    <block pos:line="162" pos:column="5">{
+        <expr_stmt><expr><call><name pos:line="163" pos:column="9">CopyFrom</name> <argument_list pos:line="163" pos:column="18">(<argument><expr><name pos:line="163" pos:column="19">s</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        <return pos:line="164" pos:column="9">return <expr><op:operator pos:line="164" pos:column="16">(</op:operator><op:operator pos:line="164" pos:column="17">*</op:operator><name pos:line="164" pos:column="18">this</name><op:operator pos:line="164" pos:column="22">)</op:operator></expr>;</return>
+    }</block></function>
+
+    <function><type><name pos:line="167" pos:column="5">CPooledStringT</name><type:modifier pos:line="167" pos:column="19">&amp;</type:modifier></type> <name pos:line="167" pos:column="21">operator=</name> <parameter_list pos:line="167" pos:column="31">(<param><decl><type><specifier pos:line="167" pos:column="32">const</specifier> <name pos:line="167" pos:column="38">CPooledStringT</name><type:modifier pos:line="167" pos:column="52">&amp;</type:modifier></type> <name pos:line="167" pos:column="54">other</name></decl></param>)</parameter_list>
+    <block pos:line="168" pos:column="5">{
+        <expr_stmt><expr><call><name pos:line="169" pos:column="9">CopyFrom</name> <argument_list pos:line="169" pos:column="18">(<argument><expr><name><name pos:line="169" pos:column="19">other</name><op:operator pos:line="169" pos:column="24">.</op:operator><name pos:line="169" pos:column="25">m_s</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        <return pos:line="170" pos:column="9">return <expr><op:operator pos:line="170" pos:column="16">(</op:operator><op:operator pos:line="170" pos:column="17">*</op:operator><name pos:line="170" pos:column="18">this</name><op:operator pos:line="170" pos:column="22">)</op:operator></expr>;</return>
+    }</block></function>
+
+    <function><type><name pos:line="173" pos:column="5">CPooledStringT</name><type:modifier pos:line="173" pos:column="19">&amp;</type:modifier></type> <name pos:line="173" pos:column="21">operator=</name> <parameter_list pos:line="173" pos:column="31">(<param><decl><type><name pos:line="173" pos:column="32">PCXSTR</name></type> <name pos:line="173" pos:column="39">psz</name></decl></param>)</parameter_list>
+    <block pos:line="174" pos:column="5">{
+        <expr_stmt><expr><call><name pos:line="175" pos:column="9">CopyFrom</name> <argument_list pos:line="175" pos:column="18">(<argument><expr><call><name pos:line="175" pos:column="19">CCachedInitString</name><argument_list pos:line="175" pos:column="36">(<argument><expr><name pos:line="175" pos:column="37">psz</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        <return pos:line="176" pos:column="9">return <expr><op:operator pos:line="176" pos:column="16">(</op:operator><op:operator pos:line="176" pos:column="17">*</op:operator><name pos:line="176" pos:column="18">this</name><op:operator pos:line="176" pos:column="22">)</op:operator></expr>;</return>
+    }</block></function>
+
+
+    <comment type="block" pos:line="180" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CPooledStringT::operator==
+     * CPooledStringT::operator!=
+     *
+     * (In-) equality operators.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="186" pos:column="5">bool</name></type> <name pos:line="186" pos:column="10">operator==</name> <parameter_list pos:line="186" pos:column="21">(<param><decl><type><specifier pos:line="186" pos:column="22">const</specifier> <name pos:line="186" pos:column="28">StringType</name><type:modifier pos:line="186" pos:column="38">&amp;</type:modifier></type> <name pos:line="186" pos:column="40">s</name></decl></param>)</parameter_list> <specifier pos:line="186" pos:column="43">const</specifier>
+    <block pos:line="187" pos:column="5">{
+        <return pos:line="188" pos:column="9">return <expr><op:operator pos:line="188" pos:column="16">(</op:operator><name pos:line="188" pos:column="17">m_s</name> <op:operator pos:line="188" pos:column="21">==</op:operator> <name pos:line="188" pos:column="24">s</name><op:operator pos:line="188" pos:column="25">)</op:operator></expr>;</return>
+    }</block></function>
+
+    <function><type><name pos:line="191" pos:column="5">bool</name></type> <name pos:line="191" pos:column="10">operator==</name> <parameter_list pos:line="191" pos:column="21">(<param><decl><type><specifier pos:line="191" pos:column="22">const</specifier> <name pos:line="191" pos:column="28">CPooledStringT</name><type:modifier pos:line="191" pos:column="42">&amp;</type:modifier></type> <name pos:line="191" pos:column="44">other</name></decl></param>)</parameter_list> <specifier pos:line="191" pos:column="51">const</specifier>
+    <block pos:line="192" pos:column="5">{
+        <comment type="block" pos:line="193" pos:column="9">/*
+         * optimize by comparing pointers, since we know that two idendtical
+         * pooled strings will share a string representation
+         */</comment>
+        <return pos:line="197" pos:column="9">return <expr><op:operator pos:line="197" pos:column="16">(</op:operator><call><name><name pos:line="197" pos:column="17">m_s</name><op:operator pos:line="197" pos:column="20">.</op:operator><name pos:line="197" pos:column="21">GetString</name></name><argument_list pos:line="197" pos:column="30">()</argument_list></call> <op:operator pos:line="197" pos:column="33">==</op:operator> <call><name><name pos:line="197" pos:column="36">other</name><op:operator pos:line="197" pos:column="41">.</op:operator><name pos:line="197" pos:column="42">GetString</name></name><argument_list pos:line="197" pos:column="51">()</argument_list></call><op:operator pos:line="197" pos:column="53">)</op:operator></expr>;</return>
+    }</block></function>
+
+    <function><type><name pos:line="200" pos:column="5">bool</name></type> <name pos:line="200" pos:column="10">operator==</name> <parameter_list pos:line="200" pos:column="21">(<param><decl><type><name pos:line="200" pos:column="22">PCXSTR</name></type> <name pos:line="200" pos:column="29">psz</name></decl></param>)</parameter_list> <specifier pos:line="200" pos:column="34">const</specifier>
+    <block pos:line="201" pos:column="5">{
+        <return pos:line="202" pos:column="9">return <expr><op:operator pos:line="202" pos:column="16">(</op:operator><name pos:line="202" pos:column="17">m_s</name> <op:operator pos:line="202" pos:column="21">==</op:operator> <name pos:line="202" pos:column="24">psz</name><op:operator pos:line="202" pos:column="27">)</op:operator></expr>;</return>
+    }</block></function>
+
+    <function><type><name pos:line="205" pos:column="5">bool</name></type> <name pos:line="205" pos:column="10">operator!=</name> <parameter_list pos:line="205" pos:column="21">(<param><decl><type><specifier pos:line="205" pos:column="22">const</specifier> <name pos:line="205" pos:column="28">StringType</name><type:modifier pos:line="205" pos:column="38">&amp;</type:modifier></type> <name pos:line="205" pos:column="40">s</name></decl></param>)</parameter_list> <specifier pos:line="205" pos:column="43">const</specifier>
+    <block pos:line="206" pos:column="5">{
+        <return pos:line="207" pos:column="9">return <expr><op:operator pos:line="207" pos:column="16">!</op:operator><op:operator pos:line="207" pos:column="17">(</op:operator><op:operator pos:line="207" pos:column="18">*</op:operator><name pos:line="207" pos:column="19">this</name> <op:operator pos:line="207" pos:column="24">==</op:operator> <name pos:line="207" pos:column="27">s</name><op:operator pos:line="207" pos:column="28">)</op:operator></expr>;</return>
+    }</block></function>
+
+    <function><type><name pos:line="210" pos:column="5">bool</name></type> <name pos:line="210" pos:column="10">operator!=</name> <parameter_list pos:line="210" pos:column="21">(<param><decl><type><specifier pos:line="210" pos:column="22">const</specifier> <name pos:line="210" pos:column="28">CPooledStringT</name><type:modifier pos:line="210" pos:column="42">&amp;</type:modifier></type> <name pos:line="210" pos:column="44">other</name></decl></param>)</parameter_list> <specifier pos:line="210" pos:column="51">const</specifier>
+    <block pos:line="211" pos:column="5">{
+        <return pos:line="212" pos:column="9">return <expr><op:operator pos:line="212" pos:column="16">!</op:operator><op:operator pos:line="212" pos:column="17">(</op:operator><op:operator pos:line="212" pos:column="18">*</op:operator><name pos:line="212" pos:column="19">this</name> <op:operator pos:line="212" pos:column="24">==</op:operator> <name pos:line="212" pos:column="27">other</name><op:operator pos:line="212" pos:column="32">)</op:operator></expr>;</return>
+    }</block></function>
+
+    <function><type><name pos:line="215" pos:column="5">bool</name></type> <name pos:line="215" pos:column="10">operator!=</name> <parameter_list pos:line="215" pos:column="21">(<param><decl><type><name pos:line="215" pos:column="22">PCXSTR</name></type> <name pos:line="215" pos:column="29">psz</name></decl></param>)</parameter_list> <specifier pos:line="215" pos:column="34">const</specifier>
+    <block pos:line="216" pos:column="5">{
+        <return pos:line="217" pos:column="9">return <expr><op:operator pos:line="217" pos:column="16">!</op:operator><op:operator pos:line="217" pos:column="17">(</op:operator><op:operator pos:line="217" pos:column="18">*</op:operator><name pos:line="217" pos:column="19">this</name> <op:operator pos:line="217" pos:column="24">==</op:operator> <name pos:line="217" pos:column="27">psz</name><op:operator pos:line="217" pos:column="30">)</op:operator></expr>;</return>
+    }</block></function>
+
+
+    <comment type="block" pos:line="221" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CPooledStringT::operator&lt;
+     *
+     * This operator is required for sorting by STL collections and algorithms.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="226" pos:column="5">bool</name></type> <name pos:line="226" pos:column="10">operator&lt;</name> <parameter_list pos:line="226" pos:column="20">(<param><decl><type><specifier pos:line="226" pos:column="21">const</specifier> <name pos:line="226" pos:column="27">StringType</name><type:modifier pos:line="226" pos:column="37">&amp;</type:modifier></type> <name pos:line="226" pos:column="39">s</name></decl></param>)</parameter_list> <specifier pos:line="226" pos:column="42">const</specifier>
+    <block pos:line="227" pos:column="5">{
+        <return pos:line="228" pos:column="9">return <expr><op:operator pos:line="228" pos:column="16">(</op:operator><name pos:line="228" pos:column="17">m_s</name> <op:operator pos:line="228" pos:column="21">&lt;</op:operator> <name pos:line="228" pos:column="23">s</name><op:operator pos:line="228" pos:column="24">)</op:operator></expr>;</return>
+    }</block></function>
+
+    <function><type><name pos:line="231" pos:column="5">bool</name></type> <name pos:line="231" pos:column="10">operator&lt;</name> <parameter_list pos:line="231" pos:column="20">(<param><decl><type><specifier pos:line="231" pos:column="21">const</specifier> <name pos:line="231" pos:column="27">CPooledStringT</name><type:modifier pos:line="231" pos:column="41">&amp;</type:modifier></type> <name pos:line="231" pos:column="43">other</name></decl></param>)</parameter_list> <specifier pos:line="231" pos:column="50">const</specifier>
+    <block pos:line="232" pos:column="5">{
+        <return pos:line="233" pos:column="9">return <expr><op:operator pos:line="233" pos:column="16">(</op:operator><name pos:line="233" pos:column="17">m_s</name> <op:operator pos:line="233" pos:column="21">&lt;</op:operator> <name><name pos:line="233" pos:column="23">other</name><op:operator pos:line="233" pos:column="28">.</op:operator><name pos:line="233" pos:column="29">m_s</name></name><op:operator pos:line="233" pos:column="32">)</op:operator></expr>;</return>
+    }</block></function>
+
+    <function><type><name pos:line="236" pos:column="5">bool</name></type> <name pos:line="236" pos:column="10">operator&lt;</name> <parameter_list pos:line="236" pos:column="20">(<param><decl><type><name pos:line="236" pos:column="21">PCXSTR</name></type> <name pos:line="236" pos:column="28">psz</name></decl></param>)</parameter_list> <specifier pos:line="236" pos:column="33">const</specifier>
+    <block pos:line="237" pos:column="5">{
+        <return pos:line="238" pos:column="9">return <expr><op:operator pos:line="238" pos:column="16">(</op:operator><name pos:line="238" pos:column="17">m_s</name> <op:operator pos:line="238" pos:column="21">&lt;</op:operator> <name pos:line="238" pos:column="23">psz</name><op:operator pos:line="238" pos:column="26">)</op:operator></expr>;</return>
+    }</block></function>
+
+
+    <comment type="block" pos:line="242" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CPooledStringT::operator PCXSTR
+     * CPooledStringT::operator const StringType&amp;
+     *
+     * Casting operators
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><name pos:line="248" pos:column="5">operator PCXSTR</name><parameter_list pos:line="248" pos:column="20">()</parameter_list> <specifier pos:line="248" pos:column="23">const</specifier>
+    <block pos:line="249" pos:column="5">{
+        <return pos:line="250" pos:column="9">return <expr><op:operator pos:line="250" pos:column="16">(</op:operator><name pos:line="250" pos:column="17">m_s</name><op:operator pos:line="250" pos:column="20">)</op:operator></expr>;</return>
+    }</block></function>
+
+    <function><name pos:line="253" pos:column="5">operator const StringType&amp;</name><parameter_list pos:line="253" pos:column="31">()</parameter_list> <specifier pos:line="253" pos:column="34">const</specifier>
+    <block pos:line="254" pos:column="5">{
+        <return pos:line="255" pos:column="9">return <expr><op:operator pos:line="255" pos:column="16">(</op:operator><name pos:line="255" pos:column="17">m_s</name><op:operator pos:line="255" pos:column="20">)</op:operator></expr>;</return>
+    }</block></function>
+
+
+    <comment type="block" pos:line="259" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CPooledStringT::GetString
+     * CPooledStringT::GetStringObject
+     *
+     * Allow access to the contained string as an object or a character pointer.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="265" pos:column="5">PCXSTR</name></type> <name pos:line="265" pos:column="12">GetString</name><parameter_list pos:line="265" pos:column="21">()</parameter_list> <specifier pos:line="265" pos:column="24">const</specifier>
+    <block pos:line="266" pos:column="5">{
+        <return pos:line="267" pos:column="9">return <expr><op:operator pos:line="267" pos:column="16">(</op:operator><name pos:line="267" pos:column="17">m_s</name><op:operator pos:line="267" pos:column="20">)</op:operator></expr>;</return>
+    }</block></function>
+
+    <function><type><specifier pos:line="270" pos:column="5">const</specifier> <name pos:line="270" pos:column="11">StringType</name><type:modifier pos:line="270" pos:column="21">&amp;</type:modifier></type> <name pos:line="270" pos:column="23">GetStringObject</name><parameter_list pos:line="270" pos:column="38">()</parameter_list> <specifier pos:line="270" pos:column="41">const</specifier>
+    <block pos:line="271" pos:column="5">{
+        <return pos:line="272" pos:column="9">return <expr><op:operator pos:line="272" pos:column="16">(</op:operator><name pos:line="272" pos:column="17">m_s</name><op:operator pos:line="272" pos:column="20">)</op:operator></expr>;</return>
+    }</block></function>
+
+    <function><type><name pos:line="275" pos:column="5">int</name></type> <name pos:line="275" pos:column="9">GetLength</name><parameter_list pos:line="275" pos:column="18">()</parameter_list> <specifier pos:line="275" pos:column="21">const</specifier> <throw pos:line="275" pos:column="27">throw()</throw>
+    <block pos:line="276" pos:column="5">{
+        <return pos:line="277" pos:column="9">return <expr><op:operator pos:line="277" pos:column="16">(</op:operator><call><name><name pos:line="277" pos:column="17">m_s</name><op:operator pos:line="277" pos:column="20">.</op:operator><name pos:line="277" pos:column="21">GetLength</name></name><argument_list pos:line="277" pos:column="30">()</argument_list></call><op:operator pos:line="277" pos:column="32">)</op:operator></expr>;</return>
+    }</block></function>
+
+    <function><type><name pos:line="280" pos:column="5">bool</name></type> <name pos:line="280" pos:column="10">IsEmpty</name><parameter_list pos:line="280" pos:column="17">()</parameter_list> <specifier pos:line="280" pos:column="20">const</specifier> <throw pos:line="280" pos:column="26">throw()</throw>
+    <block pos:line="281" pos:column="5">{
+        <return pos:line="282" pos:column="9">return <expr><op:operator pos:line="282" pos:column="16">(</op:operator><call><name><name pos:line="282" pos:column="17">m_s</name><op:operator pos:line="282" pos:column="20">.</op:operator><name pos:line="282" pos:column="21">IsEmpty</name></name><argument_list pos:line="282" pos:column="28">()</argument_list></call><op:operator pos:line="282" pos:column="30">)</op:operator></expr>;</return>
+    }</block></function>
+
+    <comment type="block" pos:line="285" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CPooledStringT::GetPoolSize
+     *
+     * Returns the number of strings in the string pool.  Mostly useful for
+     * debugging purposes.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><specifier pos:line="291" pos:column="5">static</specifier> <name pos:line="291" pos:column="12">size_t</name></type> <name pos:line="291" pos:column="19">GetPoolSize</name><parameter_list pos:line="291" pos:column="30">()</parameter_list>
+    <block pos:line="292" pos:column="5">{
+        <return pos:line="293" pos:column="9">return <expr><op:operator pos:line="293" pos:column="16">(</op:operator><call><name><name pos:line="293" pos:column="17">s_pool</name><op:operator pos:line="293" pos:column="23">.</op:operator><name pos:line="293" pos:column="24">size</name></name><argument_list pos:line="293" pos:column="28">()</argument_list></call><op:operator pos:line="293" pos:column="30">)</op:operator></expr>;</return>
+    }</block></function>
+
+
+    <comment type="block" pos:line="297" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CPooledStringT::GetPoolMemUsage
+     *
+     * Returns the memory occupied by the strings in the pool (not including
+     * the overhead of the pool itself).  If the optional pcbWouldBe parameter
+     * is passed, then the amount of memory that the strings would occupy if
+     * not pooled.
+     * 
+     * This function is useful for diagnostics only.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><specifier pos:line="307" pos:column="5">static</specifier> <name pos:line="307" pos:column="12">size_t</name></type> <name pos:line="307" pos:column="19">GetPoolMemUsage</name> <parameter_list pos:line="307" pos:column="35">(<param><decl><type><name pos:line="307" pos:column="36">size_t</name><type:modifier pos:line="307" pos:column="42">*</type:modifier></type> <name pos:line="307" pos:column="44">pcbWouldBe</name> <init pos:line="307" pos:column="55">= <expr><name pos:line="307" pos:column="57">NULL</name></expr></init></decl></param>)</parameter_list>
+    <block pos:line="308" pos:column="5">{
+        <decl_stmt><decl><type><name pos:line="309" pos:column="9">size_t</name></type> <name pos:line="309" pos:column="16">cbTotal</name> <init pos:line="309" pos:column="24">= <expr><lit:literal type="number" pos:line="309" pos:column="26">0</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <if pos:line="311" pos:column="9">if <condition pos:line="311" pos:column="12">(<expr><name pos:line="311" pos:column="13">pcbWouldBe</name> <op:operator pos:line="311" pos:column="24">!=</op:operator> <name pos:line="311" pos:column="27">NULL</name></expr>)</condition><then pos:line="311" pos:column="32">
+            <expr_stmt><expr><op:operator pos:line="312" pos:column="13">*</op:operator><name pos:line="312" pos:column="14">pcbWouldBe</name> <op:operator pos:line="312" pos:column="25">=</op:operator> <lit:literal type="number" pos:line="312" pos:column="27">0</lit:literal></expr>;</expr_stmt></then></if>
+
+        <decl_stmt><decl><type><name><name pos:line="314" pos:column="9">PoolType</name><op:operator pos:line="314" pos:column="17">::</op:operator><name pos:line="314" pos:column="19">const_iterator</name></name></type> <name pos:line="314" pos:column="34">it</name></decl>;</decl_stmt>
+
+        <for pos:line="316" pos:column="9">for (<init><expr><name pos:line="316" pos:column="14">it</name> <op:operator pos:line="316" pos:column="17">=</op:operator> <call><name><name pos:line="316" pos:column="19">s_pool</name><op:operator pos:line="316" pos:column="25">.</op:operator><name pos:line="316" pos:column="26">begin</name></name><argument_list pos:line="316" pos:column="31">()</argument_list></call></expr>;</init> <condition><expr><name pos:line="316" pos:column="35">it</name> <op:operator pos:line="316" pos:column="38">!=</op:operator> <call><name><name pos:line="316" pos:column="41">s_pool</name><op:operator pos:line="316" pos:column="47">.</op:operator><name pos:line="316" pos:column="48">end</name></name><argument_list pos:line="316" pos:column="51">()</argument_list></call></expr>;</condition> <incr><expr><op:operator pos:line="316" pos:column="55">++</op:operator><name pos:line="316" pos:column="57">it</name></expr></incr>)
+        <block pos:line="317" pos:column="9">{
+            <decl_stmt><decl><type><specifier pos:line="318" pos:column="13">const</specifier> <name pos:line="318" pos:column="19">StringType</name><type:modifier pos:line="318" pos:column="29">&amp;</type:modifier></type> <name pos:line="318" pos:column="31">s</name>     <init pos:line="318" pos:column="37">= <expr><name><name pos:line="318" pos:column="39">it</name><op:operator pos:line="318" pos:column="41">-&gt;</op:operator><name pos:line="318" pos:column="43">first</name></name></expr></init></decl>;</decl_stmt>
+            <decl_stmt><decl><type><specifier pos:line="319" pos:column="13">const</specifier> <name pos:line="319" pos:column="19">size_t</name><type:modifier pos:line="319" pos:column="25">&amp;</type:modifier></type>     <name pos:line="319" pos:column="31">cRefs</name> <init pos:line="319" pos:column="37">= <expr><name><name pos:line="319" pos:column="39">it</name><op:operator pos:line="319" pos:column="41">-&gt;</op:operator><name pos:line="319" pos:column="43">second</name></name></expr></init></decl>;</decl_stmt>
+
+            <comment type="block" pos:line="321" pos:column="13">/*
+             * ATL allocates memory blocks for strings in multiples of 8 characters
+             */</comment>
+            <decl_stmt><decl><type><specifier pos:line="324" pos:column="13">const</specifier> <name pos:line="324" pos:column="19">size_t</name></type> <name pos:line="324" pos:column="26">cb</name> <init pos:line="324" pos:column="29">= <expr><sizeof pos:line="324" pos:column="31">sizeof<argument_list pos:line="324" pos:column="37">(<argument><expr><name pos:line="324" pos:column="38">XCHAR</name></expr></argument>)</argument_list></sizeof> <op:operator pos:line="324" pos:column="45">*</op:operator> <call><name pos:line="324" pos:column="47">AtlAlignUp</name> <argument_list pos:line="324" pos:column="58">(<argument><expr><call><name><name pos:line="324" pos:column="59">s</name><op:operator pos:line="324" pos:column="60">.</op:operator><name pos:line="324" pos:column="61">GetLength</name></name><argument_list pos:line="324" pos:column="70">()</argument_list></call><op:operator pos:line="324" pos:column="72">+</op:operator><lit:literal type="number" pos:line="324" pos:column="73">1</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="324" pos:column="76">8</lit:literal></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <expr_stmt><expr><name pos:line="326" pos:column="13">cbTotal</name> <op:operator pos:line="326" pos:column="21">+=</op:operator> <name pos:line="326" pos:column="24">cb</name></expr>;</expr_stmt>
+
+            <if pos:line="328" pos:column="13">if <condition pos:line="328" pos:column="16">(<expr><name pos:line="328" pos:column="17">pcbWouldBe</name> <op:operator pos:line="328" pos:column="28">!=</op:operator> <name pos:line="328" pos:column="31">NULL</name></expr>)</condition><then pos:line="328" pos:column="36">
+                <expr_stmt><expr><op:operator pos:line="329" pos:column="17">*</op:operator><name pos:line="329" pos:column="18">pcbWouldBe</name> <op:operator pos:line="329" pos:column="29">+=</op:operator> <name pos:line="329" pos:column="32">cb</name> <op:operator pos:line="329" pos:column="35">*</op:operator> <name pos:line="329" pos:column="37">cRefs</name></expr>;</expr_stmt></then></if>
+        }</block></for>
+
+        <return pos:line="332" pos:column="9">return <expr><op:operator pos:line="332" pos:column="16">(</op:operator><name pos:line="332" pos:column="17">cbTotal</name><op:operator pos:line="332" pos:column="24">)</op:operator></expr>;</return>
+    }</block></function>
+
+<cpp:ifdef pos:line="335" pos:column="1">#<cpp:directive pos:line="335" pos:column="2">ifdef</cpp:directive> <name pos:line="335" pos:column="8">DEBUG</name></cpp:ifdef>
+    <comment type="block" pos:line="336" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CPooledStringT::ShowPoolStats
+     *
+     * Shows statistics for the string pool, optionally dumping the pool contents
+     * to the debugger.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><specifier pos:line="342" pos:column="5">static</specifier> <name pos:line="342" pos:column="12">void</name></type> <name pos:line="342" pos:column="17">ShowPoolStats</name> <parameter_list pos:line="342" pos:column="31">(<param><decl><type><name pos:line="342" pos:column="32">bool</name></type> <name pos:line="342" pos:column="37">fDumpPool</name></decl></param>)</parameter_list>
+    <block pos:line="343" pos:column="5">{
+        <if pos:line="344" pos:column="9">if <condition pos:line="344" pos:column="12">(<expr><name pos:line="344" pos:column="13">fDumpPool</name></expr>)</condition><then pos:line="344" pos:column="23">
+        <block pos:line="345" pos:column="9">{  
+            <decl_stmt><decl><type><name pos:line="346" pos:column="13">CWaitCursor</name></type> <name pos:line="346" pos:column="25">wait</name></decl>;</decl_stmt>
+            <expr_stmt><expr><call><name pos:line="347" pos:column="13">DumpPool</name><argument_list pos:line="347" pos:column="21">()</argument_list></call></expr>;</expr_stmt>
+        }</block></then></if>
+
+        <decl_stmt><decl><type><name pos:line="350" pos:column="9">size_t</name></type> <name pos:line="350" pos:column="16">cbWouldBe</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><name pos:line="351" pos:column="9">size_t</name></type> <name pos:line="351" pos:column="16">cbTotal</name>   <init pos:line="351" pos:column="26">= <expr><call><name pos:line="351" pos:column="28">GetPoolMemUsage</name> <argument_list pos:line="351" pos:column="44">(<argument><expr><op:operator pos:line="351" pos:column="45">&amp;</op:operator><name pos:line="351" pos:column="46">cbWouldBe</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+        <decl_stmt><decl><type><name pos:line="352" pos:column="9">size_t</name></type> <name pos:line="352" pos:column="16">cbSavings</name> <init pos:line="352" pos:column="26">= <expr><name pos:line="352" pos:column="28">cbWouldBe</name> <op:operator pos:line="352" pos:column="38">-</op:operator> <name pos:line="352" pos:column="40">cbTotal</name></expr></init></decl>;</decl_stmt>
+
+        <decl_stmt><decl><type><name pos:line="354" pos:column="9">StringType</name></type> <name pos:line="354" pos:column="20">strFormat</name> <init pos:line="354" pos:column="30">= <expr><lit:literal type="string" pos:line="354" pos:column="32">L"Pooled string count:\t\t\t%d\n"</lit:literal>
+                               <lit:literal type="string" pos:line="355" pos:column="32">L"Pool memory usage:  \t\t%d bytes\n"</lit:literal>
+                               <lit:literal type="string" pos:line="356" pos:column="32">L"Individual strings would have used:\t%d bytes\n"</lit:literal>
+                               <lit:literal type="string" pos:line="357" pos:column="32">L"Memory savings:\t\t\t%d bytes (%d%%)"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <decl_stmt><decl><type><name pos:line="359" pos:column="9">StringType</name></type> <name pos:line="359" pos:column="20">strMessage</name></decl>;</decl_stmt>
+        <expr_stmt><expr><call><name><name pos:line="360" pos:column="9">strMessage</name><op:operator pos:line="360" pos:column="19">.</op:operator><name pos:line="360" pos:column="20">Format</name></name> <argument_list pos:line="360" pos:column="27">(<argument><expr><name pos:line="360" pos:column="28">strFormat</name></expr></argument>,
+                           <argument><expr><call><name pos:line="361" pos:column="28">GetPoolSize</name><argument_list pos:line="361" pos:column="39">()</argument_list></call></expr></argument>,
+                           <argument><expr><name pos:line="362" pos:column="28">cbTotal</name></expr></argument>,
+                           <argument><expr><name pos:line="363" pos:column="28">cbWouldBe</name></expr></argument>,
+                           <argument><expr><name pos:line="364" pos:column="28">cbSavings</name></expr></argument>,
+                           <argument><expr><op:operator pos:line="365" pos:column="28">(</op:operator><name pos:line="365" pos:column="29">cbSavings</name> <op:operator pos:line="365" pos:column="39">*</op:operator> <lit:literal type="number" pos:line="365" pos:column="41">100</lit:literal><op:operator pos:line="365" pos:column="44">)</op:operator> <op:operator pos:line="365" pos:column="46">/</op:operator> <name pos:line="365" pos:column="48">cbWouldBe</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+        <if pos:line="367" pos:column="9">if <condition pos:line="367" pos:column="12">(<expr><name pos:line="367" pos:column="13">fDumpPool</name></expr>)</condition><then pos:line="367" pos:column="23">
+        <block pos:line="368" pos:column="9">{
+            <expr_stmt><expr><name pos:line="369" pos:column="13">strMessage</name> <op:operator pos:line="369" pos:column="24">+=</op:operator> <lit:literal type="string" pos:line="369" pos:column="27">L"\n\nSee debugger Output window for string pool contents."</lit:literal></expr>;</expr_stmt>
+        }</block></then></if>
+
+        <expr_stmt><expr><call><name pos:line="372" pos:column="9">MessageBox</name> <argument_list pos:line="372" pos:column="20">(<argument><expr><name pos:line="372" pos:column="21">Main_hwndMainFrame</name></expr></argument>, <argument><expr><name pos:line="372" pos:column="41">strMessage</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="372" pos:column="53">L"String Pool Stats"</lit:literal></expr></argument>, <argument><expr><name pos:line="372" pos:column="75">MB_OK</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+    }</block></function>
+
+    <function><type><specifier pos:line="375" pos:column="5">static</specifier> <name pos:line="375" pos:column="12">void</name></type> <name pos:line="375" pos:column="17">DumpPool</name><parameter_list pos:line="375" pos:column="25">()</parameter_list>
+    <block pos:line="376" pos:column="5">{
+        <decl_stmt><decl><type><name pos:line="377" pos:column="9">StringType</name></type> <name pos:line="377" pos:column="20">strMessage</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><name pos:line="378" pos:column="9">StringType</name></type> <name pos:line="378" pos:column="20">strFormat</name> <init pos:line="378" pos:column="30">= <expr><lit:literal type="string" pos:line="378" pos:column="32">L"String pool (%d elements)\n"</lit:literal>
+                               <lit:literal type="string" pos:line="379" pos:column="32">L"Refs String\n"</lit:literal>
+                               <lit:literal type="string" pos:line="380" pos:column="32">L"---- ---------------------\n"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <expr_stmt><expr><call><name><name pos:line="382" pos:column="9">strMessage</name><op:operator pos:line="382" pos:column="19">.</op:operator><name pos:line="382" pos:column="20">Format</name></name> <argument_list pos:line="382" pos:column="27">(<argument><expr><name pos:line="382" pos:column="28">strFormat</name></expr></argument>, <argument><expr><call><name><name pos:line="382" pos:column="39">s_pool</name><op:operator pos:line="382" pos:column="45">.</op:operator><name pos:line="382" pos:column="46">size</name></name><argument_list pos:line="382" pos:column="50">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        <expr_stmt><expr><call><name pos:line="383" pos:column="9">OutputDebugString</name> <argument_list pos:line="383" pos:column="27">(<argument><expr><name pos:line="383" pos:column="28">strMessage</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+        <comment type="block" pos:line="385" pos:column="9">/*
+         * copy from a hash map to a normal map so strings will be sorted
+         * alphabetically instead of by hash value
+         */</comment>
+        <typedef pos:line="389" pos:column="9">typedef <type><name><name pos:line="389" pos:column="17">std</name><op:operator pos:line="389" pos:column="20">::</op:operator><name><name pos:line="389" pos:column="22">map</name><argument_list pos:line="389" pos:column="25">&lt;<argument><expr><name pos:line="389" pos:column="26">StringType</name></expr></argument>, <argument><expr><name pos:line="389" pos:column="38">size_t</name></expr></argument>&gt;</argument_list></name></name></type> <name pos:line="389" pos:column="46">SortedPoolType</name>;</typedef>
+        <decl_stmt><decl><type><name pos:line="390" pos:column="9">SortedPoolType</name></type> <name pos:line="390" pos:column="24">sortedPool</name></decl>;</decl_stmt>
+        <expr_stmt><expr><call><name><name pos:line="391" pos:column="9">std</name><op:operator pos:line="391" pos:column="12">::</op:operator><name pos:line="391" pos:column="14">copy</name></name> <argument_list pos:line="391" pos:column="19">(<argument><expr><call><name><name pos:line="391" pos:column="20">s_pool</name><op:operator pos:line="391" pos:column="26">.</op:operator><name pos:line="391" pos:column="27">begin</name></name><argument_list pos:line="391" pos:column="32">()</argument_list></call></expr></argument>, <argument><expr><call><name><name pos:line="391" pos:column="36">s_pool</name><op:operator pos:line="391" pos:column="42">.</op:operator><name pos:line="391" pos:column="43">end</name></name><argument_list pos:line="391" pos:column="46">()</argument_list></call></expr></argument>, <argument><expr><call><name><name pos:line="391" pos:column="50">std</name><op:operator pos:line="391" pos:column="53">::</op:operator><name pos:line="391" pos:column="55">inserter</name></name><argument_list pos:line="391" pos:column="63">(<argument><expr><name pos:line="391" pos:column="64">sortedPool</name></expr></argument>, <argument><expr><call><name><name pos:line="391" pos:column="76">sortedPool</name><op:operator pos:line="391" pos:column="86">.</op:operator><name pos:line="391" pos:column="87">end</name></name><argument_list pos:line="391" pos:column="90">()</argument_list></call></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+        <expr_stmt><expr><name pos:line="393" pos:column="9">strFormat</name> <op:operator pos:line="393" pos:column="19">=</op:operator> <lit:literal type="string" pos:line="393" pos:column="21">L"%4d %s\n"</lit:literal></expr>;</expr_stmt>
+
+        <decl_stmt><decl><type><name><name pos:line="395" pos:column="9">SortedPoolType</name><op:operator pos:line="395" pos:column="23">::</op:operator><name pos:line="395" pos:column="25">const_iterator</name></name></type> <name pos:line="395" pos:column="40">it</name></decl>;</decl_stmt>
+        <for pos:line="396" pos:column="9">for (<init><expr><name pos:line="396" pos:column="14">it</name> <op:operator pos:line="396" pos:column="17">=</op:operator> <call><name><name pos:line="396" pos:column="19">sortedPool</name><op:operator pos:line="396" pos:column="29">.</op:operator><name pos:line="396" pos:column="30">begin</name></name><argument_list pos:line="396" pos:column="35">()</argument_list></call></expr>;</init> <condition><expr><name pos:line="396" pos:column="39">it</name> <op:operator pos:line="396" pos:column="42">!=</op:operator> <call><name><name pos:line="396" pos:column="45">sortedPool</name><op:operator pos:line="396" pos:column="55">.</op:operator><name pos:line="396" pos:column="56">end</name></name><argument_list pos:line="396" pos:column="59">()</argument_list></call></expr>;</condition> <incr><expr><op:operator pos:line="396" pos:column="63">++</op:operator><name pos:line="396" pos:column="65">it</name></expr></incr>)
+        <block pos:line="397" pos:column="9">{
+            <decl_stmt><decl><type><specifier pos:line="398" pos:column="13">const</specifier> <name pos:line="398" pos:column="19">StringType</name><type:modifier pos:line="398" pos:column="29">&amp;</type:modifier></type> <name pos:line="398" pos:column="31">s</name>     <init pos:line="398" pos:column="37">= <expr><name><name pos:line="398" pos:column="39">it</name><op:operator pos:line="398" pos:column="41">-&gt;</op:operator><name pos:line="398" pos:column="43">first</name></name></expr></init></decl>;</decl_stmt>
+            <decl_stmt><decl><type><specifier pos:line="399" pos:column="13">const</specifier> <name pos:line="399" pos:column="19">size_t</name><type:modifier pos:line="399" pos:column="25">&amp;</type:modifier></type>     <name pos:line="399" pos:column="31">cRefs</name> <init pos:line="399" pos:column="37">= <expr><name><name pos:line="399" pos:column="39">it</name><op:operator pos:line="399" pos:column="41">-&gt;</op:operator><name pos:line="399" pos:column="43">second</name></name></expr></init></decl>;</decl_stmt>
+
+            <expr_stmt><expr><call><name><name pos:line="401" pos:column="13">strMessage</name><op:operator pos:line="401" pos:column="23">.</op:operator><name pos:line="401" pos:column="24">Format</name></name> <argument_list pos:line="401" pos:column="31">(<argument><expr><name pos:line="401" pos:column="32">strFormat</name></expr></argument>, <argument><expr><name pos:line="401" pos:column="43">cRefs</name></expr></argument>, <argument><expr><name pos:line="401" pos:column="50">s</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name pos:line="402" pos:column="13">OutputDebugString</name> <argument_list pos:line="402" pos:column="31">(<argument><expr><name pos:line="402" pos:column="32">strMessage</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></for>
+    }</block></function>
+<cpp:endif pos:line="405" pos:column="1">#<cpp:directive pos:line="405" pos:column="2">endif</cpp:directive></cpp:endif>
+
+    
+</public><private pos:line="408" pos:column="1">private:
+    <comment type="block" pos:line="409" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CPooledStringT::InitFrom
+     *
+     *
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="414" pos:column="5">void</name></type> <name pos:line="414" pos:column="10">InitFrom</name> <parameter_list pos:line="414" pos:column="19">(<param><decl><type><specifier pos:line="414" pos:column="20">const</specifier> <name pos:line="414" pos:column="26">StringType</name><type:modifier pos:line="414" pos:column="36">&amp;</type:modifier></type> <name pos:line="414" pos:column="38">s</name></decl></param>)</parameter_list>
+    <block pos:line="415" pos:column="5">{
+        <expr_stmt><expr><name pos:line="416" pos:column="9">m_s</name> <op:operator pos:line="416" pos:column="13">=</op:operator> <name pos:line="416" pos:column="15">s</name></expr>;</expr_stmt>
+        <expr_stmt><expr><call><name pos:line="417" pos:column="9">AddRef</name><argument_list pos:line="417" pos:column="15">()</argument_list></call></expr>;</expr_stmt>
+    }</block></function>
+
+    <function><type><name pos:line="420" pos:column="5">void</name></type> <name pos:line="420" pos:column="10">InitFrom</name> <parameter_list pos:line="420" pos:column="19">(<param><decl><type><typename pos:line="420" pos:column="20">typename</typename> <name><name pos:line="420" pos:column="29">PoolType</name><op:operator pos:line="420" pos:column="37">::</op:operator><name pos:line="420" pos:column="39">iterator</name></name></type> <name pos:line="420" pos:column="48">it</name></decl></param>)</parameter_list>
+    <block pos:line="421" pos:column="5">{
+        <expr_stmt><expr><name pos:line="422" pos:column="9">m_s</name> <op:operator pos:line="422" pos:column="13">=</op:operator> <name><name pos:line="422" pos:column="15">it</name><op:operator pos:line="422" pos:column="17">-&gt;</op:operator><name pos:line="422" pos:column="19">first</name></name></expr>;</expr_stmt>
+        <expr_stmt><expr><name><name pos:line="423" pos:column="9">it</name><op:operator pos:line="423" pos:column="11">-&gt;</op:operator><name pos:line="423" pos:column="13">second</name></name><op:operator pos:line="423" pos:column="19">++</op:operator></expr>;</expr_stmt>
+    }</block></function>
+
+
+    <comment type="block" pos:line="427" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CPooledStringT::CopyFrom
+     *
+     *
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="432" pos:column="5">void</name></type> <name pos:line="432" pos:column="10">CopyFrom</name> <parameter_list pos:line="432" pos:column="19">(<param><decl><type><specifier pos:line="432" pos:column="20">const</specifier> <name pos:line="432" pos:column="26">StringType</name><type:modifier pos:line="432" pos:column="36">&amp;</type:modifier></type> <name pos:line="432" pos:column="38">s</name></decl></param>)</parameter_list>
+    <block pos:line="433" pos:column="5">{
+        <if pos:line="434" pos:column="9">if <condition pos:line="434" pos:column="12">(<expr><name pos:line="434" pos:column="13">m_s</name> <op:operator pos:line="434" pos:column="17">!=</op:operator> <name pos:line="434" pos:column="20">s</name></expr>)</condition><then pos:line="434" pos:column="22">
+        <block pos:line="435" pos:column="9">{
+            <expr_stmt><expr><call><name pos:line="436" pos:column="13">Release</name><argument_list pos:line="436" pos:column="20">()</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name pos:line="437" pos:column="13">InitFrom</name> <argument_list pos:line="437" pos:column="22">(<argument><expr><name pos:line="437" pos:column="23">s</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></then></if>
+    }</block></function>
+
+
+    <comment type="block" pos:line="442" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CPooledStringT::AddRef
+     *
+     *
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="447" pos:column="5">void</name></type> <name pos:line="447" pos:column="10">AddRef</name><parameter_list pos:line="447" pos:column="16">()</parameter_list>
+    <block pos:line="448" pos:column="5">{
+        <expr_stmt><expr><name><name pos:line="449" pos:column="9">s_pool</name><index pos:line="449" pos:column="15">[<expr><name pos:line="449" pos:column="16">m_s</name></expr>]</index></name><op:operator pos:line="449" pos:column="20">++</op:operator></expr>;</expr_stmt>
+    }</block></function>
+
+
+    <comment type="block" pos:line="453" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CPooledStringT::Release
+     *
+     *
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="458" pos:column="5">void</name></type> <name pos:line="458" pos:column="10">Release</name><parameter_list pos:line="458" pos:column="17">()</parameter_list>
+    <block pos:line="459" pos:column="5">{
+        <decl_stmt><decl><type><name><name pos:line="460" pos:column="9">PoolType</name><op:operator pos:line="460" pos:column="17">::</op:operator><name pos:line="460" pos:column="19">iterator</name></name></type> <name pos:line="460" pos:column="28">it</name> <init pos:line="460" pos:column="31">= <expr><call><name><name pos:line="460" pos:column="33">s_pool</name><op:operator pos:line="460" pos:column="39">.</op:operator><name pos:line="460" pos:column="40">find</name></name> <argument_list pos:line="460" pos:column="45">(<argument><expr><name pos:line="460" pos:column="46">m_s</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+        <comment type="block" pos:line="462" pos:column="9">/*
+         * last ref on this pool string?  remove it from the pool
+         */</comment>
+        <if pos:line="465" pos:column="9">if <condition pos:line="465" pos:column="12">(<expr><name pos:line="465" pos:column="13">it</name> <op:operator pos:line="465" pos:column="16">!=</op:operator> <call><name><name pos:line="465" pos:column="19">s_pool</name><op:operator pos:line="465" pos:column="25">.</op:operator><name pos:line="465" pos:column="26">end</name></name><argument_list pos:line="465" pos:column="29">()</argument_list></call></expr>)</condition><then pos:line="465" pos:column="32">
+        <block pos:line="466" pos:column="9">{
+            <if pos:line="467" pos:column="13">if <condition pos:line="467" pos:column="16">(<expr><op:operator pos:line="467" pos:column="17">--</op:operator><name><name pos:line="467" pos:column="19">it</name><op:operator pos:line="467" pos:column="21">-&gt;</op:operator><name pos:line="467" pos:column="23">second</name></name> <op:operator pos:line="467" pos:column="30">==</op:operator> <lit:literal type="number" pos:line="467" pos:column="33">0</lit:literal></expr>)</condition><then pos:line="467" pos:column="35">
+            <block pos:line="468" pos:column="13">{
+                <expr_stmt><expr><call><name pos:line="469" pos:column="17">VSASSERT</name> <argument_list pos:line="469" pos:column="26">(<argument><expr><name pos:line="469" pos:column="27">it</name> <op:operator pos:line="469" pos:column="30">!=</op:operator> <name pos:line="469" pos:column="33">s_itEmptyString</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="469" pos:column="50">"shouldn't erase the empty string (see GetEmptyStringIterator)"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                <expr_stmt><expr><call><name><name pos:line="470" pos:column="17">s_pool</name><op:operator pos:line="470" pos:column="23">.</op:operator><name pos:line="470" pos:column="24">erase</name></name> <argument_list pos:line="470" pos:column="30">(<argument><expr><name pos:line="470" pos:column="31">it</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+        }</block></then>
+        <else pos:line="473" pos:column="9">else
+        <block pos:line="474" pos:column="9">{
+            <expr_stmt><expr><call><name pos:line="475" pos:column="13">VSFAIL</name> <argument_list pos:line="475" pos:column="20">(<argument><expr><lit:literal type="string" pos:line="475" pos:column="21">"string should be in the pool"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></else></if>
+
+        <expr_stmt><expr><call><name><name pos:line="478" pos:column="9">m_s</name><op:operator pos:line="478" pos:column="12">.</op:operator><name pos:line="478" pos:column="13">Empty</name></name><argument_list pos:line="478" pos:column="18">()</argument_list></call></expr>;</expr_stmt>
+    }</block></function>
+
+
+    <comment type="block" pos:line="482" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CPooledStringT::Lookup
+     *
+     * Finds the given string in the pool (adding if necessary) and returns an
+     * iterator to the string's entry in the pool.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><specifier pos:line="488" pos:column="5">static</specifier> <typename pos:line="488" pos:column="12">typename</typename> <name><name pos:line="488" pos:column="21">PoolType</name><op:operator pos:line="488" pos:column="29">::</op:operator><name pos:line="488" pos:column="31">iterator</name></name></type> <name pos:line="488" pos:column="40">Lookup</name> <parameter_list pos:line="488" pos:column="47">(<param><decl><type><specifier pos:line="488" pos:column="48">const</specifier> <name pos:line="488" pos:column="54">StringType</name><type:modifier pos:line="488" pos:column="64">&amp;</type:modifier></type> <name pos:line="488" pos:column="66">s</name></decl></param>)</parameter_list>
+    <block pos:line="489" pos:column="5">{
+        <comment type="block" pos:line="490" pos:column="9">/*
+         * optimze the common case of looking up an empty string
+         */</comment>
+        <if pos:line="493" pos:column="9">if <condition pos:line="493" pos:column="12">(<expr><call><name><name pos:line="493" pos:column="13">s</name><op:operator pos:line="493" pos:column="14">.</op:operator><name pos:line="493" pos:column="15">IsEmpty</name></name><argument_list pos:line="493" pos:column="22">()</argument_list></call></expr>)</condition><then pos:line="493" pos:column="25">
+            <return pos:line="494" pos:column="13">return <expr><op:operator pos:line="494" pos:column="20">(</op:operator><call><name pos:line="494" pos:column="21">GetEmptyStringIterator</name><argument_list pos:line="494" pos:column="43">()</argument_list></call><op:operator pos:line="494" pos:column="45">)</op:operator></expr>;</return></then></if>
+
+        <comment type="block" pos:line="496" pos:column="9">/*
+         * Insert the string.  If the string was already in the pool,
+         * pr.first will be an iterator to its existing entry; if it's 
+         * a new string, pr.first will be an iterator to the new entry
+         */</comment>
+        <decl_stmt><decl><type><name><name pos:line="501" pos:column="9">std</name><op:operator pos:line="501" pos:column="12">::</op:operator><name><name pos:line="501" pos:column="14">pair</name><argument_list pos:line="501" pos:column="18">&lt;<argument><expr><name><name pos:line="501" pos:column="19">PoolType</name><op:operator pos:line="501" pos:column="27">::</op:operator><name pos:line="501" pos:column="29">iterator</name></name></expr></argument>, <argument><expr><name pos:line="501" pos:column="39">bool</name></expr></argument>&gt;</argument_list></name></name></type> <name pos:line="501" pos:column="45">pr</name> <init pos:line="501" pos:column="48">= <expr><call><name><name pos:line="501" pos:column="50">s_pool</name><op:operator pos:line="501" pos:column="56">.</op:operator><name pos:line="501" pos:column="57">insert</name></name> <argument_list pos:line="501" pos:column="64">(<argument><expr><call><name><name pos:line="501" pos:column="65">std</name><op:operator pos:line="501" pos:column="68">::</op:operator><name pos:line="501" pos:column="70">make_pair</name></name><argument_list pos:line="501" pos:column="79">(<argument><expr><name pos:line="501" pos:column="80">s</name></expr></argument>,<argument><expr><lit:literal type="number" pos:line="501" pos:column="82">0</lit:literal></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+        <decl_stmt><decl><type><name><name pos:line="502" pos:column="9">PoolType</name><op:operator pos:line="502" pos:column="17">::</op:operator><name pos:line="502" pos:column="19">iterator</name></name></type> <name pos:line="502" pos:column="28">itEntry</name>   <init pos:line="502" pos:column="38">= <expr><name><name pos:line="502" pos:column="40">pr</name><op:operator pos:line="502" pos:column="42">.</op:operator><name pos:line="502" pos:column="43">first</name></name></expr></init></decl>;</decl_stmt>
+        <decl_stmt><decl><type><name pos:line="503" pos:column="9">bool</name></type>               <name pos:line="503" pos:column="28">fInserted</name> <init pos:line="503" pos:column="38">= <expr><name><name pos:line="503" pos:column="40">pr</name><op:operator pos:line="503" pos:column="42">.</op:operator><name pos:line="503" pos:column="43">second</name></name></expr></init></decl>;</decl_stmt>
+
+        <comment type="block" pos:line="505" pos:column="9">/*
+         * make sure that for a new item the refcount in zero and for
+         * an existing item the refcount is non-zero
+         */</comment>
+        <expr_stmt><expr><call><name pos:line="509" pos:column="9">VSASSERT</name> <argument_list pos:line="509" pos:column="18">(<argument><expr><op:operator pos:line="509" pos:column="19">(</op:operator> <name pos:line="509" pos:column="21">fInserted</name> <op:operator pos:line="509" pos:column="31">&amp;&amp;</op:operator> <op:operator pos:line="509" pos:column="34">(</op:operator><name><name pos:line="509" pos:column="35">itEntry</name><op:operator pos:line="509" pos:column="42">-&gt;</op:operator><name pos:line="509" pos:column="44">second</name></name> <op:operator pos:line="509" pos:column="51">==</op:operator> <lit:literal type="number" pos:line="509" pos:column="54">0</lit:literal><op:operator pos:line="509" pos:column="55">)</op:operator><op:operator pos:line="509" pos:column="56">)</op:operator> <op:operator pos:line="509" pos:column="58">||</op:operator>
+                  <op:operator pos:line="510" pos:column="19">(</op:operator><op:operator pos:line="510" pos:column="20">!</op:operator><name pos:line="510" pos:column="21">fInserted</name> <op:operator pos:line="510" pos:column="31">&amp;&amp;</op:operator> <op:operator pos:line="510" pos:column="34">(</op:operator><name><name pos:line="510" pos:column="35">itEntry</name><op:operator pos:line="510" pos:column="42">-&gt;</op:operator><name pos:line="510" pos:column="44">second</name></name> <op:operator pos:line="510" pos:column="51">&gt;</op:operator>  <lit:literal type="number" pos:line="510" pos:column="54">0</lit:literal><op:operator pos:line="510" pos:column="55">)</op:operator><op:operator pos:line="510" pos:column="56">)</op:operator></expr></argument>,
+                  <argument><expr><lit:literal type="string" pos:line="511" pos:column="19">"Unexpected refcount for string pool entry"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+        <return pos:line="513" pos:column="9">return <expr><op:operator pos:line="513" pos:column="16">(</op:operator><name pos:line="513" pos:column="17">itEntry</name><op:operator pos:line="513" pos:column="24">)</op:operator></expr>;</return>
+    }</block></function>
+
+
+    <comment type="block" pos:line="517" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CPooledStringT::GetEmptyStringIterator
+     *
+     * Returns an iterator to the entry in the pool for the empty string, inserting
+     * an empty string if necessary.  Profiling indicated that we spent a lot of
+     * time in Lookup searching for empty strings.  We can avoid this by caching
+     * the iterator for the common empty string.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><specifier pos:line="525" pos:column="5">static</specifier> <typename pos:line="525" pos:column="12">typename</typename> <name><name pos:line="525" pos:column="21">PoolType</name><op:operator pos:line="525" pos:column="29">::</op:operator><name pos:line="525" pos:column="31">iterator</name></name></type> <name pos:line="525" pos:column="40">GetEmptyStringIterator</name><parameter_list pos:line="525" pos:column="62">()</parameter_list>
+    <block pos:line="526" pos:column="5">{
+        <comment type="block" pos:line="527" pos:column="9">/*
+         * if we haven't yet inserted an empty string in the pool yet,
+         * do so now with a refcount of 1, so it will never be erased
+         */</comment>
+        <if pos:line="531" pos:column="9">if <condition pos:line="531" pos:column="12">(<expr><name pos:line="531" pos:column="13">s_itEmptyString</name> <op:operator pos:line="531" pos:column="29">==</op:operator> <call><name><name pos:line="531" pos:column="32">s_pool</name><op:operator pos:line="531" pos:column="38">.</op:operator><name pos:line="531" pos:column="39">end</name></name><argument_list pos:line="531" pos:column="42">()</argument_list></call></expr>)</condition><then pos:line="531" pos:column="45">
+            <expr_stmt><expr><name pos:line="532" pos:column="13">s_itEmptyString</name> <op:operator pos:line="532" pos:column="29">=</op:operator> <call><name><name pos:line="532" pos:column="31">s_pool</name><op:operator pos:line="532" pos:column="37">.</op:operator><name pos:line="532" pos:column="38">insert</name></name><argument_list pos:line="532" pos:column="44">(<argument><expr><call><name><name pos:line="532" pos:column="45">std</name><op:operator pos:line="532" pos:column="48">::</op:operator><name pos:line="532" pos:column="50">make_pair</name></name><argument_list pos:line="532" pos:column="59">(<argument><expr><call><name pos:line="532" pos:column="60">StringType</name><argument_list pos:line="532" pos:column="70">()</argument_list></call></expr></argument>,<argument><expr><lit:literal type="number" pos:line="532" pos:column="73">1</lit:literal></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call><op:operator pos:line="532" pos:column="76">.</op:operator><name pos:line="532" pos:column="77">first</name></expr>;</expr_stmt></then></if>
+
+        <return pos:line="534" pos:column="9">return <expr><op:operator pos:line="534" pos:column="16">(</op:operator><name pos:line="534" pos:column="17">s_itEmptyString</name><op:operator pos:line="534" pos:column="32">)</op:operator></expr>;</return>
+    }</block></function>
+
+
+</private><private pos:line="538" pos:column="1">private:
+    <decl_stmt><decl><type><name pos:line="539" pos:column="5">StringType</name></type>  <name pos:line="539" pos:column="17">m_s</name></decl>;</decl_stmt>
+
+    <decl_stmt><decl><type><specifier pos:line="541" pos:column="5">static</specifier> <typename pos:line="541" pos:column="12">typename</typename> <name pos:line="541" pos:column="21">PoolType</name></type>             <name pos:line="541" pos:column="42">s_pool</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><specifier pos:line="542" pos:column="5">static</specifier> <typename pos:line="542" pos:column="12">typename</typename> <name><name pos:line="542" pos:column="21">PoolType</name><op:operator pos:line="542" pos:column="29">::</op:operator><name pos:line="542" pos:column="31">iterator</name></name></type>   <name pos:line="542" pos:column="42">s_itEmptyString</name></decl>;</decl_stmt>
+
+
+    <comment type="block" pos:line="545" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CPooledStringT::CCachedInitString
+     *
+     * This class serves as a cached location for initializing CPooledStringTs.
+     * CPooledStringT's PCXSTR constructor must create a temporary StringType to
+     * use as a key for use in Lookup.  Profiling indicated that the PCXSTR
+     * constructor was called very frequently, so the alloc/copy/free overhead
+     * for the temporary StringType was significant.
+     * 
+     * By using this cache we can remove the most expensive portion of that
+     * overhead, namely the alloc/free.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <class pos:line="557" pos:column="5">class <name pos:line="557" pos:column="11">CCachedInitString</name>
+    <block pos:line="558" pos:column="5">{<private type="default" pos:line="558" pos:column="6">
+    </private><public pos:line="559" pos:column="5">public:
+        <constructor><name pos:line="560" pos:column="9">CCachedInitString</name> <parameter_list pos:line="560" pos:column="27">(<param><decl><type><name pos:line="560" pos:column="28">PCXSTR</name></type> <name pos:line="560" pos:column="35">psz</name></decl></param>)</parameter_list> 
+        <block pos:line="561" pos:column="9">{
+            <expr_stmt><expr><name pos:line="562" pos:column="13">s_cache</name> <op:operator pos:line="562" pos:column="21">=</op:operator> <name pos:line="562" pos:column="23">psz</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <destructor><name pos:line="565" pos:column="9">~<name pos:line="565" pos:column="10">CCachedInitString</name></name><parameter_list pos:line="565" pos:column="27">()</parameter_list>
+        <block pos:line="566" pos:column="9">{
+            <comment type="block" pos:line="567" pos:column="13">/*
+             * if our cached string has grown larger that we want to keep
+             * around long-term, empty it out
+             */</comment>
+            <if pos:line="571" pos:column="13">if <condition pos:line="571" pos:column="16">(<expr><call><name><name pos:line="571" pos:column="17">s_cache</name><op:operator pos:line="571" pos:column="24">.</op:operator><name pos:line="571" pos:column="25">GetLength</name></name><argument_list pos:line="571" pos:column="34">()</argument_list></call> <op:operator pos:line="571" pos:column="37">&gt;</op:operator> <name pos:line="571" pos:column="39">cchMaxCacheThreshold</name></expr>)</condition><then pos:line="571" pos:column="60">
+            <block pos:line="572" pos:column="13">{
+                <expr_stmt><expr><call><name><name pos:line="573" pos:column="17">s_cache</name><op:operator pos:line="573" pos:column="24">.</op:operator><name pos:line="573" pos:column="25">Empty</name></name><argument_list pos:line="573" pos:column="30">()</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+        }</block></destructor>
+
+        <function><name pos:line="577" pos:column="9">operator const StringType&amp;</name><parameter_list pos:line="577" pos:column="35">()</parameter_list> <specifier pos:line="577" pos:column="38">const</specifier>
+        <block pos:line="578" pos:column="9">{
+            <return pos:line="579" pos:column="13">return <expr><op:operator pos:line="579" pos:column="20">(</op:operator><name pos:line="579" pos:column="21">s_cache</name><op:operator pos:line="579" pos:column="28">)</op:operator></expr>;</return>
+        }</block></function>
+
+    </public><private pos:line="582" pos:column="5">private:
+        <decl_stmt><decl><type><specifier pos:line="583" pos:column="9">static</specifier> <specifier pos:line="583" pos:column="16">const</specifier> <name pos:line="583" pos:column="22">size_t</name></type> <name pos:line="583" pos:column="29">cchMaxCacheThreshold</name> <init pos:line="583" pos:column="50">= <expr><lit:literal type="number" pos:line="583" pos:column="52">64</lit:literal></expr></init></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="584" pos:column="9">static</specifier> <name pos:line="584" pos:column="16">StringType</name></type> <name pos:line="584" pos:column="27">s_cache</name></decl>;</decl_stmt>
+    </private>}</block>;</class>
+</private>}</block>;</class></template>
+
+
+<typedef pos:line="589" pos:column="1">typedef <type><name><name pos:line="589" pos:column="9">CPooledStringT</name><argument_list pos:line="589" pos:column="23">&lt;<argument><expr><name pos:line="589" pos:column="24">CStringW</name></expr></argument>&gt;</argument_list></name></type> <name pos:line="589" pos:column="34">CPooledStringW</name>;</typedef>
+<typedef pos:line="590" pos:column="1">typedef <type><name><name pos:line="590" pos:column="9">CPooledStringT</name><argument_list pos:line="590" pos:column="23">&lt;<argument><expr><name pos:line="590" pos:column="24">CStringA</name></expr></argument>&gt;</argument_list></name></type> <name pos:line="590" pos:column="34">CPooledStringA</name>;</typedef>
+<typedef pos:line="591" pos:column="1">typedef <type><name><name pos:line="591" pos:column="9">CPooledStringT</name><argument_list pos:line="591" pos:column="23">&lt;<argument><expr><name pos:line="591" pos:column="24">CString</name></expr></argument>&gt;</argument_list></name></type>  <name pos:line="591" pos:column="34">CPooledString</name>;</typedef>
+
+<cpp:ifdef pos:line="593" pos:column="1">#<cpp:directive pos:line="593" pos:column="2">ifdef</cpp:directive> <name pos:line="593" pos:column="8">_MANAGED</name></cpp:ifdef>
+<cpp:define pos:line="594" pos:column="1">#<cpp:directive pos:line="594" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="594" pos:column="9">POOLEDSTRINGDECL</name></cpp:macro> <cpp:value pos:line="594" pos:column="26">__declspec(selectany) __declspec(process)</cpp:value></cpp:define>
+<cpp:else pos:line="595" pos:column="1">#<cpp:directive pos:line="595" pos:column="2">else</cpp:directive></cpp:else>
+<cpp:define pos:line="596" pos:column="1">#<cpp:directive pos:line="596" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="596" pos:column="9">POOLEDSTRINGDECL</name></cpp:macro> <cpp:value pos:line="596" pos:column="26">__declspec(selectany)</cpp:value></cpp:define>
+<cpp:endif pos:line="597" pos:column="1">#<cpp:directive pos:line="597" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:define pos:line="599" pos:column="1">#<cpp:directive pos:line="599" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="599" pos:column="9">DECLARE_POOLEDSTRING_STATICS</name><parameter_list pos:line="599" pos:column="37">(<param><type><name pos:line="599" pos:column="38">PooledStringType</name></type></param>)</parameter_list></cpp:macro>  \
+    <cpp:value pos:line="600" pos:column="5">POOLEDSTRINGDECL PooledStringType::PoolType             PooledStringType::s_pool; \
+    POOLEDSTRINGDECL PooledStringType::PoolType::iterator   PooledStringType::s_itEmptyString = PooledStringType::s_pool.end(); \
+    POOLEDSTRINGDECL PooledStringType::StringType           PooledStringType::CCachedInitString::s_cache;</cpp:value></cpp:define>
+
+<expr_stmt><expr><call><name pos:line="604" pos:column="1">DECLARE_POOLEDSTRING_STATICS</name> <argument_list pos:line="604" pos:column="30">(<argument><expr><name pos:line="604" pos:column="31">CPooledStringW</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+<expr_stmt><expr><call><name pos:line="605" pos:column="1">DECLARE_POOLEDSTRING_STATICS</name> <argument_list pos:line="605" pos:column="30">(<argument><expr><name pos:line="605" pos:column="31">CPooledStringA</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+<macro><name pos:line="607" pos:column="1">_STDEXT_BEGIN</name></macro>
+
+<comment type="block" pos:line="609" pos:column="1">/*
+ * define overloads of stdext::hash_value(CPooledString) so CPooledStrings can be 
+ * key values in hashed collections (stdext::hash_map, stdext::hash_set, etc.)
+ */</comment>
+<template pos:line="613" pos:column="1">template<parameter_list pos:line="613" pos:column="9">&lt;<param><type><name pos:line="613" pos:column="10">class</name></type> <name pos:line="613" pos:column="16">StringType</name></param>&gt;</parameter_list>
+<function><type><specifier pos:line="614" pos:column="1">inline</specifier> <name pos:line="614" pos:column="8">size_t</name></type> <name pos:line="614" pos:column="15">hash_value</name><parameter_list pos:line="614" pos:column="25">(<param><decl><type><specifier pos:line="614" pos:column="26">const</specifier> <name><name pos:line="614" pos:column="32">CPooledStringT</name><argument_list pos:line="614" pos:column="46">&lt;<argument><expr><name pos:line="614" pos:column="47">StringType</name></expr></argument>&gt;</argument_list></name><type:modifier pos:line="614" pos:column="58">&amp;</type:modifier></type> <name pos:line="614" pos:column="60">s</name></decl></param>)</parameter_list>
+<block pos:line="615" pos:column="1">{   
+    <return pos:line="616" pos:column="5">return <expr><op:operator pos:line="616" pos:column="12">(</op:operator><call><name pos:line="616" pos:column="13">hash_value</name> <argument_list pos:line="616" pos:column="24">(<argument><expr><call><name><name pos:line="616" pos:column="25">s</name><op:operator pos:line="616" pos:column="26">.</op:operator><name pos:line="616" pos:column="27">GetStringObject</name></name><argument_list pos:line="616" pos:column="42">()</argument_list></call></expr></argument>)</argument_list></call><op:operator pos:line="616" pos:column="45">)</op:operator></expr>;</return>
+}</block></function></template>
+
+<macro><name pos:line="619" pos:column="1">_STDEXT_END</name></macro>
+</unit>

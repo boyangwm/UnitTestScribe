@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Message\TimelineCategoryItem.cs" pos:tabs="8"><namespace pos:line="1" pos:column="1">namespace <name><name pos:line="1" pos:column="11">Glimpse</name><op:operator pos:line="1" pos:column="18">.</op:operator><name pos:line="1" pos:column="19">Core</name><op:operator pos:line="1" pos:column="23">.</op:operator><name pos:line="1" pos:column="24">Message</name></name>
+<block pos:line="2" pos:column="1">{
+    <comment type="line" pos:line="3" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="4" pos:column="5">/// Definition for a timeline category.</comment>
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="6" pos:column="5">public</specifier> class <name pos:line="6" pos:column="18">TimelineCategoryItem</name>
+    <block pos:line="7" pos:column="5">{
+        <comment type="line" pos:line="8" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="9" pos:column="9">/// Constructs the timeline category item.</comment>
+        <comment type="line" pos:line="10" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="11" pos:column="9">/// &lt;param name="name"&gt;Name that will be displayed in the UI.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="12" pos:column="9">/// &lt;param name="color"&gt;The main bar color.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;param name="colorHighlight"&gt;The main bar border color.&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="14" pos:column="9">public</specifier> <name pos:line="14" pos:column="16">TimelineCategoryItem</name><parameter_list pos:line="14" pos:column="36">(<param><decl><type><name pos:line="14" pos:column="37">string</name></type> <name pos:line="14" pos:column="44">name</name></decl></param>, <param><decl><type><name pos:line="14" pos:column="50">string</name></type> <name pos:line="14" pos:column="57">color</name></decl></param>, <param><decl><type><name pos:line="14" pos:column="64">string</name></type> <name pos:line="14" pos:column="71">colorHighlight</name></decl></param>)</parameter_list>
+        <block pos:line="15" pos:column="9">{
+            <expr_stmt><expr><name pos:line="16" pos:column="13">Name</name> <op:operator pos:line="16" pos:column="18">=</op:operator> <name pos:line="16" pos:column="20">name</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="17" pos:column="13">Color</name> <op:operator pos:line="17" pos:column="19">=</op:operator> <name pos:line="17" pos:column="21">color</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="18" pos:column="13">ColorHighlight</name> <op:operator pos:line="18" pos:column="28">=</op:operator> <name pos:line="18" pos:column="30">colorHighlight</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="21" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="22" pos:column="9">/// Gets or sets the name that will be displayed in the UI.</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;value&gt;The name.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="25" pos:column="9">public</specifier> <name pos:line="25" pos:column="16">string</name></type> <name pos:line="25" pos:column="23">Name</name> <block pos:line="25" pos:column="28">{ <function_decl><name pos:line="25" pos:column="30">get</name>;</function_decl> <function_decl><name pos:line="25" pos:column="35">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// Gets or sets the main bar color.</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;value&gt;The color.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="31" pos:column="9">public</specifier> <name pos:line="31" pos:column="16">string</name></type> <name pos:line="31" pos:column="23">Color</name> <block pos:line="31" pos:column="29">{ <function_decl><name pos:line="31" pos:column="31">get</name>;</function_decl> <function_decl><name pos:line="31" pos:column="36">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="33" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// Gets or sets the main bar border color.</comment>
+        <comment type="line" pos:line="35" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// &lt;value&gt;The color highlight.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="37" pos:column="9">public</specifier> <name pos:line="37" pos:column="16">string</name></type> <name pos:line="37" pos:column="23">ColorHighlight</name> <block pos:line="37" pos:column="38">{ <function_decl><name pos:line="37" pos:column="40">get</name>;</function_decl> <function_decl><name pos:line="37" pos:column="45">set</name>;</function_decl> }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace>
+</unit>

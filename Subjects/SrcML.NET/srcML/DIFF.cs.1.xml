@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML\Namespaces\DIFF.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2010 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Text</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">System</name><op:operator pos:line="16" pos:column="13">.</op:operator><name pos:line="16" pos:column="14">Xml</name><op:operator pos:line="16" pos:column="17">.</op:operator><name pos:line="16" pos:column="18">Linq</name></name>;</using>
+
+<namespace pos:line="18" pos:column="1">namespace <name><name pos:line="18" pos:column="11">ABB</name><op:operator pos:line="18" pos:column="14">.</op:operator><name pos:line="18" pos:column="15">SrcML</name></name>
+<block pos:line="19" pos:column="1">{
+    <comment type="line" pos:line="20" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="21" pos:column="5">/// The DIFF class contains all of the XNames for SrcML Diff namespace.</comment>
+    <comment type="line" pos:line="22" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><attribute pos:line="23" pos:column="5">[<expr><call><name><name pos:line="23" pos:column="6">System</name><op:operator pos:line="23" pos:column="12">.</op:operator><name pos:line="23" pos:column="13">Diagnostics</name><op:operator pos:line="23" pos:column="24">.</op:operator><name pos:line="23" pos:column="25">CodeAnalysis</name><op:operator pos:line="23" pos:column="37">.</op:operator><name pos:line="23" pos:column="38">SuppressMessage</name></name><argument_list pos:line="23" pos:column="53">(<argument><expr><lit:literal type="string" pos:line="23" pos:column="54">"Microsoft.Naming"</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="23" pos:column="74">"CA1709:IdentifiersShouldBeCasedCorrectly"</lit:literal></expr></argument>, <argument><expr><name pos:line="23" pos:column="118">MessageId</name> <op:operator pos:line="23" pos:column="128">=</op:operator> <lit:literal type="string" pos:line="23" pos:column="130">"DIFF"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+    <specifier pos:line="24" pos:column="5">public</specifier> <specifier pos:line="24" pos:column="12">static</specifier> class <name pos:line="24" pos:column="25">DIFF</name>
+    <block pos:line="25" pos:column="5">{
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// XNamespace for the SrcML SRC XML namespace</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="29" pos:column="9">public</specifier> <specifier pos:line="29" pos:column="16">static</specifier> <specifier pos:line="29" pos:column="23">readonly</specifier> <name pos:line="29" pos:column="32">XNamespace</name></type> <name pos:line="29" pos:column="43">NS</name> <init pos:line="29" pos:column="46">= <expr><lit:literal type="string" pos:line="29" pos:column="48">"http://www.sdml.info/srcDiff"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="31" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="32" pos:column="9">/// XMLNS prefix for the SrcML SRC namespace</comment>
+        <comment type="line" pos:line="33" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="34" pos:column="9">public</specifier> <specifier pos:line="34" pos:column="16">const</specifier> <name pos:line="34" pos:column="22">string</name></type> <name pos:line="34" pos:column="29">Prefix</name> <init pos:line="34" pos:column="36">= <expr><lit:literal type="string" pos:line="34" pos:column="38">"diff"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="36" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// Markup for the diff:insert tag</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="39" pos:column="9">public</specifier> <specifier pos:line="39" pos:column="16">static</specifier> <specifier pos:line="39" pos:column="23">readonly</specifier> <name pos:line="39" pos:column="32">XName</name></type> <name pos:line="39" pos:column="38">Insert</name> <init pos:line="39" pos:column="45">= <expr><name pos:line="39" pos:column="47">NS</name> <op:operator pos:line="39" pos:column="50">+</op:operator> <lit:literal type="string" pos:line="39" pos:column="52">"insert"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="41" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// Markup for the diff:delete tag</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="44" pos:column="9">public</specifier> <specifier pos:line="44" pos:column="16">static</specifier> <specifier pos:line="44" pos:column="23">readonly</specifier> <name pos:line="44" pos:column="32">XName</name></type> <name pos:line="44" pos:column="38">Delete</name> <init pos:line="44" pos:column="45">= <expr><name pos:line="44" pos:column="47">NS</name> <op:operator pos:line="44" pos:column="50">+</op:operator> <lit:literal type="string" pos:line="44" pos:column="52">"delete"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="46" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// Markup for the diff:common tag</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="49" pos:column="9">public</specifier> <specifier pos:line="49" pos:column="16">static</specifier> <specifier pos:line="49" pos:column="23">readonly</specifier> <name pos:line="49" pos:column="32">XName</name></type> <name pos:line="49" pos:column="38">Common</name> <init pos:line="49" pos:column="45">= <expr><name pos:line="49" pos:column="47">NS</name> <op:operator pos:line="49" pos:column="50">+</op:operator> <lit:literal type="string" pos:line="49" pos:column="52">"common"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="51" pos:column="9">// type attribute constants</comment>
+        <comment type="line" pos:line="52" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="53" pos:column="9">/// XName for the "type" attribute. The value of this attribute can be either TypeWhitespace or TypeChange</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="55" pos:column="9">public</specifier> <specifier pos:line="55" pos:column="16">static</specifier> <specifier pos:line="55" pos:column="23">readonly</specifier> <name pos:line="55" pos:column="32">XName</name></type> <name pos:line="55" pos:column="38">TypeAttribute</name> <init pos:line="55" pos:column="52">= <expr><lit:literal type="string" pos:line="55" pos:column="54">"type"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="57" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="58" pos:column="9">/// The "whitespace" value for &lt;see cref="TypeAttribute"/&gt;</comment>
+        <comment type="line" pos:line="59" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><attribute pos:line="60" pos:column="9">[<expr><call><name><name pos:line="60" pos:column="10">System</name><op:operator pos:line="60" pos:column="16">.</op:operator><name pos:line="60" pos:column="17">Diagnostics</name><op:operator pos:line="60" pos:column="28">.</op:operator><name pos:line="60" pos:column="29">CodeAnalysis</name><op:operator pos:line="60" pos:column="41">.</op:operator><name pos:line="60" pos:column="42">SuppressMessage</name></name><argument_list pos:line="60" pos:column="57">(<argument><expr><lit:literal type="string" pos:line="60" pos:column="58">"Microsoft.Naming"</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="60" pos:column="78">"CA1702:CompoundWordsShouldBeCasedCorrectly"</lit:literal></expr></argument>, <argument><expr><name pos:line="60" pos:column="124">MessageId</name> <op:operator pos:line="60" pos:column="134">=</op:operator> <lit:literal type="string" pos:line="60" pos:column="136">"Whitespace"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+        <specifier pos:line="61" pos:column="9">public</specifier> <specifier pos:line="61" pos:column="16">const</specifier> <name pos:line="61" pos:column="22">string</name></type> <name pos:line="61" pos:column="29">TypeWhitespace</name> <init pos:line="61" pos:column="44">= <expr><lit:literal type="string" pos:line="61" pos:column="46">"whitespace"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="63" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="64" pos:column="9">/// /// The "change" value for &lt;see cref="TypeAttribute"/&gt;</comment>
+        <comment type="line" pos:line="65" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="66" pos:column="9">public</specifier> <specifier pos:line="66" pos:column="16">const</specifier> <name pos:line="66" pos:column="22">string</name></type> <name pos:line="66" pos:column="29">TypeChange</name> <init pos:line="66" pos:column="40">= <expr><lit:literal type="string" pos:line="66" pos:column="42">"change"</lit:literal></expr></init></decl>;</decl_stmt>
+    }</block></class>
+}</block></namespace>
+</unit>

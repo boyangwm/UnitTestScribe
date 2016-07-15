@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\IVsTrackProjectRetargeting.h" pos:tabs="8" pos:line="1" pos:column="1">
+
+<comment type="block" pos:line="3" pos:column="1">/* this ALWAYS GENERATED file contains the definitions for the interfaces */</comment>
+
+
+ <comment type="block" pos:line="6" pos:column="2">/* File created by MIDL compiler version 7.00.0499 */</comment>
+<comment type="block" pos:line="7" pos:column="1">/* Compiler settings for IVsTrackProjectRetargeting.idl:
+    Oicf, W0, Zp8, env=Win32 (32b run)
+    protocol : dce , ms_ext, c_ext, robust
+    error checks: allocation ref bounds_check enum stub_data 
+    VC __declspec() decoration level: 
+         __declspec(uuid()), __declspec(selectany), __declspec(novtable)
+         DECLSPEC_UUID(), MIDL_INTERFACE()
+*/</comment>
+<comment type="line" pos:line="15" pos:column="1">//@@MIDL_FILE_HEADING(  )</comment>
+
+<cpp:pragma pos:line="17" pos:column="1">#<cpp:directive pos:line="17" pos:column="2">pragma</cpp:directive> warning( disable: 4049 )</cpp:pragma>  <comment type="block" pos:line="17" pos:column="35">/* more than 64k source lines */</comment>
+
+
+<comment type="block" pos:line="20" pos:column="1">/* verify that the &lt;rpcndr.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="21" pos:column="1">#<cpp:directive pos:line="21" pos:column="2">ifndef</cpp:directive> <name pos:line="21" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="22" pos:column="1">#<cpp:directive pos:line="22" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="22" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:macro> <cpp:value pos:line="22" pos:column="39">475</cpp:value></cpp:define>
+<cpp:endif pos:line="23" pos:column="1">#<cpp:directive pos:line="23" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="25" pos:column="1">/* verify that the &lt;rpcsal.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="26" pos:column="1">#<cpp:directive pos:line="26" pos:column="2">ifndef</cpp:directive> <name pos:line="26" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="27" pos:column="1">#<cpp:directive pos:line="27" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="27" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:macro> <cpp:value pos:line="27" pos:column="39">100</cpp:value></cpp:define>
+<cpp:endif pos:line="28" pos:column="1">#<cpp:directive pos:line="28" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:include pos:line="30" pos:column="1">#<cpp:directive pos:line="30" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="30" pos:column="10">"rpc.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="31" pos:column="1">#<cpp:directive pos:line="31" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="31" pos:column="10">"rpcndr.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifndef pos:line="33" pos:column="1">#<cpp:directive pos:line="33" pos:column="2">ifndef</cpp:directive> <name pos:line="33" pos:column="9">__RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:error pos:line="34" pos:column="1">#<cpp:directive pos:line="34" pos:column="2">error</cpp:directive> this stub requires an updated version of &lt;rpcndr.h&gt;</cpp:error>
+<cpp:endif pos:line="35" pos:column="1">#<cpp:directive pos:line="35" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="35" pos:column="8">// __RPCNDR_H_VERSION__</comment>
+
+<cpp:ifndef pos:line="37" pos:column="1">#<cpp:directive pos:line="37" pos:column="2">ifndef</cpp:directive> <name pos:line="37" pos:column="9">COM_NO_WINDOWS_H</name></cpp:ifndef>
+<cpp:include pos:line="38" pos:column="1">#<cpp:directive pos:line="38" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="38" pos:column="10">"windows.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="39" pos:column="1">#<cpp:directive pos:line="39" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="39" pos:column="10">"ole2.h"</lit:literal></cpp:file></cpp:include>
+<cpp:endif pos:line="40" pos:column="1">#<cpp:directive pos:line="40" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="40" pos:column="8">/*COM_NO_WINDOWS_H*/</comment>
+
+<cpp:ifndef pos:line="42" pos:column="1">#<cpp:directive pos:line="42" pos:column="2">ifndef</cpp:directive> <name pos:line="42" pos:column="9">__IVsTrackProjectRetargeting_h__</name></cpp:ifndef>
+<cpp:define pos:line="43" pos:column="1">#<cpp:directive pos:line="43" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="43" pos:column="9">__IVsTrackProjectRetargeting_h__</name></cpp:macro></cpp:define>
+
+<cpp:if pos:line="45" pos:column="1">#<cpp:directive pos:line="45" pos:column="2">if</cpp:directive> <expr><call><name pos:line="45" pos:column="5">defined</name><argument_list pos:line="45" pos:column="12">(<argument><expr><name pos:line="45" pos:column="13">_MSC_VER</name></expr></argument>)</argument_list></call> <op:operator pos:line="45" pos:column="23">&amp;&amp;</op:operator> <op:operator pos:line="45" pos:column="26">(</op:operator><name pos:line="45" pos:column="27">_MSC_VER</name> <op:operator pos:line="45" pos:column="36">&gt;=</op:operator> <lit:literal type="number" pos:line="45" pos:column="39">1020</lit:literal><op:operator pos:line="45" pos:column="43">)</op:operator></expr></cpp:if>
+<cpp:pragma pos:line="46" pos:column="1">#<cpp:directive pos:line="46" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+<cpp:endif pos:line="47" pos:column="1">#<cpp:directive pos:line="47" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="49" pos:column="1">/* Forward Declarations */</comment> 
+
+<cpp:ifndef pos:line="51" pos:column="1">#<cpp:directive pos:line="51" pos:column="2">ifndef</cpp:directive> <name pos:line="51" pos:column="9">__IVsSetTargetFrameworkWorkerCallback_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="52" pos:column="1">#<cpp:directive pos:line="52" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="52" pos:column="9">__IVsSetTargetFrameworkWorkerCallback_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="53" pos:column="1">typedef <type><name pos:line="53" pos:column="9">interface</name> <name pos:line="53" pos:column="19">IVsSetTargetFrameworkWorkerCallback</name></type> <name pos:line="53" pos:column="55">IVsSetTargetFrameworkWorkerCallback</name>;</typedef>
+<cpp:endif pos:line="54" pos:column="1">#<cpp:directive pos:line="54" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="54" pos:column="9">/* __IVsSetTargetFrameworkWorkerCallback_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="57" pos:column="1">#<cpp:directive pos:line="57" pos:column="2">ifndef</cpp:directive> <name pos:line="57" pos:column="9">__IVsTrackProjectRetargeting_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="58" pos:column="1">#<cpp:directive pos:line="58" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="58" pos:column="9">__IVsTrackProjectRetargeting_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="59" pos:column="1">typedef <type><name pos:line="59" pos:column="9">interface</name> <name pos:line="59" pos:column="19">IVsTrackProjectRetargeting</name></type> <name pos:line="59" pos:column="46">IVsTrackProjectRetargeting</name>;</typedef>
+<cpp:endif pos:line="60" pos:column="1">#<cpp:directive pos:line="60" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="60" pos:column="9">/* __IVsTrackProjectRetargeting_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="63" pos:column="1">#<cpp:directive pos:line="63" pos:column="2">ifndef</cpp:directive> <name pos:line="63" pos:column="9">__SVsTrackProjectRetargeting_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="64" pos:column="1">#<cpp:directive pos:line="64" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="64" pos:column="9">__SVsTrackProjectRetargeting_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="65" pos:column="1">typedef <type><name pos:line="65" pos:column="9">interface</name> <name pos:line="65" pos:column="19">SVsTrackProjectRetargeting</name></type> <name pos:line="65" pos:column="46">SVsTrackProjectRetargeting</name>;</typedef>
+<cpp:endif pos:line="66" pos:column="1">#<cpp:directive pos:line="66" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="66" pos:column="9">/* __SVsTrackProjectRetargeting_FWD_DEFINED__ */</comment>
+
+
+<comment type="block" pos:line="69" pos:column="1">/* header files for imported files */</comment>
+<cpp:include pos:line="70" pos:column="1">#<cpp:directive pos:line="70" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="70" pos:column="10">"oaidl.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="71" pos:column="1">#<cpp:directive pos:line="71" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="71" pos:column="10">"IVsTrackProjectRetargetingEvents.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifdef pos:line="73" pos:column="1">#<cpp:directive pos:line="73" pos:column="2">ifdef</cpp:directive> <name pos:line="73" pos:column="8">__cplusplus</name></cpp:ifdef>
+<extern pos:line="74" pos:column="1">extern <lit:literal type="string" pos:line="74" pos:column="8">"C"</lit:literal><block pos:line="74" pos:column="11">{
+<cpp:endif pos:line="75" pos:column="1">#<cpp:directive pos:line="75" pos:column="2">endif</cpp:directive></cpp:endif> 
+
+
+<comment type="block" pos:line="78" pos:column="1">/* interface __MIDL_itf_IVsTrackProjectRetargeting_0000_0000 */</comment>
+<comment type="block" pos:line="79" pos:column="1">/* [local] */</comment> 
+
+<cpp:pragma pos:line="81" pos:column="1">#<cpp:directive pos:line="81" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+
+
+<decl_stmt><decl><type><specifier pos:line="84" pos:column="1">extern</specifier> <name pos:line="84" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="84" pos:column="22">__MIDL_itf_IVsTrackProjectRetargeting_0000_0000_v0_0_c_ifspec</name></decl>;</decl_stmt>
+<decl_stmt><decl><type><specifier pos:line="85" pos:column="1">extern</specifier> <name pos:line="85" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="85" pos:column="22">__MIDL_itf_IVsTrackProjectRetargeting_0000_0000_v0_0_s_ifspec</name></decl>;</decl_stmt>
+
+<cpp:ifndef pos:line="87" pos:column="1">#<cpp:directive pos:line="87" pos:column="2">ifndef</cpp:directive> <name pos:line="87" pos:column="9">__IVsSetTargetFrameworkWorkerCallback_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="88" pos:column="1">#<cpp:directive pos:line="88" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="88" pos:column="9">__IVsSetTargetFrameworkWorkerCallback_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="90" pos:column="1">/* interface IVsSetTargetFrameworkWorkerCallback */</comment>
+<comment type="block" pos:line="91" pos:column="1">/* [object][uuid] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="94" pos:column="1">EXTERN_C</name> <specifier pos:line="94" pos:column="10">const</specifier> <name pos:line="94" pos:column="16">IID</name></type> <name pos:line="94" pos:column="20">IID_IVsSetTargetFrameworkWorkerCallback</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="96" pos:column="1">#<cpp:directive pos:line="96" pos:column="2">if</cpp:directive> <expr><call><name pos:line="96" pos:column="5">defined</name><argument_list pos:line="96" pos:column="12">(<argument><expr><name pos:line="96" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="96" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="96" pos:column="29">!</op:operator><call><name pos:line="96" pos:column="30">defined</name><argument_list pos:line="96" pos:column="37">(<argument><expr><name pos:line="96" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="98" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="98" pos:column="19">(<argument pos:line="98" pos:column="20">"52B20422-91B2-4fb9-97FE-90D6FA334741"</argument>)</argument_list></macro>
+    <label><name pos:line="99" pos:column="5">IVsSetTargetFrameworkWorkerCallback</name> :</label> <expr_stmt><expr pos:line="99" pos:column="43">public <name pos:line="99" pos:column="50">IUnknown</name>
+    <block pos:line="100" pos:column="5">{
+    <expr pos:line="101" pos:column="5">public<op:operator pos:line="101" pos:column="11">:</op:operator>
+        virtual <name pos:line="102" pos:column="17">HRESULT</name> <name pos:line="102" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="102" pos:column="43">UpdateTargetFramework</name><argument_list pos:line="102" pos:column="64">( 
+            <comment type="block" pos:line="103" pos:column="13">/* [in] */</comment> <argument pos:line="103" pos:column="24">__RPC__in_opt IVsHierarchy *pHier</argument>,
+            <comment type="block" pos:line="104" pos:column="13">/* [in] */</comment> <argument pos:line="104" pos:column="24">__RPC__in LPCWSTR currentTargetFramework</argument>,
+            <comment type="block" pos:line="105" pos:column="13">/* [in] */</comment> <argument pos:line="105" pos:column="24">__RPC__in LPCWSTR newTargetFramework</argument>)</argument_list></macro> <op:operator pos:line="105" pos:column="62">=</op:operator> <lit:literal type="number" pos:line="105" pos:column="64">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="109" pos:column="1">#<cpp:directive pos:line="109" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="109" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="111" pos:column="5">typedef <type><struct pos:line="111" pos:column="13">struct <name pos:line="111" pos:column="20">IVsSetTargetFrameworkWorkerCallbackVtbl</name>
+    <block pos:line="112" pos:column="5">{<public type="default" pos:line="112" pos:column="6">
+        <function_decl><type><name pos:line="113" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="115" pos:column="9">HRESULT</name></type> ( <name pos:line="115" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="115" pos:column="37">*</type:modifier><name pos:line="115" pos:column="38">QueryInterface</name> )<parameter_list pos:line="115" pos:column="54">( 
+            <param><decl><type><name pos:line="116" pos:column="13">IVsSetTargetFrameworkWorkerCallback</name> <type:modifier pos:line="116" pos:column="49">*</type:modifier></type> <name pos:line="116" pos:column="51">This</name></decl></param>,
+            <comment type="block" pos:line="117" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="117" pos:column="24">__RPC__in</name> <name pos:line="117" pos:column="34">REFIID</name></type> <name pos:line="117" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="118" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="119" pos:column="13">__RPC__deref_out</name>  <name pos:line="119" pos:column="31">void</name> <type:modifier pos:line="119" pos:column="36">*</type:modifier><type:modifier pos:line="119" pos:column="37">*</type:modifier></type><name pos:line="119" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="121" pos:column="9">ULONG</name></type> ( <name pos:line="121" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="121" pos:column="35">*</type:modifier><name pos:line="121" pos:column="36">AddRef</name> )<parameter_list pos:line="121" pos:column="44">( 
+            <param><decl><type><name pos:line="122" pos:column="13">IVsSetTargetFrameworkWorkerCallback</name> <type:modifier pos:line="122" pos:column="49">*</type:modifier></type> <name pos:line="122" pos:column="51">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="124" pos:column="9">ULONG</name></type> ( <name pos:line="124" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="124" pos:column="35">*</type:modifier><name pos:line="124" pos:column="36">Release</name> )<parameter_list pos:line="124" pos:column="45">( 
+            <param><decl><type><name pos:line="125" pos:column="13">IVsSetTargetFrameworkWorkerCallback</name> <type:modifier pos:line="125" pos:column="49">*</type:modifier></type> <name pos:line="125" pos:column="51">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="127" pos:column="9">HRESULT</name></type> ( <name pos:line="127" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="127" pos:column="37">*</type:modifier><name pos:line="127" pos:column="38">UpdateTargetFramework</name> )<parameter_list pos:line="127" pos:column="61">( 
+            <param><decl><type><name pos:line="128" pos:column="13">IVsSetTargetFrameworkWorkerCallback</name> <type:modifier pos:line="128" pos:column="49">*</type:modifier></type> <name pos:line="128" pos:column="51">This</name></decl></param>,
+            <comment type="block" pos:line="129" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="129" pos:column="24">__RPC__in_opt</name> <name pos:line="129" pos:column="38">IVsHierarchy</name> <type:modifier pos:line="129" pos:column="51">*</type:modifier></type><name pos:line="129" pos:column="52">pHier</name></decl></param>,
+            <comment type="block" pos:line="130" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="130" pos:column="24">__RPC__in</name> <name pos:line="130" pos:column="34">LPCWSTR</name></type> <name pos:line="130" pos:column="42">currentTargetFramework</name></decl></param>,
+            <comment type="block" pos:line="131" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="131" pos:column="24">__RPC__in</name> <name pos:line="131" pos:column="34">LPCWSTR</name></type> <name pos:line="131" pos:column="42">newTargetFramework</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="133" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="134" pos:column="7">IVsSetTargetFrameworkWorkerCallbackVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="136" pos:column="5">interface</name></type> <name pos:line="136" pos:column="15">IVsSetTargetFrameworkWorkerCallback</name>
+    <argument_list pos:line="137" pos:column="5">{
+        <argument><expr><name pos:line="138" pos:column="9">CONST_VTBL</name> struct <name pos:line="138" pos:column="27">IVsSetTargetFrameworkWorkerCallbackVtbl</name> <op:operator pos:line="138" pos:column="67">*</op:operator><name pos:line="138" pos:column="68">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="143" pos:column="1">#<cpp:directive pos:line="143" pos:column="2">ifdef</cpp:directive> <name pos:line="143" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="146" pos:column="1">#<cpp:directive pos:line="146" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="146" pos:column="9">IVsSetTargetFrameworkWorkerCallback_QueryInterface</name><parameter_list pos:line="146" pos:column="59">(<param><type><name pos:line="146" pos:column="60">This</name></type></param>,<param><type><name pos:line="146" pos:column="65">riid</name></type></param>,<param><type><name pos:line="146" pos:column="70">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="147" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="149" pos:column="1">#<cpp:directive pos:line="149" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="149" pos:column="9">IVsSetTargetFrameworkWorkerCallback_AddRef</name><parameter_list pos:line="149" pos:column="51">(<param><type><name pos:line="149" pos:column="52">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="150" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="152" pos:column="1">#<cpp:directive pos:line="152" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="152" pos:column="9">IVsSetTargetFrameworkWorkerCallback_Release</name><parameter_list pos:line="152" pos:column="52">(<param><type><name pos:line="152" pos:column="53">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="153" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="156" pos:column="1">#<cpp:directive pos:line="156" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="156" pos:column="9">IVsSetTargetFrameworkWorkerCallback_UpdateTargetFramework</name><parameter_list pos:line="156" pos:column="66">(<param><type><name pos:line="156" pos:column="67">This</name></type></param>,<param><type><name pos:line="156" pos:column="72">pHier</name></type></param>,<param><type><name pos:line="156" pos:column="78">currentTargetFramework</name></type></param>,<param><type><name pos:line="156" pos:column="101">newTargetFramework</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="157" pos:column="5">( (This)-&gt;lpVtbl -&gt; UpdateTargetFramework(This,pHier,currentTargetFramework,newTargetFramework) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="159" pos:column="1">#<cpp:directive pos:line="159" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="159" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="162" pos:column="1">#<cpp:directive pos:line="162" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="162" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="167" pos:column="1">#<cpp:directive pos:line="167" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="167" pos:column="9">/* __IVsSetTargetFrameworkWorkerCallback_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="170" pos:column="1">#<cpp:directive pos:line="170" pos:column="2">ifndef</cpp:directive> <name pos:line="170" pos:column="9">__IVsTrackProjectRetargeting_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="171" pos:column="1">#<cpp:directive pos:line="171" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="171" pos:column="9">__IVsTrackProjectRetargeting_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="173" pos:column="1">/* interface IVsTrackProjectRetargeting */</comment>
+<comment type="block" pos:line="174" pos:column="1">/* [object][uuid] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="177" pos:column="1">EXTERN_C</name> <specifier pos:line="177" pos:column="10">const</specifier> <name pos:line="177" pos:column="16">IID</name></type> <name pos:line="177" pos:column="20">IID_IVsTrackProjectRetargeting</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="179" pos:column="1">#<cpp:directive pos:line="179" pos:column="2">if</cpp:directive> <expr><call><name pos:line="179" pos:column="5">defined</name><argument_list pos:line="179" pos:column="12">(<argument><expr><name pos:line="179" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="179" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="179" pos:column="29">!</op:operator><call><name pos:line="179" pos:column="30">defined</name><argument_list pos:line="179" pos:column="37">(<argument><expr><name pos:line="179" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="181" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="181" pos:column="19">(<argument pos:line="181" pos:column="20">"D991BC9B-9C68-447f-A3A7-95962AD75DD2"</argument>)</argument_list></macro>
+    <label><name pos:line="182" pos:column="5">IVsTrackProjectRetargeting</name> :</label> <expr_stmt><expr pos:line="182" pos:column="34">public <name pos:line="182" pos:column="41">IUnknown</name>
+    <block pos:line="183" pos:column="5">{
+    <expr pos:line="184" pos:column="5">public<op:operator pos:line="184" pos:column="11">:</op:operator>
+        virtual <name pos:line="185" pos:column="17">HRESULT</name> <name pos:line="185" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="185" pos:column="43">OnSetTargetFramework</name><argument_list pos:line="185" pos:column="63">( 
+            <comment type="block" pos:line="186" pos:column="13">/* [in] */</comment> <argument pos:line="186" pos:column="24">__RPC__in_opt IVsHierarchy *pHier</argument>,
+            <comment type="block" pos:line="187" pos:column="13">/* [in] */</comment> <argument pos:line="187" pos:column="24">__RPC__in LPCWSTR currentTargetFramework</argument>,
+            <comment type="block" pos:line="188" pos:column="13">/* [in] */</comment> <argument pos:line="188" pos:column="24">__RPC__in LPCWSTR newTargetFramework</argument>,
+            <comment type="block" pos:line="189" pos:column="13">/* [in] */</comment> <argument pos:line="189" pos:column="24">__RPC__in_opt IVsSetTargetFrameworkWorkerCallback *pWorkerCallback</argument>,
+            <comment type="block" pos:line="190" pos:column="13">/* [in] */</comment> <argument pos:line="190" pos:column="24">VARIANT_BOOL reloadProject</argument>)</argument_list></macro> <op:operator pos:line="190" pos:column="52">=</op:operator> <lit:literal type="number" pos:line="190" pos:column="54">0</lit:literal></expr>;
+        
+        <expr pos:line="192" pos:column="9">virtual <name pos:line="192" pos:column="17">HRESULT</name> <name pos:line="192" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="192" pos:column="43">AdviseTrackProjectRetargetingEvents</name><argument_list pos:line="192" pos:column="78">( 
+            <comment type="block" pos:line="193" pos:column="13">/* [in] */</comment> <argument pos:line="193" pos:column="24">__RPC__in_opt IVsTrackProjectRetargetingEvents *pEventSink</argument>,
+            <comment type="block" pos:line="194" pos:column="13">/* [out] */</comment> <argument pos:line="194" pos:column="25">__RPC__out VSCOOKIE *pdwCookie</argument>)</argument_list></macro> <op:operator pos:line="194" pos:column="57">=</op:operator> <lit:literal type="number" pos:line="194" pos:column="59">0</lit:literal></expr>;
+        
+        <expr pos:line="196" pos:column="9">virtual <name pos:line="196" pos:column="17">HRESULT</name> <name pos:line="196" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="196" pos:column="43">UnadviseTrackProjectRetargetingEvents</name><argument_list pos:line="196" pos:column="80">( 
+            <comment type="block" pos:line="197" pos:column="13">/* [in] */</comment> <argument pos:line="197" pos:column="24">VSCOOKIE dwCookie</argument>)</argument_list></macro> <op:operator pos:line="197" pos:column="43">=</op:operator> <lit:literal type="number" pos:line="197" pos:column="45">0</lit:literal></expr>;
+        
+        <expr pos:line="199" pos:column="9">virtual <name pos:line="199" pos:column="17">HRESULT</name> <name pos:line="199" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="199" pos:column="43">AdviseTrackBatchRetargetingEvents</name><argument_list pos:line="199" pos:column="76">( 
+            <comment type="block" pos:line="200" pos:column="13">/* [in] */</comment> <argument pos:line="200" pos:column="24">__RPC__in_opt IVsTrackBatchRetargetingEvents *pEventSink</argument>,
+            <comment type="block" pos:line="201" pos:column="13">/* [out] */</comment> <argument pos:line="201" pos:column="25">__RPC__out VSCOOKIE *pdwCookie</argument>)</argument_list></macro> <op:operator pos:line="201" pos:column="57">=</op:operator> <lit:literal type="number" pos:line="201" pos:column="59">0</lit:literal></expr>;
+        
+        <expr pos:line="203" pos:column="9">virtual <name pos:line="203" pos:column="17">HRESULT</name> <name pos:line="203" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="203" pos:column="43">UnadviseTrackBatchRetargetingEvents</name><argument_list pos:line="203" pos:column="78">( 
+            <comment type="block" pos:line="204" pos:column="13">/* [in] */</comment> <argument pos:line="204" pos:column="24">VSCOOKIE dwCookie</argument>)</argument_list></macro> <op:operator pos:line="204" pos:column="43">=</op:operator> <lit:literal type="number" pos:line="204" pos:column="45">0</lit:literal></expr>;
+        
+        <expr pos:line="206" pos:column="9">virtual <name pos:line="206" pos:column="17">HRESULT</name> <name pos:line="206" pos:column="25">STDMETHODCALLTYPE</name> <call><name pos:line="206" pos:column="43">BeginRetargetingBatch</name><argument_list pos:line="206" pos:column="64">( <argument><expr><name pos:line="206" pos:column="66">void</name></expr></argument>)</argument_list></call> <op:operator pos:line="206" pos:column="72">=</op:operator> <lit:literal type="number" pos:line="206" pos:column="74">0</lit:literal></expr>;
+        
+        <expr pos:line="208" pos:column="9">virtual <name pos:line="208" pos:column="17">HRESULT</name> <name pos:line="208" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="208" pos:column="43">BatchRetargetProject</name><argument_list pos:line="208" pos:column="63">( 
+            <comment type="block" pos:line="209" pos:column="13">/* [in] */</comment> <argument pos:line="209" pos:column="24">__RPC__in_opt IVsHierarchy *pHier</argument>,
+            <comment type="block" pos:line="210" pos:column="13">/* [in] */</comment> <argument pos:line="210" pos:column="24">__RPC__in LPCWSTR newTargetFramework</argument>,
+            <comment type="block" pos:line="211" pos:column="13">/* [in] */</comment> <argument pos:line="211" pos:column="24">VARIANT_BOOL unloadProjectIfErrorOrCancel</argument>)</argument_list></macro> <op:operator pos:line="211" pos:column="67">=</op:operator> <lit:literal type="number" pos:line="211" pos:column="69">0</lit:literal></expr>;
+        
+        <expr pos:line="213" pos:column="9">virtual <name pos:line="213" pos:column="17">HRESULT</name> <name pos:line="213" pos:column="25">STDMETHODCALLTYPE</name> <call><name pos:line="213" pos:column="43">EndRetargetingBatch</name><argument_list pos:line="213" pos:column="62">( <argument><expr><name pos:line="213" pos:column="64">void</name></expr></argument>)</argument_list></call> <op:operator pos:line="213" pos:column="70">=</op:operator> <lit:literal type="number" pos:line="213" pos:column="72">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="217" pos:column="1">#<cpp:directive pos:line="217" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="217" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="219" pos:column="5">typedef <type><struct pos:line="219" pos:column="13">struct <name pos:line="219" pos:column="20">IVsTrackProjectRetargetingVtbl</name>
+    <block pos:line="220" pos:column="5">{<public type="default" pos:line="220" pos:column="6">
+        <function_decl><type><name pos:line="221" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="223" pos:column="9">HRESULT</name></type> ( <name pos:line="223" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="223" pos:column="37">*</type:modifier><name pos:line="223" pos:column="38">QueryInterface</name> )<parameter_list pos:line="223" pos:column="54">( 
+            <param><decl><type><name pos:line="224" pos:column="13">IVsTrackProjectRetargeting</name> <type:modifier pos:line="224" pos:column="40">*</type:modifier></type> <name pos:line="224" pos:column="42">This</name></decl></param>,
+            <comment type="block" pos:line="225" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="225" pos:column="24">__RPC__in</name> <name pos:line="225" pos:column="34">REFIID</name></type> <name pos:line="225" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="226" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="227" pos:column="13">__RPC__deref_out</name>  <name pos:line="227" pos:column="31">void</name> <type:modifier pos:line="227" pos:column="36">*</type:modifier><type:modifier pos:line="227" pos:column="37">*</type:modifier></type><name pos:line="227" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="229" pos:column="9">ULONG</name></type> ( <name pos:line="229" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="229" pos:column="35">*</type:modifier><name pos:line="229" pos:column="36">AddRef</name> )<parameter_list pos:line="229" pos:column="44">( 
+            <param><decl><type><name pos:line="230" pos:column="13">IVsTrackProjectRetargeting</name> <type:modifier pos:line="230" pos:column="40">*</type:modifier></type> <name pos:line="230" pos:column="42">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="232" pos:column="9">ULONG</name></type> ( <name pos:line="232" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="232" pos:column="35">*</type:modifier><name pos:line="232" pos:column="36">Release</name> )<parameter_list pos:line="232" pos:column="45">( 
+            <param><decl><type><name pos:line="233" pos:column="13">IVsTrackProjectRetargeting</name> <type:modifier pos:line="233" pos:column="40">*</type:modifier></type> <name pos:line="233" pos:column="42">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="235" pos:column="9">HRESULT</name></type> ( <name pos:line="235" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="235" pos:column="37">*</type:modifier><name pos:line="235" pos:column="38">OnSetTargetFramework</name> )<parameter_list pos:line="235" pos:column="60">( 
+            <param><decl><type><name pos:line="236" pos:column="13">IVsTrackProjectRetargeting</name> <type:modifier pos:line="236" pos:column="40">*</type:modifier></type> <name pos:line="236" pos:column="42">This</name></decl></param>,
+            <comment type="block" pos:line="237" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="237" pos:column="24">__RPC__in_opt</name> <name pos:line="237" pos:column="38">IVsHierarchy</name> <type:modifier pos:line="237" pos:column="51">*</type:modifier></type><name pos:line="237" pos:column="52">pHier</name></decl></param>,
+            <comment type="block" pos:line="238" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="238" pos:column="24">__RPC__in</name> <name pos:line="238" pos:column="34">LPCWSTR</name></type> <name pos:line="238" pos:column="42">currentTargetFramework</name></decl></param>,
+            <comment type="block" pos:line="239" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="239" pos:column="24">__RPC__in</name> <name pos:line="239" pos:column="34">LPCWSTR</name></type> <name pos:line="239" pos:column="42">newTargetFramework</name></decl></param>,
+            <comment type="block" pos:line="240" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="240" pos:column="24">__RPC__in_opt</name> <name pos:line="240" pos:column="38">IVsSetTargetFrameworkWorkerCallback</name> <type:modifier pos:line="240" pos:column="74">*</type:modifier></type><name pos:line="240" pos:column="75">pWorkerCallback</name></decl></param>,
+            <comment type="block" pos:line="241" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="241" pos:column="24">VARIANT_BOOL</name></type> <name pos:line="241" pos:column="37">reloadProject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="243" pos:column="9">HRESULT</name></type> ( <name pos:line="243" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="243" pos:column="37">*</type:modifier><name pos:line="243" pos:column="38">AdviseTrackProjectRetargetingEvents</name> )<parameter_list pos:line="243" pos:column="75">( 
+            <param><decl><type><name pos:line="244" pos:column="13">IVsTrackProjectRetargeting</name> <type:modifier pos:line="244" pos:column="40">*</type:modifier></type> <name pos:line="244" pos:column="42">This</name></decl></param>,
+            <comment type="block" pos:line="245" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="245" pos:column="24">__RPC__in_opt</name> <name pos:line="245" pos:column="38">IVsTrackProjectRetargetingEvents</name> <type:modifier pos:line="245" pos:column="71">*</type:modifier></type><name pos:line="245" pos:column="72">pEventSink</name></decl></param>,
+            <comment type="block" pos:line="246" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="246" pos:column="25">__RPC__out</name> <name pos:line="246" pos:column="36">VSCOOKIE</name> <type:modifier pos:line="246" pos:column="45">*</type:modifier></type><name pos:line="246" pos:column="46">pdwCookie</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="248" pos:column="9">HRESULT</name></type> ( <name pos:line="248" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="248" pos:column="37">*</type:modifier><name pos:line="248" pos:column="38">UnadviseTrackProjectRetargetingEvents</name> )<parameter_list pos:line="248" pos:column="77">( 
+            <param><decl><type><name pos:line="249" pos:column="13">IVsTrackProjectRetargeting</name> <type:modifier pos:line="249" pos:column="40">*</type:modifier></type> <name pos:line="249" pos:column="42">This</name></decl></param>,
+            <comment type="block" pos:line="250" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="250" pos:column="24">VSCOOKIE</name></type> <name pos:line="250" pos:column="33">dwCookie</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="252" pos:column="9">HRESULT</name></type> ( <name pos:line="252" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="252" pos:column="37">*</type:modifier><name pos:line="252" pos:column="38">AdviseTrackBatchRetargetingEvents</name> )<parameter_list pos:line="252" pos:column="73">( 
+            <param><decl><type><name pos:line="253" pos:column="13">IVsTrackProjectRetargeting</name> <type:modifier pos:line="253" pos:column="40">*</type:modifier></type> <name pos:line="253" pos:column="42">This</name></decl></param>,
+            <comment type="block" pos:line="254" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="254" pos:column="24">__RPC__in_opt</name> <name pos:line="254" pos:column="38">IVsTrackBatchRetargetingEvents</name> <type:modifier pos:line="254" pos:column="69">*</type:modifier></type><name pos:line="254" pos:column="70">pEventSink</name></decl></param>,
+            <comment type="block" pos:line="255" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="255" pos:column="25">__RPC__out</name> <name pos:line="255" pos:column="36">VSCOOKIE</name> <type:modifier pos:line="255" pos:column="45">*</type:modifier></type><name pos:line="255" pos:column="46">pdwCookie</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="257" pos:column="9">HRESULT</name></type> ( <name pos:line="257" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="257" pos:column="37">*</type:modifier><name pos:line="257" pos:column="38">UnadviseTrackBatchRetargetingEvents</name> )<parameter_list pos:line="257" pos:column="75">( 
+            <param><decl><type><name pos:line="258" pos:column="13">IVsTrackProjectRetargeting</name> <type:modifier pos:line="258" pos:column="40">*</type:modifier></type> <name pos:line="258" pos:column="42">This</name></decl></param>,
+            <comment type="block" pos:line="259" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="259" pos:column="24">VSCOOKIE</name></type> <name pos:line="259" pos:column="33">dwCookie</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="261" pos:column="9">HRESULT</name></type> ( <name pos:line="261" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="261" pos:column="37">*</type:modifier><name pos:line="261" pos:column="38">BeginRetargetingBatch</name> )<parameter_list pos:line="261" pos:column="61">( 
+            <param><decl><type><name pos:line="262" pos:column="13">IVsTrackProjectRetargeting</name> <type:modifier pos:line="262" pos:column="40">*</type:modifier></type> <name pos:line="262" pos:column="42">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="264" pos:column="9">HRESULT</name></type> ( <name pos:line="264" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="264" pos:column="37">*</type:modifier><name pos:line="264" pos:column="38">BatchRetargetProject</name> )<parameter_list pos:line="264" pos:column="60">( 
+            <param><decl><type><name pos:line="265" pos:column="13">IVsTrackProjectRetargeting</name> <type:modifier pos:line="265" pos:column="40">*</type:modifier></type> <name pos:line="265" pos:column="42">This</name></decl></param>,
+            <comment type="block" pos:line="266" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="266" pos:column="24">__RPC__in_opt</name> <name pos:line="266" pos:column="38">IVsHierarchy</name> <type:modifier pos:line="266" pos:column="51">*</type:modifier></type><name pos:line="266" pos:column="52">pHier</name></decl></param>,
+            <comment type="block" pos:line="267" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="267" pos:column="24">__RPC__in</name> <name pos:line="267" pos:column="34">LPCWSTR</name></type> <name pos:line="267" pos:column="42">newTargetFramework</name></decl></param>,
+            <comment type="block" pos:line="268" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="268" pos:column="24">VARIANT_BOOL</name></type> <name pos:line="268" pos:column="37">unloadProjectIfErrorOrCancel</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="270" pos:column="9">HRESULT</name></type> ( <name pos:line="270" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="270" pos:column="37">*</type:modifier><name pos:line="270" pos:column="38">EndRetargetingBatch</name> )<parameter_list pos:line="270" pos:column="59">( 
+            <param><decl><type><name pos:line="271" pos:column="13">IVsTrackProjectRetargeting</name> <type:modifier pos:line="271" pos:column="40">*</type:modifier></type> <name pos:line="271" pos:column="42">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="273" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="274" pos:column="7">IVsTrackProjectRetargetingVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="276" pos:column="5">interface</name></type> <name pos:line="276" pos:column="15">IVsTrackProjectRetargeting</name>
+    <argument_list pos:line="277" pos:column="5">{
+        <argument><expr><name pos:line="278" pos:column="9">CONST_VTBL</name> struct <name pos:line="278" pos:column="27">IVsTrackProjectRetargetingVtbl</name> <op:operator pos:line="278" pos:column="58">*</op:operator><name pos:line="278" pos:column="59">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="283" pos:column="1">#<cpp:directive pos:line="283" pos:column="2">ifdef</cpp:directive> <name pos:line="283" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="286" pos:column="1">#<cpp:directive pos:line="286" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="286" pos:column="9">IVsTrackProjectRetargeting_QueryInterface</name><parameter_list pos:line="286" pos:column="50">(<param><type><name pos:line="286" pos:column="51">This</name></type></param>,<param><type><name pos:line="286" pos:column="56">riid</name></type></param>,<param><type><name pos:line="286" pos:column="61">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="287" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="289" pos:column="1">#<cpp:directive pos:line="289" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="289" pos:column="9">IVsTrackProjectRetargeting_AddRef</name><parameter_list pos:line="289" pos:column="42">(<param><type><name pos:line="289" pos:column="43">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="290" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="292" pos:column="1">#<cpp:directive pos:line="292" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="292" pos:column="9">IVsTrackProjectRetargeting_Release</name><parameter_list pos:line="292" pos:column="43">(<param><type><name pos:line="292" pos:column="44">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="293" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="296" pos:column="1">#<cpp:directive pos:line="296" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="296" pos:column="9">IVsTrackProjectRetargeting_OnSetTargetFramework</name><parameter_list pos:line="296" pos:column="56">(<param><type><name pos:line="296" pos:column="57">This</name></type></param>,<param><type><name pos:line="296" pos:column="62">pHier</name></type></param>,<param><type><name pos:line="296" pos:column="68">currentTargetFramework</name></type></param>,<param><type><name pos:line="296" pos:column="91">newTargetFramework</name></type></param>,<param><type><name pos:line="296" pos:column="110">pWorkerCallback</name></type></param>,<param><type><name pos:line="296" pos:column="126">reloadProject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="297" pos:column="5">( (This)-&gt;lpVtbl -&gt; OnSetTargetFramework(This,pHier,currentTargetFramework,newTargetFramework,pWorkerCallback,reloadProject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="299" pos:column="1">#<cpp:directive pos:line="299" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="299" pos:column="9">IVsTrackProjectRetargeting_AdviseTrackProjectRetargetingEvents</name><parameter_list pos:line="299" pos:column="71">(<param><type><name pos:line="299" pos:column="72">This</name></type></param>,<param><type><name pos:line="299" pos:column="77">pEventSink</name></type></param>,<param><type><name pos:line="299" pos:column="88">pdwCookie</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="300" pos:column="5">( (This)-&gt;lpVtbl -&gt; AdviseTrackProjectRetargetingEvents(This,pEventSink,pdwCookie) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="302" pos:column="1">#<cpp:directive pos:line="302" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="302" pos:column="9">IVsTrackProjectRetargeting_UnadviseTrackProjectRetargetingEvents</name><parameter_list pos:line="302" pos:column="73">(<param><type><name pos:line="302" pos:column="74">This</name></type></param>,<param><type><name pos:line="302" pos:column="79">dwCookie</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="303" pos:column="5">( (This)-&gt;lpVtbl -&gt; UnadviseTrackProjectRetargetingEvents(This,dwCookie) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="305" pos:column="1">#<cpp:directive pos:line="305" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="305" pos:column="9">IVsTrackProjectRetargeting_AdviseTrackBatchRetargetingEvents</name><parameter_list pos:line="305" pos:column="69">(<param><type><name pos:line="305" pos:column="70">This</name></type></param>,<param><type><name pos:line="305" pos:column="75">pEventSink</name></type></param>,<param><type><name pos:line="305" pos:column="86">pdwCookie</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="306" pos:column="5">( (This)-&gt;lpVtbl -&gt; AdviseTrackBatchRetargetingEvents(This,pEventSink,pdwCookie) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="308" pos:column="1">#<cpp:directive pos:line="308" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="308" pos:column="9">IVsTrackProjectRetargeting_UnadviseTrackBatchRetargetingEvents</name><parameter_list pos:line="308" pos:column="71">(<param><type><name pos:line="308" pos:column="72">This</name></type></param>,<param><type><name pos:line="308" pos:column="77">dwCookie</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="309" pos:column="5">( (This)-&gt;lpVtbl -&gt; UnadviseTrackBatchRetargetingEvents(This,dwCookie) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="311" pos:column="1">#<cpp:directive pos:line="311" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="311" pos:column="9">IVsTrackProjectRetargeting_BeginRetargetingBatch</name><parameter_list pos:line="311" pos:column="57">(<param><type><name pos:line="311" pos:column="58">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="312" pos:column="5">( (This)-&gt;lpVtbl -&gt; BeginRetargetingBatch(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="314" pos:column="1">#<cpp:directive pos:line="314" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="314" pos:column="9">IVsTrackProjectRetargeting_BatchRetargetProject</name><parameter_list pos:line="314" pos:column="56">(<param><type><name pos:line="314" pos:column="57">This</name></type></param>,<param><type><name pos:line="314" pos:column="62">pHier</name></type></param>,<param><type><name pos:line="314" pos:column="68">newTargetFramework</name></type></param>,<param><type><name pos:line="314" pos:column="87">unloadProjectIfErrorOrCancel</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="315" pos:column="5">( (This)-&gt;lpVtbl -&gt; BatchRetargetProject(This,pHier,newTargetFramework,unloadProjectIfErrorOrCancel) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="317" pos:column="1">#<cpp:directive pos:line="317" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="317" pos:column="9">IVsTrackProjectRetargeting_EndRetargetingBatch</name><parameter_list pos:line="317" pos:column="55">(<param><type><name pos:line="317" pos:column="56">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="318" pos:column="5">( (This)-&gt;lpVtbl -&gt; EndRetargetingBatch(This) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="320" pos:column="1">#<cpp:directive pos:line="320" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="320" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="323" pos:column="1">#<cpp:directive pos:line="323" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="323" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="328" pos:column="1">#<cpp:directive pos:line="328" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="328" pos:column="9">/* __IVsTrackProjectRetargeting_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="331" pos:column="1">#<cpp:directive pos:line="331" pos:column="2">ifndef</cpp:directive> <name pos:line="331" pos:column="9">__SVsTrackProjectRetargeting_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="332" pos:column="1">#<cpp:directive pos:line="332" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="332" pos:column="9">__SVsTrackProjectRetargeting_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="334" pos:column="1">/* interface SVsTrackProjectRetargeting */</comment>
+<comment type="block" pos:line="335" pos:column="1">/* [object][uuid] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="338" pos:column="1">EXTERN_C</name> <specifier pos:line="338" pos:column="10">const</specifier> <name pos:line="338" pos:column="16">IID</name></type> <name pos:line="338" pos:column="20">IID_SVsTrackProjectRetargeting</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="340" pos:column="1">#<cpp:directive pos:line="340" pos:column="2">if</cpp:directive> <expr><call><name pos:line="340" pos:column="5">defined</name><argument_list pos:line="340" pos:column="12">(<argument><expr><name pos:line="340" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="340" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="340" pos:column="29">!</op:operator><call><name pos:line="340" pos:column="30">defined</name><argument_list pos:line="340" pos:column="37">(<argument><expr><name pos:line="340" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="342" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="342" pos:column="19">(<argument pos:line="342" pos:column="20">"530462A8-1ECB-4f7f-979E-A0237FEA12C3"</argument>)</argument_list></macro>
+    <label><name pos:line="343" pos:column="5">SVsTrackProjectRetargeting</name> :</label> <expr_stmt><expr pos:line="343" pos:column="34">public <name pos:line="343" pos:column="41">IUnknown</name>
+    <block pos:line="344" pos:column="5">{
+    <expr pos:line="345" pos:column="5">public<op:operator pos:line="345" pos:column="11">:</op:operator></expr>
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="348" pos:column="1">#<cpp:directive pos:line="348" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="348" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="350" pos:column="5">typedef <type><struct pos:line="350" pos:column="13">struct <name pos:line="350" pos:column="20">SVsTrackProjectRetargetingVtbl</name>
+    <block pos:line="351" pos:column="5">{<public type="default" pos:line="351" pos:column="6">
+        <function_decl><type><name pos:line="352" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="354" pos:column="9">HRESULT</name></type> ( <name pos:line="354" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="354" pos:column="37">*</type:modifier><name pos:line="354" pos:column="38">QueryInterface</name> )<parameter_list pos:line="354" pos:column="54">( 
+            <param><decl><type><name pos:line="355" pos:column="13">SVsTrackProjectRetargeting</name> <type:modifier pos:line="355" pos:column="40">*</type:modifier></type> <name pos:line="355" pos:column="42">This</name></decl></param>,
+            <comment type="block" pos:line="356" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="356" pos:column="24">__RPC__in</name> <name pos:line="356" pos:column="34">REFIID</name></type> <name pos:line="356" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="357" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="358" pos:column="13">__RPC__deref_out</name>  <name pos:line="358" pos:column="31">void</name> <type:modifier pos:line="358" pos:column="36">*</type:modifier><type:modifier pos:line="358" pos:column="37">*</type:modifier></type><name pos:line="358" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="360" pos:column="9">ULONG</name></type> ( <name pos:line="360" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="360" pos:column="35">*</type:modifier><name pos:line="360" pos:column="36">AddRef</name> )<parameter_list pos:line="360" pos:column="44">( 
+            <param><decl><type><name pos:line="361" pos:column="13">SVsTrackProjectRetargeting</name> <type:modifier pos:line="361" pos:column="40">*</type:modifier></type> <name pos:line="361" pos:column="42">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="363" pos:column="9">ULONG</name></type> ( <name pos:line="363" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="363" pos:column="35">*</type:modifier><name pos:line="363" pos:column="36">Release</name> )<parameter_list pos:line="363" pos:column="45">( 
+            <param><decl><type><name pos:line="364" pos:column="13">SVsTrackProjectRetargeting</name> <type:modifier pos:line="364" pos:column="40">*</type:modifier></type> <name pos:line="364" pos:column="42">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="366" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="367" pos:column="7">SVsTrackProjectRetargetingVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="369" pos:column="5">interface</name></type> <name pos:line="369" pos:column="15">SVsTrackProjectRetargeting</name>
+    <argument_list pos:line="370" pos:column="5">{
+        <argument><expr><name pos:line="371" pos:column="9">CONST_VTBL</name> struct <name pos:line="371" pos:column="27">SVsTrackProjectRetargetingVtbl</name> <op:operator pos:line="371" pos:column="58">*</op:operator><name pos:line="371" pos:column="59">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="376" pos:column="1">#<cpp:directive pos:line="376" pos:column="2">ifdef</cpp:directive> <name pos:line="376" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="379" pos:column="1">#<cpp:directive pos:line="379" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="379" pos:column="9">SVsTrackProjectRetargeting_QueryInterface</name><parameter_list pos:line="379" pos:column="50">(<param><type><name pos:line="379" pos:column="51">This</name></type></param>,<param><type><name pos:line="379" pos:column="56">riid</name></type></param>,<param><type><name pos:line="379" pos:column="61">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="380" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="382" pos:column="1">#<cpp:directive pos:line="382" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="382" pos:column="9">SVsTrackProjectRetargeting_AddRef</name><parameter_list pos:line="382" pos:column="42">(<param><type><name pos:line="382" pos:column="43">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="383" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="385" pos:column="1">#<cpp:directive pos:line="385" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="385" pos:column="9">SVsTrackProjectRetargeting_Release</name><parameter_list pos:line="385" pos:column="43">(<param><type><name pos:line="385" pos:column="44">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="386" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:endif pos:line="389" pos:column="1">#<cpp:directive pos:line="389" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="389" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="392" pos:column="1">#<cpp:directive pos:line="392" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="392" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="397" pos:column="1">#<cpp:directive pos:line="397" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="397" pos:column="9">/* __SVsTrackProjectRetargeting_INTERFACE_DEFINED__ */</comment>
+
+
+<comment type="block" pos:line="400" pos:column="1">/* interface __MIDL_itf_IVsTrackProjectRetargeting_0000_0003 */</comment>
+<comment type="block" pos:line="401" pos:column="1">/* [local] */</comment> 
+
+<cpp:define pos:line="403" pos:column="1">#<cpp:directive pos:line="403" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="403" pos:column="9">SID_SVsTrackProjectRetargeting</name></cpp:macro> <cpp:value pos:line="403" pos:column="40">IID_SVsTrackProjectRetargeting</cpp:value></cpp:define>
+
+
+<decl_stmt><decl><type><specifier pos:line="406" pos:column="1">extern</specifier> <name pos:line="406" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="406" pos:column="22">__MIDL_itf_IVsTrackProjectRetargeting_0000_0003_v0_0_c_ifspec</name></decl>;</decl_stmt>
+<decl_stmt><decl><type><specifier pos:line="407" pos:column="1">extern</specifier> <name pos:line="407" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="407" pos:column="22">__MIDL_itf_IVsTrackProjectRetargeting_0000_0003_v0_0_s_ifspec</name></decl>;</decl_stmt>
+
+<comment type="block" pos:line="409" pos:column="1">/* Additional Prototypes for ALL interfaces */</comment>
+
+<comment type="block" pos:line="411" pos:column="1">/* end of Additional Prototypes */</comment>
+
+<cpp:ifdef pos:line="413" pos:column="1">#<cpp:directive pos:line="413" pos:column="2">ifdef</cpp:directive> <name pos:line="413" pos:column="8">__cplusplus</name></cpp:ifdef>
+}</block></extern>
+<cpp:endif pos:line="415" pos:column="1">#<cpp:directive pos:line="415" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:endif pos:line="417" pos:column="1">#<cpp:directive pos:line="417" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+</unit>

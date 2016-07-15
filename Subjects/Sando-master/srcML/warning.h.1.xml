@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\warning.h" pos:tabs="8"><comment type="line" pos:line="1" pos:column="1">// warnings that are promoted for the Visual Studio builds</comment>
+<cpp:pragma pos:line="2" pos:column="1">#<cpp:directive pos:line="2" pos:column="2">pragma</cpp:directive> warning(3:4092)</cpp:pragma> <comment type="line" pos:line="2" pos:column="25">// sizeof returns 'unsigned long'</comment>
+<cpp:pragma pos:line="3" pos:column="1">#<cpp:directive pos:line="3" pos:column="2">pragma</cpp:directive> warning(3:4121)</cpp:pragma> <comment type="line" pos:line="3" pos:column="25">// structure is sensitive to alignment</comment>
+<cpp:pragma pos:line="4" pos:column="1">#<cpp:directive pos:line="4" pos:column="2">pragma</cpp:directive> warning(3:4125)</cpp:pragma> <comment type="line" pos:line="4" pos:column="25">// decimal digit in octal sequence</comment>
+<cpp:pragma pos:line="5" pos:column="1">#<cpp:directive pos:line="5" pos:column="2">pragma</cpp:directive> warning(3:4130)</cpp:pragma> <comment type="line" pos:line="5" pos:column="25">// logical operation on address of string constant</comment>
+<cpp:pragma pos:line="6" pos:column="1">#<cpp:directive pos:line="6" pos:column="2">pragma</cpp:directive> warning(3:4132)</cpp:pragma> <comment type="line" pos:line="6" pos:column="25">// const object should be initialized</comment>
+<cpp:pragma pos:line="7" pos:column="1">#<cpp:directive pos:line="7" pos:column="2">pragma</cpp:directive> warning(3:4212)</cpp:pragma> <comment type="line" pos:line="7" pos:column="25">// function declaration used ellipsis</comment>
+<cpp:pragma pos:line="8" pos:column="1">#<cpp:directive pos:line="8" pos:column="2">pragma</cpp:directive> warning(3:4259)</cpp:pragma> <comment type="line" pos:line="8" pos:column="25">// pure virtual function was not defined</comment>
+<cpp:pragma pos:line="9" pos:column="1">#<cpp:directive pos:line="9" pos:column="2">pragma</cpp:directive> warning(3:4700)</cpp:pragma> <comment type="line" pos:line="9" pos:column="25">// local used without being initialized</comment>
+<cpp:pragma pos:line="10" pos:column="1">#<cpp:directive pos:line="10" pos:column="2">pragma</cpp:directive> warning(3:4702)</cpp:pragma> <comment type="line" pos:line="10" pos:column="25">// unreachable code</comment>
+<cpp:pragma pos:line="11" pos:column="1">#<cpp:directive pos:line="11" pos:column="2">pragma</cpp:directive> warning(3:4705)</cpp:pragma> <comment type="line" pos:line="11" pos:column="25">// statement has no effect</comment>
+<cpp:pragma pos:line="12" pos:column="1">#<cpp:directive pos:line="12" pos:column="2">pragma</cpp:directive> warning(3:4709)</cpp:pragma> <comment type="line" pos:line="12" pos:column="25">// comma operator within array index expression</comment>
+<cpp:if pos:line="13" pos:column="1">#<cpp:directive pos:line="13" pos:column="2">if</cpp:directive> <expr><lit:literal type="number" pos:line="13" pos:column="5">0</lit:literal></expr></cpp:if>
+<cpp:pragma pos:line="14" pos:column="1">#<cpp:directive pos:line="14" pos:column="2">pragma</cpp:directive> warning(3:4100)</cpp:pragma> <comment type="line" pos:line="14" pos:column="25">// Unreferenced formal parameter</comment>
+<cpp:pragma pos:line="15" pos:column="1">#<cpp:directive pos:line="15" pos:column="2">pragma</cpp:directive> warning(3:4701)</cpp:pragma> <comment type="line" pos:line="15" pos:column="25">// local may be used without being initialized</comment>
+<cpp:pragma pos:line="16" pos:column="1">#<cpp:directive pos:line="16" pos:column="2">pragma</cpp:directive> warning(3:4706)</cpp:pragma> <comment type="line" pos:line="16" pos:column="25">// assignment within conditional expression</comment>
+<cpp:endif pos:line="17" pos:column="1">#<cpp:directive pos:line="17" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="line" pos:line="19" pos:column="1">// warnings that are demoted for the Visual Studio builds</comment>
+<cpp:pragma pos:line="20" pos:column="1">#<cpp:directive pos:line="20" pos:column="2">pragma</cpp:directive> warning(4:4061)</cpp:pragma> <comment type="line" pos:line="20" pos:column="25">// enumerate in switch is not explicitly handled by case label</comment>
+
+<comment type="line" pos:line="22" pos:column="1">// warnings that are disabled for the Visual Studio builds</comment>
+<cpp:pragma pos:line="23" pos:column="1">#<cpp:directive pos:line="23" pos:column="2">pragma</cpp:directive> warning(disable:4290)</cpp:pragma> <comment type="line" pos:line="23" pos:column="31">// C++ Exception Specification ignored</comment>
+<cpp:pragma pos:line="24" pos:column="1">#<cpp:directive pos:line="24" pos:column="2">pragma</cpp:directive> warning(disable:4100)</cpp:pragma> <comment type="line" pos:line="24" pos:column="31">// Unreferenced formal parameter</comment>
+<cpp:pragma pos:line="25" pos:column="1">#<cpp:directive pos:line="25" pos:column="2">pragma</cpp:directive> warning(disable:4702)</cpp:pragma> <comment type="line" pos:line="25" pos:column="31">// unreachable code</comment>
+<cpp:pragma pos:line="26" pos:column="1">#<cpp:directive pos:line="26" pos:column="2">pragma</cpp:directive> warning(disable:4710)</cpp:pragma> <comment type="line" pos:line="26" pos:column="31">// function not inlined</comment>
+<cpp:pragma pos:line="27" pos:column="1">#<cpp:directive pos:line="27" pos:column="2">pragma</cpp:directive> warning(disable:4800)</cpp:pragma> <comment type="line" pos:line="27" pos:column="31">// forcing value to bool 'true' or 'false' (performance warning)</comment>
+<cpp:pragma pos:line="28" pos:column="1">#<cpp:directive pos:line="28" pos:column="2">pragma</cpp:directive> warning(disable:4263)</cpp:pragma> <comment type="line" pos:line="28" pos:column="31">// member fnctn does not override base class fnctn</comment>
+<cpp:pragma pos:line="29" pos:column="1">#<cpp:directive pos:line="29" pos:column="2">pragma</cpp:directive> warning(disable:4264)</cpp:pragma> <comment type="line" pos:line="29" pos:column="31">// no override available for virtual hidden fnctn</comment>
+<cpp:pragma pos:line="30" pos:column="1">#<cpp:directive pos:line="30" pos:column="2">pragma</cpp:directive> warning(disable:4141)</cpp:pragma> <comment type="line" pos:line="30" pos:column="31">// novtable more than once--broken in 8603 compiler</comment>
+
+<comment type="line" pos:line="32" pos:column="1">// warnings disabled temporarily until fixed in VS sources (1/20/00 KarlSi)</comment>
+<cpp:pragma pos:line="33" pos:column="1">#<cpp:directive pos:line="33" pos:column="2">pragma</cpp:directive> warning(disable:4584)</cpp:pragma> <comment type="line" pos:line="33" pos:column="31">// bass-class 'x' is already a base-class of 'y'</comment>
+<cpp:pragma pos:line="34" pos:column="1">#<cpp:directive pos:line="34" pos:column="2">pragma</cpp:directive> warning(disable:4920)</cpp:pragma> <comment type="line" pos:line="34" pos:column="31">// enum 'x' member &lt;expr&gt; already seen in enum 'y'</comment>
+<cpp:pragma pos:line="35" pos:column="1">#<cpp:directive pos:line="35" pos:column="2">pragma</cpp:directive> warning(disable:4995)</cpp:pragma> <comment type="line" pos:line="35" pos:column="31">// using deprecated functionality (eg. iostream)</comment>
+
+<comment type="line" pos:line="37" pos:column="1">// warnings disabled temporarily until fixed in VS sources (2004/07/20 DJCarter)</comment>
+<cpp:pragma pos:line="38" pos:column="1">#<cpp:directive pos:line="38" pos:column="2">pragma</cpp:directive> warning(disable:4334)</cpp:pragma> <comment type="line" pos:line="38" pos:column="31">// '&lt;&lt;' : result of 32-bit shift implicitly converted to 64 bits</comment>
+<cpp:pragma pos:line="39" pos:column="1">#<cpp:directive pos:line="39" pos:column="2">pragma</cpp:directive> warning(disable:4293)</cpp:pragma> <comment type="line" pos:line="39" pos:column="31">// '&lt;&lt;' : shift count negative or too big, undefined behavior</comment>
+<cpp:pragma pos:line="40" pos:column="1">#<cpp:directive pos:line="40" pos:column="2">pragma</cpp:directive> warning(disable:4430)</cpp:pragma> <comment type="line" pos:line="40" pos:column="31">// missing type specifier - int assumed. Note: C++ does not support default-int</comment>
+<cpp:pragma pos:line="41" pos:column="1">#<cpp:directive pos:line="41" pos:column="2">pragma</cpp:directive> warning(disable:4812)</cpp:pragma> <comment type="line" pos:line="41" pos:column="31">// obsolete declaration style: use '%$S::%s%$I' instead</comment>
+<cpp:pragma pos:line="42" pos:column="1">#<cpp:directive pos:line="42" pos:column="2">pragma</cpp:directive> warning(disable:4743)</cpp:pragma> <comment type="line" pos:line="42" pos:column="31">// '%S' has different size in '$s1' and '$s2': $N1 and $N2 bytes</comment>
+
+<comment type="line" pos:line="44" pos:column="1">// warning disabled for IJW</comment>
+<cpp:pragma pos:line="45" pos:column="1">#<cpp:directive pos:line="45" pos:column="2">pragma</cpp:directive> warning(disable:4562)</cpp:pragma> <comment type="line" pos:line="45" pos:column="31">// fully prototyped functions are required with the '/clr' option: converting '()' to '(void)'</comment>
+<cpp:pragma pos:line="46" pos:column="1">#<cpp:directive pos:line="46" pos:column="2">pragma</cpp:directive> warning(disable:4793)</cpp:pragma> <comment type="line" pos:line="46" pos:column="31">// 'vararg' : causes native code generation</comment>
+
+<comment type="line" pos:line="48" pos:column="1">// warnings that Win64 IDL builds generate</comment>
+<cpp:ifdef pos:line="49" pos:column="1">#<cpp:directive pos:line="49" pos:column="2">ifdef</cpp:directive> <name pos:line="49" pos:column="8">_WIN64</name></cpp:ifdef>
+<cpp:pragma pos:line="50" pos:column="1">#<cpp:directive pos:line="50" pos:column="2">pragma</cpp:directive> warning(disable:4206)</cpp:pragma> <comment type="line" pos:line="50" pos:column="31">// nonstandard extension used: translation unit is empty</comment>
+<cpp:endif pos:line="51" pos:column="1">#<cpp:directive pos:line="51" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:ifndef pos:line="53" pos:column="1">#<cpp:directive pos:line="53" pos:column="2">ifndef</cpp:directive> <name pos:line="53" pos:column="9">__cplusplus</name></cpp:ifndef>
+<cpp:undef pos:line="54" pos:column="1">#<cpp:directive pos:line="54" pos:column="2">undef</cpp:directive> <name pos:line="54" pos:column="8">try</name></cpp:undef>
+<cpp:undef pos:line="55" pos:column="1">#<cpp:directive pos:line="55" pos:column="2">undef</cpp:directive> <name pos:line="55" pos:column="8">except</name></cpp:undef>
+<cpp:undef pos:line="56" pos:column="1">#<cpp:directive pos:line="56" pos:column="2">undef</cpp:directive> <name pos:line="56" pos:column="8">finally</name></cpp:undef>
+<cpp:undef pos:line="57" pos:column="1">#<cpp:directive pos:line="57" pos:column="2">undef</cpp:directive> <name pos:line="57" pos:column="8">leave</name></cpp:undef>
+<cpp:define pos:line="58" pos:column="1">#<cpp:directive pos:line="58" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="58" pos:column="9">try</name></cpp:macro>                         <cpp:value pos:line="58" pos:column="37">__try</cpp:value></cpp:define>
+<cpp:define pos:line="59" pos:column="1">#<cpp:directive pos:line="59" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="59" pos:column="9">except</name></cpp:macro>                      <cpp:value pos:line="59" pos:column="37">__except</cpp:value></cpp:define>
+<cpp:define pos:line="60" pos:column="1">#<cpp:directive pos:line="60" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="60" pos:column="9">finally</name></cpp:macro>                     <cpp:value pos:line="60" pos:column="37">__finally</cpp:value></cpp:define>
+<cpp:define pos:line="61" pos:column="1">#<cpp:directive pos:line="61" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="61" pos:column="9">leave</name></cpp:macro>                       <cpp:value pos:line="61" pos:column="37">__leave</cpp:value></cpp:define>
+<cpp:endif pos:line="62" pos:column="1">#<cpp:directive pos:line="62" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:ifdef pos:line="64" pos:column="1">#<cpp:directive pos:line="64" pos:column="2">ifdef</cpp:directive> <name pos:line="64" pos:column="8">_PREFIX_</name></cpp:ifdef>
+<cpp:include pos:line="65" pos:column="1">#<cpp:directive pos:line="65" pos:column="2">include</cpp:directive> <cpp:file pos:line="65" pos:column="10">&lt;pfx_vc7.h&gt;</cpp:file></cpp:include>
+<cpp:endif pos:line="66" pos:column="1">#<cpp:directive pos:line="66" pos:column="2">endif</cpp:directive></cpp:endif>
+</unit>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.AspNet\Model\CacheModel.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">System</name><op:operator pos:line="1" pos:column="13">.</op:operator><name pos:line="1" pos:column="14">Collections</name><op:operator pos:line="1" pos:column="25">.</op:operator><name pos:line="1" pos:column="26">Generic</name></name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">AspNet</name><op:operator pos:line="3" pos:column="25">.</op:operator><name pos:line="3" pos:column="26">Model</name></name>
+<block pos:line="4" pos:column="1">{
+    <class><specifier pos:line="5" pos:column="5">public</specifier> class <name pos:line="5" pos:column="18">CacheModel</name>
+    <block pos:line="6" pos:column="5">{
+        <constructor><specifier pos:line="7" pos:column="9">public</specifier> <name pos:line="7" pos:column="16">CacheModel</name><parameter_list pos:line="7" pos:column="26">()</parameter_list>
+        <block pos:line="8" pos:column="9">{
+            <expr_stmt><expr><name pos:line="9" pos:column="13">CacheItems</name> <op:operator pos:line="9" pos:column="24">=</op:operator> <op:operator pos:line="9" pos:column="26">new</op:operator> <call><name><name pos:line="9" pos:column="30">List</name><argument_list pos:line="9" pos:column="34">&lt;<argument><name pos:line="9" pos:column="35">CacheItemModel</name></argument>&gt;</argument_list></name><argument_list pos:line="9" pos:column="50">()</argument_list></call></expr>;</expr_stmt> 
+            <expr_stmt><expr><name pos:line="10" pos:column="13">Configuration</name> <op:operator pos:line="10" pos:column="27">=</op:operator> <op:operator pos:line="10" pos:column="29">new</op:operator> <call><name pos:line="10" pos:column="33">CacheConfigurationModel</name><argument_list pos:line="10" pos:column="56">()</argument_list></call></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <decl_stmt><decl><type><specifier pos:line="13" pos:column="9">public</specifier> <name pos:line="13" pos:column="16">CacheConfigurationModel</name></type> <name pos:line="13" pos:column="40">Configuration</name> <block pos:line="13" pos:column="54">{ <function_decl><name pos:line="13" pos:column="56">get</name>;</function_decl> <function_decl><name pos:line="13" pos:column="61">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="15" pos:column="9">public</specifier> <name><name pos:line="15" pos:column="16">IList</name><argument_list pos:line="15" pos:column="21">&lt;<argument><name pos:line="15" pos:column="22">CacheItemModel</name></argument>&gt;</argument_list></name></type> <name pos:line="15" pos:column="38">CacheItems</name> <block pos:line="15" pos:column="49">{ <function_decl><name pos:line="15" pos:column="51">get</name>;</function_decl> <function_decl><name pos:line="15" pos:column="56">set</name>;</function_decl> }</block></decl></decl_stmt> 
+    }</block></class>
+}</block></namespace>
+</unit>

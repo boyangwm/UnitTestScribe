@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Framework\GlimpseRequest.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+
+<namespace pos:line="4" pos:column="1">namespace <name><name pos:line="4" pos:column="11">Glimpse</name><op:operator pos:line="4" pos:column="18">.</op:operator><name pos:line="4" pos:column="19">Core</name><op:operator pos:line="4" pos:column="23">.</op:operator><name pos:line="4" pos:column="24">Framework</name></name>
+<block pos:line="5" pos:column="1">{
+    <comment type="line" pos:line="6" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// A class which describes a given Http request, along with the corresponding tab data gathered for that request.</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="9" pos:column="5">public</specifier> class <name pos:line="9" pos:column="18">GlimpseRequest</name>
+    <block pos:line="10" pos:column="5">{
+        <comment type="line" pos:line="11" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="12" pos:column="9">/// Initializes a new instance of the &lt;see cref="GlimpseRequest" /&gt; class.</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;/summary&gt;</comment>
+        <constructor><specifier pos:line="14" pos:column="9">public</specifier> <name pos:line="14" pos:column="16">GlimpseRequest</name><parameter_list pos:line="14" pos:column="30">()</parameter_list>
+        <block pos:line="15" pos:column="9">{
+            <expr_stmt><expr><name pos:line="16" pos:column="13">DateTime</name> <op:operator pos:line="16" pos:column="22">=</op:operator> <name><name pos:line="16" pos:column="24">DateTime</name><op:operator pos:line="16" pos:column="32">.</op:operator><name pos:line="16" pos:column="33">Now</name></name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="19" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="20" pos:column="9">/// Initializes a new instance of the &lt;see cref="GlimpseRequest" /&gt; class.</comment>
+        <comment type="line" pos:line="21" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="22" pos:column="9">/// &lt;param name="requestId"&gt;The request id.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// &lt;param name="requestMetadata"&gt;The request metadata.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;param name="tabData"&gt;The plugin data.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;param name="displayData"&gt;The display data&lt;/param&gt;</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;param name="duration"&gt;The duration.&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="27" pos:column="9">public</specifier> <name pos:line="27" pos:column="16">GlimpseRequest</name><parameter_list pos:line="27" pos:column="30">(<param><decl><type><name pos:line="27" pos:column="31">Guid</name></type> <name pos:line="27" pos:column="36">requestId</name></decl></param>, <param><decl><type><name pos:line="27" pos:column="47">IRequestMetadata</name></type> <name pos:line="27" pos:column="64">requestMetadata</name></decl></param>, <param><decl><type><name><name pos:line="27" pos:column="81">IDictionary</name><argument_list pos:line="27" pos:column="92">&lt;<argument><name pos:line="27" pos:column="93">string</name></argument>, <argument><name pos:line="27" pos:column="101">TabResult</name></argument>&gt;</argument_list></name></type> <name pos:line="27" pos:column="112">tabData</name></decl></param>, <param><decl><type><name><name pos:line="27" pos:column="121">IDictionary</name><argument_list pos:line="27" pos:column="132">&lt;<argument><name pos:line="27" pos:column="133">string</name></argument>, <argument><name pos:line="27" pos:column="141">TabResult</name></argument>&gt;</argument_list></name></type> <name pos:line="27" pos:column="152">displayData</name></decl></param>, <param><decl><type><name pos:line="27" pos:column="165">TimeSpan</name></type> <name pos:line="27" pos:column="174">duration</name></decl></param>)</parameter_list>
+            <member_list pos:line="28" pos:column="13">: <call><name pos:line="28" pos:column="15">this</name><argument_list pos:line="28" pos:column="19">()</argument_list></call>
+        </member_list><block pos:line="29" pos:column="9">{
+            <expr_stmt><expr><name pos:line="30" pos:column="13">RequestId</name> <op:operator pos:line="30" pos:column="23">=</op:operator> <name pos:line="30" pos:column="25">requestId</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="31" pos:column="13">TabData</name> <op:operator pos:line="31" pos:column="21">=</op:operator> <name pos:line="31" pos:column="23">tabData</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="32" pos:column="13">DisplayData</name> <op:operator pos:line="32" pos:column="25">=</op:operator> <name pos:line="32" pos:column="27">displayData</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="33" pos:column="13">Duration</name> <op:operator pos:line="33" pos:column="22">=</op:operator> <name pos:line="33" pos:column="24">duration</name></expr>;</expr_stmt>
+
+            <expr_stmt><expr><name pos:line="35" pos:column="13">RequestHttpMethod</name> <op:operator pos:line="35" pos:column="31">=</op:operator> <name><name pos:line="35" pos:column="33">requestMetadata</name><op:operator pos:line="35" pos:column="48">.</op:operator><name pos:line="35" pos:column="49">RequestHttpMethod</name></name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="36" pos:column="13">RequestIsAjax</name> <op:operator pos:line="36" pos:column="27">=</op:operator> <name><name pos:line="36" pos:column="29">requestMetadata</name><op:operator pos:line="36" pos:column="44">.</op:operator><name pos:line="36" pos:column="45">RequestIsAjax</name></name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="37" pos:column="13">RequestUri</name> <op:operator pos:line="37" pos:column="24">=</op:operator> <name><name pos:line="37" pos:column="26">requestMetadata</name><op:operator pos:line="37" pos:column="41">.</op:operator><name pos:line="37" pos:column="42">RequestUri</name></name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="38" pos:column="13">ResponseStatusCode</name> <op:operator pos:line="38" pos:column="32">=</op:operator> <name><name pos:line="38" pos:column="34">requestMetadata</name><op:operator pos:line="38" pos:column="49">.</op:operator><name pos:line="38" pos:column="50">ResponseStatusCode</name></name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="39" pos:column="13">ResponseContentType</name> <op:operator pos:line="39" pos:column="33">=</op:operator> <name><name pos:line="39" pos:column="35">requestMetadata</name><op:operator pos:line="39" pos:column="50">.</op:operator><name pos:line="39" pos:column="51">ResponseContentType</name></name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="40" pos:column="13">ClientId</name> <op:operator pos:line="40" pos:column="22">=</op:operator> <call><name><name pos:line="40" pos:column="24">requestMetadata</name><op:operator pos:line="40" pos:column="39">.</op:operator><name pos:line="40" pos:column="40">GetCookie</name></name><argument_list pos:line="40" pos:column="49">(<argument><expr><name><name pos:line="40" pos:column="50">Constants</name><op:operator pos:line="40" pos:column="59">.</op:operator><name pos:line="40" pos:column="60">ClientIdCookieName</name></name></expr></argument>)</argument_list></call> <op:operator pos:line="40" pos:column="80">??</op:operator> <name><name pos:line="40" pos:column="83">requestMetadata</name><op:operator pos:line="40" pos:column="98">.</op:operator><name pos:line="40" pos:column="99">ClientId</name></name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="41" pos:column="13">UserAgent</name> <op:operator pos:line="41" pos:column="23">=</op:operator> <call><name><name pos:line="41" pos:column="25">requestMetadata</name><op:operator pos:line="41" pos:column="40">.</op:operator><name pos:line="41" pos:column="41">GetHttpHeader</name></name><argument_list pos:line="41" pos:column="54">(<argument><expr><name><name pos:line="41" pos:column="55">Constants</name><op:operator pos:line="41" pos:column="64">.</op:operator><name pos:line="41" pos:column="65">UserAgentHeaderName</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+            <decl_stmt><decl><type><name pos:line="43" pos:column="13">Guid</name></type> <name pos:line="43" pos:column="18">parentRequestId</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="45" pos:column="1">#<cpp:directive pos:line="45" pos:column="2">if</cpp:directive> <expr><name pos:line="45" pos:column="5">NET35</name></expr></cpp:if>
+            <if pos:line="46" pos:column="13">if <condition pos:line="46" pos:column="16">(<expr><name pos:line="46" pos:column="17">RequestIsAjax</name> <op:operator pos:line="46" pos:column="31">&amp;&amp;</op:operator> <call><name><name pos:line="46" pos:column="34">Glimpse</name><op:operator pos:line="46" pos:column="41">.</op:operator><name pos:line="46" pos:column="42">Core</name><op:operator pos:line="46" pos:column="46">.</op:operator><name pos:line="46" pos:column="47">Backport</name><op:operator pos:line="46" pos:column="55">.</op:operator><name pos:line="46" pos:column="56">Net35Backport</name><op:operator pos:line="46" pos:column="69">.</op:operator><name pos:line="46" pos:column="70">TryParseGuid</name></name><argument_list pos:line="46" pos:column="82">(<argument><expr><call><name><name pos:line="46" pos:column="83">requestMetadata</name><op:operator pos:line="46" pos:column="98">.</op:operator><name pos:line="46" pos:column="99">GetHttpHeader</name></name><argument_list pos:line="46" pos:column="112">(<argument><expr><name><name pos:line="46" pos:column="113">Constants</name><op:operator pos:line="46" pos:column="122">.</op:operator><name pos:line="46" pos:column="123">HttpRequestHeader</name></name></expr></argument>)</argument_list></call></expr></argument>, <argument><expr pos:line="46" pos:column="143">out <name pos:line="46" pos:column="147">parentRequestId</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="46" pos:column="164">
+            <block pos:line="47" pos:column="13">{
+                <expr_stmt><expr><name pos:line="48" pos:column="17">ParentRequestId</name> <op:operator pos:line="48" pos:column="33">=</op:operator> <name pos:line="48" pos:column="35">parentRequestId</name></expr>;</expr_stmt>
+            }</block></then></if>
+<cpp:else pos:line="50" pos:column="1">#<cpp:directive pos:line="50" pos:column="2">else</cpp:directive></cpp:else>
+            <if pos:line="51" pos:column="13">if <condition pos:line="51" pos:column="16">(<expr><name pos:line="51" pos:column="17">RequestIsAjax</name> <op:operator pos:line="51" pos:column="31">&amp;&amp;</op:operator> <call><name><name pos:line="51" pos:column="34">Guid</name><op:operator pos:line="51" pos:column="38">.</op:operator><name pos:line="51" pos:column="39">TryParse</name></name><argument_list pos:line="51" pos:column="47">(<argument><expr><call><name><name pos:line="51" pos:column="48">requestMetadata</name><op:operator pos:line="51" pos:column="63">.</op:operator><name pos:line="51" pos:column="64">GetHttpHeader</name></name><argument_list pos:line="51" pos:column="77">(<argument><expr><name><name pos:line="51" pos:column="78">Constants</name><op:operator pos:line="51" pos:column="87">.</op:operator><name pos:line="51" pos:column="88">HttpRequestHeader</name></name></expr></argument>)</argument_list></call></expr></argument>, <argument><expr pos:line="51" pos:column="108">out <name pos:line="51" pos:column="112">parentRequestId</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="51" pos:column="129">
+            <block pos:line="52" pos:column="13">{
+                <expr_stmt><expr><name pos:line="53" pos:column="17">ParentRequestId</name> <op:operator pos:line="53" pos:column="33">=</op:operator> <name pos:line="53" pos:column="35">parentRequestId</name></expr>;</expr_stmt>
+            }</block></then></if>
+<cpp:endif pos:line="55" pos:column="1">#<cpp:directive pos:line="55" pos:column="2">endif</cpp:directive></cpp:endif>
+        }</block></constructor>
+
+        <comment type="line" pos:line="58" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="59" pos:column="9">/// Gets or sets the client id used for session tracking.</comment>
+        <comment type="line" pos:line="60" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="61" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="62" pos:column="9">/// The client id.</comment>
+        <comment type="line" pos:line="63" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="64" pos:column="9">public</specifier> <name pos:line="64" pos:column="16">string</name></type> <name pos:line="64" pos:column="23">ClientId</name> <block pos:line="64" pos:column="32">{ <function_decl><name pos:line="64" pos:column="34">get</name>;</function_decl> <function_decl><name pos:line="64" pos:column="39">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="66" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="67" pos:column="9">/// Gets or sets the date time of the request.</comment>
+        <comment type="line" pos:line="68" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="69" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="70" pos:column="9">/// The date time of the request.</comment>
+        <comment type="line" pos:line="71" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="72" pos:column="9">public</specifier> <name pos:line="72" pos:column="16">DateTime</name></type> <name pos:line="72" pos:column="25">DateTime</name> <block pos:line="72" pos:column="34">{ <function_decl><name pos:line="72" pos:column="36">get</name>;</function_decl> <function_decl><name pos:line="72" pos:column="41">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="74" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="75" pos:column="9">/// Gets or sets the duration of the request.</comment>
+        <comment type="line" pos:line="76" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="77" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="78" pos:column="9">/// The duration of the request.</comment>
+        <comment type="line" pos:line="79" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="80" pos:column="9">public</specifier> <name pos:line="80" pos:column="16">TimeSpan</name></type> <name pos:line="80" pos:column="25">Duration</name> <block pos:line="80" pos:column="34">{ <function_decl><name pos:line="80" pos:column="36">get</name>;</function_decl> <function_decl><name pos:line="80" pos:column="41">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="82" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="83" pos:column="9">/// Gets or sets the parent request id.</comment>
+        <comment type="line" pos:line="84" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="85" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="86" pos:column="9">/// The parent request id.</comment>
+        <comment type="line" pos:line="87" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="88" pos:column="9">public</specifier> <name pos:line="88" pos:column="16">Guid</name><type:modifier pos:line="88" pos:column="20">?</type:modifier></type> <name pos:line="88" pos:column="22">ParentRequestId</name> <block pos:line="88" pos:column="38">{ <function_decl><name pos:line="88" pos:column="40">get</name>;</function_decl> <function_decl><name pos:line="88" pos:column="45">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="90" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="91" pos:column="9">/// Gets or sets the request id.</comment>
+        <comment type="line" pos:line="92" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="93" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="94" pos:column="9">/// The request id.</comment>
+        <comment type="line" pos:line="95" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="96" pos:column="9">public</specifier> <name pos:line="96" pos:column="16">Guid</name></type> <name pos:line="96" pos:column="21">RequestId</name> <block pos:line="96" pos:column="31">{ <function_decl><name pos:line="96" pos:column="33">get</name>;</function_decl> <function_decl><name pos:line="96" pos:column="38">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="98" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="99" pos:column="9">/// Gets or sets a value indicating whether the request is an Ajax request.</comment>
+        <comment type="line" pos:line="100" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="101" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="102" pos:column="9">///   &lt;c&gt;true&lt;/c&gt; if the request is an Ajax request; otherwise, &lt;c&gt;false&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="103" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="104" pos:column="9">public</specifier> <name pos:line="104" pos:column="16">bool</name></type> <name pos:line="104" pos:column="21">RequestIsAjax</name> <block pos:line="104" pos:column="35">{ <function_decl><name pos:line="104" pos:column="37">get</name>;</function_decl> <function_decl><name pos:line="104" pos:column="42">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="106" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="107" pos:column="9">/// Gets or sets the request's HTTP method.</comment>
+        <comment type="line" pos:line="108" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="109" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="110" pos:column="9">/// The request's HTTP method.</comment>
+        <comment type="line" pos:line="111" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="112" pos:column="9">public</specifier> <name pos:line="112" pos:column="16">string</name></type> <name pos:line="112" pos:column="23">RequestHttpMethod</name> <block pos:line="112" pos:column="41">{ <function_decl><name pos:line="112" pos:column="43">get</name>;</function_decl> <function_decl><name pos:line="112" pos:column="48">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="114" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="115" pos:column="9">/// Gets or sets the request's Uri.</comment>
+        <comment type="line" pos:line="116" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="117" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="118" pos:column="9">/// The request's Uri.</comment>
+        <comment type="line" pos:line="119" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="120" pos:column="9">public</specifier> <name pos:line="120" pos:column="16">string</name></type> <name pos:line="120" pos:column="23">RequestUri</name> <block pos:line="120" pos:column="34">{ <function_decl><name pos:line="120" pos:column="36">get</name>;</function_decl> <function_decl><name pos:line="120" pos:column="41">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="122" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="123" pos:column="9">/// Gets or sets the type of the response's content type.</comment>
+        <comment type="line" pos:line="124" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="125" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="126" pos:column="9">/// The content type of the response.</comment>
+        <comment type="line" pos:line="127" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="128" pos:column="9">public</specifier> <name pos:line="128" pos:column="16">string</name></type> <name pos:line="128" pos:column="23">ResponseContentType</name> <block pos:line="128" pos:column="43">{ <function_decl><name pos:line="128" pos:column="45">get</name>;</function_decl> <function_decl><name pos:line="128" pos:column="50">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="130" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="131" pos:column="9">/// Gets or sets the response status code.</comment>
+        <comment type="line" pos:line="132" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="133" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="134" pos:column="9">/// The response status code.</comment>
+        <comment type="line" pos:line="135" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="136" pos:column="9">public</specifier> <name pos:line="136" pos:column="16">int</name></type> <name pos:line="136" pos:column="20">ResponseStatusCode</name> <block pos:line="136" pos:column="39">{ <function_decl><name pos:line="136" pos:column="41">get</name>;</function_decl> <function_decl><name pos:line="136" pos:column="46">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="138" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="139" pos:column="9">/// Gets or sets the tab data for the Http request.</comment>
+        <comment type="line" pos:line="140" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="141" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="142" pos:column="9">/// The tab data.</comment>
+        <comment type="line" pos:line="143" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="144" pos:column="9">public</specifier> <name><name pos:line="144" pos:column="16">IDictionary</name><argument_list pos:line="144" pos:column="27">&lt;<argument><name pos:line="144" pos:column="28">string</name></argument>, <argument><name pos:line="144" pos:column="36">TabResult</name></argument>&gt;</argument_list></name></type> <name pos:line="144" pos:column="47">TabData</name> <block pos:line="144" pos:column="55">{ <function_decl><name pos:line="144" pos:column="57">get</name>;</function_decl> <function_decl><name pos:line="144" pos:column="62">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="146" pos:column="9">public</specifier> <name><name pos:line="146" pos:column="16">IDictionary</name><argument_list pos:line="146" pos:column="27">&lt;<argument><name pos:line="146" pos:column="28">string</name></argument>, <argument><name pos:line="146" pos:column="36">TabResult</name></argument>&gt;</argument_list></name></type> <name pos:line="146" pos:column="47">DisplayData</name> <block pos:line="146" pos:column="59">{ <function_decl><name pos:line="146" pos:column="61">get</name>;</function_decl> <function_decl><name pos:line="146" pos:column="66">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="148" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="149" pos:column="9">/// Gets or sets the user agent for the request.</comment>
+        <comment type="line" pos:line="150" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="151" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="152" pos:column="9">/// The user agent.</comment>
+        <comment type="line" pos:line="153" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="154" pos:column="9">public</specifier> <name pos:line="154" pos:column="16">string</name></type> <name pos:line="154" pos:column="23">UserAgent</name> <block pos:line="154" pos:column="33">{ <function_decl><name pos:line="154" pos:column="35">get</name>;</function_decl> <function_decl><name pos:line="154" pos:column="40">set</name>;</function_decl> }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace></unit>

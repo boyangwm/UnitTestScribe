@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\VisualStudio\ABB.SrcML.VisualStudio.PreviewAddIn\BufferedBindingList.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2011 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Text</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">System</name><op:operator pos:line="16" pos:column="13">.</op:operator><name pos:line="16" pos:column="14">ComponentModel</name></name>;</using>
+
+<namespace pos:line="18" pos:column="1">namespace <name><name pos:line="18" pos:column="11">ABB</name><op:operator pos:line="18" pos:column="14">.</op:operator><name pos:line="18" pos:column="15">SrcML</name><op:operator pos:line="18" pos:column="20">.</op:operator><name pos:line="18" pos:column="21">VisualStudio</name><op:operator pos:line="18" pos:column="33">.</op:operator><name pos:line="18" pos:column="34">PreviewAddIn</name></name>
+<block pos:line="19" pos:column="1">{
+    <class pos:line="20" pos:column="5">class <name><name pos:line="20" pos:column="11">BufferedBindingList</name><argument_list pos:line="20" pos:column="30">&lt;<argument><name pos:line="20" pos:column="31">T</name></argument>&gt;</argument_list></name> <super pos:line="20" pos:column="34">: <name><name pos:line="20" pos:column="36">BindingList</name><argument_list pos:line="20" pos:column="47">&lt;<argument><name pos:line="20" pos:column="48">T</name></argument>&gt;</argument_list></name></super>
+    <block pos:line="21" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="22" pos:column="9">public</specifier> <name pos:line="22" pos:column="16">int</name></type> <name pos:line="22" pos:column="20">BufferCount</name>
+        <block pos:line="23" pos:column="9">{
+            <function_decl><name pos:line="24" pos:column="13">get</name>;</function_decl>
+            <function_decl><name pos:line="25" pos:column="13">set</name>;</function_decl>
+        }</block></decl></decl_stmt>
+
+        
+
+        <constructor><specifier pos:line="30" pos:column="9">public</specifier> <name pos:line="30" pos:column="16">BufferedBindingList</name><parameter_list pos:line="30" pos:column="35">(<param><decl><type><name><name pos:line="30" pos:column="36">IList</name><argument_list pos:line="30" pos:column="41">&lt;<argument><name pos:line="30" pos:column="42">T</name></argument>&gt;</argument_list></name></type> <name pos:line="30" pos:column="45">list</name></decl></param>, <param><decl><type><name pos:line="30" pos:column="51">int</name></type> <name pos:line="30" pos:column="55">buffer</name></decl></param>)</parameter_list> <member_list pos:line="30" pos:column="63">: <call><name pos:line="30" pos:column="65">base</name><argument_list pos:line="30" pos:column="69">(<argument><expr><name pos:line="30" pos:column="70">list</name></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="31" pos:column="9">{
+            <expr_stmt><expr><name><name pos:line="32" pos:column="13">this</name><op:operator pos:line="32" pos:column="17">.</op:operator><name pos:line="32" pos:column="18">BufferCount</name></name> <op:operator pos:line="32" pos:column="30">=</op:operator> <name pos:line="32" pos:column="32">buffer</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <constructor><specifier pos:line="35" pos:column="9">public</specifier> <name pos:line="35" pos:column="16">BufferedBindingList</name><parameter_list pos:line="35" pos:column="35">(<param><decl><type><name><name pos:line="35" pos:column="36">IList</name><argument_list pos:line="35" pos:column="41">&lt;<argument><name pos:line="35" pos:column="42">T</name></argument>&gt;</argument_list></name></type> <name pos:line="35" pos:column="45">list</name></decl></param>)</parameter_list> <member_list pos:line="35" pos:column="51">: <call><name pos:line="35" pos:column="53">this</name><argument_list pos:line="35" pos:column="57">(<argument><expr><name pos:line="35" pos:column="58">list</name></expr></argument>, <argument><expr><lit:literal type="number" pos:line="35" pos:column="64">1</lit:literal></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="36" pos:column="9">{
+        }</block></constructor>
+
+        <constructor><specifier pos:line="39" pos:column="9">public</specifier> <name pos:line="39" pos:column="16">BufferedBindingList</name><parameter_list pos:line="39" pos:column="35">(<param><decl><type><name pos:line="39" pos:column="36">int</name></type> <name pos:line="39" pos:column="40">buffer</name></decl></param>)</parameter_list>
+            <member_list pos:line="40" pos:column="13">: <call><name pos:line="40" pos:column="15">base</name><argument_list pos:line="40" pos:column="19">()</argument_list></call>
+        </member_list><block pos:line="41" pos:column="9">{
+            <expr_stmt><expr><name><name pos:line="42" pos:column="13">this</name><op:operator pos:line="42" pos:column="17">.</op:operator><name pos:line="42" pos:column="18">BufferCount</name></name> <op:operator pos:line="42" pos:column="30">=</op:operator> <name pos:line="42" pos:column="32">buffer</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <constructor><specifier pos:line="45" pos:column="9">public</specifier> <name pos:line="45" pos:column="16">BufferedBindingList</name><parameter_list pos:line="45" pos:column="35">()</parameter_list> <member_list pos:line="45" pos:column="38">: <call><name pos:line="45" pos:column="40">this</name><argument_list pos:line="45" pos:column="44">(<argument><expr><lit:literal type="number" pos:line="45" pos:column="45">1</lit:literal></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="46" pos:column="9">{
+        }</block></constructor>
+
+        <function><type><specifier pos:line="49" pos:column="9">protected</specifier> <specifier pos:line="49" pos:column="19">override</specifier> <name pos:line="49" pos:column="28">void</name></type> <name pos:line="49" pos:column="33">OnListChanged</name><parameter_list pos:line="49" pos:column="46">(<param><decl><type><name pos:line="49" pos:column="47">ListChangedEventArgs</name></type> <name pos:line="49" pos:column="68">e</name></decl></param>)</parameter_list>
+        <block pos:line="50" pos:column="9">{
+
+            <expr_stmt><expr><call><name><name pos:line="52" pos:column="13">base</name><op:operator pos:line="52" pos:column="17">.</op:operator><name pos:line="52" pos:column="18">OnListChanged</name></name><argument_list pos:line="52" pos:column="31">(<argument><expr><name pos:line="52" pos:column="32">e</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+    }</block></class>
+}</block></namespace>
+</unit>

@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\vbapkg.h" pos:tabs="8" pos:line="1" pos:column="1">
+
+<comment type="block" pos:line="3" pos:column="1">/* this ALWAYS GENERATED file contains the definitions for the interfaces */</comment>
+
+
+ <comment type="block" pos:line="6" pos:column="2">/* File created by MIDL compiler version 7.00.0499 */</comment>
+<comment type="block" pos:line="7" pos:column="1">/* Compiler settings for vbapkg.idl:
+    Oicf, W0, Zp8, env=Win32 (32b run)
+    protocol : dce , ms_ext, c_ext, robust
+    error checks: allocation ref bounds_check enum stub_data 
+    VC __declspec() decoration level: 
+         __declspec(uuid()), __declspec(selectany), __declspec(novtable)
+         DECLSPEC_UUID(), MIDL_INTERFACE()
+*/</comment>
+<comment type="line" pos:line="15" pos:column="1">//@@MIDL_FILE_HEADING(  )</comment>
+
+<cpp:pragma pos:line="17" pos:column="1">#<cpp:directive pos:line="17" pos:column="2">pragma</cpp:directive> warning( disable: 4049 )</cpp:pragma>  <comment type="block" pos:line="17" pos:column="35">/* more than 64k source lines */</comment>
+
+
+<comment type="block" pos:line="20" pos:column="1">/* verify that the &lt;rpcndr.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="21" pos:column="1">#<cpp:directive pos:line="21" pos:column="2">ifndef</cpp:directive> <name pos:line="21" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="22" pos:column="1">#<cpp:directive pos:line="22" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="22" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:macro> <cpp:value pos:line="22" pos:column="39">475</cpp:value></cpp:define>
+<cpp:endif pos:line="23" pos:column="1">#<cpp:directive pos:line="23" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="25" pos:column="1">/* verify that the &lt;rpcsal.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="26" pos:column="1">#<cpp:directive pos:line="26" pos:column="2">ifndef</cpp:directive> <name pos:line="26" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="27" pos:column="1">#<cpp:directive pos:line="27" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="27" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:macro> <cpp:value pos:line="27" pos:column="39">100</cpp:value></cpp:define>
+<cpp:endif pos:line="28" pos:column="1">#<cpp:directive pos:line="28" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:include pos:line="30" pos:column="1">#<cpp:directive pos:line="30" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="30" pos:column="10">"rpc.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="31" pos:column="1">#<cpp:directive pos:line="31" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="31" pos:column="10">"rpcndr.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifndef pos:line="33" pos:column="1">#<cpp:directive pos:line="33" pos:column="2">ifndef</cpp:directive> <name pos:line="33" pos:column="9">__RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:error pos:line="34" pos:column="1">#<cpp:directive pos:line="34" pos:column="2">error</cpp:directive> this stub requires an updated version of &lt;rpcndr.h&gt;</cpp:error>
+<cpp:endif pos:line="35" pos:column="1">#<cpp:directive pos:line="35" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="35" pos:column="8">// __RPCNDR_H_VERSION__</comment>
+
+
+<cpp:ifndef pos:line="38" pos:column="1">#<cpp:directive pos:line="38" pos:column="2">ifndef</cpp:directive> <name pos:line="38" pos:column="9">__vbapkg_h__</name></cpp:ifndef>
+<cpp:define pos:line="39" pos:column="1">#<cpp:directive pos:line="39" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="39" pos:column="9">__vbapkg_h__</name></cpp:macro></cpp:define>
+
+<cpp:if pos:line="41" pos:column="1">#<cpp:directive pos:line="41" pos:column="2">if</cpp:directive> <expr><call><name pos:line="41" pos:column="5">defined</name><argument_list pos:line="41" pos:column="12">(<argument><expr><name pos:line="41" pos:column="13">_MSC_VER</name></expr></argument>)</argument_list></call> <op:operator pos:line="41" pos:column="23">&amp;&amp;</op:operator> <op:operator pos:line="41" pos:column="26">(</op:operator><name pos:line="41" pos:column="27">_MSC_VER</name> <op:operator pos:line="41" pos:column="36">&gt;=</op:operator> <lit:literal type="number" pos:line="41" pos:column="39">1020</lit:literal><op:operator pos:line="41" pos:column="43">)</op:operator></expr></cpp:if>
+<cpp:pragma pos:line="42" pos:column="1">#<cpp:directive pos:line="42" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+<cpp:endif pos:line="43" pos:column="1">#<cpp:directive pos:line="43" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="45" pos:column="1">/* Forward Declarations */</comment> 
+
+<cpp:ifndef pos:line="47" pos:column="1">#<cpp:directive pos:line="47" pos:column="2">ifndef</cpp:directive> <name pos:line="47" pos:column="9">__IVsVba_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="48" pos:column="1">#<cpp:directive pos:line="48" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="48" pos:column="9">__IVsVba_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="49" pos:column="1">typedef <type><name pos:line="49" pos:column="9">interface</name> <name pos:line="49" pos:column="19">IVsVba</name></type> <name pos:line="49" pos:column="26">IVsVba</name>;</typedef>
+<cpp:endif pos:line="50" pos:column="1">#<cpp:directive pos:line="50" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="50" pos:column="9">/* __IVsVba_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="53" pos:column="1">#<cpp:directive pos:line="53" pos:column="2">ifndef</cpp:directive> <name pos:line="53" pos:column="9">__IVsMacros_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="54" pos:column="1">#<cpp:directive pos:line="54" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="54" pos:column="9">__IVsMacros_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="55" pos:column="1">typedef <type><name pos:line="55" pos:column="9">interface</name> <name pos:line="55" pos:column="19">IVsMacros</name></type> <name pos:line="55" pos:column="29">IVsMacros</name>;</typedef>
+<cpp:endif pos:line="56" pos:column="1">#<cpp:directive pos:line="56" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="56" pos:column="9">/* __IVsMacros_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="59" pos:column="1">#<cpp:directive pos:line="59" pos:column="2">ifndef</cpp:directive> <name pos:line="59" pos:column="9">__IVsMacroRecorder_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="60" pos:column="1">#<cpp:directive pos:line="60" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="60" pos:column="9">__IVsMacroRecorder_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="61" pos:column="1">typedef <type><name pos:line="61" pos:column="9">interface</name> <name pos:line="61" pos:column="19">IVsMacroRecorder</name></type> <name pos:line="61" pos:column="36">IVsMacroRecorder</name>;</typedef>
+<cpp:endif pos:line="62" pos:column="1">#<cpp:directive pos:line="62" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="62" pos:column="9">/* __IVsMacroRecorder_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="65" pos:column="1">#<cpp:directive pos:line="65" pos:column="2">ifndef</cpp:directive> <name pos:line="65" pos:column="9">__VsVbaPackage_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="66" pos:column="1">#<cpp:directive pos:line="66" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="66" pos:column="9">__VsVbaPackage_FWD_DEFINED__</name></cpp:macro></cpp:define>
+
+<cpp:ifdef pos:line="68" pos:column="1">#<cpp:directive pos:line="68" pos:column="2">ifdef</cpp:directive> <name pos:line="68" pos:column="8">__cplusplus</name></cpp:ifdef>
+<typedef pos:line="69" pos:column="1">typedef <type pos:line="69" pos:column="9">class <name pos:line="69" pos:column="15">VsVbaPackage</name></type> <name pos:line="69" pos:column="28">VsVbaPackage</name>;</typedef>
+<cpp:else pos:line="70" pos:column="1">#<cpp:directive pos:line="70" pos:column="2">else</cpp:directive></cpp:else>
+<typedef pos:line="71" pos:column="1">typedef <type pos:line="71" pos:column="9">struct <name pos:line="71" pos:column="16">VsVbaPackage</name></type> <name pos:line="71" pos:column="29">VsVbaPackage</name>;</typedef>
+<cpp:endif pos:line="72" pos:column="1">#<cpp:directive pos:line="72" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="72" pos:column="8">/* __cplusplus */</comment>
+
+<cpp:endif pos:line="74" pos:column="1">#<cpp:directive pos:line="74" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="74" pos:column="9">/* __VsVbaPackage_FWD_DEFINED__ */</comment>
+
+
+<comment type="block" pos:line="77" pos:column="1">/* header files for imported files */</comment>
+<cpp:include pos:line="78" pos:column="1">#<cpp:directive pos:line="78" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="78" pos:column="10">"oaidl.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="79" pos:column="1">#<cpp:directive pos:line="79" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="79" pos:column="10">"ocidl.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="80" pos:column="1">#<cpp:directive pos:line="80" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="80" pos:column="10">"vsshell.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifdef pos:line="82" pos:column="1">#<cpp:directive pos:line="82" pos:column="2">ifdef</cpp:directive> <name pos:line="82" pos:column="8">__cplusplus</name></cpp:ifdef>
+<extern pos:line="83" pos:column="1">extern <lit:literal type="string" pos:line="83" pos:column="8">"C"</lit:literal><block pos:line="83" pos:column="11">{
+<cpp:endif pos:line="84" pos:column="1">#<cpp:directive pos:line="84" pos:column="2">endif</cpp:directive></cpp:endif> 
+
+
+
+<cpp:ifndef pos:line="88" pos:column="1">#<cpp:directive pos:line="88" pos:column="2">ifndef</cpp:directive> <name pos:line="88" pos:column="9">__VsVbaPackageLib_LIBRARY_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="89" pos:column="1">#<cpp:directive pos:line="89" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="89" pos:column="9">__VsVbaPackageLib_LIBRARY_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="91" pos:column="1">/* library VsVbaPackageLib */</comment>
+<comment type="block" pos:line="92" pos:column="1">/* [helpstring][version][uuid] */</comment> 
+
+<decl_stmt><decl><type><specifier pos:line="94" pos:column="1">const</specifier> <name pos:line="94" pos:column="7">GUID</name></type> <name pos:line="94" pos:column="12">GUID_Mode_Recorder</name> <init pos:line="94" pos:column="31">= <expr><block pos:line="94" pos:column="33">{ <expr><lit:literal type="number" pos:line="94" pos:column="35">0x85a70471</lit:literal></expr>, <expr><lit:literal type="number" pos:line="94" pos:column="47">0x270a</lit:literal></expr>, <expr><lit:literal type="number" pos:line="94" pos:column="55">0x11d2</lit:literal></expr>, <expr><block pos:line="94" pos:column="63">{<expr><lit:literal type="number" pos:line="94" pos:column="64">0x88</lit:literal></expr>, <expr><lit:literal type="number" pos:line="94" pos:column="70">0xf9</lit:literal></expr>, <expr><lit:literal type="number" pos:line="94" pos:column="76">0x0</lit:literal></expr>, <expr><lit:literal type="number" pos:line="94" pos:column="81">0x60</lit:literal></expr>, <expr><lit:literal type="number" pos:line="94" pos:column="87">0x8</lit:literal></expr>, <expr><lit:literal type="number" pos:line="94" pos:column="92">0x31</lit:literal></expr>, <expr><lit:literal type="number" pos:line="94" pos:column="98">0x96</lit:literal></expr>, <expr><lit:literal type="number" pos:line="94" pos:column="104">0xc6</lit:literal></expr>}</block></expr> }</block></expr></init></decl>;</decl_stmt>
+<decl_stmt><decl><type><specifier pos:line="95" pos:column="1">const</specifier> <name pos:line="95" pos:column="7">GUID</name></type> <name pos:line="95" pos:column="12">GUID_Macro</name> <init pos:line="95" pos:column="23">= <expr><block pos:line="95" pos:column="25">{ <expr><lit:literal type="number" pos:line="95" pos:column="27">0x23162ff2</lit:literal></expr>, <expr><lit:literal type="number" pos:line="95" pos:column="39">0x3c3f</lit:literal></expr>, <expr><lit:literal type="number" pos:line="95" pos:column="47">0x11d2</lit:literal></expr>, <expr><block pos:line="95" pos:column="55">{<expr><lit:literal type="number" pos:line="95" pos:column="56">0x89</lit:literal></expr>, <expr><lit:literal type="number" pos:line="95" pos:column="62">0xa</lit:literal></expr>, <expr><lit:literal type="number" pos:line="95" pos:column="67">0x0</lit:literal></expr>, <expr><lit:literal type="number" pos:line="95" pos:column="72">0x60</lit:literal></expr>, <expr><lit:literal type="number" pos:line="95" pos:column="78">0x8</lit:literal></expr>, <expr><lit:literal type="number" pos:line="95" pos:column="83">0x31</lit:literal></expr>, <expr><lit:literal type="number" pos:line="95" pos:column="89">0x96</lit:literal></expr>, <expr><lit:literal type="number" pos:line="95" pos:column="95">0xc6</lit:literal></expr>}</block></expr> }</block></expr></init></decl>;</decl_stmt>
+<decl_stmt><decl><type><specifier pos:line="96" pos:column="1">const</specifier> <name pos:line="96" pos:column="7">GUID</name></type> <name pos:line="96" pos:column="12">guidVsVbaPkg</name> <init pos:line="96" pos:column="25">= <expr><block pos:line="96" pos:column="27">{ <expr><lit:literal type="number" pos:line="96" pos:column="29">0xa659f1b3</lit:literal></expr>, <expr><lit:literal type="number" pos:line="96" pos:column="41">0xad34</lit:literal></expr>, <expr><lit:literal type="number" pos:line="96" pos:column="49">0x11d1</lit:literal></expr>, <expr><block pos:line="96" pos:column="57">{<expr><lit:literal type="number" pos:line="96" pos:column="58">0xab</lit:literal></expr>, <expr><lit:literal type="number" pos:line="96" pos:column="64">0xad</lit:literal></expr>, <expr><lit:literal type="number" pos:line="96" pos:column="70">0x0</lit:literal></expr>, <expr><lit:literal type="number" pos:line="96" pos:column="75">0x80</lit:literal></expr>, <expr><lit:literal type="number" pos:line="96" pos:column="81">0xc7</lit:literal></expr>, <expr><lit:literal type="number" pos:line="96" pos:column="87">0xb8</lit:literal></expr>, <expr><lit:literal type="number" pos:line="96" pos:column="93">0x9c</lit:literal></expr>, <expr><lit:literal type="number" pos:line="96" pos:column="99">0x95</lit:literal></expr>}</block></expr> }</block></expr></init></decl>;</decl_stmt>
+<decl_stmt><decl><type><specifier pos:line="97" pos:column="1">const</specifier> <name pos:line="97" pos:column="7">GUID</name></type> <name pos:line="97" pos:column="12">GUID_MacroProject</name> <init pos:line="97" pos:column="30">= <expr><block pos:line="97" pos:column="32">{ <expr><lit:literal type="number" pos:line="97" pos:column="34">0x23162ff1</lit:literal></expr>, <expr><lit:literal type="number" pos:line="97" pos:column="46">0x3c3f</lit:literal></expr>, <expr><lit:literal type="number" pos:line="97" pos:column="54">0x11d2</lit:literal></expr>, <expr><block pos:line="97" pos:column="62">{<expr><lit:literal type="number" pos:line="97" pos:column="63">0x89</lit:literal></expr>, <expr><lit:literal type="number" pos:line="97" pos:column="69">0xa</lit:literal></expr>, <expr><lit:literal type="number" pos:line="97" pos:column="74">0x0</lit:literal></expr>, <expr><lit:literal type="number" pos:line="97" pos:column="79">0x60</lit:literal></expr>, <expr><lit:literal type="number" pos:line="97" pos:column="85">0x8</lit:literal></expr>, <expr><lit:literal type="number" pos:line="97" pos:column="90">0x31</lit:literal></expr>, <expr><lit:literal type="number" pos:line="97" pos:column="96">0x96</lit:literal></expr>, <expr><lit:literal type="number" pos:line="97" pos:column="102">0xc6</lit:literal></expr>}</block></expr> }</block></expr></init></decl>;</decl_stmt>
+<cpp:define pos:line="98" pos:column="1">#<cpp:directive pos:line="98" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="98" pos:column="9">SID_SVsVba</name></cpp:macro> <cpp:value pos:line="98" pos:column="20">IID_IVsVba</cpp:value></cpp:define>
+<cpp:define pos:line="99" pos:column="1">#<cpp:directive pos:line="99" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="99" pos:column="9">SID_SVsMacros</name></cpp:macro> <cpp:value pos:line="99" pos:column="23">IID_IVsMacros</cpp:value></cpp:define>
+<typedef pos:line="100" pos:column="1">typedef 
+<type><enum pos:line="101" pos:column="1">enum <name pos:line="101" pos:column="6">_VSRECORDMODE</name>
+    <block pos:line="102" pos:column="5">{	<decl><name pos:line="102" pos:column="9">VSRECORDMODE_ABSOLUTE</name>	<init pos:line="102" pos:column="33">= <expr><lit:literal type="number" pos:line="102" pos:column="35">1</lit:literal></expr></init></decl><op:operator pos:line="102" pos:column="36">,</op:operator>
+	<decl><name pos:line="103" pos:column="9">VSRECORDMODE_RELATIVE</name>	<init pos:line="103" pos:column="33">= <expr><lit:literal type="number" pos:line="103" pos:column="35">2</lit:literal></expr></init></decl>
+    }</block></enum></type> 	<name pos:line="104" pos:column="9">VSRECORDMODE</name>;</typedef>
+
+<cpp:define pos:line="106" pos:column="1">#<cpp:directive pos:line="106" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="106" pos:column="9">SID_SVsMacroRecorder</name></cpp:macro> <cpp:value pos:line="106" pos:column="30">IID_IVsMacroRecorder</cpp:value></cpp:define>
+
+<decl_stmt><decl><type><name pos:line="108" pos:column="1">EXTERN_C</name> <specifier pos:line="108" pos:column="10">const</specifier> <name pos:line="108" pos:column="16">IID</name></type> <name pos:line="108" pos:column="20">LIBID_VsVbaPackageLib</name></decl>;</decl_stmt>
+
+<cpp:ifndef pos:line="110" pos:column="1">#<cpp:directive pos:line="110" pos:column="2">ifndef</cpp:directive> <name pos:line="110" pos:column="9">__IVsVba_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="111" pos:column="1">#<cpp:directive pos:line="111" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="111" pos:column="9">__IVsVba_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="113" pos:column="1">/* interface IVsVba */</comment>
+<comment type="block" pos:line="114" pos:column="1">/* [object][unique][helpstring][uuid] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="117" pos:column="1">EXTERN_C</name> <specifier pos:line="117" pos:column="10">const</specifier> <name pos:line="117" pos:column="16">IID</name></type> <name pos:line="117" pos:column="20">IID_IVsVba</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="119" pos:column="1">#<cpp:directive pos:line="119" pos:column="2">if</cpp:directive> <expr><call><name pos:line="119" pos:column="5">defined</name><argument_list pos:line="119" pos:column="12">(<argument><expr><name pos:line="119" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="119" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="119" pos:column="29">!</op:operator><call><name pos:line="119" pos:column="30">defined</name><argument_list pos:line="119" pos:column="37">(<argument><expr><name pos:line="119" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="121" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="121" pos:column="19">(<argument pos:line="121" pos:column="20">"A659F1B2-AD34-11d1-ABAD-0080C7B89C95"</argument>)</argument_list></macro>
+    <label><name pos:line="122" pos:column="5">IVsVba</name> :</label> <expr_stmt><expr pos:line="122" pos:column="14">public <name pos:line="122" pos:column="21">IUnknown</name>
+    <block pos:line="123" pos:column="5">{
+    <expr pos:line="124" pos:column="5">public<op:operator pos:line="124" pos:column="11">:</op:operator>
+        virtual <name pos:line="125" pos:column="17">HRESULT</name> <name pos:line="125" pos:column="25">STDMETHODCALLTYPE</name> <call><name pos:line="125" pos:column="43">ShowVBA</name><argument_list pos:line="125" pos:column="50">( <argument><expr><name pos:line="125" pos:column="52">void</name></expr></argument>)</argument_list></call> <op:operator pos:line="125" pos:column="58">=</op:operator> <lit:literal type="number" pos:line="125" pos:column="60">0</lit:literal></expr>;
+        
+        <expr pos:line="127" pos:column="9">virtual <name pos:line="127" pos:column="17">HRESULT</name> <name pos:line="127" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="127" pos:column="43">GetVbaUnk</name><argument_list pos:line="127" pos:column="52">( 
+            <argument pos:line="128" pos:column="13">__RPC__deref_in_opt IUnknown **pUnknown</argument>)</argument_list></macro> <op:operator pos:line="128" pos:column="54">=</op:operator> <lit:literal type="number" pos:line="128" pos:column="56">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="132" pos:column="1">#<cpp:directive pos:line="132" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="132" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="134" pos:column="5">typedef <type><struct pos:line="134" pos:column="13">struct <name pos:line="134" pos:column="20">IVsVbaVtbl</name>
+    <block pos:line="135" pos:column="5">{<public type="default" pos:line="135" pos:column="6">
+        <function_decl><type><name pos:line="136" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="138" pos:column="9">HRESULT</name></type> ( <name pos:line="138" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="138" pos:column="37">*</type:modifier><name pos:line="138" pos:column="38">QueryInterface</name> )<parameter_list pos:line="138" pos:column="54">( 
+            <param><decl><type><name pos:line="139" pos:column="13">IVsVba</name> <type:modifier pos:line="139" pos:column="20">*</type:modifier></type> <name pos:line="139" pos:column="22">This</name></decl></param>,
+            <comment type="block" pos:line="140" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="140" pos:column="24">__RPC__in</name> <name pos:line="140" pos:column="34">REFIID</name></type> <name pos:line="140" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="141" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="142" pos:column="13">__RPC__deref_out</name>  <name pos:line="142" pos:column="31">void</name> <type:modifier pos:line="142" pos:column="36">*</type:modifier><type:modifier pos:line="142" pos:column="37">*</type:modifier></type><name pos:line="142" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="144" pos:column="9">ULONG</name></type> ( <name pos:line="144" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="144" pos:column="35">*</type:modifier><name pos:line="144" pos:column="36">AddRef</name> )<parameter_list pos:line="144" pos:column="44">( 
+            <param><decl><type><name pos:line="145" pos:column="13">IVsVba</name> <type:modifier pos:line="145" pos:column="20">*</type:modifier></type> <name pos:line="145" pos:column="22">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="147" pos:column="9">ULONG</name></type> ( <name pos:line="147" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="147" pos:column="35">*</type:modifier><name pos:line="147" pos:column="36">Release</name> )<parameter_list pos:line="147" pos:column="45">( 
+            <param><decl><type><name pos:line="148" pos:column="13">IVsVba</name> <type:modifier pos:line="148" pos:column="20">*</type:modifier></type> <name pos:line="148" pos:column="22">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="150" pos:column="9">HRESULT</name></type> ( <name pos:line="150" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="150" pos:column="37">*</type:modifier><name pos:line="150" pos:column="38">ShowVBA</name> )<parameter_list pos:line="150" pos:column="47">( 
+            <param><decl><type><name pos:line="151" pos:column="13">IVsVba</name> <type:modifier pos:line="151" pos:column="20">*</type:modifier></type> <name pos:line="151" pos:column="22">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="153" pos:column="9">HRESULT</name></type> ( <name pos:line="153" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="153" pos:column="37">*</type:modifier><name pos:line="153" pos:column="38">GetVbaUnk</name> )<parameter_list pos:line="153" pos:column="49">( 
+            <param><decl><type><name pos:line="154" pos:column="13">IVsVba</name> <type:modifier pos:line="154" pos:column="20">*</type:modifier></type> <name pos:line="154" pos:column="22">This</name></decl></param>,
+            <param><decl><type><name pos:line="155" pos:column="13">__RPC__deref_in_opt</name> <name pos:line="155" pos:column="33">IUnknown</name> <type:modifier pos:line="155" pos:column="42">*</type:modifier><type:modifier pos:line="155" pos:column="43">*</type:modifier></type><name pos:line="155" pos:column="44">pUnknown</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="157" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="158" pos:column="7">IVsVbaVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="160" pos:column="5">interface</name></type> <name pos:line="160" pos:column="15">IVsVba</name>
+    <argument_list pos:line="161" pos:column="5">{
+        <argument><expr><name pos:line="162" pos:column="9">CONST_VTBL</name> struct <name pos:line="162" pos:column="27">IVsVbaVtbl</name> <op:operator pos:line="162" pos:column="38">*</op:operator><name pos:line="162" pos:column="39">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="167" pos:column="1">#<cpp:directive pos:line="167" pos:column="2">ifdef</cpp:directive> <name pos:line="167" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="170" pos:column="1">#<cpp:directive pos:line="170" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="170" pos:column="9">IVsVba_QueryInterface</name><parameter_list pos:line="170" pos:column="30">(<param><type><name pos:line="170" pos:column="31">This</name></type></param>,<param><type><name pos:line="170" pos:column="36">riid</name></type></param>,<param><type><name pos:line="170" pos:column="41">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="171" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="173" pos:column="1">#<cpp:directive pos:line="173" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="173" pos:column="9">IVsVba_AddRef</name><parameter_list pos:line="173" pos:column="22">(<param><type><name pos:line="173" pos:column="23">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="174" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="176" pos:column="1">#<cpp:directive pos:line="176" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="176" pos:column="9">IVsVba_Release</name><parameter_list pos:line="176" pos:column="23">(<param><type><name pos:line="176" pos:column="24">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="177" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="180" pos:column="1">#<cpp:directive pos:line="180" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="180" pos:column="9">IVsVba_ShowVBA</name><parameter_list pos:line="180" pos:column="23">(<param><type><name pos:line="180" pos:column="24">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="181" pos:column="5">( (This)-&gt;lpVtbl -&gt; ShowVBA(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="183" pos:column="1">#<cpp:directive pos:line="183" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="183" pos:column="9">IVsVba_GetVbaUnk</name><parameter_list pos:line="183" pos:column="25">(<param><type><name pos:line="183" pos:column="26">This</name></type></param>,<param><type><name pos:line="183" pos:column="31">pUnknown</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="184" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetVbaUnk(This,pUnknown) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="186" pos:column="1">#<cpp:directive pos:line="186" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="186" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="189" pos:column="1">#<cpp:directive pos:line="189" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="189" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="194" pos:column="1">#<cpp:directive pos:line="194" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="194" pos:column="9">/* __IVsVba_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="197" pos:column="1">#<cpp:directive pos:line="197" pos:column="2">ifndef</cpp:directive> <name pos:line="197" pos:column="9">__IVsMacros_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="198" pos:column="1">#<cpp:directive pos:line="198" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="198" pos:column="9">__IVsMacros_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="200" pos:column="1">/* interface IVsMacros */</comment>
+<comment type="block" pos:line="201" pos:column="1">/* [object][unique][helpstring][uuid] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="204" pos:column="1">EXTERN_C</name> <specifier pos:line="204" pos:column="10">const</specifier> <name pos:line="204" pos:column="16">IID</name></type> <name pos:line="204" pos:column="20">IID_IVsMacros</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="206" pos:column="1">#<cpp:directive pos:line="206" pos:column="2">if</cpp:directive> <expr><call><name pos:line="206" pos:column="5">defined</name><argument_list pos:line="206" pos:column="12">(<argument><expr><name pos:line="206" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="206" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="206" pos:column="29">!</op:operator><call><name pos:line="206" pos:column="30">defined</name><argument_list pos:line="206" pos:column="37">(<argument><expr><name pos:line="206" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="208" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="208" pos:column="19">(<argument pos:line="208" pos:column="20">"55ED27C1-4CE7-11d2-890F-0060083196C6"</argument>)</argument_list></macro>
+    <label><name pos:line="209" pos:column="5">IVsMacros</name> :</label> <expr_stmt><expr pos:line="209" pos:column="17">public <name pos:line="209" pos:column="24">IUnknown</name>
+    <block pos:line="210" pos:column="5">{
+    <expr pos:line="211" pos:column="5">public<op:operator pos:line="211" pos:column="11">:</op:operator>
+        virtual <name pos:line="212" pos:column="17">HRESULT</name> <name pos:line="212" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="212" pos:column="43">GetMacroCommands</name><argument_list pos:line="212" pos:column="59">( 
+            <comment type="block" pos:line="213" pos:column="13">/* [out] */</comment> <argument pos:line="213" pos:column="25">__RPC__deref_out_opt SAFEARRAY **ppsaMacroCanonicalNames</argument>)</argument_list></macro> <op:operator pos:line="213" pos:column="83">=</op:operator> <lit:literal type="number" pos:line="213" pos:column="85">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="217" pos:column="1">#<cpp:directive pos:line="217" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="217" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="219" pos:column="5">typedef <type><struct pos:line="219" pos:column="13">struct <name pos:line="219" pos:column="20">IVsMacrosVtbl</name>
+    <block pos:line="220" pos:column="5">{<public type="default" pos:line="220" pos:column="6">
+        <function_decl><type><name pos:line="221" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="223" pos:column="9">HRESULT</name></type> ( <name pos:line="223" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="223" pos:column="37">*</type:modifier><name pos:line="223" pos:column="38">QueryInterface</name> )<parameter_list pos:line="223" pos:column="54">( 
+            <param><decl><type><name pos:line="224" pos:column="13">IVsMacros</name> <type:modifier pos:line="224" pos:column="23">*</type:modifier></type> <name pos:line="224" pos:column="25">This</name></decl></param>,
+            <comment type="block" pos:line="225" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="225" pos:column="24">__RPC__in</name> <name pos:line="225" pos:column="34">REFIID</name></type> <name pos:line="225" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="226" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="227" pos:column="13">__RPC__deref_out</name>  <name pos:line="227" pos:column="31">void</name> <type:modifier pos:line="227" pos:column="36">*</type:modifier><type:modifier pos:line="227" pos:column="37">*</type:modifier></type><name pos:line="227" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="229" pos:column="9">ULONG</name></type> ( <name pos:line="229" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="229" pos:column="35">*</type:modifier><name pos:line="229" pos:column="36">AddRef</name> )<parameter_list pos:line="229" pos:column="44">( 
+            <param><decl><type><name pos:line="230" pos:column="13">IVsMacros</name> <type:modifier pos:line="230" pos:column="23">*</type:modifier></type> <name pos:line="230" pos:column="25">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="232" pos:column="9">ULONG</name></type> ( <name pos:line="232" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="232" pos:column="35">*</type:modifier><name pos:line="232" pos:column="36">Release</name> )<parameter_list pos:line="232" pos:column="45">( 
+            <param><decl><type><name pos:line="233" pos:column="13">IVsMacros</name> <type:modifier pos:line="233" pos:column="23">*</type:modifier></type> <name pos:line="233" pos:column="25">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="235" pos:column="9">HRESULT</name></type> ( <name pos:line="235" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="235" pos:column="37">*</type:modifier><name pos:line="235" pos:column="38">GetMacroCommands</name> )<parameter_list pos:line="235" pos:column="56">( 
+            <param><decl><type><name pos:line="236" pos:column="13">IVsMacros</name> <type:modifier pos:line="236" pos:column="23">*</type:modifier></type> <name pos:line="236" pos:column="25">This</name></decl></param>,
+            <comment type="block" pos:line="237" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="237" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="237" pos:column="46">SAFEARRAY</name> <type:modifier pos:line="237" pos:column="56">*</type:modifier><type:modifier pos:line="237" pos:column="57">*</type:modifier></type><name pos:line="237" pos:column="58">ppsaMacroCanonicalNames</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="239" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="240" pos:column="7">IVsMacrosVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="242" pos:column="5">interface</name></type> <name pos:line="242" pos:column="15">IVsMacros</name>
+    <argument_list pos:line="243" pos:column="5">{
+        <argument><expr><name pos:line="244" pos:column="9">CONST_VTBL</name> struct <name pos:line="244" pos:column="27">IVsMacrosVtbl</name> <op:operator pos:line="244" pos:column="41">*</op:operator><name pos:line="244" pos:column="42">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="249" pos:column="1">#<cpp:directive pos:line="249" pos:column="2">ifdef</cpp:directive> <name pos:line="249" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="252" pos:column="1">#<cpp:directive pos:line="252" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="252" pos:column="9">IVsMacros_QueryInterface</name><parameter_list pos:line="252" pos:column="33">(<param><type><name pos:line="252" pos:column="34">This</name></type></param>,<param><type><name pos:line="252" pos:column="39">riid</name></type></param>,<param><type><name pos:line="252" pos:column="44">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="253" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="255" pos:column="1">#<cpp:directive pos:line="255" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="255" pos:column="9">IVsMacros_AddRef</name><parameter_list pos:line="255" pos:column="25">(<param><type><name pos:line="255" pos:column="26">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="256" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="258" pos:column="1">#<cpp:directive pos:line="258" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="258" pos:column="9">IVsMacros_Release</name><parameter_list pos:line="258" pos:column="26">(<param><type><name pos:line="258" pos:column="27">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="259" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="262" pos:column="1">#<cpp:directive pos:line="262" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="262" pos:column="9">IVsMacros_GetMacroCommands</name><parameter_list pos:line="262" pos:column="35">(<param><type><name pos:line="262" pos:column="36">This</name></type></param>,<param><type><name pos:line="262" pos:column="41">ppsaMacroCanonicalNames</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="263" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetMacroCommands(This,ppsaMacroCanonicalNames) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="265" pos:column="1">#<cpp:directive pos:line="265" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="265" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="268" pos:column="1">#<cpp:directive pos:line="268" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="268" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="273" pos:column="1">#<cpp:directive pos:line="273" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="273" pos:column="9">/* __IVsMacros_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="276" pos:column="1">#<cpp:directive pos:line="276" pos:column="2">ifndef</cpp:directive> <name pos:line="276" pos:column="9">__IVsMacroRecorder_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="277" pos:column="1">#<cpp:directive pos:line="277" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="277" pos:column="9">__IVsMacroRecorder_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="279" pos:column="1">/* interface IVsMacroRecorder */</comment>
+<comment type="block" pos:line="280" pos:column="1">/* [object][unique][helpstring][uuid] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="283" pos:column="1">EXTERN_C</name> <specifier pos:line="283" pos:column="10">const</specifier> <name pos:line="283" pos:column="16">IID</name></type> <name pos:line="283" pos:column="20">IID_IVsMacroRecorder</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="285" pos:column="1">#<cpp:directive pos:line="285" pos:column="2">if</cpp:directive> <expr><call><name pos:line="285" pos:column="5">defined</name><argument_list pos:line="285" pos:column="12">(<argument><expr><name pos:line="285" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="285" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="285" pos:column="29">!</op:operator><call><name pos:line="285" pos:column="30">defined</name><argument_list pos:line="285" pos:column="37">(<argument><expr><name pos:line="285" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="287" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="287" pos:column="19">(<argument pos:line="287" pos:column="20">"04BBF6A5-4697-11d2-890E-0060083196C6"</argument>)</argument_list></macro>
+    <label><name pos:line="288" pos:column="5">IVsMacroRecorder</name> :</label> <expr_stmt><expr pos:line="288" pos:column="24">public <name pos:line="288" pos:column="31">IUnknown</name>
+    <block pos:line="289" pos:column="5">{
+    <expr pos:line="290" pos:column="5">public<op:operator pos:line="290" pos:column="11">:</op:operator>
+        virtual <name pos:line="291" pos:column="17">HRESULT</name> <name pos:line="291" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="291" pos:column="43">RecordStart</name><argument_list pos:line="291" pos:column="54">( 
+            <comment type="block" pos:line="292" pos:column="13">/* [in] */</comment> <argument pos:line="292" pos:column="24">__RPC__in LPCOLESTR pszReserved</argument>)</argument_list></macro> <op:operator pos:line="292" pos:column="57">=</op:operator> <lit:literal type="number" pos:line="292" pos:column="59">0</lit:literal></expr>;
+        
+        <expr pos:line="294" pos:column="9">virtual <name pos:line="294" pos:column="17">HRESULT</name> <name pos:line="294" pos:column="25">STDMETHODCALLTYPE</name> <call><name pos:line="294" pos:column="43">RecordEnd</name><argument_list pos:line="294" pos:column="52">( <argument><expr><name pos:line="294" pos:column="54">void</name></expr></argument>)</argument_list></call> <op:operator pos:line="294" pos:column="60">=</op:operator> <lit:literal type="number" pos:line="294" pos:column="62">0</lit:literal></expr>;
+        
+        <expr pos:line="296" pos:column="9">virtual <name pos:line="296" pos:column="17">HRESULT</name> <name pos:line="296" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="296" pos:column="43">RecordLine</name><argument_list pos:line="296" pos:column="53">( 
+            <comment type="block" pos:line="297" pos:column="13">/* [in] */</comment> <argument pos:line="297" pos:column="24">__RPC__in LPCOLESTR pszLine</argument>,
+            <comment type="block" pos:line="298" pos:column="13">/* [in] */</comment> <argument pos:line="298" pos:column="24">__RPC__in REFGUID rguidEmitter</argument>)</argument_list></macro> <op:operator pos:line="298" pos:column="56">=</op:operator> <lit:literal type="number" pos:line="298" pos:column="58">0</lit:literal></expr>;
+        
+        <expr pos:line="300" pos:column="9">virtual <name pos:line="300" pos:column="17">HRESULT</name> <name pos:line="300" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="300" pos:column="43">GetLastEmitterId</name><argument_list pos:line="300" pos:column="59">( 
+            <comment type="block" pos:line="301" pos:column="13">/* [out] */</comment> <argument pos:line="301" pos:column="25">__RPC__out GUID *pguidEmitter</argument>)</argument_list></macro> <op:operator pos:line="301" pos:column="56">=</op:operator> <lit:literal type="number" pos:line="301" pos:column="58">0</lit:literal></expr>;
+        
+        <expr pos:line="303" pos:column="9">virtual <name pos:line="303" pos:column="17">HRESULT</name> <name pos:line="303" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="303" pos:column="43">ReplaceLine</name><argument_list pos:line="303" pos:column="54">( 
+            <comment type="block" pos:line="304" pos:column="13">/* [in] */</comment> <argument pos:line="304" pos:column="24">__RPC__in LPCOLESTR pszLine</argument>,
+            <comment type="block" pos:line="305" pos:column="13">/* [in] */</comment> <argument pos:line="305" pos:column="24">__RPC__in REFGUID rguidEmitter</argument>)</argument_list></macro> <op:operator pos:line="305" pos:column="56">=</op:operator> <lit:literal type="number" pos:line="305" pos:column="58">0</lit:literal></expr>;
+        
+        <expr pos:line="307" pos:column="9">virtual <name pos:line="307" pos:column="17">HRESULT</name> <name pos:line="307" pos:column="25">STDMETHODCALLTYPE</name> <call><name pos:line="307" pos:column="43">RecordCancel</name><argument_list pos:line="307" pos:column="55">( <argument><expr><name pos:line="307" pos:column="57">void</name></expr></argument>)</argument_list></call> <op:operator pos:line="307" pos:column="63">=</op:operator> <lit:literal type="number" pos:line="307" pos:column="65">0</lit:literal></expr>;
+        
+        <expr pos:line="309" pos:column="9">virtual <name pos:line="309" pos:column="17">HRESULT</name> <name pos:line="309" pos:column="25">STDMETHODCALLTYPE</name> <call><name pos:line="309" pos:column="43">RecordPause</name><argument_list pos:line="309" pos:column="54">( <argument><expr><name pos:line="309" pos:column="56">void</name></expr></argument>)</argument_list></call> <op:operator pos:line="309" pos:column="62">=</op:operator> <lit:literal type="number" pos:line="309" pos:column="64">0</lit:literal></expr>;
+        
+        <expr pos:line="311" pos:column="9">virtual <name pos:line="311" pos:column="17">HRESULT</name> <name pos:line="311" pos:column="25">STDMETHODCALLTYPE</name> <call><name pos:line="311" pos:column="43">RecordResume</name><argument_list pos:line="311" pos:column="55">( <argument><expr><name pos:line="311" pos:column="57">void</name></expr></argument>)</argument_list></call> <op:operator pos:line="311" pos:column="63">=</op:operator> <lit:literal type="number" pos:line="311" pos:column="65">0</lit:literal></expr>;
+        
+        <expr pos:line="313" pos:column="9">virtual <name pos:line="313" pos:column="17">HRESULT</name> <name pos:line="313" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="313" pos:column="43">SetCodeEmittedFlag</name><argument_list pos:line="313" pos:column="61">( 
+            <comment type="block" pos:line="314" pos:column="13">/* [in] */</comment> <argument pos:line="314" pos:column="24">BOOL fFlag</argument>)</argument_list></macro> <op:operator pos:line="314" pos:column="36">=</op:operator> <lit:literal type="number" pos:line="314" pos:column="38">0</lit:literal></expr>;
+        
+        <expr pos:line="316" pos:column="9">virtual <name pos:line="316" pos:column="17">HRESULT</name> <name pos:line="316" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="316" pos:column="43">GetCodeEmittedFlag</name><argument_list pos:line="316" pos:column="61">( 
+            <comment type="block" pos:line="317" pos:column="13">/* [out] */</comment> <argument pos:line="317" pos:column="25">__RPC__out BOOL *pfFlag</argument>)</argument_list></macro> <op:operator pos:line="317" pos:column="50">=</op:operator> <lit:literal type="number" pos:line="317" pos:column="52">0</lit:literal></expr>;
+        
+        <expr pos:line="319" pos:column="9">virtual <name pos:line="319" pos:column="17">HRESULT</name> <name pos:line="319" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="319" pos:column="43">GetKeyWord</name><argument_list pos:line="319" pos:column="53">( 
+            <comment type="block" pos:line="320" pos:column="13">/* [in] */</comment> <argument pos:line="320" pos:column="24">UINT uiKeyWordId</argument>,
+            <comment type="block" pos:line="321" pos:column="13">/* [out] */</comment> <argument pos:line="321" pos:column="25">__RPC__deref_out_opt BSTR *pbstrKeyWord</argument>)</argument_list></macro> <op:operator pos:line="321" pos:column="66">=</op:operator> <lit:literal type="number" pos:line="321" pos:column="68">0</lit:literal></expr>;
+        
+        <expr pos:line="323" pos:column="9">virtual <name pos:line="323" pos:column="17">HRESULT</name> <name pos:line="323" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="323" pos:column="43">IsValidIdentifier</name><argument_list pos:line="323" pos:column="60">( 
+            <comment type="block" pos:line="324" pos:column="13">/* [in] */</comment> <argument pos:line="324" pos:column="24">__RPC__in LPCOLESTR pszIdentifier</argument>)</argument_list></macro> <op:operator pos:line="324" pos:column="59">=</op:operator> <lit:literal type="number" pos:line="324" pos:column="61">0</lit:literal></expr>;
+        
+        <expr pos:line="326" pos:column="9">virtual <name pos:line="326" pos:column="17">HRESULT</name> <name pos:line="326" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="326" pos:column="43">GetRecordMode</name><argument_list pos:line="326" pos:column="56">( 
+            <comment type="block" pos:line="327" pos:column="13">/* [out] */</comment> <argument pos:line="327" pos:column="25">__RPC__out VSRECORDMODE *peRecordMode</argument>)</argument_list></macro> <op:operator pos:line="327" pos:column="64">=</op:operator> <lit:literal type="number" pos:line="327" pos:column="66">0</lit:literal></expr>;
+        
+        <expr pos:line="329" pos:column="9">virtual <name pos:line="329" pos:column="17">HRESULT</name> <name pos:line="329" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="329" pos:column="43">SetRecordMode</name><argument_list pos:line="329" pos:column="56">( 
+            <comment type="block" pos:line="330" pos:column="13">/* [in] */</comment> <argument pos:line="330" pos:column="24">VSRECORDMODE eRecordMode</argument>)</argument_list></macro> <op:operator pos:line="330" pos:column="50">=</op:operator> <lit:literal type="number" pos:line="330" pos:column="52">0</lit:literal></expr>;
+        
+        <expr pos:line="332" pos:column="9">virtual <name pos:line="332" pos:column="17">HRESULT</name> <name pos:line="332" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="332" pos:column="43">GetStringLiteralExpression</name><argument_list pos:line="332" pos:column="69">( 
+            <comment type="block" pos:line="333" pos:column="13">/* [in] */</comment> <argument pos:line="333" pos:column="24">__RPC__in LPCOLESTR pszStringValue</argument>,
+            <comment type="block" pos:line="334" pos:column="13">/* [out] */</comment> <argument pos:line="334" pos:column="25">__RPC__deref_out_opt BSTR *pbstrLiteralExpression</argument>)</argument_list></macro> <op:operator pos:line="334" pos:column="76">=</op:operator> <lit:literal type="number" pos:line="334" pos:column="78">0</lit:literal></expr>;
+        
+        <expr pos:line="336" pos:column="9">virtual <name pos:line="336" pos:column="17">HRESULT</name> <name pos:line="336" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="336" pos:column="43">ExecuteLine</name><argument_list pos:line="336" pos:column="54">( 
+            <comment type="block" pos:line="337" pos:column="13">/* [in] */</comment> <argument pos:line="337" pos:column="24">__RPC__in LPCOLESTR pszLine</argument>)</argument_list></macro> <op:operator pos:line="337" pos:column="53">=</op:operator> <lit:literal type="number" pos:line="337" pos:column="55">0</lit:literal></expr>;
+        
+        <expr pos:line="339" pos:column="9">virtual <name pos:line="339" pos:column="17">HRESULT</name> <name pos:line="339" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="339" pos:column="43">AddTypeLibRef</name><argument_list pos:line="339" pos:column="56">( 
+            <comment type="block" pos:line="340" pos:column="13">/* [in] */</comment> <argument pos:line="340" pos:column="24">__RPC__in REFGUID guidTypeLib</argument>,
+            <comment type="block" pos:line="341" pos:column="13">/* [in] */</comment> <argument pos:line="341" pos:column="24">UINT uVerMaj</argument>,
+            <comment type="block" pos:line="342" pos:column="13">/* [in] */</comment> <argument pos:line="342" pos:column="24">UINT uVerMin</argument>)</argument_list></macro> <op:operator pos:line="342" pos:column="38">=</op:operator> <lit:literal type="number" pos:line="342" pos:column="40">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="346" pos:column="1">#<cpp:directive pos:line="346" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="346" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="348" pos:column="5">typedef <type><struct pos:line="348" pos:column="13">struct <name pos:line="348" pos:column="20">IVsMacroRecorderVtbl</name>
+    <block pos:line="349" pos:column="5">{<public type="default" pos:line="349" pos:column="6">
+        <function_decl><type><name pos:line="350" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="352" pos:column="9">HRESULT</name></type> ( <name pos:line="352" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="352" pos:column="37">*</type:modifier><name pos:line="352" pos:column="38">QueryInterface</name> )<parameter_list pos:line="352" pos:column="54">( 
+            <param><decl><type><name pos:line="353" pos:column="13">IVsMacroRecorder</name> <type:modifier pos:line="353" pos:column="30">*</type:modifier></type> <name pos:line="353" pos:column="32">This</name></decl></param>,
+            <comment type="block" pos:line="354" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="354" pos:column="24">__RPC__in</name> <name pos:line="354" pos:column="34">REFIID</name></type> <name pos:line="354" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="355" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="356" pos:column="13">__RPC__deref_out</name>  <name pos:line="356" pos:column="31">void</name> <type:modifier pos:line="356" pos:column="36">*</type:modifier><type:modifier pos:line="356" pos:column="37">*</type:modifier></type><name pos:line="356" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="358" pos:column="9">ULONG</name></type> ( <name pos:line="358" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="358" pos:column="35">*</type:modifier><name pos:line="358" pos:column="36">AddRef</name> )<parameter_list pos:line="358" pos:column="44">( 
+            <param><decl><type><name pos:line="359" pos:column="13">IVsMacroRecorder</name> <type:modifier pos:line="359" pos:column="30">*</type:modifier></type> <name pos:line="359" pos:column="32">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="361" pos:column="9">ULONG</name></type> ( <name pos:line="361" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="361" pos:column="35">*</type:modifier><name pos:line="361" pos:column="36">Release</name> )<parameter_list pos:line="361" pos:column="45">( 
+            <param><decl><type><name pos:line="362" pos:column="13">IVsMacroRecorder</name> <type:modifier pos:line="362" pos:column="30">*</type:modifier></type> <name pos:line="362" pos:column="32">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="364" pos:column="9">HRESULT</name></type> ( <name pos:line="364" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="364" pos:column="37">*</type:modifier><name pos:line="364" pos:column="38">RecordStart</name> )<parameter_list pos:line="364" pos:column="51">( 
+            <param><decl><type><name pos:line="365" pos:column="13">IVsMacroRecorder</name> <type:modifier pos:line="365" pos:column="30">*</type:modifier></type> <name pos:line="365" pos:column="32">This</name></decl></param>,
+            <comment type="block" pos:line="366" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="366" pos:column="24">__RPC__in</name> <name pos:line="366" pos:column="34">LPCOLESTR</name></type> <name pos:line="366" pos:column="44">pszReserved</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="368" pos:column="9">HRESULT</name></type> ( <name pos:line="368" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="368" pos:column="37">*</type:modifier><name pos:line="368" pos:column="38">RecordEnd</name> )<parameter_list pos:line="368" pos:column="49">( 
+            <param><decl><type><name pos:line="369" pos:column="13">IVsMacroRecorder</name> <type:modifier pos:line="369" pos:column="30">*</type:modifier></type> <name pos:line="369" pos:column="32">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="371" pos:column="9">HRESULT</name></type> ( <name pos:line="371" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="371" pos:column="37">*</type:modifier><name pos:line="371" pos:column="38">RecordLine</name> )<parameter_list pos:line="371" pos:column="50">( 
+            <param><decl><type><name pos:line="372" pos:column="13">IVsMacroRecorder</name> <type:modifier pos:line="372" pos:column="30">*</type:modifier></type> <name pos:line="372" pos:column="32">This</name></decl></param>,
+            <comment type="block" pos:line="373" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="373" pos:column="24">__RPC__in</name> <name pos:line="373" pos:column="34">LPCOLESTR</name></type> <name pos:line="373" pos:column="44">pszLine</name></decl></param>,
+            <comment type="block" pos:line="374" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="374" pos:column="24">__RPC__in</name> <name pos:line="374" pos:column="34">REFGUID</name></type> <name pos:line="374" pos:column="42">rguidEmitter</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="376" pos:column="9">HRESULT</name></type> ( <name pos:line="376" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="376" pos:column="37">*</type:modifier><name pos:line="376" pos:column="38">GetLastEmitterId</name> )<parameter_list pos:line="376" pos:column="56">( 
+            <param><decl><type><name pos:line="377" pos:column="13">IVsMacroRecorder</name> <type:modifier pos:line="377" pos:column="30">*</type:modifier></type> <name pos:line="377" pos:column="32">This</name></decl></param>,
+            <comment type="block" pos:line="378" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="378" pos:column="25">__RPC__out</name> <name pos:line="378" pos:column="36">GUID</name> <type:modifier pos:line="378" pos:column="41">*</type:modifier></type><name pos:line="378" pos:column="42">pguidEmitter</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="380" pos:column="9">HRESULT</name></type> ( <name pos:line="380" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="380" pos:column="37">*</type:modifier><name pos:line="380" pos:column="38">ReplaceLine</name> )<parameter_list pos:line="380" pos:column="51">( 
+            <param><decl><type><name pos:line="381" pos:column="13">IVsMacroRecorder</name> <type:modifier pos:line="381" pos:column="30">*</type:modifier></type> <name pos:line="381" pos:column="32">This</name></decl></param>,
+            <comment type="block" pos:line="382" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="382" pos:column="24">__RPC__in</name> <name pos:line="382" pos:column="34">LPCOLESTR</name></type> <name pos:line="382" pos:column="44">pszLine</name></decl></param>,
+            <comment type="block" pos:line="383" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="383" pos:column="24">__RPC__in</name> <name pos:line="383" pos:column="34">REFGUID</name></type> <name pos:line="383" pos:column="42">rguidEmitter</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="385" pos:column="9">HRESULT</name></type> ( <name pos:line="385" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="385" pos:column="37">*</type:modifier><name pos:line="385" pos:column="38">RecordCancel</name> )<parameter_list pos:line="385" pos:column="52">( 
+            <param><decl><type><name pos:line="386" pos:column="13">IVsMacroRecorder</name> <type:modifier pos:line="386" pos:column="30">*</type:modifier></type> <name pos:line="386" pos:column="32">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="388" pos:column="9">HRESULT</name></type> ( <name pos:line="388" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="388" pos:column="37">*</type:modifier><name pos:line="388" pos:column="38">RecordPause</name> )<parameter_list pos:line="388" pos:column="51">( 
+            <param><decl><type><name pos:line="389" pos:column="13">IVsMacroRecorder</name> <type:modifier pos:line="389" pos:column="30">*</type:modifier></type> <name pos:line="389" pos:column="32">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="391" pos:column="9">HRESULT</name></type> ( <name pos:line="391" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="391" pos:column="37">*</type:modifier><name pos:line="391" pos:column="38">RecordResume</name> )<parameter_list pos:line="391" pos:column="52">( 
+            <param><decl><type><name pos:line="392" pos:column="13">IVsMacroRecorder</name> <type:modifier pos:line="392" pos:column="30">*</type:modifier></type> <name pos:line="392" pos:column="32">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="394" pos:column="9">HRESULT</name></type> ( <name pos:line="394" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="394" pos:column="37">*</type:modifier><name pos:line="394" pos:column="38">SetCodeEmittedFlag</name> )<parameter_list pos:line="394" pos:column="58">( 
+            <param><decl><type><name pos:line="395" pos:column="13">IVsMacroRecorder</name> <type:modifier pos:line="395" pos:column="30">*</type:modifier></type> <name pos:line="395" pos:column="32">This</name></decl></param>,
+            <comment type="block" pos:line="396" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="396" pos:column="24">BOOL</name></type> <name pos:line="396" pos:column="29">fFlag</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="398" pos:column="9">HRESULT</name></type> ( <name pos:line="398" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="398" pos:column="37">*</type:modifier><name pos:line="398" pos:column="38">GetCodeEmittedFlag</name> )<parameter_list pos:line="398" pos:column="58">( 
+            <param><decl><type><name pos:line="399" pos:column="13">IVsMacroRecorder</name> <type:modifier pos:line="399" pos:column="30">*</type:modifier></type> <name pos:line="399" pos:column="32">This</name></decl></param>,
+            <comment type="block" pos:line="400" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="400" pos:column="25">__RPC__out</name> <name pos:line="400" pos:column="36">BOOL</name> <type:modifier pos:line="400" pos:column="41">*</type:modifier></type><name pos:line="400" pos:column="42">pfFlag</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="402" pos:column="9">HRESULT</name></type> ( <name pos:line="402" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="402" pos:column="37">*</type:modifier><name pos:line="402" pos:column="38">GetKeyWord</name> )<parameter_list pos:line="402" pos:column="50">( 
+            <param><decl><type><name pos:line="403" pos:column="13">IVsMacroRecorder</name> <type:modifier pos:line="403" pos:column="30">*</type:modifier></type> <name pos:line="403" pos:column="32">This</name></decl></param>,
+            <comment type="block" pos:line="404" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="404" pos:column="24">UINT</name></type> <name pos:line="404" pos:column="29">uiKeyWordId</name></decl></param>,
+            <comment type="block" pos:line="405" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="405" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="405" pos:column="46">BSTR</name> <type:modifier pos:line="405" pos:column="51">*</type:modifier></type><name pos:line="405" pos:column="52">pbstrKeyWord</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="407" pos:column="9">HRESULT</name></type> ( <name pos:line="407" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="407" pos:column="37">*</type:modifier><name pos:line="407" pos:column="38">IsValidIdentifier</name> )<parameter_list pos:line="407" pos:column="57">( 
+            <param><decl><type><name pos:line="408" pos:column="13">IVsMacroRecorder</name> <type:modifier pos:line="408" pos:column="30">*</type:modifier></type> <name pos:line="408" pos:column="32">This</name></decl></param>,
+            <comment type="block" pos:line="409" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="409" pos:column="24">__RPC__in</name> <name pos:line="409" pos:column="34">LPCOLESTR</name></type> <name pos:line="409" pos:column="44">pszIdentifier</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="411" pos:column="9">HRESULT</name></type> ( <name pos:line="411" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="411" pos:column="37">*</type:modifier><name pos:line="411" pos:column="38">GetRecordMode</name> )<parameter_list pos:line="411" pos:column="53">( 
+            <param><decl><type><name pos:line="412" pos:column="13">IVsMacroRecorder</name> <type:modifier pos:line="412" pos:column="30">*</type:modifier></type> <name pos:line="412" pos:column="32">This</name></decl></param>,
+            <comment type="block" pos:line="413" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="413" pos:column="25">__RPC__out</name> <name pos:line="413" pos:column="36">VSRECORDMODE</name> <type:modifier pos:line="413" pos:column="49">*</type:modifier></type><name pos:line="413" pos:column="50">peRecordMode</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="415" pos:column="9">HRESULT</name></type> ( <name pos:line="415" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="415" pos:column="37">*</type:modifier><name pos:line="415" pos:column="38">SetRecordMode</name> )<parameter_list pos:line="415" pos:column="53">( 
+            <param><decl><type><name pos:line="416" pos:column="13">IVsMacroRecorder</name> <type:modifier pos:line="416" pos:column="30">*</type:modifier></type> <name pos:line="416" pos:column="32">This</name></decl></param>,
+            <comment type="block" pos:line="417" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="417" pos:column="24">VSRECORDMODE</name></type> <name pos:line="417" pos:column="37">eRecordMode</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="419" pos:column="9">HRESULT</name></type> ( <name pos:line="419" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="419" pos:column="37">*</type:modifier><name pos:line="419" pos:column="38">GetStringLiteralExpression</name> )<parameter_list pos:line="419" pos:column="66">( 
+            <param><decl><type><name pos:line="420" pos:column="13">IVsMacroRecorder</name> <type:modifier pos:line="420" pos:column="30">*</type:modifier></type> <name pos:line="420" pos:column="32">This</name></decl></param>,
+            <comment type="block" pos:line="421" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="421" pos:column="24">__RPC__in</name> <name pos:line="421" pos:column="34">LPCOLESTR</name></type> <name pos:line="421" pos:column="44">pszStringValue</name></decl></param>,
+            <comment type="block" pos:line="422" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="422" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="422" pos:column="46">BSTR</name> <type:modifier pos:line="422" pos:column="51">*</type:modifier></type><name pos:line="422" pos:column="52">pbstrLiteralExpression</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="424" pos:column="9">HRESULT</name></type> ( <name pos:line="424" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="424" pos:column="37">*</type:modifier><name pos:line="424" pos:column="38">ExecuteLine</name> )<parameter_list pos:line="424" pos:column="51">( 
+            <param><decl><type><name pos:line="425" pos:column="13">IVsMacroRecorder</name> <type:modifier pos:line="425" pos:column="30">*</type:modifier></type> <name pos:line="425" pos:column="32">This</name></decl></param>,
+            <comment type="block" pos:line="426" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="426" pos:column="24">__RPC__in</name> <name pos:line="426" pos:column="34">LPCOLESTR</name></type> <name pos:line="426" pos:column="44">pszLine</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="428" pos:column="9">HRESULT</name></type> ( <name pos:line="428" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="428" pos:column="37">*</type:modifier><name pos:line="428" pos:column="38">AddTypeLibRef</name> )<parameter_list pos:line="428" pos:column="53">( 
+            <param><decl><type><name pos:line="429" pos:column="13">IVsMacroRecorder</name> <type:modifier pos:line="429" pos:column="30">*</type:modifier></type> <name pos:line="429" pos:column="32">This</name></decl></param>,
+            <comment type="block" pos:line="430" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="430" pos:column="24">__RPC__in</name> <name pos:line="430" pos:column="34">REFGUID</name></type> <name pos:line="430" pos:column="42">guidTypeLib</name></decl></param>,
+            <comment type="block" pos:line="431" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="431" pos:column="24">UINT</name></type> <name pos:line="431" pos:column="29">uVerMaj</name></decl></param>,
+            <comment type="block" pos:line="432" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="432" pos:column="24">UINT</name></type> <name pos:line="432" pos:column="29">uVerMin</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="434" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="435" pos:column="7">IVsMacroRecorderVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="437" pos:column="5">interface</name></type> <name pos:line="437" pos:column="15">IVsMacroRecorder</name>
+    <argument_list pos:line="438" pos:column="5">{
+        <argument><expr><name pos:line="439" pos:column="9">CONST_VTBL</name> struct <name pos:line="439" pos:column="27">IVsMacroRecorderVtbl</name> <op:operator pos:line="439" pos:column="48">*</op:operator><name pos:line="439" pos:column="49">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="444" pos:column="1">#<cpp:directive pos:line="444" pos:column="2">ifdef</cpp:directive> <name pos:line="444" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="447" pos:column="1">#<cpp:directive pos:line="447" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="447" pos:column="9">IVsMacroRecorder_QueryInterface</name><parameter_list pos:line="447" pos:column="40">(<param><type><name pos:line="447" pos:column="41">This</name></type></param>,<param><type><name pos:line="447" pos:column="46">riid</name></type></param>,<param><type><name pos:line="447" pos:column="51">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="448" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="450" pos:column="1">#<cpp:directive pos:line="450" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="450" pos:column="9">IVsMacroRecorder_AddRef</name><parameter_list pos:line="450" pos:column="32">(<param><type><name pos:line="450" pos:column="33">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="451" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="453" pos:column="1">#<cpp:directive pos:line="453" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="453" pos:column="9">IVsMacroRecorder_Release</name><parameter_list pos:line="453" pos:column="33">(<param><type><name pos:line="453" pos:column="34">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="454" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="457" pos:column="1">#<cpp:directive pos:line="457" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="457" pos:column="9">IVsMacroRecorder_RecordStart</name><parameter_list pos:line="457" pos:column="37">(<param><type><name pos:line="457" pos:column="38">This</name></type></param>,<param><type><name pos:line="457" pos:column="43">pszReserved</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="458" pos:column="5">( (This)-&gt;lpVtbl -&gt; RecordStart(This,pszReserved) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="460" pos:column="1">#<cpp:directive pos:line="460" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="460" pos:column="9">IVsMacroRecorder_RecordEnd</name><parameter_list pos:line="460" pos:column="35">(<param><type><name pos:line="460" pos:column="36">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="461" pos:column="5">( (This)-&gt;lpVtbl -&gt; RecordEnd(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="463" pos:column="1">#<cpp:directive pos:line="463" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="463" pos:column="9">IVsMacroRecorder_RecordLine</name><parameter_list pos:line="463" pos:column="36">(<param><type><name pos:line="463" pos:column="37">This</name></type></param>,<param><type><name pos:line="463" pos:column="42">pszLine</name></type></param>,<param><type><name pos:line="463" pos:column="50">rguidEmitter</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="464" pos:column="5">( (This)-&gt;lpVtbl -&gt; RecordLine(This,pszLine,rguidEmitter) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="466" pos:column="1">#<cpp:directive pos:line="466" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="466" pos:column="9">IVsMacroRecorder_GetLastEmitterId</name><parameter_list pos:line="466" pos:column="42">(<param><type><name pos:line="466" pos:column="43">This</name></type></param>,<param><type><name pos:line="466" pos:column="48">pguidEmitter</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="467" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetLastEmitterId(This,pguidEmitter) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="469" pos:column="1">#<cpp:directive pos:line="469" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="469" pos:column="9">IVsMacroRecorder_ReplaceLine</name><parameter_list pos:line="469" pos:column="37">(<param><type><name pos:line="469" pos:column="38">This</name></type></param>,<param><type><name pos:line="469" pos:column="43">pszLine</name></type></param>,<param><type><name pos:line="469" pos:column="51">rguidEmitter</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="470" pos:column="5">( (This)-&gt;lpVtbl -&gt; ReplaceLine(This,pszLine,rguidEmitter) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="472" pos:column="1">#<cpp:directive pos:line="472" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="472" pos:column="9">IVsMacroRecorder_RecordCancel</name><parameter_list pos:line="472" pos:column="38">(<param><type><name pos:line="472" pos:column="39">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="473" pos:column="5">( (This)-&gt;lpVtbl -&gt; RecordCancel(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="475" pos:column="1">#<cpp:directive pos:line="475" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="475" pos:column="9">IVsMacroRecorder_RecordPause</name><parameter_list pos:line="475" pos:column="37">(<param><type><name pos:line="475" pos:column="38">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="476" pos:column="5">( (This)-&gt;lpVtbl -&gt; RecordPause(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="478" pos:column="1">#<cpp:directive pos:line="478" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="478" pos:column="9">IVsMacroRecorder_RecordResume</name><parameter_list pos:line="478" pos:column="38">(<param><type><name pos:line="478" pos:column="39">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="479" pos:column="5">( (This)-&gt;lpVtbl -&gt; RecordResume(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="481" pos:column="1">#<cpp:directive pos:line="481" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="481" pos:column="9">IVsMacroRecorder_SetCodeEmittedFlag</name><parameter_list pos:line="481" pos:column="44">(<param><type><name pos:line="481" pos:column="45">This</name></type></param>,<param><type><name pos:line="481" pos:column="50">fFlag</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="482" pos:column="5">( (This)-&gt;lpVtbl -&gt; SetCodeEmittedFlag(This,fFlag) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="484" pos:column="1">#<cpp:directive pos:line="484" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="484" pos:column="9">IVsMacroRecorder_GetCodeEmittedFlag</name><parameter_list pos:line="484" pos:column="44">(<param><type><name pos:line="484" pos:column="45">This</name></type></param>,<param><type><name pos:line="484" pos:column="50">pfFlag</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="485" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetCodeEmittedFlag(This,pfFlag) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="487" pos:column="1">#<cpp:directive pos:line="487" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="487" pos:column="9">IVsMacroRecorder_GetKeyWord</name><parameter_list pos:line="487" pos:column="36">(<param><type><name pos:line="487" pos:column="37">This</name></type></param>,<param><type><name pos:line="487" pos:column="42">uiKeyWordId</name></type></param>,<param><type><name pos:line="487" pos:column="54">pbstrKeyWord</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="488" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetKeyWord(This,uiKeyWordId,pbstrKeyWord) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="490" pos:column="1">#<cpp:directive pos:line="490" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="490" pos:column="9">IVsMacroRecorder_IsValidIdentifier</name><parameter_list pos:line="490" pos:column="43">(<param><type><name pos:line="490" pos:column="44">This</name></type></param>,<param><type><name pos:line="490" pos:column="49">pszIdentifier</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="491" pos:column="5">( (This)-&gt;lpVtbl -&gt; IsValidIdentifier(This,pszIdentifier) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="493" pos:column="1">#<cpp:directive pos:line="493" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="493" pos:column="9">IVsMacroRecorder_GetRecordMode</name><parameter_list pos:line="493" pos:column="39">(<param><type><name pos:line="493" pos:column="40">This</name></type></param>,<param><type><name pos:line="493" pos:column="45">peRecordMode</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="494" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetRecordMode(This,peRecordMode) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="496" pos:column="1">#<cpp:directive pos:line="496" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="496" pos:column="9">IVsMacroRecorder_SetRecordMode</name><parameter_list pos:line="496" pos:column="39">(<param><type><name pos:line="496" pos:column="40">This</name></type></param>,<param><type><name pos:line="496" pos:column="45">eRecordMode</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="497" pos:column="5">( (This)-&gt;lpVtbl -&gt; SetRecordMode(This,eRecordMode) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="499" pos:column="1">#<cpp:directive pos:line="499" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="499" pos:column="9">IVsMacroRecorder_GetStringLiteralExpression</name><parameter_list pos:line="499" pos:column="52">(<param><type><name pos:line="499" pos:column="53">This</name></type></param>,<param><type><name pos:line="499" pos:column="58">pszStringValue</name></type></param>,<param><type><name pos:line="499" pos:column="73">pbstrLiteralExpression</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="500" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetStringLiteralExpression(This,pszStringValue,pbstrLiteralExpression) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="502" pos:column="1">#<cpp:directive pos:line="502" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="502" pos:column="9">IVsMacroRecorder_ExecuteLine</name><parameter_list pos:line="502" pos:column="37">(<param><type><name pos:line="502" pos:column="38">This</name></type></param>,<param><type><name pos:line="502" pos:column="43">pszLine</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="503" pos:column="5">( (This)-&gt;lpVtbl -&gt; ExecuteLine(This,pszLine) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="505" pos:column="1">#<cpp:directive pos:line="505" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="505" pos:column="9">IVsMacroRecorder_AddTypeLibRef</name><parameter_list pos:line="505" pos:column="39">(<param><type><name pos:line="505" pos:column="40">This</name></type></param>,<param><type><name pos:line="505" pos:column="45">guidTypeLib</name></type></param>,<param><type><name pos:line="505" pos:column="57">uVerMaj</name></type></param>,<param><type><name pos:line="505" pos:column="65">uVerMin</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="506" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddTypeLibRef(This,guidTypeLib,uVerMaj,uVerMin) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="508" pos:column="1">#<cpp:directive pos:line="508" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="508" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="511" pos:column="1">#<cpp:directive pos:line="511" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="511" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="516" pos:column="1">#<cpp:directive pos:line="516" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="516" pos:column="9">/* __IVsMacroRecorder_INTERFACE_DEFINED__ */</comment>
+
+
+<decl_stmt><decl><type><name pos:line="519" pos:column="1">EXTERN_C</name> <specifier pos:line="519" pos:column="10">const</specifier> <name pos:line="519" pos:column="16">CLSID</name></type> <name pos:line="519" pos:column="22">CLSID_VsVbaPackage</name></decl>;</decl_stmt>
+
+<cpp:ifdef pos:line="521" pos:column="1">#<cpp:directive pos:line="521" pos:column="2">ifdef</cpp:directive> <name pos:line="521" pos:column="8">__cplusplus</name></cpp:ifdef>
+
+<decl_stmt><decl><type pos:line="523" pos:column="1">class</type> <name pos:line="523" pos:column="7">DECLSPEC_UUID</name><argument_list pos:line="523" pos:column="20">(<argument><expr><lit:literal type="string" pos:line="523" pos:column="21">"A659F1B3-AD34-11d1-ABAD-0080C7B89C95"</lit:literal></expr></argument>)</argument_list>
+<name pos:line="524" pos:column="1">VsVbaPackage</name></decl>;</decl_stmt>
+<cpp:endif pos:line="525" pos:column="1">#<cpp:directive pos:line="525" pos:column="2">endif</cpp:directive></cpp:endif>
+<cpp:endif pos:line="526" pos:column="1">#<cpp:directive pos:line="526" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="526" pos:column="8">/* __VsVbaPackageLib_LIBRARY_DEFINED__ */</comment>
+
+<comment type="block" pos:line="528" pos:column="1">/* Additional Prototypes for ALL interfaces */</comment>
+
+<comment type="block" pos:line="530" pos:column="1">/* end of Additional Prototypes */</comment>
+
+<cpp:ifdef pos:line="532" pos:column="1">#<cpp:directive pos:line="532" pos:column="2">ifdef</cpp:directive> <name pos:line="532" pos:column="8">__cplusplus</name></cpp:ifdef>
+}</block></extern>
+<cpp:endif pos:line="534" pos:column="1">#<cpp:directive pos:line="534" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:endif pos:line="536" pos:column="1">#<cpp:directive pos:line="536" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+</unit>

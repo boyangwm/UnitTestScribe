@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Framework\ReflectionDiscoverableCollection.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Collections</name><op:operator pos:line="3" pos:column="25">.</op:operator><name pos:line="3" pos:column="26">Generic</name></name>;</using>
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">System</name><op:operator pos:line="4" pos:column="13">.</op:operator><name pos:line="4" pos:column="14">IO</name></name>;</using>
+<using pos:line="5" pos:column="1">using <name><name pos:line="5" pos:column="7">System</name><op:operator pos:line="5" pos:column="13">.</op:operator><name pos:line="5" pos:column="14">Linq</name></name>;</using>
+<using pos:line="6" pos:column="1">using <name><name pos:line="6" pos:column="7">System</name><op:operator pos:line="6" pos:column="13">.</op:operator><name pos:line="6" pos:column="14">Reflection</name></name>;</using>
+<using pos:line="7" pos:column="1">using <name><name pos:line="7" pos:column="7">Glimpse</name><op:operator pos:line="7" pos:column="14">.</op:operator><name pos:line="7" pos:column="15">Core</name><op:operator pos:line="7" pos:column="19">.</op:operator><name pos:line="7" pos:column="20">Extensibility</name></name>;</using>
+
+<namespace pos:line="9" pos:column="1">namespace <name><name pos:line="9" pos:column="11">Glimpse</name><op:operator pos:line="9" pos:column="18">.</op:operator><name pos:line="9" pos:column="19">Core</name><op:operator pos:line="9" pos:column="23">.</op:operator><name pos:line="9" pos:column="24">Framework</name></name>
+<block pos:line="10" pos:column="1">{
+    <comment type="line" pos:line="11" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="12" pos:column="5">/// An implementation of &lt;see cref="IDiscoverableCollection{T}"/&gt; which uses .NET reflection to find and load types.</comment>
+    <comment type="line" pos:line="13" pos:column="5">/// &lt;/summary&gt;</comment>
+    <comment type="line" pos:line="14" pos:column="5">/// &lt;typeparam name="T"&gt;The type to find and load.&lt;/typeparam&gt;</comment>
+    <class><specifier pos:line="15" pos:column="5">public</specifier> class <name><name pos:line="15" pos:column="18">ReflectionDiscoverableCollection</name><argument_list pos:line="15" pos:column="50">&lt;<argument><name pos:line="15" pos:column="51">T</name></argument>&gt;</argument_list></name> <super pos:line="15" pos:column="54">: <name><name pos:line="15" pos:column="56">IDiscoverableCollection</name><argument_list pos:line="15" pos:column="79">&lt;<argument><name pos:line="15" pos:column="80">T</name></argument>&gt;</argument_list></name></super>
+    <block pos:line="16" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="17" pos:column="9">private</specifier> <name pos:line="17" pos:column="17">string</name></type> <name pos:line="17" pos:column="24">discoveryLocation</name></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="19" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="20" pos:column="9">/// Initializes a new instance of the &lt;see cref="ReflectionDiscoverableCollection{T}" /&gt; class.</comment>
+        <comment type="line" pos:line="21" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="22" pos:column="9">/// &lt;param name="logger"&gt;The logger.&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="23" pos:column="9">public</specifier> <name pos:line="23" pos:column="16">ReflectionDiscoverableCollection</name><parameter_list pos:line="23" pos:column="48">(<param><decl><type><name pos:line="23" pos:column="49">ILogger</name></type> <name pos:line="23" pos:column="57">logger</name></decl></param>)</parameter_list>
+        <block pos:line="24" pos:column="9">{
+            <expr_stmt><expr><name pos:line="25" pos:column="13">Items</name> <op:operator pos:line="25" pos:column="19">=</op:operator> <op:operator pos:line="25" pos:column="21">new</op:operator> <call><name><name pos:line="25" pos:column="25">List</name><argument_list pos:line="25" pos:column="29">&lt;<argument><name pos:line="25" pos:column="30">T</name></argument>&gt;</argument_list></name><argument_list pos:line="25" pos:column="32">()</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="26" pos:column="13">IgnoredTypes</name> <op:operator pos:line="26" pos:column="26">=</op:operator> <op:operator pos:line="26" pos:column="28">new</op:operator> <call><name><name pos:line="26" pos:column="32">List</name><argument_list pos:line="26" pos:column="36">&lt;<argument><name pos:line="26" pos:column="37">Type</name></argument>&gt;</argument_list></name><argument_list pos:line="26" pos:column="42">()</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="27" pos:column="13">AutoDiscover</name> <op:operator pos:line="27" pos:column="26">=</op:operator> <lit:literal type="boolean" pos:line="27" pos:column="28">true</lit:literal></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="28" pos:column="13">Logger</name> <op:operator pos:line="28" pos:column="20">=</op:operator> <name pos:line="28" pos:column="22">logger</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="31" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="32" pos:column="9">/// Gets or sets a value indicating whether or not auto discover.</comment>
+        <comment type="line" pos:line="33" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="35" pos:column="9">///   &lt;c&gt;true&lt;/c&gt; if [auto discover]; otherwise, &lt;c&gt;false&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="37" pos:column="9">public</specifier> <name pos:line="37" pos:column="16">bool</name></type> <name pos:line="37" pos:column="21">AutoDiscover</name> <block pos:line="37" pos:column="34">{ <function_decl><name pos:line="37" pos:column="36">get</name>;</function_decl> <function_decl><name pos:line="37" pos:column="41">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// Gets the number of elements contained in the &lt;see cref="T:System.Collections.Generic.ICollection`1" /&gt;.</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;returns&gt;The number of elements contained in the &lt;see cref="T:System.Collections.Generic.ICollection`1" /&gt;.&lt;/returns&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="43" pos:column="9">public</specifier> <name pos:line="43" pos:column="16">int</name></type> <name pos:line="43" pos:column="20">Count</name>
+        <block pos:line="44" pos:column="9">{
+            <function><name pos:line="45" pos:column="13">get</name>
+            <block pos:line="46" pos:column="13">{
+                <return pos:line="47" pos:column="17">return <expr><name><name pos:line="47" pos:column="24">Items</name><op:operator pos:line="47" pos:column="29">.</op:operator><name pos:line="47" pos:column="30">Count</name></name></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="51" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="52" pos:column="9">/// Gets or sets the file path to the discovery location.</comment>
+        <comment type="line" pos:line="53" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="55" pos:column="9">/// The discovery location.</comment>
+        <comment type="line" pos:line="56" pos:column="9">/// &lt;/value&gt;</comment>
+        <comment type="line" pos:line="57" pos:column="9">/// &lt;exception cref="System.IO.DirectoryNotFoundException"&gt;Throws an exception if the directory does not exist.&lt;/exception&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="58" pos:column="9">public</specifier> <name pos:line="58" pos:column="16">string</name></type> <name pos:line="58" pos:column="23">DiscoveryLocation</name>
+        <block pos:line="59" pos:column="9">{
+            <function><name pos:line="60" pos:column="13">get</name>
+            <block pos:line="61" pos:column="13">{
+                <return pos:line="62" pos:column="17">return <expr><name pos:line="62" pos:column="24">discoveryLocation</name> <op:operator pos:line="62" pos:column="42">??</op:operator> <op:operator pos:line="62" pos:column="45">(</op:operator><name pos:line="62" pos:column="46">discoveryLocation</name> <op:operator pos:line="62" pos:column="64">=</op:operator> <name pos:line="62" pos:column="66">BaseDirectory</name><op:operator pos:line="62" pos:column="79">)</op:operator></expr>;</return>
+            }</block></function>
+
+            <function><name pos:line="65" pos:column="13">set</name>
+            <block pos:line="66" pos:column="13">{
+                <comment type="line" pos:line="67" pos:column="17">// If this isn't an absolute path then root it with the AppDomain's base directory</comment>
+                <decl_stmt><decl><type><name pos:line="68" pos:column="17">var</name></type> <name pos:line="68" pos:column="21">result</name> <init pos:line="68" pos:column="28">= <expr><call><name><name pos:line="68" pos:column="30">Path</name><op:operator pos:line="68" pos:column="34">.</op:operator><name pos:line="68" pos:column="35">IsPathRooted</name></name><argument_list pos:line="68" pos:column="47">(<argument><expr><name pos:line="68" pos:column="48">value</name></expr></argument>)</argument_list></call> <op:operator pos:line="68" pos:column="55">?</op:operator> <name pos:line="68" pos:column="57">value</name> <op:operator pos:line="68" pos:column="63">:</op:operator> <call><name><name pos:line="68" pos:column="65">Path</name><op:operator pos:line="68" pos:column="69">.</op:operator><name pos:line="68" pos:column="70">Combine</name></name><argument_list pos:line="68" pos:column="77">(<argument><expr><name pos:line="68" pos:column="78">BaseDirectory</name></expr></argument>, <argument><expr><name pos:line="68" pos:column="93">value</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+                <if pos:line="70" pos:column="17">if <condition pos:line="70" pos:column="20">(<expr><op:operator pos:line="70" pos:column="21">!</op:operator><call><name><name pos:line="70" pos:column="22">Directory</name><op:operator pos:line="70" pos:column="31">.</op:operator><name pos:line="70" pos:column="32">Exists</name></name><argument_list pos:line="70" pos:column="38">(<argument><expr><name pos:line="70" pos:column="39">result</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="70" pos:column="47">
+                <block pos:line="71" pos:column="17">{
+                    <throw pos:line="72" pos:column="21">throw <expr><op:operator pos:line="72" pos:column="27">new</op:operator> <call><name pos:line="72" pos:column="31">DirectoryNotFoundException</name><argument_list pos:line="72" pos:column="57">(<argument><expr><call><name><name pos:line="72" pos:column="58">string</name><op:operator pos:line="72" pos:column="64">.</op:operator><name pos:line="72" pos:column="65">Format</name></name><argument_list pos:line="72" pos:column="71">(<argument><expr><name><name pos:line="72" pos:column="72">Resources</name><op:operator pos:line="72" pos:column="81">.</op:operator><name pos:line="72" pos:column="82">SetDiscoveryLocationDirectoryNotFoundMessage</name></name></expr></argument>, <argument><expr><name pos:line="72" pos:column="128">value</name></expr></argument>, <argument><expr><name pos:line="72" pos:column="135">result</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</throw>
+                }</block></then></if>
+
+                <expr_stmt><expr><name pos:line="75" pos:column="17">discoveryLocation</name> <op:operator pos:line="75" pos:column="35">=</op:operator> <name pos:line="75" pos:column="37">result</name></expr>;</expr_stmt>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="79" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="80" pos:column="9">/// Gets a value indicating whether the &lt;see cref="T:System.Collections.Generic.ICollection`1" /&gt; is read-only.</comment>
+        <comment type="line" pos:line="81" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="82" pos:column="9">/// &lt;returns&gt;true if the &lt;see cref="T:System.Collections.Generic.ICollection`1" /&gt; is read-only; otherwise, false.&lt;/returns&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="83" pos:column="9">public</specifier> <name pos:line="83" pos:column="16">bool</name></type> <name pos:line="83" pos:column="21">IsReadOnly</name>
+        <block pos:line="84" pos:column="9">{
+            <function><name pos:line="85" pos:column="13">get</name>
+            <block pos:line="86" pos:column="13">{
+                <return pos:line="87" pos:column="17">return <expr><lit:literal type="boolean" pos:line="87" pos:column="24">false</lit:literal></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="91" pos:column="9">internal</specifier> <name><name pos:line="91" pos:column="18">List</name><argument_list pos:line="91" pos:column="22">&lt;<argument><name pos:line="91" pos:column="23">T</name></argument>&gt;</argument_list></name></type> <name pos:line="91" pos:column="26">Items</name> <block pos:line="91" pos:column="32">{ <function_decl><name pos:line="91" pos:column="34">get</name>;</function_decl> <function_decl><name pos:line="91" pos:column="39">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="93" pos:column="9">internal</specifier> <name><name pos:line="93" pos:column="18">List</name><argument_list pos:line="93" pos:column="22">&lt;<argument><name pos:line="93" pos:column="23">Type</name></argument>&gt;</argument_list></name></type> <name pos:line="93" pos:column="29">IgnoredTypes</name> <block pos:line="93" pos:column="42">{ <function_decl><name pos:line="93" pos:column="44">get</name>;</function_decl> <function_decl><name pos:line="93" pos:column="49">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="95" pos:column="9">internal</specifier> <name pos:line="95" pos:column="18">ILogger</name></type> <name pos:line="95" pos:column="26">Logger</name> <block pos:line="95" pos:column="33">{ <function_decl><name pos:line="95" pos:column="35">get</name>;</function_decl> <function_decl><name pos:line="95" pos:column="40">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="97" pos:column="9">// Get the directory of the application, if the AppDomain is shadow copied, use the shadow directory</comment>
+        <decl_stmt><decl><type><specifier pos:line="98" pos:column="9">private</specifier> <specifier pos:line="98" pos:column="17">static</specifier> <name pos:line="98" pos:column="24">string</name></type> <name pos:line="98" pos:column="31">BaseDirectory</name>
+        <block pos:line="99" pos:column="9">{
+            <function><name pos:line="100" pos:column="13">get</name>
+            <block pos:line="101" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="102" pos:column="17">var</name></type> <name pos:line="102" pos:column="21">setupInfo</name> <init pos:line="102" pos:column="31">= <expr><name><name pos:line="102" pos:column="33">AppDomain</name><op:operator pos:line="102" pos:column="42">.</op:operator><name pos:line="102" pos:column="43">CurrentDomain</name><op:operator pos:line="102" pos:column="56">.</op:operator><name pos:line="102" pos:column="57">SetupInformation</name></name></expr></init></decl>;</decl_stmt>
+                <return pos:line="103" pos:column="17">return <expr><call><name><name pos:line="103" pos:column="24">string</name><op:operator pos:line="103" pos:column="30">.</op:operator><name pos:line="103" pos:column="31">Equals</name></name><argument_list pos:line="103" pos:column="37">(<argument><expr><name><name pos:line="103" pos:column="38">setupInfo</name><op:operator pos:line="103" pos:column="47">.</op:operator><name pos:line="103" pos:column="48">ShadowCopyFiles</name></name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="103" pos:column="65">"true"</lit:literal></expr></argument>, <argument><expr><name><name pos:line="103" pos:column="73">StringComparison</name><op:operator pos:line="103" pos:column="89">.</op:operator><name pos:line="103" pos:column="90">OrdinalIgnoreCase</name></name></expr></argument>)</argument_list></call>
+                           <op:operator pos:line="104" pos:column="28">?</op:operator> <call><name><name pos:line="104" pos:column="30">Path</name><op:operator pos:line="104" pos:column="34">.</op:operator><name pos:line="104" pos:column="35">Combine</name></name><argument_list pos:line="104" pos:column="42">(<argument><expr><name><name pos:line="104" pos:column="43">setupInfo</name><op:operator pos:line="104" pos:column="52">.</op:operator><name pos:line="104" pos:column="53">CachePath</name></name></expr></argument>, <argument><expr><name><name pos:line="104" pos:column="64">setupInfo</name><op:operator pos:line="104" pos:column="73">.</op:operator><name pos:line="104" pos:column="74">ApplicationName</name></name></expr></argument>)</argument_list></call>
+                           <op:operator pos:line="105" pos:column="28">:</op:operator> <name><name pos:line="105" pos:column="30">AppDomain</name><op:operator pos:line="105" pos:column="39">.</op:operator><name pos:line="105" pos:column="40">CurrentDomain</name><op:operator pos:line="105" pos:column="53">.</op:operator><name pos:line="105" pos:column="54">BaseDirectory</name></name></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="109" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="110" pos:column="9">/// Gets the enumerator.</comment>
+        <comment type="line" pos:line="111" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="112" pos:column="9">/// &lt;returns&gt;The enumerator.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="113" pos:column="9">public</specifier> <name><name pos:line="113" pos:column="16">IEnumerator</name><argument_list pos:line="113" pos:column="27">&lt;<argument><name pos:line="113" pos:column="28">T</name></argument>&gt;</argument_list></name></type> <name pos:line="113" pos:column="31">GetEnumerator</name><parameter_list pos:line="113" pos:column="44">()</parameter_list>
+        <block pos:line="114" pos:column="9">{
+            <return pos:line="115" pos:column="13">return <expr><call><name><name pos:line="115" pos:column="20">Items</name><op:operator pos:line="115" pos:column="25">.</op:operator><name pos:line="115" pos:column="26">GetEnumerator</name></name><argument_list pos:line="115" pos:column="39">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="118" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="119" pos:column="9">/// Returns an enumerator that iterates through a collection.</comment>
+        <comment type="line" pos:line="120" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="121" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="122" pos:column="9">/// An &lt;see cref="T:System.Collections.IEnumerator" /&gt; object that can be used to iterate through the collection.</comment>
+        <comment type="line" pos:line="123" pos:column="9">/// &lt;/returns&gt;</comment>
+        <function><type><name pos:line="124" pos:column="9">IEnumerator</name></type> <name><name pos:line="124" pos:column="21">IEnumerable</name><op:operator pos:line="124" pos:column="32">.</op:operator><name pos:line="124" pos:column="33">GetEnumerator</name></name><parameter_list pos:line="124" pos:column="46">()</parameter_list>
+        <block pos:line="125" pos:column="9">{
+            <return pos:line="126" pos:column="13">return <expr><call><name><name pos:line="126" pos:column="20">Items</name><op:operator pos:line="126" pos:column="25">.</op:operator><name pos:line="126" pos:column="26">GetEnumerator</name></name><argument_list pos:line="126" pos:column="39">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="129" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="130" pos:column="9">/// Adds the specified item.</comment>
+        <comment type="line" pos:line="131" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="132" pos:column="9">/// &lt;param name="item"&gt;The item.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="133" pos:column="9">public</specifier> <name pos:line="133" pos:column="16">void</name></type> <name pos:line="133" pos:column="21">Add</name><parameter_list pos:line="133" pos:column="24">(<param><decl><type><name pos:line="133" pos:column="25">T</name></type> <name pos:line="133" pos:column="27">item</name></decl></param>)</parameter_list>
+        <block pos:line="134" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="135" pos:column="13">Items</name><op:operator pos:line="135" pos:column="18">.</op:operator><name pos:line="135" pos:column="19">Add</name></name><argument_list pos:line="135" pos:column="22">(<argument><expr><name pos:line="135" pos:column="23">item</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="136" pos:column="13">Logger</name><op:operator pos:line="136" pos:column="19">.</op:operator><name pos:line="136" pos:column="20">Debug</name></name><argument_list pos:line="136" pos:column="25">(<argument><expr><name><name pos:line="136" pos:column="26">Resources</name><op:operator pos:line="136" pos:column="35">.</op:operator><name pos:line="136" pos:column="36">DiscoverableCollectionAdd</name></name></expr></argument>, <argument><expr><call><name pos:line="136" pos:column="63">typeof</name><argument_list pos:line="136" pos:column="69">(<argument><expr><name pos:line="136" pos:column="70">T</name></expr></argument>)</argument_list></call><op:operator pos:line="136" pos:column="72">.</op:operator><name pos:line="136" pos:column="73">Name</name></expr></argument>, <argument><expr><call><name><name pos:line="136" pos:column="79">item</name><op:operator pos:line="136" pos:column="83">.</op:operator><name pos:line="136" pos:column="84">GetType</name></name><argument_list pos:line="136" pos:column="91">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="139" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="140" pos:column="9">/// Clears this instance.</comment>
+        <comment type="line" pos:line="141" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="142" pos:column="9">public</specifier> <name pos:line="142" pos:column="16">void</name></type> <name pos:line="142" pos:column="21">Clear</name><parameter_list pos:line="142" pos:column="26">()</parameter_list>
+        <block pos:line="143" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="144" pos:column="13">Items</name><op:operator pos:line="144" pos:column="18">.</op:operator><name pos:line="144" pos:column="19">Clear</name></name><argument_list pos:line="144" pos:column="24">()</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="145" pos:column="13">Logger</name><op:operator pos:line="145" pos:column="19">.</op:operator><name pos:line="145" pos:column="20">Debug</name></name><argument_list pos:line="145" pos:column="25">(<argument><expr><name><name pos:line="145" pos:column="26">Resources</name><op:operator pos:line="145" pos:column="35">.</op:operator><name pos:line="145" pos:column="36">DiscoverableCollectionClear</name></name></expr></argument>, <argument><expr><call><name pos:line="145" pos:column="65">typeof</name><argument_list pos:line="145" pos:column="71">(<argument><expr><name pos:line="145" pos:column="72">T</name></expr></argument>)</argument_list></call><op:operator pos:line="145" pos:column="74">.</op:operator><name pos:line="145" pos:column="75">Name</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="148" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="149" pos:column="9">/// Determines whether the collection contains the specified item.</comment>
+        <comment type="line" pos:line="150" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="151" pos:column="9">/// &lt;param name="item"&gt;The item.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="152" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="153" pos:column="9">///   &lt;c&gt;true&lt;/c&gt; if the collection contains the specified item; otherwise, &lt;c&gt;false&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="154" pos:column="9">/// &lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="155" pos:column="9">public</specifier> <name pos:line="155" pos:column="16">bool</name></type> <name pos:line="155" pos:column="21">Contains</name><parameter_list pos:line="155" pos:column="29">(<param><decl><type><name pos:line="155" pos:column="30">T</name></type> <name pos:line="155" pos:column="32">item</name></decl></param>)</parameter_list>
+        <block pos:line="156" pos:column="9">{
+            <return pos:line="157" pos:column="13">return <expr><call><name><name pos:line="157" pos:column="20">Items</name><op:operator pos:line="157" pos:column="25">.</op:operator><name pos:line="157" pos:column="26">Contains</name></name><argument_list pos:line="157" pos:column="34">(<argument><expr><name pos:line="157" pos:column="35">item</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="160" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="161" pos:column="9">/// Copies to.</comment>
+        <comment type="line" pos:line="162" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="163" pos:column="9">/// &lt;param name="array"&gt;The array.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="164" pos:column="9">/// &lt;param name="arrayIndex"&gt;Index of the array.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="165" pos:column="9">public</specifier> <name pos:line="165" pos:column="16">void</name></type> <name pos:line="165" pos:column="21">CopyTo</name><parameter_list pos:line="165" pos:column="27">(<param><decl><type><name><name pos:line="165" pos:column="28">T</name><index pos:line="165" pos:column="29">[]</index></name></type> <name pos:line="165" pos:column="32">array</name></decl></param>, <param><decl><type><name pos:line="165" pos:column="39">int</name></type> <name pos:line="165" pos:column="43">arrayIndex</name></decl></param>)</parameter_list>
+        <block pos:line="166" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="167" pos:column="13">Items</name><op:operator pos:line="167" pos:column="18">.</op:operator><name pos:line="167" pos:column="19">CopyTo</name></name><argument_list pos:line="167" pos:column="25">(<argument><expr><name pos:line="167" pos:column="26">array</name></expr></argument>, <argument><expr><name pos:line="167" pos:column="33">arrayIndex</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="170" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="171" pos:column="9">/// Removes the specified item.</comment>
+        <comment type="line" pos:line="172" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="173" pos:column="9">/// &lt;param name="item"&gt;The item.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="174" pos:column="9">/// &lt;returns&gt;&lt;c&gt;true&lt;/c&gt; is the item was removed.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="175" pos:column="9">public</specifier> <name pos:line="175" pos:column="16">bool</name></type> <name pos:line="175" pos:column="21">Remove</name><parameter_list pos:line="175" pos:column="27">(<param><decl><type><name pos:line="175" pos:column="28">T</name></type> <name pos:line="175" pos:column="30">item</name></decl></param>)</parameter_list>
+        <block pos:line="176" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="177" pos:column="13">var</name></type> <name pos:line="177" pos:column="17">result</name> <init pos:line="177" pos:column="24">= <expr><call><name><name pos:line="177" pos:column="26">Items</name><op:operator pos:line="177" pos:column="31">.</op:operator><name pos:line="177" pos:column="32">Remove</name></name><argument_list pos:line="177" pos:column="38">(<argument><expr><name pos:line="177" pos:column="39">item</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <if pos:line="179" pos:column="13">if <condition pos:line="179" pos:column="16">(<expr><name pos:line="179" pos:column="17">result</name></expr>)</condition><then pos:line="179" pos:column="24">
+            <block pos:line="180" pos:column="13">{
+                <expr_stmt><expr><call><name><name pos:line="181" pos:column="17">Logger</name><op:operator pos:line="181" pos:column="23">.</op:operator><name pos:line="181" pos:column="24">Debug</name></name><argument_list pos:line="181" pos:column="29">(<argument><expr><name><name pos:line="181" pos:column="30">Resources</name><op:operator pos:line="181" pos:column="39">.</op:operator><name pos:line="181" pos:column="40">DiscoverableCollectionRemove</name></name></expr></argument>, <argument><expr><call><name pos:line="181" pos:column="70">typeof</name><argument_list pos:line="181" pos:column="76">(<argument><expr><name pos:line="181" pos:column="77">T</name></expr></argument>)</argument_list></call><op:operator pos:line="181" pos:column="79">.</op:operator><name pos:line="181" pos:column="80">Name</name></expr></argument>, <argument><expr><call><name><name pos:line="181" pos:column="86">item</name><op:operator pos:line="181" pos:column="90">.</op:operator><name pos:line="181" pos:column="91">GetType</name></name><argument_list pos:line="181" pos:column="98">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+
+            <return pos:line="184" pos:column="13">return <expr><name pos:line="184" pos:column="20">result</name></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="187" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="188" pos:column="9">/// Ignores the type.</comment>
+        <comment type="line" pos:line="189" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="190" pos:column="9">/// &lt;param name="type"&gt;The type.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="191" pos:column="9">public</specifier> <name pos:line="191" pos:column="16">void</name></type> <name pos:line="191" pos:column="21">IgnoreType</name><parameter_list pos:line="191" pos:column="31">(<param><decl><type><name pos:line="191" pos:column="32">Type</name></type> <name pos:line="191" pos:column="37">type</name></decl></param>)</parameter_list>
+        <block pos:line="192" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="193" pos:column="13">IgnoredTypes</name><op:operator pos:line="193" pos:column="25">.</op:operator><name pos:line="193" pos:column="26">Add</name></name><argument_list pos:line="193" pos:column="29">(<argument><expr><name pos:line="193" pos:column="30">type</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="196" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="197" pos:column="9">/// Discovers this all instanced of &lt;typeparamref name="T"/&gt; within the discovery location.</comment>
+        <comment type="line" pos:line="198" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="199" pos:column="9">public</specifier> <name pos:line="199" pos:column="16">void</name></type> <name pos:line="199" pos:column="21">Discover</name><parameter_list pos:line="199" pos:column="29">()</parameter_list>
+        <block pos:line="200" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="201" pos:column="13">Logger</name><op:operator pos:line="201" pos:column="19">.</op:operator><name pos:line="201" pos:column="20">Debug</name></name><argument_list pos:line="201" pos:column="25">(<argument><expr><lit:literal type="string" pos:line="201" pos:column="26">"Discovering {0}'s in '{1}' and all sub directories."</lit:literal></expr></argument>, <argument><expr><call><name pos:line="201" pos:column="81">typeof</name><argument_list pos:line="201" pos:column="87">(<argument><expr><name pos:line="201" pos:column="88">T</name></expr></argument>)</argument_list></call><op:operator pos:line="201" pos:column="90">.</op:operator><name pos:line="201" pos:column="91">Name</name></expr></argument>, <argument><expr><name pos:line="201" pos:column="97">DiscoveryLocation</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+            <decl_stmt><decl><type><name pos:line="203" pos:column="13">var</name></type> <name pos:line="203" pos:column="17">results</name> <init pos:line="203" pos:column="25">= <expr><op:operator pos:line="203" pos:column="27">new</op:operator> <call><name><name pos:line="203" pos:column="31">List</name><argument_list pos:line="203" pos:column="35">&lt;<argument><name pos:line="203" pos:column="36">T</name></argument>&gt;</argument_list></name><argument_list pos:line="203" pos:column="38">()</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <comment type="line" pos:line="205" pos:column="13">// This behavior only to support usage of glimpse[@discoverLocation] attribute. Remove "if" block in Glimpse 2.0 in favor of "else" if it is decided that discovery location is not required</comment>
+            <if pos:line="206" pos:column="13">if <condition pos:line="206" pos:column="16">(<expr><op:operator pos:line="206" pos:column="17">!</op:operator><call><name><name pos:line="206" pos:column="18">DiscoveryLocation</name><op:operator pos:line="206" pos:column="35">.</op:operator><name pos:line="206" pos:column="36">Equals</name></name><argument_list pos:line="206" pos:column="42">(<argument><expr><name pos:line="206" pos:column="43">BaseDirectory</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="206" pos:column="58">
+            <block pos:line="207" pos:column="13">{
+                <foreach pos:line="208" pos:column="17">foreach (<init><decl><type><name pos:line="208" pos:column="26">var</name></type> <name pos:line="208" pos:column="30">file</name> <range pos:line="208" pos:column="35">in <expr><call><name><name pos:line="208" pos:column="38">Directory</name><op:operator pos:line="208" pos:column="47">.</op:operator><name pos:line="208" pos:column="48">GetFiles</name></name><argument_list pos:line="208" pos:column="56">(<argument><expr><name pos:line="208" pos:column="57">DiscoveryLocation</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="208" pos:column="76">"*.dll"</lit:literal></expr></argument>, <argument><expr><name><name pos:line="208" pos:column="85">SearchOption</name><op:operator pos:line="208" pos:column="97">.</op:operator><name pos:line="208" pos:column="98">AllDirectories</name></name></expr></argument>)</argument_list></call></expr></range></decl></init>)
+                <block pos:line="209" pos:column="17">{
+                    <try pos:line="210" pos:column="21">try
+                    <block pos:line="211" pos:column="21">{
+                        <decl_stmt><decl><type><name pos:line="212" pos:column="25">Assembly</name></type> <name pos:line="212" pos:column="34">assembly</name> <init pos:line="212" pos:column="43">= <expr><call><name><name pos:line="212" pos:column="45">Assembly</name><op:operator pos:line="212" pos:column="53">.</op:operator><name pos:line="212" pos:column="54">LoadFrom</name></name><argument_list pos:line="212" pos:column="62">(<argument><expr><name pos:line="212" pos:column="63">file</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+                        <expr_stmt><expr><call><name pos:line="214" pos:column="25">GetConcreteTypes</name><argument_list pos:line="214" pos:column="41">(<argument><expr><name pos:line="214" pos:column="42">assembly</name></expr></argument>, <argument><expr><name pos:line="214" pos:column="52">results</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                    }</block>
+                    <catch pos:line="216" pos:column="21">catch <parameter_list pos:line="216" pos:column="27">(<param><decl><type><name pos:line="216" pos:column="28">Exception</name></type> <name pos:line="216" pos:column="38">exception</name></decl></param>)</parameter_list>
+                    <block pos:line="217" pos:column="21">{
+                        <expr_stmt><expr><call><name><name pos:line="218" pos:column="25">Logger</name><op:operator pos:line="218" pos:column="31">.</op:operator><name pos:line="218" pos:column="32">Error</name></name><argument_list pos:line="218" pos:column="37">(<argument><expr><name><name pos:line="218" pos:column="38">Resources</name><op:operator pos:line="218" pos:column="47">.</op:operator><name pos:line="218" pos:column="48">DiscoverLoadAssembly</name></name></expr></argument>, <argument><expr><name pos:line="218" pos:column="70">exception</name></expr></argument>, <argument><expr><name pos:line="218" pos:column="81">file</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                    }</block></catch></try>
+                }</block></foreach>
+            }</block></then>
+            <else pos:line="222" pos:column="13">else
+            <block pos:line="223" pos:column="13">{
+                <foreach pos:line="224" pos:column="17">foreach (<init><decl><type><name pos:line="224" pos:column="26">var</name></type> <name pos:line="224" pos:column="30">assembly</name> <range pos:line="224" pos:column="39">in <expr><call><name><name pos:line="224" pos:column="42">AppDomain</name><op:operator pos:line="224" pos:column="51">.</op:operator><name pos:line="224" pos:column="52">CurrentDomain</name><op:operator pos:line="224" pos:column="65">.</op:operator><name pos:line="224" pos:column="66">GetAssemblies</name></name><argument_list pos:line="224" pos:column="79">()</argument_list></call></expr></range></decl></init>)
+                <block pos:line="225" pos:column="17">{
+                    <try pos:line="226" pos:column="21">try
+                    <block pos:line="227" pos:column="21">{
+                        <expr_stmt><expr><call><name pos:line="228" pos:column="25">GetConcreteTypes</name><argument_list pos:line="228" pos:column="41">(<argument><expr><name pos:line="228" pos:column="42">assembly</name></expr></argument>, <argument><expr><name pos:line="228" pos:column="52">results</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                    }</block>
+                    <catch pos:line="230" pos:column="21">catch <parameter_list pos:line="230" pos:column="27">(<param><decl><type><name pos:line="230" pos:column="28">Exception</name></type> <name pos:line="230" pos:column="38">exception</name></decl></param>)</parameter_list>
+                    <block pos:line="231" pos:column="21">{
+                        <decl_stmt><decl><type><name pos:line="232" pos:column="25">string</name></type> <name pos:line="232" pos:column="32">assemblyLocation</name></decl>;</decl_stmt>
+                        <try pos:line="233" pos:column="25">try
+                        <block pos:line="234" pos:column="25">{
+                            <expr_stmt><expr><name pos:line="235" pos:column="29">assemblyLocation</name> <op:operator pos:line="235" pos:column="46">=</op:operator> <name><name pos:line="235" pos:column="48">assembly</name><op:operator pos:line="235" pos:column="56">.</op:operator><name pos:line="235" pos:column="57">Location</name></name></expr>;</expr_stmt>
+                        }</block>
+                        <catch pos:line="237" pos:column="25">catch <parameter_list pos:line="237" pos:column="31">(<param><decl><type><name pos:line="237" pos:column="32">NotSupportedException</name></type></decl></param>)</parameter_list>
+                        <block pos:line="238" pos:column="25">{
+                            <expr_stmt><expr><name pos:line="239" pos:column="29">assemblyLocation</name> <op:operator pos:line="239" pos:column="46">=</op:operator> <lit:literal type="string" pos:line="239" pos:column="48">"in-memory"</lit:literal></expr>;</expr_stmt>
+                        }</block></catch></try>
+                        
+                        <expr_stmt><expr><call><name><name pos:line="242" pos:column="25">Logger</name><op:operator pos:line="242" pos:column="31">.</op:operator><name pos:line="242" pos:column="32">Error</name></name><argument_list pos:line="242" pos:column="37">(<argument><expr><name><name pos:line="242" pos:column="38">Resources</name><op:operator pos:line="242" pos:column="47">.</op:operator><name pos:line="242" pos:column="48">DiscoverLoadAssembly</name></name></expr></argument>, <argument><expr><name pos:line="242" pos:column="70">exception</name></expr></argument>, <argument><expr><name pos:line="242" pos:column="81">assemblyLocation</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                    }</block></catch></try>
+                }</block></foreach>
+            }</block></else></if>
+
+            <if pos:line="247" pos:column="13">if <condition pos:line="247" pos:column="16">(<expr><name><name pos:line="247" pos:column="17">results</name><op:operator pos:line="247" pos:column="24">.</op:operator><name pos:line="247" pos:column="25">Count</name></name> <op:operator pos:line="247" pos:column="31">&gt;</op:operator> <lit:literal type="number" pos:line="247" pos:column="33">0</lit:literal></expr>)</condition><then pos:line="247" pos:column="35">
+            <block pos:line="248" pos:column="13">{
+                <expr_stmt><expr><call><name><name pos:line="249" pos:column="17">Items</name><op:operator pos:line="249" pos:column="22">.</op:operator><name pos:line="249" pos:column="23">Clear</name></name><argument_list pos:line="249" pos:column="28">()</argument_list></call></expr>;</expr_stmt>
+
+                <foreach pos:line="251" pos:column="17">foreach (<init><decl><type><name pos:line="251" pos:column="26">var</name></type> <name pos:line="251" pos:column="30">result</name> <range pos:line="251" pos:column="37">in <expr><name pos:line="251" pos:column="40">results</name></expr></range></decl></init>)
+                <block pos:line="252" pos:column="17">{
+                    <expr_stmt><expr><call><name><name pos:line="253" pos:column="21">Logger</name><op:operator pos:line="253" pos:column="27">.</op:operator><name pos:line="253" pos:column="28">Debug</name></name><argument_list pos:line="253" pos:column="33">(<argument><expr><call><name><name pos:line="253" pos:column="34">string</name><op:operator pos:line="253" pos:column="40">.</op:operator><name pos:line="253" pos:column="41">Format</name></name><argument_list pos:line="253" pos:column="47">(<argument><expr><name><name pos:line="253" pos:column="48">Resources</name><op:operator pos:line="253" pos:column="57">.</op:operator><name pos:line="253" pos:column="58">DiscoverableCollectionDiscover</name></name></expr></argument>, <argument><expr><call><name pos:line="253" pos:column="90">typeof</name><argument_list pos:line="253" pos:column="96">(<argument><expr><name pos:line="253" pos:column="97">T</name></expr></argument>)</argument_list></call><op:operator pos:line="253" pos:column="99">.</op:operator><name pos:line="253" pos:column="100">Name</name></expr></argument>, <argument><expr><call><name><name pos:line="253" pos:column="106">result</name><op:operator pos:line="253" pos:column="112">.</op:operator><name pos:line="253" pos:column="113">GetType</name></name><argument_list pos:line="253" pos:column="120">()</argument_list></call></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                }</block></foreach>
+
+                <expr_stmt><expr><call><name><name pos:line="256" pos:column="17">Items</name><op:operator pos:line="256" pos:column="22">.</op:operator><name pos:line="256" pos:column="23">AddRange</name></name><argument_list pos:line="256" pos:column="31">(<argument><expr><name pos:line="256" pos:column="32">results</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+        }</block></function>
+
+        <function><type><specifier pos:line="260" pos:column="9">private</specifier> <name pos:line="260" pos:column="17">void</name></type> <name pos:line="260" pos:column="22">GetConcreteTypes</name><parameter_list pos:line="260" pos:column="38">(<param><decl><type><name pos:line="260" pos:column="39">Assembly</name></type> <name pos:line="260" pos:column="48">assembly</name></decl></param>, <param><decl><type><name><name pos:line="260" pos:column="58">List</name><argument_list pos:line="260" pos:column="62">&lt;<argument><name pos:line="260" pos:column="63">T</name></argument>&gt;</argument_list></name></type> <name pos:line="260" pos:column="66">results</name></decl></param>)</parameter_list>
+        <block pos:line="261" pos:column="9">{
+            <if pos:line="262" pos:column="13">if <condition pos:line="262" pos:column="16">(<expr><call><name><name pos:line="262" pos:column="17">ReflectionBlackList</name><op:operator pos:line="262" pos:column="36">.</op:operator><name pos:line="262" pos:column="37">IsBlackListed</name></name><argument_list pos:line="262" pos:column="50">(<argument><expr><name pos:line="262" pos:column="51">assembly</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="262" pos:column="61">
+            <block pos:line="263" pos:column="13">{
+                <return pos:line="264" pos:column="17">return;</return>
+            }</block></then></if>
+
+            <decl_stmt><decl><type><name pos:line="267" pos:column="13">var</name></type> <name pos:line="267" pos:column="17">allTypes</name> <init pos:line="267" pos:column="26">= <expr><call><name><name pos:line="267" pos:column="28">AssemblyTypesResolver</name><op:operator pos:line="267" pos:column="49">.</op:operator><name pos:line="267" pos:column="50">ResolveTypes</name></name><argument_list pos:line="267" pos:column="62">(<argument><expr><name pos:line="267" pos:column="63">assembly</name></expr></argument>, <argument><expr><name pos:line="267" pos:column="73">Logger</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <decl_stmt><decl><type><name pos:line="269" pos:column="13">var</name></type> <name pos:line="269" pos:column="17">concreteTypes</name> <init pos:line="269" pos:column="31">= <expr><call><name><name pos:line="269" pos:column="33">allTypes</name><op:operator pos:line="269" pos:column="41">.</op:operator><name pos:line="269" pos:column="42">Where</name></name><argument_list pos:line="269" pos:column="47">(<argument><expr><lambda><name pos:line="269" pos:column="48">type</name> <op:operator pos:line="269" pos:column="53">=&gt;</op:operator> <call><name pos:line="269" pos:column="56">typeof</name><argument_list pos:line="269" pos:column="62">(<argument><expr><name pos:line="269" pos:column="63">T</name></expr></argument>)</argument_list></call><op:operator pos:line="269" pos:column="65">.</op:operator><call><name pos:line="269" pos:column="66">IsAssignableFrom</name><argument_list pos:line="269" pos:column="82">(<argument><expr><name pos:line="269" pos:column="83">type</name></expr></argument>)</argument_list></call> <op:operator pos:line="269" pos:column="89">&amp;&amp;</op:operator>
+                                                       <op:operator pos:line="270" pos:column="56">!</op:operator><name><name pos:line="270" pos:column="57">type</name><op:operator pos:line="270" pos:column="61">.</op:operator><name pos:line="270" pos:column="62">IsInterface</name> <type:modifier pos:line="270" pos:column="74">&amp;&amp;</type:modifier></name>
+                                                       <op:operator pos:line="271" pos:column="56">!</op:operator><name><name pos:line="271" pos:column="57">type</name><op:operator pos:line="271" pos:column="61">.</op:operator><name pos:line="271" pos:column="62">IsAbstract</name> <type:modifier pos:line="271" pos:column="73">&amp;&amp;</type:modifier></name>
+                                                       <op:operator pos:line="272" pos:column="56">!</op:operator><call><name><name pos:line="272" pos:column="57">IgnoredTypes</name><op:operator pos:line="272" pos:column="69">.</op:operator><name pos:line="272" pos:column="70">Contains</name></name><argument_list pos:line="272" pos:column="78">(<argument><expr><name pos:line="272" pos:column="79">type</name></expr></argument>)</argument_list></call></lambda></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+            <foreach pos:line="273" pos:column="13">foreach (<init><decl><type><name pos:line="273" pos:column="22">var</name></type> <name pos:line="273" pos:column="26">type</name> <range pos:line="273" pos:column="31">in <expr><name pos:line="273" pos:column="34">concreteTypes</name></expr></range></decl></init>)
+            <block pos:line="274" pos:column="13">{
+                <try pos:line="275" pos:column="17">try
+                <block pos:line="276" pos:column="17">{
+                    <decl_stmt><decl><type><name pos:line="277" pos:column="21">var</name></type> <name pos:line="277" pos:column="25">instance</name> <init pos:line="277" pos:column="34">= <expr><op:operator pos:line="277" pos:column="36">(</op:operator><name pos:line="277" pos:column="37">T</name><op:operator pos:line="277" pos:column="38">)</op:operator><call><name><name pos:line="277" pos:column="39">Activator</name><op:operator pos:line="277" pos:column="48">.</op:operator><name pos:line="277" pos:column="49">CreateInstance</name></name><argument_list pos:line="277" pos:column="63">(<argument><expr><name pos:line="277" pos:column="64">type</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+                    <expr_stmt><expr><call><name><name pos:line="278" pos:column="21">results</name><op:operator pos:line="278" pos:column="28">.</op:operator><name pos:line="278" pos:column="29">Add</name></name><argument_list pos:line="278" pos:column="32">(<argument><expr><name pos:line="278" pos:column="33">instance</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                }</block>
+                <catch pos:line="280" pos:column="17">catch <parameter_list pos:line="280" pos:column="23">(<param><decl><type><name pos:line="280" pos:column="24">Exception</name></type> <name pos:line="280" pos:column="34">exception</name></decl></param>)</parameter_list>
+                <block pos:line="281" pos:column="17">{
+                    <expr_stmt><expr><call><name><name pos:line="282" pos:column="21">Logger</name><op:operator pos:line="282" pos:column="27">.</op:operator><name pos:line="282" pos:column="28">Error</name></name><argument_list pos:line="282" pos:column="33">(<argument><expr><name><name pos:line="282" pos:column="34">Resources</name><op:operator pos:line="282" pos:column="43">.</op:operator><name pos:line="282" pos:column="44">DiscoverCreateInstance</name></name></expr></argument>, <argument><expr><name pos:line="282" pos:column="68">exception</name></expr></argument>, <argument><expr><call><name pos:line="282" pos:column="79">typeof</name><argument_list pos:line="282" pos:column="85">(<argument><expr><name pos:line="282" pos:column="86">T</name></expr></argument>)</argument_list></call></expr></argument>, <argument><expr><name pos:line="282" pos:column="90">type</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                }</block></catch></try>
+            }</block></foreach>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Framework\GlimpseRequestHeaders.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">Glimpse</name><op:operator pos:line="2" pos:column="14">.</op:operator><name pos:line="2" pos:column="15">Core</name><op:operator pos:line="2" pos:column="19">.</op:operator><name pos:line="2" pos:column="20">Resource</name></name>;</using>
+
+<namespace pos:line="4" pos:column="1">namespace <name><name pos:line="4" pos:column="11">Glimpse</name><op:operator pos:line="4" pos:column="18">.</op:operator><name pos:line="4" pos:column="19">Core</name><op:operator pos:line="4" pos:column="23">.</op:operator><name pos:line="4" pos:column="24">Framework</name></name>
+<block pos:line="5" pos:column="1">{
+    <comment type="line" pos:line="6" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// Used to return a subset of &lt;see cref="GlimpseRequest"/&gt; properties by &lt;see cref="HistoryResource"/&gt;.</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="9" pos:column="5">public</specifier> class <name pos:line="9" pos:column="18">GlimpseRequestHeaders</name>
+    <block pos:line="10" pos:column="5">{
+        <comment type="line" pos:line="11" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="12" pos:column="9">/// Initializes a new instance of the &lt;see cref="GlimpseRequestHeaders" /&gt; class.</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// &lt;param name="glimpseRequest"&gt;The glimpse request.&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="15" pos:column="9">public</specifier> <name pos:line="15" pos:column="16">GlimpseRequestHeaders</name><parameter_list pos:line="15" pos:column="37">(<param><decl><type><name pos:line="15" pos:column="38">GlimpseRequest</name></type> <name pos:line="15" pos:column="53">glimpseRequest</name></decl></param>)</parameter_list>
+        <block pos:line="16" pos:column="9">{
+            <expr_stmt><expr><name pos:line="17" pos:column="13">GlimpseRequest</name> <op:operator pos:line="17" pos:column="28">=</op:operator> <name pos:line="17" pos:column="30">glimpseRequest</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="20" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="21" pos:column="9">/// Gets the client id.</comment>
+        <comment type="line" pos:line="22" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// The client id.</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="26" pos:column="9">public</specifier> <name pos:line="26" pos:column="16">string</name></type> <name pos:line="26" pos:column="23">ClientId</name>
+        <block pos:line="27" pos:column="9">{
+            <function><name pos:line="28" pos:column="13">get</name> <block pos:line="28" pos:column="17">{ <return pos:line="28" pos:column="19">return <expr><name><name pos:line="28" pos:column="26">GlimpseRequest</name><op:operator pos:line="28" pos:column="40">.</op:operator><name pos:line="28" pos:column="41">ClientId</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="31" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="32" pos:column="9">/// Gets the date time.</comment>
+        <comment type="line" pos:line="33" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="35" pos:column="9">/// The date time.</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="37" pos:column="9">public</specifier> <name pos:line="37" pos:column="16">DateTime</name></type> <name pos:line="37" pos:column="25">DateTime</name>
+        <block pos:line="38" pos:column="9">{
+            <function><name pos:line="39" pos:column="13">get</name> <block pos:line="39" pos:column="17">{ <return pos:line="39" pos:column="19">return <expr><name><name pos:line="39" pos:column="26">GlimpseRequest</name><op:operator pos:line="39" pos:column="40">.</op:operator><name pos:line="39" pos:column="41">DateTime</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// Gets the duration.</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// The duration.</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="48" pos:column="9">public</specifier> <name pos:line="48" pos:column="16">TimeSpan</name></type> <name pos:line="48" pos:column="25">Duration</name>
+        <block pos:line="49" pos:column="9">{
+            <function><name pos:line="50" pos:column="13">get</name> <block pos:line="50" pos:column="17">{ <return pos:line="50" pos:column="19">return <expr><name><name pos:line="50" pos:column="26">GlimpseRequest</name><op:operator pos:line="50" pos:column="40">.</op:operator><name pos:line="50" pos:column="41">Duration</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="53" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// Gets the parent request id.</comment>
+        <comment type="line" pos:line="55" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="56" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="57" pos:column="9">/// The parent request id.</comment>
+        <comment type="line" pos:line="58" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="59" pos:column="9">public</specifier> <name pos:line="59" pos:column="16">Guid</name><type:modifier pos:line="59" pos:column="20">?</type:modifier></type> <name pos:line="59" pos:column="22">ParentRequestId</name>
+        <block pos:line="60" pos:column="9">{
+            <function><name pos:line="61" pos:column="13">get</name> <block pos:line="61" pos:column="17">{ <return pos:line="61" pos:column="19">return <expr><name><name pos:line="61" pos:column="26">GlimpseRequest</name><op:operator pos:line="61" pos:column="40">.</op:operator><name pos:line="61" pos:column="41">ParentRequestId</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="64" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="65" pos:column="9">/// Gets the request id.</comment>
+        <comment type="line" pos:line="66" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="67" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="68" pos:column="9">/// The request id.</comment>
+        <comment type="line" pos:line="69" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="70" pos:column="9">public</specifier> <name pos:line="70" pos:column="16">Guid</name></type> <name pos:line="70" pos:column="21">RequestId</name>
+        <block pos:line="71" pos:column="9">{
+            <function><name pos:line="72" pos:column="13">get</name> <block pos:line="72" pos:column="17">{ <return pos:line="72" pos:column="19">return <expr><name><name pos:line="72" pos:column="26">GlimpseRequest</name><op:operator pos:line="72" pos:column="40">.</op:operator><name pos:line="72" pos:column="41">RequestId</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="75" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="76" pos:column="9">/// Gets a value indicating whether [request is ajax].</comment>
+        <comment type="line" pos:line="77" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="78" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="79" pos:column="9">///   &lt;c&gt;true&lt;/c&gt; if [request is ajax]; otherwise, &lt;c&gt;false&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="80" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="81" pos:column="9">public</specifier> <name pos:line="81" pos:column="16">bool</name></type> <name pos:line="81" pos:column="21">RequestIsAjax</name>
+        <block pos:line="82" pos:column="9">{
+            <function><name pos:line="83" pos:column="13">get</name> <block pos:line="83" pos:column="17">{ <return pos:line="83" pos:column="19">return <expr><name><name pos:line="83" pos:column="26">GlimpseRequest</name><op:operator pos:line="83" pos:column="40">.</op:operator><name pos:line="83" pos:column="41">RequestIsAjax</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="86" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="87" pos:column="9">/// Gets the request HTTP method.</comment>
+        <comment type="line" pos:line="88" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="89" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="90" pos:column="9">/// The request HTTP method.</comment>
+        <comment type="line" pos:line="91" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="92" pos:column="9">public</specifier> <name pos:line="92" pos:column="16">string</name></type> <name pos:line="92" pos:column="23">RequestHttpMethod</name>
+        <block pos:line="93" pos:column="9">{
+            <function><name pos:line="94" pos:column="13">get</name> <block pos:line="94" pos:column="17">{ <return pos:line="94" pos:column="19">return <expr><name><name pos:line="94" pos:column="26">GlimpseRequest</name><op:operator pos:line="94" pos:column="40">.</op:operator><name pos:line="94" pos:column="41">RequestHttpMethod</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="97" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="98" pos:column="9">/// Gets the request URI.</comment>
+        <comment type="line" pos:line="99" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="100" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="101" pos:column="9">/// The request URI.</comment>
+        <comment type="line" pos:line="102" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="103" pos:column="9">public</specifier> <name pos:line="103" pos:column="16">string</name></type> <name pos:line="103" pos:column="23">RequestUri</name>
+        <block pos:line="104" pos:column="9">{
+            <function><name pos:line="105" pos:column="13">get</name> <block pos:line="105" pos:column="17">{ <return pos:line="105" pos:column="19">return <expr><name><name pos:line="105" pos:column="26">GlimpseRequest</name><op:operator pos:line="105" pos:column="40">.</op:operator><name pos:line="105" pos:column="41">RequestUri</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="108" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="109" pos:column="9">/// Gets the type of the response content.</comment>
+        <comment type="line" pos:line="110" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="111" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="112" pos:column="9">/// The type of the response content.</comment>
+        <comment type="line" pos:line="113" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="114" pos:column="9">public</specifier> <name pos:line="114" pos:column="16">string</name></type> <name pos:line="114" pos:column="23">ResponseContentType</name>
+        <block pos:line="115" pos:column="9">{
+            <function><name pos:line="116" pos:column="13">get</name> <block pos:line="116" pos:column="17">{ <return pos:line="116" pos:column="19">return <expr><name><name pos:line="116" pos:column="26">GlimpseRequest</name><op:operator pos:line="116" pos:column="40">.</op:operator><name pos:line="116" pos:column="41">ResponseContentType</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="119" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="120" pos:column="9">/// Gets the response status code.</comment>
+        <comment type="line" pos:line="121" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="122" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="123" pos:column="9">/// The response status code.</comment>
+        <comment type="line" pos:line="124" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="125" pos:column="9">public</specifier> <name pos:line="125" pos:column="16">int</name></type> <name pos:line="125" pos:column="20">ResponseStatusCode</name>
+        <block pos:line="126" pos:column="9">{
+            <function><name pos:line="127" pos:column="13">get</name> <block pos:line="127" pos:column="17">{ <return pos:line="127" pos:column="19">return <expr><name><name pos:line="127" pos:column="26">GlimpseRequest</name><op:operator pos:line="127" pos:column="40">.</op:operator><name pos:line="127" pos:column="41">ResponseStatusCode</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="130" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="131" pos:column="9">/// Gets the user agent.</comment>
+        <comment type="line" pos:line="132" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="133" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="134" pos:column="9">/// The user agent.</comment>
+        <comment type="line" pos:line="135" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="136" pos:column="9">public</specifier> <name pos:line="136" pos:column="16">string</name></type> <name pos:line="136" pos:column="23">UserAgent</name>
+        <block pos:line="137" pos:column="9">{
+            <function><name pos:line="138" pos:column="13">get</name> <block pos:line="138" pos:column="17">{ <return pos:line="138" pos:column="19">return <expr><name><name pos:line="138" pos:column="26">GlimpseRequest</name><op:operator pos:line="138" pos:column="40">.</op:operator><name pos:line="138" pos:column="41">UserAgent</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="141" pos:column="9">private</specifier> <name pos:line="141" pos:column="17">GlimpseRequest</name></type> <name pos:line="141" pos:column="32">GlimpseRequest</name> <block pos:line="141" pos:column="47">{ <function_decl><name pos:line="141" pos:column="49">get</name>;</function_decl> <function_decl><name pos:line="141" pos:column="54">set</name>;</function_decl> }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace></unit>

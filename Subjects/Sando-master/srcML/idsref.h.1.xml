@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\idsref.h" pos:tabs="8"><comment type="line" pos:line="1" pos:column="1">//-----------------------------------------------------------------------------</comment>
+<comment type="line" pos:line="2" pos:column="1">//</comment>
+<comment type="line" pos:line="3" pos:column="1">// Microsoft Visual Database Tools</comment>
+<comment type="line" pos:line="4" pos:column="1">//</comment>
+<comment type="line" pos:line="5" pos:column="1">// Copyright 1994 - 2000 Microsoft Corporation. All Rights Reserved.</comment>
+<comment type="line" pos:line="6" pos:column="1">//</comment>
+<comment type="line" pos:line="7" pos:column="1">// IDSRefProvider and IDSRefConsumer COM interface definitions</comment>
+<comment type="line" pos:line="8" pos:column="1">//</comment>
+<comment type="line" pos:line="9" pos:column="1">//-----------------------------------------------------------------------------</comment>
+
+<cpp:ifndef pos:line="11" pos:column="1">#<cpp:directive pos:line="11" pos:column="2">ifndef</cpp:directive> <name pos:line="11" pos:column="9">_IDSREF_H_a1da37ec_0fb1_4450_ab38_7dc92534142d</name></cpp:ifndef>
+<cpp:define pos:line="12" pos:column="1">#<cpp:directive pos:line="12" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="12" pos:column="9">_IDSREF_H_a1da37ec_0fb1_4450_ab38_7dc92534142d</name></cpp:macro></cpp:define>
+
+
+<comment type="line" pos:line="15" pos:column="1">// Types and Constants --------------------------------------------------------</comment>
+
+<comment type="line" pos:line="17" pos:column="1">// DSRef tree and node type information flags</comment>
+<enum pos:line="18" pos:column="1">enum <name pos:line="18" pos:column="6">DSREFTYPETag</name>
+<block pos:line="19" pos:column="1">{
+	<comment type="line" pos:line="20" pos:column="9">// Type information only available on DSRef tree root node</comment>
+	<decl><name pos:line="21" pos:column="9">DSREFTYPE_NULL</name>				<init pos:line="21" pos:column="49">= <expr><lit:literal type="number" pos:line="21" pos:column="51">0x00</lit:literal></expr></init></decl><op:operator pos:line="21" pos:column="55">,</op:operator>			<comment type="line" pos:line="21" pos:column="73">// Tree has no type information</comment>
+	<decl><name pos:line="22" pos:column="9">DSREFTYPE_COLLECTION</name>		<init pos:line="22" pos:column="41">= <expr><lit:literal type="number" pos:line="22" pos:column="43">0x01</lit:literal></expr></init></decl><op:operator pos:line="22" pos:column="47">,</op:operator>			<comment type="line" pos:line="22" pos:column="65">// Tree has multiple root nodes</comment>
+	<decl><name pos:line="23" pos:column="9">DSREFTYPE_MULTIPLE</name>			<init pos:line="23" pos:column="49">= <expr><lit:literal type="number" pos:line="23" pos:column="51">0x02</lit:literal></expr></init></decl><op:operator pos:line="23" pos:column="55">,</op:operator>			<comment type="line" pos:line="23" pos:column="73">// Tree has multiple leaf nodes</comment>
+	<decl><name pos:line="24" pos:column="9">DSREFTYPE_MIXED</name>				<init pos:line="24" pos:column="49">= <expr><lit:literal type="number" pos:line="24" pos:column="51">0x04</lit:literal></expr></init></decl><op:operator pos:line="24" pos:column="55">,</op:operator>			<comment type="line" pos:line="24" pos:column="73">// Multiple parents have leaf nodes</comment>
+
+	<comment type="line" pos:line="26" pos:column="9">// Type information only available on true DSRef tree nodes (i.e. database, table, etc.)</comment>
+	<decl><name pos:line="27" pos:column="9">DSREFTYPE_DATASOURCEROOT</name>	<init pos:line="27" pos:column="41">= <expr><lit:literal type="number" pos:line="27" pos:column="43">0x10</lit:literal></expr></init></decl><op:operator pos:line="27" pos:column="47">,</op:operator>			<comment type="line" pos:line="27" pos:column="65">// Data source root node</comment>
+
+	<comment type="line" pos:line="29" pos:column="9">// Type information available on both DSRef tree root node and true nodes</comment>
+	<decl><name pos:line="30" pos:column="9">DSREFTYPE_FIELD</name>				<init pos:line="30" pos:column="49">= <expr><lit:literal type="number" pos:line="30" pos:column="51">0x00000100</lit:literal></expr></init></decl><op:operator pos:line="30" pos:column="61">,</op:operator>	<comment type="line" pos:line="30" pos:column="65">// Field node</comment>
+	<decl><name pos:line="31" pos:column="9">DSREFTYPE_TABLE</name>				<init pos:line="31" pos:column="49">= <expr><lit:literal type="number" pos:line="31" pos:column="51">0x00000200</lit:literal></expr></init></decl><op:operator pos:line="31" pos:column="61">,</op:operator>	<comment type="line" pos:line="31" pos:column="65">// Table node</comment>
+	<decl><name pos:line="32" pos:column="9">DSREFTYPE_QUERY</name>				<init pos:line="32" pos:column="49">= <expr><lit:literal type="number" pos:line="32" pos:column="51">0x00000400</lit:literal></expr></init></decl><op:operator pos:line="32" pos:column="61">,</op:operator>	<comment type="line" pos:line="32" pos:column="65">// Query node (not a db object)</comment>
+	<decl><name pos:line="33" pos:column="9">DSREFTYPE_DATABASE</name>			<init pos:line="33" pos:column="49">= <expr><lit:literal type="number" pos:line="33" pos:column="51">0x00000800</lit:literal></expr></init></decl><op:operator pos:line="33" pos:column="61">,</op:operator>	<comment type="line" pos:line="33" pos:column="65">// Database node</comment>
+	<decl><name pos:line="34" pos:column="9">DSREFTYPE_TRIGGER</name>			<init pos:line="34" pos:column="49">= <expr><lit:literal type="number" pos:line="34" pos:column="51">0x00001000</lit:literal></expr></init></decl><op:operator pos:line="34" pos:column="61">,</op:operator>	<comment type="line" pos:line="34" pos:column="65">// Trigger node</comment>
+	<decl><name pos:line="35" pos:column="9">DSREFTYPE_STOREDPROCEDURE</name>	<init pos:line="35" pos:column="41">= <expr><lit:literal type="number" pos:line="35" pos:column="43">0x00002000</lit:literal></expr></init></decl><op:operator pos:line="35" pos:column="53">,</op:operator>	<comment type="line" pos:line="35" pos:column="57">// Stored Procedure node</comment>
+	<decl><name pos:line="36" pos:column="9">DSREFTYPE_EXTENDED</name>			<init pos:line="36" pos:column="49">= <expr><lit:literal type="number" pos:line="36" pos:column="51">0x00004000</lit:literal></expr></init></decl><op:operator pos:line="36" pos:column="61">,</op:operator>	<comment type="line" pos:line="36" pos:column="65">// Extended node</comment>
+	<decl><name pos:line="37" pos:column="9">DSREFTYPE_SCHEMADIAGRAM</name>		<init pos:line="37" pos:column="41">= <expr><lit:literal type="number" pos:line="37" pos:column="43">0x00008000</lit:literal></expr></init></decl><op:operator pos:line="37" pos:column="53">,</op:operator>	<comment type="line" pos:line="37" pos:column="57">// Schema diagram</comment>
+	<decl><name pos:line="38" pos:column="9">DSREFTYPE_VIEW</name>				<init pos:line="38" pos:column="49">= <expr><lit:literal type="number" pos:line="38" pos:column="51">0x00100000</lit:literal></expr></init></decl><op:operator pos:line="38" pos:column="61">,</op:operator>	<comment type="line" pos:line="38" pos:column="65">// View node</comment>
+	<decl><name pos:line="39" pos:column="9">DSREFTYPE_SYNONYM</name>			<init pos:line="39" pos:column="49">= <expr><lit:literal type="number" pos:line="39" pos:column="51">0x00800000</lit:literal></expr></init></decl><op:operator pos:line="39" pos:column="61">,</op:operator>   <comment type="line" pos:line="39" pos:column="65">// Synonym node</comment>
+	<decl><name pos:line="40" pos:column="9">DSREFTYPE_FUNCTION</name>			<init pos:line="40" pos:column="49">= <expr><lit:literal type="number" pos:line="40" pos:column="51">0x01000000</lit:literal></expr></init></decl><op:operator pos:line="40" pos:column="61">,</op:operator>   <comment type="line" pos:line="40" pos:column="65">// Function node</comment>
+	<decl><name pos:line="41" pos:column="9">DSREFTYPE_PACKAGE</name>			<init pos:line="41" pos:column="49">= <expr><lit:literal type="number" pos:line="41" pos:column="51">0x02000000</lit:literal></expr></init></decl><op:operator pos:line="41" pos:column="61">,</op:operator>   <comment type="line" pos:line="41" pos:column="65">// Package node</comment>
+	<decl><name pos:line="42" pos:column="9">DSREFTYPE_PACKAGEBODY</name>		<init pos:line="42" pos:column="41">= <expr><lit:literal type="number" pos:line="42" pos:column="43">0x04000000</lit:literal></expr></init></decl><op:operator pos:line="42" pos:column="53">,</op:operator>   <comment type="line" pos:line="42" pos:column="57">// Package body node</comment>
+	<decl><name pos:line="43" pos:column="9">DSREFTYPE_RELATIONSHIP</name>		<init pos:line="43" pos:column="41">= <expr><lit:literal type="number" pos:line="43" pos:column="43">0x08000000</lit:literal></expr></init></decl><op:operator pos:line="43" pos:column="53">,</op:operator>	<comment type="line" pos:line="43" pos:column="57">// Relationship node</comment>
+	<decl><name pos:line="44" pos:column="9">DSREFTYPE_INDEX</name>				<init pos:line="44" pos:column="49">= <expr><lit:literal type="number" pos:line="44" pos:column="51">0x10000000</lit:literal></expr></init></decl><op:operator pos:line="44" pos:column="61">,</op:operator>	<comment type="line" pos:line="44" pos:column="65">// Index node</comment>
+	<decl><name pos:line="45" pos:column="9">DSREFTYPE_USERDEFINEDTYPE</name>	<init pos:line="45" pos:column="41">= <expr><lit:literal type="number" pos:line="45" pos:column="43">0x20000000</lit:literal></expr></init></decl><op:operator pos:line="45" pos:column="53">,</op:operator>	<comment type="line" pos:line="45" pos:column="57">// User Defined Type node</comment>
+	<decl><name pos:line="46" pos:column="9">DSREFTYPE_VIEWTRIGGER</name>		<init pos:line="46" pos:column="41">= <expr><lit:literal type="number" pos:line="46" pos:column="43">0x40000000</lit:literal></expr></init></decl><op:operator pos:line="46" pos:column="53">,</op:operator>	<comment type="line" pos:line="46" pos:column="57">// ViewTrigger node</comment>
+	<decl><name pos:line="47" pos:column="9">DSREFTYPE_VIEWINDEX</name>  		<init pos:line="47" pos:column="41">= <expr><lit:literal type="number" pos:line="47" pos:column="43">0x80000000</lit:literal></expr></init></decl><op:operator pos:line="47" pos:column="53">,</op:operator>	<comment type="line" pos:line="47" pos:column="57">// ViewIndex node</comment>
+
+
+	<comment type="line" pos:line="50" pos:column="9">// Type information used for persistence - internal use only</comment>
+	<comment type="line" pos:line="51" pos:column="9">// Clients of DSRef should not use these bit flags for determining</comment>
+	<comment type="line" pos:line="52" pos:column="9">// DSRef structure and properties.</comment>
+	<decl><name pos:line="53" pos:column="9">DSREFTYPE_HASFIRSTCHILD</name>		<init pos:line="53" pos:column="41">= <expr><lit:literal type="number" pos:line="53" pos:column="43">0x00010000</lit:literal></expr></init></decl><op:operator pos:line="53" pos:column="53">,</op:operator>	<comment type="line" pos:line="53" pos:column="57">// Node has first child</comment>
+	<decl><name pos:line="54" pos:column="9">DSREFTYPE_HASNEXTSIBLING</name>	<init pos:line="54" pos:column="41">= <expr><lit:literal type="number" pos:line="54" pos:column="43">0x00020000</lit:literal></expr></init></decl><op:operator pos:line="54" pos:column="53">,</op:operator>	<comment type="line" pos:line="54" pos:column="57">// Node has next sibling</comment>
+	<decl><name pos:line="55" pos:column="9">DSREFTYPE_HASNAME</name>			<init pos:line="55" pos:column="49">= <expr><lit:literal type="number" pos:line="55" pos:column="51">0x00040000</lit:literal></expr></init></decl><op:operator pos:line="55" pos:column="61">,</op:operator>	<comment type="line" pos:line="55" pos:column="65">// Node has name</comment>
+	<decl><name pos:line="56" pos:column="9">DSREFTYPE_HASMONIKER</name>		<init pos:line="56" pos:column="41">= <expr><lit:literal type="number" pos:line="56" pos:column="43">0x00080000</lit:literal></expr></init></decl><op:operator pos:line="56" pos:column="53">,</op:operator>	<comment type="line" pos:line="56" pos:column="57">// Node has moniker</comment>
+	<comment type="line" pos:line="57" pos:column="9">// DSREFTYPE_VIEW above uses  0x00100000</comment>
+	<decl><name pos:line="58" pos:column="9">DSREFTYPE_HASOWNER</name>			<init pos:line="58" pos:column="49">= <expr><lit:literal type="number" pos:line="58" pos:column="51">0x00200000</lit:literal></expr></init></decl><op:operator pos:line="58" pos:column="61">,</op:operator>	<comment type="line" pos:line="58" pos:column="65">// Node has owner property</comment>
+	<decl><name pos:line="59" pos:column="9">DSREFTYPE_HASPROP</name>			<init pos:line="59" pos:column="49">= <expr><lit:literal type="number" pos:line="59" pos:column="51">0x00400000</lit:literal></expr></init></decl><op:operator pos:line="59" pos:column="61">,</op:operator>	<comment type="line" pos:line="59" pos:column="65">// Node has additional properties</comment>
+	<comment type="line" pos:line="60" pos:column="9">// DSREFTYPE_SYNONYM - DSREFTYPE_PACKAGEBODY above use 0x00800000 - 0x04000000</comment>
+
+}</block>;</enum>
+<typedef pos:line="63" pos:column="1">typedef <type><name pos:line="63" pos:column="9">UINT</name></type>	<name pos:line="63" pos:column="17">DSREFTYPE</name>;</typedef>	<comment type="line" pos:line="63" pos:column="33">// Hungarian: grf</comment>
+
+<comment type="line" pos:line="65" pos:column="1">// Bit mask for node data source element type</comment>
+<cpp:define pos:line="66" pos:column="1">#<cpp:directive pos:line="66" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="66" pos:column="9">DSREFTYPE_NODE</name></cpp:macro>	<cpp:value pos:line="66" pos:column="25">(DSREFTYPE_FIELD | \
+						 DSREFTYPE_TABLE | \
+						 DSREFTYPE_QUERY | \
+						 DSREFTYPE_VIEW | \
+						 DSREFTYPE_DATABASE | \
+						 DSREFTYPE_TRIGGER | \
+						 DSREFTYPE_STOREDPROCEDURE | \
+						 DSREFTYPE_EXTENDED | \
+						 DSREFTYPE_SCHEMADIAGRAM | \
+						 DSREFTYPE_SYNONYM | \
+						 DSREFTYPE_FUNCTION | \
+						 DSREFTYPE_PACKAGE | \
+						 DSREFTYPE_PACKAGEBODY | \
+						 DSREFTYPE_RELATIONSHIP | \
+						 DSREFTYPE_INDEX | \
+						 DSREFTYPE_USERDEFINEDTYPE | \
+						 DSREFTYPE_VIEWTRIGGER | \
+						 DSREFTYPE_VIEWINDEX)</cpp:value></cpp:define>
+
+<comment type="line" pos:line="85" pos:column="1">// DSRef node NodeID</comment>
+<cpp:define pos:line="86" pos:column="1">#<cpp:directive pos:line="86" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="86" pos:column="9">DSREFNODEID_ROOT</name></cpp:macro>	<cpp:value pos:line="86" pos:column="33">0</cpp:value></cpp:define>
+<cpp:define pos:line="87" pos:column="1">#<cpp:directive pos:line="87" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="87" pos:column="9">DSREFNODEID_NIL</name></cpp:macro>		<cpp:value pos:line="87" pos:column="33">0</cpp:value></cpp:define>
+<typedef pos:line="88" pos:column="1">typedef <type><name pos:line="88" pos:column="9">VOID</name>	<type:modifier pos:line="88" pos:column="17">*</type:modifier></type><name pos:line="88" pos:column="18">DSREFNODEID</name>;</typedef>	<comment type="line" pos:line="88" pos:column="33">// Hungarian: drnid</comment>
+
+
+
+
+<comment type="line" pos:line="93" pos:column="1">//-----------------------------------------------------------------------------</comment>
+<comment type="line" pos:line="94" pos:column="1">// Name: IDSRefProvider</comment>
+<comment type="line" pos:line="95" pos:column="1">//</comment>
+<comment type="line" pos:line="96" pos:column="1">// Description:</comment>
+<comment type="line" pos:line="97" pos:column="1">// IDSRefProvider COM interface definition</comment>
+<comment type="line" pos:line="98" pos:column="1">//</comment>
+<comment type="line" pos:line="99" pos:column="1">// Thread-Safety: None</comment>
+<comment type="line" pos:line="100" pos:column="1">//-----------------------------------------------------------------------------</comment>
+<macro><name pos:line="101" pos:column="1">DECLARE_INTERFACE_</name><argument_list pos:line="101" pos:column="19">(<argument pos:line="101" pos:column="20">IDSRefProvider</argument>, <argument pos:line="101" pos:column="36">IUnknown</argument>)</argument_list></macro>
+<block pos:line="102" pos:column="1">{
+	<comment type="line" pos:line="103" pos:column="9">// IUnknown methods</comment>
+	<function_decl><type><name pos:line="104" pos:column="9">STDMETHOD</name></type>(<name pos:line="104" pos:column="19">QueryInterface</name>) <parameter_list pos:line="104" pos:column="35">(<param><decl><type><name pos:line="104" pos:column="36">REFIID</name></type></decl></param>, <param><decl><type><name pos:line="104" pos:column="44">LPVOID</name> <type:modifier pos:line="104" pos:column="51">*</type:modifier></type></decl></param>)</parameter_list> <name pos:line="104" pos:column="54">PURE</name>;</function_decl>
+	<macro><name pos:line="105" pos:column="9">STDMETHOD_</name><argument_list pos:line="105" pos:column="19">(<argument pos:line="105" pos:column="20">ULONG</argument>, <argument pos:line="105" pos:column="27">AddRef</argument>)</argument_list></macro> <expr_stmt><expr><op:operator pos:line="105" pos:column="35">(</op:operator><name pos:line="105" pos:column="36">VOID</name><op:operator pos:line="105" pos:column="40">)</op:operator> <name pos:line="105" pos:column="42">PURE</name></expr>;</expr_stmt>
+	<macro><name pos:line="106" pos:column="9">STDMETHOD_</name><argument_list pos:line="106" pos:column="19">(<argument pos:line="106" pos:column="20">ULONG</argument>, <argument pos:line="106" pos:column="27">Release</argument>)</argument_list></macro> <expr_stmt><expr><op:operator pos:line="106" pos:column="36">(</op:operator><name pos:line="106" pos:column="37">VOID</name><op:operator pos:line="106" pos:column="41">)</op:operator> <name pos:line="106" pos:column="43">PURE</name></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="108" pos:column="9">// IDSRefProvider methods</comment>
+	<function_decl><type><name pos:line="109" pos:column="9">STDMETHOD</name></type>(<name pos:line="109" pos:column="19">Clear</name>) <parameter_list pos:line="109" pos:column="26">(<param><decl><type><name pos:line="109" pos:column="27">VOID</name></type></decl></param>)</parameter_list> <name pos:line="109" pos:column="33">PURE</name>;</function_decl>
+	<function_decl><type><name pos:line="110" pos:column="9">STDMETHOD</name></type>(<name pos:line="110" pos:column="19">CreateFirstChildNode</name>) <parameter_list pos:line="110" pos:column="41">(
+		<param><decl><type><name pos:line="111" pos:column="17">DSREFNODEID</name></type> <name pos:line="111" pos:column="29">drnidCurr</name></decl></param>,
+		<param><decl><type><name pos:line="112" pos:column="17">DSREFNODEID</name> <type:modifier pos:line="112" pos:column="29">*</type:modifier></type><name pos:line="112" pos:column="30">pdrnidChild</name></decl></param>)</parameter_list> <name pos:line="112" pos:column="43">PURE</name>;</function_decl>
+	<function_decl><type><name pos:line="113" pos:column="9">STDMETHOD</name></type>(<name pos:line="113" pos:column="19">CreateNextSiblingNode</name>) <parameter_list pos:line="113" pos:column="42">(
+		<param><decl><type><name pos:line="114" pos:column="17">DSREFNODEID</name></type> <name pos:line="114" pos:column="29">drnidCurr</name></decl></param>,
+		<param><decl><type><name pos:line="115" pos:column="17">DSREFNODEID</name> <type:modifier pos:line="115" pos:column="29">*</type:modifier></type><name pos:line="115" pos:column="30">pdrnidSibling</name></decl></param>)</parameter_list> <name pos:line="115" pos:column="45">PURE</name>;</function_decl>
+	<function_decl><type><name pos:line="116" pos:column="9">STDMETHOD</name></type>(<name pos:line="116" pos:column="19">SetType</name>) <parameter_list pos:line="116" pos:column="28">(
+		<param><decl><type><name pos:line="117" pos:column="17">DSREFNODEID</name></type> <name pos:line="117" pos:column="29">drnidCurr</name></decl></param>,
+		<param><decl><type><name pos:line="118" pos:column="17">DSREFTYPE</name></type> <name pos:line="118" pos:column="27">grfType</name></decl></param>)</parameter_list> <name pos:line="118" pos:column="36">PURE</name>;</function_decl>
+	<function_decl><type><name pos:line="119" pos:column="9">STDMETHOD</name></type>(<name pos:line="119" pos:column="19">SetExtendedType</name>) <parameter_list pos:line="119" pos:column="36">(
+		<param><decl><type><name pos:line="120" pos:column="17">DSREFNODEID</name></type> <name pos:line="120" pos:column="29">drnidCurr</name></decl></param>,
+		<param><decl><type><specifier pos:line="121" pos:column="17">const</specifier> <name pos:line="121" pos:column="23">GUID</name> <type:modifier pos:line="121" pos:column="28">*</type:modifier></type><name pos:line="121" pos:column="29">pguidType</name></decl></param>)</parameter_list> <name pos:line="121" pos:column="40">PURE</name>;</function_decl>
+	<function_decl><type><name pos:line="122" pos:column="9">STDMETHOD</name></type>(<name pos:line="122" pos:column="19">SetName</name>) <parameter_list pos:line="122" pos:column="28">(
+		<param><decl><type><name pos:line="123" pos:column="17">DSREFNODEID</name></type> <name pos:line="123" pos:column="29">drnidCurr</name></decl></param>,
+		<param><decl><type><name pos:line="124" pos:column="17">BSTR</name></type> <name pos:line="124" pos:column="22">bstrName</name></decl></param>)</parameter_list> <name pos:line="124" pos:column="32">PURE</name>;</function_decl>
+	<function_decl><type><name pos:line="125" pos:column="9">STDMETHOD</name></type>(<name pos:line="125" pos:column="19">SetMoniker</name>) <parameter_list pos:line="125" pos:column="31">(
+		<param><decl><type><name pos:line="126" pos:column="17">DSREFNODEID</name></type> <name pos:line="126" pos:column="29">drnidCurr</name></decl></param>,
+		<param><decl><type><name pos:line="127" pos:column="17">IMoniker</name> <type:modifier pos:line="127" pos:column="26">*</type:modifier></type><name pos:line="127" pos:column="27">pIMoniker</name></decl></param>)</parameter_list> <name pos:line="127" pos:column="38">PURE</name>;</function_decl>
+	<function_decl><type><name pos:line="128" pos:column="9">STDMETHOD</name></type>(<name pos:line="128" pos:column="19">SetOwner</name>) <parameter_list pos:line="128" pos:column="29">(
+		<param><decl><type><name pos:line="129" pos:column="17">DSREFNODEID</name></type> <name pos:line="129" pos:column="29">drnidCurr</name></decl></param>,
+		<param><decl><type><name pos:line="130" pos:column="17">BSTR</name></type> <name pos:line="130" pos:column="22">bstrOwnerName</name></decl></param>)</parameter_list> <name pos:line="130" pos:column="37">PURE</name>;</function_decl>
+	<function_decl><type><name pos:line="131" pos:column="9">STDMETHOD</name></type>(<name pos:line="131" pos:column="19">SetProperty</name>) <parameter_list pos:line="131" pos:column="32">(
+		<param><decl><type><name pos:line="132" pos:column="17">DSREFNODEID</name></type> <name pos:line="132" pos:column="29">drnidCurr</name></decl></param>,
+		<param><decl><type><name pos:line="133" pos:column="17">REFGUID</name></type> <name pos:line="133" pos:column="25">guidProp</name></decl></param>,
+		<param><decl><type><name pos:line="134" pos:column="17">VARIANT</name></type> <name pos:line="134" pos:column="25">varPropValue</name></decl></param>)</parameter_list> <name pos:line="134" pos:column="39">PURE</name>;</function_decl>
+
+}</block><empty_stmt pos:line="136" pos:column="2">;</empty_stmt>
+<typedef pos:line="137" pos:column="1">typedef <type><name pos:line="137" pos:column="9">IDSRefProvider</name> <type:modifier pos:line="137" pos:column="24">*</type:modifier></type><name pos:line="137" pos:column="25">PDSREFPROVIDER</name>;</typedef>
+
+
+
+
+<comment type="line" pos:line="142" pos:column="1">//-----------------------------------------------------------------------------</comment>
+<comment type="line" pos:line="143" pos:column="1">// Name: IDSRefConsumer</comment>
+<comment type="line" pos:line="144" pos:column="1">//</comment>
+<comment type="line" pos:line="145" pos:column="1">// Description:</comment>
+<comment type="line" pos:line="146" pos:column="1">// IDSRefConsumer COM interface definition</comment>
+<comment type="line" pos:line="147" pos:column="1">//</comment>
+<comment type="line" pos:line="148" pos:column="1">// Thread-Safety: None</comment>
+<comment type="line" pos:line="149" pos:column="1">//-----------------------------------------------------------------------------</comment>
+<macro><name pos:line="150" pos:column="1">DECLARE_INTERFACE_</name><argument_list pos:line="150" pos:column="19">(<argument pos:line="150" pos:column="20">IDSRefConsumer</argument>, <argument pos:line="150" pos:column="36">IUnknown</argument>)</argument_list></macro>
+<block pos:line="151" pos:column="1">{
+	<comment type="line" pos:line="152" pos:column="9">// IUnknown methods</comment>
+	<function_decl><type><name pos:line="153" pos:column="9">STDMETHOD</name></type>(<name pos:line="153" pos:column="19">QueryInterface</name>) <parameter_list pos:line="153" pos:column="35">(<param><decl><type><name pos:line="153" pos:column="36">REFIID</name></type></decl></param>, <param><decl><type><name pos:line="153" pos:column="44">LPVOID</name> <type:modifier pos:line="153" pos:column="51">*</type:modifier></type></decl></param>)</parameter_list> <name pos:line="153" pos:column="54">PURE</name>;</function_decl>
+	<macro><name pos:line="154" pos:column="9">STDMETHOD_</name><argument_list pos:line="154" pos:column="19">(<argument pos:line="154" pos:column="20">ULONG</argument>, <argument pos:line="154" pos:column="27">AddRef</argument>)</argument_list></macro> <expr_stmt><expr><op:operator pos:line="154" pos:column="35">(</op:operator><name pos:line="154" pos:column="36">VOID</name><op:operator pos:line="154" pos:column="40">)</op:operator> <name pos:line="154" pos:column="42">PURE</name></expr>;</expr_stmt>
+	<macro><name pos:line="155" pos:column="9">STDMETHOD_</name><argument_list pos:line="155" pos:column="19">(<argument pos:line="155" pos:column="20">ULONG</argument>, <argument pos:line="155" pos:column="27">Release</argument>)</argument_list></macro> <expr_stmt><expr><op:operator pos:line="155" pos:column="36">(</op:operator><name pos:line="155" pos:column="37">VOID</name><op:operator pos:line="155" pos:column="41">)</op:operator> <name pos:line="155" pos:column="43">PURE</name></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="157" pos:column="9">// IDSRefConsumer methods</comment>
+	<function_decl><type><name pos:line="158" pos:column="9">STDMETHOD</name></type>(<name pos:line="158" pos:column="19">GetVersion</name>) <parameter_list pos:line="158" pos:column="31">(<param><decl><type><name pos:line="158" pos:column="32">DWORD</name> <type:modifier pos:line="158" pos:column="38">*</type:modifier></type><name pos:line="158" pos:column="39">pdwVersion</name></decl></param>)</parameter_list> <name pos:line="158" pos:column="51">PURE</name>;</function_decl>
+	<function_decl><type><name pos:line="159" pos:column="9">STDMETHOD</name></type>(<name pos:line="159" pos:column="19">GetTimestamp</name>) <parameter_list pos:line="159" pos:column="33">(<param><decl><type><name pos:line="159" pos:column="34">FILETIME</name> <type:modifier pos:line="159" pos:column="43">*</type:modifier></type><name pos:line="159" pos:column="44">pftTimestamp</name></decl></param>)</parameter_list> <name pos:line="159" pos:column="58">PURE</name>;</function_decl>
+	<function_decl><type><name pos:line="160" pos:column="9">STDMETHOD</name></type>(<name pos:line="160" pos:column="19">GetFirstChildNode</name>) <parameter_list pos:line="160" pos:column="38">(
+		<param><decl><type><name pos:line="161" pos:column="17">DSREFNODEID</name></type> <name pos:line="161" pos:column="29">drnidCurr</name></decl></param>,
+		<param><decl><type><name pos:line="162" pos:column="17">DSREFNODEID</name> <type:modifier pos:line="162" pos:column="29">*</type:modifier></type><name pos:line="162" pos:column="30">pdrnidChild</name></decl></param>)</parameter_list> <name pos:line="162" pos:column="43">PURE</name>;</function_decl>
+	<function_decl><type><name pos:line="163" pos:column="9">STDMETHOD</name></type>(<name pos:line="163" pos:column="19">GetNextSiblingNode</name>) <parameter_list pos:line="163" pos:column="39">(
+		<param><decl><type><name pos:line="164" pos:column="17">DSREFNODEID</name></type> <name pos:line="164" pos:column="29">drnidCurr</name></decl></param>,
+		<param><decl><type><name pos:line="165" pos:column="17">DSREFNODEID</name> <type:modifier pos:line="165" pos:column="29">*</type:modifier></type><name pos:line="165" pos:column="30">pdrnidSibling</name></decl></param>)</parameter_list> <name pos:line="165" pos:column="45">PURE</name>;</function_decl>
+	<function_decl><type><name pos:line="166" pos:column="9">STDMETHOD</name></type>(<name pos:line="166" pos:column="19">GetType</name>) <parameter_list pos:line="166" pos:column="28">(
+		<param><decl><type><name pos:line="167" pos:column="17">DSREFNODEID</name></type> <name pos:line="167" pos:column="29">drnidCurr</name></decl></param>,
+		<param><decl><type><name pos:line="168" pos:column="17">DSREFTYPE</name> <type:modifier pos:line="168" pos:column="27">*</type:modifier></type><name pos:line="168" pos:column="28">pgrfType</name></decl></param>)</parameter_list> <name pos:line="168" pos:column="38">PURE</name>;</function_decl>
+	<function_decl><type><name pos:line="169" pos:column="9">STDMETHOD</name></type>(<name pos:line="169" pos:column="19">GetExtendedType</name>) <parameter_list pos:line="169" pos:column="36">(
+		<param><decl><type><name pos:line="170" pos:column="17">DSREFNODEID</name></type> <name pos:line="170" pos:column="29">drnidCurr</name></decl></param>,
+		<param><decl><type><name pos:line="171" pos:column="17">GUID</name> <type:modifier pos:line="171" pos:column="22">*</type:modifier></type><name pos:line="171" pos:column="23">pguidType</name></decl></param>)</parameter_list> <name pos:line="171" pos:column="34">PURE</name>;</function_decl>
+	<function_decl><type><name pos:line="172" pos:column="9">STDMETHOD</name></type>(<name pos:line="172" pos:column="19">GetName</name>) <parameter_list pos:line="172" pos:column="28">(
+		<param><decl><type><name pos:line="173" pos:column="17">DSREFNODEID</name></type> <name pos:line="173" pos:column="29">drnidCurr</name></decl></param>,
+		<param><decl><type><name pos:line="174" pos:column="17">BSTR</name> <type:modifier pos:line="174" pos:column="22">*</type:modifier></type><name pos:line="174" pos:column="23">pbstrName</name></decl></param>)</parameter_list> <name pos:line="174" pos:column="34">PURE</name>;</function_decl>
+	<function_decl><type><name pos:line="175" pos:column="9">STDMETHOD</name></type>(<name pos:line="175" pos:column="19">GetMoniker</name>) <parameter_list pos:line="175" pos:column="31">(
+		<param><decl><type><name pos:line="176" pos:column="17">DSREFNODEID</name></type> <name pos:line="176" pos:column="29">drnidCurr</name></decl></param>,
+		<param><decl><type><name pos:line="177" pos:column="17">IMoniker</name> <type:modifier pos:line="177" pos:column="26">*</type:modifier><type:modifier pos:line="177" pos:column="27">*</type:modifier></type><name pos:line="177" pos:column="28">ppIMoniker</name></decl></param>)</parameter_list> <name pos:line="177" pos:column="40">PURE</name>;</function_decl>
+	<function_decl><type><name pos:line="178" pos:column="9">STDMETHOD</name></type>(<name pos:line="178" pos:column="19">GetOwner</name>) <parameter_list pos:line="178" pos:column="29">(
+		<param><decl><type><name pos:line="179" pos:column="17">DSREFNODEID</name></type> <name pos:line="179" pos:column="29">drnidCurr</name></decl></param>,
+		<param><decl><type><name pos:line="180" pos:column="17">BSTR</name> <type:modifier pos:line="180" pos:column="22">*</type:modifier></type><name pos:line="180" pos:column="23">pbstrOwnerName</name></decl></param>)</parameter_list> <name pos:line="180" pos:column="39">PURE</name>;</function_decl>
+	<function_decl><type><name pos:line="181" pos:column="9">STDMETHOD</name></type>(<name pos:line="181" pos:column="19">GetProperty</name>) <parameter_list pos:line="181" pos:column="32">(
+		<param><decl><type><name pos:line="182" pos:column="17">DSREFNODEID</name></type> <name pos:line="182" pos:column="29">drnidCurr</name></decl></param>,
+		<param><decl><type><name pos:line="183" pos:column="17">REFGUID</name></type> <name pos:line="183" pos:column="25">guidProp</name></decl></param>,
+		<param><decl><type><name pos:line="184" pos:column="17">VARIANT</name> <type:modifier pos:line="184" pos:column="25">*</type:modifier></type><name pos:line="184" pos:column="26">varPropValue</name></decl></param>)</parameter_list> <name pos:line="184" pos:column="40">PURE</name>;</function_decl>
+
+}</block><empty_stmt pos:line="186" pos:column="2">;</empty_stmt>
+<typedef pos:line="187" pos:column="1">typedef <type><name pos:line="187" pos:column="9">IDSRefConsumer</name> <type:modifier pos:line="187" pos:column="24">*</type:modifier></type><name pos:line="187" pos:column="25">PDSREFCONSUMER</name>;</typedef>
+
+<comment type="line" pos:line="189" pos:column="1">// DSRef clipboard format text name</comment>
+<decl_stmt><decl><type><specifier pos:line="190" pos:column="1">const</specifier> <name pos:line="190" pos:column="7">TCHAR</name></type>			<name><name pos:line="190" pos:column="33">szcfDSRef</name><index pos:line="190" pos:column="42">[]</index></name> <init pos:line="190" pos:column="45">= <expr><call><name pos:line="190" pos:column="47">TEXT</name><argument_list pos:line="190" pos:column="51">(<argument><expr><lit:literal type="string" pos:line="190" pos:column="52">"CF_DSREF"</lit:literal></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+<cpp:endif pos:line="192" pos:column="1">#<cpp:directive pos:line="192" pos:column="2">endif</cpp:directive></cpp:endif>	<comment type="line" pos:line="192" pos:column="9">// _IDSREF_H_a1da37ec_0fb1_4450_ab38_7dc92534142d</comment>
+</unit>

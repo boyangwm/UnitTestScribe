@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\Parser\Parser.UnitTests\TestFiles\EventWithErrorInIt.CPP" pos:tabs="8"><cpp:include pos:line="1" pos:column="1">#<cpp:directive pos:line="1" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="1" pos:column="10">"Event.H.txt"</lit:literal></cpp:file></cpp:include>
+
+<constructor><name><name pos:line="3" pos:column="1">Event</name><op:operator pos:line="3" pos:column="6">::</op:operator><name pos:line="3" pos:column="8">Event</name></name><parameter_list pos:line="3" pos:column="13">(<param><decl><type><specifier pos:line="3" pos:column="14">const</specifier> <name pos:line="3" pos:column="20">EventType</name></type> <name pos:line="3" pos:column="30">type</name></decl></param>, <param><decl><type><specifier pos:line="3" pos:column="36">const</specifier> <name pos:line="3" pos:column="42">double</name></type> <name pos:line="3" pos:column="49">time</name></decl></param>, <param><decl><type><specifier pos:line="3" pos:column="55">const</specifier> <name pos:line="3" pos:column="61">int</name></type> <name pos:line="3" pos:column="65">node</name></decl></param>, <param><decl><type><specifier pos:line="3" pos:column="71">const</specifier> <name pos:line="3" pos:column="77">Message</name><type:modifier pos:line="3" pos:column="84">&amp;</type:modifier></type> <name pos:line="3" pos:column="86">message</name></decl></param>)</parameter_list>
+  <member_list pos:line="4" pos:column="3">: <call><name pos:line="4" pos:column="5">_type</name><argument_list pos:line="4" pos:column="10">(<argument><expr><name pos:line="4" pos:column="11">type</name></expr></argument>)</argument_list></call><op:operator pos:line="4" pos:column="16">,</op:operator><call><name pos:line="4" pos:column="17">_time</name><argument_list pos:line="4" pos:column="22">(<argument><expr><name pos:line="4" pos:column="23">time</name></expr></argument>)</argument_list></call><op:operator pos:line="4" pos:column="28">,</op:operator><call><name pos:line="4" pos:column="29">_node</name><argument_list pos:line="4" pos:column="34">(<argument><expr><name pos:line="4" pos:column="35">node</name></expr></argument>)</argument_list></call><op:operator pos:line="4" pos:column="40">,</op:operator><call><name pos:line="4" pos:column="41">_message</name><argument_list pos:line="4" pos:column="49">(<argument><expr><name pos:line="4" pos:column="50">message</name></expr></argument>)</argument_list></call>
+</member_list><block pos:line="5" pos:column="1">{ 
+}</block></constructor>
+
+<decl_stmt><decl><type><name pos:line="8" pos:column="1">EventType</name></type> <name pos:line="8" pos:column="11">Event</name><range pos:line="8" pos:column="16">:<expr><op:operator pos:line="8" pos:column="17">#</op:operator><name pos:line="8" pos:column="18">$%:getType</name><op:operator pos:line="8" pos:column="28">(</op:operator><op:operator pos:line="8" pos:column="29">)</op:operator> const 
+<block pos:line="9" pos:column="1">{ 
+  <return pos:line="10" pos:column="3">return <expr><name pos:line="10" pos:column="10">_type</name></expr>;</return> 
+}</block></expr></range></decl></decl_stmt>
+    
+<function><type><name pos:line="13" pos:column="1">double</name></type> <name><name pos:line="13" pos:column="8">Event</name><op:operator pos:line="13" pos:column="13">::</op:operator><name pos:line="13" pos:column="15">getTime</name></name><parameter_list pos:line="13" pos:column="22">()</parameter_list> <specifier pos:line="13" pos:column="25">const</specifier> 
+<block pos:line="14" pos:column="1">{ 
+	<return pos:line="15" pos:column="9">return <expr><name pos:line="15" pos:column="16">_time</name></expr>;</return> 
+}</block></function>
+
+<function><type><name pos:line="18" pos:column="1">int</name></type> <name><name pos:line="18" pos:column="5">Event</name><op:operator pos:line="18" pos:column="10">::</op:operator><name pos:line="18" pos:column="12">getNode</name></name><parameter_list pos:line="18" pos:column="19">()</parameter_list> <specifier pos:line="18" pos:column="22">const</specifier> 
+<block pos:line="19" pos:column="1">{ 
+  <return pos:line="20" pos:column="3">return <expr><name pos:line="20" pos:column="10">_node</name></expr>;</return> 
+}</block></function>
+
+<function><type><name pos:line="23" pos:column="1">Message</name></type> <name><name pos:line="23" pos:column="9">Event</name><op:operator pos:line="23" pos:column="14">::</op:operator><name pos:line="23" pos:column="16">getMessage</name></name><parameter_list pos:line="23" pos:column="26">()</parameter_list> <specifier pos:line="23" pos:column="29">const</specifier>
+<block pos:line="24" pos:column="1">{
+  <return pos:line="25" pos:column="3">return <expr><name pos:line="25" pos:column="10">_message</name></expr>;</return>
+}</block></function>
+  
+<function><type><name pos:line="28" pos:column="1">bool</name></type> <name><name pos:line="28" pos:column="6">Event</name><op:operator pos:line="28" pos:column="11">::</op:operator><name pos:line="28" pos:column="13">operator&lt;</name></name><parameter_list pos:line="28" pos:column="22">(<param><decl><type><specifier pos:line="28" pos:column="23">const</specifier> <name pos:line="28" pos:column="29">Event</name><type:modifier pos:line="28" pos:column="34">&amp;</type:modifier></type> <name pos:line="28" pos:column="36">rhs</name></decl></param>)</parameter_list> <specifier pos:line="28" pos:column="41">const</specifier> 
+<block pos:line="29" pos:column="1">{
+  <return pos:line="30" pos:column="3">return <expr><name><name pos:line="30" pos:column="10">this</name><op:operator pos:line="30" pos:column="14">-&gt;</op:operator><name pos:line="30" pos:column="16">_time</name></name><op:operator pos:line="30" pos:column="21">&lt;</op:operator><name><name pos:line="30" pos:column="22">rhs</name><op:operator pos:line="30" pos:column="25">.</op:operator><name pos:line="30" pos:column="26">_time</name></name></expr>;</return>
+}</block></function>
+</unit>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Test.Core\TestDoubles\IDummyInterface.cs" pos:tabs="8"><namespace pos:line="1" pos:column="1">namespace <name><name pos:line="1" pos:column="11">Glimpse</name><op:operator pos:line="1" pos:column="18">.</op:operator><name pos:line="1" pos:column="19">Test</name><op:operator pos:line="1" pos:column="23">.</op:operator><name pos:line="1" pos:column="24">Core</name><op:operator pos:line="1" pos:column="28">.</op:operator><name pos:line="1" pos:column="29">TestDoubles</name></name>
+<block pos:line="2" pos:column="1">{
+    <class type="interface"><specifier pos:line="3" pos:column="5">public</specifier> interface <name pos:line="3" pos:column="22">IDummyInterface</name>
+    <block pos:line="4" pos:column="5">{
+        <decl_stmt><decl><type><name pos:line="5" pos:column="9">string</name></type> <name pos:line="5" pos:column="16">Name</name> <block pos:line="5" pos:column="21">{ <function_decl><name pos:line="5" pos:column="23">get</name>;</function_decl> }</block></decl></decl_stmt>    
+    }</block></class>
+}</block></namespace></unit>

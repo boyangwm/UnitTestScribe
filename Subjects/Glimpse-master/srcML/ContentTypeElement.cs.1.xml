@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Configuration\ContentTypeElement.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">System</name><op:operator pos:line="1" pos:column="13">.</op:operator><name pos:line="1" pos:column="14">Configuration</name></name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">Glimpse</name><op:operator pos:line="2" pos:column="14">.</op:operator><name pos:line="2" pos:column="15">Core</name><op:operator pos:line="2" pos:column="19">.</op:operator><name pos:line="2" pos:column="20">Extensibility</name></name>;</using>
+
+<namespace pos:line="4" pos:column="1">namespace <name><name pos:line="4" pos:column="11">Glimpse</name><op:operator pos:line="4" pos:column="18">.</op:operator><name pos:line="4" pos:column="19">Core</name><op:operator pos:line="4" pos:column="23">.</op:operator><name pos:line="4" pos:column="24">Configuration</name></name>
+<block pos:line="5" pos:column="1">{
+    <comment type="line" pos:line="6" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// The Glimpse configuration node for representing a content type.</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="9" pos:column="5">public</specifier> class <name pos:line="9" pos:column="18">ContentTypeElement</name> <super pos:line="9" pos:column="37">: <name pos:line="9" pos:column="39">ConfigurationElement</name></super>
+    <block pos:line="10" pos:column="5">{
+        <comment type="line" pos:line="11" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="12" pos:column="9">/// Gets or sets the content type.</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// Valid content type syntax is defined in &lt;see href="http://www.ietf.org/rfc/rfc2046.txt"&gt;RFC 2046&lt;/see&gt;. A &lt;see href="http://www.iana.org/assignments/media-types"&gt;list of commonly used content types is available from IANA&lt;/see&gt;.</comment>
+        <comment type="line" pos:line="16" pos:column="9">/// &lt;/value&gt;</comment>
+        <comment type="line" pos:line="17" pos:column="9">/// &lt;seealso href="http://www.ietf.org/rfc/rfc2046.txt"&gt;Multipurpose Internet Mail Extensions(MIME) Part Two: Media Types&lt;/seealso&gt;</comment>
+        <comment type="line" pos:line="18" pos:column="9">/// &lt;seealso href="http://www.iana.org/assignments/media-types"&gt;IANA MIME Media Types&lt;/seealso&gt;</comment>
+        <decl_stmt><decl><type><attribute pos:line="19" pos:column="9">[<expr><call><name pos:line="19" pos:column="10">ConfigurationProperty</name><argument_list pos:line="19" pos:column="31">(<argument><expr><lit:literal type="string" pos:line="19" pos:column="32">"contentType"</lit:literal></expr></argument>, <argument><expr><name pos:line="19" pos:column="47">IsRequired</name> <op:operator pos:line="19" pos:column="58">=</op:operator> <lit:literal type="boolean" pos:line="19" pos:column="60">true</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+        <specifier pos:line="20" pos:column="9">public</specifier> <name pos:line="20" pos:column="16">string</name></type> <name pos:line="20" pos:column="23">ContentType</name>
+        <block pos:line="21" pos:column="9">{
+            <function><name pos:line="22" pos:column="13">get</name> <block pos:line="22" pos:column="17">{ <return pos:line="22" pos:column="19">return <expr><op:operator pos:line="22" pos:column="26">(</op:operator><name pos:line="22" pos:column="27">string</name><op:operator pos:line="22" pos:column="33">)</op:operator><name><name pos:line="22" pos:column="34">base</name><index pos:line="22" pos:column="38">[<expr><lit:literal type="string" pos:line="22" pos:column="39">"contentType"</lit:literal></expr>]</index></name></expr>;</return> }</block></function>
+            <function><name pos:line="23" pos:column="13">set</name> <block pos:line="23" pos:column="17">{ <expr_stmt><expr><name><name pos:line="23" pos:column="19">base</name><index pos:line="23" pos:column="23">[<expr><lit:literal type="string" pos:line="23" pos:column="24">"contentType"</lit:literal></expr>]</index></name> <op:operator pos:line="23" pos:column="39">=</op:operator> <name pos:line="23" pos:column="41">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// Gets or sets the which &lt;see cref="RuntimePolicy"/&gt; should be used for this content type.</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// The enum representation of any valid &lt;see cref="RuntimePolicy"/&gt;.</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><attribute pos:line="32" pos:column="9">[<expr><call><name pos:line="32" pos:column="10">ConfigurationProperty</name><argument_list pos:line="32" pos:column="31">(<argument><expr><lit:literal type="string" pos:line="32" pos:column="32">"runtimePolicy"</lit:literal></expr></argument>, <argument><expr><name pos:line="32" pos:column="49">DefaultValue</name> <op:operator pos:line="32" pos:column="62">=</op:operator> <name><name pos:line="32" pos:column="64">RuntimePolicy</name><op:operator pos:line="32" pos:column="77">.</op:operator><name pos:line="32" pos:column="78">On</name></name></expr></argument>)</argument_list></call></expr>]</attribute>
+        <specifier pos:line="33" pos:column="9">public</specifier> <name pos:line="33" pos:column="16">RuntimePolicy</name></type> <name pos:line="33" pos:column="30">RuntimePolicy</name>
+        <block pos:line="34" pos:column="9">{
+            <function><name pos:line="35" pos:column="13">get</name> <block pos:line="35" pos:column="17">{ <return pos:line="35" pos:column="19">return <expr><op:operator pos:line="35" pos:column="26">(</op:operator><name pos:line="35" pos:column="27">RuntimePolicy</name><op:operator pos:line="35" pos:column="40">)</op:operator><name><name pos:line="35" pos:column="41">base</name><index pos:line="35" pos:column="45">[<expr><lit:literal type="string" pos:line="35" pos:column="46">"runtimePolicy"</lit:literal></expr>]</index></name></expr>;</return> }</block></function>
+            <function><name pos:line="36" pos:column="13">set</name> <block pos:line="36" pos:column="17">{ <expr_stmt><expr><name><name pos:line="36" pos:column="19">base</name><index pos:line="36" pos:column="23">[<expr><lit:literal type="string" pos:line="36" pos:column="24">"runtimePolicy"</lit:literal></expr>]</index></name> <op:operator pos:line="36" pos:column="41">=</op:operator> <name pos:line="36" pos:column="43">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace></unit>

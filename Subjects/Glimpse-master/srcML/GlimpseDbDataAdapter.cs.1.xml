@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Ado\AlternateType\GlimpseDbDataAdapter.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Data</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Data</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Common</name></name>;</using>
+
+<namespace pos:line="5" pos:column="1">namespace <name><name pos:line="5" pos:column="11">Glimpse</name><op:operator pos:line="5" pos:column="18">.</op:operator><name pos:line="5" pos:column="19">Ado</name><op:operator pos:line="5" pos:column="22">.</op:operator><name pos:line="5" pos:column="23">AlternateType</name></name>
+<block pos:line="6" pos:column="1">{
+    <class><specifier pos:line="7" pos:column="5">public</specifier> class <name pos:line="7" pos:column="18">GlimpseDbDataAdapter</name> <super pos:line="7" pos:column="39">: <name pos:line="7" pos:column="41">DbDataAdapter</name></super>
+    <block pos:line="8" pos:column="5">{
+        <constructor><specifier pos:line="9" pos:column="9">public</specifier> <name pos:line="9" pos:column="16">GlimpseDbDataAdapter</name><parameter_list pos:line="9" pos:column="36">(<param><decl><type><name pos:line="9" pos:column="37">DbDataAdapter</name></type> <name pos:line="9" pos:column="51">innerDataAdapter</name></decl></param>)</parameter_list>
+        <block pos:line="10" pos:column="9">{
+            <expr_stmt><expr><name pos:line="11" pos:column="13">InnerDataAdapter</name> <op:operator pos:line="11" pos:column="30">=</op:operator> <name pos:line="11" pos:column="32">innerDataAdapter</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <decl_stmt><decl><type><specifier pos:line="14" pos:column="9">public</specifier> <specifier pos:line="14" pos:column="16">override</specifier> <name pos:line="14" pos:column="25">bool</name></type> <name pos:line="14" pos:column="30">ReturnProviderSpecificTypes</name>
+        <block pos:line="15" pos:column="9">{
+            <function><name pos:line="16" pos:column="13">get</name> <block pos:line="16" pos:column="17">{ <return pos:line="16" pos:column="19">return <expr><name><name pos:line="16" pos:column="26">InnerDataAdapter</name><op:operator pos:line="16" pos:column="42">.</op:operator><name pos:line="16" pos:column="43">ReturnProviderSpecificTypes</name></name></expr>;</return> }</block></function>
+            <function><name pos:line="17" pos:column="13">set</name> <block pos:line="17" pos:column="17">{ <expr_stmt><expr><name><name pos:line="17" pos:column="19">InnerDataAdapter</name><op:operator pos:line="17" pos:column="35">.</op:operator><name pos:line="17" pos:column="36">ReturnProviderSpecificTypes</name></name> <op:operator pos:line="17" pos:column="64">=</op:operator> <name pos:line="17" pos:column="66">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="20" pos:column="9">public</specifier> <specifier pos:line="20" pos:column="16">override</specifier> <name pos:line="20" pos:column="25">int</name></type> <name pos:line="20" pos:column="29">UpdateBatchSize</name>
+        <block pos:line="21" pos:column="9">{
+            <function><name pos:line="22" pos:column="13">get</name> <block pos:line="22" pos:column="17">{ <return pos:line="22" pos:column="19">return <expr><name><name pos:line="22" pos:column="26">InnerDataAdapter</name><op:operator pos:line="22" pos:column="42">.</op:operator><name pos:line="22" pos:column="43">UpdateBatchSize</name></name></expr>;</return> }</block></function>
+            <function><name pos:line="23" pos:column="13">set</name> <block pos:line="23" pos:column="17">{ <expr_stmt><expr><name><name pos:line="23" pos:column="19">InnerDataAdapter</name><op:operator pos:line="23" pos:column="35">.</op:operator><name pos:line="23" pos:column="36">UpdateBatchSize</name></name> <op:operator pos:line="23" pos:column="52">=</op:operator> <name pos:line="23" pos:column="54">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="26" pos:column="9">private</specifier> <name pos:line="26" pos:column="17">DbDataAdapter</name></type> <name pos:line="26" pos:column="31">InnerDataAdapter</name> <block pos:line="26" pos:column="48">{ <function_decl><name pos:line="26" pos:column="50">get</name>;</function_decl> <function_decl><name pos:line="26" pos:column="55">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <function><type><specifier pos:line="28" pos:column="9">public</specifier> <specifier pos:line="28" pos:column="16">override</specifier> <name pos:line="28" pos:column="25">int</name></type> <name pos:line="28" pos:column="29">Fill</name><parameter_list pos:line="28" pos:column="33">(<param><decl><type><name pos:line="28" pos:column="34">DataSet</name></type> <name pos:line="28" pos:column="42">dataSet</name></decl></param>)</parameter_list>
+        <block pos:line="29" pos:column="9">{
+            <if pos:line="30" pos:column="13">if <condition pos:line="30" pos:column="16">(<expr><name pos:line="30" pos:column="17">SelectCommand</name> <op:operator pos:line="30" pos:column="31">!=</op:operator> <name pos:line="30" pos:column="34">null</name></expr>)</condition><then pos:line="30" pos:column="39">
+            <block pos:line="31" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="32" pos:column="17">var</name></type> <name pos:line="32" pos:column="21">typedCommand</name> <init pos:line="32" pos:column="34">= <expr><name pos:line="32" pos:column="36">SelectCommand</name> <op:operator pos:line="32" pos:column="50">as</op:operator> <name pos:line="32" pos:column="53">GlimpseDbCommand</name></expr></init></decl>;</decl_stmt>
+                <if pos:line="33" pos:column="17">if <condition pos:line="33" pos:column="20">(<expr><name pos:line="33" pos:column="21">typedCommand</name> <op:operator pos:line="33" pos:column="34">!=</op:operator> <name pos:line="33" pos:column="37">null</name></expr>)</condition><then pos:line="33" pos:column="42">
+                <block pos:line="34" pos:column="17">{
+                    <expr_stmt><expr><name><name pos:line="35" pos:column="21">InnerDataAdapter</name><op:operator pos:line="35" pos:column="37">.</op:operator><name pos:line="35" pos:column="38">SelectCommand</name></name> <op:operator pos:line="35" pos:column="52">=</op:operator> <name><name pos:line="35" pos:column="54">typedCommand</name><op:operator pos:line="35" pos:column="66">.</op:operator><name pos:line="35" pos:column="67">Inner</name></name></expr>;</expr_stmt>
+
+                    <decl_stmt><decl><type><name pos:line="37" pos:column="21">var</name></type> <name pos:line="37" pos:column="25">result</name> <init pos:line="37" pos:column="32">= <expr><lit:literal type="number" pos:line="37" pos:column="34">0</lit:literal></expr></init></decl>;</decl_stmt>
+                    <decl_stmt><decl><type><name pos:line="38" pos:column="21">var</name></type> <name pos:line="38" pos:column="25">commandId</name> <init pos:line="38" pos:column="35">= <expr><call><name><name pos:line="38" pos:column="37">Guid</name><op:operator pos:line="38" pos:column="41">.</op:operator><name pos:line="38" pos:column="42">NewGuid</name></name><argument_list pos:line="38" pos:column="49">()</argument_list></call></expr></init></decl>;</decl_stmt>
+
+                    <decl_stmt><decl><type><name pos:line="40" pos:column="21">var</name></type> <name pos:line="40" pos:column="25">timer</name> <init pos:line="40" pos:column="31">= <expr><call><name><name pos:line="40" pos:column="33">typedCommand</name><op:operator pos:line="40" pos:column="45">.</op:operator><name pos:line="40" pos:column="46">LogCommandSeed</name></name><argument_list pos:line="40" pos:column="60">()</argument_list></call></expr></init></decl>;</decl_stmt>
+                    <expr_stmt><expr><call><name><name pos:line="41" pos:column="21">typedCommand</name><op:operator pos:line="41" pos:column="33">.</op:operator><name pos:line="41" pos:column="34">LogCommandStart</name></name><argument_list pos:line="41" pos:column="49">(<argument><expr><name pos:line="41" pos:column="50">commandId</name></expr></argument>, <argument><expr><name pos:line="41" pos:column="61">timer</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                    <try pos:line="42" pos:column="21">try
+                    <block pos:line="43" pos:column="21">{
+                        <expr_stmt><expr><name pos:line="44" pos:column="25">result</name> <op:operator pos:line="44" pos:column="32">=</op:operator> <call><name><name pos:line="44" pos:column="34">InnerDataAdapter</name><op:operator pos:line="44" pos:column="50">.</op:operator><name pos:line="44" pos:column="51">Fill</name></name><argument_list pos:line="44" pos:column="55">(<argument><expr><name pos:line="44" pos:column="56">dataSet</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                    }</block>
+                    <catch pos:line="46" pos:column="21">catch <parameter_list pos:line="46" pos:column="27">(<param><decl><type><name pos:line="46" pos:column="28">Exception</name></type> <name pos:line="46" pos:column="38">exception</name></decl></param>)</parameter_list>
+                    <block pos:line="47" pos:column="21">{
+                        <expr_stmt><expr><call><name><name pos:line="48" pos:column="25">typedCommand</name><op:operator pos:line="48" pos:column="37">.</op:operator><name pos:line="48" pos:column="38">LogCommandError</name></name><argument_list pos:line="48" pos:column="53">(<argument><expr><name pos:line="48" pos:column="54">commandId</name></expr></argument>, <argument><expr><name pos:line="48" pos:column="65">timer</name></expr></argument>, <argument><expr><name pos:line="48" pos:column="72">exception</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="48" pos:column="83">"ExecuteDbDataReader"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                        <throw pos:line="49" pos:column="25">throw;</throw>
+                    }</block></catch>
+                    <finally pos:line="51" pos:column="21">finally
+                    <block pos:line="52" pos:column="21">{
+                        <expr_stmt><expr><call><name><name pos:line="53" pos:column="25">typedCommand</name><op:operator pos:line="53" pos:column="37">.</op:operator><name pos:line="53" pos:column="38">LogCommandEnd</name></name><argument_list pos:line="53" pos:column="51">(<argument><expr><name pos:line="53" pos:column="52">commandId</name></expr></argument>, <argument><expr><name pos:line="53" pos:column="63">timer</name></expr></argument>, <argument><expr><name pos:line="53" pos:column="70">result</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="53" pos:column="78">"ExecuteDbDataReader"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                    }</block></finally></try>
+
+                    <return pos:line="56" pos:column="21">return <expr><name pos:line="56" pos:column="28">result</name></expr>;</return>
+                }</block></then></if>
+
+                <expr_stmt><expr><name><name pos:line="59" pos:column="17">InnerDataAdapter</name><op:operator pos:line="59" pos:column="33">.</op:operator><name pos:line="59" pos:column="34">SelectCommand</name></name> <op:operator pos:line="59" pos:column="48">=</op:operator> <name pos:line="59" pos:column="50">SelectCommand</name></expr>;</expr_stmt>
+            }</block></then></if>
+
+            <return pos:line="62" pos:column="13">return <expr><call><name><name pos:line="62" pos:column="20">InnerDataAdapter</name><op:operator pos:line="62" pos:column="36">.</op:operator><name pos:line="62" pos:column="37">Fill</name></name><argument_list pos:line="62" pos:column="41">(<argument><expr><name pos:line="62" pos:column="42">dataSet</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="65" pos:column="9">public</specifier> <specifier pos:line="65" pos:column="16">override</specifier> <name pos:line="65" pos:column="25">DataTable</name><index pos:line="65" pos:column="34">[]</index></type> <name pos:line="65" pos:column="37">FillSchema</name><parameter_list pos:line="65" pos:column="47">(<param><decl><type><name pos:line="65" pos:column="48">DataSet</name></type> <name pos:line="65" pos:column="56">dataSet</name></decl></param>, <param><decl><type><name pos:line="65" pos:column="65">SchemaType</name></type> <name pos:line="65" pos:column="76">schemaType</name></decl></param>)</parameter_list>
+        <block pos:line="66" pos:column="9">{
+            <if pos:line="67" pos:column="13">if <condition pos:line="67" pos:column="16">(<expr><name pos:line="67" pos:column="17">SelectCommand</name> <op:operator pos:line="67" pos:column="31">!=</op:operator> <name pos:line="67" pos:column="34">null</name></expr>)</condition><then pos:line="67" pos:column="39">
+            <block pos:line="68" pos:column="13">{
+                <expr_stmt><expr><name><name pos:line="69" pos:column="17">InnerDataAdapter</name><op:operator pos:line="69" pos:column="33">.</op:operator><name pos:line="69" pos:column="34">SelectCommand</name></name> <op:operator pos:line="69" pos:column="48">=</op:operator> <call><name pos:line="69" pos:column="50">RetrieveBaseType</name><argument_list pos:line="69" pos:column="66">(<argument><expr><name pos:line="69" pos:column="67">SelectCommand</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+
+            <return pos:line="72" pos:column="13">return <expr><call><name><name pos:line="72" pos:column="20">InnerDataAdapter</name><op:operator pos:line="72" pos:column="36">.</op:operator><name pos:line="72" pos:column="37">FillSchema</name></name><argument_list pos:line="72" pos:column="47">(<argument><expr><name pos:line="72" pos:column="48">dataSet</name></expr></argument>, <argument><expr><name pos:line="72" pos:column="57">schemaType</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="75" pos:column="9">public</specifier> <specifier pos:line="75" pos:column="16">override</specifier> <name pos:line="75" pos:column="25">IDataParameter</name><index pos:line="75" pos:column="39">[]</index></type> <name pos:line="75" pos:column="42">GetFillParameters</name><parameter_list pos:line="75" pos:column="59">()</parameter_list>
+        <block pos:line="76" pos:column="9">{
+            <return pos:line="77" pos:column="13">return <expr><call><name><name pos:line="77" pos:column="20">InnerDataAdapter</name><op:operator pos:line="77" pos:column="36">.</op:operator><name pos:line="77" pos:column="37">GetFillParameters</name></name><argument_list pos:line="77" pos:column="54">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="80" pos:column="9">public</specifier> <specifier pos:line="80" pos:column="16">override</specifier> <name pos:line="80" pos:column="25">bool</name></type> <name pos:line="80" pos:column="30">ShouldSerializeAcceptChangesDuringFill</name><parameter_list pos:line="80" pos:column="68">()</parameter_list>
+        <block pos:line="81" pos:column="9">{
+            <return pos:line="82" pos:column="13">return <expr><call><name><name pos:line="82" pos:column="20">InnerDataAdapter</name><op:operator pos:line="82" pos:column="36">.</op:operator><name pos:line="82" pos:column="37">ShouldSerializeAcceptChangesDuringFill</name></name><argument_list pos:line="82" pos:column="75">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="85" pos:column="9">public</specifier> <specifier pos:line="85" pos:column="16">override</specifier> <name pos:line="85" pos:column="25">bool</name></type> <name pos:line="85" pos:column="30">ShouldSerializeFillLoadOption</name><parameter_list pos:line="85" pos:column="59">()</parameter_list>
+        <block pos:line="86" pos:column="9">{
+            <return pos:line="87" pos:column="13">return <expr><call><name><name pos:line="87" pos:column="20">InnerDataAdapter</name><op:operator pos:line="87" pos:column="36">.</op:operator><name pos:line="87" pos:column="37">ShouldSerializeFillLoadOption</name></name><argument_list pos:line="87" pos:column="66">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="90" pos:column="9">public</specifier> <specifier pos:line="90" pos:column="16">override</specifier> <name pos:line="90" pos:column="25">string</name></type> <name pos:line="90" pos:column="32">ToString</name><parameter_list pos:line="90" pos:column="40">()</parameter_list>
+        <block pos:line="91" pos:column="9">{
+            <return pos:line="92" pos:column="13">return <expr><call><name><name pos:line="92" pos:column="20">InnerDataAdapter</name><op:operator pos:line="92" pos:column="36">.</op:operator><name pos:line="92" pos:column="37">ToString</name></name><argument_list pos:line="92" pos:column="45">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="95" pos:column="9">public</specifier> <specifier pos:line="95" pos:column="16">override</specifier> <name pos:line="95" pos:column="25">int</name></type> <name pos:line="95" pos:column="29">Update</name><parameter_list pos:line="95" pos:column="35">(<param><decl><type><name pos:line="95" pos:column="36">DataSet</name></type> <name pos:line="95" pos:column="44">dataSet</name></decl></param>)</parameter_list>
+        <block pos:line="96" pos:column="9">{
+            <if pos:line="97" pos:column="13">if <condition pos:line="97" pos:column="16">(<expr><name pos:line="97" pos:column="17">UpdateCommand</name> <op:operator pos:line="97" pos:column="31">!=</op:operator> <name pos:line="97" pos:column="34">null</name></expr>)</condition><then pos:line="97" pos:column="39">
+            <block pos:line="98" pos:column="13">{
+                <expr_stmt><expr><name><name pos:line="99" pos:column="17">InnerDataAdapter</name><op:operator pos:line="99" pos:column="33">.</op:operator><name pos:line="99" pos:column="34">UpdateCommand</name></name> <op:operator pos:line="99" pos:column="48">=</op:operator> <call><name pos:line="99" pos:column="50">RetrieveBaseType</name><argument_list pos:line="99" pos:column="66">(<argument><expr><name pos:line="99" pos:column="67">UpdateCommand</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+
+            <if pos:line="102" pos:column="13">if <condition pos:line="102" pos:column="16">(<expr><name pos:line="102" pos:column="17">InsertCommand</name> <op:operator pos:line="102" pos:column="31">!=</op:operator> <name pos:line="102" pos:column="34">null</name></expr>)</condition><then pos:line="102" pos:column="39">
+            <block pos:line="103" pos:column="13">{
+                <expr_stmt><expr><name><name pos:line="104" pos:column="17">InnerDataAdapter</name><op:operator pos:line="104" pos:column="33">.</op:operator><name pos:line="104" pos:column="34">InsertCommand</name></name> <op:operator pos:line="104" pos:column="48">=</op:operator> <call><name pos:line="104" pos:column="50">RetrieveBaseType</name><argument_list pos:line="104" pos:column="66">(<argument><expr><name pos:line="104" pos:column="67">InsertCommand</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+
+            <if pos:line="107" pos:column="13">if <condition pos:line="107" pos:column="16">(<expr><name pos:line="107" pos:column="17">DeleteCommand</name> <op:operator pos:line="107" pos:column="31">!=</op:operator> <name pos:line="107" pos:column="34">null</name></expr>)</condition><then pos:line="107" pos:column="39">
+            <block pos:line="108" pos:column="13">{
+                <expr_stmt><expr><name><name pos:line="109" pos:column="17">InnerDataAdapter</name><op:operator pos:line="109" pos:column="33">.</op:operator><name pos:line="109" pos:column="34">DeleteCommand</name></name> <op:operator pos:line="109" pos:column="48">=</op:operator> <call><name pos:line="109" pos:column="50">RetrieveBaseType</name><argument_list pos:line="109" pos:column="66">(<argument><expr><name pos:line="109" pos:column="67">DeleteCommand</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+
+            <return pos:line="112" pos:column="13">return <expr><call><name><name pos:line="112" pos:column="20">InnerDataAdapter</name><op:operator pos:line="112" pos:column="36">.</op:operator><name pos:line="112" pos:column="37">Update</name></name><argument_list pos:line="112" pos:column="43">(<argument><expr><name pos:line="112" pos:column="44">dataSet</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="115" pos:column="9">protected</specifier> <specifier pos:line="115" pos:column="19">override</specifier> <name pos:line="115" pos:column="28">void</name></type> <name pos:line="115" pos:column="33">Dispose</name><parameter_list pos:line="115" pos:column="40">(<param><decl><type><name pos:line="115" pos:column="41">bool</name></type> <name pos:line="115" pos:column="46">disposing</name></decl></param>)</parameter_list>
+        <block pos:line="116" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="117" pos:column="13">InnerDataAdapter</name><op:operator pos:line="117" pos:column="29">.</op:operator><name pos:line="117" pos:column="30">Dispose</name></name><argument_list pos:line="117" pos:column="37">()</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <function><type><specifier pos:line="120" pos:column="9">private</specifier> <name pos:line="120" pos:column="17">DbCommand</name></type> <name pos:line="120" pos:column="27">RetrieveBaseType</name><parameter_list pos:line="120" pos:column="43">(<param><decl><type><name pos:line="120" pos:column="44">DbCommand</name></type> <name pos:line="120" pos:column="54">command</name></decl></param>)</parameter_list>
+        <block pos:line="121" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="122" pos:column="13">var</name></type> <name pos:line="122" pos:column="17">typedCommand</name> <init pos:line="122" pos:column="30">= <expr><name pos:line="122" pos:column="32">command</name> <op:operator pos:line="122" pos:column="40">as</op:operator> <name pos:line="122" pos:column="43">GlimpseDbCommand</name></expr></init></decl>;</decl_stmt>
+            <return pos:line="123" pos:column="13">return <expr><name><name pos:line="123" pos:column="20">typedCommand</name><op:operator pos:line="123" pos:column="32">.</op:operator><name pos:line="123" pos:column="33">Inner</name></name> <op:operator pos:line="123" pos:column="39">??</op:operator> <name pos:line="123" pos:column="42">command</name></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace>
+</unit>

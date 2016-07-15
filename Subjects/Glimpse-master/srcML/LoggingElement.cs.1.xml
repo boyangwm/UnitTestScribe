@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Configuration\LoggingElement.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">System</name><op:operator pos:line="1" pos:column="13">.</op:operator><name pos:line="1" pos:column="14">Configuration</name></name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Core</name><op:operator pos:line="3" pos:column="23">.</op:operator><name pos:line="3" pos:column="24">Configuration</name></name>
+<block pos:line="4" pos:column="1">{
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="6" pos:column="5">/// The Glimpse configuration node for logging settings in Glimpse.</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// &lt;/summary&gt;</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// &lt;remarks&gt;</comment>
+    <comment type="line" pos:line="9" pos:column="5">/// Glimpse logging is mostly used to diagnose problems with Glimpse itself. Logging is off by default, but can be configured to output log statements at various levels.</comment>
+    <comment type="line" pos:line="10" pos:column="5">/// &lt;/remarks&gt;</comment>
+    <comment type="line" pos:line="11" pos:column="5">/// &lt;example&gt;</comment>
+    <comment type="line" pos:line="12" pos:column="5">/// &lt;code&gt;</comment>
+    <comment type="line" pos:line="13" pos:column="5">/// &lt;![CDATA[</comment>
+    <comment type="line" pos:line="14" pos:column="5">/// &lt;logging level="Trace" /&gt;</comment>
+    <comment type="line" pos:line="15" pos:column="5">/// ]]&gt;</comment>
+    <comment type="line" pos:line="16" pos:column="5">/// &lt;/code&gt;</comment>
+    <comment type="line" pos:line="17" pos:column="5">/// &lt;/example&gt;</comment>
+    <class><specifier pos:line="18" pos:column="5">public</specifier> class <name pos:line="18" pos:column="18">LoggingElement</name> <super pos:line="18" pos:column="33">: <name pos:line="18" pos:column="35">ConfigurationElement</name></super>
+    <block pos:line="19" pos:column="5">{
+        <comment type="line" pos:line="20" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="21" pos:column="9">/// Gets or sets the logging level used by Glimpse.</comment>
+        <comment type="line" pos:line="22" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// The string representation of any valid &lt;see cref="LoggingLevel"/&gt;.</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><attribute pos:line="26" pos:column="9">[<expr><call><name pos:line="26" pos:column="10">ConfigurationProperty</name><argument_list pos:line="26" pos:column="31">(<argument><expr><lit:literal type="string" pos:line="26" pos:column="32">"level"</lit:literal></expr></argument>, <argument><expr><name pos:line="26" pos:column="41">DefaultValue</name> <op:operator pos:line="26" pos:column="54">=</op:operator> <name><name pos:line="26" pos:column="56">LoggingLevel</name><op:operator pos:line="26" pos:column="68">.</op:operator><name pos:line="26" pos:column="69">Off</name></name></expr></argument>)</argument_list></call></expr>]</attribute>
+        <specifier pos:line="27" pos:column="9">public</specifier> <name pos:line="27" pos:column="16">LoggingLevel</name></type> <name pos:line="27" pos:column="29">Level</name>
+        <block pos:line="28" pos:column="9">{
+            <function><name pos:line="29" pos:column="13">get</name> <block pos:line="29" pos:column="17">{ <return pos:line="29" pos:column="19">return <expr><op:operator pos:line="29" pos:column="26">(</op:operator><name pos:line="29" pos:column="27">LoggingLevel</name><op:operator pos:line="29" pos:column="39">)</op:operator><name><name pos:line="29" pos:column="40">base</name><index pos:line="29" pos:column="44">[<expr><lit:literal type="string" pos:line="29" pos:column="45">"level"</lit:literal></expr>]</index></name></expr>;</return> }</block></function>
+            <function><name pos:line="30" pos:column="13">set</name> <block pos:line="30" pos:column="17">{ <expr_stmt><expr><name><name pos:line="30" pos:column="19">base</name><index pos:line="30" pos:column="23">[<expr><lit:literal type="string" pos:line="30" pos:column="24">"level"</lit:literal></expr>]</index></name> <op:operator pos:line="30" pos:column="33">=</op:operator> <name pos:line="30" pos:column="35">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="33" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// Gets or sets the file path to the Glimpse log file.</comment>
+        <comment type="line" pos:line="35" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;c&gt;LogLocation&lt;/c&gt; is only written to if &lt;c&gt;Level&lt;/c&gt; is not set to &lt;c&gt;Off&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// The absolute or relative file path to the log file. </comment>
+        <comment type="line" pos:line="41" pos:column="9">/// Relative paths are rooted from &lt;c&gt;AppDomain.CurrentDomain.BaseDirectory&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// The default value is &lt;c&gt;Glimpse.log&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><attribute pos:line="44" pos:column="9">[<expr><call><name pos:line="44" pos:column="10">ConfigurationProperty</name><argument_list pos:line="44" pos:column="31">(<argument><expr><lit:literal type="string" pos:line="44" pos:column="32">"logLocation"</lit:literal></expr></argument>, <argument><expr><name pos:line="44" pos:column="47">DefaultValue</name> <op:operator pos:line="44" pos:column="60">=</op:operator> <lit:literal type="string" pos:line="44" pos:column="62">"Glimpse.log"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+        <specifier pos:line="45" pos:column="9">public</specifier> <name pos:line="45" pos:column="16">string</name></type> <name pos:line="45" pos:column="23">LogLocation</name>
+        <block pos:line="46" pos:column="9">{
+            <function><name pos:line="47" pos:column="13">get</name> <block pos:line="47" pos:column="17">{ <return pos:line="47" pos:column="19">return <expr><op:operator pos:line="47" pos:column="26">(</op:operator><name pos:line="47" pos:column="27">string</name><op:operator pos:line="47" pos:column="33">)</op:operator><name><name pos:line="47" pos:column="34">base</name><index pos:line="47" pos:column="38">[<expr><lit:literal type="string" pos:line="47" pos:column="39">"logLocation"</lit:literal></expr>]</index></name></expr>;</return> }</block></function>
+            <function><name pos:line="48" pos:column="13">set</name> <block pos:line="48" pos:column="17">{ <expr_stmt><expr><name><name pos:line="48" pos:column="19">base</name><index pos:line="48" pos:column="23">[<expr><lit:literal type="string" pos:line="48" pos:column="24">"logLocation"</lit:literal></expr>]</index></name> <op:operator pos:line="48" pos:column="39">=</op:operator> <name pos:line="48" pos:column="41">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace></unit>

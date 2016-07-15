@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.WindowsAzure\Infrastructure\WindowsAzureWebsitesEnvironment.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">WindowsAzure</name><op:operator pos:line="3" pos:column="31">.</op:operator><name pos:line="3" pos:column="32">Infrastructure</name></name>
+<block pos:line="4" pos:column="1">{
+    <class><specifier pos:line="5" pos:column="5">public</specifier> class <name pos:line="5" pos:column="18">WindowsAzureWebsitesEnvironment</name>
+        <super pos:line="6" pos:column="9">: <name pos:line="6" pos:column="11">IWindowsAzureEnvironment</name></super>
+    <block pos:line="7" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="8" pos:column="9">public</specifier> <name pos:line="8" pos:column="16">bool</name></type> <name pos:line="8" pos:column="21">IsAvailable</name>
+        <block pos:line="9" pos:column="9">{
+            <function><name pos:line="10" pos:column="13">get</name>
+            <block pos:line="11" pos:column="13">{
+                <return pos:line="12" pos:column="17">return <expr><op:operator pos:line="12" pos:column="24">!</op:operator><call><name><name pos:line="12" pos:column="25">string</name><op:operator pos:line="12" pos:column="31">.</op:operator><name pos:line="12" pos:column="32">IsNullOrEmpty</name></name><argument_list pos:line="12" pos:column="45">(<argument><expr><call><name><name pos:line="12" pos:column="46">Environment</name><op:operator pos:line="12" pos:column="57">.</op:operator><name pos:line="12" pos:column="58">GetEnvironmentVariable</name></name><argument_list pos:line="12" pos:column="80">(<argument><expr><lit:literal type="string" pos:line="12" pos:column="81">"WEBSITE_SITE_NAME"</lit:literal></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="16" pos:column="9">public</specifier> <name pos:line="16" pos:column="16">string</name></type> <name pos:line="16" pos:column="23">ComputeMode</name>
+        <block pos:line="17" pos:column="9">{
+            <function><name pos:line="18" pos:column="13">get</name>
+            <block pos:line="19" pos:column="13">{
+                <expr_stmt><expr><call><name pos:line="20" pos:column="17">VerifyAvailable</name><argument_list pos:line="20" pos:column="32">()</argument_list></call></expr>;</expr_stmt>
+                <return pos:line="21" pos:column="17">return <expr><call><name><name pos:line="21" pos:column="24">Environment</name><op:operator pos:line="21" pos:column="35">.</op:operator><name pos:line="21" pos:column="36">GetEnvironmentVariable</name></name><argument_list pos:line="21" pos:column="58">(<argument><expr><lit:literal type="string" pos:line="21" pos:column="59">"WEBSITE_COMPUTE_MODE"</lit:literal></expr></argument>)</argument_list></call></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="25" pos:column="9">public</specifier> <name pos:line="25" pos:column="16">string</name></type> <name pos:line="25" pos:column="23">SiteMode</name>
+        <block pos:line="26" pos:column="9">{
+            <function><name pos:line="27" pos:column="13">get</name>
+            <block pos:line="28" pos:column="13">{
+                <expr_stmt><expr><call><name pos:line="29" pos:column="17">VerifyAvailable</name><argument_list pos:line="29" pos:column="32">()</argument_list></call></expr>;</expr_stmt>
+                <return pos:line="30" pos:column="17">return <expr><call><name><name pos:line="30" pos:column="24">Environment</name><op:operator pos:line="30" pos:column="35">.</op:operator><name pos:line="30" pos:column="36">GetEnvironmentVariable</name></name><argument_list pos:line="30" pos:column="58">(<argument><expr><lit:literal type="string" pos:line="30" pos:column="59">"WEBSITE_SITE_MODE"</lit:literal></expr></argument>)</argument_list></call></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="34" pos:column="9">public</specifier> <name pos:line="34" pos:column="16">string</name></type> <name pos:line="34" pos:column="23">SiteName</name>
+        <block pos:line="35" pos:column="9">{
+            <function><name pos:line="36" pos:column="13">get</name>
+            <block pos:line="37" pos:column="13">{
+                <expr_stmt><expr><call><name pos:line="38" pos:column="17">VerifyAvailable</name><argument_list pos:line="38" pos:column="32">()</argument_list></call></expr>;</expr_stmt>
+                <return pos:line="39" pos:column="17">return <expr><call><name><name pos:line="39" pos:column="24">Environment</name><op:operator pos:line="39" pos:column="35">.</op:operator><name pos:line="39" pos:column="36">GetEnvironmentVariable</name></name><argument_list pos:line="39" pos:column="58">(<argument><expr><lit:literal type="string" pos:line="39" pos:column="59">"WEBSITE_SITE_NAME"</lit:literal></expr></argument>)</argument_list></call></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="43" pos:column="9">public</specifier> <name pos:line="43" pos:column="16">string</name></type> <name pos:line="43" pos:column="23">RemoteConsole</name>
+        <block pos:line="44" pos:column="9">{
+            <function><name pos:line="45" pos:column="13">get</name>
+            <block pos:line="46" pos:column="13">{   
+                <expr_stmt><expr><call><name pos:line="47" pos:column="17">VerifyAvailable</name><argument_list pos:line="47" pos:column="32">()</argument_list></call></expr>;</expr_stmt>
+                <return pos:line="48" pos:column="17">return <expr><call><name><name pos:line="48" pos:column="24">string</name><op:operator pos:line="48" pos:column="30">.</op:operator><name pos:line="48" pos:column="31">Format</name></name><argument_list pos:line="48" pos:column="37">(<argument><expr><lit:literal type="string" pos:line="48" pos:column="38">"!&lt;a href=\"https://{0}.scm.azurewebsites.net/DebugConsole/\"&gt;launch&lt;/a&gt;!"</lit:literal></expr></argument>, <argument><expr><call><name><name pos:line="48" pos:column="114">Environment</name><op:operator pos:line="48" pos:column="125">.</op:operator><name pos:line="48" pos:column="126">GetEnvironmentVariable</name></name><argument_list pos:line="48" pos:column="148">(<argument><expr><lit:literal type="string" pos:line="48" pos:column="149">"WEBSITE_SITE_NAME"</lit:literal></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <function><type><specifier pos:line="52" pos:column="9">protected</specifier> <name pos:line="52" pos:column="19">void</name></type> <name pos:line="52" pos:column="24">VerifyAvailable</name><parameter_list pos:line="52" pos:column="39">()</parameter_list>
+        <block pos:line="53" pos:column="9">{
+            <if pos:line="54" pos:column="13">if <condition pos:line="54" pos:column="16">(<expr><op:operator pos:line="54" pos:column="17">!</op:operator><name pos:line="54" pos:column="18">IsAvailable</name></expr>)</condition><then pos:line="54" pos:column="30">
+            <block pos:line="55" pos:column="13">{
+                <comment type="line" pos:line="56" pos:column="17">// todo: make this a custom exception type</comment>
+                <throw pos:line="57" pos:column="17">throw <expr><op:operator pos:line="57" pos:column="23">new</op:operator> <call><name pos:line="57" pos:column="27">Exception</name><argument_list pos:line="57" pos:column="36">(<argument><expr><lit:literal type="string" pos:line="57" pos:column="37">"Environment is not available."</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

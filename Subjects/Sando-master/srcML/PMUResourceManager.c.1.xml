@@ -1,0 +1,701 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\PMUResourceManager.c" pos:tabs="8"><comment type="line" pos:line="1" pos:column="1">//--------------------------------------------------------------------------</comment>
+<comment type="line" pos:line="2" pos:column="1">// Microsoft Visual Studio Sampling Profiler Driver</comment>
+<comment type="line" pos:line="3" pos:column="1">//</comment>
+<comment type="line" pos:line="4" pos:column="1">// Copyright (c) 2005 Microsoft Corporation Inc.</comment>
+<comment type="line" pos:line="5" pos:column="1">// All rights reserved</comment>
+<comment type="line" pos:line="6" pos:column="1">//</comment>
+<comment type="line" pos:line="7" pos:column="1">// PMUResourceManager.c</comment>
+<comment type="line" pos:line="8" pos:column="1">//</comment>
+<comment type="line" pos:line="9" pos:column="1">// PMU resource management.</comment>
+<comment type="line" pos:line="10" pos:column="1">//</comment>
+<comment type="line" pos:line="11" pos:column="1">//---------------------------------------------------------------------------</comment>
+<cpp:include pos:line="12" pos:column="1">#<cpp:directive pos:line="12" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="12" pos:column="10">"PMUResourceManager.h"</lit:literal></cpp:file></cpp:include>
+
+<comment type="block" pos:line="14" pos:column="1">/*
+    Implementation Details:
+
+
+    The following is an implementation of a cooperative, masterless resource
+    management scheme.  In this case, the resource is the collection of 
+    performance monitoring units (PMUs) on an SMP system.
+    
+    Resources are assigned to "Participants".  Participants may own one, 
+    several, or all of the PMUs in a system.  Paricipants track their 
+    own PMU usage.  When requesting PMU resources, a Participant queries all
+    other Participants for their current usage.  If no other Participant 
+    is using the resource, then the requestor takes ownership.
+    
+    Obviously, the above requires synchronization around acquisition and 
+    relinquishment of the resources.  It also requires a guaranteed 
+    communication mechanism that all participants can use to request and 
+    release resources.  We use named callback objects for both.
+    
+    Drivers must initialize the Resource Manager by calling PmuRmInit.  This
+    creates the callback that Participants will use to communicate.  When
+    finished, the driver must call PmuRmUninit.
+    
+    To register a Participant, the driver must call PmuRmParticipate.  On
+    success, this function returns an opaque pointer to a PMURM_PARTICIPANT
+    structure.  The driver uses this pointer in subsequent calls to the 
+    Resource Manager.  When a Participant no longer needs access to the 
+    Resource Manager, it calls PmuRmResign to free the structure.  The
+    structure keeps information that associates the Participant with a 
+    DRIVER_OBJECT, and optional DEVICE_OBJECT, and a unicode string that is
+    to be used as a friendly name.
+    
+    When a participant requires PMU resources, it calls PmuRmAcquire, passing
+    it the affinity mask for the CPUs on which it requests the PMU.  On 
+    success, the PMURM_PARTICIPANT structure is updated internally with a 
+    copy of this affinity mask.  On failure, the PMURM_PARTICIPANT structure's
+    internal affinity mask is cleared.  If desired, the call also returns the
+    friendly name of the Participant that denied the request.
+    
+    If PmuRmAcquire's callback fails to obtain the resources, then it will 
+    block on an event.  The timeout for this event is specified in a parameter
+    to PmuRmAcquire.  The event is set any time a Participant releases PMU
+    resources.  PmuRmAcquire will then retry the request.  This continues 
+    until the request is successful, or the timeout expires.
+*/</comment>
+
+<comment type="line" pos:line="60" pos:column="1">//</comment>
+<comment type="line" pos:line="61" pos:column="1">// Our named callback.</comment>
+<comment type="line" pos:line="62" pos:column="1">//</comment>
+<decl_stmt><decl><type><specifier pos:line="63" pos:column="1">static</specifier> <specifier pos:line="63" pos:column="8">const</specifier> <name pos:line="63" pos:column="14">WCHAR</name></type> <name><name pos:line="63" pos:column="20">CallbackName_buffer</name><index pos:line="63" pos:column="39">[]</index></name> <init pos:line="63" pos:column="42">= <expr><lit:literal type="string" pos:line="63" pos:column="44">L"\\Callback\\VSPerf_PmuManager"</lit:literal></expr></init></decl>;</decl_stmt>
+<decl_stmt><decl><type><specifier pos:line="64" pos:column="1">static</specifier> <name pos:line="64" pos:column="8">UNICODE_STRING</name></type> <name pos:line="64" pos:column="23">CallbackName</name> <init pos:line="64" pos:column="36">=
+<expr><block pos:line="65" pos:column="1">{
+    <expr><sizeof pos:line="66" pos:column="5">sizeof<argument_list pos:line="66" pos:column="11">(<argument><expr><name pos:line="66" pos:column="12">CallbackName_buffer</name></expr></argument>)</argument_list></sizeof> <op:operator pos:line="66" pos:column="33">-</op:operator> <sizeof pos:line="66" pos:column="35">sizeof<argument_list pos:line="66" pos:column="41">(<argument><expr><name pos:line="66" pos:column="42">WCHAR</name></expr></argument>)</argument_list></sizeof></expr>,   \
+    <expr><sizeof pos:line="67" pos:column="5">sizeof<argument_list pos:line="67" pos:column="11">(<argument><expr><name pos:line="67" pos:column="12">CallbackName_buffer</name></expr></argument>)</argument_list></sizeof></expr>,                   \
+    <expr><op:operator pos:line="68" pos:column="5">(</op:operator><name pos:line="68" pos:column="6">PWSTR</name><op:operator pos:line="68" pos:column="11">)</op:operator><op:operator pos:line="68" pos:column="12">(</op:operator><name pos:line="68" pos:column="13">CallbackName_buffer</name><op:operator pos:line="68" pos:column="32">)</op:operator></expr>                   \
+}</block></expr></init></decl>;</decl_stmt>    
+
+<decl_stmt><decl><type><name pos:line="71" pos:column="1">PCALLBACK_OBJECT</name></type> <name pos:line="71" pos:column="18">CallbackObject</name> <init pos:line="71" pos:column="33">= <expr><name pos:line="71" pos:column="35">NULL</name></expr></init></decl>;</decl_stmt>
+
+
+<comment type="line" pos:line="74" pos:column="1">//</comment>
+<comment type="line" pos:line="75" pos:column="1">// Our pool tag, in case anyone asks</comment>
+<comment type="line" pos:line="76" pos:column="1">//</comment>
+<decl_stmt><decl><type><name pos:line="77" pos:column="1">ULONG</name></type> <name pos:line="77" pos:column="7">PmuRmTag</name> <init pos:line="77" pos:column="16">= <expr><lit:literal type="char" pos:line="77" pos:column="18">'mrmp'</lit:literal></expr></init></decl>;</decl_stmt>
+
+
+<comment type="line" pos:line="80" pos:column="1">//</comment>
+<comment type="line" pos:line="81" pos:column="1">// Each participant supplies a valid structure for its ownership data.</comment>
+<comment type="line" pos:line="82" pos:column="1">// This data will be passed in the callback.</comment>
+<comment type="line" pos:line="83" pos:column="1">//</comment>
+<typedef pos:line="84" pos:column="1">typedef <type><struct pos:line="84" pos:column="9">struct <name pos:line="84" pos:column="16">_PMURM_PARTICIPANT</name>
+<block pos:line="85" pos:column="1">{
+    <comment type="line" pos:line="86" pos:column="5">// </comment>
+    <comment type="line" pos:line="87" pos:column="5">// Current ownership mask</comment>
+    <comment type="line" pos:line="88" pos:column="5">//</comment>
+    <decl_stmt><decl><type><name pos:line="89" pos:column="5">KAFFINITY</name></type>       <name pos:line="89" pos:column="21">CpuMask</name></decl>;</decl_stmt>
+    
+    <comment type="line" pos:line="91" pos:column="5">//</comment>
+    <comment type="line" pos:line="92" pos:column="5">// State of vote (only used during acquisition callbacks)</comment>
+    <comment type="line" pos:line="93" pos:column="5">//</comment>
+    <decl_stmt><decl><type><name pos:line="94" pos:column="5">BOOLEAN</name></type>         <name pos:line="94" pos:column="21">Vote</name></decl>;</decl_stmt>
+
+    <comment type="line" pos:line="96" pos:column="5">//</comment>
+    <comment type="line" pos:line="97" pos:column="5">// Driver and (optional) Device objects for this participant.</comment>
+    <comment type="line" pos:line="98" pos:column="5">//</comment>
+    <decl_stmt><decl><type><name pos:line="99" pos:column="5">PDRIVER_OBJECT</name></type>  <name pos:line="99" pos:column="21">DriverObject</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="100" pos:column="5">PDEVICE_OBJECT</name></type>  <name pos:line="100" pos:column="21">DeviceObject</name></decl>;</decl_stmt>
+
+    <comment type="line" pos:line="102" pos:column="5">//</comment>
+    <comment type="line" pos:line="103" pos:column="5">// Callback handle for this participant</comment>
+    <comment type="line" pos:line="104" pos:column="5">//</comment>
+    <decl_stmt><decl><type><name pos:line="105" pos:column="5">PVOID</name></type>           <name pos:line="105" pos:column="21">CallbackHandle</name></decl>;</decl_stmt>
+
+    <comment type="line" pos:line="107" pos:column="5">//</comment>
+    <comment type="line" pos:line="108" pos:column="5">// Signal event for waits</comment>
+    <comment type="line" pos:line="109" pos:column="5">//</comment>
+    <decl_stmt><decl><type><name pos:line="110" pos:column="5">KEVENT</name></type>          <name pos:line="110" pos:column="21">WaitEvent</name></decl>;</decl_stmt>
+
+    <comment type="line" pos:line="112" pos:column="5">//</comment>
+    <comment type="line" pos:line="113" pos:column="5">// Friendly name of participant (for error messages).</comment>
+    <comment type="line" pos:line="114" pos:column="5">//</comment>
+    <decl_stmt><decl><type><name pos:line="115" pos:column="5">UNICODE_STRING</name></type>  <name pos:line="115" pos:column="21">FriendlyName</name></decl>;</decl_stmt>
+
+    <comment type="line" pos:line="117" pos:column="5">//</comment>
+    <comment type="line" pos:line="118" pos:column="5">// Buffer for FriendlyName immediately follows this structure.</comment>
+    <comment type="line" pos:line="119" pos:column="5">//</comment>
+    
+}</block></struct></type> <name pos:line="121" pos:column="3">PMURM_PARTICIPANT</name><op:operator pos:line="121" pos:column="20">,</op:operator> * <name pos:line="121" pos:column="24">PPMURM_PARTICIPANT</name>;</typedef>
+
+
+<comment type="line" pos:line="124" pos:column="1">//</comment>
+<comment type="line" pos:line="125" pos:column="1">// Parameters to the callback notification function</comment>
+<comment type="line" pos:line="126" pos:column="1">//</comment>
+<typedef pos:line="127" pos:column="1">typedef <type><struct pos:line="127" pos:column="9">struct <name pos:line="127" pos:column="16">_PMURM_CB_IN_PARMS</name>
+<block pos:line="128" pos:column="1">{
+    <comment type="line" pos:line="129" pos:column="5">// </comment>
+    <comment type="line" pos:line="130" pos:column="5">// TRUE if this is an acquisition request, FALSE if it is a release.</comment>
+    <comment type="line" pos:line="131" pos:column="5">//</comment>
+    <decl_stmt><decl><type><name pos:line="132" pos:column="5">BOOLEAN</name></type>             <name pos:line="132" pos:column="25">Acquiring</name></decl>;</decl_stmt>
+
+    <comment type="line" pos:line="134" pos:column="5">//</comment>
+    <comment type="line" pos:line="135" pos:column="5">// The desired CPU mask (for an acquisition), or the released CPU</comment>
+    <comment type="line" pos:line="136" pos:column="5">// mask (for a release).</comment>
+    <comment type="line" pos:line="137" pos:column="5">//</comment>
+    <decl_stmt><decl><type><name pos:line="138" pos:column="5">KAFFINITY</name></type>           <name pos:line="138" pos:column="25">CpuMask</name></decl>;</decl_stmt>
+    
+    <comment type="line" pos:line="140" pos:column="5">//</comment>
+    <comment type="line" pos:line="141" pos:column="5">// A pointer to the participant requesting the PMU.</comment>
+    <comment type="line" pos:line="142" pos:column="5">//</comment>
+    <decl_stmt><decl><type><name pos:line="143" pos:column="5">PPMURM_PARTICIPANT</name></type>  <name pos:line="143" pos:column="25">Participant</name></decl>;</decl_stmt>
+    
+}</block></struct></type> <name pos:line="145" pos:column="3">PMURM_CB_IN_PARMS</name><op:operator pos:line="145" pos:column="20">,</op:operator> * <name pos:line="145" pos:column="24">PPMURM_CB_IN_PARMS</name>;</typedef>
+
+
+<comment type="line" pos:line="148" pos:column="1">//</comment>
+<comment type="line" pos:line="149" pos:column="1">// For a failed acquisiton, the last 'NO' vote will populate the output</comment>
+<comment type="line" pos:line="150" pos:column="1">// parms with its info, which may be used in an error message.</comment>
+<comment type="line" pos:line="151" pos:column="1">//</comment>
+<typedef pos:line="152" pos:column="1">typedef <type><struct pos:line="152" pos:column="9">struct <name pos:line="152" pos:column="16">_PMURM_CB_OUT_PARMS</name>
+<block pos:line="153" pos:column="1">{
+    <comment type="line" pos:line="154" pos:column="5">//</comment>
+    <comment type="line" pos:line="155" pos:column="5">// Driver and (optional) Device objects for declining voter.</comment>
+    <comment type="line" pos:line="156" pos:column="5">//</comment>
+    <decl_stmt><decl><type><name pos:line="157" pos:column="5">PDRIVER_OBJECT</name></type>  <name pos:line="157" pos:column="21">DriverObject</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="158" pos:column="5">PDEVICE_OBJECT</name></type>  <name pos:line="158" pos:column="21">DeviceObject</name></decl>;</decl_stmt>
+    
+    <comment type="line" pos:line="160" pos:column="5">//</comment>
+    <comment type="line" pos:line="161" pos:column="5">// A friendly name for debugging or issuing an error message to user mode</comment>
+    <comment type="line" pos:line="162" pos:column="5">// profiling components.</comment>
+    <comment type="line" pos:line="163" pos:column="5">//</comment>
+    <decl_stmt><decl><type><name pos:line="164" pos:column="5">PUNICODE_STRING</name></type> <name pos:line="164" pos:column="21">FriendlyName</name></decl>;</decl_stmt>
+    
+}</block></struct></type> <name pos:line="166" pos:column="3">PMURM_CB_OUT_PARMS</name><op:operator pos:line="166" pos:column="21">,</op:operator> * <name pos:line="166" pos:column="25">PPMURM_CB_OUT_PARMS</name>;</typedef>
+
+
+<comment type="block" pos:line="169" pos:column="1">/*
+    As part of the PmuRm scheme, we must request notifications so that we
+    can vote on requests.
+*/</comment>
+<function><type><name pos:line="173" pos:column="1">VOID</name></type>
+<name pos:line="174" pos:column="1">ParticipantCallback</name><parameter_list pos:line="174" pos:column="20">(
+    <param><decl><type><name pos:line="175" pos:column="5">IN</name> <name pos:line="175" pos:column="8">PVOID</name></type> <name pos:line="175" pos:column="14">CallbackContext</name></decl></param>,
+    <param><decl><type><name pos:line="176" pos:column="5">IN</name> <name pos:line="176" pos:column="8">PVOID</name></type> <name pos:line="176" pos:column="14">Argument1</name></decl></param>,
+    <param><decl><type><name pos:line="177" pos:column="5">IN</name> <name pos:line="177" pos:column="8">PVOID</name></type> <name pos:line="177" pos:column="14">Argument2</name></decl></param>
+    )</parameter_list>
+<block pos:line="179" pos:column="1">{
+    <comment type="line" pos:line="180" pos:column="5">// Context is the participant (us)</comment>
+    <comment type="line" pos:line="181" pos:column="5">// Argument1 is the input parms</comment>
+    <comment type="line" pos:line="182" pos:column="5">// Argument2 is the output parms</comment>
+    <decl_stmt><decl><type><name pos:line="183" pos:column="5">PPMURM_PARTICIPANT</name></type>  <name pos:line="183" pos:column="25">Participant</name> <init pos:line="183" pos:column="37">= <expr><op:operator pos:line="183" pos:column="39">(</op:operator><name pos:line="183" pos:column="40">PPMURM_PARTICIPANT</name><op:operator pos:line="183" pos:column="58">)</op:operator> <name pos:line="183" pos:column="60">CallbackContext</name></expr></init></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="184" pos:column="5">PPMURM_CB_IN_PARMS</name></type>  <name pos:line="184" pos:column="25">InParms</name>     <init pos:line="184" pos:column="37">= <expr><op:operator pos:line="184" pos:column="39">(</op:operator><name pos:line="184" pos:column="40">PPMURM_CB_IN_PARMS</name><op:operator pos:line="184" pos:column="58">)</op:operator> <name pos:line="184" pos:column="60">Argument1</name></expr></init></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="185" pos:column="5">PPMURM_CB_OUT_PARMS</name></type> <name pos:line="185" pos:column="25">OutParms</name>    <init pos:line="185" pos:column="37">= <expr><op:operator pos:line="185" pos:column="39">(</op:operator><name pos:line="185" pos:column="40">PPMURM_CB_OUT_PARMS</name><op:operator pos:line="185" pos:column="59">)</op:operator><name pos:line="185" pos:column="60">Argument2</name></expr></init></decl>;</decl_stmt>
+
+    <if pos:line="187" pos:column="5">if <condition pos:line="187" pos:column="8">( <expr><name><name pos:line="187" pos:column="10">InParms</name><op:operator pos:line="187" pos:column="17">-&gt;</op:operator><name pos:line="187" pos:column="19">Acquiring</name></name></expr> )</condition><then pos:line="187" pos:column="30">
+    <block pos:line="188" pos:column="5">{
+        <comment type="line" pos:line="189" pos:column="9">// Someone is requesting ownership of the PMU.</comment>
+        <comment type="line" pos:line="190" pos:column="9">// Only need to check when no one else has rejected the request</comment>
+        <if pos:line="191" pos:column="9">if <condition pos:line="191" pos:column="12">( <expr><name><name pos:line="191" pos:column="14">InParms</name><op:operator pos:line="191" pos:column="21">-&gt;</op:operator><name pos:line="191" pos:column="23">Participant</name><op:operator pos:line="191" pos:column="34">-&gt;</op:operator><name pos:line="191" pos:column="36">Vote</name></name></expr> )</condition><then pos:line="191" pos:column="42">
+        <block pos:line="192" pos:column="9">{
+            <comment type="line" pos:line="193" pos:column="13">// Always vote yes for ourselves.  Otherwise, verify that our</comment>
+            <comment type="line" pos:line="194" pos:column="13">// current mask doesn't include any bits in the request.</comment>
+            <if pos:line="195" pos:column="13">if <condition pos:line="195" pos:column="16">( <expr><op:operator pos:line="195" pos:column="18">(</op:operator><name><name pos:line="195" pos:column="19">InParms</name><op:operator pos:line="195" pos:column="26">-&gt;</op:operator><name pos:line="195" pos:column="28">Participant</name></name> <op:operator pos:line="195" pos:column="40">==</op:operator> <name pos:line="195" pos:column="43">Participant</name><op:operator pos:line="195" pos:column="54">)</op:operator> <op:operator pos:line="195" pos:column="56">||</op:operator> 
+                 <op:operator pos:line="196" pos:column="18">(</op:operator><name><name pos:line="196" pos:column="19">InParms</name><op:operator pos:line="196" pos:column="26">-&gt;</op:operator><name pos:line="196" pos:column="28">CpuMask</name></name> <op:operator pos:line="196" pos:column="36">&amp;</op:operator> <name><name pos:line="196" pos:column="38">Participant</name><op:operator pos:line="196" pos:column="49">-&gt;</op:operator><name pos:line="196" pos:column="51">CpuMask</name></name><op:operator pos:line="196" pos:column="58">)</op:operator> <op:operator pos:line="196" pos:column="60">==</op:operator> <lit:literal type="number" pos:line="196" pos:column="63">0</lit:literal></expr> )</condition><then pos:line="196" pos:column="66">
+            <block pos:line="197" pos:column="13">{
+                <comment type="line" pos:line="198" pos:column="17">// Vote YES</comment>
+                <expr_stmt><expr><name><name pos:line="199" pos:column="17">InParms</name><op:operator pos:line="199" pos:column="24">-&gt;</op:operator><name pos:line="199" pos:column="26">Participant</name><op:operator pos:line="199" pos:column="37">-&gt;</op:operator><name pos:line="199" pos:column="39">CpuMask</name></name> <op:operator pos:line="199" pos:column="47">|=</op:operator> <name><name pos:line="199" pos:column="50">InParms</name><op:operator pos:line="199" pos:column="57">-&gt;</op:operator><name pos:line="199" pos:column="59">CpuMask</name></name></expr>;</expr_stmt>
+            }</block></then>
+            <else pos:line="201" pos:column="13">else
+            <block pos:line="202" pos:column="13">{
+                <comment type="line" pos:line="203" pos:column="17">// Vote NO</comment>
+                <expr_stmt><expr><name><name pos:line="204" pos:column="17">InParms</name><op:operator pos:line="204" pos:column="24">-&gt;</op:operator><name pos:line="204" pos:column="26">Participant</name><op:operator pos:line="204" pos:column="37">-&gt;</op:operator><name pos:line="204" pos:column="39">Vote</name></name>    <op:operator pos:line="204" pos:column="47">=</op:operator> <name pos:line="204" pos:column="49">FALSE</name></expr>;</expr_stmt>
+                <expr_stmt><expr><name><name pos:line="205" pos:column="17">InParms</name><op:operator pos:line="205" pos:column="24">-&gt;</op:operator><name pos:line="205" pos:column="26">Participant</name><op:operator pos:line="205" pos:column="37">-&gt;</op:operator><name pos:line="205" pos:column="39">CpuMask</name></name> <op:operator pos:line="205" pos:column="47">&amp;=</op:operator> <op:operator pos:line="205" pos:column="50">~</op:operator><op:operator pos:line="205" pos:column="51">(</op:operator><name><name pos:line="205" pos:column="52">InParms</name><op:operator pos:line="205" pos:column="59">-&gt;</op:operator><name pos:line="205" pos:column="61">CpuMask</name></name><op:operator pos:line="205" pos:column="68">)</op:operator></expr>;</expr_stmt>
+                
+                <comment type="line" pos:line="207" pos:column="17">// Populate the output parameters with information on who</comment>
+                <comment type="line" pos:line="208" pos:column="17">// voted NO.</comment>
+                <expr_stmt><expr><name><name pos:line="209" pos:column="17">OutParms</name><op:operator pos:line="209" pos:column="25">-&gt;</op:operator><name pos:line="209" pos:column="27">DriverObject</name></name> <op:operator pos:line="209" pos:column="40">=</op:operator> <name><name pos:line="209" pos:column="42">Participant</name><op:operator pos:line="209" pos:column="53">-&gt;</op:operator><name pos:line="209" pos:column="55">DriverObject</name></name></expr>;</expr_stmt>
+                <expr_stmt><expr><name><name pos:line="210" pos:column="17">OutParms</name><op:operator pos:line="210" pos:column="25">-&gt;</op:operator><name pos:line="210" pos:column="27">DeviceObject</name></name> <op:operator pos:line="210" pos:column="40">=</op:operator> <name><name pos:line="210" pos:column="42">Participant</name><op:operator pos:line="210" pos:column="53">-&gt;</op:operator><name pos:line="210" pos:column="55">DeviceObject</name></name></expr>;</expr_stmt>
+                <if pos:line="211" pos:column="17">if <condition pos:line="211" pos:column="20">( <expr><name><name pos:line="211" pos:column="22">OutParms</name><op:operator pos:line="211" pos:column="30">-&gt;</op:operator><name pos:line="211" pos:column="32">FriendlyName</name></name> <op:operator pos:line="211" pos:column="45">!=</op:operator> <name pos:line="211" pos:column="48">NULL</name></expr> )</condition><then pos:line="211" pos:column="54">
+                <block pos:line="212" pos:column="17">{
+                    <expr_stmt><expr><call><name pos:line="213" pos:column="21">RtlCopyUnicodeString</name><argument_list pos:line="213" pos:column="41">(
+                        <argument><expr><name><name pos:line="214" pos:column="25">OutParms</name><op:operator pos:line="214" pos:column="33">-&gt;</op:operator><name pos:line="214" pos:column="35">FriendlyName</name></name></expr></argument>, 
+                        <argument><expr><op:operator pos:line="215" pos:column="25">&amp;</op:operator><name><name pos:line="215" pos:column="26">Participant</name><op:operator pos:line="215" pos:column="37">-&gt;</op:operator><name pos:line="215" pos:column="39">FriendlyName</name></name></expr></argument>
+                        )</argument_list></call></expr>;</expr_stmt>
+                }</block></then></if>
+            }</block></else></if>
+        }</block></then></if>
+    }</block></then>
+    <else pos:line="221" pos:column="5">else
+    <block pos:line="222" pos:column="5">{
+        <comment type="line" pos:line="223" pos:column="9">// Someone is releasing their PMU ownership.  Set an event </comment>
+        <comment type="line" pos:line="224" pos:column="9">// to wake me up if I am waiting.</comment>
+        <expr_stmt><expr><call><name pos:line="225" pos:column="9">KeSetEvent</name><argument_list pos:line="225" pos:column="19">(<argument><expr><op:operator pos:line="225" pos:column="20">&amp;</op:operator><name><name pos:line="225" pos:column="21">Participant</name><op:operator pos:line="225" pos:column="32">-&gt;</op:operator><name pos:line="225" pos:column="34">WaitEvent</name></name></expr></argument>, <argument><expr><lit:literal type="number" pos:line="225" pos:column="45">0</lit:literal></expr></argument>, <argument><expr><name pos:line="225" pos:column="48">FALSE</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+    }</block></else></if>
+}</block></function>
+
+
+<comment type="block" pos:line="230" pos:column="1">/*------------------------------------------------------------------------
+    Public facing APIs
+------------------------------------------------------------------------*/</comment>
+
+<function><type><name pos:line="234" pos:column="1">NTSTATUS</name>
+<name pos:line="235" pos:column="1">NTAPI</name></type>
+<name pos:line="236" pos:column="1">PmuRmInit</name><parameter_list pos:line="236" pos:column="10">(
+	<param><decl><type><name pos:line="237" pos:column="9">VOID</name></type></decl></param>
+	)</parameter_list>
+<comment type="block" pos:line="239" pos:column="1">/*++
+
+Routine Description:
+
+    This function initializes the PMU resource manager.
+
+Arguments:
+
+Return Value:
+
+    NTSTATUS.
+
+Notes:
+
+    Always called at PASSIVE_LEVEL.
+    
+--*/</comment>
+<block pos:line="256" pos:column="1">{
+    <comment type="line" pos:line="257" pos:column="5">//</comment>
+    <comment type="line" pos:line="258" pos:column="5">// Create our callback object for driver-driver communication.</comment>
+    <comment type="line" pos:line="259" pos:column="5">//</comment>
+    <decl_stmt><decl><type><name pos:line="260" pos:column="5">OBJECT_ATTRIBUTES</name></type>   <name pos:line="260" pos:column="25">ObjectAttributes</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="261" pos:column="5">NTSTATUS</name></type> <name pos:line="261" pos:column="14">Status</name></decl>;</decl_stmt>
+    
+    <expr_stmt><expr><call><name pos:line="263" pos:column="5">InitializeObjectAttributes</name><argument_list pos:line="263" pos:column="31">(
+        <argument><expr><op:operator pos:line="264" pos:column="9">&amp;</op:operator><name pos:line="264" pos:column="10">ObjectAttributes</name></expr></argument>,
+        <argument><expr><op:operator pos:line="265" pos:column="9">&amp;</op:operator><name pos:line="265" pos:column="10">CallbackName</name></expr></argument>,
+        <argument><expr><name pos:line="266" pos:column="9">OBJ_CASE_INSENSITIVE</name> <op:operator pos:line="266" pos:column="30">|</op:operator> <name pos:line="266" pos:column="32">OBJ_PERMANENT</name></expr></argument>,
+        <argument><expr><name pos:line="267" pos:column="9">NULL</name></expr></argument>,
+        <argument><expr><name pos:line="268" pos:column="9">NULL</name></expr></argument>
+        )</argument_list></call></expr>;</expr_stmt>
+        
+    <expr_stmt><expr><name pos:line="271" pos:column="5">Status</name> <op:operator pos:line="271" pos:column="12">=</op:operator> <call><name pos:line="271" pos:column="14">ExCreateCallback</name><argument_list pos:line="271" pos:column="30">(
+                <argument><expr><op:operator pos:line="272" pos:column="17">&amp;</op:operator><name pos:line="272" pos:column="18">CallbackObject</name></expr></argument>,
+                <argument><expr><op:operator pos:line="273" pos:column="17">&amp;</op:operator><name pos:line="273" pos:column="18">ObjectAttributes</name></expr></argument>,
+                <argument><expr><name pos:line="274" pos:column="17">TRUE</name></expr></argument>,
+                <argument><expr><name pos:line="275" pos:column="17">TRUE</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                            
+    <if pos:line="277" pos:column="5">if <condition pos:line="277" pos:column="8">( <expr><op:operator pos:line="277" pos:column="10">!</op:operator><call><name pos:line="277" pos:column="11">NT_SUCCESS</name><argument_list pos:line="277" pos:column="21">(<argument><expr><name pos:line="277" pos:column="22">Status</name></expr></argument>)</argument_list></call></expr> )</condition><then pos:line="277" pos:column="31">
+        <expr_stmt><expr><name pos:line="278" pos:column="9">CallbackObject</name> <op:operator pos:line="278" pos:column="24">=</op:operator> <name pos:line="278" pos:column="26">NULL</name></expr>;</expr_stmt></then></if>
+        
+    <return pos:line="280" pos:column="5">return <expr><name pos:line="280" pos:column="12">Status</name></expr>;</return>
+}</block></function>
+
+
+<function><type><name pos:line="284" pos:column="1">NTSTATUS</name>
+<name pos:line="285" pos:column="1">NTAPI</name></type>
+<name pos:line="286" pos:column="1">PmuRmUninit</name><parameter_list pos:line="286" pos:column="12">(
+	<param><decl><type><name pos:line="287" pos:column="9">VOID</name></type></decl></param>
+	)</parameter_list>
+<comment type="block" pos:line="289" pos:column="1">/*++
+
+Routine Description:
+
+    This function is used to release the PMU resource manager.
+
+Arguments:
+
+Return Value:
+
+    NTSTATUS.
+
+Notes:
+
+    Always called at PASSIVE_LEVEL.
+
+--*/</comment>
+<block pos:line="306" pos:column="1">{
+    <comment type="line" pos:line="307" pos:column="5">// </comment>
+    <comment type="line" pos:line="308" pos:column="5">// Release callback</comment>
+    <comment type="line" pos:line="309" pos:column="5">//</comment>
+    <if pos:line="310" pos:column="5">if <condition pos:line="310" pos:column="8">( <expr><name pos:line="310" pos:column="10">CallbackObject</name> <op:operator pos:line="310" pos:column="25">!=</op:operator> <name pos:line="310" pos:column="28">NULL</name></expr> )</condition><then pos:line="310" pos:column="34">
+    <block pos:line="311" pos:column="5">{
+        <expr_stmt><expr><call><name pos:line="312" pos:column="9">ObDereferenceObject</name><argument_list pos:line="312" pos:column="28">(<argument><expr><name pos:line="312" pos:column="29">CallbackObject</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        <expr_stmt><expr><name pos:line="313" pos:column="9">CallbackObject</name> <op:operator pos:line="313" pos:column="24">=</op:operator> <name pos:line="313" pos:column="26">NULL</name></expr>;</expr_stmt>
+    }</block></then></if>
+
+    <return pos:line="316" pos:column="5">return <expr><name pos:line="316" pos:column="12">STATUS_SUCCESS</name></expr>;</return>
+}</block></function>
+
+
+<function><type><name pos:line="320" pos:column="1">NTSTATUS</name>
+<name pos:line="321" pos:column="1">NTAPI</name></type>
+<name pos:line="322" pos:column="1">PmuRmParticipate</name><parameter_list pos:line="322" pos:column="17">(
+    <param><decl><type><name pos:line="323" pos:column="5">IN</name>  <name pos:line="323" pos:column="9">PDRIVER_OBJECT</name></type>       <name pos:line="323" pos:column="30">DriverObject</name></decl></param>,
+    <param><decl><type><name pos:line="324" pos:column="5">IN</name>  <name pos:line="324" pos:column="9">PDEVICE_OBJECT</name>       <name pos:line="324" pos:column="30">DeviceObject</name></type> <name pos:line="324" pos:column="43">OPTIONAL</name></decl></param>,
+    <param><decl><type><name pos:line="325" pos:column="5">IN</name>  <name pos:line="325" pos:column="9">PUNICODE_STRING</name></type>      <name pos:line="325" pos:column="30">FriendlyName</name></decl></param>,
+    <param><decl><type><name pos:line="326" pos:column="5">OUT</name> <name pos:line="326" pos:column="9">PPMURM_PARTICIPANT</name> <type:modifier pos:line="326" pos:column="28">*</type:modifier></type> <name pos:line="326" pos:column="30">Participant</name></decl></param>
+    )</parameter_list>
+<comment type="block" pos:line="328" pos:column="1">/*++
+
+Routine Description:
+
+    This function registers a participant in the resource management scheme.
+
+Arguments:
+
+    DriverObject - Specifies the associated driver for the participant.
+    
+    DeviceObject - Specifies the associated device for the participant.  This
+        parameter can be NULL if there is no associated device.
+                   
+    FriendlyName - Specifies a friendly name for the participant.  This string
+        will be used in warning messages from other participants.
+        
+    Participant - PPMURM_PARTICIPANT pointer that will receive an initialized
+        structure to be used in other PMURM calls.
+
+Return Value:
+
+    NTSTATUS.
+
+Notes:
+
+    Always called at PASSIVE_LEVEL.
+
+--*/</comment>
+<block pos:line="356" pos:column="1">{
+    <decl_stmt><decl><type><name pos:line="357" pos:column="5">PPMURM_PARTICIPANT</name></type>  <name pos:line="357" pos:column="25">TempParticipant</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="358" pos:column="5">SIZE_T</name></type>              <name pos:line="358" pos:column="25">StructSize</name></decl>;</decl_stmt>
+    
+    <expr_stmt><expr><op:operator pos:line="360" pos:column="5">*</op:operator><name pos:line="360" pos:column="6">Participant</name> <op:operator pos:line="360" pos:column="18">=</op:operator> <name pos:line="360" pos:column="20">NULL</name></expr>;</expr_stmt>
+
+    <comment type="line" pos:line="362" pos:column="5">//</comment>
+    <comment type="line" pos:line="363" pos:column="5">// The callback has to have been created</comment>
+    <comment type="line" pos:line="364" pos:column="5">//</comment>
+    <if pos:line="365" pos:column="5">if <condition pos:line="365" pos:column="8">( <expr><name pos:line="365" pos:column="10">CallbackObject</name> <op:operator pos:line="365" pos:column="25">==</op:operator> <name pos:line="365" pos:column="28">NULL</name></expr> )</condition><then pos:line="365" pos:column="34">
+        <return pos:line="366" pos:column="9">return <expr><name pos:line="366" pos:column="16">STATUS_UNSUCCESSFUL</name></expr>;</return></then></if>
+    
+    <comment type="line" pos:line="368" pos:column="5">// </comment>
+    <comment type="line" pos:line="369" pos:column="5">// Need room for the participant struct and the friendly name</comment>
+    <comment type="line" pos:line="370" pos:column="5">//</comment>
+    <expr_stmt><expr><name pos:line="371" pos:column="5">StructSize</name> <op:operator pos:line="371" pos:column="16">=</op:operator> <sizeof pos:line="371" pos:column="18">sizeof<argument_list pos:line="371" pos:column="24">(<argument><expr><name pos:line="371" pos:column="25">PMURM_PARTICIPANT</name></expr></argument>)</argument_list></sizeof> <op:operator pos:line="371" pos:column="44">+</op:operator> 
+                 <name><name pos:line="372" pos:column="18">FriendlyName</name><op:operator pos:line="372" pos:column="30">-&gt;</op:operator><name pos:line="372" pos:column="32">Length</name></name> <op:operator pos:line="372" pos:column="39">+</op:operator> <sizeof pos:line="372" pos:column="41">sizeof<argument_list pos:line="372" pos:column="47">(<argument><expr><name pos:line="372" pos:column="48">WCHAR</name></expr></argument>)</argument_list></sizeof></expr>;</expr_stmt>
+    
+    <comment type="line" pos:line="374" pos:column="5">// </comment>
+    <comment type="line" pos:line="375" pos:column="5">// Callbacks will be done at DISPATCH_LEVEL, so our objects must come</comment>
+    <comment type="line" pos:line="376" pos:column="5">// from the non-paged pool.</comment>
+    <comment type="line" pos:line="377" pos:column="5">//</comment>
+    <expr_stmt><expr><name pos:line="378" pos:column="5">TempParticipant</name> <op:operator pos:line="378" pos:column="21">=</op:operator> <call><name pos:line="378" pos:column="23">ExAllocatePoolWithTag</name><argument_list pos:line="378" pos:column="44">(
+                        <argument><expr><name pos:line="379" pos:column="25">NonPagedPool</name></expr></argument>,
+                        <argument><expr><name pos:line="380" pos:column="25">StructSize</name></expr></argument>,
+                        <argument><expr><name pos:line="381" pos:column="25">PmuRmTag</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                        
+    <if pos:line="383" pos:column="5">if <condition pos:line="383" pos:column="8">( <expr><name pos:line="383" pos:column="10">TempParticipant</name> <op:operator pos:line="383" pos:column="26">==</op:operator> <name pos:line="383" pos:column="29">NULL</name></expr> )</condition><then pos:line="383" pos:column="35">
+        <return pos:line="384" pos:column="9">return <expr><name pos:line="384" pos:column="16">STATUS_NO_MEMORY</name></expr>;</return></then></if>
+
+    <comment type="line" pos:line="386" pos:column="5">//</comment>
+    <comment type="line" pos:line="387" pos:column="5">// Initialize participant struct</comment>
+    <comment type="line" pos:line="388" pos:column="5">//</comment>
+    <expr_stmt><expr><name><name pos:line="389" pos:column="5">TempParticipant</name><op:operator pos:line="389" pos:column="20">-&gt;</op:operator><name pos:line="389" pos:column="22">CpuMask</name></name>      <op:operator pos:line="389" pos:column="35">=</op:operator> <lit:literal type="number" pos:line="389" pos:column="37">0</lit:literal></expr>;</expr_stmt>
+    <expr_stmt><expr><name><name pos:line="390" pos:column="5">TempParticipant</name><op:operator pos:line="390" pos:column="20">-&gt;</op:operator><name pos:line="390" pos:column="22">Vote</name></name>         <op:operator pos:line="390" pos:column="35">=</op:operator> <name pos:line="390" pos:column="37">FALSE</name></expr>;</expr_stmt>
+    <expr_stmt><expr><name><name pos:line="391" pos:column="5">TempParticipant</name><op:operator pos:line="391" pos:column="20">-&gt;</op:operator><name pos:line="391" pos:column="22">DriverObject</name></name> <op:operator pos:line="391" pos:column="35">=</op:operator> <name pos:line="391" pos:column="37">DriverObject</name></expr>;</expr_stmt>
+    <expr_stmt><expr><name><name pos:line="392" pos:column="5">TempParticipant</name><op:operator pos:line="392" pos:column="20">-&gt;</op:operator><name pos:line="392" pos:column="22">DeviceObject</name></name> <op:operator pos:line="392" pos:column="35">=</op:operator> <name pos:line="392" pos:column="37">DeviceObject</name></expr>;</expr_stmt>
+    
+    <comment type="line" pos:line="394" pos:column="5">//</comment>
+    <comment type="line" pos:line="395" pos:column="5">// Copy the friendly name to the end of the participant struct.</comment>
+    <comment type="line" pos:line="396" pos:column="5">//</comment>
+    <expr_stmt><expr><name><name pos:line="397" pos:column="5">TempParticipant</name><op:operator pos:line="397" pos:column="20">-&gt;</op:operator><name pos:line="397" pos:column="22">FriendlyName</name><op:operator pos:line="397" pos:column="34">.</op:operator><name pos:line="397" pos:column="35">MaximumLength</name></name> <op:operator pos:line="397" pos:column="49">=</op:operator> 
+        <name><name pos:line="398" pos:column="9">FriendlyName</name><op:operator pos:line="398" pos:column="21">-&gt;</op:operator><name pos:line="398" pos:column="23">Length</name></name> <op:operator pos:line="398" pos:column="30">+</op:operator> <sizeof pos:line="398" pos:column="32">sizeof<argument_list pos:line="398" pos:column="38">(<argument><expr><name pos:line="398" pos:column="39">WCHAR</name></expr></argument>)</argument_list></sizeof></expr>;</expr_stmt>
+
+    <expr_stmt><expr><name><name pos:line="400" pos:column="5">TempParticipant</name><op:operator pos:line="400" pos:column="20">-&gt;</op:operator><name pos:line="400" pos:column="22">FriendlyName</name><op:operator pos:line="400" pos:column="34">.</op:operator><name pos:line="400" pos:column="35">Buffer</name></name> <op:operator pos:line="400" pos:column="42">=</op:operator> 
+        <call pos:line="401" pos:column="9">(<name pos:line="401" pos:column="10">PWSTR</name>)<argument_list pos:line="401" pos:column="16">(<argument><expr><name pos:line="401" pos:column="17">TempParticipant</name> <op:operator pos:line="401" pos:column="33">+</op:operator> <lit:literal type="number" pos:line="401" pos:column="35">1</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+    <expr_stmt><expr><call><name pos:line="403" pos:column="5">RtlCopyUnicodeString</name><argument_list pos:line="403" pos:column="25">(
+        <argument><expr><op:operator pos:line="404" pos:column="9">&amp;</op:operator><name><name pos:line="404" pos:column="10">TempParticipant</name><op:operator pos:line="404" pos:column="25">-&gt;</op:operator><name pos:line="404" pos:column="27">FriendlyName</name></name></expr></argument>, 
+        <argument><expr><name pos:line="405" pos:column="9">FriendlyName</name></expr></argument>
+        )</argument_list></call></expr>;</expr_stmt>
+    
+	<comment type="line" pos:line="408" pos:column="9">//</comment>
+    <comment type="line" pos:line="409" pos:column="5">// Initialize wait event structure.</comment>
+    <comment type="line" pos:line="410" pos:column="5">//</comment>
+    <expr_stmt><expr><call><name pos:line="411" pos:column="5">KeInitializeEvent</name><argument_list pos:line="411" pos:column="22">(
+        <argument><expr><op:operator pos:line="412" pos:column="9">&amp;</op:operator><name><name pos:line="412" pos:column="10">TempParticipant</name><op:operator pos:line="412" pos:column="25">-&gt;</op:operator><name pos:line="412" pos:column="27">WaitEvent</name></name></expr></argument>,
+        <argument><expr><name pos:line="413" pos:column="9">NotificationEvent</name></expr></argument>,
+        <argument><expr><name pos:line="414" pos:column="9">FALSE</name></expr></argument>
+        )</argument_list></call></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="417" pos:column="9">//</comment>
+    <comment type="line" pos:line="418" pos:column="5">// Register this participant for a callback.</comment>
+    <comment type="line" pos:line="419" pos:column="5">//</comment>
+    <expr_stmt><expr><name><name pos:line="420" pos:column="5">TempParticipant</name><op:operator pos:line="420" pos:column="20">-&gt;</op:operator><name pos:line="420" pos:column="22">CallbackHandle</name></name> <op:operator pos:line="420" pos:column="37">=</op:operator>
+        <call><name pos:line="421" pos:column="9">ExRegisterCallback</name><argument_list pos:line="421" pos:column="27">(
+            <argument><expr><name pos:line="422" pos:column="13">CallbackObject</name></expr></argument>,
+            <argument><expr><name pos:line="423" pos:column="13">ParticipantCallback</name></expr></argument>,
+            <argument><expr><name pos:line="424" pos:column="13">TempParticipant</name></expr></argument>
+            )</argument_list></call></expr>;</expr_stmt>
+            
+    <if pos:line="427" pos:column="5">if <condition pos:line="427" pos:column="8">( <expr><name><name pos:line="427" pos:column="10">TempParticipant</name><op:operator pos:line="427" pos:column="25">-&gt;</op:operator><name pos:line="427" pos:column="27">CallbackHandle</name></name> <op:operator pos:line="427" pos:column="42">==</op:operator> <name pos:line="427" pos:column="45">NULL</name></expr> )</condition><then pos:line="427" pos:column="51">
+    <block pos:line="428" pos:column="5">{
+        <expr_stmt><expr><call><name pos:line="429" pos:column="9">ExFreePool</name><argument_list pos:line="429" pos:column="19">(<argument><expr><name pos:line="429" pos:column="20">TempParticipant</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        <return pos:line="430" pos:column="9">return <expr><name pos:line="430" pos:column="16">STATUS_UNSUCCESSFUL</name></expr>;</return>
+    }</block></then></if>
+
+    <expr_stmt><expr><op:operator pos:line="433" pos:column="5">*</op:operator><name pos:line="433" pos:column="6">Participant</name> <op:operator pos:line="433" pos:column="18">=</op:operator> <name pos:line="433" pos:column="20">TempParticipant</name></expr>;</expr_stmt>
+    <return pos:line="434" pos:column="5">return <expr><name pos:line="434" pos:column="12">STATUS_SUCCESS</name></expr>;</return>
+}</block></function>
+
+
+<function><type><name pos:line="438" pos:column="1">NTSTATUS</name>
+<name pos:line="439" pos:column="1">NTAPI</name></type>
+<name pos:line="440" pos:column="1">PmuRmResign</name><parameter_list pos:line="440" pos:column="12">(
+    <param><decl><type><name pos:line="441" pos:column="5">IN</name>  <name pos:line="441" pos:column="9">PPMURM_PARTICIPANT</name></type>  <name pos:line="441" pos:column="29">Participant</name></decl></param>
+    )</parameter_list>
+<comment type="block" pos:line="443" pos:column="1">/*++
+
+Routine Description:
+
+    This function removes a participant in the resource management scheme.
+
+Arguments:
+
+    Participant - The original PMURM_PARTICIPANT pointer returned from 
+        PmuRmParticipate.
+
+Return Value:
+
+    NTSTATUS.
+
+Notes:
+
+    Always called at PASSIVE_LEVEL.
+
+--*/</comment>
+<block pos:line="463" pos:column="1">{
+    <if pos:line="464" pos:column="5">if <condition pos:line="464" pos:column="8">( <expr><name pos:line="464" pos:column="10">Participant</name> <op:operator pos:line="464" pos:column="22">==</op:operator> <name pos:line="464" pos:column="25">NULL</name> <op:operator pos:line="464" pos:column="30">||</op:operator>
+         <name><name pos:line="465" pos:column="10">Participant</name><op:operator pos:line="465" pos:column="21">-&gt;</op:operator><name pos:line="465" pos:column="23">CallbackHandle</name></name> <op:operator pos:line="465" pos:column="38">==</op:operator> <name pos:line="465" pos:column="41">NULL</name></expr> )</condition><then pos:line="465" pos:column="47">
+    <block pos:line="466" pos:column="5">{
+        <return pos:line="467" pos:column="9">return <expr><name pos:line="467" pos:column="16">STATUS_INVALID_PARAMETER</name></expr>;</return>
+    }</block></then></if>
+    
+    <comment type="line" pos:line="470" pos:column="5">//</comment>
+    <comment type="line" pos:line="471" pos:column="5">// If we own resources, wake up anyone who might be waiting.</comment>
+    <comment type="line" pos:line="472" pos:column="5">//</comment>
+    <if pos:line="473" pos:column="5">if <condition pos:line="473" pos:column="8">( <expr><name><name pos:line="473" pos:column="10">Participant</name><op:operator pos:line="473" pos:column="21">-&gt;</op:operator><name pos:line="473" pos:column="23">CpuMask</name></name> <op:operator pos:line="473" pos:column="31">!=</op:operator> <lit:literal type="number" pos:line="473" pos:column="34">0</lit:literal></expr> )</condition><then pos:line="473" pos:column="37">
+        <expr_stmt><expr><call><name pos:line="474" pos:column="9">PmuRmRelease</name><argument_list pos:line="474" pos:column="21">(<argument><expr><name pos:line="474" pos:column="22">Participant</name></expr></argument>, <argument><expr><name><name pos:line="474" pos:column="35">Participant</name><op:operator pos:line="474" pos:column="46">-&gt;</op:operator><name pos:line="474" pos:column="48">CpuMask</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt></then></if>
+    
+    <comment type="line" pos:line="476" pos:column="5">// </comment>
+    <comment type="line" pos:line="477" pos:column="5">// Unregister the participant's callback.</comment>
+    <comment type="line" pos:line="478" pos:column="5">//</comment>
+    <expr_stmt><expr><call><name pos:line="479" pos:column="5">ExUnregisterCallback</name><argument_list pos:line="479" pos:column="25">(<argument><expr><name><name pos:line="479" pos:column="26">Participant</name><op:operator pos:line="479" pos:column="37">-&gt;</op:operator><name pos:line="479" pos:column="39">CallbackHandle</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+    
+    <comment type="line" pos:line="481" pos:column="5">//</comment>
+    <comment type="line" pos:line="482" pos:column="5">// Free participant structure.</comment>
+    <comment type="line" pos:line="483" pos:column="5">//</comment>
+    <expr_stmt><expr><call><name pos:line="484" pos:column="5">ExFreePool</name><argument_list pos:line="484" pos:column="15">(<argument><expr><name pos:line="484" pos:column="16">Participant</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+    
+    <return pos:line="486" pos:column="5">return <expr><name pos:line="486" pos:column="12">STATUS_SUCCESS</name></expr>;</return>
+}</block></function>
+
+
+<function><type><name pos:line="490" pos:column="1">NTSTATUS</name>
+<name pos:line="491" pos:column="1">NTAPI</name></type>
+<name pos:line="492" pos:column="1">PmuRmAcquire</name><parameter_list pos:line="492" pos:column="13">(
+    <param><decl><type><name pos:line="493" pos:column="5">IN</name>  <name pos:line="493" pos:column="9">PPMURM_PARTICIPANT</name></type>  <name pos:line="493" pos:column="29">Participant</name></decl></param>,
+	<param><decl><type><name pos:line="494" pos:column="9">IN</name>	<name pos:line="494" pos:column="17">KAFFINITY</name></type>           <name pos:line="494" pos:column="37">CpuMask</name></decl></param>,
+    <param><decl><type><name pos:line="495" pos:column="5">IN</name>  <name pos:line="495" pos:column="9">PLARGE_INTEGER</name>      <name pos:line="495" pos:column="29">Timeout</name></type>      <name pos:line="495" pos:column="42">OPTIONAL</name></decl></param>,
+    <param><decl><type><name pos:line="496" pos:column="5">OUT</name> <name pos:line="496" pos:column="9">PUNICODE_STRING</name>     <name pos:line="496" pos:column="29">NoVoteText</name></type>   <name pos:line="496" pos:column="42">OPTIONAL</name></decl></param>
+	)</parameter_list>
+<comment type="block" pos:line="498" pos:column="1">/*++
+
+Routine Description:
+
+    This function attempts to acquire PMU resources for the given CPUs.
+
+Arguments:
+
+    Participant - The PMURM_PARTICIPANT pointer returned from PmuRmParticipate.
+
+    CpuMask - A bit mask indicating which CPUs to acquire PMU resources for.
+    
+    Timeout - An optional timeout value.  If omitted, this function blocks 
+        until the PMU resources become available.  If set to zero, the function
+        returns success or failure immediately.
+                   
+    NoVoteText - If the function fails because the resource is currently held,
+        this string will hold the friendly name of the participant that holds 
+        the resource.
+
+Return Value:
+
+    NTSTATUS.
+
+Notes:
+
+    Always called at PASSIVE_LEVEL.
+
+--*/</comment>
+<block pos:line="527" pos:column="1">{
+    <decl_stmt><decl><type><name pos:line="528" pos:column="5">KIRQL</name></type>         <name pos:line="528" pos:column="19">OldIrql</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="529" pos:column="5">NTSTATUS</name></type>      <name pos:line="529" pos:column="19">Status</name> <init pos:line="529" pos:column="26">= <expr><name pos:line="529" pos:column="28">STATUS_UNSUCCESSFUL</name></expr></init></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="530" pos:column="5">LARGE_INTEGER</name></type> <name pos:line="530" pos:column="19">CurrentTimeout</name> <init pos:line="530" pos:column="34">= <expr><block pos:line="530" pos:column="36">{<expr><lit:literal type="number" pos:line="530" pos:column="37">0</lit:literal></expr>}</block></expr></init></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="531" pos:column="5">LARGE_INTEGER</name></type> <name pos:line="531" pos:column="19">StartTime</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="532" pos:column="5">LARGE_INTEGER</name></type> <name pos:line="532" pos:column="19">ElapsedTime</name></decl>;</decl_stmt>
+    
+    <decl_stmt><decl><type><name pos:line="534" pos:column="5">PMURM_CB_IN_PARMS</name></type> <name pos:line="534" pos:column="23">InParms</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="535" pos:column="5">PMURM_CB_OUT_PARMS</name></type> <name pos:line="535" pos:column="24">OutParms</name></decl>;</decl_stmt>
+
+    <comment type="line" pos:line="537" pos:column="5">// </comment>
+    <comment type="line" pos:line="538" pos:column="5">// You cannot acquire resources you already own.</comment>
+    <comment type="line" pos:line="539" pos:column="5">// </comment>
+    <if pos:line="540" pos:column="5">if <condition pos:line="540" pos:column="8">( <expr><op:operator pos:line="540" pos:column="10">(</op:operator><name><name pos:line="540" pos:column="11">Participant</name><op:operator pos:line="540" pos:column="22">-&gt;</op:operator><name pos:line="540" pos:column="24">CpuMask</name></name> <op:operator pos:line="540" pos:column="32">&amp;</op:operator> <name pos:line="540" pos:column="34">CpuMask</name><op:operator pos:line="540" pos:column="41">)</op:operator> <op:operator pos:line="540" pos:column="43">!=</op:operator> <lit:literal type="number" pos:line="540" pos:column="46">0</lit:literal></expr> )</condition><then pos:line="540" pos:column="49">
+        <return pos:line="541" pos:column="9">return <expr><name pos:line="541" pos:column="16">STATUS_INVALID_PARAMETER</name></expr>;</return></then></if>
+
+    <comment type="line" pos:line="543" pos:column="5">//</comment>
+    <comment type="line" pos:line="544" pos:column="5">// The callback has to have been created</comment>
+    <comment type="line" pos:line="545" pos:column="5">//</comment>
+    <if pos:line="546" pos:column="5">if <condition pos:line="546" pos:column="8">( <expr><name pos:line="546" pos:column="10">CallbackObject</name> <op:operator pos:line="546" pos:column="25">==</op:operator> <name pos:line="546" pos:column="28">NULL</name></expr> )</condition><then pos:line="546" pos:column="34">
+        <return pos:line="547" pos:column="9">return <expr><name pos:line="547" pos:column="16">STATUS_UNSUCCESSFUL</name></expr>;</return></then></if>
+
+    <comment type="line" pos:line="549" pos:column="5">// Copy timeout value (if present)</comment>
+    <if pos:line="550" pos:column="5">if <condition pos:line="550" pos:column="8">( <expr><name pos:line="550" pos:column="10">Timeout</name> <op:operator pos:line="550" pos:column="18">!=</op:operator> <name pos:line="550" pos:column="21">NULL</name></expr> )</condition><then pos:line="550" pos:column="27">
+    <block pos:line="551" pos:column="5">{
+        <expr_stmt><expr><name pos:line="552" pos:column="9">CurrentTimeout</name> <op:operator pos:line="552" pos:column="24">=</op:operator> <op:operator pos:line="552" pos:column="26">*</op:operator><name pos:line="552" pos:column="27">Timeout</name></expr>;</expr_stmt>
+        <comment type="line" pos:line="553" pos:column="9">// Reassign pointer so we don't trash the caller's data</comment>
+        <expr_stmt><expr><name pos:line="554" pos:column="9">Timeout</name> <op:operator pos:line="554" pos:column="17">=</op:operator> <op:operator pos:line="554" pos:column="19">&amp;</op:operator><name pos:line="554" pos:column="20">CurrentTimeout</name></expr>;</expr_stmt>
+    }</block></then></if>
+    
+    <comment type="line" pos:line="557" pos:column="5">// </comment>
+    <comment type="line" pos:line="558" pos:column="5">// Set up in and out parms</comment>
+    <comment type="line" pos:line="559" pos:column="5">//</comment>
+    <expr_stmt><expr><name><name pos:line="560" pos:column="5">InParms</name><op:operator pos:line="560" pos:column="12">.</op:operator><name pos:line="560" pos:column="13">Acquiring</name></name> <op:operator pos:line="560" pos:column="23">=</op:operator> <name pos:line="560" pos:column="25">TRUE</name></expr>;</expr_stmt>
+    <expr_stmt><expr><name><name pos:line="561" pos:column="5">InParms</name><op:operator pos:line="561" pos:column="12">.</op:operator><name pos:line="561" pos:column="13">CpuMask</name></name> <op:operator pos:line="561" pos:column="21">=</op:operator> <name pos:line="561" pos:column="23">CpuMask</name></expr>;</expr_stmt>
+    <expr_stmt><expr><name><name pos:line="562" pos:column="5">InParms</name><op:operator pos:line="562" pos:column="12">.</op:operator><name pos:line="562" pos:column="13">Participant</name></name> <op:operator pos:line="562" pos:column="25">=</op:operator> <name pos:line="562" pos:column="27">Participant</name></expr>;</expr_stmt>
+
+    <expr_stmt><expr><name><name pos:line="564" pos:column="5">OutParms</name><op:operator pos:line="564" pos:column="13">.</op:operator><name pos:line="564" pos:column="14">FriendlyName</name></name> <op:operator pos:line="564" pos:column="27">=</op:operator> <name pos:line="564" pos:column="29">NoVoteText</name></expr>;</expr_stmt>
+    
+    <comment type="line" pos:line="566" pos:column="5">//</comment>
+    <comment type="line" pos:line="567" pos:column="5">// We will continue attempting to get the resource until either we </comment>
+    <comment type="line" pos:line="568" pos:column="5">// succeed or we time out.</comment>
+    <comment type="line" pos:line="569" pos:column="5">//</comment>
+    <while pos:line="570" pos:column="5">while <condition pos:line="570" pos:column="11">( <expr><name pos:line="570" pos:column="13">TRUE</name></expr> )</condition>
+    <block pos:line="571" pos:column="5">{
+        <comment type="line" pos:line="572" pos:column="9">//</comment>
+        <comment type="line" pos:line="573" pos:column="9">// Get base for elapsed time</comment>
+        <comment type="line" pos:line="574" pos:column="9">//</comment>
+        <expr_stmt><expr><call><name pos:line="575" pos:column="9">KeQuerySystemTime</name><argument_list pos:line="575" pos:column="26">(<argument><expr><op:operator pos:line="575" pos:column="27">&amp;</op:operator><name pos:line="575" pos:column="28">StartTime</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        
+        <comment type="line" pos:line="577" pos:column="9">// </comment>
+        <comment type="line" pos:line="578" pos:column="9">// This callback *must* happen synchronously.  </comment>
+        <comment type="line" pos:line="579" pos:column="9">//</comment>
+		<expr_stmt><expr><call><name pos:line="580" pos:column="17">IoAcquireCancelSpinLock</name><argument_list pos:line="580" pos:column="40">(<argument><expr><op:operator pos:line="580" pos:column="41">&amp;</op:operator><name pos:line="580" pos:column="42">OldIrql</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        <block pos:line="581" pos:column="9">{
+            <expr_stmt><expr><name><name pos:line="582" pos:column="13">Participant</name><op:operator pos:line="582" pos:column="24">-&gt;</op:operator><name pos:line="582" pos:column="26">Vote</name></name> <op:operator pos:line="582" pos:column="31">=</op:operator> <name pos:line="582" pos:column="33">TRUE</name></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name pos:line="583" pos:column="13">KeClearEvent</name><argument_list pos:line="583" pos:column="25">(<argument><expr><op:operator pos:line="583" pos:column="26">&amp;</op:operator><name><name pos:line="583" pos:column="27">Participant</name><op:operator pos:line="583" pos:column="38">-&gt;</op:operator><name pos:line="583" pos:column="40">WaitEvent</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name pos:line="584" pos:column="13">ExNotifyCallback</name><argument_list pos:line="584" pos:column="29">(<argument><expr><name pos:line="584" pos:column="30">CallbackObject</name></expr></argument>, <argument><expr><op:operator pos:line="584" pos:column="46">&amp;</op:operator><name pos:line="584" pos:column="47">InParms</name></expr></argument>, <argument><expr><op:operator pos:line="584" pos:column="56">&amp;</op:operator><name pos:line="584" pos:column="57">OutParms</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block>    
+        <expr_stmt><expr><call><name pos:line="586" pos:column="9">IoReleaseCancelSpinLock</name><argument_list pos:line="586" pos:column="32">(<argument><expr><name pos:line="586" pos:column="33">OldIrql</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+        <comment type="line" pos:line="588" pos:column="9">//</comment>
+        <comment type="line" pos:line="589" pos:column="9">// We are done if our CpuMask was updated.</comment>
+        <comment type="line" pos:line="590" pos:column="9">//</comment>
+        <if pos:line="591" pos:column="9">if <condition pos:line="591" pos:column="12">( <expr><op:operator pos:line="591" pos:column="14">(</op:operator><name><name pos:line="591" pos:column="15">Participant</name><op:operator pos:line="591" pos:column="26">-&gt;</op:operator><name pos:line="591" pos:column="28">CpuMask</name></name> <op:operator pos:line="591" pos:column="36">&amp;</op:operator> <name pos:line="591" pos:column="38">CpuMask</name><op:operator pos:line="591" pos:column="45">)</op:operator> <op:operator pos:line="591" pos:column="47">==</op:operator> <name pos:line="591" pos:column="50">CpuMask</name></expr> )</condition><then pos:line="591" pos:column="59">
+             <return pos:line="592" pos:column="14">return <expr><name pos:line="592" pos:column="21">STATUS_SUCCESS</name></expr>;</return></then></if>
+    
+        <comment type="line" pos:line="594" pos:column="9">//</comment>
+        <comment type="line" pos:line="595" pos:column="9">// We lose!  Wait until someone releases or we time out.</comment>
+        <comment type="line" pos:line="596" pos:column="9">// </comment>
+        <expr_stmt><expr><name pos:line="597" pos:column="9">Status</name> <op:operator pos:line="597" pos:column="16">=</op:operator> <call><name pos:line="597" pos:column="18">KeWaitForSingleObject</name><argument_list pos:line="597" pos:column="39">(
+                    <argument><expr><op:operator pos:line="598" pos:column="21">&amp;</op:operator><name><name pos:line="598" pos:column="22">Participant</name><op:operator pos:line="598" pos:column="33">-&gt;</op:operator><name pos:line="598" pos:column="35">WaitEvent</name></name></expr></argument>,
+                    <argument><expr><name pos:line="599" pos:column="21">Executive</name></expr></argument>,
+                    <argument><expr><name pos:line="600" pos:column="21">KernelMode</name></expr></argument>,
+                    <argument><expr><name pos:line="601" pos:column="21">FALSE</name></expr></argument>,
+                    <argument><expr><name pos:line="602" pos:column="21">Timeout</name></expr></argument>
+                    )</argument_list></call></expr>;</expr_stmt>
+
+        <comment type="line" pos:line="605" pos:column="9">//</comment>
+        <comment type="line" pos:line="606" pos:column="9">// Calculate time spent waiting.</comment>
+        <comment type="line" pos:line="607" pos:column="9">//</comment>
+        <expr_stmt><expr><call><name pos:line="608" pos:column="9">KeQuerySystemTime</name><argument_list pos:line="608" pos:column="26">(<argument><expr><op:operator pos:line="608" pos:column="27">&amp;</op:operator><name pos:line="608" pos:column="28">ElapsedTime</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        <expr_stmt><expr><name><name pos:line="609" pos:column="9">ElapsedTime</name><op:operator pos:line="609" pos:column="20">.</op:operator><name pos:line="609" pos:column="21">QuadPart</name></name> <op:operator pos:line="609" pos:column="30">-=</op:operator> <name><name pos:line="609" pos:column="33">StartTime</name><op:operator pos:line="609" pos:column="42">.</op:operator><name pos:line="609" pos:column="43">QuadPart</name></name></expr>;</expr_stmt>
+    
+        <if pos:line="611" pos:column="9">if <condition pos:line="611" pos:column="12">( <expr><name pos:line="611" pos:column="14">Status</name> <op:operator pos:line="611" pos:column="21">==</op:operator> <name pos:line="611" pos:column="24">STATUS_TIMEOUT</name></expr> )</condition><then pos:line="611" pos:column="40">
+            <return pos:line="612" pos:column="13">return <expr><name pos:line="612" pos:column="20">STATUS_TIMEOUT</name></expr>;</return></then></if>
+        
+        <comment type="line" pos:line="614" pos:column="9">//</comment>
+        <comment type="line" pos:line="615" pos:column="9">// We've been woken up, let's adjust our timeout and retry.  If the </comment>
+        <comment type="line" pos:line="616" pos:column="9">// timeout is negative, it's relative to the start time, and we adjust </comment>
+        <comment type="line" pos:line="617" pos:column="9">// for elapsed time above.  Otherwise, the timeout is NULL (infinite) </comment>
+        <comment type="line" pos:line="618" pos:column="9">// or an absolute time, and no adjustment is necessary.</comment>
+        <comment type="line" pos:line="619" pos:column="9">//</comment>
+        <if pos:line="620" pos:column="9">if <condition pos:line="620" pos:column="12">( <expr><name pos:line="620" pos:column="14">Timeout</name> <op:operator pos:line="620" pos:column="22">!=</op:operator> <name pos:line="620" pos:column="25">NULL</name> <op:operator pos:line="620" pos:column="30">&amp;&amp;</op:operator> <name><name pos:line="620" pos:column="33">Timeout</name><op:operator pos:line="620" pos:column="40">-&gt;</op:operator><name pos:line="620" pos:column="42">QuadPart</name></name> <op:operator pos:line="620" pos:column="51">&lt;</op:operator> <lit:literal type="number" pos:line="620" pos:column="53">0</lit:literal></expr> )</condition><then pos:line="620" pos:column="56">
+        <block pos:line="621" pos:column="9">{
+            <expr_stmt><expr><name><name pos:line="622" pos:column="13">Timeout</name><op:operator pos:line="622" pos:column="20">-&gt;</op:operator><name pos:line="622" pos:column="22">QuadPart</name></name> <op:operator pos:line="622" pos:column="31">+=</op:operator> <name><name pos:line="622" pos:column="34">ElapsedTime</name><op:operator pos:line="622" pos:column="45">.</op:operator><name pos:line="622" pos:column="46">QuadPart</name></name></expr>;</expr_stmt>
+            <if pos:line="623" pos:column="13">if <condition pos:line="623" pos:column="16">( <expr><name><name pos:line="623" pos:column="18">Timeout</name><op:operator pos:line="623" pos:column="25">-&gt;</op:operator><name pos:line="623" pos:column="27">QuadPart</name></name> <op:operator pos:line="623" pos:column="36">&gt;=</op:operator> <lit:literal type="number" pos:line="623" pos:column="39">0</lit:literal></expr> )</condition><then pos:line="623" pos:column="42">
+                <return pos:line="624" pos:column="17">return <expr><name pos:line="624" pos:column="24">STATUS_TIMEOUT</name></expr>;</return></then></if>
+        }</block></then></if>
+    }</block></while>
+
+    <comment type="line" pos:line="628" pos:column="5">// Should never get here.</comment>
+    <return pos:line="629" pos:column="5">return <expr><name pos:line="629" pos:column="12">Status</name></expr>;</return>
+}</block></function>
+	
+
+<function><type><name pos:line="633" pos:column="1">NTSTATUS</name>
+<name pos:line="634" pos:column="1">NTAPI</name></type>
+<name pos:line="635" pos:column="1">PmuRmRelease</name><parameter_list pos:line="635" pos:column="13">(
+    <param><decl><type><name pos:line="636" pos:column="5">IN</name>  <name pos:line="636" pos:column="9">PPMURM_PARTICIPANT</name></type>  <name pos:line="636" pos:column="29">Participant</name></decl></param>,
+	<param><decl><type><name pos:line="637" pos:column="9">IN</name>  <name pos:line="637" pos:column="13">KAFFINITY</name></type>	        <name pos:line="637" pos:column="33">CpuMask</name></decl></param>
+	)</parameter_list>
+<comment type="block" pos:line="639" pos:column="1">/*++
+
+Routine Description:
+
+    This function returns PMU resources for the given CPUs.
+
+Arguments:
+
+    Participant - The PMURM_PARTICIPANT pointer returned from PmuRmParticipate.
+
+    CpuMask - A bit mask indicating which CPUs to return PMU resources for.
+
+Return Value:
+
+    NTSTATUS.
+
+Notes:
+
+    Always called at PASSIVE_LEVEL.
+
+--*/</comment>
+<block pos:line="660" pos:column="1">{
+    <decl_stmt><decl><type><name pos:line="661" pos:column="5">PMURM_CB_IN_PARMS</name></type> <name pos:line="661" pos:column="23">InParms</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="662" pos:column="5">KIRQL</name></type>    <name pos:line="662" pos:column="14">OldIrql</name></decl>;</decl_stmt>
+
+    <comment type="line" pos:line="664" pos:column="5">//</comment>
+    <comment type="line" pos:line="665" pos:column="5">// The callback has to have been created</comment>
+    <comment type="line" pos:line="666" pos:column="5">//</comment>
+    <if pos:line="667" pos:column="5">if <condition pos:line="667" pos:column="8">( <expr><name pos:line="667" pos:column="10">CallbackObject</name> <op:operator pos:line="667" pos:column="25">==</op:operator> <name pos:line="667" pos:column="28">NULL</name></expr> )</condition><then pos:line="667" pos:column="34">
+        <return pos:line="668" pos:column="9">return <expr><name pos:line="668" pos:column="16">STATUS_UNSUCCESSFUL</name></expr>;</return></then></if>
+
+    <comment type="line" pos:line="670" pos:column="5">//</comment>
+    <comment type="line" pos:line="671" pos:column="5">// Don't bother releasing what we don't have.</comment>
+    <comment type="line" pos:line="672" pos:column="5">//</comment>
+    <if pos:line="673" pos:column="5">if <condition pos:line="673" pos:column="8">( <expr><op:operator pos:line="673" pos:column="10">(</op:operator><name><name pos:line="673" pos:column="11">Participant</name><op:operator pos:line="673" pos:column="22">-&gt;</op:operator><name pos:line="673" pos:column="24">CpuMask</name></name> <op:operator pos:line="673" pos:column="32">&amp;</op:operator> <name pos:line="673" pos:column="34">CpuMask</name><op:operator pos:line="673" pos:column="41">)</op:operator> <op:operator pos:line="673" pos:column="43">==</op:operator> <lit:literal type="number" pos:line="673" pos:column="46">0</lit:literal></expr> )</condition><then pos:line="673" pos:column="49">
+        <return pos:line="674" pos:column="9">return <expr><name pos:line="674" pos:column="16">STATUS_UNSUCCESSFUL</name></expr>;</return></then></if>
+
+    <comment type="line" pos:line="676" pos:column="5">// Set up in parms</comment>
+    <expr_stmt><expr><name><name pos:line="677" pos:column="5">InParms</name><op:operator pos:line="677" pos:column="12">.</op:operator><name pos:line="677" pos:column="13">Acquiring</name></name>   <op:operator pos:line="677" pos:column="25">=</op:operator> <name pos:line="677" pos:column="27">FALSE</name></expr>;</expr_stmt>
+    <expr_stmt><expr><name><name pos:line="678" pos:column="5">InParms</name><op:operator pos:line="678" pos:column="12">.</op:operator><name pos:line="678" pos:column="13">CpuMask</name></name>     <op:operator pos:line="678" pos:column="25">=</op:operator> <name pos:line="678" pos:column="27">CpuMask</name></expr>;</expr_stmt>
+    <expr_stmt><expr><name><name pos:line="679" pos:column="5">InParms</name><op:operator pos:line="679" pos:column="12">.</op:operator><name pos:line="679" pos:column="13">Participant</name></name> <op:operator pos:line="679" pos:column="25">=</op:operator> <name pos:line="679" pos:column="27">Participant</name></expr>;</expr_stmt>
+    
+    <comment type="line" pos:line="681" pos:column="5">// </comment>
+    <comment type="line" pos:line="682" pos:column="5">// This callback *must* happen synchronously.  </comment>
+    <comment type="line" pos:line="683" pos:column="5">//</comment>
+	<expr_stmt><expr><call><name pos:line="684" pos:column="9">IoAcquireCancelSpinLock</name><argument_list pos:line="684" pos:column="32">(<argument><expr><op:operator pos:line="684" pos:column="33">&amp;</op:operator><name pos:line="684" pos:column="34">OldIrql</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+    <block pos:line="685" pos:column="5">{
+        <comment type="line" pos:line="686" pos:column="9">//</comment>
+        <comment type="line" pos:line="687" pos:column="9">// Slam our CpuMask.</comment>
+        <comment type="line" pos:line="688" pos:column="9">//</comment>
+        <expr_stmt><expr><name><name pos:line="689" pos:column="9">Participant</name><op:operator pos:line="689" pos:column="20">-&gt;</op:operator><name pos:line="689" pos:column="22">CpuMask</name></name> <op:operator pos:line="689" pos:column="30">&amp;=</op:operator> <op:operator pos:line="689" pos:column="33">~</op:operator><name pos:line="689" pos:column="34">CpuMask</name></expr>;</expr_stmt>
+        
+        <comment type="line" pos:line="691" pos:column="9">//</comment>
+        <comment type="line" pos:line="692" pos:column="9">// Notify everyone that PMU resources have become available.</comment>
+        <comment type="line" pos:line="693" pos:column="9">//</comment>
+        <expr_stmt><expr><call><name pos:line="694" pos:column="9">ExNotifyCallback</name><argument_list pos:line="694" pos:column="25">(<argument><expr><name pos:line="694" pos:column="26">CallbackObject</name></expr></argument>, <argument><expr><op:operator pos:line="694" pos:column="42">&amp;</op:operator><name pos:line="694" pos:column="43">InParms</name></expr></argument>, <argument><expr><name pos:line="694" pos:column="52">NULL</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+    }</block>    
+    <expr_stmt><expr><call><name pos:line="696" pos:column="5">IoReleaseCancelSpinLock</name><argument_list pos:line="696" pos:column="28">(<argument><expr><name pos:line="696" pos:column="29">OldIrql</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+    <return pos:line="698" pos:column="5">return <expr><name pos:line="698" pos:column="12">STATUS_SUCCESS</name></expr>;</return>
+}</block></function>
+</unit>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\MmioChainer.h" pos:tabs="8"><cpp:ifndef pos:line="1" pos:column="1">#<cpp:directive pos:line="1" pos:column="2">ifndef</cpp:directive> <name pos:line="1" pos:column="9">MMIOCHAINER_H</name></cpp:ifndef>
+<cpp:define pos:line="2" pos:column="1">#<cpp:directive pos:line="2" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="2" pos:column="9">MMIOCHAINER_H</name></cpp:macro></cpp:define>
+
+<cpp:include pos:line="4" pos:column="1">#<cpp:directive pos:line="4" pos:column="2">include</cpp:directive> <cpp:file pos:line="4" pos:column="10">&lt;windows.h&gt;</cpp:file></cpp:include>
+
+<namespace pos:line="6" pos:column="1">namespace <name pos:line="6" pos:column="11">IronSpigot</name>
+<block pos:line="7" pos:column="1">{
+<struct pos:line="8" pos:column="1">struct <name pos:line="8" pos:column="8">MmioDataStructure</name>
+<block pos:line="9" pos:column="1">{<public type="default" pos:line="9" pos:column="2">
+	<decl_stmt><decl><type><name pos:line="10" pos:column="9">bool</name></type> <name pos:line="10" pos:column="14">m_finished</name></decl>;</decl_stmt>
+	<decl_stmt><decl><type><name pos:line="11" pos:column="9">bool</name></type> <name pos:line="11" pos:column="14">m_abort</name></decl>;</decl_stmt>
+	<decl_stmt><decl><type><name pos:line="12" pos:column="9">HRESULT</name></type> <name pos:line="12" pos:column="17">m_hrFinished</name></decl>;</decl_stmt>
+	<decl_stmt><decl><type><name pos:line="13" pos:column="9">unsigned</name> <name pos:line="13" pos:column="18">char</name></type> <name pos:line="13" pos:column="23">m_soFar</name></decl>;</decl_stmt>
+	<decl_stmt><decl><type><name pos:line="14" pos:column="9">WCHAR</name></type> <name><name pos:line="14" pos:column="15">m_szEventName</name><index pos:line="14" pos:column="28">[<expr><name pos:line="14" pos:column="29">MAX_PATH</name></expr>]</index></name></decl>;</decl_stmt>
+</public>}</block>;</struct>
+
+<class pos:line="17" pos:column="1">class <name pos:line="17" pos:column="7">MmioChainerBase</name>
+<block pos:line="18" pos:column="1">{<private type="default" pos:line="18" pos:column="2">
+	<decl_stmt><decl><type><name pos:line="19" pos:column="9">HANDLE</name></type> <name pos:line="19" pos:column="16">m_section</name></decl>;</decl_stmt>
+	<decl_stmt><decl><type><name pos:line="20" pos:column="9">HANDLE</name></type> <name pos:line="20" pos:column="16">m_event</name></decl>;</decl_stmt>
+	<decl_stmt><decl><type><name pos:line="21" pos:column="9">MmioDataStructure</name><type:modifier pos:line="21" pos:column="26">*</type:modifier></type> <name pos:line="21" pos:column="28">m_pData</name></decl>;</decl_stmt>
+
+</private><protected pos:line="23" pos:column="1">protected:
+	<destructor><specifier pos:line="24" pos:column="9">virtual</specifier> <name pos:line="24" pos:column="17">~<name pos:line="24" pos:column="18">MmioChainerBase</name></name><parameter_list pos:line="24" pos:column="33">()</parameter_list>
+	<block pos:line="25" pos:column="9">{
+		<if pos:line="26" pos:column="17">if <condition pos:line="26" pos:column="20">(<expr><name pos:line="26" pos:column="21">m_pData</name></expr>)</condition><then pos:line="26" pos:column="29">
+			<expr_stmt><expr><call><name><op:operator pos:line="27" pos:column="25">::</op:operator><name pos:line="27" pos:column="27">UnmapViewOfFile</name></name><argument_list pos:line="27" pos:column="42">(<argument><expr><name pos:line="27" pos:column="43">m_pData</name></expr></argument>)</argument_list></call></expr>;</expr_stmt></then></if>
+	}</block></destructor>
+	<constructor><name pos:line="29" pos:column="9">MmioChainerBase</name><parameter_list pos:line="29" pos:column="24">(<param><decl><type><name pos:line="29" pos:column="25">HANDLE</name></type> <name pos:line="29" pos:column="32">section</name></decl></param>, <param><decl><type><name pos:line="29" pos:column="41">HANDLE</name></type> <name pos:line="29" pos:column="48">hevent</name></decl></param>)</parameter_list>
+		<member_list pos:line="30" pos:column="17">: <call><name pos:line="30" pos:column="19">m_section</name><argument_list pos:line="30" pos:column="28">(<argument><expr><name pos:line="30" pos:column="29">section</name></expr></argument>)</argument_list></call>
+		<op:operator pos:line="31" pos:column="17">,</op:operator> <call><name pos:line="31" pos:column="19">m_event</name><argument_list pos:line="31" pos:column="26">(<argument><expr><name pos:line="31" pos:column="27">hevent</name></expr></argument>)</argument_list></call>
+		<op:operator pos:line="32" pos:column="17">,</op:operator> <call><name pos:line="32" pos:column="19">m_pData</name><argument_list pos:line="32" pos:column="26">(<argument><expr><call><name pos:line="32" pos:column="27">MapView</name><argument_list pos:line="32" pos:column="34">(<argument><expr><name pos:line="32" pos:column="35">section</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call>
+	</member_list><block pos:line="33" pos:column="9">{}</block></constructor>
+
+</protected><public pos:line="35" pos:column="1">public:
+	<function><type><name pos:line="36" pos:column="9">HANDLE</name></type> <name pos:line="36" pos:column="16">GetEventHandle</name><parameter_list pos:line="36" pos:column="30">()</parameter_list> <specifier pos:line="36" pos:column="33">const</specifier> <block pos:line="36" pos:column="39">{ <return pos:line="36" pos:column="41">return <expr><name pos:line="36" pos:column="48">m_event</name></expr>;</return> }</block></function>
+	<function><type><name pos:line="37" pos:column="9">HANDLE</name></type> <name pos:line="37" pos:column="16">GetMmioHandle</name><parameter_list pos:line="37" pos:column="29">()</parameter_list>  <specifier pos:line="37" pos:column="33">const</specifier> <block pos:line="37" pos:column="39">{ <return pos:line="37" pos:column="41">return <expr><name pos:line="37" pos:column="48">m_section</name></expr>;</return> }</block></function>
+	<function><type><name pos:line="38" pos:column="9">MmioDataStructure</name><type:modifier pos:line="38" pos:column="26">*</type:modifier></type> <name pos:line="38" pos:column="28">GetData</name><parameter_list pos:line="38" pos:column="35">()</parameter_list> <block pos:line="38" pos:column="38">{ <return pos:line="38" pos:column="40">return <expr><name pos:line="38" pos:column="47">m_pData</name></expr>;</return> }</block></function>
+
+	<function><type><name pos:line="40" pos:column="9">void</name></type> <name pos:line="40" pos:column="14">Init</name><parameter_list pos:line="40" pos:column="18">(<param><decl><type><name pos:line="40" pos:column="19">LPCWSTR</name></type> <name pos:line="40" pos:column="27">eventName</name></decl></param>)</parameter_list>
+	<block pos:line="41" pos:column="9">{
+		<expr_stmt><expr><name><name pos:line="42" pos:column="17">m_pData</name><op:operator pos:line="42" pos:column="24">-&gt;</op:operator><name pos:line="42" pos:column="26">m_finished</name></name> <op:operator pos:line="42" pos:column="37">=</op:operator> <lit:literal type="boolean" pos:line="42" pos:column="39">false</lit:literal></expr>;</expr_stmt>
+		<expr_stmt><expr><name><name pos:line="43" pos:column="17">m_pData</name><op:operator pos:line="43" pos:column="24">-&gt;</op:operator><name pos:line="43" pos:column="26">m_soFar</name></name> <op:operator pos:line="43" pos:column="34">=</op:operator> <lit:literal type="number" pos:line="43" pos:column="36">0</lit:literal></expr>;</expr_stmt>
+		<expr_stmt><expr><name><name pos:line="44" pos:column="17">m_pData</name><op:operator pos:line="44" pos:column="24">-&gt;</op:operator><name pos:line="44" pos:column="26">m_hrFinished</name></name> <op:operator pos:line="44" pos:column="39">=</op:operator> <name pos:line="44" pos:column="41">E_PENDING</name></expr>;</expr_stmt>
+		<expr_stmt><expr><name><name pos:line="45" pos:column="17">m_pData</name><op:operator pos:line="45" pos:column="24">-&gt;</op:operator><name pos:line="45" pos:column="26">m_abort</name></name> <op:operator pos:line="45" pos:column="34">=</op:operator> <lit:literal type="boolean" pos:line="45" pos:column="36">false</lit:literal></expr>;</expr_stmt>
+		<expr_stmt><expr><call><name pos:line="46" pos:column="17">wcscpy_s</name><argument_list pos:line="46" pos:column="25">(<argument><expr><name><name pos:line="46" pos:column="26">m_pData</name><op:operator pos:line="46" pos:column="33">-&gt;</op:operator><name pos:line="46" pos:column="35">m_szEventName</name></name></expr></argument>, <argument><expr><name pos:line="46" pos:column="50">MAX_PATH</name></expr></argument>, <argument><expr><name pos:line="46" pos:column="60">eventName</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+	}</block></function>
+	<function><type><name pos:line="48" pos:column="9">void</name></type> <name pos:line="48" pos:column="14">Abort</name><parameter_list pos:line="48" pos:column="19">()</parameter_list>
+	<block pos:line="49" pos:column="9">{
+		<expr_stmt><expr><name><name pos:line="50" pos:column="17">m_pData</name><op:operator pos:line="50" pos:column="24">-&gt;</op:operator><name pos:line="50" pos:column="26">m_abort</name></name> <op:operator pos:line="50" pos:column="34">=</op:operator> <lit:literal type="boolean" pos:line="50" pos:column="36">true</lit:literal></expr>;</expr_stmt>
+	}</block></function>
+
+	<function><type><name pos:line="53" pos:column="9">bool</name></type> <name pos:line="53" pos:column="14">IsDone</name><parameter_list pos:line="53" pos:column="20">()</parameter_list> <specifier pos:line="53" pos:column="23">const</specifier> <block pos:line="53" pos:column="29">{ <return pos:line="53" pos:column="31">return <expr><name><name pos:line="53" pos:column="38">m_pData</name><op:operator pos:line="53" pos:column="45">-&gt;</op:operator><name pos:line="53" pos:column="47">m_finished</name></name></expr>;</return> }</block></function>
+	<function><type><name pos:line="54" pos:column="9">unsigned</name> <name pos:line="54" pos:column="18">char</name></type> <name pos:line="54" pos:column="23">GetProgress</name><parameter_list pos:line="54" pos:column="34">()</parameter_list> <specifier pos:line="54" pos:column="37">const</specifier> <block pos:line="54" pos:column="43">{ <return pos:line="54" pos:column="45">return <expr><name><name pos:line="54" pos:column="52">m_pData</name><op:operator pos:line="54" pos:column="59">-&gt;</op:operator><name pos:line="54" pos:column="61">m_soFar</name></name></expr>;</return> }</block></function>
+	<function><type><name pos:line="55" pos:column="9">HRESULT</name></type> <name pos:line="55" pos:column="17">GetResult</name><parameter_list pos:line="55" pos:column="26">()</parameter_list> <specifier pos:line="55" pos:column="29">const</specifier> <block pos:line="55" pos:column="35">{ <return pos:line="55" pos:column="37">return <expr><name><name pos:line="55" pos:column="44">m_pData</name><op:operator pos:line="55" pos:column="51">-&gt;</op:operator><name pos:line="55" pos:column="53">m_hrFinished</name></name></expr>;</return> }</block></function>
+	<function><type><name pos:line="56" pos:column="9">bool</name></type> <name pos:line="56" pos:column="14">IsAborted</name><parameter_list pos:line="56" pos:column="23">()</parameter_list> <specifier pos:line="56" pos:column="26">const</specifier> <block pos:line="56" pos:column="32">{ <return pos:line="56" pos:column="34">return <expr><name><name pos:line="56" pos:column="41">m_pData</name><op:operator pos:line="56" pos:column="48">-&gt;</op:operator><name pos:line="56" pos:column="50">m_abort</name></name></expr>;</return> }</block></function>
+
+	<function><type><name pos:line="58" pos:column="9">void</name></type> <name pos:line="58" pos:column="14">Finished</name><parameter_list pos:line="58" pos:column="22">(<param><decl><type><name pos:line="58" pos:column="23">HRESULT</name></type> <name pos:line="58" pos:column="31">hr</name></decl></param>)</parameter_list>
+	<block pos:line="59" pos:column="9">{
+		<expr_stmt><expr><name><name pos:line="60" pos:column="17">m_pData</name><op:operator pos:line="60" pos:column="24">-&gt;</op:operator><name pos:line="60" pos:column="26">m_hrFinished</name></name> <op:operator pos:line="60" pos:column="39">=</op:operator> <name pos:line="60" pos:column="41">hr</name></expr>;</expr_stmt>
+		<expr_stmt><expr><name><name pos:line="61" pos:column="17">m_pData</name><op:operator pos:line="61" pos:column="24">-&gt;</op:operator><name pos:line="61" pos:column="26">m_finished</name></name> <op:operator pos:line="61" pos:column="37">=</op:operator> <lit:literal type="boolean" pos:line="61" pos:column="39">true</lit:literal></expr>;</expr_stmt>
+		<expr_stmt><expr><call><name><op:operator pos:line="62" pos:column="17">::</op:operator><name pos:line="62" pos:column="19">SetEvent</name></name><argument_list pos:line="62" pos:column="27">(<argument><expr><name pos:line="62" pos:column="28">m_event</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+	}</block></function>
+	<function><type><name pos:line="64" pos:column="9">void</name></type> <name pos:line="64" pos:column="14">SoFar</name><parameter_list pos:line="64" pos:column="19">(<param><decl><type><name pos:line="64" pos:column="20">unsigned</name> <name pos:line="64" pos:column="29">char</name></type> <name pos:line="64" pos:column="34">soFar</name></decl></param>)</parameter_list>
+	<block pos:line="65" pos:column="9">{
+		<expr_stmt><expr><name><name pos:line="66" pos:column="17">m_pData</name><op:operator pos:line="66" pos:column="24">-&gt;</op:operator><name pos:line="66" pos:column="26">m_soFar</name></name> <op:operator pos:line="66" pos:column="34">=</op:operator> <name pos:line="66" pos:column="36">soFar</name></expr>;</expr_stmt>
+		<expr_stmt><expr><call><name><op:operator pos:line="67" pos:column="17">::</op:operator><name pos:line="67" pos:column="19">SetEvent</name></name><argument_list pos:line="67" pos:column="27">(<argument><expr><name pos:line="67" pos:column="28">m_event</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+	}</block></function>
+
+</public><protected pos:line="70" pos:column="1">protected:
+	<function><type><specifier pos:line="71" pos:column="9">static</specifier> <name pos:line="71" pos:column="16">MmioDataStructure</name><type:modifier pos:line="71" pos:column="33">*</type:modifier></type> <name pos:line="71" pos:column="35">MapView</name><parameter_list pos:line="71" pos:column="42">(<param><decl><type><name pos:line="71" pos:column="43">HANDLE</name></type> <name pos:line="71" pos:column="50">section</name></decl></param>)</parameter_list>
+	<block pos:line="72" pos:column="9">{
+		<return pos:line="73" pos:column="17">return <expr><call><name><name pos:line="73" pos:column="24">reinterpret_cast</name><argument_list pos:line="73" pos:column="40">&lt;<argument><expr><name pos:line="73" pos:column="41">MmioDataStructure</name><op:operator pos:line="73" pos:column="58">*</op:operator></expr></argument>&gt;</argument_list></name><argument_list pos:line="73" pos:column="60">(<argument><expr><call><name><op:operator pos:line="73" pos:column="61">::</op:operator><name pos:line="73" pos:column="63">MapViewOfFile</name></name><argument_list pos:line="73" pos:column="76">(<argument><expr><name pos:line="73" pos:column="77">section</name></expr></argument>,
+																	<argument><expr><name pos:line="74" pos:column="137">FILE_MAP_WRITE</name></expr></argument>,
+																	<argument><expr><lit:literal type="number" pos:line="75" pos:column="137">0</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="75" pos:column="140">0</lit:literal></expr></argument>,
+																	<argument><expr><sizeof pos:line="76" pos:column="137">sizeof<argument_list pos:line="76" pos:column="143">(<argument><expr><name pos:line="76" pos:column="144">MmioDataStructure</name></expr></argument>)</argument_list></sizeof></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</return>
+	}</block></function>
+</protected>}</block>;</class>
+
+<class pos:line="80" pos:column="1">class <name pos:line="80" pos:column="7">MmioChainer</name> <super pos:line="80" pos:column="19">: <specifier pos:line="80" pos:column="21">protected</specifier> <name pos:line="80" pos:column="31">MmioChainerBase</name></super>
+<block pos:line="81" pos:column="1">{<private type="default" pos:line="81" pos:column="2">
+</private><public pos:line="82" pos:column="1">public:
+	<constructor><name pos:line="83" pos:column="9">MmioChainer</name> <parameter_list pos:line="83" pos:column="21">(<param><decl><type><name pos:line="83" pos:column="22">LPCWSTR</name></type> <name pos:line="83" pos:column="30">sectionName</name></decl></param>, <param><decl><type><name pos:line="83" pos:column="43">LPCWSTR</name></type> <name pos:line="83" pos:column="51">eventName</name></decl></param>)</parameter_list>
+		<member_list pos:line="84" pos:column="17">: <call><name pos:line="84" pos:column="19">MmioChainerBase</name><argument_list pos:line="84" pos:column="34">(<argument><expr><call><name pos:line="84" pos:column="35">CreateSection</name><argument_list pos:line="84" pos:column="48">(<argument><expr><name pos:line="84" pos:column="49">sectionName</name></expr></argument>)</argument_list></call></expr></argument>, <argument><expr><call><name pos:line="84" pos:column="63">CreateEvent</name><argument_list pos:line="84" pos:column="74">(<argument><expr><name pos:line="84" pos:column="75">eventName</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call>
+	</member_list><block pos:line="85" pos:column="9">{
+		<expr_stmt><expr><call><name pos:line="86" pos:column="17">Init</name><argument_list pos:line="86" pos:column="21">(<argument><expr><name pos:line="86" pos:column="22">eventName</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+	}</block></constructor>
+	<destructor><specifier pos:line="88" pos:column="9">virtual</specifier> <name pos:line="88" pos:column="17">~<name pos:line="88" pos:column="18">MmioChainer</name></name> <parameter_list pos:line="88" pos:column="30">()</parameter_list>
+	<block pos:line="89" pos:column="9">{
+		<expr_stmt><expr><call><name><op:operator pos:line="90" pos:column="17">::</op:operator><name pos:line="90" pos:column="19">CloseHandle</name></name><argument_list pos:line="90" pos:column="30">(<argument><expr><call><name pos:line="90" pos:column="31">GetEventHandle</name><argument_list pos:line="90" pos:column="45">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+		<expr_stmt><expr><call><name><op:operator pos:line="91" pos:column="17">::</op:operator><name pos:line="91" pos:column="19">CloseHandle</name></name><argument_list pos:line="91" pos:column="30">(<argument><expr><call><name pos:line="91" pos:column="31">GetMmioHandle</name><argument_list pos:line="91" pos:column="44">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+	}</block></destructor>
+
+</public><public pos:line="94" pos:column="1">public:
+	<using pos:line="95" pos:column="9">using <name><name pos:line="95" pos:column="15">MmioChainerBase</name><op:operator pos:line="95" pos:column="30">::</op:operator><name pos:line="95" pos:column="32">Abort</name></name>;</using>
+	<function><type><name pos:line="96" pos:column="9">void</name></type> <name pos:line="96" pos:column="14">Run</name><parameter_list pos:line="96" pos:column="17">(<param><decl><type><name pos:line="96" pos:column="18">HANDLE</name></type> <name pos:line="96" pos:column="25">process</name></decl></param>)</parameter_list>
+	<block pos:line="97" pos:column="9">{
+		<decl_stmt><decl><type><name pos:line="98" pos:column="17">HANDLE</name></type> <name><name pos:line="98" pos:column="24">handles</name><index pos:line="98" pos:column="31">[<expr><lit:literal type="number" pos:line="98" pos:column="32">2</lit:literal></expr>]</index></name> <init pos:line="98" pos:column="35">= <expr><block pos:line="98" pos:column="37">{ <expr><name pos:line="98" pos:column="39">process</name></expr>, <macro><name pos:line="98" pos:column="48">GetEventHandle</name><argument_list pos:line="98" pos:column="62">()</argument_list></macro> }</block></expr></init></decl>;</decl_stmt>
+
+		<while pos:line="100" pos:column="17">while<condition pos:line="100" pos:column="22">(<expr><op:operator pos:line="100" pos:column="23">!</op:operator><call><name pos:line="100" pos:column="24">IsDone</name><argument_list pos:line="100" pos:column="30">()</argument_list></call></expr>)</condition>
+		<block pos:line="101" pos:column="17">{
+			<decl_stmt><decl><type><name pos:line="102" pos:column="25">DWORD</name></type> <name pos:line="102" pos:column="31">ret</name> <init pos:line="102" pos:column="35">= <expr><call><name><op:operator pos:line="102" pos:column="37">::</op:operator><name pos:line="102" pos:column="39">WaitForMultipleObjects</name></name><argument_list pos:line="102" pos:column="61">(<argument><expr><lit:literal type="number" pos:line="102" pos:column="62">2</lit:literal></expr></argument>, <argument><expr><name pos:line="102" pos:column="65">handles</name></expr></argument>, <argument><expr><name pos:line="102" pos:column="74">FALSE</name></expr></argument>, <argument><expr><lit:literal type="number" pos:line="102" pos:column="81">100</lit:literal></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+			<switch pos:line="103" pos:column="25">switch<condition pos:line="103" pos:column="31">(<expr><name pos:line="103" pos:column="32">ret</name></expr>)</condition>
+			<block pos:line="104" pos:column="25">{
+			<case pos:line="105" pos:column="25">case <expr><name pos:line="105" pos:column="30">WAIT_OBJECT_0</name></expr>:
+			<block pos:line="106" pos:column="25">{
+				<if pos:line="107" pos:column="33">if <condition pos:line="107" pos:column="36">(<expr><call><name pos:line="107" pos:column="37">IsDone</name><argument_list pos:line="107" pos:column="43">()</argument_list></call> <op:operator pos:line="107" pos:column="46">==</op:operator> <lit:literal type="boolean" pos:line="107" pos:column="49">false</lit:literal></expr>)</condition><then pos:line="107" pos:column="55">
+				<block pos:line="108" pos:column="33">{
+					<decl_stmt><decl><type><name pos:line="109" pos:column="41">HRESULT</name></type> <name pos:line="109" pos:column="49">hr</name> <init pos:line="109" pos:column="52">= <expr><call><name pos:line="109" pos:column="54">GetResult</name><argument_list pos:line="109" pos:column="63">()</argument_list></call></expr></init></decl>;</decl_stmt>
+					<if pos:line="110" pos:column="41">if <condition pos:line="110" pos:column="44">(<expr><name pos:line="110" pos:column="45">hr</name> <op:operator pos:line="110" pos:column="48">==</op:operator> <name pos:line="110" pos:column="51">E_PENDING</name></expr>)</condition><then pos:line="110" pos:column="61">
+						<expr_stmt><expr><call><name pos:line="111" pos:column="49">OnFinished</name><argument_list pos:line="111" pos:column="59">(<argument><expr><name pos:line="111" pos:column="60">E_FAIL</name></expr></argument>)</argument_list></call></expr>;</expr_stmt></then>
+					<else pos:line="112" pos:column="41">else
+						<expr_stmt><expr><call><name pos:line="113" pos:column="49">OnFinished</name><argument_list pos:line="113" pos:column="59">(<argument><expr><name pos:line="113" pos:column="60">hr</name></expr></argument>)</argument_list></call></expr>;</expr_stmt></else></if>
+					<return pos:line="114" pos:column="41">return;</return>
+				}</block></then></if>
+				<break pos:line="116" pos:column="33">break;</break>
+			}</block>
+			</case><case pos:line="118" pos:column="25">case <expr><name pos:line="118" pos:column="30">WAIT_OBJECT_0</name> <op:operator pos:line="118" pos:column="44">+</op:operator> <lit:literal type="number" pos:line="118" pos:column="46">1</lit:literal></expr>:
+				<expr_stmt><expr><call><name pos:line="119" pos:column="33">OnProgress</name><argument_list pos:line="119" pos:column="43">(<argument><expr><call><name pos:line="119" pos:column="44">GetProgress</name><argument_list pos:line="119" pos:column="55">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+				<break pos:line="120" pos:column="33">break;</break>
+			</case><default pos:line="121" pos:column="25">default:
+				<break pos:line="122" pos:column="33">break;</break>
+			</default>}</block></switch>		
+		}</block></while>
+		<expr_stmt><expr><call><name pos:line="125" pos:column="17">OnFinished</name><argument_list pos:line="125" pos:column="27">(<argument><expr><call><name pos:line="125" pos:column="28">GetResult</name><argument_list pos:line="125" pos:column="37">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+	}</block></function>
+
+</public><private pos:line="128" pos:column="1">private:
+	<function_decl><type><specifier pos:line="129" pos:column="9">virtual</specifier> <name pos:line="129" pos:column="17">void</name></type> <name pos:line="129" pos:column="22">OnProgress</name><parameter_list pos:line="129" pos:column="32">(<param><decl><type><name pos:line="129" pos:column="33">unsigned</name> <name pos:line="129" pos:column="42">char</name></type> <name pos:line="129" pos:column="47">soFar</name></decl></param>)</parameter_list> = <lit:literal type="number" pos:line="129" pos:column="56">0</lit:literal>;</function_decl>
+	<function_decl><type><specifier pos:line="130" pos:column="9">virtual</specifier> <name pos:line="130" pos:column="17">void</name></type> <name pos:line="130" pos:column="22">OnFinished</name><parameter_list pos:line="130" pos:column="32">(<param><decl><type><name pos:line="130" pos:column="33">HRESULT</name></type> <name pos:line="130" pos:column="41">hr</name></decl></param>)</parameter_list> = <lit:literal type="number" pos:line="130" pos:column="47">0</lit:literal>;</function_decl>
+
+</private><private pos:line="132" pos:column="1">private:
+	<function><type><specifier pos:line="133" pos:column="9">static</specifier> <name pos:line="133" pos:column="16">HANDLE</name></type> <name pos:line="133" pos:column="23">CreateSection</name><parameter_list pos:line="133" pos:column="36">(<param><decl><type><name pos:line="133" pos:column="37">LPCWSTR</name></type> <name pos:line="133" pos:column="45">sectionName</name></decl></param>)</parameter_list>
+	<block pos:line="134" pos:column="9">{
+		<return pos:line="135" pos:column="17">return <expr><call><name><op:operator pos:line="135" pos:column="24">::</op:operator><name pos:line="135" pos:column="26">CreateFileMapping</name></name> <argument_list pos:line="135" pos:column="44">(<argument><expr><name pos:line="135" pos:column="45">INVALID_HANDLE_VALUE</name></expr></argument>,
+									<argument><expr><name pos:line="136" pos:column="73">NULL</name></expr></argument>,
+									<argument><expr><name pos:line="137" pos:column="73">PAGE_READWRITE</name></expr></argument>,
+									<argument><expr><lit:literal type="number" pos:line="138" pos:column="73">0</lit:literal></expr></argument>,
+									<argument><expr><sizeof pos:line="139" pos:column="73">sizeof<argument_list pos:line="139" pos:column="79">(<argument><expr><name pos:line="139" pos:column="80">MmioDataStructure</name></expr></argument>)</argument_list></sizeof></expr></argument>,
+									<argument><expr><name pos:line="140" pos:column="73">sectionName</name></expr></argument>)</argument_list></call></expr>;</return>
+	}</block></function>
+	<function><type><specifier pos:line="142" pos:column="9">static</specifier> <name pos:line="142" pos:column="16">HANDLE</name></type> <name pos:line="142" pos:column="23">CreateEvent</name><parameter_list pos:line="142" pos:column="34">(<param><decl><type><name pos:line="142" pos:column="35">LPCWSTR</name></type> <name pos:line="142" pos:column="43">eventName</name></decl></param>)</parameter_list>
+	<block pos:line="143" pos:column="9">{
+		<return pos:line="144" pos:column="17">return <expr><call><name><op:operator pos:line="144" pos:column="24">::</op:operator><name pos:line="144" pos:column="26">CreateEvent</name></name><argument_list pos:line="144" pos:column="37">(<argument><expr><name pos:line="144" pos:column="38">NULL</name></expr></argument>, <argument><expr><name pos:line="144" pos:column="44">FALSE</name></expr></argument>, <argument><expr><name pos:line="144" pos:column="51">FALSE</name></expr></argument>, <argument><expr><name pos:line="144" pos:column="58">eventName</name></expr></argument>)</argument_list></call></expr>;</return>
+	}</block></function>
+</private>}</block>;</class>
+
+<class pos:line="148" pos:column="1">class <name pos:line="148" pos:column="7">MmioChainee</name> <super pos:line="148" pos:column="19">: <specifier pos:line="148" pos:column="21">protected</specifier> <name pos:line="148" pos:column="31">MmioChainerBase</name></super>
+<block pos:line="149" pos:column="1">{<private type="default" pos:line="149" pos:column="2">
+</private><public pos:line="150" pos:column="1">public:
+	<constructor><name pos:line="151" pos:column="9">MmioChainee</name><parameter_list pos:line="151" pos:column="20">(<param><decl><type><name pos:line="151" pos:column="21">LPCWSTR</name></type> <name pos:line="151" pos:column="29">sectionName</name></decl></param>)</parameter_list>
+		<member_list pos:line="152" pos:column="17">: <call><name pos:line="152" pos:column="19">MmioChainerBase</name><argument_list pos:line="152" pos:column="34">(<argument><expr><call><name pos:line="152" pos:column="35">OpenSection</name><argument_list pos:line="152" pos:column="46">(<argument><expr><name pos:line="152" pos:column="47">sectionName</name></expr></argument>)</argument_list></call></expr></argument>, <argument><expr><call><name pos:line="152" pos:column="61">OpenEvent</name><argument_list pos:line="152" pos:column="70">(<argument><expr><call><name pos:line="152" pos:column="71">GetEventName</name><argument_list pos:line="152" pos:column="83">(<argument><expr><name pos:line="152" pos:column="84">sectionName</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call>
+	</member_list><block pos:line="153" pos:column="9">{}</block></constructor>
+	<destructor><specifier pos:line="154" pos:column="9">virtual</specifier> <name pos:line="154" pos:column="17">~<name pos:line="154" pos:column="18">MmioChainee</name></name><parameter_list pos:line="154" pos:column="29">()</parameter_list> <block pos:line="154" pos:column="32">{}</block></destructor>
+
+</public><private pos:line="156" pos:column="1">private:
+	<function><type><specifier pos:line="157" pos:column="9">static</specifier> <name pos:line="157" pos:column="16">HANDLE</name></type> <name pos:line="157" pos:column="23">OpenSection</name><parameter_list pos:line="157" pos:column="34">(<param><decl><type><name pos:line="157" pos:column="35">LPCWSTR</name></type> <name pos:line="157" pos:column="43">sectionName</name></decl></param>)</parameter_list>
+	<block pos:line="158" pos:column="9">{
+		<return pos:line="159" pos:column="17">return <expr><call><name><op:operator pos:line="159" pos:column="24">::</op:operator><name pos:line="159" pos:column="26">OpenFileMapping</name></name><argument_list pos:line="159" pos:column="41">(<argument><expr><name pos:line="159" pos:column="42">FILE_MAP_WRITE</name></expr></argument>,
+								 <argument><expr><name pos:line="160" pos:column="66">FALSE</name></expr></argument>,
+								 <argument><expr><name pos:line="161" pos:column="66">sectionName</name></expr></argument>)</argument_list></call></expr>;</return>
+	}</block></function>
+	<function><type><specifier pos:line="163" pos:column="9">static</specifier> <name pos:line="163" pos:column="16">HANDLE</name></type> <name pos:line="163" pos:column="23">OpenEvent</name><parameter_list pos:line="163" pos:column="32">(<param><decl><type><name pos:line="163" pos:column="33">LPCWSTR</name></type> <name pos:line="163" pos:column="41">eventName</name></decl></param>)</parameter_list>
+	<block pos:line="164" pos:column="9">{
+		<return pos:line="165" pos:column="17">return <expr><call><name><op:operator pos:line="165" pos:column="24">::</op:operator><name pos:line="165" pos:column="26">OpenEvent</name></name> <argument_list pos:line="165" pos:column="36">(<argument><expr><name pos:line="165" pos:column="37">EVENT_MODIFY_STATE</name> <op:operator pos:line="165" pos:column="56">|</op:operator> <name pos:line="165" pos:column="58">SYNCHRONIZE</name></expr></argument>,
+							<argument><expr><name pos:line="166" pos:column="57">FALSE</name></expr></argument>,
+							<argument><expr><name pos:line="167" pos:column="57">eventName</name></expr></argument>)</argument_list></call></expr>;</return>
+	}</block></function>
+	<function><type><specifier pos:line="169" pos:column="9">static</specifier> <name pos:line="169" pos:column="16">CString</name></type> <name pos:line="169" pos:column="24">GetEventName</name><parameter_list pos:line="169" pos:column="36">(<param><decl><type><name pos:line="169" pos:column="37">LPCWSTR</name></type> <name pos:line="169" pos:column="45">sectionName</name></decl></param>)</parameter_list>
+	<block pos:line="170" pos:column="9">{
+		<decl_stmt><decl><type><name pos:line="171" pos:column="17">CString</name></type> <name pos:line="171" pos:column="25">cs</name></decl>;</decl_stmt>
+
+		<decl_stmt><decl><type><name pos:line="173" pos:column="17">HANDLE</name></type> <name pos:line="173" pos:column="24">handle</name> <init pos:line="173" pos:column="31">= <expr><call><name pos:line="173" pos:column="33">OpenSection</name><argument_list pos:line="173" pos:column="44">(<argument><expr><name pos:line="173" pos:column="45">sectionName</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+		<decl_stmt><decl><type><specifier pos:line="174" pos:column="17">const</specifier> <name pos:line="174" pos:column="23">MmioDataStructure</name><type:modifier pos:line="174" pos:column="40">*</type:modifier></type> <name pos:line="174" pos:column="42">pData</name> <init pos:line="174" pos:column="48">= <expr><call><name pos:line="174" pos:column="50">MapView</name><argument_list pos:line="174" pos:column="57">(<argument><expr><name pos:line="174" pos:column="58">handle</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+		<if pos:line="175" pos:column="17">if <condition pos:line="175" pos:column="20">(<expr><name pos:line="175" pos:column="21">pData</name></expr>)</condition><then pos:line="175" pos:column="27">
+		<block pos:line="176" pos:column="17">{
+			<expr_stmt><expr><name pos:line="177" pos:column="25">cs</name> <op:operator pos:line="177" pos:column="28">=</op:operator> <name><name pos:line="177" pos:column="30">pData</name><op:operator pos:line="177" pos:column="35">-&gt;</op:operator><name pos:line="177" pos:column="37">m_szEventName</name></name></expr>;</expr_stmt>
+			<expr_stmt><expr><call><name><op:operator pos:line="178" pos:column="25">::</op:operator><name pos:line="178" pos:column="27">UnmapViewOfFile</name></name><argument_list pos:line="178" pos:column="42">(<argument><expr><name pos:line="178" pos:column="43">pData</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+		}</block></then></if>
+		<expr_stmt><expr><call><name><op:operator pos:line="180" pos:column="17">::</op:operator><name pos:line="180" pos:column="19">CloseHandle</name></name><argument_list pos:line="180" pos:column="30">(<argument><expr><name pos:line="180" pos:column="31">handle</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+		<return pos:line="182" pos:column="17">return <expr><name pos:line="182" pos:column="24">cs</name></expr>;</return>
+	}</block></function>
+</private>}</block>;</class>
+}
+<cpp:endif pos:line="186" pos:column="1">#<cpp:directive pos:line="186" pos:column="2">endif</cpp:directive></cpp:endif></block></namespace></unit>

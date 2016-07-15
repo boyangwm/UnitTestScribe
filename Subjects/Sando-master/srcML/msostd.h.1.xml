@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\office10\msostd.h" pos:tabs="8"><cpp:pragma pos:line="1" pos:column="1">#<cpp:directive pos:line="1" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+
+<comment type="block" format="doxygen" pos:line="3" pos:column="1">/*************************************************************************
+	msostd.h
+
+	Owner: rickp
+	Copyright (c) 1994 Microsoft Corporation
+
+	Standard common definitions shared by all office stuff
+*************************************************************************/</comment>
+
+<cpp:if pos:line="12" pos:column="1">#<cpp:directive pos:line="12" pos:column="2">if</cpp:directive> <expr><op:operator pos:line="12" pos:column="5">!</op:operator><call><name pos:line="12" pos:column="6">defined</name><argument_list pos:line="12" pos:column="13">(<argument><expr><name pos:line="12" pos:column="14">MSOSTD_H</name></expr></argument>)</argument_list></call></expr></cpp:if>
+<cpp:define pos:line="13" pos:column="1">#<cpp:directive pos:line="13" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="13" pos:column="9">MSOSTD_H</name></cpp:macro></cpp:define>
+
+<cpp:ifdef pos:line="15" pos:column="1">#<cpp:directive pos:line="15" pos:column="2">ifdef</cpp:directive> <name pos:line="15" pos:column="8">PPCMAC</name></cpp:ifdef>
+<cpp:error pos:line="16" pos:column="1">#<cpp:directive pos:line="16" pos:column="2">error</cpp:directive></cpp:error>
+<cpp:endif pos:line="17" pos:column="1">#<cpp:directive pos:line="17" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:ifdef pos:line="19" pos:column="1">#<cpp:directive pos:line="19" pos:column="2">ifdef</cpp:directive> <name pos:line="19" pos:column="8">PPCLIB</name></cpp:ifdef>
+<cpp:error pos:line="20" pos:column="1">#<cpp:directive pos:line="20" pos:column="2">error</cpp:directive></cpp:error>
+<cpp:endif pos:line="21" pos:column="1">#<cpp:directive pos:line="21" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:ifdef pos:line="23" pos:column="1">#<cpp:directive pos:line="23" pos:column="2">ifdef</cpp:directive> <name pos:line="23" pos:column="8">M68K</name></cpp:ifdef>
+<cpp:error pos:line="24" pos:column="1">#<cpp:directive pos:line="24" pos:column="2">error</cpp:directive></cpp:error>
+<cpp:endif pos:line="25" pos:column="1">#<cpp:directive pos:line="25" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" format="doxygen" pos:line="27" pos:column="1">/*************************************************************************
+	make sure we have our processor type set up right - note that we
+	now have three - count 'em, three - different symbols defined for
+	each processor we support (e.g., X86, _X86_, and _M_IX386)
+*************************************************************************/</comment>
+
+<cpp:if pos:line="33" pos:column="1">#<cpp:directive pos:line="33" pos:column="2">if</cpp:directive> <expr><call><name pos:line="33" pos:column="5">defined</name><argument_list pos:line="33" pos:column="12">(<argument><expr><name pos:line="33" pos:column="13">X86</name></expr></argument>)</argument_list></call></expr></cpp:if>
+	<comment type="line" pos:line="34" pos:column="9">// intentionally blank...</comment>
+<cpp:elif pos:line="35" pos:column="1">#<cpp:directive pos:line="35" pos:column="2">elif</cpp:directive> <expr><call><name pos:line="35" pos:column="7">defined</name><argument_list pos:line="35" pos:column="14">(<argument><expr><name pos:line="35" pos:column="15">ALPHA</name></expr></argument>)</argument_list></call></expr></cpp:elif>			
+	<cpp:undef pos:line="36" pos:column="9">#<cpp:directive pos:line="36" pos:column="10">undef</cpp:directive> <name pos:line="36" pos:column="16">ALPHA</name></cpp:undef>
+	<cpp:ifndef pos:line="37" pos:column="9">#<cpp:directive pos:line="37" pos:column="10">ifndef</cpp:directive> <name pos:line="37" pos:column="17">_ALPHA_</name></cpp:ifndef>
+		<cpp:define pos:line="38" pos:column="17">#<cpp:directive pos:line="38" pos:column="18">define</cpp:directive> <cpp:macro><name pos:line="38" pos:column="25">_ALPHA_</name></cpp:macro> <cpp:value pos:line="38" pos:column="33">1</cpp:value></cpp:define>
+	<cpp:endif pos:line="39" pos:column="9">#<cpp:directive pos:line="39" pos:column="10">endif</cpp:directive></cpp:endif>
+<cpp:elif pos:line="40" pos:column="1">#<cpp:directive pos:line="40" pos:column="2">elif</cpp:directive> <expr><call><name pos:line="40" pos:column="7">defined</name><argument_list pos:line="40" pos:column="14">(<argument><expr><name pos:line="40" pos:column="15">_IA64_</name></expr></argument>)</argument_list></call></expr></cpp:elif>
+	<comment type="line" pos:line="41" pos:column="9">// intentionally blank...</comment>
+<cpp:elif pos:line="42" pos:column="1">#<cpp:directive pos:line="42" pos:column="2">elif</cpp:directive> <expr><call><name pos:line="42" pos:column="7">defined</name><argument_list pos:line="42" pos:column="14">(<argument><expr><name pos:line="42" pos:column="15">_AXP64_</name></expr></argument>)</argument_list></call></expr></cpp:elif>			
+	<comment type="line" pos:line="43" pos:column="9">// intentionally blank...</comment>
+<cpp:elif pos:line="44" pos:column="1">#<cpp:directive pos:line="44" pos:column="2">elif</cpp:directive> <expr><call><name pos:line="44" pos:column="7">defined</name><argument_list pos:line="44" pos:column="14">(<argument><expr><name pos:line="44" pos:column="15">_ALPHA_</name></expr></argument>)</argument_list></call></expr></cpp:elif>
+	<comment type="line" pos:line="45" pos:column="9">// intentionally blank...</comment>
+<cpp:elif pos:line="46" pos:column="1">#<cpp:directive pos:line="46" pos:column="2">elif</cpp:directive> <expr><call><name pos:line="46" pos:column="7">defined</name><argument_list pos:line="46" pos:column="14">(<argument><expr><name pos:line="46" pos:column="15">_M_IX86</name></expr></argument>)</argument_list></call></expr></cpp:elif>
+	<cpp:define pos:line="47" pos:column="9">#<cpp:directive pos:line="47" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="47" pos:column="17">X86</name></cpp:macro> <cpp:value pos:line="47" pos:column="21">1</cpp:value></cpp:define>
+<cpp:elif pos:line="48" pos:column="1">#<cpp:directive pos:line="48" pos:column="2">elif</cpp:directive> <expr><call><name pos:line="48" pos:column="7">defined</name><argument_list pos:line="48" pos:column="14">(<argument><expr><name pos:line="48" pos:column="15">_M_IA64</name></expr></argument>)</argument_list></call></expr></cpp:elif>
+	<cpp:define pos:line="49" pos:column="9">#<cpp:directive pos:line="49" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="49" pos:column="17">_IA64_</name></cpp:macro> <cpp:value pos:line="49" pos:column="24">1</cpp:value></cpp:define>
+<cpp:elif pos:line="50" pos:column="1">#<cpp:directive pos:line="50" pos:column="2">elif</cpp:directive> <expr><call><name pos:line="50" pos:column="7">defined</name><argument_list pos:line="50" pos:column="14">(<argument><expr><name pos:line="50" pos:column="15">_M_ALPHA</name></expr></argument>)</argument_list></call></expr></cpp:elif>
+	<cpp:ifndef pos:line="51" pos:column="9">#<cpp:directive pos:line="51" pos:column="10">ifndef</cpp:directive> <name pos:line="51" pos:column="17">_ALPHA_</name></cpp:ifndef>
+		<cpp:define pos:line="52" pos:column="17">#<cpp:directive pos:line="52" pos:column="18">define</cpp:directive> <cpp:macro><name pos:line="52" pos:column="25">_ALPHA_</name></cpp:macro> <cpp:value pos:line="52" pos:column="33">1</cpp:value></cpp:define>
+	<cpp:endif pos:line="53" pos:column="9">#<cpp:directive pos:line="53" pos:column="10">endif</cpp:directive></cpp:endif>
+<cpp:else pos:line="54" pos:column="1">#<cpp:directive pos:line="54" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:error pos:line="55" pos:column="9">#<cpp:directive pos:line="55" pos:column="10">error</cpp:directive> Must define a target architecture</cpp:error>
+<cpp:endif pos:line="56" pos:column="1">#<cpp:directive pos:line="56" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" format="doxygen" pos:line="58" pos:column="1">/*************************************************************************
+	Pull in standard Windows and C definitions.
+*************************************************************************/</comment>
+
+<comment type="line" pos:line="62" pos:column="1">// Warning pragmas for /W4 /WX compatability</comment>
+<cpp:include pos:line="63" pos:column="1">#<cpp:directive pos:line="63" pos:column="2">include</cpp:directive> <cpp:file pos:line="63" pos:column="10">&lt;msowarn.h&gt;</cpp:file></cpp:include>
+
+<comment type="block" pos:line="65" pos:column="1">/*	make sure the compiler generates intrinsic calls of all crt functions,
+	or else we'll pull in a ton of crt stuff we probably don't want. */</comment>
+<cpp:ifndef pos:line="67" pos:column="1">#<cpp:directive pos:line="67" pos:column="2">ifndef</cpp:directive> <name pos:line="67" pos:column="9">RC_INVOKED</name></cpp:ifndef>
+	<cpp:include pos:line="68" pos:column="9">#<cpp:directive pos:line="68" pos:column="10">include</cpp:directive> <cpp:file pos:line="68" pos:column="18">&lt;string.h&gt;</cpp:file></cpp:include>
+<cpp:if pos:line="69" pos:column="1">#<cpp:directive pos:line="69" pos:column="2">if</cpp:directive> <expr><op:operator pos:line="69" pos:column="5">!</op:operator><call><name pos:line="69" pos:column="6">defined</name><argument_list pos:line="69" pos:column="13">(<argument><expr><name pos:line="69" pos:column="14">_CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES</name></expr></argument>)</argument_list></call> <op:operator pos:line="69" pos:column="55">||</op:operator> <op:operator pos:line="69" pos:column="58">!</op:operator><name pos:line="69" pos:column="59">_CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES</name></expr></cpp:if>
+		<cpp:pragma pos:line="70" pos:column="17">#<cpp:directive pos:line="70" pos:column="18">pragma</cpp:directive> intrinsic(strcpy,strcat)</cpp:pragma>
+<cpp:endif pos:line="71" pos:column="1">#<cpp:directive pos:line="71" pos:column="2">endif</cpp:directive></cpp:endif>
+	<cpp:pragma pos:line="72" pos:column="9">#<cpp:directive pos:line="72" pos:column="10">pragma</cpp:directive> intrinsic(strlen, memcpy, memset, memcmp)</cpp:pragma>
+<cpp:endif pos:line="73" pos:column="1">#<cpp:directive pos:line="73" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:define pos:line="75" pos:column="1">#<cpp:directive pos:line="75" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="75" pos:column="9">OEMRESOURCE</name></cpp:macro></cpp:define>
+
+<cpp:include pos:line="77" pos:column="1">#<cpp:directive pos:line="77" pos:column="2">include</cpp:directive> <cpp:file pos:line="77" pos:column="10">&lt;windows.h&gt;</cpp:file></cpp:include>
+<cpp:if pos:line="78" pos:column="1">#<cpp:directive pos:line="78" pos:column="2">if</cpp:directive> <expr><op:operator pos:line="78" pos:column="5">!</op:operator><call><name pos:line="78" pos:column="6">defined</name><argument_list pos:line="78" pos:column="13">(<argument><expr><name pos:line="78" pos:column="14">RC_INVOKED</name></expr></argument>)</argument_list></call></expr></cpp:if>
+	<cpp:include pos:line="79" pos:column="9">#<cpp:directive pos:line="79" pos:column="10">include</cpp:directive> <cpp:file pos:line="79" pos:column="18">&lt;ole2.h&gt;</cpp:file></cpp:include>
+<cpp:endif pos:line="80" pos:column="1">#<cpp:directive pos:line="80" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:include pos:line="82" pos:column="1">#<cpp:directive pos:line="82" pos:column="2">include</cpp:directive> <cpp:file pos:line="82" pos:column="10">&lt;stdarg.h&gt;</cpp:file></cpp:include>
+
+<cpp:define pos:line="84" pos:column="1">#<cpp:directive pos:line="84" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="84" pos:column="9">MsoStrcpy</name></cpp:macro> <cpp:value pos:line="84" pos:column="19">strcpy</cpp:value></cpp:define>
+<cpp:define pos:line="85" pos:column="1">#<cpp:directive pos:line="85" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="85" pos:column="9">MsoStrcat</name></cpp:macro> <cpp:value pos:line="85" pos:column="19">strcat</cpp:value></cpp:define>
+<cpp:define pos:line="86" pos:column="1">#<cpp:directive pos:line="86" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="86" pos:column="9">MsoStrlen</name></cpp:macro> <cpp:value pos:line="86" pos:column="19">strlen</cpp:value></cpp:define>
+<cpp:define pos:line="87" pos:column="1">#<cpp:directive pos:line="87" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="87" pos:column="9">MsoMemcpy</name></cpp:macro> <cpp:value pos:line="87" pos:column="19">memcpy</cpp:value></cpp:define>
+<cpp:define pos:line="88" pos:column="1">#<cpp:directive pos:line="88" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="88" pos:column="9">MsoMemset</name></cpp:macro> <cpp:value pos:line="88" pos:column="19">memset</cpp:value></cpp:define>
+<cpp:define pos:line="89" pos:column="1">#<cpp:directive pos:line="89" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="89" pos:column="9">MsoMemcmp</name></cpp:macro> <cpp:value pos:line="89" pos:column="19">memcmp</cpp:value></cpp:define>
+<cpp:define pos:line="90" pos:column="1">#<cpp:directive pos:line="90" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="90" pos:column="9">MsoMemmove</name></cpp:macro> <cpp:value pos:line="90" pos:column="20">memmove</cpp:value></cpp:define>
+
+<comment type="block" format="doxygen" pos:line="92" pos:column="1">/*************************************************************************
+	Pre-processor magic to simplify Mac vs. Windows expressions.
+*************************************************************************/</comment>
+
+<cpp:define pos:line="96" pos:column="1">#<cpp:directive pos:line="96" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="96" pos:column="9">Mac</name><parameter_list pos:line="96" pos:column="12">(<param><type><name pos:line="96" pos:column="13">mac</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:define pos:line="97" pos:column="1">#<cpp:directive pos:line="97" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="97" pos:column="9">MacElse</name><parameter_list pos:line="97" pos:column="16">(<param><type><name pos:line="97" pos:column="17">mac</name></type></param>, <param><type><name pos:line="97" pos:column="22">win</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="97" pos:column="27">win</cpp:value></cpp:define>
+<cpp:define pos:line="98" pos:column="1">#<cpp:directive pos:line="98" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="98" pos:column="9">NotMac</name><parameter_list pos:line="98" pos:column="15">(<param><type><name pos:line="98" pos:column="16">win</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="98" pos:column="21">win</cpp:value></cpp:define>
+<cpp:define pos:line="99" pos:column="1">#<cpp:directive pos:line="99" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="99" pos:column="9">Win</name><parameter_list pos:line="99" pos:column="12">(<param><type><name pos:line="99" pos:column="13">win</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="99" pos:column="18">win</cpp:value></cpp:define>
+<cpp:define pos:line="100" pos:column="1">#<cpp:directive pos:line="100" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="100" pos:column="9">WinMac</name><parameter_list pos:line="100" pos:column="15">(<param><type><name pos:line="100" pos:column="16">win</name></type></param>, <param><type><name pos:line="100" pos:column="21">mac</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="100" pos:column="26">win</cpp:value></cpp:define>
+
+
+<comment type="block" format="doxygen" pos:line="103" pos:column="1">/*************************************************************************
+	Calling conventions 
+
+	If you futz with these, check the cloned copies in inc\msosdm.h
+	
+*************************************************************************/</comment>
+
+<cpp:if pos:line="110" pos:column="1">#<cpp:directive pos:line="110" pos:column="2">if</cpp:directive> <expr><name pos:line="110" pos:column="5">STATIC_LIB_DEF</name></expr></cpp:if>
+	<cpp:define pos:line="111" pos:column="9">#<cpp:directive pos:line="111" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="111" pos:column="17">MSOPUB</name></cpp:macro></cpp:define>
+	<cpp:define pos:line="112" pos:column="9">#<cpp:directive pos:line="112" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="112" pos:column="17">MSOPUBDATA</name></cpp:macro></cpp:define>
+<cpp:else pos:line="113" pos:column="1">#<cpp:directive pos:line="113" pos:column="2">else</cpp:directive></cpp:else>
+<cpp:if pos:line="114" pos:column="1">#<cpp:directive pos:line="114" pos:column="2">if</cpp:directive> <expr><op:operator pos:line="114" pos:column="5">!</op:operator><call><name pos:line="114" pos:column="6">defined</name><argument_list pos:line="114" pos:column="13">(<argument><expr><name pos:line="114" pos:column="14">OFFICE_BUILD</name></expr></argument>)</argument_list></call></expr></cpp:if>
+	<cpp:define pos:line="115" pos:column="9">#<cpp:directive pos:line="115" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="115" pos:column="17">MSOPUB</name></cpp:macro> <cpp:value pos:line="115" pos:column="24">__declspec(dllimport)</cpp:value></cpp:define>
+	<cpp:define pos:line="116" pos:column="9">#<cpp:directive pos:line="116" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="116" pos:column="17">MSOPUBDATA</name></cpp:macro> <cpp:value pos:line="116" pos:column="28">__declspec(dllimport)</cpp:value></cpp:define>
+<cpp:else pos:line="117" pos:column="1">#<cpp:directive pos:line="117" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="118" pos:column="9">#<cpp:directive pos:line="118" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="118" pos:column="17">MSOPUB</name></cpp:macro> <cpp:value pos:line="118" pos:column="24">__declspec(dllexport)</cpp:value></cpp:define>
+	<cpp:define pos:line="119" pos:column="9">#<cpp:directive pos:line="119" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="119" pos:column="17">MSOPUBDATA</name></cpp:macro> <cpp:value pos:line="119" pos:column="28">__declspec(dllexport)</cpp:value></cpp:define>
+<cpp:endif pos:line="120" pos:column="1">#<cpp:directive pos:line="120" pos:column="2">endif</cpp:directive></cpp:endif>
+<cpp:endif pos:line="121" pos:column="1">#<cpp:directive pos:line="121" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="123" pos:column="1">/* MSOPUBX are APIs that used to be public but no one currently uses,
+	so we've unexported them.  If someone decides they want/need one of
+	these APIs, we should feel free to re-export them */</comment>
+
+<cpp:if pos:line="127" pos:column="1">#<cpp:directive pos:line="127" pos:column="2">if</cpp:directive> <expr><name pos:line="127" pos:column="5">GELTEST</name></expr></cpp:if>
+	<cpp:define pos:line="128" pos:column="9">#<cpp:directive pos:line="128" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="128" pos:column="17">MSOPUBX</name></cpp:macro> <cpp:value pos:line="128" pos:column="25">MSOPUB</cpp:value></cpp:define>
+	<cpp:define pos:line="129" pos:column="9">#<cpp:directive pos:line="129" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="129" pos:column="17">MSOPUBDATAX</name></cpp:macro> <cpp:value pos:line="129" pos:column="29">MSOPUBDATA</cpp:value></cpp:define>
+<cpp:else pos:line="130" pos:column="1">#<cpp:directive pos:line="130" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="131" pos:column="9">#<cpp:directive pos:line="131" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="131" pos:column="17">MSOPUBX</name></cpp:macro></cpp:define>
+	<cpp:define pos:line="132" pos:column="9">#<cpp:directive pos:line="132" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="132" pos:column="17">MSOPUBDATAX</name></cpp:macro></cpp:define>
+<cpp:endif pos:line="133" pos:column="1">#<cpp:directive pos:line="133" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="135" pos:column="1">/* used for interface that rely on using the OS (stdcall) convention */</comment>
+<cpp:define pos:line="136" pos:column="1">#<cpp:directive pos:line="136" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="136" pos:column="9">MSOSTDAPICALLTYPE</name></cpp:macro> <cpp:value pos:line="136" pos:column="27">__stdcall</cpp:value></cpp:define>
+
+<comment type="block" pos:line="138" pos:column="1">/* used for interfaces that don't depend on using the OS (stdcall) convention */</comment>
+<cpp:define pos:line="139" pos:column="1">#<cpp:directive pos:line="139" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="139" pos:column="9">MSOAPICALLTYPE</name></cpp:macro> <cpp:value pos:line="139" pos:column="24">__stdcall</cpp:value></cpp:define>
+
+<cpp:if pos:line="141" pos:column="1">#<cpp:directive pos:line="141" pos:column="2">if</cpp:directive> <expr><call><name pos:line="141" pos:column="5">defined</name><argument_list pos:line="141" pos:column="12">(<argument><expr><name pos:line="141" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call></expr></cpp:if>
+	<cpp:define pos:line="142" pos:column="9">#<cpp:directive pos:line="142" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="142" pos:column="17">MSOEXTERN_C</name></cpp:macro> <cpp:value pos:line="142" pos:column="29">extern "C"</cpp:value></cpp:define>
+	<cpp:define pos:line="143" pos:column="9">#<cpp:directive pos:line="143" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="143" pos:column="17">MSOEXTERN_C_BEGIN</name></cpp:macro> <cpp:value pos:line="143" pos:column="35">extern "C" {</cpp:value></cpp:define>
+	<cpp:define pos:line="144" pos:column="9">#<cpp:directive pos:line="144" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="144" pos:column="17">MSOEXTERN_C_END</name></cpp:macro> <cpp:value pos:line="144" pos:column="33">}</cpp:value></cpp:define>
+<cpp:else pos:line="145" pos:column="1">#<cpp:directive pos:line="145" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="146" pos:column="9">#<cpp:directive pos:line="146" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="146" pos:column="17">MSOEXTERN_C</name></cpp:macro></cpp:define> 
+	<cpp:define pos:line="147" pos:column="9">#<cpp:directive pos:line="147" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="147" pos:column="17">MSOEXTERN_C_BEGIN</name></cpp:macro></cpp:define>
+	<cpp:define pos:line="148" pos:column="9">#<cpp:directive pos:line="148" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="148" pos:column="17">MSOEXTERN_C_END</name></cpp:macro></cpp:define>
+<cpp:endif pos:line="149" pos:column="1">#<cpp:directive pos:line="149" pos:column="2">endif</cpp:directive></cpp:endif>
+<cpp:define pos:line="150" pos:column="1">#<cpp:directive pos:line="150" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="150" pos:column="9">MSOAPI_</name><parameter_list pos:line="150" pos:column="16">(<param><type><name pos:line="150" pos:column="17">t</name></type></param>)</parameter_list></cpp:macro>      <cpp:value pos:line="150" pos:column="25">MSOEXTERN_C MSOPUB t MSOAPICALLTYPE</cpp:value></cpp:define> 
+<cpp:define pos:line="151" pos:column="1">#<cpp:directive pos:line="151" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="151" pos:column="9">MSOSTDAPI_</name><parameter_list pos:line="151" pos:column="19">(<param><type><name pos:line="151" pos:column="20">t</name></type></param>)</parameter_list></cpp:macro>   <cpp:value pos:line="151" pos:column="25">MSOEXTERN_C MSOPUB t MSOSTDAPICALLTYPE</cpp:value></cpp:define> 
+<cpp:define pos:line="152" pos:column="1">#<cpp:directive pos:line="152" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="152" pos:column="9">MSOAPIX_</name><parameter_list pos:line="152" pos:column="17">(<param><type><name pos:line="152" pos:column="18">t</name></type></param>)</parameter_list></cpp:macro>     <cpp:value pos:line="152" pos:column="25">MSOEXTERN_C MSOPUBX t MSOAPICALLTYPE</cpp:value></cpp:define> 
+<cpp:define pos:line="153" pos:column="1">#<cpp:directive pos:line="153" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="153" pos:column="9">MSOSTDAPIX_</name><parameter_list pos:line="153" pos:column="20">(<param><type><name pos:line="153" pos:column="21">t</name></type></param>)</parameter_list></cpp:macro>  <cpp:value pos:line="153" pos:column="25">MSOEXTERN_C MSOPUBX t MSOSTDAPICALLTYPE</cpp:value></cpp:define> 
+<cpp:define pos:line="154" pos:column="1">#<cpp:directive pos:line="154" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="154" pos:column="9">MSOCDECLAPI_</name><parameter_list pos:line="154" pos:column="21">(<param><type><name pos:line="154" pos:column="22">t</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="154" pos:column="25">MSOEXTERN_C MSOPUB t MSOCDECLCALLTYPE</cpp:value></cpp:define> 
+<cpp:define pos:line="155" pos:column="1">#<cpp:directive pos:line="155" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="155" pos:column="9">MSOAPIMX_</name><parameter_list pos:line="155" pos:column="18">(<param><type><name pos:line="155" pos:column="19">t</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="155" pos:column="22">MSOAPIX_(t)</cpp:value></cpp:define>
+<cpp:define pos:line="156" pos:column="1">#<cpp:directive pos:line="156" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="156" pos:column="9">MSOAPIXX_</name><parameter_list pos:line="156" pos:column="18">(<param><type><name pos:line="156" pos:column="19">t</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="156" pos:column="22">MSOAPI_(t)</cpp:value></cpp:define>
+<cpp:if pos:line="157" pos:column="1">#<cpp:directive pos:line="157" pos:column="2">if</cpp:directive> <expr><name pos:line="157" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+<cpp:define pos:line="158" pos:column="1">#<cpp:directive pos:line="158" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="158" pos:column="9">MSOAPIDBG_</name><parameter_list pos:line="158" pos:column="19">(<param><type><name pos:line="158" pos:column="20">t</name></type></param>)</parameter_list></cpp:macro>   <cpp:value pos:line="158" pos:column="25">MSOAPI_(t)</cpp:value></cpp:define>
+<cpp:else pos:line="159" pos:column="1">#<cpp:directive pos:line="159" pos:column="2">else</cpp:directive></cpp:else>
+<cpp:define pos:line="160" pos:column="1">#<cpp:directive pos:line="160" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="160" pos:column="9">MSOAPIDBG_</name><parameter_list pos:line="160" pos:column="19">(<param><type><name pos:line="160" pos:column="20">t</name></type></param>)</parameter_list></cpp:macro>   <cpp:value pos:line="160" pos:column="25">MSOAPIX_(t)</cpp:value></cpp:define>
+<cpp:endif pos:line="161" pos:column="1">#<cpp:directive pos:line="161" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:define pos:line="163" pos:column="1">#<cpp:directive pos:line="163" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="163" pos:column="9">MSOMETHOD</name><parameter_list pos:line="163" pos:column="18">(<param><type><name pos:line="163" pos:column="19">m</name></type></param>)</parameter_list></cpp:macro>      <cpp:value pos:line="163" pos:column="27">STDMETHOD(m)</cpp:value></cpp:define>
+<cpp:define pos:line="164" pos:column="1">#<cpp:directive pos:line="164" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="164" pos:column="9">MSOMETHOD_</name><parameter_list pos:line="164" pos:column="19">(<param><type><name pos:line="164" pos:column="20">t</name></type></param>,<param><type><name pos:line="164" pos:column="22">m</name></type></param>)</parameter_list></cpp:macro>   <cpp:value pos:line="164" pos:column="27">STDMETHOD_(t,m)</cpp:value></cpp:define>
+<cpp:define pos:line="165" pos:column="1">#<cpp:directive pos:line="165" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="165" pos:column="9">MSOMETHODIMP</name></cpp:macro>      <cpp:value pos:line="165" pos:column="27">STDMETHODIMP</cpp:value></cpp:define>
+<cpp:define pos:line="166" pos:column="1">#<cpp:directive pos:line="166" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="166" pos:column="9">MSOMETHODIMP_</name><parameter_list pos:line="166" pos:column="22">(<param><type><name pos:line="166" pos:column="23">t</name></type></param>)</parameter_list></cpp:macro>  <cpp:value pos:line="166" pos:column="27">STDMETHODIMP_(t)</cpp:value></cpp:define>
+
+<comment type="block" pos:line="168" pos:column="1">/* Interfaces derived from IUnknown behave in funny ways on the Mac */</comment>
+<cpp:define pos:line="169" pos:column="1">#<cpp:directive pos:line="169" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="169" pos:column="9">BEGIN_MSOINTERFACE</name></cpp:macro></cpp:define>
+
+<cpp:define pos:line="171" pos:column="1">#<cpp:directive pos:line="171" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="171" pos:column="9">MSOMACPUB</name></cpp:macro></cpp:define> 
+<cpp:define pos:line="172" pos:column="1">#<cpp:directive pos:line="172" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="172" pos:column="9">MSOMACPUBDATA</name></cpp:macro></cpp:define>
+<cpp:define pos:line="173" pos:column="1">#<cpp:directive pos:line="173" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="173" pos:column="9">MSOMACAPI_</name><parameter_list pos:line="173" pos:column="19">(<param><type><name pos:line="173" pos:column="20">t</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="173" pos:column="23">t</cpp:value></cpp:define>
+<cpp:define pos:line="174" pos:column="1">#<cpp:directive pos:line="174" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="174" pos:column="9">MSOMACAPIX_</name><parameter_list pos:line="174" pos:column="20">(<param><type><name pos:line="174" pos:column="21">t</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="174" pos:column="24">t</cpp:value></cpp:define> 
+	
+<cpp:if pos:line="176" pos:column="1">#<cpp:directive pos:line="176" pos:column="2">if</cpp:directive> <expr><name pos:line="176" pos:column="5">X86</name> <op:operator pos:line="176" pos:column="9">&amp;&amp;</op:operator> <op:operator pos:line="176" pos:column="12">!</op:operator><name pos:line="176" pos:column="13">VSMSODEBUG</name></expr></cpp:if>
+	<cpp:define pos:line="177" pos:column="9">#<cpp:directive pos:line="177" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="177" pos:column="17">MSOPRIVCALLTYPE</name></cpp:macro> <cpp:value pos:line="177" pos:column="33">__fastcall</cpp:value></cpp:define>
+<cpp:else pos:line="178" pos:column="1">#<cpp:directive pos:line="178" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="179" pos:column="9">#<cpp:directive pos:line="179" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="179" pos:column="17">MSOPRIVCALLTYPE</name></cpp:macro> <cpp:value pos:line="179" pos:column="33">__cdecl</cpp:value></cpp:define>
+<cpp:endif pos:line="180" pos:column="1">#<cpp:directive pos:line="180" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:define pos:line="182" pos:column="1">#<cpp:directive pos:line="182" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="182" pos:column="9">MSOCDECLCALLTYPE</name></cpp:macro> <cpp:value pos:line="182" pos:column="26">__cdecl</cpp:value></cpp:define>
+
+<cpp:define pos:line="184" pos:column="1">#<cpp:directive pos:line="184" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="184" pos:column="9">MSOCONSTFIXUP</name><parameter_list pos:line="184" pos:column="22">(<param><type><name pos:line="184" pos:column="23">t</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="184" pos:column="26">const t</cpp:value></cpp:define> 
+
+<comment type="block" format="doxygen" pos:line="186" pos:column="1">/*************************************************************************
+	Extensions to systems headers from the MSAA (Accessibility) SDK
+***************************************************************** DAVEPA */</comment>
+
+<comment type="line" pos:line="190" pos:column="1">// Extensions to winuser.h from \\ole\access\inc\winuser.h</comment>
+<cpp:define pos:line="191" pos:column="1">#<cpp:directive pos:line="191" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="191" pos:column="9">WM_GETOBJECT</name></cpp:macro>	   <cpp:value pos:line="191" pos:column="28">0x003D</cpp:value></cpp:define>
+<cpp:define pos:line="192" pos:column="1">#<cpp:directive pos:line="192" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="192" pos:column="9">WMOBJ_ID</name></cpp:macro>        <cpp:value pos:line="192" pos:column="25">0x0000</cpp:value></cpp:define>
+<cpp:define pos:line="193" pos:column="1">#<cpp:directive pos:line="193" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="193" pos:column="9">WMOBJ_POINT</name></cpp:macro>     <cpp:value pos:line="193" pos:column="25">0x0001</cpp:value></cpp:define>
+<cpp:define pos:line="194" pos:column="1">#<cpp:directive pos:line="194" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="194" pos:column="9">WMOBJID_SELF</name></cpp:macro>    <cpp:value pos:line="194" pos:column="25">0x00000000</cpp:value></cpp:define>
+
+<comment type="line" pos:line="196" pos:column="1">// Extensions to winable.h</comment>
+<cpp:ifndef pos:line="197" pos:column="1">#<cpp:directive pos:line="197" pos:column="2">ifndef</cpp:directive> <name pos:line="197" pos:column="9">OBJID_NATIVEOM</name></cpp:ifndef>
+<cpp:define pos:line="198" pos:column="1">#<cpp:directive pos:line="198" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="198" pos:column="9">OBJID_NATIVEOM</name></cpp:macro>	<cpp:value pos:line="198" pos:column="25">0xFFFFFFF0</cpp:value></cpp:define>
+<cpp:endif pos:line="199" pos:column="1">#<cpp:directive pos:line="199" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+<comment type="block" format="doxygen" pos:line="202" pos:column="1">/*************************************************************************
+	Common #define section
+*************************************************************************/</comment>
+
+<comment type="block" pos:line="206" pos:column="1">/* All Microsoft Office specific windows messages should use WM_MSO.
+   Submessages passed through wParam should be defined in offpch.h.     */</comment>
+
+<comment type="line" pos:line="209" pos:column="1">// Note: This value needs to be free in all apps that use Mso.  </comment>
+<comment type="line" pos:line="210" pos:column="1">// It has been validated by all the 97 apps.  It would be safer to use</comment>
+<comment type="line" pos:line="211" pos:column="1">// RegisterWindowMessage, but this is more efficient and convenient.</comment>
+<cpp:define pos:line="212" pos:column="1">#<cpp:directive pos:line="212" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="212" pos:column="9">WM_MSO</name></cpp:macro> <cpp:value pos:line="212" pos:column="16">(WM_USER + 0x0900)</cpp:value></cpp:define>
+
+<cpp:define pos:line="214" pos:column="1">#<cpp:directive pos:line="214" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="214" pos:column="9">MSOCHILDACTIVATE</name></cpp:macro> <cpp:value pos:line="214" pos:column="26">23</cpp:value></cpp:define>
+
+<comment type="line" pos:line="216" pos:column="1">// NA means not applicable. Use NA to help document parameters to functions.</comment>
+<cpp:undef pos:line="217" pos:column="1">#<cpp:directive pos:line="217" pos:column="2">undef</cpp:directive>  <name pos:line="217" pos:column="9">NA</name></cpp:undef>
+<cpp:define pos:line="218" pos:column="1">#<cpp:directive pos:line="218" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="218" pos:column="9">NA</name></cpp:macro> <cpp:value pos:line="218" pos:column="12">0L</cpp:value></cpp:define>
+
+<cpp:ifndef pos:line="220" pos:column="1">#<cpp:directive pos:line="220" pos:column="2">ifndef</cpp:directive> <name pos:line="220" pos:column="9">MKCSM</name></cpp:ifndef>
+<comment type="line" pos:line="221" pos:column="1">// Section added to allow communication between Office 9 (pluggable UI) apps</comment>
+<comment type="line" pos:line="222" pos:column="1">// and the UI switching applet, Setlang</comment>
+<cpp:define pos:line="223" pos:column="1">#<cpp:directive pos:line="223" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="223" pos:column="9">PUI_OFFICE_COMMAND</name></cpp:macro> <cpp:value pos:line="223" pos:column="28">(WM_USER + 0x0901)</cpp:value></cpp:define>
+
+<cpp:define pos:line="225" pos:column="1">#<cpp:directive pos:line="225" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="225" pos:column="9">PLUGUI_CMD_SHUTDOWN</name></cpp:macro>		<cpp:value pos:line="225" pos:column="41">0</cpp:value></cpp:define> <comment type="line" pos:line="225" pos:column="43">// wParam value</comment>
+<cpp:define pos:line="226" pos:column="1">#<cpp:directive pos:line="226" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="226" pos:column="9">PLUGUI_CMD_QUERY</name></cpp:macro>		<cpp:value pos:line="226" pos:column="41">1</cpp:value></cpp:define> <comment type="line" pos:line="226" pos:column="43">// wParam value</comment>
+<cpp:define pos:line="227" pos:column="1">#<cpp:directive pos:line="227" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="227" pos:column="9">OFFICE_VERSION_9</name></cpp:macro>		<cpp:value pos:line="227" pos:column="41">9</cpp:value></cpp:define> <comment type="line" pos:line="227" pos:column="43">// standardized value to return for Office 9 apps</comment>
+<cpp:define pos:line="228" pos:column="1">#<cpp:directive pos:line="228" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="228" pos:column="9">OFFICE_MAJOR_VERSION</name></cpp:macro>	<cpp:value pos:line="228" pos:column="33">10</cpp:value></cpp:define> <comment type="line" pos:line="228" pos:column="36">// Current version of Office; used for communication with Setlang only</comment>
+
+<typedef pos:line="230" pos:column="1">typedef <type><struct pos:line="230" pos:column="9">struct <name pos:line="230" pos:column="16">_PLUGUI_INFO</name>
+<block pos:line="231" pos:column="1">{<public type="default" pos:line="231" pos:column="2">
+	<macro><name pos:line="232" pos:column="9">unsigned</name></macro> <label><name pos:line="232" pos:column="18">uMajorVersion</name> :</label> <expr_stmt><expr><lit:literal type="number" pos:line="232" pos:column="34">8</lit:literal></expr>;</expr_stmt>	<comment type="line" pos:line="232" pos:column="41">// Used to indicate App;s major version number</comment>
+	<macro><name pos:line="233" pos:column="9">unsigned</name></macro> <label><name pos:line="233" pos:column="18">uNoAppReboot</name> :</label> <expr_stmt><expr><lit:literal type="number" pos:line="233" pos:column="33">1</lit:literal></expr>;</expr_stmt>	<comment type="line" pos:line="233" pos:column="41">// BOOL, if FALSE, allows reboot by Setlang. TRUE means we don't want to be rebooted now</comment>
+	<macro><name pos:line="234" pos:column="9">unsigned</name></macro> <label><name pos:line="234" pos:column="18">uUnused</name> :</label> <expr_stmt><expr><lit:literal type="number" pos:line="234" pos:column="28">23</lit:literal></expr>;</expr_stmt>		<comment type="line" pos:line="234" pos:column="41">// not used</comment>
+</public>}</block></struct></type> <name pos:line="235" pos:column="3">PLUGUI_INFO</name>;</typedef>
+
+<typedef pos:line="237" pos:column="1">typedef <type><union pos:line="237" pos:column="9">union <name pos:line="237" pos:column="15">_PLUGUI_QUERY</name>
+<block pos:line="238" pos:column="1">{<public type="default" pos:line="238" pos:column="2">
+	<decl_stmt><decl><type><name pos:line="239" pos:column="9">UINT</name></type> <name pos:line="239" pos:column="14">uQueryVal</name></decl>;</decl_stmt>
+	<decl_stmt><decl><type><name pos:line="240" pos:column="9">PLUGUI_INFO</name></type> <name pos:line="240" pos:column="21">PlugUIInfo</name></decl>;</decl_stmt>
+</public>}</block></union></type> <name pos:line="241" pos:column="3">PLUGUI_QUERY</name>;</typedef>
+<comment type="line" pos:line="242" pos:column="1">// End of Pluggable UI section</comment>
+<cpp:endif pos:line="243" pos:column="1">#<cpp:directive pos:line="243" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="245" pos:column="1">/* End of common #define section */</comment>
+
+
+<comment type="block" format="doxygen" pos:line="248" pos:column="1">/*************************************************************************
+	Common segmentation definitions 
+*************************************************************************/</comment>
+
+<comment type="block" pos:line="252" pos:column="1">/*	Used with #pragma to swap-tune global variables into the boot section
+	of the data segment.  Should link with -merge:.bootdata=.data when
+	using these pragmas */</comment>
+	
+<cpp:if pos:line="256" pos:column="1">#<cpp:directive pos:line="256" pos:column="2">if</cpp:directive> <expr><name pos:line="256" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<cpp:define pos:line="257" pos:column="9">#<cpp:directive pos:line="257" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="257" pos:column="17">MSO_BOOTDATA</name></cpp:macro></cpp:define>
+	<cpp:define pos:line="258" pos:column="9">#<cpp:directive pos:line="258" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="258" pos:column="17">MSO_ENDBOOTDATA</name></cpp:macro></cpp:define>
+<cpp:else pos:line="259" pos:column="1">#<cpp:directive pos:line="259" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="260" pos:column="9">#<cpp:directive pos:line="260" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="260" pos:column="17">MSO_BOOTDATA</name></cpp:macro> <cpp:value pos:line="260" pos:column="30">data_seg(".bootdata")</cpp:value></cpp:define>
+	<cpp:define pos:line="261" pos:column="9">#<cpp:directive pos:line="261" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="261" pos:column="17">MSO_ENDBOOTDATA</name></cpp:macro> <cpp:value pos:line="261" pos:column="33">data_seg()</cpp:value></cpp:define>
+<cpp:endif pos:line="262" pos:column="1">#<cpp:directive pos:line="262" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+<comment type="block" format="doxygen" pos:line="265" pos:column="1">/*************************************************************************
+	Stuff for Performance marker support - Don't mess with these in 
+	your code unless you really know what you are doing.
+*************************************************************************/</comment>
+<cpp:define pos:line="269" pos:column="1">#<cpp:directive pos:line="269" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="269" pos:column="9">MSO_PERFMARKON</name></cpp:macro>  <cpp:value pos:line="269" pos:column="25">warning(disable: 4102)</cpp:value></cpp:define>
+<cpp:define pos:line="270" pos:column="1">#<cpp:directive pos:line="270" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="270" pos:column="9">MSO_PERFMARKOFF</name></cpp:macro> <cpp:value pos:line="270" pos:column="25">warning(default: 4102)</cpp:value></cpp:define>
+<cpp:define pos:line="271" pos:column="1">#<cpp:directive pos:line="271" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="271" pos:column="9">MsoPerformanceMarkerLabel</name><parameter_list pos:line="271" pos:column="34">()</parameter_list></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="273" pos:column="1">/*---------------------------------------------------------------------------
+	RISC alignment defines
+--------------------------------------------------------------- BrianWen ---*/</comment>
+<cpp:ifndef pos:line="276" pos:column="1">#<cpp:directive pos:line="276" pos:column="2">ifndef</cpp:directive> <name pos:line="276" pos:column="9">UNALIGNED</name></cpp:ifndef>
+<cpp:if pos:line="277" pos:column="1">#<cpp:directive pos:line="277" pos:column="2">if</cpp:directive> <expr><call><name pos:line="277" pos:column="5">defined</name><argument_list pos:line="277" pos:column="12">(<argument><expr><name pos:line="277" pos:column="13">_M_ALPHA</name></expr></argument>)</argument_list></call></expr></cpp:if>
+<cpp:define pos:line="278" pos:column="1">#<cpp:directive pos:line="278" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="278" pos:column="9">UNALIGNED</name></cpp:macro> <cpp:value pos:line="278" pos:column="19">__unaligned</cpp:value></cpp:define>
+<cpp:else pos:line="279" pos:column="1">#<cpp:directive pos:line="279" pos:column="2">else</cpp:directive></cpp:else>
+<cpp:define pos:line="280" pos:column="1">#<cpp:directive pos:line="280" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="280" pos:column="9">UNALIGNED</name></cpp:macro></cpp:define>
+<cpp:endif pos:line="281" pos:column="1">#<cpp:directive pos:line="281" pos:column="2">endif</cpp:directive></cpp:endif>	<comment type="block" pos:line="281" pos:column="9">/* (_M_ALPHA) */</comment>
+<cpp:endif pos:line="282" pos:column="1">#<cpp:directive pos:line="282" pos:column="2">endif</cpp:directive></cpp:endif>	<comment type="block" pos:line="282" pos:column="9">/* UNALIGNED */</comment>
+
+<comment type="block" pos:line="284" pos:column="1">/*----------------------------------------------------------------------------
+	COM IUnknown methods utilities
+------------------------------------------------------------------- HAILIU -*/</comment>
+<cpp:ifdef pos:line="287" pos:column="1">#<cpp:directive pos:line="287" pos:column="2">ifdef</cpp:directive> <name pos:line="287" pos:column="8">__cplusplus</name></cpp:ifdef>
+<cpp:define pos:line="288" pos:column="1">#<cpp:directive pos:line="288" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="288" pos:column="9">MsoComAddRef</name><parameter_list pos:line="288" pos:column="21">(<param><type><name pos:line="288" pos:column="22">punk</name></type></param>)</parameter_list></cpp:macro>   <cpp:value pos:line="288" pos:column="30">((punk)-&gt;AddRef())</cpp:value></cpp:define>
+<cpp:define pos:line="289" pos:column="1">#<cpp:directive pos:line="289" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="289" pos:column="9">MsoComRelease</name><parameter_list pos:line="289" pos:column="22">(<param><type><name pos:line="289" pos:column="23">punk</name></type></param>)</parameter_list></cpp:macro>  <cpp:value pos:line="289" pos:column="30">((punk)-&gt;Release())</cpp:value></cpp:define>
+<cpp:define pos:line="290" pos:column="1">#<cpp:directive pos:line="290" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="290" pos:column="9">MsoComQueryInterface</name><parameter_list pos:line="290" pos:column="29">(<param><type><name pos:line="290" pos:column="30">punk</name></type></param>, <param><type><name pos:line="290" pos:column="36">riid</name></type></param>, <param><type><name pos:line="290" pos:column="42">ppv</name></type></param>)</parameter_list></cpp:macro>   \
+	<cpp:value pos:line="291" pos:column="9">((punk)-&gt;QueryInterface((riid), (LPVOID*)(ppv)))</cpp:value></cpp:define>
+<cpp:else pos:line="292" pos:column="1">#<cpp:directive pos:line="292" pos:column="2">else</cpp:directive></cpp:else>
+<cpp:define pos:line="293" pos:column="1">#<cpp:directive pos:line="293" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="293" pos:column="9">MsoComAddRef</name><parameter_list pos:line="293" pos:column="21">(<param><type><name pos:line="293" pos:column="22">punk</name></type></param>)</parameter_list></cpp:macro>   <cpp:value pos:line="293" pos:column="30">((punk)-&gt;lpVtbl-&gt;AddRef((punk)))</cpp:value></cpp:define>
+<cpp:define pos:line="294" pos:column="1">#<cpp:directive pos:line="294" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="294" pos:column="9">MsoComRelease</name><parameter_list pos:line="294" pos:column="22">(<param><type><name pos:line="294" pos:column="23">punk</name></type></param>)</parameter_list></cpp:macro>  <cpp:value pos:line="294" pos:column="30">((punk)-&gt;lpVtbl-&gt;Release((punk)))</cpp:value></cpp:define>
+<cpp:define pos:line="295" pos:column="1">#<cpp:directive pos:line="295" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="295" pos:column="9">MsoComQueryInterface</name><parameter_list pos:line="295" pos:column="29">(<param><type><name pos:line="295" pos:column="30">punk</name></type></param>, <param><type><name pos:line="295" pos:column="36">riid</name></type></param>, <param><type><name pos:line="295" pos:column="42">ppv</name></type></param>)</parameter_list></cpp:macro>   \
+	<cpp:value pos:line="296" pos:column="9">((punk)-&gt;lpVtbl-&gt;QueryInterface((punk), (riid), (LPVOID*)(ppv)))</cpp:value></cpp:define>
+<cpp:endif pos:line="297" pos:column="1">#<cpp:directive pos:line="297" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="297" pos:column="8">//__cplusplus</comment>
+
+
+<comment type="line" format="doxygen" pos:line="300" pos:column="1">/// WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING </comment>
+<comment type="line" format="doxygen" pos:line="301" pos:column="1">/// WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING </comment>
+<comment type="line" format="doxygen" pos:line="302" pos:column="1">/// WARNING WARNING WARNING WARNING WARNING WARNING WARNING WARNING </comment>
+
+
+<comment type="line" pos:line="305" pos:column="1">// for set {a,b[,c...]} in range 0..31</comment>
+<cpp:define pos:line="306" pos:column="1">#<cpp:directive pos:line="306" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="306" pos:column="9">InSetOf9</name><parameter_list pos:line="306" pos:column="17">(<param><type><name pos:line="306" pos:column="18">v</name></type></param>, <param><type><name pos:line="306" pos:column="21">a</name></type></param>,<param><type><name pos:line="306" pos:column="23">b</name></type></param>,<param><type><name pos:line="306" pos:column="25">c</name></type></param>,<param><type><name pos:line="306" pos:column="27">d</name></type></param>,<param><type><name pos:line="306" pos:column="29">e</name></type></param>,<param><type><name pos:line="306" pos:column="31">f</name></type></param>,<param><type><name pos:line="306" pos:column="33">g</name></type></param>,<param><type><name pos:line="306" pos:column="35">h</name></type></param>,<param><type><name pos:line="306" pos:column="37">i</name></type></param>)</parameter_list></cpp:macro>	<cpp:value pos:line="306" pos:column="41">(!((v)&amp;(~0x1fL)) &amp;&amp; ((1&lt;&lt;(v)) &amp; ((1&lt;&lt;(a))|(1&lt;&lt;(b))|(1&lt;&lt;(c))|(1&lt;&lt;(d))|(1&lt;&lt;(e))|(1&lt;&lt;(f))|(1&lt;&lt;(g))|(1&lt;&lt;(h))|(1&lt;&lt;(i)))))</cpp:value></cpp:define>
+<cpp:define pos:line="307" pos:column="1">#<cpp:directive pos:line="307" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="307" pos:column="9">InSetOf2</name><parameter_list pos:line="307" pos:column="17">(<param><type><name pos:line="307" pos:column="18">v</name></type></param>, <param><type><name pos:line="307" pos:column="21">a</name></type></param>,<param><type><name pos:line="307" pos:column="23">b</name></type></param>)</parameter_list></cpp:macro>				<cpp:value pos:line="307" pos:column="57">InSetOf9(v, a,b,-1,-1,-1,-1,-1,-1,-1)</cpp:value></cpp:define>
+<cpp:define pos:line="308" pos:column="1">#<cpp:directive pos:line="308" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="308" pos:column="9">InSetOf3</name><parameter_list pos:line="308" pos:column="17">(<param><type><name pos:line="308" pos:column="18">v</name></type></param>, <param><type><name pos:line="308" pos:column="21">a</name></type></param>,<param><type><name pos:line="308" pos:column="23">b</name></type></param>,<param><type><name pos:line="308" pos:column="25">c</name></type></param>)</parameter_list></cpp:macro>				<cpp:value pos:line="308" pos:column="57">InSetOf9(v, a,b,c,-1,-1,-1,-1,-1,-1)</cpp:value></cpp:define>
+<cpp:define pos:line="309" pos:column="1">#<cpp:directive pos:line="309" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="309" pos:column="9">InSetOf4</name><parameter_list pos:line="309" pos:column="17">(<param><type><name pos:line="309" pos:column="18">v</name></type></param>, <param><type><name pos:line="309" pos:column="21">a</name></type></param>,<param><type><name pos:line="309" pos:column="23">b</name></type></param>,<param><type><name pos:line="309" pos:column="25">c</name></type></param>,<param><type><name pos:line="309" pos:column="27">d</name></type></param>)</parameter_list></cpp:macro>			<cpp:value pos:line="309" pos:column="49">InSetOf9(v, a,b,c,d,-1,-1,-1,-1,-1)</cpp:value></cpp:define>
+<cpp:define pos:line="310" pos:column="1">#<cpp:directive pos:line="310" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="310" pos:column="9">InSetOf5</name><parameter_list pos:line="310" pos:column="17">(<param><type><name pos:line="310" pos:column="18">v</name></type></param>, <param><type><name pos:line="310" pos:column="21">a</name></type></param>,<param><type><name pos:line="310" pos:column="23">b</name></type></param>,<param><type><name pos:line="310" pos:column="25">c</name></type></param>,<param><type><name pos:line="310" pos:column="27">d</name></type></param>,<param><type><name pos:line="310" pos:column="29">e</name></type></param>)</parameter_list></cpp:macro>			<cpp:value pos:line="310" pos:column="49">InSetOf9(v, a,b,c,d,e,-1,-1,-1,-1)</cpp:value></cpp:define>
+<cpp:define pos:line="311" pos:column="1">#<cpp:directive pos:line="311" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="311" pos:column="9">InSetOf6</name><parameter_list pos:line="311" pos:column="17">(<param><type><name pos:line="311" pos:column="18">v</name></type></param>, <param><type><name pos:line="311" pos:column="21">a</name></type></param>,<param><type><name pos:line="311" pos:column="23">b</name></type></param>,<param><type><name pos:line="311" pos:column="25">c</name></type></param>,<param><type><name pos:line="311" pos:column="27">d</name></type></param>,<param><type><name pos:line="311" pos:column="29">e</name></type></param>,<param><type><name pos:line="311" pos:column="31">f</name></type></param>)</parameter_list></cpp:macro>		<cpp:value pos:line="311" pos:column="49">InSetOf9(v, a,b,c,d,e,f,-1,-1,-1)</cpp:value></cpp:define>
+<cpp:define pos:line="312" pos:column="1">#<cpp:directive pos:line="312" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="312" pos:column="9">InSetOf7</name><parameter_list pos:line="312" pos:column="17">(<param><type><name pos:line="312" pos:column="18">v</name></type></param>, <param><type><name pos:line="312" pos:column="21">a</name></type></param>,<param><type><name pos:line="312" pos:column="23">b</name></type></param>,<param><type><name pos:line="312" pos:column="25">c</name></type></param>,<param><type><name pos:line="312" pos:column="27">d</name></type></param>,<param><type><name pos:line="312" pos:column="29">e</name></type></param>,<param><type><name pos:line="312" pos:column="31">f</name></type></param>,<param><type><name pos:line="312" pos:column="33">g</name></type></param>)</parameter_list></cpp:macro>		<cpp:value pos:line="312" pos:column="49">InSetOf9(v, a,b,c,d,e,f,g,-1,-1)</cpp:value></cpp:define>
+<cpp:define pos:line="313" pos:column="1">#<cpp:directive pos:line="313" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="313" pos:column="9">InSetOf8</name><parameter_list pos:line="313" pos:column="17">(<param><type><name pos:line="313" pos:column="18">v</name></type></param>, <param><type><name pos:line="313" pos:column="21">a</name></type></param>,<param><type><name pos:line="313" pos:column="23">b</name></type></param>,<param><type><name pos:line="313" pos:column="25">c</name></type></param>,<param><type><name pos:line="313" pos:column="27">d</name></type></param>,<param><type><name pos:line="313" pos:column="29">e</name></type></param>,<param><type><name pos:line="313" pos:column="31">f</name></type></param>,<param><type><name pos:line="313" pos:column="33">g</name></type></param>,<param><type><name pos:line="313" pos:column="35">h</name></type></param>)</parameter_list></cpp:macro>	<cpp:value pos:line="313" pos:column="41">InSetOf9(v, a,b,c,d,e,f,g,h,-1)</cpp:value></cpp:define>
+
+<comment type="line" pos:line="315" pos:column="1">// for set {a,b[,c...]} within 31 of each other, but not 0..31.  'a' must be smallest</comment>
+<cpp:define pos:line="316" pos:column="1">#<cpp:directive pos:line="316" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="316" pos:column="9">InBiasSetOf2</name><parameter_list pos:line="316" pos:column="21">(<param><type><name pos:line="316" pos:column="22">v</name></type></param>, <param><type><name pos:line="316" pos:column="25">a</name></type></param>,<param><type><name pos:line="316" pos:column="27">b</name></type></param>)</parameter_list></cpp:macro>				<cpp:value pos:line="316" pos:column="57">InSetOf2(v-(a), 0,b-(a))</cpp:value></cpp:define>
+<cpp:define pos:line="317" pos:column="1">#<cpp:directive pos:line="317" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="317" pos:column="9">InBiasSetOf3</name><parameter_list pos:line="317" pos:column="21">(<param><type><name pos:line="317" pos:column="22">v</name></type></param>, <param><type><name pos:line="317" pos:column="25">a</name></type></param>,<param><type><name pos:line="317" pos:column="27">b</name></type></param>,<param><type><name pos:line="317" pos:column="29">c</name></type></param>)</parameter_list></cpp:macro>				<cpp:value pos:line="317" pos:column="57">InSetOf3(v-(a), 0,b-(a),c-(a))</cpp:value></cpp:define>
+<cpp:define pos:line="318" pos:column="1">#<cpp:directive pos:line="318" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="318" pos:column="9">InBiasSetOf4</name><parameter_list pos:line="318" pos:column="21">(<param><type><name pos:line="318" pos:column="22">v</name></type></param>, <param><type><name pos:line="318" pos:column="25">a</name></type></param>,<param><type><name pos:line="318" pos:column="27">b</name></type></param>,<param><type><name pos:line="318" pos:column="29">c</name></type></param>,<param><type><name pos:line="318" pos:column="31">d</name></type></param>)</parameter_list></cpp:macro>			<cpp:value pos:line="318" pos:column="57">InSetOf4(v-(a), 0,b-(a),c-(a),d-(a))</cpp:value></cpp:define>
+<cpp:define pos:line="319" pos:column="1">#<cpp:directive pos:line="319" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="319" pos:column="9">InBiasSetOf5</name><parameter_list pos:line="319" pos:column="21">(<param><type><name pos:line="319" pos:column="22">v</name></type></param>, <param><type><name pos:line="319" pos:column="25">a</name></type></param>,<param><type><name pos:line="319" pos:column="27">b</name></type></param>,<param><type><name pos:line="319" pos:column="29">c</name></type></param>,<param><type><name pos:line="319" pos:column="31">d</name></type></param>,<param><type><name pos:line="319" pos:column="33">e</name></type></param>)</parameter_list></cpp:macro>			<cpp:value pos:line="319" pos:column="57">InSetOf5(v-(a), 0,b-(a),c-(a),d-(a),e-(a))</cpp:value></cpp:define>
+<cpp:define pos:line="320" pos:column="1">#<cpp:directive pos:line="320" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="320" pos:column="9">InBiasSetOf6</name><parameter_list pos:line="320" pos:column="21">(<param><type><name pos:line="320" pos:column="22">v</name></type></param>, <param><type><name pos:line="320" pos:column="25">a</name></type></param>,<param><type><name pos:line="320" pos:column="27">b</name></type></param>,<param><type><name pos:line="320" pos:column="29">c</name></type></param>,<param><type><name pos:line="320" pos:column="31">d</name></type></param>,<param><type><name pos:line="320" pos:column="33">e</name></type></param>,<param><type><name pos:line="320" pos:column="35">f</name></type></param>)</parameter_list></cpp:macro>		<cpp:value pos:line="320" pos:column="49">InSetOf6(v-(a), 0,b-(a),c-(a),d-(a),e-(a),f-(a))</cpp:value></cpp:define>
+<cpp:define pos:line="321" pos:column="1">#<cpp:directive pos:line="321" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="321" pos:column="9">InBiasSetOf7</name><parameter_list pos:line="321" pos:column="21">(<param><type><name pos:line="321" pos:column="22">v</name></type></param>, <param><type><name pos:line="321" pos:column="25">a</name></type></param>,<param><type><name pos:line="321" pos:column="27">b</name></type></param>,<param><type><name pos:line="321" pos:column="29">c</name></type></param>,<param><type><name pos:line="321" pos:column="31">d</name></type></param>,<param><type><name pos:line="321" pos:column="33">e</name></type></param>,<param><type><name pos:line="321" pos:column="35">f</name></type></param>,<param><type><name pos:line="321" pos:column="37">g</name></type></param>)</parameter_list></cpp:macro>		<cpp:value pos:line="321" pos:column="49">InSetOf7(v-(a), 0,b-(a),c-(a),d-(a),e-(a),f-(a),g-(a))</cpp:value></cpp:define>
+<cpp:define pos:line="322" pos:column="1">#<cpp:directive pos:line="322" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="322" pos:column="9">InBiasSetOf8</name><parameter_list pos:line="322" pos:column="21">(<param><type><name pos:line="322" pos:column="22">v</name></type></param>, <param><type><name pos:line="322" pos:column="25">a</name></type></param>,<param><type><name pos:line="322" pos:column="27">b</name></type></param>,<param><type><name pos:line="322" pos:column="29">c</name></type></param>,<param><type><name pos:line="322" pos:column="31">d</name></type></param>,<param><type><name pos:line="322" pos:column="33">e</name></type></param>,<param><type><name pos:line="322" pos:column="35">f</name></type></param>,<param><type><name pos:line="322" pos:column="37">g</name></type></param>,<param><type><name pos:line="322" pos:column="39">h</name></type></param>)</parameter_list></cpp:macro>	<cpp:value pos:line="322" pos:column="49">InSetOf8(v-(a), 0,b-(a),c-(a),d-(a),e-(a),f-(a),g-(a),h-(a))</cpp:value></cpp:define>
+<cpp:define pos:line="323" pos:column="1">#<cpp:directive pos:line="323" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="323" pos:column="9">InBiasSetOf9</name><parameter_list pos:line="323" pos:column="21">(<param><type><name pos:line="323" pos:column="22">v</name></type></param>, <param><type><name pos:line="323" pos:column="25">a</name></type></param>,<param><type><name pos:line="323" pos:column="27">b</name></type></param>,<param><type><name pos:line="323" pos:column="29">c</name></type></param>,<param><type><name pos:line="323" pos:column="31">d</name></type></param>,<param><type><name pos:line="323" pos:column="33">e</name></type></param>,<param><type><name pos:line="323" pos:column="35">f</name></type></param>,<param><type><name pos:line="323" pos:column="37">g</name></type></param>,<param><type><name pos:line="323" pos:column="39">h</name></type></param>,<param><type><name pos:line="323" pos:column="41">i</name></type></param>)</parameter_list></cpp:macro>	<cpp:value pos:line="323" pos:column="49">InSetOf9(v-(a), 0,b-(a),c-(a),d-(a),e-(a),f-(a),g-(a),h-(a),i-(a))</cpp:value></cpp:define>
+
+
+<cpp:if pos:line="326" pos:column="1">#<cpp:directive pos:line="326" pos:column="2">if</cpp:directive> <expr><name pos:line="326" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+<cpp:define pos:line="327" pos:column="1">#<cpp:directive pos:line="327" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="327" pos:column="9">MSOFORCECONST</name></cpp:macro> <cpp:value pos:line="327" pos:column="23">const</cpp:value></cpp:define>
+<cpp:else pos:line="328" pos:column="1">#<cpp:directive pos:line="328" pos:column="2">else</cpp:directive></cpp:else>
+<cpp:define pos:line="329" pos:column="1">#<cpp:directive pos:line="329" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="329" pos:column="9">MSOFORCECONST</name></cpp:macro></cpp:define>
+<cpp:endif pos:line="330" pos:column="1">#<cpp:directive pos:line="330" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="330" pos:column="8">// VSMSODEBUG</comment>
+
+<cpp:endif pos:line="332" pos:column="1">#<cpp:directive pos:line="332" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="332" pos:column="8">// MSOSTD_H</comment>
+</unit>

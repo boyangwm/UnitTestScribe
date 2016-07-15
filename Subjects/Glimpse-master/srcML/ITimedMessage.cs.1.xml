@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Message\ITimedMessage.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">Glimpse</name><op:operator pos:line="2" pos:column="14">.</op:operator><name pos:line="2" pos:column="15">Core</name><op:operator pos:line="2" pos:column="19">.</op:operator><name pos:line="2" pos:column="20">Extensibility</name></name>;</using>
+
+<namespace pos:line="4" pos:column="1">namespace <name><name pos:line="4" pos:column="11">Glimpse</name><op:operator pos:line="4" pos:column="18">.</op:operator><name pos:line="4" pos:column="19">Core</name><op:operator pos:line="4" pos:column="23">.</op:operator><name pos:line="4" pos:column="24">Message</name></name>
+<block pos:line="5" pos:column="1">{
+    <comment type="line" pos:line="6" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// The definition of a message which is published with execution timing information.</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class type="interface"><specifier pos:line="9" pos:column="5">public</specifier> interface <name pos:line="9" pos:column="22">ITimedMessage</name> <super pos:line="9" pos:column="36">: <name pos:line="9" pos:column="38">IMessage</name></super>
+    <block pos:line="10" pos:column="5">{
+        <comment type="line" pos:line="11" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="12" pos:column="9">/// Gets or sets the offset from the Http request start.</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// The offset.</comment>
+        <comment type="line" pos:line="16" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="17" pos:column="9">TimeSpan</name></type> <name pos:line="17" pos:column="18">Offset</name> <block pos:line="17" pos:column="25">{ <function_decl><name pos:line="17" pos:column="27">get</name>;</function_decl> <function_decl><name pos:line="17" pos:column="32">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="19" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="20" pos:column="9">/// Gets or sets the duration of the executed method.</comment>
+        <comment type="line" pos:line="21" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="22" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// The duration.</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="25" pos:column="9">TimeSpan</name></type> <name pos:line="25" pos:column="18">Duration</name> <block pos:line="25" pos:column="27">{ <function_decl><name pos:line="25" pos:column="29">get</name>;</function_decl> <function_decl><name pos:line="25" pos:column="34">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// Gets or sets the start time.</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// The start time.</comment>
+        <comment type="line" pos:line="32" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="33" pos:column="9">DateTime</name></type> <name pos:line="33" pos:column="18">StartTime</name> <block pos:line="33" pos:column="28">{ <function_decl><name pos:line="33" pos:column="30">get</name>;</function_decl> <function_decl><name pos:line="33" pos:column="35">set</name>;</function_decl> }</block></decl></decl_stmt>
+    }</block></class>
+
+    <comment type="line" pos:line="36" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="37" pos:column="5">/// Extension methods for populating &lt;see cref="ITimedMessage"/&gt; instances.</comment>
+    <comment type="line" pos:line="38" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="39" pos:column="5">public</specifier> <specifier pos:line="39" pos:column="12">static</specifier> class <name pos:line="39" pos:column="25">TimedMessageExtension</name>
+    <block pos:line="40" pos:column="5">{
+        <comment type="line" pos:line="41" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// Populates relevant properties on the source message.</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// &lt;typeparam name="T"&gt;The type of the message.&lt;/typeparam&gt;</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// &lt;param name="timerResult"&gt;The timer result.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// &lt;returns&gt;The &lt;paramref name="message"/&gt; with populated &lt;see cref="ITimedMessage"/&gt; properties.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="48" pos:column="9">public</specifier> <specifier pos:line="48" pos:column="16">static</specifier> <name pos:line="48" pos:column="23">T</name></type> <name><name pos:line="48" pos:column="25">AsTimedMessage</name><argument_list pos:line="48" pos:column="39">&lt;<argument><name pos:line="48" pos:column="40">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="48" pos:column="42">(<param><decl><type><name pos:line="48" pos:column="43">this</name> <name pos:line="48" pos:column="48">T</name></type> <name pos:line="48" pos:column="50">message</name></decl></param>, <param><decl><type><name pos:line="48" pos:column="59">TimerResult</name></type> <name pos:line="48" pos:column="71">timerResult</name></decl></param>)</parameter_list>
+            <where pos:line="49" pos:column="13">where <name pos:line="49" pos:column="19">T</name> : <name pos:line="49" pos:column="23">ITimedMessage</name></where>
+        <block pos:line="50" pos:column="9">{
+            <expr_stmt><expr><name><name pos:line="51" pos:column="13">message</name><op:operator pos:line="51" pos:column="20">.</op:operator><name pos:line="51" pos:column="21">Offset</name></name> <op:operator pos:line="51" pos:column="28">=</op:operator> <name><name pos:line="51" pos:column="30">timerResult</name><op:operator pos:line="51" pos:column="41">.</op:operator><name pos:line="51" pos:column="42">Offset</name></name></expr>;</expr_stmt>  
+            <expr_stmt><expr><name><name pos:line="52" pos:column="13">message</name><op:operator pos:line="52" pos:column="20">.</op:operator><name pos:line="52" pos:column="21">Duration</name></name> <op:operator pos:line="52" pos:column="30">=</op:operator> <name><name pos:line="52" pos:column="32">timerResult</name><op:operator pos:line="52" pos:column="43">.</op:operator><name pos:line="52" pos:column="44">Duration</name></name></expr>;</expr_stmt> 
+            <expr_stmt><expr><name><name pos:line="53" pos:column="13">message</name><op:operator pos:line="53" pos:column="20">.</op:operator><name pos:line="53" pos:column="21">StartTime</name></name> <op:operator pos:line="53" pos:column="31">=</op:operator> <name><name pos:line="53" pos:column="33">timerResult</name><op:operator pos:line="53" pos:column="44">.</op:operator><name pos:line="53" pos:column="45">StartTime</name></name></expr>;</expr_stmt> 
+
+            <return pos:line="55" pos:column="13">return <expr><name pos:line="55" pos:column="20">message</name></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="58" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="59" pos:column="9">/// Populates relevant properties on the source message.</comment>
+        <comment type="line" pos:line="60" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="61" pos:column="9">/// &lt;typeparam name="T"&gt;The type of the message.&lt;/typeparam&gt;</comment>
+        <comment type="line" pos:line="62" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt; </comment>
+        <comment type="line" pos:line="63" pos:column="9">/// &lt;param name="offset"&gt;The offset.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="64" pos:column="9">/// &lt;param name="duration"&gt;The duration.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="65" pos:column="9">/// &lt;param name="startTime"&gt;The start time.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="66" pos:column="9">/// &lt;returns&gt;The &lt;paramref name="message"/&gt; with populated &lt;see cref="ITimedMessage"/&gt; properties.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="67" pos:column="9">public</specifier> <specifier pos:line="67" pos:column="16">static</specifier> <name pos:line="67" pos:column="23">T</name></type> <name><name pos:line="67" pos:column="25">AsTimedMessage</name><argument_list pos:line="67" pos:column="39">&lt;<argument><name pos:line="67" pos:column="40">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="67" pos:column="42">(<param><decl><type><name pos:line="67" pos:column="43">this</name> <name pos:line="67" pos:column="48">T</name></type> <name pos:line="67" pos:column="50">message</name></decl></param>, <param><decl><type><name pos:line="67" pos:column="59">TimeSpan</name></type> <name pos:line="67" pos:column="68">offset</name></decl></param>, <param><decl><type><name pos:line="67" pos:column="76">TimeSpan</name></type> <name pos:line="67" pos:column="85">duration</name></decl></param>, <param><decl><type><name pos:line="67" pos:column="95">DateTime</name></type> <name pos:line="67" pos:column="104">startTime</name></decl></param>)</parameter_list>
+            <where pos:line="68" pos:column="13">where <name pos:line="68" pos:column="19">T</name> : <name pos:line="68" pos:column="23">ITimedMessage</name></where>
+        <block pos:line="69" pos:column="9">{
+            <expr_stmt><expr><name><name pos:line="70" pos:column="13">message</name><op:operator pos:line="70" pos:column="20">.</op:operator><name pos:line="70" pos:column="21">Offset</name></name> <op:operator pos:line="70" pos:column="28">=</op:operator> <name pos:line="70" pos:column="30">offset</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="71" pos:column="13">message</name><op:operator pos:line="71" pos:column="20">.</op:operator><name pos:line="71" pos:column="21">Duration</name></name> <op:operator pos:line="71" pos:column="30">=</op:operator> <name pos:line="71" pos:column="32">duration</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="72" pos:column="13">message</name><op:operator pos:line="72" pos:column="20">.</op:operator><name pos:line="72" pos:column="21">StartTime</name></name> <op:operator pos:line="72" pos:column="31">=</op:operator> <name pos:line="72" pos:column="33">startTime</name></expr>;</expr_stmt>
+
+            <return pos:line="74" pos:column="13">return <expr><name pos:line="74" pos:column="20">message</name></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="77" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="78" pos:column="9">/// Populates relevant properties on the source message. Duration is defaulted to Zero and StartTime is not set.</comment>
+        <comment type="line" pos:line="79" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="80" pos:column="9">/// &lt;typeparam name="T"&gt;The type of the message.&lt;/typeparam&gt;</comment>
+        <comment type="line" pos:line="81" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt; </comment>
+        <comment type="line" pos:line="82" pos:column="9">/// &lt;param name="offset"&gt;The offset.&lt;/param&gt; </comment>
+        <comment type="line" pos:line="83" pos:column="9">/// &lt;returns&gt;The &lt;paramref name="message"/&gt; with populated &lt;see cref="ITimedMessage"/&gt; properties.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="84" pos:column="9">public</specifier> <specifier pos:line="84" pos:column="16">static</specifier> <name pos:line="84" pos:column="23">T</name></type> <name><name pos:line="84" pos:column="25">AsTimedMessage</name><argument_list pos:line="84" pos:column="39">&lt;<argument><name pos:line="84" pos:column="40">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="84" pos:column="42">(<param><decl><type><name pos:line="84" pos:column="43">this</name> <name pos:line="84" pos:column="48">T</name></type> <name pos:line="84" pos:column="50">message</name></decl></param>, <param><decl><type><name pos:line="84" pos:column="59">TimeSpan</name></type> <name pos:line="84" pos:column="68">offset</name></decl></param>)</parameter_list>
+            <where pos:line="85" pos:column="13">where <name pos:line="85" pos:column="19">T</name> : <name pos:line="85" pos:column="23">ITimedMessage</name></where>
+        <block pos:line="86" pos:column="9">{
+            <expr_stmt><expr><name><name pos:line="87" pos:column="13">message</name><op:operator pos:line="87" pos:column="20">.</op:operator><name pos:line="87" pos:column="21">Offset</name></name> <op:operator pos:line="87" pos:column="28">=</op:operator> <name pos:line="87" pos:column="30">offset</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="88" pos:column="13">message</name><op:operator pos:line="88" pos:column="20">.</op:operator><name pos:line="88" pos:column="21">Duration</name></name> <op:operator pos:line="88" pos:column="30">=</op:operator> <name><name pos:line="88" pos:column="32">TimeSpan</name><op:operator pos:line="88" pos:column="40">.</op:operator><name pos:line="88" pos:column="41">Zero</name></name></expr>;</expr_stmt>
+
+            <return pos:line="90" pos:column="13">return <expr><name pos:line="90" pos:column="20">message</name></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="93" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="94" pos:column="9">/// Populates relevant properties on the source message. Duration is defaulted to Zero.</comment>
+        <comment type="line" pos:line="95" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="96" pos:column="9">/// &lt;typeparam name="T"&gt;The type of the message.&lt;/typeparam&gt;</comment>
+        <comment type="line" pos:line="97" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt; </comment>
+        <comment type="line" pos:line="98" pos:column="9">/// &lt;param name="offset"&gt;The offset.&lt;/param&gt; </comment>
+        <comment type="line" pos:line="99" pos:column="9">/// &lt;param name="startTime"&gt;The start time.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="100" pos:column="9">/// &lt;returns&gt;The &lt;paramref name="message"/&gt; with populated &lt;see cref="ITimedMessage"/&gt; properties.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="101" pos:column="9">public</specifier> <specifier pos:line="101" pos:column="16">static</specifier> <name pos:line="101" pos:column="23">T</name></type> <name><name pos:line="101" pos:column="25">AsTimedMessage</name><argument_list pos:line="101" pos:column="39">&lt;<argument><name pos:line="101" pos:column="40">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="101" pos:column="42">(<param><decl><type><name pos:line="101" pos:column="43">this</name> <name pos:line="101" pos:column="48">T</name></type> <name pos:line="101" pos:column="50">message</name></decl></param>, <param><decl><type><name pos:line="101" pos:column="59">TimeSpan</name></type> <name pos:line="101" pos:column="68">offset</name></decl></param>, <param><decl><type><name pos:line="101" pos:column="76">DateTime</name></type> <name pos:line="101" pos:column="85">startTime</name></decl></param>)</parameter_list>
+            <where pos:line="102" pos:column="13">where <name pos:line="102" pos:column="19">T</name> : <name pos:line="102" pos:column="23">ITimedMessage</name></where>
+        <block pos:line="103" pos:column="9">{
+            <expr_stmt><expr><name><name pos:line="104" pos:column="13">message</name><op:operator pos:line="104" pos:column="20">.</op:operator><name pos:line="104" pos:column="21">Offset</name></name> <op:operator pos:line="104" pos:column="28">=</op:operator> <name pos:line="104" pos:column="30">offset</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="105" pos:column="13">message</name><op:operator pos:line="105" pos:column="20">.</op:operator><name pos:line="105" pos:column="21">Duration</name></name> <op:operator pos:line="105" pos:column="30">=</op:operator> <name><name pos:line="105" pos:column="32">TimeSpan</name><op:operator pos:line="105" pos:column="40">.</op:operator><name pos:line="105" pos:column="41">Zero</name></name></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="106" pos:column="13">message</name><op:operator pos:line="106" pos:column="20">.</op:operator><name pos:line="106" pos:column="21">StartTime</name></name> <op:operator pos:line="106" pos:column="31">=</op:operator> <name pos:line="106" pos:column="33">startTime</name></expr>;</expr_stmt>
+
+            <return pos:line="108" pos:column="13">return <expr><name pos:line="108" pos:column="20">message</name></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="111" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="112" pos:column="9">/// Populates relevant properties on the source message. StartTime is not set.</comment>
+        <comment type="line" pos:line="113" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="114" pos:column="9">/// &lt;typeparam name="T"&gt;The type of the message.&lt;/typeparam&gt;</comment>
+        <comment type="line" pos:line="115" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt; </comment>
+        <comment type="line" pos:line="116" pos:column="9">/// &lt;param name="offset"&gt;The offset.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="117" pos:column="9">/// &lt;param name="duration"&gt;The duration.&lt;/param&gt; </comment>
+        <comment type="line" pos:line="118" pos:column="9">/// &lt;returns&gt;The &lt;paramref name="message"/&gt; with populated &lt;see cref="ITimedMessage"/&gt; properties.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="119" pos:column="9">public</specifier> <specifier pos:line="119" pos:column="16">static</specifier> <name pos:line="119" pos:column="23">T</name></type> <name><name pos:line="119" pos:column="25">AsTimedMessage</name><argument_list pos:line="119" pos:column="39">&lt;<argument><name pos:line="119" pos:column="40">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="119" pos:column="42">(<param><decl><type><name pos:line="119" pos:column="43">this</name> <name pos:line="119" pos:column="48">T</name></type> <name pos:line="119" pos:column="50">message</name></decl></param>, <param><decl><type><name pos:line="119" pos:column="59">TimeSpan</name></type> <name pos:line="119" pos:column="68">offset</name></decl></param>, <param><decl><type><name pos:line="119" pos:column="76">TimeSpan</name></type> <name pos:line="119" pos:column="85">duration</name></decl></param>)</parameter_list>
+            <where pos:line="120" pos:column="13">where <name pos:line="120" pos:column="19">T</name> : <name pos:line="120" pos:column="23">ITimedMessage</name></where>
+        <block pos:line="121" pos:column="9">{
+            <expr_stmt><expr><name><name pos:line="122" pos:column="13">message</name><op:operator pos:line="122" pos:column="20">.</op:operator><name pos:line="122" pos:column="21">Offset</name></name> <op:operator pos:line="122" pos:column="28">=</op:operator> <name pos:line="122" pos:column="30">offset</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="123" pos:column="13">message</name><op:operator pos:line="123" pos:column="20">.</op:operator><name pos:line="123" pos:column="21">Duration</name></name> <op:operator pos:line="123" pos:column="30">=</op:operator> <name pos:line="123" pos:column="32">duration</name></expr>;</expr_stmt> 
+
+            <return pos:line="125" pos:column="13">return <expr><name pos:line="125" pos:column="20">message</name></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

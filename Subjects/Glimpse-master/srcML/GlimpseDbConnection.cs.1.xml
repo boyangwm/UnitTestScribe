@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Ado\AlternateType\GlimpseDbConnection.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">ComponentModel</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Data</name></name>;</using>
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">System</name><op:operator pos:line="4" pos:column="13">.</op:operator><name pos:line="4" pos:column="14">Data</name><op:operator pos:line="4" pos:column="18">.</op:operator><name pos:line="4" pos:column="19">Common</name></name>;</using>
+<using pos:line="5" pos:column="1">using <name><name pos:line="5" pos:column="7">System</name><op:operator pos:line="5" pos:column="13">.</op:operator><name pos:line="5" pos:column="14">Transactions</name></name>;</using>
+<using pos:line="6" pos:column="1">using <name><name pos:line="6" pos:column="7">Glimpse</name><op:operator pos:line="6" pos:column="14">.</op:operator><name pos:line="6" pos:column="15">Ado</name><op:operator pos:line="6" pos:column="18">.</op:operator><name pos:line="6" pos:column="19">Message</name></name>;</using>
+<using pos:line="7" pos:column="1">using <name><name pos:line="7" pos:column="7">Glimpse</name><op:operator pos:line="7" pos:column="14">.</op:operator><name pos:line="7" pos:column="15">Core</name><op:operator pos:line="7" pos:column="19">.</op:operator><name pos:line="7" pos:column="20">Extensibility</name></name>;</using>
+<using pos:line="8" pos:column="1">using <name><name pos:line="8" pos:column="7">Glimpse</name><op:operator pos:line="8" pos:column="14">.</op:operator><name pos:line="8" pos:column="15">Core</name><op:operator pos:line="8" pos:column="19">.</op:operator><name pos:line="8" pos:column="20">Framework</name></name>;</using>
+<using pos:line="9" pos:column="1">using <name><name pos:line="9" pos:column="7">Glimpse</name><op:operator pos:line="9" pos:column="14">.</op:operator><name pos:line="9" pos:column="15">Core</name><op:operator pos:line="9" pos:column="19">.</op:operator><name pos:line="9" pos:column="20">Message</name></name>;</using>
+
+<namespace pos:line="11" pos:column="1">namespace <name><name pos:line="11" pos:column="11">Glimpse</name><op:operator pos:line="11" pos:column="18">.</op:operator><name pos:line="11" pos:column="19">Ado</name><op:operator pos:line="11" pos:column="22">.</op:operator><name pos:line="11" pos:column="23">AlternateType</name></name>
+<block pos:line="12" pos:column="1">{
+    <class><specifier pos:line="13" pos:column="5">public</specifier> class <name pos:line="13" pos:column="18">GlimpseDbConnection</name> <super pos:line="13" pos:column="38">: <name pos:line="13" pos:column="40">DbConnection</name></super>
+    <block pos:line="14" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="15" pos:column="9">private</specifier> <name pos:line="15" pos:column="17">IMessageBroker</name></type> <name pos:line="15" pos:column="32">messageBroker</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="16" pos:column="9">private</specifier> <name pos:line="16" pos:column="17">IExecutionTimer</name></type> <name pos:line="16" pos:column="33">timerStrategy</name></decl>;</decl_stmt> 
+        <decl_stmt><decl><type><specifier pos:line="17" pos:column="9">private</specifier> <name pos:line="17" pos:column="17">TimeSpan</name></type> <name pos:line="17" pos:column="26">timerTimeSpan</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="18" pos:column="9">private</specifier> <name pos:line="18" pos:column="17">bool</name></type> <name pos:line="18" pos:column="22">wasPreviouslyUsed</name></decl>;</decl_stmt>
+
+        <constructor><specifier pos:line="20" pos:column="9">public</specifier> <name pos:line="20" pos:column="16">GlimpseDbConnection</name><parameter_list pos:line="20" pos:column="35">(<param><decl><type><name pos:line="20" pos:column="36">DbConnection</name></type> <name pos:line="20" pos:column="49">connection</name></decl></param>)</parameter_list>
+            <member_list pos:line="21" pos:column="13">: <call><name pos:line="21" pos:column="15">this</name><argument_list pos:line="21" pos:column="19">(<argument><expr><name pos:line="21" pos:column="20">connection</name></expr></argument>, <argument><expr><call><name><name pos:line="21" pos:column="32">connection</name><op:operator pos:line="21" pos:column="42">.</op:operator><name pos:line="21" pos:column="43">TryGetProfiledProviderFactory</name></name><argument_list pos:line="21" pos:column="72">()</argument_list></call></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="22" pos:column="9">{ 
+        }</block></constructor>
+
+        <constructor><specifier pos:line="25" pos:column="9">public</specifier> <name pos:line="25" pos:column="16">GlimpseDbConnection</name><parameter_list pos:line="25" pos:column="35">(<param><decl><type><name pos:line="25" pos:column="36">DbConnection</name></type> <name pos:line="25" pos:column="49">connection</name></decl></param>, <param><decl><type><name pos:line="25" pos:column="61">DbProviderFactory</name></type> <name pos:line="25" pos:column="79">providerFactory</name></decl></param>)</parameter_list>
+            <member_list pos:line="26" pos:column="13">: <call><name pos:line="26" pos:column="15">this</name><argument_list pos:line="26" pos:column="19">(<argument><expr><name pos:line="26" pos:column="20">connection</name></expr></argument>, <argument><expr><name pos:line="26" pos:column="32">providerFactory</name></expr></argument>, <argument><expr><call><name><name pos:line="26" pos:column="49">Guid</name><op:operator pos:line="26" pos:column="53">.</op:operator><name pos:line="26" pos:column="54">NewGuid</name></name><argument_list pos:line="26" pos:column="61">()</argument_list></call></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="27" pos:column="9">{ 
+        }</block></constructor>
+
+        <constructor><specifier pos:line="30" pos:column="9">public</specifier> <name pos:line="30" pos:column="16">GlimpseDbConnection</name><parameter_list pos:line="30" pos:column="35">(<param><decl><type><name pos:line="30" pos:column="36">DbConnection</name></type> <name pos:line="30" pos:column="49">connection</name></decl></param>, <param><decl><type><name pos:line="30" pos:column="61">DbProviderFactory</name></type> <name pos:line="30" pos:column="79">providerFactory</name></decl></param>, <param><decl><type><name pos:line="30" pos:column="96">Guid</name></type> <name pos:line="30" pos:column="101">connectionId</name></decl></param>)</parameter_list>
+        <block pos:line="31" pos:column="9">{
+            <expr_stmt><expr><name pos:line="32" pos:column="13">InnerConnection</name> <op:operator pos:line="32" pos:column="29">=</op:operator> <name pos:line="32" pos:column="31">connection</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="33" pos:column="13">InnerProviderFactory</name> <op:operator pos:line="33" pos:column="34">=</op:operator> <name pos:line="33" pos:column="36">providerFactory</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="34" pos:column="13">ConnectionId</name> <op:operator pos:line="34" pos:column="26">=</op:operator> <name pos:line="34" pos:column="28">connectionId</name></expr>;</expr_stmt>
+
+            <if pos:line="36" pos:column="13">if <condition pos:line="36" pos:column="16">(<expr><name pos:line="36" pos:column="17">MessageBroker</name> <op:operator pos:line="36" pos:column="31">!=</op:operator> <name pos:line="36" pos:column="34">null</name> <op:operator pos:line="36" pos:column="39">&amp;&amp;</op:operator> <name pos:line="36" pos:column="42">TimerStrategy</name> <op:operator pos:line="36" pos:column="56">!=</op:operator> <name pos:line="36" pos:column="59">null</name></expr>)</condition><then pos:line="36" pos:column="64">
+            <block pos:line="37" pos:column="13">{
+                <if pos:line="38" pos:column="17">if <condition pos:line="38" pos:column="20">(<expr><name><name pos:line="38" pos:column="21">connection</name><op:operator pos:line="38" pos:column="31">.</op:operator><name pos:line="38" pos:column="32">State</name></name> <op:operator pos:line="38" pos:column="38">==</op:operator> <name><name pos:line="38" pos:column="41">ConnectionState</name><op:operator pos:line="38" pos:column="56">.</op:operator><name pos:line="38" pos:column="57">Open</name></name></expr>)</condition><then pos:line="38" pos:column="62">
+                <block pos:line="39" pos:column="17">{
+                    <expr_stmt><expr><call><name pos:line="40" pos:column="21">OpenConnection</name><argument_list pos:line="40" pos:column="35">()</argument_list></call></expr>;</expr_stmt>
+                }</block></then></if>
+
+                <expr_stmt><expr><name><name pos:line="43" pos:column="17">connection</name><op:operator pos:line="43" pos:column="27">.</op:operator><name pos:line="43" pos:column="28">StateChange</name></name> <op:operator pos:line="43" pos:column="40">+=</op:operator> <name pos:line="43" pos:column="43">StateChangeHaneler</name></expr>;</expr_stmt>               
+            }</block></then></if>
+        }</block></constructor>
+
+        <constructor><specifier pos:line="47" pos:column="9">public</specifier> <name pos:line="47" pos:column="16">GlimpseDbConnection</name><parameter_list pos:line="47" pos:column="35">(<param><decl><type><name pos:line="47" pos:column="36">DbConnection</name></type> <name pos:line="47" pos:column="49">connection</name></decl></param>, <param><decl><type><name pos:line="47" pos:column="61">DbProviderFactory</name></type> <name pos:line="47" pos:column="79">providerFactory</name></decl></param>, <param><decl><type><name pos:line="47" pos:column="96">Guid</name></type> <name pos:line="47" pos:column="101">connectionId</name></decl></param>, <param><decl><type><name pos:line="47" pos:column="115">IMessageBroker</name></type> <name pos:line="47" pos:column="130">messageBroker</name></decl></param>, <param><decl><type><name pos:line="47" pos:column="145">IExecutionTimer</name></type> <name pos:line="47" pos:column="161">timerStrategy</name></decl></param>)</parameter_list>
+            <member_list pos:line="48" pos:column="13">: <call><name pos:line="48" pos:column="15">this</name><argument_list pos:line="48" pos:column="19">(<argument><expr><name pos:line="48" pos:column="20">connection</name></expr></argument>, <argument><expr><name pos:line="48" pos:column="32">providerFactory</name></expr></argument>, <argument><expr><name pos:line="48" pos:column="49">connectionId</name></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="49" pos:column="9">{
+            <expr_stmt><expr><name pos:line="50" pos:column="13">MessageBroker</name> <op:operator pos:line="50" pos:column="27">=</op:operator> <name pos:line="50" pos:column="29">messageBroker</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="51" pos:column="13">TimerStrategy</name> <op:operator pos:line="51" pos:column="27">=</op:operator> <name pos:line="51" pos:column="29">timerStrategy</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <decl_stmt><decl><type><specifier pos:line="54" pos:column="9">public</specifier> <specifier pos:line="54" pos:column="16">override</specifier> <specifier pos:line="54" pos:column="25">event</specifier> <name pos:line="54" pos:column="31">StateChangeEventHandler</name></type> <name pos:line="54" pos:column="55">StateChange</name>
+        <block pos:line="55" pos:column="9">{
+            <function><name pos:line="56" pos:column="13">add</name>
+            <block pos:line="57" pos:column="13">{
+                <if pos:line="58" pos:column="17">if <condition pos:line="58" pos:column="20">(<expr><name pos:line="58" pos:column="21">InnerConnection</name> <op:operator pos:line="58" pos:column="37">!=</op:operator> <name pos:line="58" pos:column="40">null</name></expr>)</condition><then pos:line="58" pos:column="45">
+                <block pos:line="59" pos:column="17">{
+                    <expr_stmt><expr><name><name pos:line="60" pos:column="21">InnerConnection</name><op:operator pos:line="60" pos:column="36">.</op:operator><name pos:line="60" pos:column="37">StateChange</name></name> <op:operator pos:line="60" pos:column="49">+=</op:operator> <name pos:line="60" pos:column="52">value</name></expr>;</expr_stmt>
+                }</block></then></if>
+            }</block></function>
+            <function><name pos:line="63" pos:column="13">remove</name>
+            <block pos:line="64" pos:column="13">{
+                <if pos:line="65" pos:column="17">if <condition pos:line="65" pos:column="20">(<expr><name pos:line="65" pos:column="21">InnerConnection</name> <op:operator pos:line="65" pos:column="37">!=</op:operator> <name pos:line="65" pos:column="40">null</name></expr>)</condition><then pos:line="65" pos:column="45">
+                <block pos:line="66" pos:column="17">{
+                    <expr_stmt><expr><name><name pos:line="67" pos:column="21">InnerConnection</name><op:operator pos:line="67" pos:column="36">.</op:operator><name pos:line="67" pos:column="37">StateChange</name></name> <op:operator pos:line="67" pos:column="49">-=</op:operator> <name pos:line="67" pos:column="52">value</name></expr>;</expr_stmt>
+                }</block></then></if>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="72" pos:column="9">public</specifier> <name pos:line="72" pos:column="16">DbProviderFactory</name></type> <name pos:line="72" pos:column="34">InnerProviderFactory</name> <block pos:line="72" pos:column="55">{ <function_decl><name pos:line="72" pos:column="57">get</name>;</function_decl> <function_decl><name pos:line="72" pos:column="62">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="74" pos:column="9">public</specifier> <name pos:line="74" pos:column="16">DbConnection</name></type> <name pos:line="74" pos:column="29">InnerConnection</name> <block pos:line="74" pos:column="45">{ <function_decl><name pos:line="74" pos:column="47">get</name>;</function_decl> <function_decl><name pos:line="74" pos:column="52">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="76" pos:column="9">public</specifier> <name pos:line="76" pos:column="16">Guid</name></type> <name pos:line="76" pos:column="21">ConnectionId</name> <block pos:line="76" pos:column="34">{ <function_decl><name pos:line="76" pos:column="36">get</name>;</function_decl> <function_decl><name pos:line="76" pos:column="41">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="78" pos:column="9">public</specifier> <specifier pos:line="78" pos:column="16">override</specifier> <name pos:line="78" pos:column="25">string</name></type> <name pos:line="78" pos:column="32">ConnectionString</name>
+        <block pos:line="79" pos:column="9">{
+            <function><name pos:line="80" pos:column="13">get</name> <block pos:line="80" pos:column="17">{ <return pos:line="80" pos:column="19">return <expr><name><name pos:line="80" pos:column="26">InnerConnection</name><op:operator pos:line="80" pos:column="41">.</op:operator><name pos:line="80" pos:column="42">ConnectionString</name></name></expr>;</return> }</block></function>
+            <function><name pos:line="81" pos:column="13">set</name> <block pos:line="81" pos:column="17">{ <expr_stmt><expr><name><name pos:line="81" pos:column="19">InnerConnection</name><op:operator pos:line="81" pos:column="34">.</op:operator><name pos:line="81" pos:column="35">ConnectionString</name></name> <op:operator pos:line="81" pos:column="52">=</op:operator> <name pos:line="81" pos:column="54">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="84" pos:column="9">public</specifier> <specifier pos:line="84" pos:column="16">override</specifier> <name pos:line="84" pos:column="25">int</name></type> <name pos:line="84" pos:column="29">ConnectionTimeout</name>
+        <block pos:line="85" pos:column="9">{
+            <function><name pos:line="86" pos:column="13">get</name> <block pos:line="86" pos:column="17">{ <return pos:line="86" pos:column="19">return <expr><name><name pos:line="86" pos:column="26">InnerConnection</name><op:operator pos:line="86" pos:column="41">.</op:operator><name pos:line="86" pos:column="42">ConnectionTimeout</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="89" pos:column="9">public</specifier> <specifier pos:line="89" pos:column="16">override</specifier> <name pos:line="89" pos:column="25">string</name></type> <name pos:line="89" pos:column="32">Database</name>
+        <block pos:line="90" pos:column="9">{
+            <function><name pos:line="91" pos:column="13">get</name> <block pos:line="91" pos:column="17">{ <return pos:line="91" pos:column="19">return <expr><name><name pos:line="91" pos:column="26">InnerConnection</name><op:operator pos:line="91" pos:column="41">.</op:operator><name pos:line="91" pos:column="42">Database</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="94" pos:column="9">public</specifier> <specifier pos:line="94" pos:column="16">override</specifier> <name pos:line="94" pos:column="25">string</name></type> <name pos:line="94" pos:column="32">DataSource</name>
+        <block pos:line="95" pos:column="9">{
+            <function><name pos:line="96" pos:column="13">get</name> <block pos:line="96" pos:column="17">{ <return pos:line="96" pos:column="19">return <expr><name><name pos:line="96" pos:column="26">InnerConnection</name><op:operator pos:line="96" pos:column="41">.</op:operator><name pos:line="96" pos:column="42">DataSource</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="99" pos:column="9">public</specifier> <specifier pos:line="99" pos:column="16">override</specifier> <name pos:line="99" pos:column="25">ConnectionState</name></type> <name pos:line="99" pos:column="41">State</name>
+        <block pos:line="100" pos:column="9">{
+            <function><name pos:line="101" pos:column="13">get</name> <block pos:line="101" pos:column="17">{ <return pos:line="101" pos:column="19">return <expr><name><name pos:line="101" pos:column="26">InnerConnection</name><op:operator pos:line="101" pos:column="41">.</op:operator><name pos:line="101" pos:column="42">State</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="104" pos:column="9">public</specifier> <specifier pos:line="104" pos:column="16">override</specifier> <name pos:line="104" pos:column="25">string</name></type> <name pos:line="104" pos:column="32">ServerVersion</name>
+        <block pos:line="105" pos:column="9">{
+            <function><name pos:line="106" pos:column="13">get</name> <block pos:line="106" pos:column="17">{ <return pos:line="106" pos:column="19">return <expr><name><name pos:line="106" pos:column="26">InnerConnection</name><op:operator pos:line="106" pos:column="41">.</op:operator><name pos:line="106" pos:column="42">ServerVersion</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="109" pos:column="9">public</specifier> <specifier pos:line="109" pos:column="16">override</specifier> <name pos:line="109" pos:column="25">ISite</name></type> <name pos:line="109" pos:column="31">Site</name>
+        <block pos:line="110" pos:column="9">{
+            <function><name pos:line="111" pos:column="13">get</name> <block pos:line="111" pos:column="17">{ <return pos:line="111" pos:column="19">return <expr><name><name pos:line="111" pos:column="26">InnerConnection</name><op:operator pos:line="111" pos:column="41">.</op:operator><name pos:line="111" pos:column="42">Site</name></name></expr>;</return> }</block></function>
+            <function><name pos:line="112" pos:column="13">set</name> <block pos:line="112" pos:column="17">{ <expr_stmt><expr><name><name pos:line="112" pos:column="19">InnerConnection</name><op:operator pos:line="112" pos:column="34">.</op:operator><name pos:line="112" pos:column="35">Site</name></name> <op:operator pos:line="112" pos:column="40">=</op:operator> <name pos:line="112" pos:column="42">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="115" pos:column="9">protected</specifier> <specifier pos:line="115" pos:column="19">override</specifier> <name pos:line="115" pos:column="28">DbProviderFactory</name></type> <name pos:line="115" pos:column="46">DbProviderFactory</name>
+        <block pos:line="116" pos:column="9">{
+            <function><name pos:line="117" pos:column="13">get</name> <block pos:line="117" pos:column="17">{ <return pos:line="117" pos:column="19">return <expr><name pos:line="117" pos:column="26">InnerProviderFactory</name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="120" pos:column="9">private</specifier> <name pos:line="120" pos:column="17">IMessageBroker</name></type> <name pos:line="120" pos:column="32">MessageBroker</name>
+        <block pos:line="121" pos:column="9">{
+            <function><name pos:line="122" pos:column="13">get</name> <block pos:line="122" pos:column="17">{ <return pos:line="122" pos:column="19">return <expr><name pos:line="122" pos:column="26">messageBroker</name> <op:operator pos:line="122" pos:column="40">??</op:operator> <op:operator pos:line="122" pos:column="43">(</op:operator><name pos:line="122" pos:column="44">messageBroker</name> <op:operator pos:line="122" pos:column="58">=</op:operator> <call><name><name pos:line="122" pos:column="60">GlimpseConfiguration</name><op:operator pos:line="122" pos:column="80">.</op:operator><name pos:line="122" pos:column="81">GetConfiguredMessageBroker</name></name><argument_list pos:line="122" pos:column="107">()</argument_list></call><op:operator pos:line="122" pos:column="109">)</op:operator></expr>;</return> }</block></function>
+            <function><name pos:line="123" pos:column="13">set</name> <block pos:line="123" pos:column="17">{ <expr_stmt><expr><name pos:line="123" pos:column="19">messageBroker</name> <op:operator pos:line="123" pos:column="33">=</op:operator> <name pos:line="123" pos:column="35">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="126" pos:column="9">private</specifier> <name pos:line="126" pos:column="17">IExecutionTimer</name></type> <name pos:line="126" pos:column="33">TimerStrategy</name>
+        <block pos:line="127" pos:column="9">{
+            <function><name pos:line="128" pos:column="13">get</name> <block pos:line="128" pos:column="17">{ <return pos:line="128" pos:column="19">return <expr><name pos:line="128" pos:column="26">timerStrategy</name> <op:operator pos:line="128" pos:column="40">??</op:operator> <op:operator pos:line="128" pos:column="43">(</op:operator><name pos:line="128" pos:column="44">timerStrategy</name> <op:operator pos:line="128" pos:column="58">=</op:operator> <call><call><name><name pos:line="128" pos:column="60">GlimpseConfiguration</name><op:operator pos:line="128" pos:column="80">.</op:operator><name pos:line="128" pos:column="81">GetConfiguredTimerStrategy</name></name><argument_list pos:line="128" pos:column="107">()</argument_list></call><argument_list pos:line="128" pos:column="109">()</argument_list></call><op:operator pos:line="128" pos:column="111">)</op:operator></expr>;</return> }</block></function>
+            <function><name pos:line="129" pos:column="13">set</name> <block pos:line="129" pos:column="17">{ <expr_stmt><expr><name pos:line="129" pos:column="19">timerStrategy</name> <op:operator pos:line="129" pos:column="33">=</op:operator> <name pos:line="129" pos:column="35">value</name></expr>;</expr_stmt> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <function><type><specifier pos:line="132" pos:column="9">public</specifier> <specifier pos:line="132" pos:column="16">override</specifier> <name pos:line="132" pos:column="25">void</name></type> <name pos:line="132" pos:column="30">ChangeDatabase</name><parameter_list pos:line="132" pos:column="44">(<param><decl><type><name pos:line="132" pos:column="45">string</name></type> <name pos:line="132" pos:column="52">databaseName</name></decl></param>)</parameter_list>
+        <block pos:line="133" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="134" pos:column="13">InnerConnection</name><op:operator pos:line="134" pos:column="28">.</op:operator><name pos:line="134" pos:column="29">ChangeDatabase</name></name><argument_list pos:line="134" pos:column="43">(<argument><expr><name pos:line="134" pos:column="44">databaseName</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <function><type><specifier pos:line="137" pos:column="9">public</specifier> <specifier pos:line="137" pos:column="16">override</specifier> <name pos:line="137" pos:column="25">void</name></type> <name pos:line="137" pos:column="30">Close</name><parameter_list pos:line="137" pos:column="35">()</parameter_list>
+        <block pos:line="138" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="139" pos:column="13">InnerConnection</name><op:operator pos:line="139" pos:column="28">.</op:operator><name pos:line="139" pos:column="29">Close</name></name><argument_list pos:line="139" pos:column="34">()</argument_list></call></expr>;</expr_stmt> 
+        }</block></function>
+
+        <function><type><specifier pos:line="142" pos:column="9">public</specifier> <specifier pos:line="142" pos:column="16">override</specifier> <name pos:line="142" pos:column="25">void</name></type> <name pos:line="142" pos:column="30">Open</name><parameter_list pos:line="142" pos:column="34">()</parameter_list>
+        <block pos:line="143" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="144" pos:column="13">InnerConnection</name><op:operator pos:line="144" pos:column="28">.</op:operator><name pos:line="144" pos:column="29">Open</name></name><argument_list pos:line="144" pos:column="33">()</argument_list></call></expr>;</expr_stmt> 
+        }</block></function>
+
+        <function><type><specifier pos:line="147" pos:column="9">public</specifier> <specifier pos:line="147" pos:column="16">override</specifier> <name pos:line="147" pos:column="25">void</name></type> <name pos:line="147" pos:column="30">EnlistTransaction</name><parameter_list pos:line="147" pos:column="47">(<param><decl><type><name pos:line="147" pos:column="48">Transaction</name></type> <name pos:line="147" pos:column="60">transaction</name></decl></param>)</parameter_list>
+        <block pos:line="148" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="149" pos:column="13">InnerConnection</name><op:operator pos:line="149" pos:column="28">.</op:operator><name pos:line="149" pos:column="29">EnlistTransaction</name></name><argument_list pos:line="149" pos:column="46">(<argument><expr><name pos:line="149" pos:column="47">transaction</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <if pos:line="150" pos:column="13">if <condition pos:line="150" pos:column="16">(<expr><name pos:line="150" pos:column="17">transaction</name> <op:operator pos:line="150" pos:column="29">!=</op:operator> <name pos:line="150" pos:column="32">null</name></expr>)</condition><then pos:line="150" pos:column="37">
+            <block pos:line="151" pos:column="13">{
+                <expr_stmt><expr><name><name pos:line="152" pos:column="17">transaction</name><op:operator pos:line="152" pos:column="28">.</op:operator><name pos:line="152" pos:column="29">TransactionCompleted</name></name> <op:operator pos:line="152" pos:column="50">+=</op:operator> <name pos:line="152" pos:column="53">OnDtcTransactionCompleted</name></expr>;</expr_stmt>
+
+                <if pos:line="154" pos:column="17">if <condition pos:line="154" pos:column="20">(<expr><name pos:line="154" pos:column="21">MessageBroker</name> <op:operator pos:line="154" pos:column="35">!=</op:operator> <name pos:line="154" pos:column="38">null</name></expr>)</condition><then pos:line="154" pos:column="43">
+                <block pos:line="155" pos:column="17">{
+                    <expr_stmt><expr><call><name><name pos:line="156" pos:column="21">MessageBroker</name><op:operator pos:line="156" pos:column="34">.</op:operator><name pos:line="156" pos:column="35">Publish</name></name><argument_list pos:line="156" pos:column="42">(<argument><expr><op:operator pos:line="156" pos:column="43">new</op:operator> <call><name pos:line="156" pos:column="47">DtcTransactionEnlistedMessage</name><argument_list pos:line="156" pos:column="76">(<argument><expr><name pos:line="156" pos:column="77">ConnectionId</name></expr></argument>, <argument><expr><name><name pos:line="156" pos:column="91">transaction</name><op:operator pos:line="156" pos:column="102">.</op:operator><name pos:line="156" pos:column="103">IsolationLevel</name></name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                }</block></then></if>
+            }</block></then></if>
+        }</block></function>
+         
+        <function><type><specifier pos:line="161" pos:column="9">public</specifier> <specifier pos:line="161" pos:column="16">override</specifier> <name pos:line="161" pos:column="25">DataTable</name></type> <name pos:line="161" pos:column="35">GetSchema</name><parameter_list pos:line="161" pos:column="44">()</parameter_list>
+        <block pos:line="162" pos:column="9">{
+            <return pos:line="163" pos:column="13">return <expr><call><name><name pos:line="163" pos:column="20">InnerConnection</name><op:operator pos:line="163" pos:column="35">.</op:operator><name pos:line="163" pos:column="36">GetSchema</name></name><argument_list pos:line="163" pos:column="45">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="166" pos:column="9">public</specifier> <specifier pos:line="166" pos:column="16">override</specifier> <name pos:line="166" pos:column="25">DataTable</name></type> <name pos:line="166" pos:column="35">GetSchema</name><parameter_list pos:line="166" pos:column="44">(<param><decl><type><name pos:line="166" pos:column="45">string</name></type> <name pos:line="166" pos:column="52">collectionName</name></decl></param>)</parameter_list>
+        <block pos:line="167" pos:column="9">{
+            <return pos:line="168" pos:column="13">return <expr><call><name><name pos:line="168" pos:column="20">InnerConnection</name><op:operator pos:line="168" pos:column="35">.</op:operator><name pos:line="168" pos:column="36">GetSchema</name></name><argument_list pos:line="168" pos:column="45">(<argument><expr><name pos:line="168" pos:column="46">collectionName</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="171" pos:column="9">public</specifier> <specifier pos:line="171" pos:column="16">override</specifier> <name pos:line="171" pos:column="25">DataTable</name></type> <name pos:line="171" pos:column="35">GetSchema</name><parameter_list pos:line="171" pos:column="44">(<param><decl><type><name pos:line="171" pos:column="45">string</name></type> <name pos:line="171" pos:column="52">collectionName</name></decl></param>, <param><decl><type><name><name pos:line="171" pos:column="68">string</name><index pos:line="171" pos:column="74">[]</index></name></type> <name pos:line="171" pos:column="77">restrictionValues</name></decl></param>)</parameter_list>
+        <block pos:line="172" pos:column="9">{
+            <return pos:line="173" pos:column="13">return <expr><call><name><name pos:line="173" pos:column="20">InnerConnection</name><op:operator pos:line="173" pos:column="35">.</op:operator><name pos:line="173" pos:column="36">GetSchema</name></name><argument_list pos:line="173" pos:column="45">(<argument><expr><name pos:line="173" pos:column="46">collectionName</name></expr></argument>, <argument><expr><name pos:line="173" pos:column="62">restrictionValues</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+         
+        <function><type><specifier pos:line="176" pos:column="9">protected</specifier> <specifier pos:line="176" pos:column="19">override</specifier> <name pos:line="176" pos:column="28">DbTransaction</name></type> <name pos:line="176" pos:column="42">BeginDbTransaction</name><parameter_list pos:line="176" pos:column="60">(<param><decl><type><name><name pos:line="176" pos:column="61">System</name><op:operator pos:line="176" pos:column="67">.</op:operator><name pos:line="176" pos:column="68">Data</name><op:operator pos:line="176" pos:column="72">.</op:operator><name pos:line="176" pos:column="73">IsolationLevel</name></name></type> <name pos:line="176" pos:column="88">isolationLevel</name></decl></param>)</parameter_list>
+        <block pos:line="177" pos:column="9">{
+            <return pos:line="178" pos:column="13">return <expr><op:operator pos:line="178" pos:column="20">new</op:operator> <call><name pos:line="178" pos:column="24">GlimpseDbTransaction</name><argument_list pos:line="178" pos:column="44">(<argument><expr><call><name><name pos:line="178" pos:column="45">InnerConnection</name><op:operator pos:line="178" pos:column="60">.</op:operator><name pos:line="178" pos:column="61">BeginTransaction</name></name><argument_list pos:line="178" pos:column="77">(<argument><expr><name pos:line="178" pos:column="78">isolationLevel</name></expr></argument>)</argument_list></call></expr></argument>, <argument><expr><name pos:line="178" pos:column="95">this</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="181" pos:column="9">protected</specifier> <specifier pos:line="181" pos:column="19">override</specifier> <name pos:line="181" pos:column="28">DbCommand</name></type> <name pos:line="181" pos:column="38">CreateDbCommand</name><parameter_list pos:line="181" pos:column="53">()</parameter_list>
+        <block pos:line="182" pos:column="9">{
+            <return pos:line="183" pos:column="13">return <expr><op:operator pos:line="183" pos:column="20">new</op:operator> <call><name pos:line="183" pos:column="24">GlimpseDbCommand</name><argument_list pos:line="183" pos:column="40">(<argument><expr><call><name><name pos:line="183" pos:column="41">InnerConnection</name><op:operator pos:line="183" pos:column="56">.</op:operator><name pos:line="183" pos:column="57">CreateCommand</name></name><argument_list pos:line="183" pos:column="70">()</argument_list></call></expr></argument>, <argument><expr><name pos:line="183" pos:column="74">this</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="186" pos:column="9">protected</specifier> <specifier pos:line="186" pos:column="19">override</specifier> <name pos:line="186" pos:column="28">object</name></type> <name pos:line="186" pos:column="35">GetService</name><parameter_list pos:line="186" pos:column="45">(<param><decl><type><name pos:line="186" pos:column="46">Type</name></type> <name pos:line="186" pos:column="51">service</name></decl></param>)</parameter_list>
+        <block pos:line="187" pos:column="9">{
+            <return pos:line="188" pos:column="13">return <expr><op:operator pos:line="188" pos:column="20">(</op:operator><op:operator pos:line="188" pos:column="21">(</op:operator><name pos:line="188" pos:column="22">IServiceProvider</name><op:operator pos:line="188" pos:column="38">)</op:operator><name pos:line="188" pos:column="39">InnerConnection</name><op:operator pos:line="188" pos:column="54">)</op:operator><op:operator pos:line="188" pos:column="55">.</op:operator><call><name pos:line="188" pos:column="56">GetService</name><argument_list pos:line="188" pos:column="66">(<argument><expr><name pos:line="188" pos:column="67">service</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+        
+        <function><type><specifier pos:line="191" pos:column="9">protected</specifier> <specifier pos:line="191" pos:column="19">override</specifier> <name pos:line="191" pos:column="28">void</name></type> <name pos:line="191" pos:column="33">Dispose</name><parameter_list pos:line="191" pos:column="40">(<param><decl><type><name pos:line="191" pos:column="41">bool</name></type> <name pos:line="191" pos:column="46">disposing</name></decl></param>)</parameter_list>
+        <block pos:line="192" pos:column="9">{
+            <if pos:line="193" pos:column="13">if <condition pos:line="193" pos:column="16">(<expr><name pos:line="193" pos:column="17">disposing</name> <op:operator pos:line="193" pos:column="27">&amp;&amp;</op:operator> <name pos:line="193" pos:column="30">InnerConnection</name> <op:operator pos:line="193" pos:column="46">!=</op:operator> <name pos:line="193" pos:column="49">null</name></expr>)</condition><then pos:line="193" pos:column="54">
+            <block pos:line="194" pos:column="13">{
+                <expr_stmt><expr><call><name><name pos:line="195" pos:column="17">InnerConnection</name><op:operator pos:line="195" pos:column="32">.</op:operator><name pos:line="195" pos:column="33">Dispose</name></name><argument_list pos:line="195" pos:column="40">()</argument_list></call></expr>;</expr_stmt>
+                <expr_stmt><expr><name><name pos:line="196" pos:column="17">InnerConnection</name><op:operator pos:line="196" pos:column="32">.</op:operator><name pos:line="196" pos:column="33">StateChange</name></name> <op:operator pos:line="196" pos:column="45">-=</op:operator> <name pos:line="196" pos:column="48">StateChangeHaneler</name></expr>;</expr_stmt>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="199" pos:column="13">InnerConnection</name> <op:operator pos:line="199" pos:column="29">=</op:operator> <name pos:line="199" pos:column="31">null</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="200" pos:column="13">InnerProviderFactory</name> <op:operator pos:line="200" pos:column="34">=</op:operator> <name pos:line="200" pos:column="36">null</name></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="201" pos:column="13">base</name><op:operator pos:line="201" pos:column="17">.</op:operator><name pos:line="201" pos:column="18">Dispose</name></name><argument_list pos:line="201" pos:column="25">(<argument><expr><name pos:line="201" pos:column="26">disposing</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+        
+        <function><type><specifier pos:line="204" pos:column="9">private</specifier> <name pos:line="204" pos:column="17">void</name></type> <name pos:line="204" pos:column="22">OnDtcTransactionCompleted</name><parameter_list pos:line="204" pos:column="47">(<param><decl><type><name pos:line="204" pos:column="48">object</name></type> <name pos:line="204" pos:column="55">sender</name></decl></param>, <param><decl><type><name pos:line="204" pos:column="63">TransactionEventArgs</name></type> <name pos:line="204" pos:column="84">args</name></decl></param>)</parameter_list>
+        <block pos:line="205" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="206" pos:column="13">TransactionStatus</name></type> <name pos:line="206" pos:column="31">aborted</name></decl>;</decl_stmt>
+            <try pos:line="207" pos:column="13">try
+            <block pos:line="208" pos:column="13">{
+                <expr_stmt><expr><name pos:line="209" pos:column="17">aborted</name> <op:operator pos:line="209" pos:column="25">=</op:operator> <name><name pos:line="209" pos:column="27">args</name><op:operator pos:line="209" pos:column="31">.</op:operator><name pos:line="209" pos:column="32">Transaction</name><op:operator pos:line="209" pos:column="43">.</op:operator><name pos:line="209" pos:column="44">TransactionInformation</name><op:operator pos:line="209" pos:column="66">.</op:operator><name pos:line="209" pos:column="67">Status</name></name></expr>;</expr_stmt>
+            }</block>
+            <catch pos:line="211" pos:column="13">catch <parameter_list pos:line="211" pos:column="19">(<param><decl><type><name pos:line="211" pos:column="20">ObjectDisposedException</name></type></decl></param>)</parameter_list>
+            <block pos:line="212" pos:column="13">{
+                <expr_stmt><expr><name pos:line="213" pos:column="17">aborted</name> <op:operator pos:line="213" pos:column="25">=</op:operator> <name><name pos:line="213" pos:column="27">TransactionStatus</name><op:operator pos:line="213" pos:column="44">.</op:operator><name pos:line="213" pos:column="45">Aborted</name></name></expr>;</expr_stmt>
+            }</block></catch></try>
+
+            <if pos:line="216" pos:column="13">if <condition pos:line="216" pos:column="16">(<expr><name pos:line="216" pos:column="17">MessageBroker</name> <op:operator pos:line="216" pos:column="31">!=</op:operator> <name pos:line="216" pos:column="34">null</name></expr>)</condition><then pos:line="216" pos:column="39">
+            <block pos:line="217" pos:column="13">{
+                <expr_stmt><expr><call><name><name pos:line="218" pos:column="17">MessageBroker</name><op:operator pos:line="218" pos:column="30">.</op:operator><name pos:line="218" pos:column="31">Publish</name></name><argument_list pos:line="218" pos:column="38">(<argument><expr><op:operator pos:line="218" pos:column="39">new</op:operator> <call><name pos:line="218" pos:column="43">DtcTransactionCompletedMessage</name><argument_list pos:line="218" pos:column="73">(<argument><expr><name pos:line="218" pos:column="74">ConnectionId</name></expr></argument>, <argument><expr><name pos:line="218" pos:column="88">aborted</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+        }</block></function>
+
+        <function><type><specifier pos:line="222" pos:column="9">private</specifier> <name pos:line="222" pos:column="17">void</name></type> <name pos:line="222" pos:column="22">StateChangeHaneler</name><parameter_list pos:line="222" pos:column="40">(<param><decl><type><name pos:line="222" pos:column="41">object</name></type> <name pos:line="222" pos:column="48">sender</name></decl></param>, <param><decl><type><name pos:line="222" pos:column="56">StateChangeEventArgs</name></type> <name pos:line="222" pos:column="77">args</name></decl></param>)</parameter_list>
+        <block pos:line="223" pos:column="9">{ 
+            <if pos:line="224" pos:column="13">if <condition pos:line="224" pos:column="16">(<expr><name><name pos:line="224" pos:column="17">args</name><op:operator pos:line="224" pos:column="21">.</op:operator><name pos:line="224" pos:column="22">CurrentState</name></name> <op:operator pos:line="224" pos:column="35">==</op:operator> <name><name pos:line="224" pos:column="38">ConnectionState</name><op:operator pos:line="224" pos:column="53">.</op:operator><name pos:line="224" pos:column="54">Open</name></name></expr>)</condition><then pos:line="224" pos:column="59">
+            <block pos:line="225" pos:column="13">{
+                <expr_stmt><expr><call><name pos:line="226" pos:column="17">OpenConnection</name><argument_list pos:line="226" pos:column="31">()</argument_list></call></expr>;</expr_stmt>
+            }</block></then>
+            <else pos:line="228" pos:column="13">else <if pos:line="228" pos:column="18">if <condition pos:line="228" pos:column="21">(<expr><name><name pos:line="228" pos:column="22">args</name><op:operator pos:line="228" pos:column="26">.</op:operator><name pos:line="228" pos:column="27">CurrentState</name></name> <op:operator pos:line="228" pos:column="40">==</op:operator> <name><name pos:line="228" pos:column="43">ConnectionState</name><op:operator pos:line="228" pos:column="58">.</op:operator><name pos:line="228" pos:column="59">Closed</name></name></expr>)</condition><then pos:line="228" pos:column="66">
+            <block pos:line="229" pos:column="13">{
+                <expr_stmt><expr><call><name pos:line="230" pos:column="17">ClosedConnection</name><argument_list pos:line="230" pos:column="33">()</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if></else></if>
+        }</block></function>
+
+        <function><type><specifier pos:line="234" pos:column="9">private</specifier> <name pos:line="234" pos:column="17">void</name></type> <name pos:line="234" pos:column="22">OpenConnection</name><parameter_list pos:line="234" pos:column="36">()</parameter_list>
+        <block pos:line="235" pos:column="9">{
+            <if pos:line="236" pos:column="13">if <condition pos:line="236" pos:column="16">(<expr><name pos:line="236" pos:column="17">wasPreviouslyUsed</name></expr>)</condition><then pos:line="236" pos:column="35">
+            <block pos:line="237" pos:column="13">{
+                <expr_stmt><expr><name pos:line="238" pos:column="17">ConnectionId</name> <op:operator pos:line="238" pos:column="30">=</op:operator> <call><name><name pos:line="238" pos:column="32">Guid</name><op:operator pos:line="238" pos:column="36">.</op:operator><name pos:line="238" pos:column="37">NewGuid</name></name><argument_list pos:line="238" pos:column="44">()</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="241" pos:column="13">timerTimeSpan</name> <op:operator pos:line="241" pos:column="27">=</op:operator> <call><name><name pos:line="241" pos:column="29">TimerStrategy</name><op:operator pos:line="241" pos:column="42">.</op:operator><name pos:line="241" pos:column="43">Start</name></name><argument_list pos:line="241" pos:column="48">()</argument_list></call></expr>;</expr_stmt>
+
+            <expr_stmt><expr><call><name><name pos:line="243" pos:column="13">MessageBroker</name><op:operator pos:line="243" pos:column="26">.</op:operator><name pos:line="243" pos:column="27">Publish</name></name><argument_list pos:line="243" pos:column="34">(
+                <argument><expr><op:operator pos:line="244" pos:column="17">new</op:operator> <call><name pos:line="244" pos:column="21">ConnectionStartedMessage</name><argument_list pos:line="244" pos:column="45">(<argument><expr><name pos:line="244" pos:column="46">ConnectionId</name></expr></argument>)</argument_list></call>
+                <op:operator pos:line="245" pos:column="17">.</op:operator><call><name pos:line="245" pos:column="18">AsTimedMessage</name><argument_list pos:line="245" pos:column="32">(<argument><expr><name pos:line="245" pos:column="33">timerTimeSpan</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <function><type><specifier pos:line="248" pos:column="9">private</specifier> <name pos:line="248" pos:column="17">void</name></type> <name pos:line="248" pos:column="22">ClosedConnection</name><parameter_list pos:line="248" pos:column="38">()</parameter_list>
+        <block pos:line="249" pos:column="9">{
+            <expr_stmt><expr><name pos:line="250" pos:column="13">wasPreviouslyUsed</name> <op:operator pos:line="250" pos:column="31">=</op:operator> <lit:literal type="boolean" pos:line="250" pos:column="33">true</lit:literal></expr>;</expr_stmt>
+            
+            <expr_stmt><expr><call><name><name pos:line="252" pos:column="13">MessageBroker</name><op:operator pos:line="252" pos:column="26">.</op:operator><name pos:line="252" pos:column="27">Publish</name></name><argument_list pos:line="252" pos:column="34">(
+                <argument><expr><op:operator pos:line="253" pos:column="17">new</op:operator> <call><name pos:line="253" pos:column="21">ConnectionClosedMessage</name><argument_list pos:line="253" pos:column="44">(<argument><expr><name pos:line="253" pos:column="45">ConnectionId</name></expr></argument>)</argument_list></call>
+                <op:operator pos:line="254" pos:column="17">.</op:operator><call><name pos:line="254" pos:column="18">AsTimedMessage</name><argument_list pos:line="254" pos:column="32">(<argument><expr><call><name><name pos:line="254" pos:column="33">TimerStrategy</name><op:operator pos:line="254" pos:column="46">.</op:operator><name pos:line="254" pos:column="47">Stop</name></name><argument_list pos:line="254" pos:column="51">(<argument><expr><name pos:line="254" pos:column="52">timerTimeSpan</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call>
+                <op:operator pos:line="255" pos:column="17">.</op:operator><call><name pos:line="255" pos:column="18">AsTimelineMessage</name><argument_list pos:line="255" pos:column="35">(<argument><expr><lit:literal type="string" pos:line="255" pos:column="36">"Connection: Opened"</lit:literal></expr></argument>, <argument><expr><name><name pos:line="255" pos:column="58">AdoTimelineCategory</name><op:operator pos:line="255" pos:column="77">.</op:operator><name pos:line="255" pos:column="78">Connection</name></name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function> 
+    }</block></class>
+}</block></namespace>
+</unit>

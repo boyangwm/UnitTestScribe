@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\office10\msoswct.h" pos:tabs="8"><cpp:pragma pos:line="1" pos:column="1">#<cpp:directive pos:line="1" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+
+<comment type="block" pos:line="3" pos:column="1">/*------------------------------------------------------------------------*
+ * msoswct.h (previously known as sdmtowct.h): SDM PUBLIC include file    *
+ *   containing the interface to be used for communication from outside   *
+ *   applications with SDM dialogs.                                       *
+ *                                                                        *
+ * Please do not modify or check in this file without contacting NicoleP. *
+ *------------------------------------------------------------------------*/</comment>
+
+
+<cpp:ifndef pos:line="12" pos:column="1">#<cpp:directive pos:line="12" pos:column="2">ifndef</cpp:directive> <name pos:line="12" pos:column="9">SDM_WCT_DEFINED</name></cpp:ifndef>
+<cpp:define pos:line="13" pos:column="1">#<cpp:directive pos:line="13" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="13" pos:column="9">SDM_WCT_DEFINED</name></cpp:macro></cpp:define>
+
+<comment type="line" pos:line="15" pos:column="1">//------------------------------------------------------------------------</comment>
+<comment type="line" pos:line="16" pos:column="1">// WCT/SDM Values - Definitions and descriptions</comment>
+<comment type="line" pos:line="17" pos:column="1">//------------------------------------------------------------------------</comment>
+<cpp:define pos:line="18" pos:column="1">#<cpp:directive pos:line="18" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="18" pos:column="9">wVerAnsi</name></cpp:macro>			<cpp:value pos:line="18" pos:column="41">2</cpp:value></cpp:define>		<comment type="line" pos:line="18" pos:column="57">// Ansi strings</comment>
+<cpp:define pos:line="19" pos:column="1">#<cpp:directive pos:line="19" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="19" pos:column="9">wVerUnicode</name></cpp:macro>			<cpp:value pos:line="19" pos:column="41">3</cpp:value></cpp:define>		<comment type="line" pos:line="19" pos:column="57">// Unicode strings</comment>
+<cpp:define pos:line="20" pos:column="1">#<cpp:directive pos:line="20" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="20" pos:column="9">wVerWord</name></cpp:macro>			<cpp:value pos:line="20" pos:column="41">wVerAnsi</cpp:value></cpp:define>	<comment type="line" pos:line="20" pos:column="57">//historical -- this should be removed at some point</comment>
+<cpp:define pos:line="21" pos:column="1">#<cpp:directive pos:line="21" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="21" pos:column="9">wVerAnsiExt</name></cpp:macro>			<cpp:value pos:line="21" pos:column="41">4</cpp:value></cpp:define>		<comment type="line" pos:line="21" pos:column="57">// Ansi with extened functionality. (off10 and beyond)</comment>
+<cpp:define pos:line="22" pos:column="1">#<cpp:directive pos:line="22" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="22" pos:column="9">wVerUnicodeExt</name></cpp:macro>		<cpp:value pos:line="22" pos:column="33">5</cpp:value></cpp:define>	<comment type="line" pos:line="22" pos:column="41">// Unicode with extended functionality. (off10 and beyond)</comment>
+
+<cpp:define pos:line="24" pos:column="1">#<cpp:directive pos:line="24" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="24" pos:column="9">FIsWVerAnsi</name><parameter_list pos:line="24" pos:column="20">(<param><type><name pos:line="24" pos:column="21">wVer</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="24" pos:column="27">(((WORD)(wVer) == wVerAnsi) || ((WORD)(wVer) == wVerAnsiExt))</cpp:value></cpp:define>
+<cpp:define pos:line="25" pos:column="1">#<cpp:directive pos:line="25" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="25" pos:column="9">FIsWVerUnicode</name><parameter_list pos:line="25" pos:column="23">(<param><type><name pos:line="25" pos:column="24">wVer</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="25" pos:column="30">(((WORD)(wVer) == wVerUnicode) || ((WORD)(wVer) == wVerUnicodeExt))</cpp:value></cpp:define>
+<cpp:define pos:line="26" pos:column="1">#<cpp:directive pos:line="26" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="26" pos:column="9">FIsWVerExt</name><parameter_list pos:line="26" pos:column="19">(<param><type><name pos:line="26" pos:column="20">wVer</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="26" pos:column="26">(((WORD)(wVer) == wVerAnsiExt) || ((WORD)(wVer) == wVerUnicodeExt))</cpp:value></cpp:define>
+<cpp:define pos:line="27" pos:column="1">#<cpp:directive pos:line="27" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="27" pos:column="9">FIsWVerValid</name><parameter_list pos:line="27" pos:column="21">(<param><type><name pos:line="27" pos:column="22">wVer</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="27" pos:column="28">(((WORD)(wVer) == wVerAnsi) || ((WORD)(wVer) == wVerAnsiExt) || ((WORD)(wVer) == wVerUnicode) || ((WORD)(wVer) == wVerUnicodeExt))</cpp:value></cpp:define>
+
+<comment type="line" pos:line="29" pos:column="1">// A pointer to an array of WCTL structures is passed as the lParam</comment>
+<comment type="line" pos:line="30" pos:column="1">//  in a WM_GETCONTROLS message</comment>
+<comment type="line" pos:line="31" pos:column="1">//</comment>
+<typedef pos:line="32" pos:column="1">typedef <type><struct pos:line="32" pos:column="9">struct <name pos:line="32" pos:column="16">_wctl</name>
+	<block pos:line="33" pos:column="9">{<public type="default" pos:line="33" pos:column="10">
+	<decl_stmt><decl><type><name pos:line="34" pos:column="9">WORD</name></type> <name pos:line="34" pos:column="14">wtp</name></decl>;</decl_stmt>				<comment type="line" pos:line="34" pos:column="49">// Item type</comment>
+	<decl_stmt><decl><type><name pos:line="35" pos:column="9">WORD</name></type> <name pos:line="35" pos:column="14">wId</name></decl>;</decl_stmt>				<comment type="line" pos:line="35" pos:column="49">// Unique identifier within this dialog (TMC)</comment>
+	<decl_stmt><decl><type><name pos:line="36" pos:column="9">WORD</name></type> <name pos:line="36" pos:column="14">wState</name></decl>;</decl_stmt>			<comment type="line" pos:line="36" pos:column="41">// Current value if fHasState</comment>
+	<decl_stmt><decl><type><name pos:line="37" pos:column="9">WORD</name></type> <name pos:line="37" pos:column="14">cchText</name></decl>;</decl_stmt>			<comment type="line" pos:line="37" pos:column="41">// Size of text value, if fHasText</comment>
+	<decl_stmt><decl><type><name pos:line="38" pos:column="9">WORD</name></type> <name pos:line="38" pos:column="14">cchTitle</name></decl>;</decl_stmt>			<comment type="line" pos:line="38" pos:column="41">// Size of title, if fHasTitle</comment>
+	<decl_stmt><decl><type><name pos:line="39" pos:column="9">RECT</name></type> <name pos:line="39" pos:column="14">rect</name></decl>;</decl_stmt>				<comment type="line" pos:line="39" pos:column="49">// Rectangle in dialog window</comment>
+	<macro><name pos:line="40" pos:column="9">LONG</name></macro> <label><name pos:line="40" pos:column="14">fHasState</name>:</label><expr_stmt><expr><lit:literal type="number" pos:line="40" pos:column="24">1</lit:literal></expr>;</expr_stmt>		<comment type="line" pos:line="40" pos:column="41">// Can this type of item have a numeric state?</comment>
+	<macro><name pos:line="41" pos:column="9">LONG</name></macro> <label><name pos:line="41" pos:column="14">fHasText</name>:</label><expr_stmt><expr><lit:literal type="number" pos:line="41" pos:column="23">1</lit:literal></expr>;</expr_stmt>		<comment type="line" pos:line="41" pos:column="41">// Can this type of item have a text value?</comment>
+	<macro><name pos:line="42" pos:column="9">LONG</name></macro> <label><name pos:line="42" pos:column="14">fHasTitle</name>:</label><expr_stmt><expr><lit:literal type="number" pos:line="42" pos:column="24">1</lit:literal></expr>;</expr_stmt>		<comment type="line" pos:line="42" pos:column="41">// Does the item have a title?</comment>
+	<macro><name pos:line="43" pos:column="9">LONG</name></macro> <label><name pos:line="43" pos:column="14">fEnabled</name>:</label><expr_stmt><expr><lit:literal type="number" pos:line="43" pos:column="23">1</lit:literal></expr>;</expr_stmt>		<comment type="line" pos:line="43" pos:column="41">// Is the item currently enabled?</comment>
+	<macro><name pos:line="44" pos:column="9">LONG</name></macro> <label><name pos:line="44" pos:column="14">fVisible</name>:</label><expr_stmt><expr><lit:literal type="number" pos:line="44" pos:column="23">1</lit:literal></expr>;</expr_stmt>		<comment type="line" pos:line="44" pos:column="41">// Is the item visible?</comment>
+	<macro><name pos:line="45" pos:column="9">LONG</name></macro> <label><name pos:line="45" pos:column="14">fCombo</name>:</label><expr_stmt><expr><lit:literal type="number" pos:line="45" pos:column="21">1</lit:literal></expr>;</expr_stmt>			<comment type="line" pos:line="45" pos:column="41">// Is the item a combo edit or listbox?</comment>
+	<macro><name pos:line="46" pos:column="9">LONG</name></macro> <label><name pos:line="46" pos:column="14">fSpin</name>:</label><expr_stmt><expr><lit:literal type="number" pos:line="46" pos:column="20">1</lit:literal></expr>;</expr_stmt>			<comment type="line" pos:line="46" pos:column="41">// Is the item a spin edit?</comment>
+	<macro><name pos:line="47" pos:column="9">LONG</name></macro> <label><name pos:line="47" pos:column="14">fOwnerDraw</name>:</label><expr_stmt><expr><lit:literal type="number" pos:line="47" pos:column="25">1</lit:literal></expr>;</expr_stmt>	<comment type="line" pos:line="47" pos:column="33">// Is the item owner-draw (or extended listbox)?</comment>
+	<macro><name pos:line="48" pos:column="9">LONG</name></macro> <label><name pos:line="48" pos:column="14">fCanFocus</name>:</label><expr_stmt><expr><lit:literal type="number" pos:line="48" pos:column="24">1</lit:literal></expr>;</expr_stmt>		<comment type="line" pos:line="48" pos:column="41">// Can the item receive focus?</comment>
+	<macro><name pos:line="49" pos:column="9">LONG</name></macro> <label><name pos:line="49" pos:column="14">fHasFocus</name>:</label><expr_stmt><expr><lit:literal type="number" pos:line="49" pos:column="24">1</lit:literal></expr>;</expr_stmt>		<comment type="line" pos:line="49" pos:column="41">// Does the item have focus?</comment>
+	<macro><name pos:line="50" pos:column="9">LONG</name></macro> <label><name pos:line="50" pos:column="14">fList</name>:</label><expr_stmt><expr><lit:literal type="number" pos:line="50" pos:column="20">1</lit:literal></expr>;</expr_stmt>			<comment type="line" pos:line="50" pos:column="41">// Supports wtxi.wIndex, WM_GETLISTCOUNT</comment>
+	<macro><name pos:line="51" pos:column="9">LONG</name></macro> <label><name pos:line="51" pos:column="14">fPageTabs</name>:</label><expr_stmt><expr><lit:literal type="number" pos:line="51" pos:column="24">1</lit:literal></expr>;</expr_stmt>	  	<comment type="line" pos:line="51" pos:column="41">// Is the item a page tab list?</comment>
+	<macro><name pos:line="52" pos:column="9">LONG</name></macro> <label><name pos:line="52" pos:column="14">fSelected</name>:</label><expr_stmt><expr><lit:literal type="number" pos:line="52" pos:column="24">1</lit:literal></expr>;</expr_stmt>	  	<comment type="line" pos:line="52" pos:column="41">// Is the item selected (for general pictures)?</comment>
+	<macro><name pos:line="53" pos:column="9">LONG</name></macro> <label><name pos:line="53" pos:column="14">fIsSecret</name>:</label><expr_stmt><expr><lit:literal type="number" pos:line="53" pos:column="24">1</lit:literal></expr>;</expr_stmt>		<comment type="line" pos:line="53" pos:column="41">// is a secret (passworded) edit control.</comment>
+	<macro><name pos:line="54" pos:column="9">LONG</name></macro> <label><name pos:line="54" pos:column="14">lReserved</name>:</label><expr_stmt><expr><lit:literal type="number" pos:line="54" pos:column="24">18</lit:literal></expr>;</expr_stmt>	<comment type="line" pos:line="54" pos:column="33">// A bunch o' bits</comment>
+	<decl_stmt><decl><type><name pos:line="55" pos:column="9">WORD</name></type> <name pos:line="55" pos:column="14">wParam1</name></decl>;</decl_stmt>			<comment type="line" pos:line="55" pos:column="41">// for tmtStaticText, tmtFormattedText</comment>
+	<union pos:line="56" pos:column="9">union
+		<block pos:line="57" pos:column="17">{<public type="default" pos:line="57" pos:column="18">
+		<struct pos:line="58" pos:column="17">struct
+			<block pos:line="59" pos:column="25">{<public type="default" pos:line="59" pos:column="26">
+			<decl_stmt><decl><type><name pos:line="60" pos:column="25">WORD</name></type> <name pos:line="60" pos:column="30">wParam2</name></decl>;</decl_stmt>	<comment type="line" pos:line="60" pos:column="41">// as above</comment>
+			<decl_stmt><decl><type><name pos:line="61" pos:column="25">WORD</name></type> <name pos:line="61" pos:column="30">wParam3</name></decl>;</decl_stmt>	<comment type="line" pos:line="61" pos:column="41">// yet another spare value for drawing routines</comment>
+			</public>}</block>;</struct>
+		<decl_stmt><decl><type><name pos:line="63" pos:column="17">LONG</name></type> <name pos:line="63" pos:column="22">lParam</name></decl>;</decl_stmt>		<comment type="line" pos:line="63" pos:column="41">// long version of spare value</comment>
+		<decl_stmt><decl><type><name pos:line="64" pos:column="17">HWND</name></type> <name pos:line="64" pos:column="22">hwnd</name></decl>;</decl_stmt>			<comment type="line" pos:line="64" pos:column="49">// hwnd of general picture control, if any</comment>
+		</public>}</block>;</union>
+	</public>}</block></struct></type> <name pos:line="66" pos:column="11">WCTL</name><op:operator pos:line="66" pos:column="15">,</op:operator> *<name pos:line="66" pos:column="18">PWCTL</name><op:operator pos:line="66" pos:column="23">,</op:operator> <name pos:line="66" pos:column="25">FAR</name> <type:modifier pos:line="66" pos:column="29">*</type:modifier><name pos:line="66" pos:column="30">LPWCTL</name>;</typedef>
+
+<comment type="block" pos:line="68" pos:column="1">/* Possible values for wctl.wtp */</comment>
+<cpp:define pos:line="69" pos:column="1">#<cpp:directive pos:line="69" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="69" pos:column="9">wtpMin</name></cpp:macro>				<cpp:value pos:line="69" pos:column="41">1</cpp:value></cpp:define>
+<cpp:define pos:line="70" pos:column="1">#<cpp:directive pos:line="70" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="70" pos:column="9">wtpStaticText</name></cpp:macro>		<cpp:value pos:line="70" pos:column="33">1</cpp:value></cpp:define>
+<cpp:define pos:line="71" pos:column="1">#<cpp:directive pos:line="71" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="71" pos:column="9">wtpPushButton</name></cpp:macro>		<cpp:value pos:line="71" pos:column="33">2</cpp:value></cpp:define>
+<cpp:define pos:line="72" pos:column="1">#<cpp:directive pos:line="72" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="72" pos:column="9">wtpCheckBox</name></cpp:macro>			<cpp:value pos:line="72" pos:column="41">3</cpp:value></cpp:define>
+<cpp:define pos:line="73" pos:column="1">#<cpp:directive pos:line="73" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="73" pos:column="9">wtpRadioButton</name></cpp:macro>		<cpp:value pos:line="73" pos:column="33">4</cpp:value></cpp:define>
+<cpp:define pos:line="74" pos:column="1">#<cpp:directive pos:line="74" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="74" pos:column="9">wtpGroupBox</name></cpp:macro>			<cpp:value pos:line="74" pos:column="41">5</cpp:value></cpp:define>
+<cpp:define pos:line="75" pos:column="1">#<cpp:directive pos:line="75" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="75" pos:column="9">wtpEdit</name></cpp:macro>				<cpp:value pos:line="75" pos:column="41">6</cpp:value></cpp:define>
+<cpp:define pos:line="76" pos:column="1">#<cpp:directive pos:line="76" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="76" pos:column="9">wtpFormattedText</name></cpp:macro>	<cpp:value pos:line="76" pos:column="33">7</cpp:value></cpp:define>
+<cpp:define pos:line="77" pos:column="1">#<cpp:directive pos:line="77" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="77" pos:column="9">wtpListBox</name></cpp:macro>			<cpp:value pos:line="77" pos:column="41">8</cpp:value></cpp:define>
+<cpp:define pos:line="78" pos:column="1">#<cpp:directive pos:line="78" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="78" pos:column="9">wtpDropList</name></cpp:macro>			<cpp:value pos:line="78" pos:column="41">9</cpp:value></cpp:define>
+<cpp:define pos:line="79" pos:column="1">#<cpp:directive pos:line="79" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="79" pos:column="9">wtpBitmap</name></cpp:macro>			<cpp:value pos:line="79" pos:column="41">10</cpp:value></cpp:define>
+<cpp:define pos:line="80" pos:column="1">#<cpp:directive pos:line="80" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="80" pos:column="9">wtpGeneralPicture</name></cpp:macro>	<cpp:value pos:line="80" pos:column="33">11</cpp:value></cpp:define>
+<cpp:define pos:line="81" pos:column="1">#<cpp:directive pos:line="81" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="81" pos:column="9">wtpScroll</name></cpp:macro>			<cpp:value pos:line="81" pos:column="41">12</cpp:value></cpp:define>
+<cpp:define pos:line="82" pos:column="1">#<cpp:directive pos:line="82" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="82" pos:column="9">wtpHyperlink</name></cpp:macro>		<cpp:value pos:line="82" pos:column="33">13</cpp:value></cpp:define>
+<cpp:define pos:line="83" pos:column="1">#<cpp:directive pos:line="83" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="83" pos:column="9">wtpMax</name></cpp:macro>				<cpp:value pos:line="83" pos:column="41">14</cpp:value></cpp:define>
+
+<comment type="line" pos:line="85" pos:column="1">// A pointer to a WTXI structure is passed as the lParam of</comment>
+<comment type="line" pos:line="86" pos:column="1">//  a WM_GETCTLTEXT or WM_GETCTLTITLE message.</comment>
+<comment type="line" pos:line="87" pos:column="1">// DONT change this structure EVER.</comment>
+<typedef pos:line="88" pos:column="1">typedef <type><struct pos:line="88" pos:column="9">struct <name pos:line="88" pos:column="16">_wtxi</name>		<comment type="line" pos:line="88" pos:column="33">// WinWord text info</comment>
+	<block pos:line="89" pos:column="9">{<public type="default" pos:line="89" pos:column="10">
+	<decl_stmt><decl><type><name pos:line="90" pos:column="9">LPWSTR</name></type>	<name pos:line="90" pos:column="17">lpszBuffer</name></decl>;</decl_stmt>		<comment type="line" pos:line="90" pos:column="41">// Buffer to receive string</comment>
+	<decl_stmt><decl><type><name pos:line="91" pos:column="9">WORD</name></type>	<name pos:line="91" pos:column="17">cch</name></decl>;</decl_stmt>			<comment type="line" pos:line="91" pos:column="41">// Size of buffer to receive string, in chars</comment>
+	<decl_stmt><decl><type><name pos:line="92" pos:column="9">WORD</name></type>	<name pos:line="92" pos:column="17">wId</name></decl>;</decl_stmt>			<comment type="line" pos:line="92" pos:column="41">// Item identifier (TMC) (as in wctl.wId)</comment>
+	<decl_stmt><decl><type><name pos:line="93" pos:column="9">RECT</name></type>	<name pos:line="93" pos:column="17">rect</name></decl>;</decl_stmt>			<comment type="line" pos:line="93" pos:column="41">// Used for WM_GETCTLTITLE and general picture lists</comment>
+	<decl_stmt><decl><type><name pos:line="94" pos:column="9">WORD</name></type>	<name pos:line="94" pos:column="17">wIndex</name></decl>;</decl_stmt>		<comment type="line" pos:line="94" pos:column="33">// Used for WM_GETCTLTEXT on ListBoxes or if WCTL.fList</comment>
+	</public>}</block></struct></type> <name pos:line="95" pos:column="11">WTXI</name><op:operator pos:line="95" pos:column="15">,</op:operator> *<name pos:line="95" pos:column="18">PWTXI</name><op:operator pos:line="95" pos:column="23">,</op:operator> <name pos:line="95" pos:column="25">FAR</name> <type:modifier pos:line="95" pos:column="29">*</type:modifier><name pos:line="95" pos:column="30">LPWTXI</name>;</typedef>
+
+<comment type="line" pos:line="97" pos:column="1">// Don't change this structure without checking with PaulCole (RCA: sjade, peterth)</comment>
+<comment type="line" pos:line="98" pos:column="1">// Because of external dependencies entries may only be added to the end of </comment>
+<comment type="line" pos:line="99" pos:column="1">// the extended structure and may only be used intereally if the </comment>
+<comment type="line" pos:line="100" pos:column="1">// wVerId version flag is Extended.</comment>
+<typedef pos:line="101" pos:column="1">typedef <type><struct pos:line="101" pos:column="9">struct <name pos:line="101" pos:column="16">_wtxi_extended</name>
+	<block pos:line="102" pos:column="9">{<public type="default" pos:line="102" pos:column="10">
+	<comment type="line" pos:line="103" pos:column="9">// Everything in the WTXI struct... don't ever alter this</comment>
+	<decl_stmt><decl><type><name pos:line="104" pos:column="9">LPWSTR</name></type>	<name pos:line="104" pos:column="17">lpszBuffer</name></decl>;</decl_stmt>		<comment type="line" pos:line="104" pos:column="41">// Buffer to receive string</comment>
+	<decl_stmt><decl><type><name pos:line="105" pos:column="9">WORD</name></type>	<name pos:line="105" pos:column="17">cch</name></decl>;</decl_stmt>			<comment type="line" pos:line="105" pos:column="41">// Size of buffer to receive string, in chars</comment>
+	<decl_stmt><decl><type><name pos:line="106" pos:column="9">WORD</name></type>	<name pos:line="106" pos:column="17">wId</name></decl>;</decl_stmt>			<comment type="line" pos:line="106" pos:column="41">// Item identifier (TMC) (as in wctl.wId)</comment>
+	<decl_stmt><decl><type><name pos:line="107" pos:column="9">RECT</name></type>	<name pos:line="107" pos:column="17">rect</name></decl>;</decl_stmt>			<comment type="line" pos:line="107" pos:column="41">// Used for WM_GETCTLTITLE and general picture lists</comment>
+	<decl_stmt><decl><type><name pos:line="108" pos:column="9">WORD</name></type>	<name pos:line="108" pos:column="17">wIndex</name></decl>;</decl_stmt>		<comment type="line" pos:line="108" pos:column="33">// Used for WM_GETCTLTEXT on ListBoxes or if WCTL.fList</comment>
+
+	<comment type="line" pos:line="110" pos:column="9">// OK you can add things below here, but when accessing them you must</comment>
+	<comment type="line" pos:line="111" pos:column="9">// ensure that the ver ID is one of the extended versions.</comment>
+	<union pos:line="112" pos:column="9">union
+		<block pos:line="113" pos:column="17">{<public type="default" pos:line="113" pos:column="18">
+		<decl_stmt><decl><type><name pos:line="114" pos:column="17">LONG</name></type> <name pos:line="114" pos:column="22">lFlags</name></decl>;</decl_stmt>
+
+		<struct pos:line="116" pos:column="17">struct
+			<block pos:line="117" pos:column="25">{<public type="default" pos:line="117" pos:column="26">		
+			<macro><name pos:line="118" pos:column="25">LONG</name></macro> <label><name pos:line="118" pos:column="30">fIsSecret</name>:</label><expr_stmt><expr><lit:literal type="number" pos:line="118" pos:column="40">1</lit:literal></expr>;</expr_stmt>	<comment type="line" pos:line="118" pos:column="49">// Use only with a password edit field.</comment>
+			<macro><name pos:line="119" pos:column="25">LONG</name></macro> <label><name pos:line="119" pos:column="30">unused</name>:</label><expr_stmt><expr><lit:literal type="number" pos:line="119" pos:column="37">31</lit:literal></expr>;</expr_stmt>
+			</public>}</block>;</struct>
+		</public>}</block>;</union>		
+	</public>}</block></struct></type> <name pos:line="122" pos:column="11">WTXI_EXTENDED</name><op:operator pos:line="122" pos:column="24">,</op:operator> *<name pos:line="122" pos:column="27">PWTXI_EXTENDED</name><op:operator pos:line="122" pos:column="41">,</op:operator> <name pos:line="122" pos:column="43">FAR</name> <type:modifier pos:line="122" pos:column="47">*</type:modifier><name pos:line="122" pos:column="48">LPWTXI_EXTENDED</name>;</typedef>
+
+
+
+<comment type="line" pos:line="126" pos:column="1">//------------------------------------------------------------------------</comment>
+<comment type="line" pos:line="127" pos:column="1">// WCT/SDM MESSAGES - Definitions and descriptions</comment>
+<comment type="line" pos:line="128" pos:column="1">//------------------------------------------------------------------------</comment>
+
+<cpp:define pos:line="130" pos:column="1">#<cpp:directive pos:line="130" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="130" pos:column="9">WM_GETCOUNT</name></cpp:macro>		<cpp:value pos:line="130" pos:column="33">0x7FFE</cpp:value></cpp:define>
+	<comment type="line" pos:line="131" pos:column="9">// Returns the number of bytes needed to store control info.</comment>
+	<comment type="line" pos:line="132" pos:column="9">//	wParam	- the version id</comment>
+	<comment type="line" pos:line="133" pos:column="9">//		Must be wVerAnsi[Ext] or wVerUnicode[Ext]</comment>
+	<comment type="line" pos:line="134" pos:column="9">//	lParam	- Unused</comment>
+	<comment type="line" pos:line="135" pos:column="9">//		Must be 0</comment>
+
+<cpp:define pos:line="137" pos:column="1">#<cpp:directive pos:line="137" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="137" pos:column="9">WM_GETCONTROLMSAA</name></cpp:macro> <cpp:value pos:line="137" pos:column="27">0x7FF3</cpp:value></cpp:define>
+<cpp:define pos:line="138" pos:column="1">#<cpp:directive pos:line="138" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="138" pos:column="9">WM_GETCONTROLSSHAREDMEM</name></cpp:macro> <cpp:value pos:line="138" pos:column="33">0x7FF6</cpp:value></cpp:define>
+<cpp:define pos:line="139" pos:column="1">#<cpp:directive pos:line="139" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="139" pos:column="9">WM_GETCONTROLS</name></cpp:macro>	<cpp:value pos:line="139" pos:column="25">0x7FF7</cpp:value></cpp:define>
+	<comment type="line" pos:line="140" pos:column="9">// Retrieves control information for the dialog.</comment>
+	<comment type="line" pos:line="141" pos:column="9">//	wParam	- the version id</comment>
+	<comment type="line" pos:line="142" pos:column="9">//		Must be wVerAnsi[Ext] or wVerUnicode[Ext]</comment>
+	<comment type="line" pos:line="143" pos:column="9">//	lParam	- LPWCTL</comment>
+	<comment type="line" pos:line="144" pos:column="9">//		Must be at least the size returned by WM_GETCOUNT</comment>
+	<comment type="line" pos:line="145" pos:column="9">// Return value is the number of WCTL structures filled.</comment>
+
+<cpp:define pos:line="147" pos:column="1">#<cpp:directive pos:line="147" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="147" pos:column="9">WM_GETCTLTEXT</name></cpp:macro>	<cpp:value pos:line="147" pos:column="25">0x7FFD</cpp:value></cpp:define>
+	<comment type="line" pos:line="148" pos:column="9">// Retrieves the text value for the specified control</comment>
+	<comment type="line" pos:line="149" pos:column="9">//	wParam	- the version id</comment>
+	<comment type="line" pos:line="150" pos:column="9">//		Must be wVerAnsi[Ext] or wVerUnicode[Ext]</comment>
+	<comment type="line" pos:line="151" pos:column="9">//	lParam	- LPWTXI</comment>
+	<comment type="line" pos:line="152" pos:column="9">//		(*lParam)-&gt;wId is the wctl.wId retrieved by WM_GETCONTROLS.</comment>
+	<comment type="line" pos:line="153" pos:column="9">//		For a listbox (wtpListBox or wtpDropList) (*lParam)-&gt;wIndex</comment>
+	<comment type="line" pos:line="154" pos:column="9">//		  must be the index of the listbox entry to be retrieved.</comment>
+
+<cpp:define pos:line="156" pos:column="1">#<cpp:directive pos:line="156" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="156" pos:column="9">WM_GETCTLTITLE</name></cpp:macro>	<cpp:value pos:line="156" pos:column="25">0x7FFC</cpp:value></cpp:define>
+	<comment type="line" pos:line="157" pos:column="9">// Retrieves the title of the specified control</comment>
+	<comment type="line" pos:line="158" pos:column="9">//	wParam	- the version id</comment>
+	<comment type="line" pos:line="159" pos:column="9">//		Must be wVerAnsi[Ext] or wVerUnicode[Ext]</comment>
+	<comment type="line" pos:line="160" pos:column="9">//	lParam	- LPWTXI</comment>
+	<comment type="line" pos:line="161" pos:column="9">//		(*lParam)-&gt;wId is the wctl.wId retrieved by WM_GETCONTROLS</comment>
+
+<cpp:define pos:line="163" pos:column="1">#<cpp:directive pos:line="163" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="163" pos:column="9">WM_GETCTLFOCUS</name></cpp:macro>	<cpp:value pos:line="163" pos:column="25">0x7FFB</cpp:value></cpp:define>
+	<comment type="line" pos:line="164" pos:column="9">// Returns the wId (TMC) (as in wctl.wId) of the control with focus.</comment>
+	<comment type="line" pos:line="165" pos:column="9">//	wParam	- the version id</comment>
+	<comment type="line" pos:line="166" pos:column="9">//		Must be wVerAnsi[Ext] or wVerUnicode[Ext]</comment>
+	<comment type="line" pos:line="167" pos:column="9">//	lParam	- Unused</comment>
+	<comment type="line" pos:line="168" pos:column="9">//		Must be 0</comment>
+
+<cpp:define pos:line="170" pos:column="1">#<cpp:directive pos:line="170" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="170" pos:column="9">WM_SETCTLFOCUS</name></cpp:macro>	<cpp:value pos:line="170" pos:column="25">0x7FFA</cpp:value></cpp:define>
+	<comment type="line" pos:line="171" pos:column="9">// Sets focus to the specified control</comment>
+	<comment type="line" pos:line="172" pos:column="9">//	wParam	- the version id</comment>
+	<comment type="line" pos:line="173" pos:column="9">//		Must be wVerAnsi[Ext] or wVerUnicode[Ext]</comment>
+	<comment type="line" pos:line="174" pos:column="9">//	lParam	- a wId value as retrieved by WM_GETCONTROLS</comment>
+
+<cpp:define pos:line="176" pos:column="1">#<cpp:directive pos:line="176" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="176" pos:column="9">WM_GETLISTCOUNT</name></cpp:macro> <cpp:value pos:line="176" pos:column="25">0x7FF9</cpp:value></cpp:define>
+	<comment type="line" pos:line="177" pos:column="9">// Returns the number of entries in a listbox</comment>
+	<comment type="line" pos:line="178" pos:column="9">// wParam	- the version id</comment>
+	<comment type="line" pos:line="179" pos:column="9">//		Must be wVerAnsi[Ext] or wVerUnicode[Ext]</comment>
+	<comment type="line" pos:line="180" pos:column="9">//	lParam	- a wId value as retrieved by WM_GETCONTROLS</comment>
+	<comment type="line" pos:line="181" pos:column="9">//		Must be a listbox (wtpListBox or wtpDropList)</comment>
+
+<cpp:define pos:line="183" pos:column="1">#<cpp:directive pos:line="183" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="183" pos:column="9">WM_GETHELPID</name></cpp:macro>	<cpp:value pos:line="183" pos:column="25">0x7FF8</cpp:value></cpp:define>
+	<comment type="line" pos:line="184" pos:column="9">// Returns the dialog's Help ID</comment>
+	<comment type="line" pos:line="185" pos:column="9">// wParam	- the version id</comment>
+	<comment type="line" pos:line="186" pos:column="9">//		Must be wVerAnsi[Ext] or wVerUnicode[Ext]</comment>
+	<comment type="line" pos:line="187" pos:column="9">//	lParam	- Unused</comment>
+	<comment type="line" pos:line="188" pos:column="9">//		Must be 0</comment>
+
+<cpp:define pos:line="190" pos:column="1">#<cpp:directive pos:line="190" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="190" pos:column="9">WM_GETCONTROLSMOUSEDRV</name></cpp:macro> <cpp:value pos:line="190" pos:column="32">0x7FFF</cpp:value></cpp:define>
+	<comment type="line" pos:line="191" pos:column="9">// special "light" version of WM_GETCONTROLS used by the mouse 9.01 driver</comment>
+
+<cpp:define pos:line="193" pos:column="1">#<cpp:directive pos:line="193" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="193" pos:column="9">WM_GETCONTROLSMSAA</name></cpp:macro> <cpp:value pos:line="193" pos:column="28">0x7FF4</cpp:value></cpp:define>
+	<comment type="line" pos:line="194" pos:column="9">// version of WM_GETCONTROLS used by MSAA </comment>
+
+<cpp:define pos:line="196" pos:column="1">#<cpp:directive pos:line="196" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="196" pos:column="9">WM_GETDROPDOWNID</name></cpp:macro> <cpp:value pos:line="196" pos:column="26">0x7FF5</cpp:value></cpp:define>
+	<comment type="line" pos:line="197" pos:column="9">//Returns the item identifier (TMC) of the control that currently owns the dropdown list window</comment>
+	<comment type="line" pos:line="198" pos:column="9">//This message should be sent directly to the dropdown list window.</comment>
+	<comment type="line" pos:line="199" pos:column="9">// wParam	- the version id</comment>
+	<comment type="line" pos:line="200" pos:column="9">//		Must be wVerAnsi[Ext] or wVerUnicode[Ext]</comment>
+	<comment type="line" pos:line="201" pos:column="9">//	lParam	- Unused</comment>
+	<comment type="line" pos:line="202" pos:column="9">//		Must be 0</comment>
+
+<comment type="line" pos:line="204" pos:column="1">//------------------------------------------------------------------------</comment>
+<comment type="line" pos:line="205" pos:column="1">// WIN32 Memory Access</comment>
+<comment type="line" pos:line="206" pos:column="1">//------------------------------------------------------------------------</comment>
+
+<cpp:define pos:line="208" pos:column="1">#<cpp:directive pos:line="208" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="208" pos:column="9">SZWCTNAME</name></cpp:macro> <cpp:value pos:line="208" pos:column="19">"SDMWCT"</cpp:value></cpp:define>
+<cpp:define pos:line="209" pos:column="1">#<cpp:directive pos:line="209" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="209" pos:column="9">hFileNoneWct</name></cpp:macro> <cpp:value pos:line="209" pos:column="22">-1</cpp:value></cpp:define>
+
+<comment type="line" pos:line="211" pos:column="1">//------------------------------------------------------------------------</comment>
+<comment type="line" pos:line="212" pos:column="1">// WCT/SDM error return values.</comment>
+<comment type="line" pos:line="213" pos:column="1">//------------------------------------------------------------------------</comment>
+
+<cpp:define pos:line="215" pos:column="1">#<cpp:directive pos:line="215" pos:column="2">define</cpp:directive>	<cpp:macro><name pos:line="215" pos:column="9">errWctOOM</name></cpp:macro>			<cpp:value pos:line="215" pos:column="41">0xfffc</cpp:value></cpp:define>	<comment type="line" pos:line="215" pos:column="49">// Out o' memory!</comment>
+<cpp:define pos:line="216" pos:column="1">#<cpp:directive pos:line="216" pos:column="2">define</cpp:directive>	<cpp:macro><name pos:line="216" pos:column="9">errNoCurrentDlg</name></cpp:macro>	<cpp:value pos:line="216" pos:column="25">0xfffd</cpp:value></cpp:define>	<comment type="line" pos:line="216" pos:column="33">// Attempt to get info for non-existent dialog</comment>
+<cpp:define pos:line="217" pos:column="1">#<cpp:directive pos:line="217" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="217" pos:column="9">errCountCtls</name></cpp:macro>	<cpp:value pos:line="217" pos:column="25">0xfffe</cpp:value></cpp:define>	<comment type="line" pos:line="217" pos:column="33">// Invalid buffer size</comment>
+<cpp:define pos:line="218" pos:column="1">#<cpp:directive pos:line="218" pos:column="2">define</cpp:directive>	<cpp:macro><name pos:line="218" pos:column="9">errInvalidVerId</name></cpp:macro>	<cpp:value pos:line="218" pos:column="25">0xffff</cpp:value></cpp:define>	<comment type="line" pos:line="218" pos:column="33">// Invalid Version of the data structure</comment>
+<cpp:define pos:line="219" pos:column="1">#<cpp:directive pos:line="219" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="219" pos:column="9">errNotSDM</name></cpp:macro>		<cpp:value pos:line="219" pos:column="33">0x0000</cpp:value></cpp:define>	<comment type="line" pos:line="219" pos:column="41">// WinPRocs return 0 for unknown msgs by default</comment>
+
+<cpp:define pos:line="221" pos:column="1">#<cpp:directive pos:line="221" pos:column="2">define</cpp:directive>	<cpp:macro><name pos:line="221" pos:column="9">uNoValue</name></cpp:macro>		<cpp:value pos:line="221" pos:column="33">0x000e</cpp:value></cpp:define>	<comment type="line" pos:line="221" pos:column="41">// Value of control where control has no numeric value</comment>
+
+<cpp:endif pos:line="223" pos:column="1">#<cpp:directive pos:line="223" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="223" pos:column="8">//SDM_WCT_DEFINED</comment>
+
+</unit>

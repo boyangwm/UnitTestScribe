@@ -1,0 +1,1059 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\vsmanaged.h" pos:tabs="8" pos:line="1" pos:column="1">
+
+<comment type="block" pos:line="3" pos:column="1">/* this ALWAYS GENERATED file contains the definitions for the interfaces */</comment>
+
+
+ <comment type="block" pos:line="6" pos:column="2">/* File created by MIDL compiler version 7.00.0499 */</comment>
+<comment type="block" pos:line="7" pos:column="1">/* Compiler settings for vsmanaged.idl:
+    Oicf, W0, Zp8, env=Win32 (32b run)
+    protocol : dce , ms_ext, c_ext, robust
+    error checks: allocation ref bounds_check enum stub_data 
+    VC __declspec() decoration level: 
+         __declspec(uuid()), __declspec(selectany), __declspec(novtable)
+         DECLSPEC_UUID(), MIDL_INTERFACE()
+*/</comment>
+<comment type="line" pos:line="15" pos:column="1">//@@MIDL_FILE_HEADING(  )</comment>
+
+<cpp:pragma pos:line="17" pos:column="1">#<cpp:directive pos:line="17" pos:column="2">pragma</cpp:directive> warning( disable: 4049 )</cpp:pragma>  <comment type="block" pos:line="17" pos:column="35">/* more than 64k source lines */</comment>
+
+
+<comment type="block" pos:line="20" pos:column="1">/* verify that the &lt;rpcndr.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="21" pos:column="1">#<cpp:directive pos:line="21" pos:column="2">ifndef</cpp:directive> <name pos:line="21" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="22" pos:column="1">#<cpp:directive pos:line="22" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="22" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:macro> <cpp:value pos:line="22" pos:column="39">475</cpp:value></cpp:define>
+<cpp:endif pos:line="23" pos:column="1">#<cpp:directive pos:line="23" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="25" pos:column="1">/* verify that the &lt;rpcsal.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="26" pos:column="1">#<cpp:directive pos:line="26" pos:column="2">ifndef</cpp:directive> <name pos:line="26" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="27" pos:column="1">#<cpp:directive pos:line="27" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="27" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:macro> <cpp:value pos:line="27" pos:column="39">100</cpp:value></cpp:define>
+<cpp:endif pos:line="28" pos:column="1">#<cpp:directive pos:line="28" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:include pos:line="30" pos:column="1">#<cpp:directive pos:line="30" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="30" pos:column="10">"rpc.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="31" pos:column="1">#<cpp:directive pos:line="31" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="31" pos:column="10">"rpcndr.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifndef pos:line="33" pos:column="1">#<cpp:directive pos:line="33" pos:column="2">ifndef</cpp:directive> <name pos:line="33" pos:column="9">__RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:error pos:line="34" pos:column="1">#<cpp:directive pos:line="34" pos:column="2">error</cpp:directive> this stub requires an updated version of &lt;rpcndr.h&gt;</cpp:error>
+<cpp:endif pos:line="35" pos:column="1">#<cpp:directive pos:line="35" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="35" pos:column="8">// __RPCNDR_H_VERSION__</comment>
+
+
+<cpp:ifndef pos:line="38" pos:column="1">#<cpp:directive pos:line="38" pos:column="2">ifndef</cpp:directive> <name pos:line="38" pos:column="9">__vsmanaged_h__</name></cpp:ifndef>
+<cpp:define pos:line="39" pos:column="1">#<cpp:directive pos:line="39" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="39" pos:column="9">__vsmanaged_h__</name></cpp:macro></cpp:define>
+
+<cpp:if pos:line="41" pos:column="1">#<cpp:directive pos:line="41" pos:column="2">if</cpp:directive> <expr><call><name pos:line="41" pos:column="5">defined</name><argument_list pos:line="41" pos:column="12">(<argument><expr><name pos:line="41" pos:column="13">_MSC_VER</name></expr></argument>)</argument_list></call> <op:operator pos:line="41" pos:column="23">&amp;&amp;</op:operator> <op:operator pos:line="41" pos:column="26">(</op:operator><name pos:line="41" pos:column="27">_MSC_VER</name> <op:operator pos:line="41" pos:column="36">&gt;=</op:operator> <lit:literal type="number" pos:line="41" pos:column="39">1020</lit:literal><op:operator pos:line="41" pos:column="43">)</op:operator></expr></cpp:if>
+<cpp:pragma pos:line="42" pos:column="1">#<cpp:directive pos:line="42" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+<cpp:endif pos:line="43" pos:column="1">#<cpp:directive pos:line="43" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="45" pos:column="1">/* Forward Declarations */</comment> 
+
+<cpp:ifndef pos:line="47" pos:column="1">#<cpp:directive pos:line="47" pos:column="2">ifndef</cpp:directive> <name pos:line="47" pos:column="9">__IVSMDCodeDomCreator_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="48" pos:column="1">#<cpp:directive pos:line="48" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="48" pos:column="9">__IVSMDCodeDomCreator_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="49" pos:column="1">typedef <type><name pos:line="49" pos:column="9">interface</name> <name pos:line="49" pos:column="19">IVSMDCodeDomCreator</name></type> <name pos:line="49" pos:column="39">IVSMDCodeDomCreator</name>;</typedef>
+<cpp:endif pos:line="50" pos:column="1">#<cpp:directive pos:line="50" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="50" pos:column="9">/* __IVSMDCodeDomCreator_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="53" pos:column="1">#<cpp:directive pos:line="53" pos:column="2">ifndef</cpp:directive> <name pos:line="53" pos:column="9">__IVSMDCodeDomProvider_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="54" pos:column="1">#<cpp:directive pos:line="54" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="54" pos:column="9">__IVSMDCodeDomProvider_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="55" pos:column="1">typedef <type><name pos:line="55" pos:column="9">interface</name> <name pos:line="55" pos:column="19">IVSMDCodeDomProvider</name></type> <name pos:line="55" pos:column="40">IVSMDCodeDomProvider</name>;</typedef>
+<cpp:endif pos:line="56" pos:column="1">#<cpp:directive pos:line="56" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="56" pos:column="9">/* __IVSMDCodeDomProvider_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="59" pos:column="1">#<cpp:directive pos:line="59" pos:column="2">ifndef</cpp:directive> <name pos:line="59" pos:column="9">__IVSMDDesigner_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="60" pos:column="1">#<cpp:directive pos:line="60" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="60" pos:column="9">__IVSMDDesigner_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="61" pos:column="1">typedef <type><name pos:line="61" pos:column="9">interface</name> <name pos:line="61" pos:column="19">IVSMDDesigner</name></type> <name pos:line="61" pos:column="33">IVSMDDesigner</name>;</typedef>
+<cpp:endif pos:line="62" pos:column="1">#<cpp:directive pos:line="62" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="62" pos:column="9">/* __IVSMDDesigner_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="65" pos:column="1">#<cpp:directive pos:line="65" pos:column="2">ifndef</cpp:directive> <name pos:line="65" pos:column="9">__IVSMDDesignerLoader_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="66" pos:column="1">#<cpp:directive pos:line="66" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="66" pos:column="9">__IVSMDDesignerLoader_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="67" pos:column="1">typedef <type><name pos:line="67" pos:column="9">interface</name> <name pos:line="67" pos:column="19">IVSMDDesignerLoader</name></type> <name pos:line="67" pos:column="39">IVSMDDesignerLoader</name>;</typedef>
+<cpp:endif pos:line="68" pos:column="1">#<cpp:directive pos:line="68" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="68" pos:column="9">/* __IVSMDDesignerLoader_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="71" pos:column="1">#<cpp:directive pos:line="71" pos:column="2">ifndef</cpp:directive> <name pos:line="71" pos:column="9">__IVSMDDesignerService_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="72" pos:column="1">#<cpp:directive pos:line="72" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="72" pos:column="9">__IVSMDDesignerService_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="73" pos:column="1">typedef <type><name pos:line="73" pos:column="9">interface</name> <name pos:line="73" pos:column="19">IVSMDDesignerService</name></type> <name pos:line="73" pos:column="40">IVSMDDesignerService</name>;</typedef>
+<cpp:endif pos:line="74" pos:column="1">#<cpp:directive pos:line="74" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="74" pos:column="9">/* __IVSMDDesignerService_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="77" pos:column="1">#<cpp:directive pos:line="77" pos:column="2">ifndef</cpp:directive> <name pos:line="77" pos:column="9">__IVSMDPropertyGrid_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="78" pos:column="1">#<cpp:directive pos:line="78" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="78" pos:column="9">__IVSMDPropertyGrid_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="79" pos:column="1">typedef <type><name pos:line="79" pos:column="9">interface</name> <name pos:line="79" pos:column="19">IVSMDPropertyGrid</name></type> <name pos:line="79" pos:column="37">IVSMDPropertyGrid</name>;</typedef>
+<cpp:endif pos:line="80" pos:column="1">#<cpp:directive pos:line="80" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="80" pos:column="9">/* __IVSMDPropertyGrid_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="83" pos:column="1">#<cpp:directive pos:line="83" pos:column="2">ifndef</cpp:directive> <name pos:line="83" pos:column="9">__IVSMDPropertyBrowser_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="84" pos:column="1">#<cpp:directive pos:line="84" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="84" pos:column="9">__IVSMDPropertyBrowser_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="85" pos:column="1">typedef <type><name pos:line="85" pos:column="9">interface</name> <name pos:line="85" pos:column="19">IVSMDPropertyBrowser</name></type> <name pos:line="85" pos:column="40">IVSMDPropertyBrowser</name>;</typedef>
+<cpp:endif pos:line="86" pos:column="1">#<cpp:directive pos:line="86" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="86" pos:column="9">/* __IVSMDPropertyBrowser_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="89" pos:column="1">#<cpp:directive pos:line="89" pos:column="2">ifndef</cpp:directive> <name pos:line="89" pos:column="9">__IVSMDPerPropertyBrowsing_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="90" pos:column="1">#<cpp:directive pos:line="90" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="90" pos:column="9">__IVSMDPerPropertyBrowsing_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="91" pos:column="1">typedef <type><name pos:line="91" pos:column="9">interface</name> <name pos:line="91" pos:column="19">IVSMDPerPropertyBrowsing</name></type> <name pos:line="91" pos:column="44">IVSMDPerPropertyBrowsing</name>;</typedef>
+<cpp:endif pos:line="92" pos:column="1">#<cpp:directive pos:line="92" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="92" pos:column="9">/* __IVSMDPerPropertyBrowsing_FWD_DEFINED__ */</comment>
+
+
+<comment type="block" pos:line="95" pos:column="1">/* header files for imported files */</comment>
+<cpp:include pos:line="96" pos:column="1">#<cpp:directive pos:line="96" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="96" pos:column="10">"servprov.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="97" pos:column="1">#<cpp:directive pos:line="97" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="97" pos:column="10">"vsshell.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifdef pos:line="99" pos:column="1">#<cpp:directive pos:line="99" pos:column="2">ifdef</cpp:directive> <name pos:line="99" pos:column="8">__cplusplus</name></cpp:ifdef>
+<extern pos:line="100" pos:column="1">extern <lit:literal type="string" pos:line="100" pos:column="8">"C"</lit:literal><block pos:line="100" pos:column="11">{
+<cpp:endif pos:line="101" pos:column="1">#<cpp:directive pos:line="101" pos:column="2">endif</cpp:directive></cpp:endif> 
+
+
+<comment type="block" pos:line="104" pos:column="1">/* interface __MIDL_itf_vsmanaged_0000_0000 */</comment>
+<comment type="block" pos:line="105" pos:column="1">/* [local] */</comment> 
+
+
+
+<enum pos:line="109" pos:column="1">enum <name pos:line="109" pos:column="6">__VSHPROPID_ASPX</name>
+    <block pos:line="110" pos:column="5">{	<decl><name pos:line="110" pos:column="9">VSHPROPID_ProjAspxLanguage</name>	<init pos:line="110" pos:column="41">= <expr><lit:literal type="number" pos:line="110" pos:column="43">5000</lit:literal></expr></init></decl><op:operator pos:line="110" pos:column="47">,</op:operator>
+	<decl><name pos:line="111" pos:column="9">VSHPROPID_ProjAspxCodeBehindExt</name>	<init pos:line="111" pos:column="41">= <expr><lit:literal type="number" pos:line="111" pos:column="43">5001</lit:literal></expr></init></decl><op:operator pos:line="111" pos:column="47">,</op:operator>
+	<decl><name pos:line="112" pos:column="9">VSHPROPID_ProjAspxAutoEventWireup</name>	<init pos:line="112" pos:column="49">= <expr><lit:literal type="number" pos:line="112" pos:column="51">5002</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+
+
+<decl_stmt><decl><type><specifier pos:line="116" pos:column="1">extern</specifier> <name pos:line="116" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="116" pos:column="22">__MIDL_itf_vsmanaged_0000_0000_v0_0_c_ifspec</name></decl>;</decl_stmt>
+<decl_stmt><decl><type><specifier pos:line="117" pos:column="1">extern</specifier> <name pos:line="117" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="117" pos:column="22">__MIDL_itf_vsmanaged_0000_0000_v0_0_s_ifspec</name></decl>;</decl_stmt>
+
+
+<cpp:ifndef pos:line="120" pos:column="1">#<cpp:directive pos:line="120" pos:column="2">ifndef</cpp:directive> <name pos:line="120" pos:column="9">__VSManagedDesigner_LIBRARY_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="121" pos:column="1">#<cpp:directive pos:line="121" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="121" pos:column="9">__VSManagedDesigner_LIBRARY_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="123" pos:column="1">/* library VSManagedDesigner */</comment>
+<comment type="block" pos:line="124" pos:column="1">/* [helpstring][custom][version][uuid] */</comment> 
+
+<cpp:define pos:line="126" pos:column="1">#<cpp:directive pos:line="126" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="126" pos:column="9">SID_SVSMDCodeDomProvider</name></cpp:macro> <cpp:value pos:line="126" pos:column="34">IID_IVSMDCodeDomProvider</cpp:value></cpp:define>
+<cpp:define pos:line="127" pos:column="1">#<cpp:directive pos:line="127" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="127" pos:column="9">SID_SVSMDDesignerService</name></cpp:macro> <cpp:value pos:line="127" pos:column="34">IID_IVSMDDesignerService</cpp:value></cpp:define>
+<typedef pos:line="128" pos:column="1">typedef 
+<type><enum pos:line="129" pos:column="1">enum <name pos:line="129" pos:column="6">_PROPERTYGRIDSORT</name>
+    <block pos:line="130" pos:column="5">{	<decl><name pos:line="130" pos:column="9">PGSORT_NOSORT</name>	<init pos:line="130" pos:column="25">= <expr><lit:literal type="number" pos:line="130" pos:column="27">0</lit:literal></expr></init></decl><op:operator pos:line="130" pos:column="28">,</op:operator>
+	<decl><name pos:line="131" pos:column="9">PGSORT_ALPHABETICAL</name>	<init pos:line="131" pos:column="33">= <expr><lit:literal type="number" pos:line="131" pos:column="35">1</lit:literal></expr></init></decl><op:operator pos:line="131" pos:column="36">,</op:operator>
+	<decl><name pos:line="132" pos:column="9">PGSORT_CATEGORIZED</name>	<init pos:line="132" pos:column="33">= <expr><lit:literal type="number" pos:line="132" pos:column="35">2</lit:literal></expr></init></decl>
+    }</block></enum></type> 	<name pos:line="133" pos:column="9">PROPERTYGRIDSORT</name>;</typedef>
+
+<typedef pos:line="135" pos:column="1">typedef 
+<type><enum pos:line="136" pos:column="1">enum <name pos:line="136" pos:column="6">_PROPERTYGRIDOPTION</name>
+    <block pos:line="137" pos:column="5">{	<decl><name pos:line="137" pos:column="9">PGOPT_HOTCOMMANDS</name>	<init pos:line="137" pos:column="33">= <expr><lit:literal type="number" pos:line="137" pos:column="35">0</lit:literal></expr></init></decl><op:operator pos:line="137" pos:column="36">,</op:operator>
+	<decl><name pos:line="138" pos:column="9">PGOPT_HELP</name>	<init pos:line="138" pos:column="25">= <expr><lit:literal type="number" pos:line="138" pos:column="27">1</lit:literal></expr></init></decl><op:operator pos:line="138" pos:column="28">,</op:operator>
+	<decl><name pos:line="139" pos:column="9">PGOPT_TOOLBAR</name>	<init pos:line="139" pos:column="25">= <expr><lit:literal type="number" pos:line="139" pos:column="27">2</lit:literal></expr></init></decl>
+    }</block></enum></type> 	<name pos:line="140" pos:column="9">PROPERTYGRIDOPTION</name>;</typedef>
+
+<cpp:define pos:line="142" pos:column="1">#<cpp:directive pos:line="142" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="142" pos:column="9">SID_SVSMDPropertyBrowser</name></cpp:macro> <cpp:value pos:line="142" pos:column="34">IID_IVSMDPropertyBrowser</cpp:value></cpp:define>
+
+<decl_stmt><decl><type><name pos:line="144" pos:column="1">EXTERN_C</name> <specifier pos:line="144" pos:column="10">const</specifier> <name pos:line="144" pos:column="16">IID</name></type> <name pos:line="144" pos:column="20">LIBID_VSManagedDesigner</name></decl>;</decl_stmt>
+
+<cpp:ifndef pos:line="146" pos:column="1">#<cpp:directive pos:line="146" pos:column="2">ifndef</cpp:directive> <name pos:line="146" pos:column="9">__IVSMDCodeDomCreator_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="147" pos:column="1">#<cpp:directive pos:line="147" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="147" pos:column="9">__IVSMDCodeDomCreator_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="149" pos:column="1">/* interface IVSMDCodeDomCreator */</comment>
+<comment type="block" pos:line="150" pos:column="1">/* [uuid][object] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="153" pos:column="1">EXTERN_C</name> <specifier pos:line="153" pos:column="10">const</specifier> <name pos:line="153" pos:column="16">IID</name></type> <name pos:line="153" pos:column="20">IID_IVSMDCodeDomCreator</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="155" pos:column="1">#<cpp:directive pos:line="155" pos:column="2">if</cpp:directive> <expr><call><name pos:line="155" pos:column="5">defined</name><argument_list pos:line="155" pos:column="12">(<argument><expr><name pos:line="155" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="155" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="155" pos:column="29">!</op:operator><call><name pos:line="155" pos:column="30">defined</name><argument_list pos:line="155" pos:column="37">(<argument><expr><name pos:line="155" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="157" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="157" pos:column="19">(<argument pos:line="157" pos:column="20">"4CC03BF7-4D89-4198-8E4D-17E217CA07B2"</argument>)</argument_list></macro>
+    <label><name pos:line="158" pos:column="5">IVSMDCodeDomCreator</name> :</label> <expr_stmt><expr pos:line="158" pos:column="27">public <name pos:line="158" pos:column="34">IUnknown</name>
+    <block pos:line="159" pos:column="5">{
+    <expr pos:line="160" pos:column="5">public<op:operator pos:line="160" pos:column="11">:</op:operator>
+        virtual <name pos:line="161" pos:column="17">HRESULT</name> <name pos:line="161" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="161" pos:column="43">CreateCodeDomProvider</name><argument_list pos:line="161" pos:column="64">( 
+            <comment type="block" pos:line="162" pos:column="13">/* [in] */</comment> <argument pos:line="162" pos:column="24">__RPC__in_opt IVsHierarchy *pHier</argument>,
+            <comment type="block" pos:line="163" pos:column="13">/* [in] */</comment> <argument pos:line="163" pos:column="24">VSITEMID itemid</argument>,
+            <comment type="block" pos:line="164" pos:column="13">/* [retval][out] */</comment> <argument pos:line="164" pos:column="33">__RPC__deref_out_opt IVSMDCodeDomProvider **ppProvider</argument>)</argument_list></macro> <op:operator pos:line="164" pos:column="89">=</op:operator> <lit:literal type="number" pos:line="164" pos:column="91">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="168" pos:column="1">#<cpp:directive pos:line="168" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="168" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="170" pos:column="5">typedef <type><struct pos:line="170" pos:column="13">struct <name pos:line="170" pos:column="20">IVSMDCodeDomCreatorVtbl</name>
+    <block pos:line="171" pos:column="5">{<public type="default" pos:line="171" pos:column="6">
+        <function_decl><type><name pos:line="172" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="174" pos:column="9">HRESULT</name></type> ( <name pos:line="174" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="174" pos:column="37">*</type:modifier><name pos:line="174" pos:column="38">QueryInterface</name> )<parameter_list pos:line="174" pos:column="54">( 
+            <param><decl><type><name pos:line="175" pos:column="13">IVSMDCodeDomCreator</name> <type:modifier pos:line="175" pos:column="33">*</type:modifier></type> <name pos:line="175" pos:column="35">This</name></decl></param>,
+            <comment type="block" pos:line="176" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="176" pos:column="24">__RPC__in</name> <name pos:line="176" pos:column="34">REFIID</name></type> <name pos:line="176" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="177" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="178" pos:column="13">__RPC__deref_out</name>  <name pos:line="178" pos:column="31">void</name> <type:modifier pos:line="178" pos:column="36">*</type:modifier><type:modifier pos:line="178" pos:column="37">*</type:modifier></type><name pos:line="178" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="180" pos:column="9">ULONG</name></type> ( <name pos:line="180" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="180" pos:column="35">*</type:modifier><name pos:line="180" pos:column="36">AddRef</name> )<parameter_list pos:line="180" pos:column="44">( 
+            <param><decl><type><name pos:line="181" pos:column="13">IVSMDCodeDomCreator</name> <type:modifier pos:line="181" pos:column="33">*</type:modifier></type> <name pos:line="181" pos:column="35">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="183" pos:column="9">ULONG</name></type> ( <name pos:line="183" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="183" pos:column="35">*</type:modifier><name pos:line="183" pos:column="36">Release</name> )<parameter_list pos:line="183" pos:column="45">( 
+            <param><decl><type><name pos:line="184" pos:column="13">IVSMDCodeDomCreator</name> <type:modifier pos:line="184" pos:column="33">*</type:modifier></type> <name pos:line="184" pos:column="35">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="186" pos:column="9">HRESULT</name></type> ( <name pos:line="186" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="186" pos:column="37">*</type:modifier><name pos:line="186" pos:column="38">CreateCodeDomProvider</name> )<parameter_list pos:line="186" pos:column="61">( 
+            <param><decl><type><name pos:line="187" pos:column="13">IVSMDCodeDomCreator</name> <type:modifier pos:line="187" pos:column="33">*</type:modifier></type> <name pos:line="187" pos:column="35">This</name></decl></param>,
+            <comment type="block" pos:line="188" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="188" pos:column="24">__RPC__in_opt</name> <name pos:line="188" pos:column="38">IVsHierarchy</name> <type:modifier pos:line="188" pos:column="51">*</type:modifier></type><name pos:line="188" pos:column="52">pHier</name></decl></param>,
+            <comment type="block" pos:line="189" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="189" pos:column="24">VSITEMID</name></type> <name pos:line="189" pos:column="33">itemid</name></decl></param>,
+            <comment type="block" pos:line="190" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="190" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="190" pos:column="54">IVSMDCodeDomProvider</name> <type:modifier pos:line="190" pos:column="75">*</type:modifier><type:modifier pos:line="190" pos:column="76">*</type:modifier></type><name pos:line="190" pos:column="77">ppProvider</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="192" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="193" pos:column="7">IVSMDCodeDomCreatorVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="195" pos:column="5">interface</name></type> <name pos:line="195" pos:column="15">IVSMDCodeDomCreator</name>
+    <argument_list pos:line="196" pos:column="5">{
+        <argument><expr><name pos:line="197" pos:column="9">CONST_VTBL</name> struct <name pos:line="197" pos:column="27">IVSMDCodeDomCreatorVtbl</name> <op:operator pos:line="197" pos:column="51">*</op:operator><name pos:line="197" pos:column="52">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="202" pos:column="1">#<cpp:directive pos:line="202" pos:column="2">ifdef</cpp:directive> <name pos:line="202" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="205" pos:column="1">#<cpp:directive pos:line="205" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="205" pos:column="9">IVSMDCodeDomCreator_QueryInterface</name><parameter_list pos:line="205" pos:column="43">(<param><type><name pos:line="205" pos:column="44">This</name></type></param>,<param><type><name pos:line="205" pos:column="49">riid</name></type></param>,<param><type><name pos:line="205" pos:column="54">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="206" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="208" pos:column="1">#<cpp:directive pos:line="208" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="208" pos:column="9">IVSMDCodeDomCreator_AddRef</name><parameter_list pos:line="208" pos:column="35">(<param><type><name pos:line="208" pos:column="36">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="209" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="211" pos:column="1">#<cpp:directive pos:line="211" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="211" pos:column="9">IVSMDCodeDomCreator_Release</name><parameter_list pos:line="211" pos:column="36">(<param><type><name pos:line="211" pos:column="37">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="212" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="215" pos:column="1">#<cpp:directive pos:line="215" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="215" pos:column="9">IVSMDCodeDomCreator_CreateCodeDomProvider</name><parameter_list pos:line="215" pos:column="50">(<param><type><name pos:line="215" pos:column="51">This</name></type></param>,<param><type><name pos:line="215" pos:column="56">pHier</name></type></param>,<param><type><name pos:line="215" pos:column="62">itemid</name></type></param>,<param><type><name pos:line="215" pos:column="69">ppProvider</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="216" pos:column="5">( (This)-&gt;lpVtbl -&gt; CreateCodeDomProvider(This,pHier,itemid,ppProvider) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="218" pos:column="1">#<cpp:directive pos:line="218" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="218" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="221" pos:column="1">#<cpp:directive pos:line="221" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="221" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="226" pos:column="1">#<cpp:directive pos:line="226" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="226" pos:column="9">/* __IVSMDCodeDomCreator_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="229" pos:column="1">#<cpp:directive pos:line="229" pos:column="2">ifndef</cpp:directive> <name pos:line="229" pos:column="9">__IVSMDCodeDomProvider_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="230" pos:column="1">#<cpp:directive pos:line="230" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="230" pos:column="9">__IVSMDCodeDomProvider_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="232" pos:column="1">/* interface IVSMDCodeDomProvider */</comment>
+<comment type="block" pos:line="233" pos:column="1">/* [uuid][object] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="236" pos:column="1">EXTERN_C</name> <specifier pos:line="236" pos:column="10">const</specifier> <name pos:line="236" pos:column="16">IID</name></type> <name pos:line="236" pos:column="20">IID_IVSMDCodeDomProvider</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="238" pos:column="1">#<cpp:directive pos:line="238" pos:column="2">if</cpp:directive> <expr><call><name pos:line="238" pos:column="5">defined</name><argument_list pos:line="238" pos:column="12">(<argument><expr><name pos:line="238" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="238" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="238" pos:column="29">!</op:operator><call><name pos:line="238" pos:column="30">defined</name><argument_list pos:line="238" pos:column="37">(<argument><expr><name pos:line="238" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="240" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="240" pos:column="19">(<argument pos:line="240" pos:column="20">"73E59688-C7C4-4a85-AF64-A538754784C5"</argument>)</argument_list></macro>
+    <label><name pos:line="241" pos:column="5">IVSMDCodeDomProvider</name> :</label> <expr_stmt><expr pos:line="241" pos:column="28">public <name pos:line="241" pos:column="35">IUnknown</name>
+    <block pos:line="242" pos:column="5">{
+    <expr pos:line="243" pos:column="5">public<op:operator pos:line="243" pos:column="11">:</op:operator>
+        virtual <comment type="block" pos:line="244" pos:column="17">/* [propget] */</comment> <name pos:line="244" pos:column="33">HRESULT</name> <name pos:line="244" pos:column="41">STDMETHODCALLTYPE</name> <macro><name pos:line="244" pos:column="59">get_CodeDomProvider</name><argument_list pos:line="244" pos:column="78">( 
+            <comment type="block" pos:line="245" pos:column="13">/* [retval][out] */</comment> <argument pos:line="245" pos:column="33">__RPC__deref_out_opt IDispatch **ppProvider</argument>)</argument_list></macro> <op:operator pos:line="245" pos:column="78">=</op:operator> <lit:literal type="number" pos:line="245" pos:column="80">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="249" pos:column="1">#<cpp:directive pos:line="249" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="249" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="251" pos:column="5">typedef <type><struct pos:line="251" pos:column="13">struct <name pos:line="251" pos:column="20">IVSMDCodeDomProviderVtbl</name>
+    <block pos:line="252" pos:column="5">{<public type="default" pos:line="252" pos:column="6">
+        <function_decl><type><name pos:line="253" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="255" pos:column="9">HRESULT</name></type> ( <name pos:line="255" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="255" pos:column="37">*</type:modifier><name pos:line="255" pos:column="38">QueryInterface</name> )<parameter_list pos:line="255" pos:column="54">( 
+            <param><decl><type><name pos:line="256" pos:column="13">IVSMDCodeDomProvider</name> <type:modifier pos:line="256" pos:column="34">*</type:modifier></type> <name pos:line="256" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="257" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="257" pos:column="24">__RPC__in</name> <name pos:line="257" pos:column="34">REFIID</name></type> <name pos:line="257" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="258" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="259" pos:column="13">__RPC__deref_out</name>  <name pos:line="259" pos:column="31">void</name> <type:modifier pos:line="259" pos:column="36">*</type:modifier><type:modifier pos:line="259" pos:column="37">*</type:modifier></type><name pos:line="259" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="261" pos:column="9">ULONG</name></type> ( <name pos:line="261" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="261" pos:column="35">*</type:modifier><name pos:line="261" pos:column="36">AddRef</name> )<parameter_list pos:line="261" pos:column="44">( 
+            <param><decl><type><name pos:line="262" pos:column="13">IVSMDCodeDomProvider</name> <type:modifier pos:line="262" pos:column="34">*</type:modifier></type> <name pos:line="262" pos:column="36">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="264" pos:column="9">ULONG</name></type> ( <name pos:line="264" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="264" pos:column="35">*</type:modifier><name pos:line="264" pos:column="36">Release</name> )<parameter_list pos:line="264" pos:column="45">( 
+            <param><decl><type><name pos:line="265" pos:column="13">IVSMDCodeDomProvider</name> <type:modifier pos:line="265" pos:column="34">*</type:modifier></type> <name pos:line="265" pos:column="36">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <comment type="block" pos:line="267" pos:column="9">/* [propget] */</comment> <function_decl><type><name pos:line="267" pos:column="25">HRESULT</name></type> ( <name pos:line="267" pos:column="35">STDMETHODCALLTYPE</name> <type:modifier pos:line="267" pos:column="53">*</type:modifier><name pos:line="267" pos:column="54">get_CodeDomProvider</name> )<parameter_list pos:line="267" pos:column="75">( 
+            <param><decl><type><name pos:line="268" pos:column="13">IVSMDCodeDomProvider</name> <type:modifier pos:line="268" pos:column="34">*</type:modifier></type> <name pos:line="268" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="269" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="269" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="269" pos:column="54">IDispatch</name> <type:modifier pos:line="269" pos:column="64">*</type:modifier><type:modifier pos:line="269" pos:column="65">*</type:modifier></type><name pos:line="269" pos:column="66">ppProvider</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="271" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="272" pos:column="7">IVSMDCodeDomProviderVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="274" pos:column="5">interface</name></type> <name pos:line="274" pos:column="15">IVSMDCodeDomProvider</name>
+    <argument_list pos:line="275" pos:column="5">{
+        <argument><expr><name pos:line="276" pos:column="9">CONST_VTBL</name> struct <name pos:line="276" pos:column="27">IVSMDCodeDomProviderVtbl</name> <op:operator pos:line="276" pos:column="52">*</op:operator><name pos:line="276" pos:column="53">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="281" pos:column="1">#<cpp:directive pos:line="281" pos:column="2">ifdef</cpp:directive> <name pos:line="281" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="284" pos:column="1">#<cpp:directive pos:line="284" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="284" pos:column="9">IVSMDCodeDomProvider_QueryInterface</name><parameter_list pos:line="284" pos:column="44">(<param><type><name pos:line="284" pos:column="45">This</name></type></param>,<param><type><name pos:line="284" pos:column="50">riid</name></type></param>,<param><type><name pos:line="284" pos:column="55">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="285" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="287" pos:column="1">#<cpp:directive pos:line="287" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="287" pos:column="9">IVSMDCodeDomProvider_AddRef</name><parameter_list pos:line="287" pos:column="36">(<param><type><name pos:line="287" pos:column="37">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="288" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="290" pos:column="1">#<cpp:directive pos:line="290" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="290" pos:column="9">IVSMDCodeDomProvider_Release</name><parameter_list pos:line="290" pos:column="37">(<param><type><name pos:line="290" pos:column="38">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="291" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="294" pos:column="1">#<cpp:directive pos:line="294" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="294" pos:column="9">IVSMDCodeDomProvider_get_CodeDomProvider</name><parameter_list pos:line="294" pos:column="49">(<param><type><name pos:line="294" pos:column="50">This</name></type></param>,<param><type><name pos:line="294" pos:column="55">ppProvider</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="295" pos:column="5">( (This)-&gt;lpVtbl -&gt; get_CodeDomProvider(This,ppProvider) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="297" pos:column="1">#<cpp:directive pos:line="297" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="297" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="300" pos:column="1">#<cpp:directive pos:line="300" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="300" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="305" pos:column="1">#<cpp:directive pos:line="305" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="305" pos:column="9">/* __IVSMDCodeDomProvider_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="308" pos:column="1">#<cpp:directive pos:line="308" pos:column="2">ifndef</cpp:directive> <name pos:line="308" pos:column="9">__IVSMDDesigner_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="309" pos:column="1">#<cpp:directive pos:line="309" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="309" pos:column="9">__IVSMDDesigner_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="311" pos:column="1">/* interface IVSMDDesigner */</comment>
+<comment type="block" pos:line="312" pos:column="1">/* [uuid][object] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="315" pos:column="1">EXTERN_C</name> <specifier pos:line="315" pos:column="10">const</specifier> <name pos:line="315" pos:column="16">IID</name></type> <name pos:line="315" pos:column="20">IID_IVSMDDesigner</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="317" pos:column="1">#<cpp:directive pos:line="317" pos:column="2">if</cpp:directive> <expr><call><name pos:line="317" pos:column="5">defined</name><argument_list pos:line="317" pos:column="12">(<argument><expr><name pos:line="317" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="317" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="317" pos:column="29">!</op:operator><call><name pos:line="317" pos:column="30">defined</name><argument_list pos:line="317" pos:column="37">(<argument><expr><name pos:line="317" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="319" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="319" pos:column="19">(<argument pos:line="319" pos:column="20">"7494682A-37A0-11d2-A273-00C04F8EF4FF"</argument>)</argument_list></macro>
+    <label><name pos:line="320" pos:column="5">IVSMDDesigner</name> :</label> <expr_stmt><expr pos:line="320" pos:column="21">public <name pos:line="320" pos:column="28">IUnknown</name>
+    <block pos:line="321" pos:column="5">{
+    <expr pos:line="322" pos:column="5">public<op:operator pos:line="322" pos:column="11">:</op:operator>
+        virtual <comment type="block" pos:line="323" pos:column="17">/* [propget] */</comment> <name pos:line="323" pos:column="33">HRESULT</name> <name pos:line="323" pos:column="41">STDMETHODCALLTYPE</name> <macro><name pos:line="323" pos:column="59">get_CommandGuid</name><argument_list pos:line="323" pos:column="74">( 
+            <comment type="block" pos:line="324" pos:column="13">/* [retval][out] */</comment> <argument pos:line="324" pos:column="33">__RPC__out GUID *pguidCmdId</argument>)</argument_list></macro> <op:operator pos:line="324" pos:column="62">=</op:operator> <lit:literal type="number" pos:line="324" pos:column="64">0</lit:literal></expr>;
+        
+        <expr pos:line="326" pos:column="9">virtual <comment type="block" pos:line="326" pos:column="17">/* [propget] */</comment> <name pos:line="326" pos:column="33">HRESULT</name> <name pos:line="326" pos:column="41">STDMETHODCALLTYPE</name> <macro><name pos:line="326" pos:column="59">get_View</name><argument_list pos:line="326" pos:column="67">( 
+            <comment type="block" pos:line="327" pos:column="13">/* [retval][out] */</comment> <argument pos:line="327" pos:column="33">__RPC__deref_out_opt IUnknown **pView</argument>)</argument_list></macro> <op:operator pos:line="327" pos:column="72">=</op:operator> <lit:literal type="number" pos:line="327" pos:column="74">0</lit:literal></expr>;
+        
+        <expr pos:line="329" pos:column="9">virtual <comment type="block" pos:line="329" pos:column="17">/* [propget] */</comment> <name pos:line="329" pos:column="33">HRESULT</name> <name pos:line="329" pos:column="41">STDMETHODCALLTYPE</name> <macro><name pos:line="329" pos:column="59">get_SelectionContainer</name><argument_list pos:line="329" pos:column="81">( 
+            <comment type="block" pos:line="330" pos:column="13">/* [retval][out] */</comment> <argument pos:line="330" pos:column="33">__RPC__deref_out_opt IUnknown **ppSelCon</argument>)</argument_list></macro> <op:operator pos:line="330" pos:column="75">=</op:operator> <lit:literal type="number" pos:line="330" pos:column="77">0</lit:literal></expr>;
+        
+        <expr pos:line="332" pos:column="9">virtual <name pos:line="332" pos:column="17">HRESULT</name> <name pos:line="332" pos:column="25">STDMETHODCALLTYPE</name> <call><name pos:line="332" pos:column="43">Dispose</name><argument_list pos:line="332" pos:column="50">( <argument><expr><name pos:line="332" pos:column="52">void</name></expr></argument>)</argument_list></call> <op:operator pos:line="332" pos:column="58">=</op:operator> <lit:literal type="number" pos:line="332" pos:column="60">0</lit:literal></expr>;
+        
+        <expr pos:line="334" pos:column="9">virtual <name pos:line="334" pos:column="17">HRESULT</name> <name pos:line="334" pos:column="25">STDMETHODCALLTYPE</name> <call><name pos:line="334" pos:column="43">Flush</name><argument_list pos:line="334" pos:column="48">( <argument><expr><name pos:line="334" pos:column="50">void</name></expr></argument>)</argument_list></call> <op:operator pos:line="334" pos:column="56">=</op:operator> <lit:literal type="number" pos:line="334" pos:column="58">0</lit:literal></expr>;
+        
+        <expr pos:line="336" pos:column="9">virtual <name pos:line="336" pos:column="17">HRESULT</name> <name pos:line="336" pos:column="25">STDMETHODCALLTYPE</name> <call><name pos:line="336" pos:column="43">GetLoadError</name><argument_list pos:line="336" pos:column="55">( <argument><expr><name pos:line="336" pos:column="57">void</name></expr></argument>)</argument_list></call> <op:operator pos:line="336" pos:column="63">=</op:operator> <lit:literal type="number" pos:line="336" pos:column="65">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="340" pos:column="1">#<cpp:directive pos:line="340" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="340" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="342" pos:column="5">typedef <type><struct pos:line="342" pos:column="13">struct <name pos:line="342" pos:column="20">IVSMDDesignerVtbl</name>
+    <block pos:line="343" pos:column="5">{<public type="default" pos:line="343" pos:column="6">
+        <function_decl><type><name pos:line="344" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="346" pos:column="9">HRESULT</name></type> ( <name pos:line="346" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="346" pos:column="37">*</type:modifier><name pos:line="346" pos:column="38">QueryInterface</name> )<parameter_list pos:line="346" pos:column="54">( 
+            <param><decl><type><name pos:line="347" pos:column="13">IVSMDDesigner</name> <type:modifier pos:line="347" pos:column="27">*</type:modifier></type> <name pos:line="347" pos:column="29">This</name></decl></param>,
+            <comment type="block" pos:line="348" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="348" pos:column="24">__RPC__in</name> <name pos:line="348" pos:column="34">REFIID</name></type> <name pos:line="348" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="349" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="350" pos:column="13">__RPC__deref_out</name>  <name pos:line="350" pos:column="31">void</name> <type:modifier pos:line="350" pos:column="36">*</type:modifier><type:modifier pos:line="350" pos:column="37">*</type:modifier></type><name pos:line="350" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="352" pos:column="9">ULONG</name></type> ( <name pos:line="352" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="352" pos:column="35">*</type:modifier><name pos:line="352" pos:column="36">AddRef</name> )<parameter_list pos:line="352" pos:column="44">( 
+            <param><decl><type><name pos:line="353" pos:column="13">IVSMDDesigner</name> <type:modifier pos:line="353" pos:column="27">*</type:modifier></type> <name pos:line="353" pos:column="29">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="355" pos:column="9">ULONG</name></type> ( <name pos:line="355" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="355" pos:column="35">*</type:modifier><name pos:line="355" pos:column="36">Release</name> )<parameter_list pos:line="355" pos:column="45">( 
+            <param><decl><type><name pos:line="356" pos:column="13">IVSMDDesigner</name> <type:modifier pos:line="356" pos:column="27">*</type:modifier></type> <name pos:line="356" pos:column="29">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <comment type="block" pos:line="358" pos:column="9">/* [propget] */</comment> <function_decl><type><name pos:line="358" pos:column="25">HRESULT</name></type> ( <name pos:line="358" pos:column="35">STDMETHODCALLTYPE</name> <type:modifier pos:line="358" pos:column="53">*</type:modifier><name pos:line="358" pos:column="54">get_CommandGuid</name> )<parameter_list pos:line="358" pos:column="71">( 
+            <param><decl><type><name pos:line="359" pos:column="13">IVSMDDesigner</name> <type:modifier pos:line="359" pos:column="27">*</type:modifier></type> <name pos:line="359" pos:column="29">This</name></decl></param>,
+            <comment type="block" pos:line="360" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="360" pos:column="33">__RPC__out</name> <name pos:line="360" pos:column="44">GUID</name> <type:modifier pos:line="360" pos:column="49">*</type:modifier></type><name pos:line="360" pos:column="50">pguidCmdId</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <comment type="block" pos:line="362" pos:column="9">/* [propget] */</comment> <function_decl><type><name pos:line="362" pos:column="25">HRESULT</name></type> ( <name pos:line="362" pos:column="35">STDMETHODCALLTYPE</name> <type:modifier pos:line="362" pos:column="53">*</type:modifier><name pos:line="362" pos:column="54">get_View</name> )<parameter_list pos:line="362" pos:column="64">( 
+            <param><decl><type><name pos:line="363" pos:column="13">IVSMDDesigner</name> <type:modifier pos:line="363" pos:column="27">*</type:modifier></type> <name pos:line="363" pos:column="29">This</name></decl></param>,
+            <comment type="block" pos:line="364" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="364" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="364" pos:column="54">IUnknown</name> <type:modifier pos:line="364" pos:column="63">*</type:modifier><type:modifier pos:line="364" pos:column="64">*</type:modifier></type><name pos:line="364" pos:column="65">pView</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <comment type="block" pos:line="366" pos:column="9">/* [propget] */</comment> <function_decl><type><name pos:line="366" pos:column="25">HRESULT</name></type> ( <name pos:line="366" pos:column="35">STDMETHODCALLTYPE</name> <type:modifier pos:line="366" pos:column="53">*</type:modifier><name pos:line="366" pos:column="54">get_SelectionContainer</name> )<parameter_list pos:line="366" pos:column="78">( 
+            <param><decl><type><name pos:line="367" pos:column="13">IVSMDDesigner</name> <type:modifier pos:line="367" pos:column="27">*</type:modifier></type> <name pos:line="367" pos:column="29">This</name></decl></param>,
+            <comment type="block" pos:line="368" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="368" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="368" pos:column="54">IUnknown</name> <type:modifier pos:line="368" pos:column="63">*</type:modifier><type:modifier pos:line="368" pos:column="64">*</type:modifier></type><name pos:line="368" pos:column="65">ppSelCon</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="370" pos:column="9">HRESULT</name></type> ( <name pos:line="370" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="370" pos:column="37">*</type:modifier><name pos:line="370" pos:column="38">Dispose</name> )<parameter_list pos:line="370" pos:column="47">( 
+            <param><decl><type><name pos:line="371" pos:column="13">IVSMDDesigner</name> <type:modifier pos:line="371" pos:column="27">*</type:modifier></type> <name pos:line="371" pos:column="29">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="373" pos:column="9">HRESULT</name></type> ( <name pos:line="373" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="373" pos:column="37">*</type:modifier><name pos:line="373" pos:column="38">Flush</name> )<parameter_list pos:line="373" pos:column="45">( 
+            <param><decl><type><name pos:line="374" pos:column="13">IVSMDDesigner</name> <type:modifier pos:line="374" pos:column="27">*</type:modifier></type> <name pos:line="374" pos:column="29">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="376" pos:column="9">HRESULT</name></type> ( <name pos:line="376" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="376" pos:column="37">*</type:modifier><name pos:line="376" pos:column="38">GetLoadError</name> )<parameter_list pos:line="376" pos:column="52">( 
+            <param><decl><type><name pos:line="377" pos:column="13">IVSMDDesigner</name> <type:modifier pos:line="377" pos:column="27">*</type:modifier></type> <name pos:line="377" pos:column="29">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="379" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="380" pos:column="7">IVSMDDesignerVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="382" pos:column="5">interface</name></type> <name pos:line="382" pos:column="15">IVSMDDesigner</name>
+    <argument_list pos:line="383" pos:column="5">{
+        <argument><expr><name pos:line="384" pos:column="9">CONST_VTBL</name> struct <name pos:line="384" pos:column="27">IVSMDDesignerVtbl</name> <op:operator pos:line="384" pos:column="45">*</op:operator><name pos:line="384" pos:column="46">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="389" pos:column="1">#<cpp:directive pos:line="389" pos:column="2">ifdef</cpp:directive> <name pos:line="389" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="392" pos:column="1">#<cpp:directive pos:line="392" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="392" pos:column="9">IVSMDDesigner_QueryInterface</name><parameter_list pos:line="392" pos:column="37">(<param><type><name pos:line="392" pos:column="38">This</name></type></param>,<param><type><name pos:line="392" pos:column="43">riid</name></type></param>,<param><type><name pos:line="392" pos:column="48">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="393" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="395" pos:column="1">#<cpp:directive pos:line="395" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="395" pos:column="9">IVSMDDesigner_AddRef</name><parameter_list pos:line="395" pos:column="29">(<param><type><name pos:line="395" pos:column="30">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="396" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="398" pos:column="1">#<cpp:directive pos:line="398" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="398" pos:column="9">IVSMDDesigner_Release</name><parameter_list pos:line="398" pos:column="30">(<param><type><name pos:line="398" pos:column="31">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="399" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="402" pos:column="1">#<cpp:directive pos:line="402" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="402" pos:column="9">IVSMDDesigner_get_CommandGuid</name><parameter_list pos:line="402" pos:column="38">(<param><type><name pos:line="402" pos:column="39">This</name></type></param>,<param><type><name pos:line="402" pos:column="44">pguidCmdId</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="403" pos:column="5">( (This)-&gt;lpVtbl -&gt; get_CommandGuid(This,pguidCmdId) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="405" pos:column="1">#<cpp:directive pos:line="405" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="405" pos:column="9">IVSMDDesigner_get_View</name><parameter_list pos:line="405" pos:column="31">(<param><type><name pos:line="405" pos:column="32">This</name></type></param>,<param><type><name pos:line="405" pos:column="37">pView</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="406" pos:column="5">( (This)-&gt;lpVtbl -&gt; get_View(This,pView) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="408" pos:column="1">#<cpp:directive pos:line="408" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="408" pos:column="9">IVSMDDesigner_get_SelectionContainer</name><parameter_list pos:line="408" pos:column="45">(<param><type><name pos:line="408" pos:column="46">This</name></type></param>,<param><type><name pos:line="408" pos:column="51">ppSelCon</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="409" pos:column="5">( (This)-&gt;lpVtbl -&gt; get_SelectionContainer(This,ppSelCon) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="411" pos:column="1">#<cpp:directive pos:line="411" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="411" pos:column="9">IVSMDDesigner_Dispose</name><parameter_list pos:line="411" pos:column="30">(<param><type><name pos:line="411" pos:column="31">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="412" pos:column="5">( (This)-&gt;lpVtbl -&gt; Dispose(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="414" pos:column="1">#<cpp:directive pos:line="414" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="414" pos:column="9">IVSMDDesigner_Flush</name><parameter_list pos:line="414" pos:column="28">(<param><type><name pos:line="414" pos:column="29">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="415" pos:column="5">( (This)-&gt;lpVtbl -&gt; Flush(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="417" pos:column="1">#<cpp:directive pos:line="417" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="417" pos:column="9">IVSMDDesigner_GetLoadError</name><parameter_list pos:line="417" pos:column="35">(<param><type><name pos:line="417" pos:column="36">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="418" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetLoadError(This) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="420" pos:column="1">#<cpp:directive pos:line="420" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="420" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="423" pos:column="1">#<cpp:directive pos:line="423" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="423" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="428" pos:column="1">#<cpp:directive pos:line="428" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="428" pos:column="9">/* __IVSMDDesigner_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="431" pos:column="1">#<cpp:directive pos:line="431" pos:column="2">ifndef</cpp:directive> <name pos:line="431" pos:column="9">__IVSMDDesignerLoader_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="432" pos:column="1">#<cpp:directive pos:line="432" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="432" pos:column="9">__IVSMDDesignerLoader_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="434" pos:column="1">/* interface IVSMDDesignerLoader */</comment>
+<comment type="block" pos:line="435" pos:column="1">/* [uuid][object] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="438" pos:column="1">EXTERN_C</name> <specifier pos:line="438" pos:column="10">const</specifier> <name pos:line="438" pos:column="16">IID</name></type> <name pos:line="438" pos:column="20">IID_IVSMDDesignerLoader</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="440" pos:column="1">#<cpp:directive pos:line="440" pos:column="2">if</cpp:directive> <expr><call><name pos:line="440" pos:column="5">defined</name><argument_list pos:line="440" pos:column="12">(<argument><expr><name pos:line="440" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="440" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="440" pos:column="29">!</op:operator><call><name pos:line="440" pos:column="30">defined</name><argument_list pos:line="440" pos:column="37">(<argument><expr><name pos:line="440" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="442" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="442" pos:column="19">(<argument pos:line="442" pos:column="20">"74946834-37A0-11d2-A273-00C04F8EF4FF"</argument>)</argument_list></macro>
+    <label><name pos:line="443" pos:column="5">IVSMDDesignerLoader</name> :</label> <expr_stmt><expr pos:line="443" pos:column="27">public <name pos:line="443" pos:column="34">IUnknown</name>
+    <block pos:line="444" pos:column="5">{
+    <expr pos:line="445" pos:column="5">public<op:operator pos:line="445" pos:column="11">:</op:operator>
+        virtual <name pos:line="446" pos:column="17">HRESULT</name> <name pos:line="446" pos:column="25">STDMETHODCALLTYPE</name> <call><name pos:line="446" pos:column="43">Dispose</name><argument_list pos:line="446" pos:column="50">( <argument><expr><name pos:line="446" pos:column="52">void</name></expr></argument>)</argument_list></call> <op:operator pos:line="446" pos:column="58">=</op:operator> <lit:literal type="number" pos:line="446" pos:column="60">0</lit:literal></expr>;
+        
+        <expr pos:line="448" pos:column="9">virtual <name pos:line="448" pos:column="17">HRESULT</name> <name pos:line="448" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="448" pos:column="43">GetEditorCaption</name><argument_list pos:line="448" pos:column="59">( 
+            <comment type="block" pos:line="449" pos:column="13">/* [in] */</comment> <argument pos:line="449" pos:column="24">READONLYSTATUS status</argument>,
+            <comment type="block" pos:line="450" pos:column="13">/* [retval][out] */</comment> <argument pos:line="450" pos:column="33">__RPC__deref_out_opt BSTR *pbstrCaption</argument>)</argument_list></macro> <op:operator pos:line="450" pos:column="74">=</op:operator> <lit:literal type="number" pos:line="450" pos:column="76">0</lit:literal></expr>;
+        
+        <expr pos:line="452" pos:column="9">virtual <name pos:line="452" pos:column="17">HRESULT</name> <name pos:line="452" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="452" pos:column="43">Initialize</name><argument_list pos:line="452" pos:column="53">( 
+            <comment type="block" pos:line="453" pos:column="13">/* [in] */</comment> <argument pos:line="453" pos:column="24">__RPC__in_opt IServiceProvider *pSp</argument>,
+            <comment type="block" pos:line="454" pos:column="13">/* [in] */</comment> <argument pos:line="454" pos:column="24">__RPC__in_opt IVsHierarchy *pHier</argument>,
+            <comment type="block" pos:line="455" pos:column="13">/* [in] */</comment> <argument pos:line="455" pos:column="24">VSITEMID itemid</argument>,
+            <comment type="block" pos:line="456" pos:column="13">/* [in] */</comment> <argument pos:line="456" pos:column="24">__RPC__in_opt IUnknown *pDocData</argument>)</argument_list></macro> <op:operator pos:line="456" pos:column="58">=</op:operator> <lit:literal type="number" pos:line="456" pos:column="60">0</lit:literal></expr>;
+        
+        <expr pos:line="458" pos:column="9">virtual <name pos:line="458" pos:column="17">HRESULT</name> <name pos:line="458" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="458" pos:column="43">SetBaseEditorCaption</name><argument_list pos:line="458" pos:column="63">( 
+            <comment type="block" pos:line="459" pos:column="13">/* [in] */</comment> <argument pos:line="459" pos:column="24">__RPC__in LPCOLESTR pwszCaption</argument>)</argument_list></macro> <op:operator pos:line="459" pos:column="57">=</op:operator> <lit:literal type="number" pos:line="459" pos:column="59">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="463" pos:column="1">#<cpp:directive pos:line="463" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="463" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="465" pos:column="5">typedef <type><struct pos:line="465" pos:column="13">struct <name pos:line="465" pos:column="20">IVSMDDesignerLoaderVtbl</name>
+    <block pos:line="466" pos:column="5">{<public type="default" pos:line="466" pos:column="6">
+        <function_decl><type><name pos:line="467" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="469" pos:column="9">HRESULT</name></type> ( <name pos:line="469" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="469" pos:column="37">*</type:modifier><name pos:line="469" pos:column="38">QueryInterface</name> )<parameter_list pos:line="469" pos:column="54">( 
+            <param><decl><type><name pos:line="470" pos:column="13">IVSMDDesignerLoader</name> <type:modifier pos:line="470" pos:column="33">*</type:modifier></type> <name pos:line="470" pos:column="35">This</name></decl></param>,
+            <comment type="block" pos:line="471" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="471" pos:column="24">__RPC__in</name> <name pos:line="471" pos:column="34">REFIID</name></type> <name pos:line="471" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="472" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="473" pos:column="13">__RPC__deref_out</name>  <name pos:line="473" pos:column="31">void</name> <type:modifier pos:line="473" pos:column="36">*</type:modifier><type:modifier pos:line="473" pos:column="37">*</type:modifier></type><name pos:line="473" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="475" pos:column="9">ULONG</name></type> ( <name pos:line="475" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="475" pos:column="35">*</type:modifier><name pos:line="475" pos:column="36">AddRef</name> )<parameter_list pos:line="475" pos:column="44">( 
+            <param><decl><type><name pos:line="476" pos:column="13">IVSMDDesignerLoader</name> <type:modifier pos:line="476" pos:column="33">*</type:modifier></type> <name pos:line="476" pos:column="35">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="478" pos:column="9">ULONG</name></type> ( <name pos:line="478" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="478" pos:column="35">*</type:modifier><name pos:line="478" pos:column="36">Release</name> )<parameter_list pos:line="478" pos:column="45">( 
+            <param><decl><type><name pos:line="479" pos:column="13">IVSMDDesignerLoader</name> <type:modifier pos:line="479" pos:column="33">*</type:modifier></type> <name pos:line="479" pos:column="35">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="481" pos:column="9">HRESULT</name></type> ( <name pos:line="481" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="481" pos:column="37">*</type:modifier><name pos:line="481" pos:column="38">Dispose</name> )<parameter_list pos:line="481" pos:column="47">( 
+            <param><decl><type><name pos:line="482" pos:column="13">IVSMDDesignerLoader</name> <type:modifier pos:line="482" pos:column="33">*</type:modifier></type> <name pos:line="482" pos:column="35">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="484" pos:column="9">HRESULT</name></type> ( <name pos:line="484" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="484" pos:column="37">*</type:modifier><name pos:line="484" pos:column="38">GetEditorCaption</name> )<parameter_list pos:line="484" pos:column="56">( 
+            <param><decl><type><name pos:line="485" pos:column="13">IVSMDDesignerLoader</name> <type:modifier pos:line="485" pos:column="33">*</type:modifier></type> <name pos:line="485" pos:column="35">This</name></decl></param>,
+            <comment type="block" pos:line="486" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="486" pos:column="24">READONLYSTATUS</name></type> <name pos:line="486" pos:column="39">status</name></decl></param>,
+            <comment type="block" pos:line="487" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="487" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="487" pos:column="54">BSTR</name> <type:modifier pos:line="487" pos:column="59">*</type:modifier></type><name pos:line="487" pos:column="60">pbstrCaption</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="489" pos:column="9">HRESULT</name></type> ( <name pos:line="489" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="489" pos:column="37">*</type:modifier><name pos:line="489" pos:column="38">Initialize</name> )<parameter_list pos:line="489" pos:column="50">( 
+            <param><decl><type><name pos:line="490" pos:column="13">IVSMDDesignerLoader</name> <type:modifier pos:line="490" pos:column="33">*</type:modifier></type> <name pos:line="490" pos:column="35">This</name></decl></param>,
+            <comment type="block" pos:line="491" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="491" pos:column="24">__RPC__in_opt</name> <name pos:line="491" pos:column="38">IServiceProvider</name> <type:modifier pos:line="491" pos:column="55">*</type:modifier></type><name pos:line="491" pos:column="56">pSp</name></decl></param>,
+            <comment type="block" pos:line="492" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="492" pos:column="24">__RPC__in_opt</name> <name pos:line="492" pos:column="38">IVsHierarchy</name> <type:modifier pos:line="492" pos:column="51">*</type:modifier></type><name pos:line="492" pos:column="52">pHier</name></decl></param>,
+            <comment type="block" pos:line="493" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="493" pos:column="24">VSITEMID</name></type> <name pos:line="493" pos:column="33">itemid</name></decl></param>,
+            <comment type="block" pos:line="494" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="494" pos:column="24">__RPC__in_opt</name> <name pos:line="494" pos:column="38">IUnknown</name> <type:modifier pos:line="494" pos:column="47">*</type:modifier></type><name pos:line="494" pos:column="48">pDocData</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="496" pos:column="9">HRESULT</name></type> ( <name pos:line="496" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="496" pos:column="37">*</type:modifier><name pos:line="496" pos:column="38">SetBaseEditorCaption</name> )<parameter_list pos:line="496" pos:column="60">( 
+            <param><decl><type><name pos:line="497" pos:column="13">IVSMDDesignerLoader</name> <type:modifier pos:line="497" pos:column="33">*</type:modifier></type> <name pos:line="497" pos:column="35">This</name></decl></param>,
+            <comment type="block" pos:line="498" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="498" pos:column="24">__RPC__in</name> <name pos:line="498" pos:column="34">LPCOLESTR</name></type> <name pos:line="498" pos:column="44">pwszCaption</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="500" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="501" pos:column="7">IVSMDDesignerLoaderVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="503" pos:column="5">interface</name></type> <name pos:line="503" pos:column="15">IVSMDDesignerLoader</name>
+    <argument_list pos:line="504" pos:column="5">{
+        <argument><expr><name pos:line="505" pos:column="9">CONST_VTBL</name> struct <name pos:line="505" pos:column="27">IVSMDDesignerLoaderVtbl</name> <op:operator pos:line="505" pos:column="51">*</op:operator><name pos:line="505" pos:column="52">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="510" pos:column="1">#<cpp:directive pos:line="510" pos:column="2">ifdef</cpp:directive> <name pos:line="510" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="513" pos:column="1">#<cpp:directive pos:line="513" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="513" pos:column="9">IVSMDDesignerLoader_QueryInterface</name><parameter_list pos:line="513" pos:column="43">(<param><type><name pos:line="513" pos:column="44">This</name></type></param>,<param><type><name pos:line="513" pos:column="49">riid</name></type></param>,<param><type><name pos:line="513" pos:column="54">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="514" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="516" pos:column="1">#<cpp:directive pos:line="516" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="516" pos:column="9">IVSMDDesignerLoader_AddRef</name><parameter_list pos:line="516" pos:column="35">(<param><type><name pos:line="516" pos:column="36">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="517" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="519" pos:column="1">#<cpp:directive pos:line="519" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="519" pos:column="9">IVSMDDesignerLoader_Release</name><parameter_list pos:line="519" pos:column="36">(<param><type><name pos:line="519" pos:column="37">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="520" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="523" pos:column="1">#<cpp:directive pos:line="523" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="523" pos:column="9">IVSMDDesignerLoader_Dispose</name><parameter_list pos:line="523" pos:column="36">(<param><type><name pos:line="523" pos:column="37">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="524" pos:column="5">( (This)-&gt;lpVtbl -&gt; Dispose(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="526" pos:column="1">#<cpp:directive pos:line="526" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="526" pos:column="9">IVSMDDesignerLoader_GetEditorCaption</name><parameter_list pos:line="526" pos:column="45">(<param><type><name pos:line="526" pos:column="46">This</name></type></param>,<param><type><name pos:line="526" pos:column="51">status</name></type></param>,<param><type><name pos:line="526" pos:column="58">pbstrCaption</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="527" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetEditorCaption(This,status,pbstrCaption) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="529" pos:column="1">#<cpp:directive pos:line="529" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="529" pos:column="9">IVSMDDesignerLoader_Initialize</name><parameter_list pos:line="529" pos:column="39">(<param><type><name pos:line="529" pos:column="40">This</name></type></param>,<param><type><name pos:line="529" pos:column="45">pSp</name></type></param>,<param><type><name pos:line="529" pos:column="49">pHier</name></type></param>,<param><type><name pos:line="529" pos:column="55">itemid</name></type></param>,<param><type><name pos:line="529" pos:column="62">pDocData</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="530" pos:column="5">( (This)-&gt;lpVtbl -&gt; Initialize(This,pSp,pHier,itemid,pDocData) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="532" pos:column="1">#<cpp:directive pos:line="532" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="532" pos:column="9">IVSMDDesignerLoader_SetBaseEditorCaption</name><parameter_list pos:line="532" pos:column="49">(<param><type><name pos:line="532" pos:column="50">This</name></type></param>,<param><type><name pos:line="532" pos:column="55">pwszCaption</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="533" pos:column="5">( (This)-&gt;lpVtbl -&gt; SetBaseEditorCaption(This,pwszCaption) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="535" pos:column="1">#<cpp:directive pos:line="535" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="535" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="538" pos:column="1">#<cpp:directive pos:line="538" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="538" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="543" pos:column="1">#<cpp:directive pos:line="543" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="543" pos:column="9">/* __IVSMDDesignerLoader_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="546" pos:column="1">#<cpp:directive pos:line="546" pos:column="2">ifndef</cpp:directive> <name pos:line="546" pos:column="9">__IVSMDDesignerService_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="547" pos:column="1">#<cpp:directive pos:line="547" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="547" pos:column="9">__IVSMDDesignerService_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="549" pos:column="1">/* interface IVSMDDesignerService */</comment>
+<comment type="block" pos:line="550" pos:column="1">/* [uuid][object] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="553" pos:column="1">EXTERN_C</name> <specifier pos:line="553" pos:column="10">const</specifier> <name pos:line="553" pos:column="16">IID</name></type> <name pos:line="553" pos:column="20">IID_IVSMDDesignerService</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="555" pos:column="1">#<cpp:directive pos:line="555" pos:column="2">if</cpp:directive> <expr><call><name pos:line="555" pos:column="5">defined</name><argument_list pos:line="555" pos:column="12">(<argument><expr><name pos:line="555" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="555" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="555" pos:column="29">!</op:operator><call><name pos:line="555" pos:column="30">defined</name><argument_list pos:line="555" pos:column="37">(<argument><expr><name pos:line="555" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="557" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="557" pos:column="19">(<argument pos:line="557" pos:column="20">"74946829-37A0-11d2-A273-00C04F8EF4FF"</argument>)</argument_list></macro>
+    <label><name pos:line="558" pos:column="5">IVSMDDesignerService</name> :</label> <expr_stmt><expr pos:line="558" pos:column="28">public <name pos:line="558" pos:column="35">IUnknown</name>
+    <block pos:line="559" pos:column="5">{
+    <expr pos:line="560" pos:column="5">public<op:operator pos:line="560" pos:column="11">:</op:operator>
+        virtual <comment type="block" pos:line="561" pos:column="17">/* [propget] */</comment> <name pos:line="561" pos:column="33">HRESULT</name> <name pos:line="561" pos:column="41">STDMETHODCALLTYPE</name> <macro><name pos:line="561" pos:column="59">get_DesignViewAttribute</name><argument_list pos:line="561" pos:column="82">( 
+            <comment type="block" pos:line="562" pos:column="13">/* [retval][out] */</comment> <argument pos:line="562" pos:column="33">__RPC__deref_out_opt BSTR *pbstrAttribute</argument>)</argument_list></macro> <op:operator pos:line="562" pos:column="76">=</op:operator> <lit:literal type="number" pos:line="562" pos:column="78">0</lit:literal></expr>;
+        
+        <expr pos:line="564" pos:column="9">virtual <name pos:line="564" pos:column="17">HRESULT</name> <name pos:line="564" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="564" pos:column="43">CreateDesigner</name><argument_list pos:line="564" pos:column="57">( 
+            <comment type="block" pos:line="565" pos:column="13">/* [in] */</comment> <argument pos:line="565" pos:column="24">__RPC__in_opt IServiceProvider *pSp</argument>,
+            <comment type="block" pos:line="566" pos:column="13">/* [in] */</comment> <argument pos:line="566" pos:column="24">__RPC__in_opt IUnknown *pDesignerLoader</argument>,
+            <comment type="block" pos:line="567" pos:column="13">/* [retval][out] */</comment> <argument pos:line="567" pos:column="33">__RPC__deref_out_opt IVSMDDesigner **ppDesigner</argument>)</argument_list></macro> <op:operator pos:line="567" pos:column="82">=</op:operator> <lit:literal type="number" pos:line="567" pos:column="84">0</lit:literal></expr>;
+        
+        <expr pos:line="569" pos:column="9">virtual <name pos:line="569" pos:column="17">HRESULT</name> <name pos:line="569" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="569" pos:column="43">CreateDesignerForClass</name><argument_list pos:line="569" pos:column="65">( 
+            <comment type="block" pos:line="570" pos:column="13">/* [in] */</comment> <argument pos:line="570" pos:column="24">__RPC__in_opt IServiceProvider *pSp</argument>,
+            <comment type="block" pos:line="571" pos:column="13">/* [in] */</comment> <argument pos:line="571" pos:column="24">__RPC__in LPCOLESTR pwszComponentClass</argument>,
+            <comment type="block" pos:line="572" pos:column="13">/* [retval][out] */</comment> <argument pos:line="572" pos:column="33">__RPC__deref_out_opt IVSMDDesigner **ppDesigner</argument>)</argument_list></macro> <op:operator pos:line="572" pos:column="82">=</op:operator> <lit:literal type="number" pos:line="572" pos:column="84">0</lit:literal></expr>;
+        
+        <expr pos:line="574" pos:column="9">virtual <name pos:line="574" pos:column="17">HRESULT</name> <name pos:line="574" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="574" pos:column="43">CreateDesignerLoader</name><argument_list pos:line="574" pos:column="63">( 
+            <comment type="block" pos:line="575" pos:column="13">/* [in] */</comment> <argument pos:line="575" pos:column="24">__RPC__in LPCOLESTR pwszCodeStreamClass</argument>,
+            <comment type="block" pos:line="576" pos:column="13">/* [retval][out] */</comment> <argument pos:line="576" pos:column="33">__RPC__deref_out_opt IUnknown **ppCodeStream</argument>)</argument_list></macro> <op:operator pos:line="576" pos:column="79">=</op:operator> <lit:literal type="number" pos:line="576" pos:column="81">0</lit:literal></expr>;
+        
+        <expr pos:line="578" pos:column="9">virtual <name pos:line="578" pos:column="17">HRESULT</name> <name pos:line="578" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="578" pos:column="43">GetDesignerLoaderClassForFile</name><argument_list pos:line="578" pos:column="72">( 
+            <comment type="block" pos:line="579" pos:column="13">/* [in] */</comment> <argument pos:line="579" pos:column="24">__RPC__in LPCOLESTR pwszFileName</argument>,
+            <comment type="block" pos:line="580" pos:column="13">/* [retval][out] */</comment> <argument pos:line="580" pos:column="33">__RPC__deref_out_opt BSTR *pbstrDesignerLoaderClass</argument>)</argument_list></macro> <op:operator pos:line="580" pos:column="86">=</op:operator> <lit:literal type="number" pos:line="580" pos:column="88">0</lit:literal></expr>;
+        
+        <expr pos:line="582" pos:column="9">virtual <name pos:line="582" pos:column="17">HRESULT</name> <name pos:line="582" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="582" pos:column="43">RegisterDesignViewAttribute</name><argument_list pos:line="582" pos:column="70">( 
+            <comment type="block" pos:line="583" pos:column="13">/* [in] */</comment> <argument pos:line="583" pos:column="24">__RPC__in_opt IVsHierarchy *pHier</argument>,
+            <comment type="block" pos:line="584" pos:column="13">/* [in] */</comment> <argument pos:line="584" pos:column="24">VSITEMID itemid</argument>,
+            <comment type="block" pos:line="585" pos:column="13">/* [in] */</comment> <argument pos:line="585" pos:column="24">int dwClass</argument>,
+            <comment type="block" pos:line="586" pos:column="13">/* [in] */</comment> <argument pos:line="586" pos:column="24">__RPC__in LPOLESTR pwszAttributeValue</argument>)</argument_list></macro> <op:operator pos:line="586" pos:column="63">=</op:operator> <lit:literal type="number" pos:line="586" pos:column="65">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="590" pos:column="1">#<cpp:directive pos:line="590" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="590" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="592" pos:column="5">typedef <type><struct pos:line="592" pos:column="13">struct <name pos:line="592" pos:column="20">IVSMDDesignerServiceVtbl</name>
+    <block pos:line="593" pos:column="5">{<public type="default" pos:line="593" pos:column="6">
+        <function_decl><type><name pos:line="594" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="596" pos:column="9">HRESULT</name></type> ( <name pos:line="596" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="596" pos:column="37">*</type:modifier><name pos:line="596" pos:column="38">QueryInterface</name> )<parameter_list pos:line="596" pos:column="54">( 
+            <param><decl><type><name pos:line="597" pos:column="13">IVSMDDesignerService</name> <type:modifier pos:line="597" pos:column="34">*</type:modifier></type> <name pos:line="597" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="598" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="598" pos:column="24">__RPC__in</name> <name pos:line="598" pos:column="34">REFIID</name></type> <name pos:line="598" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="599" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="600" pos:column="13">__RPC__deref_out</name>  <name pos:line="600" pos:column="31">void</name> <type:modifier pos:line="600" pos:column="36">*</type:modifier><type:modifier pos:line="600" pos:column="37">*</type:modifier></type><name pos:line="600" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="602" pos:column="9">ULONG</name></type> ( <name pos:line="602" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="602" pos:column="35">*</type:modifier><name pos:line="602" pos:column="36">AddRef</name> )<parameter_list pos:line="602" pos:column="44">( 
+            <param><decl><type><name pos:line="603" pos:column="13">IVSMDDesignerService</name> <type:modifier pos:line="603" pos:column="34">*</type:modifier></type> <name pos:line="603" pos:column="36">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="605" pos:column="9">ULONG</name></type> ( <name pos:line="605" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="605" pos:column="35">*</type:modifier><name pos:line="605" pos:column="36">Release</name> )<parameter_list pos:line="605" pos:column="45">( 
+            <param><decl><type><name pos:line="606" pos:column="13">IVSMDDesignerService</name> <type:modifier pos:line="606" pos:column="34">*</type:modifier></type> <name pos:line="606" pos:column="36">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <comment type="block" pos:line="608" pos:column="9">/* [propget] */</comment> <function_decl><type><name pos:line="608" pos:column="25">HRESULT</name></type> ( <name pos:line="608" pos:column="35">STDMETHODCALLTYPE</name> <type:modifier pos:line="608" pos:column="53">*</type:modifier><name pos:line="608" pos:column="54">get_DesignViewAttribute</name> )<parameter_list pos:line="608" pos:column="79">( 
+            <param><decl><type><name pos:line="609" pos:column="13">IVSMDDesignerService</name> <type:modifier pos:line="609" pos:column="34">*</type:modifier></type> <name pos:line="609" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="610" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="610" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="610" pos:column="54">BSTR</name> <type:modifier pos:line="610" pos:column="59">*</type:modifier></type><name pos:line="610" pos:column="60">pbstrAttribute</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="612" pos:column="9">HRESULT</name></type> ( <name pos:line="612" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="612" pos:column="37">*</type:modifier><name pos:line="612" pos:column="38">CreateDesigner</name> )<parameter_list pos:line="612" pos:column="54">( 
+            <param><decl><type><name pos:line="613" pos:column="13">IVSMDDesignerService</name> <type:modifier pos:line="613" pos:column="34">*</type:modifier></type> <name pos:line="613" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="614" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="614" pos:column="24">__RPC__in_opt</name> <name pos:line="614" pos:column="38">IServiceProvider</name> <type:modifier pos:line="614" pos:column="55">*</type:modifier></type><name pos:line="614" pos:column="56">pSp</name></decl></param>,
+            <comment type="block" pos:line="615" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="615" pos:column="24">__RPC__in_opt</name> <name pos:line="615" pos:column="38">IUnknown</name> <type:modifier pos:line="615" pos:column="47">*</type:modifier></type><name pos:line="615" pos:column="48">pDesignerLoader</name></decl></param>,
+            <comment type="block" pos:line="616" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="616" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="616" pos:column="54">IVSMDDesigner</name> <type:modifier pos:line="616" pos:column="68">*</type:modifier><type:modifier pos:line="616" pos:column="69">*</type:modifier></type><name pos:line="616" pos:column="70">ppDesigner</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="618" pos:column="9">HRESULT</name></type> ( <name pos:line="618" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="618" pos:column="37">*</type:modifier><name pos:line="618" pos:column="38">CreateDesignerForClass</name> )<parameter_list pos:line="618" pos:column="62">( 
+            <param><decl><type><name pos:line="619" pos:column="13">IVSMDDesignerService</name> <type:modifier pos:line="619" pos:column="34">*</type:modifier></type> <name pos:line="619" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="620" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="620" pos:column="24">__RPC__in_opt</name> <name pos:line="620" pos:column="38">IServiceProvider</name> <type:modifier pos:line="620" pos:column="55">*</type:modifier></type><name pos:line="620" pos:column="56">pSp</name></decl></param>,
+            <comment type="block" pos:line="621" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="621" pos:column="24">__RPC__in</name> <name pos:line="621" pos:column="34">LPCOLESTR</name></type> <name pos:line="621" pos:column="44">pwszComponentClass</name></decl></param>,
+            <comment type="block" pos:line="622" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="622" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="622" pos:column="54">IVSMDDesigner</name> <type:modifier pos:line="622" pos:column="68">*</type:modifier><type:modifier pos:line="622" pos:column="69">*</type:modifier></type><name pos:line="622" pos:column="70">ppDesigner</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="624" pos:column="9">HRESULT</name></type> ( <name pos:line="624" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="624" pos:column="37">*</type:modifier><name pos:line="624" pos:column="38">CreateDesignerLoader</name> )<parameter_list pos:line="624" pos:column="60">( 
+            <param><decl><type><name pos:line="625" pos:column="13">IVSMDDesignerService</name> <type:modifier pos:line="625" pos:column="34">*</type:modifier></type> <name pos:line="625" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="626" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="626" pos:column="24">__RPC__in</name> <name pos:line="626" pos:column="34">LPCOLESTR</name></type> <name pos:line="626" pos:column="44">pwszCodeStreamClass</name></decl></param>,
+            <comment type="block" pos:line="627" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="627" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="627" pos:column="54">IUnknown</name> <type:modifier pos:line="627" pos:column="63">*</type:modifier><type:modifier pos:line="627" pos:column="64">*</type:modifier></type><name pos:line="627" pos:column="65">ppCodeStream</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="629" pos:column="9">HRESULT</name></type> ( <name pos:line="629" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="629" pos:column="37">*</type:modifier><name pos:line="629" pos:column="38">GetDesignerLoaderClassForFile</name> )<parameter_list pos:line="629" pos:column="69">( 
+            <param><decl><type><name pos:line="630" pos:column="13">IVSMDDesignerService</name> <type:modifier pos:line="630" pos:column="34">*</type:modifier></type> <name pos:line="630" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="631" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="631" pos:column="24">__RPC__in</name> <name pos:line="631" pos:column="34">LPCOLESTR</name></type> <name pos:line="631" pos:column="44">pwszFileName</name></decl></param>,
+            <comment type="block" pos:line="632" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="632" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="632" pos:column="54">BSTR</name> <type:modifier pos:line="632" pos:column="59">*</type:modifier></type><name pos:line="632" pos:column="60">pbstrDesignerLoaderClass</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="634" pos:column="9">HRESULT</name></type> ( <name pos:line="634" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="634" pos:column="37">*</type:modifier><name pos:line="634" pos:column="38">RegisterDesignViewAttribute</name> )<parameter_list pos:line="634" pos:column="67">( 
+            <param><decl><type><name pos:line="635" pos:column="13">IVSMDDesignerService</name> <type:modifier pos:line="635" pos:column="34">*</type:modifier></type> <name pos:line="635" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="636" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="636" pos:column="24">__RPC__in_opt</name> <name pos:line="636" pos:column="38">IVsHierarchy</name> <type:modifier pos:line="636" pos:column="51">*</type:modifier></type><name pos:line="636" pos:column="52">pHier</name></decl></param>,
+            <comment type="block" pos:line="637" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="637" pos:column="24">VSITEMID</name></type> <name pos:line="637" pos:column="33">itemid</name></decl></param>,
+            <comment type="block" pos:line="638" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="638" pos:column="24">int</name></type> <name pos:line="638" pos:column="28">dwClass</name></decl></param>,
+            <comment type="block" pos:line="639" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="639" pos:column="24">__RPC__in</name> <name pos:line="639" pos:column="34">LPOLESTR</name></type> <name pos:line="639" pos:column="43">pwszAttributeValue</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="641" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="642" pos:column="7">IVSMDDesignerServiceVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="644" pos:column="5">interface</name></type> <name pos:line="644" pos:column="15">IVSMDDesignerService</name>
+    <argument_list pos:line="645" pos:column="5">{
+        <argument><expr><name pos:line="646" pos:column="9">CONST_VTBL</name> struct <name pos:line="646" pos:column="27">IVSMDDesignerServiceVtbl</name> <op:operator pos:line="646" pos:column="52">*</op:operator><name pos:line="646" pos:column="53">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="651" pos:column="1">#<cpp:directive pos:line="651" pos:column="2">ifdef</cpp:directive> <name pos:line="651" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="654" pos:column="1">#<cpp:directive pos:line="654" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="654" pos:column="9">IVSMDDesignerService_QueryInterface</name><parameter_list pos:line="654" pos:column="44">(<param><type><name pos:line="654" pos:column="45">This</name></type></param>,<param><type><name pos:line="654" pos:column="50">riid</name></type></param>,<param><type><name pos:line="654" pos:column="55">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="655" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="657" pos:column="1">#<cpp:directive pos:line="657" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="657" pos:column="9">IVSMDDesignerService_AddRef</name><parameter_list pos:line="657" pos:column="36">(<param><type><name pos:line="657" pos:column="37">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="658" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="660" pos:column="1">#<cpp:directive pos:line="660" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="660" pos:column="9">IVSMDDesignerService_Release</name><parameter_list pos:line="660" pos:column="37">(<param><type><name pos:line="660" pos:column="38">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="661" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="664" pos:column="1">#<cpp:directive pos:line="664" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="664" pos:column="9">IVSMDDesignerService_get_DesignViewAttribute</name><parameter_list pos:line="664" pos:column="53">(<param><type><name pos:line="664" pos:column="54">This</name></type></param>,<param><type><name pos:line="664" pos:column="59">pbstrAttribute</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="665" pos:column="5">( (This)-&gt;lpVtbl -&gt; get_DesignViewAttribute(This,pbstrAttribute) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="667" pos:column="1">#<cpp:directive pos:line="667" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="667" pos:column="9">IVSMDDesignerService_CreateDesigner</name><parameter_list pos:line="667" pos:column="44">(<param><type><name pos:line="667" pos:column="45">This</name></type></param>,<param><type><name pos:line="667" pos:column="50">pSp</name></type></param>,<param><type><name pos:line="667" pos:column="54">pDesignerLoader</name></type></param>,<param><type><name pos:line="667" pos:column="70">ppDesigner</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="668" pos:column="5">( (This)-&gt;lpVtbl -&gt; CreateDesigner(This,pSp,pDesignerLoader,ppDesigner) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="670" pos:column="1">#<cpp:directive pos:line="670" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="670" pos:column="9">IVSMDDesignerService_CreateDesignerForClass</name><parameter_list pos:line="670" pos:column="52">(<param><type><name pos:line="670" pos:column="53">This</name></type></param>,<param><type><name pos:line="670" pos:column="58">pSp</name></type></param>,<param><type><name pos:line="670" pos:column="62">pwszComponentClass</name></type></param>,<param><type><name pos:line="670" pos:column="81">ppDesigner</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="671" pos:column="5">( (This)-&gt;lpVtbl -&gt; CreateDesignerForClass(This,pSp,pwszComponentClass,ppDesigner) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="673" pos:column="1">#<cpp:directive pos:line="673" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="673" pos:column="9">IVSMDDesignerService_CreateDesignerLoader</name><parameter_list pos:line="673" pos:column="50">(<param><type><name pos:line="673" pos:column="51">This</name></type></param>,<param><type><name pos:line="673" pos:column="56">pwszCodeStreamClass</name></type></param>,<param><type><name pos:line="673" pos:column="76">ppCodeStream</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="674" pos:column="5">( (This)-&gt;lpVtbl -&gt; CreateDesignerLoader(This,pwszCodeStreamClass,ppCodeStream) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="676" pos:column="1">#<cpp:directive pos:line="676" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="676" pos:column="9">IVSMDDesignerService_GetDesignerLoaderClassForFile</name><parameter_list pos:line="676" pos:column="59">(<param><type><name pos:line="676" pos:column="60">This</name></type></param>,<param><type><name pos:line="676" pos:column="65">pwszFileName</name></type></param>,<param><type><name pos:line="676" pos:column="78">pbstrDesignerLoaderClass</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="677" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetDesignerLoaderClassForFile(This,pwszFileName,pbstrDesignerLoaderClass) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="679" pos:column="1">#<cpp:directive pos:line="679" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="679" pos:column="9">IVSMDDesignerService_RegisterDesignViewAttribute</name><parameter_list pos:line="679" pos:column="57">(<param><type><name pos:line="679" pos:column="58">This</name></type></param>,<param><type><name pos:line="679" pos:column="63">pHier</name></type></param>,<param><type><name pos:line="679" pos:column="69">itemid</name></type></param>,<param><type><name pos:line="679" pos:column="76">dwClass</name></type></param>,<param><type><name pos:line="679" pos:column="84">pwszAttributeValue</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="680" pos:column="5">( (This)-&gt;lpVtbl -&gt; RegisterDesignViewAttribute(This,pHier,itemid,dwClass,pwszAttributeValue) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="682" pos:column="1">#<cpp:directive pos:line="682" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="682" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="685" pos:column="1">#<cpp:directive pos:line="685" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="685" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="690" pos:column="1">#<cpp:directive pos:line="690" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="690" pos:column="9">/* __IVSMDDesignerService_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="693" pos:column="1">#<cpp:directive pos:line="693" pos:column="2">ifndef</cpp:directive> <name pos:line="693" pos:column="9">__IVSMDPropertyGrid_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="694" pos:column="1">#<cpp:directive pos:line="694" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="694" pos:column="9">__IVSMDPropertyGrid_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="696" pos:column="1">/* interface IVSMDPropertyGrid */</comment>
+<comment type="block" pos:line="697" pos:column="1">/* [uuid][object] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="700" pos:column="1">EXTERN_C</name> <specifier pos:line="700" pos:column="10">const</specifier> <name pos:line="700" pos:column="16">IID</name></type> <name pos:line="700" pos:column="20">IID_IVSMDPropertyGrid</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="702" pos:column="1">#<cpp:directive pos:line="702" pos:column="2">if</cpp:directive> <expr><call><name pos:line="702" pos:column="5">defined</name><argument_list pos:line="702" pos:column="12">(<argument><expr><name pos:line="702" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="702" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="702" pos:column="29">!</op:operator><call><name pos:line="702" pos:column="30">defined</name><argument_list pos:line="702" pos:column="37">(<argument><expr><name pos:line="702" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="704" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="704" pos:column="19">(<argument pos:line="704" pos:column="20">"74946837-37A0-11d2-A273-00C04F8EF4FF"</argument>)</argument_list></macro>
+    <label><name pos:line="705" pos:column="5">IVSMDPropertyGrid</name> :</label> <expr_stmt><expr pos:line="705" pos:column="25">public <name pos:line="705" pos:column="32">IUnknown</name>
+    <block pos:line="706" pos:column="5">{
+    <expr pos:line="707" pos:column="5">public<op:operator pos:line="707" pos:column="11">:</op:operator>
+        virtual <comment type="block" pos:line="708" pos:column="17">/* [propget] */</comment> <name pos:line="708" pos:column="33">HRESULT</name> <name pos:line="708" pos:column="41">STDMETHODCALLTYPE</name> <macro><name pos:line="708" pos:column="59">get_CommandsVisible</name><argument_list pos:line="708" pos:column="78">( 
+            <comment type="block" pos:line="709" pos:column="13">/* [retval][out] */</comment> <argument pos:line="709" pos:column="33">__RPC__out VARIANT_BOOL *pfVisible</argument>)</argument_list></macro> <op:operator pos:line="709" pos:column="69">=</op:operator> <lit:literal type="number" pos:line="709" pos:column="71">0</lit:literal></expr>;
+        
+        <expr pos:line="711" pos:column="9">virtual <comment type="block" pos:line="711" pos:column="17">/* [propget] */</comment> <name pos:line="711" pos:column="33">HRESULT</name> <name pos:line="711" pos:column="41">STDMETHODCALLTYPE</name> <macro><name pos:line="711" pos:column="59">get_Handle</name><argument_list pos:line="711" pos:column="69">( 
+            <comment type="block" pos:line="712" pos:column="13">/* [retval][out] */</comment> <argument pos:line="712" pos:column="33">__RPC__deref_out_opt HWND *phwnd</argument>)</argument_list></macro> <op:operator pos:line="712" pos:column="67">=</op:operator> <lit:literal type="number" pos:line="712" pos:column="69">0</lit:literal></expr>;
+        
+        <expr pos:line="714" pos:column="9">virtual <comment type="block" pos:line="714" pos:column="17">/* [propget] */</comment> <name pos:line="714" pos:column="33">HRESULT</name> <name pos:line="714" pos:column="41">STDMETHODCALLTYPE</name> <macro><name pos:line="714" pos:column="59">get_GridSort</name><argument_list pos:line="714" pos:column="71">( 
+            <comment type="block" pos:line="715" pos:column="13">/* [retval][out] */</comment> <argument pos:line="715" pos:column="33">__RPC__out PROPERTYGRIDSORT *pSort</argument>)</argument_list></macro> <op:operator pos:line="715" pos:column="69">=</op:operator> <lit:literal type="number" pos:line="715" pos:column="71">0</lit:literal></expr>;
+        
+        <expr pos:line="717" pos:column="9">virtual <comment type="block" pos:line="717" pos:column="17">/* [propput] */</comment> <name pos:line="717" pos:column="33">HRESULT</name> <name pos:line="717" pos:column="41">STDMETHODCALLTYPE</name> <macro><name pos:line="717" pos:column="59">put_GridSort</name><argument_list pos:line="717" pos:column="71">( 
+            <comment type="block" pos:line="718" pos:column="13">/* [in] */</comment> <argument pos:line="718" pos:column="24">PROPERTYGRIDSORT sort</argument>)</argument_list></macro> <op:operator pos:line="718" pos:column="47">=</op:operator> <lit:literal type="number" pos:line="718" pos:column="49">0</lit:literal></expr>;
+        
+        <expr pos:line="720" pos:column="9">virtual <comment type="block" pos:line="720" pos:column="17">/* [propget] */</comment> <name pos:line="720" pos:column="33">HRESULT</name> <name pos:line="720" pos:column="41">STDMETHODCALLTYPE</name> <macro><name pos:line="720" pos:column="59">get_SelectedPropertyName</name><argument_list pos:line="720" pos:column="83">( 
+            <comment type="block" pos:line="721" pos:column="13">/* [retval][out] */</comment> <argument pos:line="721" pos:column="33">__RPC__deref_out_opt BSTR *pbstrName</argument>)</argument_list></macro> <op:operator pos:line="721" pos:column="71">=</op:operator> <lit:literal type="number" pos:line="721" pos:column="73">0</lit:literal></expr>;
+        
+        <expr pos:line="723" pos:column="9">virtual <name pos:line="723" pos:column="17">HRESULT</name> <name pos:line="723" pos:column="25">STDMETHODCALLTYPE</name> <call><name pos:line="723" pos:column="43">Dispose</name><argument_list pos:line="723" pos:column="50">( <argument><expr><name pos:line="723" pos:column="52">void</name></expr></argument>)</argument_list></call> <op:operator pos:line="723" pos:column="58">=</op:operator> <lit:literal type="number" pos:line="723" pos:column="60">0</lit:literal></expr>;
+        
+        <expr pos:line="725" pos:column="9">virtual <name pos:line="725" pos:column="17">HRESULT</name> <name pos:line="725" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="725" pos:column="43">GetOption</name><argument_list pos:line="725" pos:column="52">( 
+            <comment type="block" pos:line="726" pos:column="13">/* [in] */</comment> <argument pos:line="726" pos:column="24">PROPERTYGRIDOPTION option</argument>,
+            <comment type="block" pos:line="727" pos:column="13">/* [retval][out] */</comment> <argument pos:line="727" pos:column="33">__RPC__out VARIANT *pvtOption</argument>)</argument_list></macro> <op:operator pos:line="727" pos:column="64">=</op:operator> <lit:literal type="number" pos:line="727" pos:column="66">0</lit:literal></expr>;
+        
+        <expr pos:line="729" pos:column="9">virtual <name pos:line="729" pos:column="17">HRESULT</name> <name pos:line="729" pos:column="25">STDMETHODCALLTYPE</name> <call><name pos:line="729" pos:column="43">Refresh</name><argument_list pos:line="729" pos:column="50">( <argument><expr><name pos:line="729" pos:column="52">void</name></expr></argument>)</argument_list></call> <op:operator pos:line="729" pos:column="58">=</op:operator> <lit:literal type="number" pos:line="729" pos:column="60">0</lit:literal></expr>;
+        
+        <expr pos:line="731" pos:column="9">virtual <name pos:line="731" pos:column="17">HRESULT</name> <name pos:line="731" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="731" pos:column="43">SetOption</name><argument_list pos:line="731" pos:column="52">( 
+            <comment type="block" pos:line="732" pos:column="13">/* [in] */</comment> <argument pos:line="732" pos:column="24">PROPERTYGRIDOPTION option</argument>,
+            <comment type="block" pos:line="733" pos:column="13">/* [in] */</comment> <argument pos:line="733" pos:column="24">VARIANT vtOption</argument>)</argument_list></macro> <op:operator pos:line="733" pos:column="42">=</op:operator> <lit:literal type="number" pos:line="733" pos:column="44">0</lit:literal></expr>;
+        
+        <expr pos:line="735" pos:column="9">virtual <name pos:line="735" pos:column="17">HRESULT</name> <name pos:line="735" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="735" pos:column="43">SetSelectedObjects</name><argument_list pos:line="735" pos:column="61">( 
+            <argument pos:line="736" pos:column="13">int cObjects</argument>,
+            <comment type="block" pos:line="737" pos:column="13">/* [size_is][in] */</comment> <argument pos:line="737" pos:column="33">__RPC__in_ecount_full(cObjects) IUnknown **ppUnk</argument>)</argument_list></macro> <op:operator pos:line="737" pos:column="83">=</op:operator> <lit:literal type="number" pos:line="737" pos:column="85">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="741" pos:column="1">#<cpp:directive pos:line="741" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="741" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="743" pos:column="5">typedef <type><struct pos:line="743" pos:column="13">struct <name pos:line="743" pos:column="20">IVSMDPropertyGridVtbl</name>
+    <block pos:line="744" pos:column="5">{<public type="default" pos:line="744" pos:column="6">
+        <function_decl><type><name pos:line="745" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="747" pos:column="9">HRESULT</name></type> ( <name pos:line="747" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="747" pos:column="37">*</type:modifier><name pos:line="747" pos:column="38">QueryInterface</name> )<parameter_list pos:line="747" pos:column="54">( 
+            <param><decl><type><name pos:line="748" pos:column="13">IVSMDPropertyGrid</name> <type:modifier pos:line="748" pos:column="31">*</type:modifier></type> <name pos:line="748" pos:column="33">This</name></decl></param>,
+            <comment type="block" pos:line="749" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="749" pos:column="24">__RPC__in</name> <name pos:line="749" pos:column="34">REFIID</name></type> <name pos:line="749" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="750" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="751" pos:column="13">__RPC__deref_out</name>  <name pos:line="751" pos:column="31">void</name> <type:modifier pos:line="751" pos:column="36">*</type:modifier><type:modifier pos:line="751" pos:column="37">*</type:modifier></type><name pos:line="751" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="753" pos:column="9">ULONG</name></type> ( <name pos:line="753" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="753" pos:column="35">*</type:modifier><name pos:line="753" pos:column="36">AddRef</name> )<parameter_list pos:line="753" pos:column="44">( 
+            <param><decl><type><name pos:line="754" pos:column="13">IVSMDPropertyGrid</name> <type:modifier pos:line="754" pos:column="31">*</type:modifier></type> <name pos:line="754" pos:column="33">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="756" pos:column="9">ULONG</name></type> ( <name pos:line="756" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="756" pos:column="35">*</type:modifier><name pos:line="756" pos:column="36">Release</name> )<parameter_list pos:line="756" pos:column="45">( 
+            <param><decl><type><name pos:line="757" pos:column="13">IVSMDPropertyGrid</name> <type:modifier pos:line="757" pos:column="31">*</type:modifier></type> <name pos:line="757" pos:column="33">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <comment type="block" pos:line="759" pos:column="9">/* [propget] */</comment> <function_decl><type><name pos:line="759" pos:column="25">HRESULT</name></type> ( <name pos:line="759" pos:column="35">STDMETHODCALLTYPE</name> <type:modifier pos:line="759" pos:column="53">*</type:modifier><name pos:line="759" pos:column="54">get_CommandsVisible</name> )<parameter_list pos:line="759" pos:column="75">( 
+            <param><decl><type><name pos:line="760" pos:column="13">IVSMDPropertyGrid</name> <type:modifier pos:line="760" pos:column="31">*</type:modifier></type> <name pos:line="760" pos:column="33">This</name></decl></param>,
+            <comment type="block" pos:line="761" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="761" pos:column="33">__RPC__out</name> <name pos:line="761" pos:column="44">VARIANT_BOOL</name> <type:modifier pos:line="761" pos:column="57">*</type:modifier></type><name pos:line="761" pos:column="58">pfVisible</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <comment type="block" pos:line="763" pos:column="9">/* [propget] */</comment> <function_decl><type><name pos:line="763" pos:column="25">HRESULT</name></type> ( <name pos:line="763" pos:column="35">STDMETHODCALLTYPE</name> <type:modifier pos:line="763" pos:column="53">*</type:modifier><name pos:line="763" pos:column="54">get_Handle</name> )<parameter_list pos:line="763" pos:column="66">( 
+            <param><decl><type><name pos:line="764" pos:column="13">IVSMDPropertyGrid</name> <type:modifier pos:line="764" pos:column="31">*</type:modifier></type> <name pos:line="764" pos:column="33">This</name></decl></param>,
+            <comment type="block" pos:line="765" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="765" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="765" pos:column="54">HWND</name> <type:modifier pos:line="765" pos:column="59">*</type:modifier></type><name pos:line="765" pos:column="60">phwnd</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <comment type="block" pos:line="767" pos:column="9">/* [propget] */</comment> <function_decl><type><name pos:line="767" pos:column="25">HRESULT</name></type> ( <name pos:line="767" pos:column="35">STDMETHODCALLTYPE</name> <type:modifier pos:line="767" pos:column="53">*</type:modifier><name pos:line="767" pos:column="54">get_GridSort</name> )<parameter_list pos:line="767" pos:column="68">( 
+            <param><decl><type><name pos:line="768" pos:column="13">IVSMDPropertyGrid</name> <type:modifier pos:line="768" pos:column="31">*</type:modifier></type> <name pos:line="768" pos:column="33">This</name></decl></param>,
+            <comment type="block" pos:line="769" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="769" pos:column="33">__RPC__out</name> <name pos:line="769" pos:column="44">PROPERTYGRIDSORT</name> <type:modifier pos:line="769" pos:column="61">*</type:modifier></type><name pos:line="769" pos:column="62">pSort</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <comment type="block" pos:line="771" pos:column="9">/* [propput] */</comment> <function_decl><type><name pos:line="771" pos:column="25">HRESULT</name></type> ( <name pos:line="771" pos:column="35">STDMETHODCALLTYPE</name> <type:modifier pos:line="771" pos:column="53">*</type:modifier><name pos:line="771" pos:column="54">put_GridSort</name> )<parameter_list pos:line="771" pos:column="68">( 
+            <param><decl><type><name pos:line="772" pos:column="13">IVSMDPropertyGrid</name> <type:modifier pos:line="772" pos:column="31">*</type:modifier></type> <name pos:line="772" pos:column="33">This</name></decl></param>,
+            <comment type="block" pos:line="773" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="773" pos:column="24">PROPERTYGRIDSORT</name></type> <name pos:line="773" pos:column="41">sort</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <comment type="block" pos:line="775" pos:column="9">/* [propget] */</comment> <function_decl><type><name pos:line="775" pos:column="25">HRESULT</name></type> ( <name pos:line="775" pos:column="35">STDMETHODCALLTYPE</name> <type:modifier pos:line="775" pos:column="53">*</type:modifier><name pos:line="775" pos:column="54">get_SelectedPropertyName</name> )<parameter_list pos:line="775" pos:column="80">( 
+            <param><decl><type><name pos:line="776" pos:column="13">IVSMDPropertyGrid</name> <type:modifier pos:line="776" pos:column="31">*</type:modifier></type> <name pos:line="776" pos:column="33">This</name></decl></param>,
+            <comment type="block" pos:line="777" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="777" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="777" pos:column="54">BSTR</name> <type:modifier pos:line="777" pos:column="59">*</type:modifier></type><name pos:line="777" pos:column="60">pbstrName</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="779" pos:column="9">HRESULT</name></type> ( <name pos:line="779" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="779" pos:column="37">*</type:modifier><name pos:line="779" pos:column="38">Dispose</name> )<parameter_list pos:line="779" pos:column="47">( 
+            <param><decl><type><name pos:line="780" pos:column="13">IVSMDPropertyGrid</name> <type:modifier pos:line="780" pos:column="31">*</type:modifier></type> <name pos:line="780" pos:column="33">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="782" pos:column="9">HRESULT</name></type> ( <name pos:line="782" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="782" pos:column="37">*</type:modifier><name pos:line="782" pos:column="38">GetOption</name> )<parameter_list pos:line="782" pos:column="49">( 
+            <param><decl><type><name pos:line="783" pos:column="13">IVSMDPropertyGrid</name> <type:modifier pos:line="783" pos:column="31">*</type:modifier></type> <name pos:line="783" pos:column="33">This</name></decl></param>,
+            <comment type="block" pos:line="784" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="784" pos:column="24">PROPERTYGRIDOPTION</name></type> <name pos:line="784" pos:column="43">option</name></decl></param>,
+            <comment type="block" pos:line="785" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="785" pos:column="33">__RPC__out</name> <name pos:line="785" pos:column="44">VARIANT</name> <type:modifier pos:line="785" pos:column="52">*</type:modifier></type><name pos:line="785" pos:column="53">pvtOption</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="787" pos:column="9">HRESULT</name></type> ( <name pos:line="787" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="787" pos:column="37">*</type:modifier><name pos:line="787" pos:column="38">Refresh</name> )<parameter_list pos:line="787" pos:column="47">( 
+            <param><decl><type><name pos:line="788" pos:column="13">IVSMDPropertyGrid</name> <type:modifier pos:line="788" pos:column="31">*</type:modifier></type> <name pos:line="788" pos:column="33">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="790" pos:column="9">HRESULT</name></type> ( <name pos:line="790" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="790" pos:column="37">*</type:modifier><name pos:line="790" pos:column="38">SetOption</name> )<parameter_list pos:line="790" pos:column="49">( 
+            <param><decl><type><name pos:line="791" pos:column="13">IVSMDPropertyGrid</name> <type:modifier pos:line="791" pos:column="31">*</type:modifier></type> <name pos:line="791" pos:column="33">This</name></decl></param>,
+            <comment type="block" pos:line="792" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="792" pos:column="24">PROPERTYGRIDOPTION</name></type> <name pos:line="792" pos:column="43">option</name></decl></param>,
+            <comment type="block" pos:line="793" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="793" pos:column="24">VARIANT</name></type> <name pos:line="793" pos:column="32">vtOption</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="795" pos:column="9">HRESULT</name> <argument_list pos:line="795" pos:column="17">( <argument pos:line="795" pos:column="19">STDMETHODCALLTYPE *SetSelectedObjects</argument> )</argument_list></macro><expr_stmt><expr><op:operator pos:line="795" pos:column="58">(</op:operator> 
+            <name pos:line="796" pos:column="13">IVSMDPropertyGrid</name> <op:operator pos:line="796" pos:column="31">*</op:operator> <name pos:line="796" pos:column="33">This</name><op:operator pos:line="796" pos:column="37">,</op:operator>
+            <name pos:line="797" pos:column="13">int</name> <name pos:line="797" pos:column="17">cObjects</name><op:operator pos:line="797" pos:column="25">,</op:operator>
+            <comment type="block" pos:line="798" pos:column="13">/* [size_is][in] */</comment> <macro><name pos:line="798" pos:column="33">__RPC__in_ecount_full</name><argument_list pos:line="798" pos:column="54">(<argument pos:line="798" pos:column="55">cObjects</argument>)</argument_list></macro> <name pos:line="798" pos:column="65">IUnknown</name> <op:operator pos:line="798" pos:column="74">*</op:operator><op:operator pos:line="798" pos:column="75">*</op:operator><name pos:line="798" pos:column="76">ppUnk</name><op:operator pos:line="798" pos:column="81">)</op:operator></expr>;</expr_stmt>
+        
+        <macro><name pos:line="800" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="801" pos:column="7">IVSMDPropertyGridVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="803" pos:column="5">interface</name></type> <name pos:line="803" pos:column="15">IVSMDPropertyGrid</name>
+    <argument_list pos:line="804" pos:column="5">{
+        <argument><expr><name pos:line="805" pos:column="9">CONST_VTBL</name> struct <name pos:line="805" pos:column="27">IVSMDPropertyGridVtbl</name> <op:operator pos:line="805" pos:column="49">*</op:operator><name pos:line="805" pos:column="50">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="810" pos:column="1">#<cpp:directive pos:line="810" pos:column="2">ifdef</cpp:directive> <name pos:line="810" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="813" pos:column="1">#<cpp:directive pos:line="813" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="813" pos:column="9">IVSMDPropertyGrid_QueryInterface</name><parameter_list pos:line="813" pos:column="41">(<param><type><name pos:line="813" pos:column="42">This</name></type></param>,<param><type><name pos:line="813" pos:column="47">riid</name></type></param>,<param><type><name pos:line="813" pos:column="52">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="814" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="816" pos:column="1">#<cpp:directive pos:line="816" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="816" pos:column="9">IVSMDPropertyGrid_AddRef</name><parameter_list pos:line="816" pos:column="33">(<param><type><name pos:line="816" pos:column="34">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="817" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="819" pos:column="1">#<cpp:directive pos:line="819" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="819" pos:column="9">IVSMDPropertyGrid_Release</name><parameter_list pos:line="819" pos:column="34">(<param><type><name pos:line="819" pos:column="35">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="820" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="823" pos:column="1">#<cpp:directive pos:line="823" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="823" pos:column="9">IVSMDPropertyGrid_get_CommandsVisible</name><parameter_list pos:line="823" pos:column="46">(<param><type><name pos:line="823" pos:column="47">This</name></type></param>,<param><type><name pos:line="823" pos:column="52">pfVisible</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="824" pos:column="5">( (This)-&gt;lpVtbl -&gt; get_CommandsVisible(This,pfVisible) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="826" pos:column="1">#<cpp:directive pos:line="826" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="826" pos:column="9">IVSMDPropertyGrid_get_Handle</name><parameter_list pos:line="826" pos:column="37">(<param><type><name pos:line="826" pos:column="38">This</name></type></param>,<param><type><name pos:line="826" pos:column="43">phwnd</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="827" pos:column="5">( (This)-&gt;lpVtbl -&gt; get_Handle(This,phwnd) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="829" pos:column="1">#<cpp:directive pos:line="829" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="829" pos:column="9">IVSMDPropertyGrid_get_GridSort</name><parameter_list pos:line="829" pos:column="39">(<param><type><name pos:line="829" pos:column="40">This</name></type></param>,<param><type><name pos:line="829" pos:column="45">pSort</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="830" pos:column="5">( (This)-&gt;lpVtbl -&gt; get_GridSort(This,pSort) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="832" pos:column="1">#<cpp:directive pos:line="832" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="832" pos:column="9">IVSMDPropertyGrid_put_GridSort</name><parameter_list pos:line="832" pos:column="39">(<param><type><name pos:line="832" pos:column="40">This</name></type></param>,<param><type><name pos:line="832" pos:column="45">sort</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="833" pos:column="5">( (This)-&gt;lpVtbl -&gt; put_GridSort(This,sort) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="835" pos:column="1">#<cpp:directive pos:line="835" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="835" pos:column="9">IVSMDPropertyGrid_get_SelectedPropertyName</name><parameter_list pos:line="835" pos:column="51">(<param><type><name pos:line="835" pos:column="52">This</name></type></param>,<param><type><name pos:line="835" pos:column="57">pbstrName</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="836" pos:column="5">( (This)-&gt;lpVtbl -&gt; get_SelectedPropertyName(This,pbstrName) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="838" pos:column="1">#<cpp:directive pos:line="838" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="838" pos:column="9">IVSMDPropertyGrid_Dispose</name><parameter_list pos:line="838" pos:column="34">(<param><type><name pos:line="838" pos:column="35">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="839" pos:column="5">( (This)-&gt;lpVtbl -&gt; Dispose(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="841" pos:column="1">#<cpp:directive pos:line="841" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="841" pos:column="9">IVSMDPropertyGrid_GetOption</name><parameter_list pos:line="841" pos:column="36">(<param><type><name pos:line="841" pos:column="37">This</name></type></param>,<param><type><name pos:line="841" pos:column="42">option</name></type></param>,<param><type><name pos:line="841" pos:column="49">pvtOption</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="842" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetOption(This,option,pvtOption) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="844" pos:column="1">#<cpp:directive pos:line="844" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="844" pos:column="9">IVSMDPropertyGrid_Refresh</name><parameter_list pos:line="844" pos:column="34">(<param><type><name pos:line="844" pos:column="35">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="845" pos:column="5">( (This)-&gt;lpVtbl -&gt; Refresh(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="847" pos:column="1">#<cpp:directive pos:line="847" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="847" pos:column="9">IVSMDPropertyGrid_SetOption</name><parameter_list pos:line="847" pos:column="36">(<param><type><name pos:line="847" pos:column="37">This</name></type></param>,<param><type><name pos:line="847" pos:column="42">option</name></type></param>,<param><type><name pos:line="847" pos:column="49">vtOption</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="848" pos:column="5">( (This)-&gt;lpVtbl -&gt; SetOption(This,option,vtOption) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="850" pos:column="1">#<cpp:directive pos:line="850" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="850" pos:column="9">IVSMDPropertyGrid_SetSelectedObjects</name><parameter_list pos:line="850" pos:column="45">(<param><type><name pos:line="850" pos:column="46">This</name></type></param>,<param><type><name pos:line="850" pos:column="51">cObjects</name></type></param>,<param><type><name pos:line="850" pos:column="60">ppUnk</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="851" pos:column="5">( (This)-&gt;lpVtbl -&gt; SetSelectedObjects(This,cObjects,ppUnk) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="853" pos:column="1">#<cpp:directive pos:line="853" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="853" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="856" pos:column="1">#<cpp:directive pos:line="856" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="856" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="861" pos:column="1">#<cpp:directive pos:line="861" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="861" pos:column="9">/* __IVSMDPropertyGrid_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="864" pos:column="1">#<cpp:directive pos:line="864" pos:column="2">ifndef</cpp:directive> <name pos:line="864" pos:column="9">__IVSMDPropertyBrowser_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="865" pos:column="1">#<cpp:directive pos:line="865" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="865" pos:column="9">__IVSMDPropertyBrowser_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="867" pos:column="1">/* interface IVSMDPropertyBrowser */</comment>
+<comment type="block" pos:line="868" pos:column="1">/* [uuid][object] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="871" pos:column="1">EXTERN_C</name> <specifier pos:line="871" pos:column="10">const</specifier> <name pos:line="871" pos:column="16">IID</name></type> <name pos:line="871" pos:column="20">IID_IVSMDPropertyBrowser</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="873" pos:column="1">#<cpp:directive pos:line="873" pos:column="2">if</cpp:directive> <expr><call><name pos:line="873" pos:column="5">defined</name><argument_list pos:line="873" pos:column="12">(<argument><expr><name pos:line="873" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="873" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="873" pos:column="29">!</op:operator><call><name pos:line="873" pos:column="30">defined</name><argument_list pos:line="873" pos:column="37">(<argument><expr><name pos:line="873" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="875" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="875" pos:column="19">(<argument pos:line="875" pos:column="20">"74946810-37A0-11d2-A273-00C04F8EF4FF"</argument>)</argument_list></macro>
+    <label><name pos:line="876" pos:column="5">IVSMDPropertyBrowser</name> :</label> <expr_stmt><expr pos:line="876" pos:column="28">public <name pos:line="876" pos:column="35">IUnknown</name>
+    <block pos:line="877" pos:column="5">{
+    <expr pos:line="878" pos:column="5">public<op:operator pos:line="878" pos:column="11">:</op:operator>
+        virtual <comment type="block" pos:line="879" pos:column="17">/* [propget] */</comment> <name pos:line="879" pos:column="33">HRESULT</name> <name pos:line="879" pos:column="41">STDMETHODCALLTYPE</name> <macro><name pos:line="879" pos:column="59">get_WindowGlyphResourceID</name><argument_list pos:line="879" pos:column="84">( 
+            <comment type="block" pos:line="880" pos:column="13">/* [retval][out] */</comment> <argument pos:line="880" pos:column="33">__RPC__out DWORD *pdwResID</argument>)</argument_list></macro> <op:operator pos:line="880" pos:column="61">=</op:operator> <lit:literal type="number" pos:line="880" pos:column="63">0</lit:literal></expr>;
+        
+        <expr pos:line="882" pos:column="9">virtual <name pos:line="882" pos:column="17">HRESULT</name> <name pos:line="882" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="882" pos:column="43">CreatePropertyGrid</name><argument_list pos:line="882" pos:column="61">( 
+            <comment type="block" pos:line="883" pos:column="13">/* [retval][out] */</comment> <argument pos:line="883" pos:column="33">__RPC__deref_out_opt IVSMDPropertyGrid **ppGrid</argument>)</argument_list></macro> <op:operator pos:line="883" pos:column="82">=</op:operator> <lit:literal type="number" pos:line="883" pos:column="84">0</lit:literal></expr>;
+        
+        <expr pos:line="885" pos:column="9">virtual <name pos:line="885" pos:column="17">HRESULT</name> <name pos:line="885" pos:column="25">STDMETHODCALLTYPE</name> <call><name pos:line="885" pos:column="43">Refresh</name><argument_list pos:line="885" pos:column="50">( <argument><expr><name pos:line="885" pos:column="52">void</name></expr></argument>)</argument_list></call> <op:operator pos:line="885" pos:column="58">=</op:operator> <lit:literal type="number" pos:line="885" pos:column="60">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="889" pos:column="1">#<cpp:directive pos:line="889" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="889" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="891" pos:column="5">typedef <type><struct pos:line="891" pos:column="13">struct <name pos:line="891" pos:column="20">IVSMDPropertyBrowserVtbl</name>
+    <block pos:line="892" pos:column="5">{<public type="default" pos:line="892" pos:column="6">
+        <function_decl><type><name pos:line="893" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="895" pos:column="9">HRESULT</name></type> ( <name pos:line="895" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="895" pos:column="37">*</type:modifier><name pos:line="895" pos:column="38">QueryInterface</name> )<parameter_list pos:line="895" pos:column="54">( 
+            <param><decl><type><name pos:line="896" pos:column="13">IVSMDPropertyBrowser</name> <type:modifier pos:line="896" pos:column="34">*</type:modifier></type> <name pos:line="896" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="897" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="897" pos:column="24">__RPC__in</name> <name pos:line="897" pos:column="34">REFIID</name></type> <name pos:line="897" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="898" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="899" pos:column="13">__RPC__deref_out</name>  <name pos:line="899" pos:column="31">void</name> <type:modifier pos:line="899" pos:column="36">*</type:modifier><type:modifier pos:line="899" pos:column="37">*</type:modifier></type><name pos:line="899" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="901" pos:column="9">ULONG</name></type> ( <name pos:line="901" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="901" pos:column="35">*</type:modifier><name pos:line="901" pos:column="36">AddRef</name> )<parameter_list pos:line="901" pos:column="44">( 
+            <param><decl><type><name pos:line="902" pos:column="13">IVSMDPropertyBrowser</name> <type:modifier pos:line="902" pos:column="34">*</type:modifier></type> <name pos:line="902" pos:column="36">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="904" pos:column="9">ULONG</name></type> ( <name pos:line="904" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="904" pos:column="35">*</type:modifier><name pos:line="904" pos:column="36">Release</name> )<parameter_list pos:line="904" pos:column="45">( 
+            <param><decl><type><name pos:line="905" pos:column="13">IVSMDPropertyBrowser</name> <type:modifier pos:line="905" pos:column="34">*</type:modifier></type> <name pos:line="905" pos:column="36">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <comment type="block" pos:line="907" pos:column="9">/* [propget] */</comment> <function_decl><type><name pos:line="907" pos:column="25">HRESULT</name></type> ( <name pos:line="907" pos:column="35">STDMETHODCALLTYPE</name> <type:modifier pos:line="907" pos:column="53">*</type:modifier><name pos:line="907" pos:column="54">get_WindowGlyphResourceID</name> )<parameter_list pos:line="907" pos:column="81">( 
+            <param><decl><type><name pos:line="908" pos:column="13">IVSMDPropertyBrowser</name> <type:modifier pos:line="908" pos:column="34">*</type:modifier></type> <name pos:line="908" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="909" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="909" pos:column="33">__RPC__out</name> <name pos:line="909" pos:column="44">DWORD</name> <type:modifier pos:line="909" pos:column="50">*</type:modifier></type><name pos:line="909" pos:column="51">pdwResID</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="911" pos:column="9">HRESULT</name></type> ( <name pos:line="911" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="911" pos:column="37">*</type:modifier><name pos:line="911" pos:column="38">CreatePropertyGrid</name> )<parameter_list pos:line="911" pos:column="58">( 
+            <param><decl><type><name pos:line="912" pos:column="13">IVSMDPropertyBrowser</name> <type:modifier pos:line="912" pos:column="34">*</type:modifier></type> <name pos:line="912" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="913" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="913" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="913" pos:column="54">IVSMDPropertyGrid</name> <type:modifier pos:line="913" pos:column="72">*</type:modifier><type:modifier pos:line="913" pos:column="73">*</type:modifier></type><name pos:line="913" pos:column="74">ppGrid</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="915" pos:column="9">HRESULT</name></type> ( <name pos:line="915" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="915" pos:column="37">*</type:modifier><name pos:line="915" pos:column="38">Refresh</name> )<parameter_list pos:line="915" pos:column="47">( 
+            <param><decl><type><name pos:line="916" pos:column="13">IVSMDPropertyBrowser</name> <type:modifier pos:line="916" pos:column="34">*</type:modifier></type> <name pos:line="916" pos:column="36">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="918" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="919" pos:column="7">IVSMDPropertyBrowserVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="921" pos:column="5">interface</name></type> <name pos:line="921" pos:column="15">IVSMDPropertyBrowser</name>
+    <argument_list pos:line="922" pos:column="5">{
+        <argument><expr><name pos:line="923" pos:column="9">CONST_VTBL</name> struct <name pos:line="923" pos:column="27">IVSMDPropertyBrowserVtbl</name> <op:operator pos:line="923" pos:column="52">*</op:operator><name pos:line="923" pos:column="53">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="928" pos:column="1">#<cpp:directive pos:line="928" pos:column="2">ifdef</cpp:directive> <name pos:line="928" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="931" pos:column="1">#<cpp:directive pos:line="931" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="931" pos:column="9">IVSMDPropertyBrowser_QueryInterface</name><parameter_list pos:line="931" pos:column="44">(<param><type><name pos:line="931" pos:column="45">This</name></type></param>,<param><type><name pos:line="931" pos:column="50">riid</name></type></param>,<param><type><name pos:line="931" pos:column="55">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="932" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="934" pos:column="1">#<cpp:directive pos:line="934" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="934" pos:column="9">IVSMDPropertyBrowser_AddRef</name><parameter_list pos:line="934" pos:column="36">(<param><type><name pos:line="934" pos:column="37">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="935" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="937" pos:column="1">#<cpp:directive pos:line="937" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="937" pos:column="9">IVSMDPropertyBrowser_Release</name><parameter_list pos:line="937" pos:column="37">(<param><type><name pos:line="937" pos:column="38">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="938" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="941" pos:column="1">#<cpp:directive pos:line="941" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="941" pos:column="9">IVSMDPropertyBrowser_get_WindowGlyphResourceID</name><parameter_list pos:line="941" pos:column="55">(<param><type><name pos:line="941" pos:column="56">This</name></type></param>,<param><type><name pos:line="941" pos:column="61">pdwResID</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="942" pos:column="5">( (This)-&gt;lpVtbl -&gt; get_WindowGlyphResourceID(This,pdwResID) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="944" pos:column="1">#<cpp:directive pos:line="944" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="944" pos:column="9">IVSMDPropertyBrowser_CreatePropertyGrid</name><parameter_list pos:line="944" pos:column="48">(<param><type><name pos:line="944" pos:column="49">This</name></type></param>,<param><type><name pos:line="944" pos:column="54">ppGrid</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="945" pos:column="5">( (This)-&gt;lpVtbl -&gt; CreatePropertyGrid(This,ppGrid) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="947" pos:column="1">#<cpp:directive pos:line="947" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="947" pos:column="9">IVSMDPropertyBrowser_Refresh</name><parameter_list pos:line="947" pos:column="37">(<param><type><name pos:line="947" pos:column="38">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="948" pos:column="5">( (This)-&gt;lpVtbl -&gt; Refresh(This) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="950" pos:column="1">#<cpp:directive pos:line="950" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="950" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="953" pos:column="1">#<cpp:directive pos:line="953" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="953" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="958" pos:column="1">#<cpp:directive pos:line="958" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="958" pos:column="9">/* __IVSMDPropertyBrowser_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="961" pos:column="1">#<cpp:directive pos:line="961" pos:column="2">ifndef</cpp:directive> <name pos:line="961" pos:column="9">__IVSMDPerPropertyBrowsing_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="962" pos:column="1">#<cpp:directive pos:line="962" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="962" pos:column="9">__IVSMDPerPropertyBrowsing_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="964" pos:column="1">/* interface IVSMDPerPropertyBrowsing */</comment>
+<comment type="block" pos:line="965" pos:column="1">/* [unique][uuid][object] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="968" pos:column="1">EXTERN_C</name> <specifier pos:line="968" pos:column="10">const</specifier> <name pos:line="968" pos:column="16">IID</name></type> <name pos:line="968" pos:column="20">IID_IVSMDPerPropertyBrowsing</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="970" pos:column="1">#<cpp:directive pos:line="970" pos:column="2">if</cpp:directive> <expr><call><name pos:line="970" pos:column="5">defined</name><argument_list pos:line="970" pos:column="12">(<argument><expr><name pos:line="970" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="970" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="970" pos:column="29">!</op:operator><call><name pos:line="970" pos:column="30">defined</name><argument_list pos:line="970" pos:column="37">(<argument><expr><name pos:line="970" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="972" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="972" pos:column="19">(<argument pos:line="972" pos:column="20">"7494683C-37A0-11d2-A273-00C04F8EF4FF"</argument>)</argument_list></macro>
+    <label><name pos:line="973" pos:column="5">IVSMDPerPropertyBrowsing</name> :</label> <expr_stmt><expr pos:line="973" pos:column="32">public <name pos:line="973" pos:column="39">IUnknown</name>
+    <block pos:line="974" pos:column="5">{
+    <expr pos:line="975" pos:column="5">public<op:operator pos:line="975" pos:column="11">:</op:operator>
+        virtual <comment type="block" pos:line="976" pos:column="17">/* [helpstring][id] */</comment> <name pos:line="976" pos:column="40">HRESULT</name> <name pos:line="976" pos:column="48">STDMETHODCALLTYPE</name> <macro><name pos:line="976" pos:column="66">GetPropertyAttributes</name><argument_list pos:line="976" pos:column="87">( 
+            <argument pos:line="977" pos:column="13">DISPID dispid</argument>,
+            <comment type="block" pos:line="978" pos:column="13">/* [out] */</comment> <argument pos:line="978" pos:column="25">__RPC__out UINT *pceltAttrs</argument>,
+            <comment type="block" pos:line="979" pos:column="13">/* [size_is][size_is][out] */</comment> <argument pos:line="979" pos:column="43">__RPC__deref_out_ecount_full_opt(*pceltAttrs) BSTR **ppbstrTypeNames</argument>,
+            <comment type="block" pos:line="980" pos:column="13">/* [size_is][size_is][out] */</comment> <argument pos:line="980" pos:column="43">__RPC__deref_out_ecount_full_opt(*pceltAttrs) VARIANT **ppvarAttrValues</argument>)</argument_list></macro> <op:operator pos:line="980" pos:column="116">=</op:operator> <lit:literal type="number" pos:line="980" pos:column="118">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="984" pos:column="1">#<cpp:directive pos:line="984" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="984" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="986" pos:column="5">typedef <type><struct pos:line="986" pos:column="13">struct <name pos:line="986" pos:column="20">IVSMDPerPropertyBrowsingVtbl</name>
+    <block pos:line="987" pos:column="5">{<public type="default" pos:line="987" pos:column="6">
+        <function_decl><type><name pos:line="988" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="990" pos:column="9">HRESULT</name></type> ( <name pos:line="990" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="990" pos:column="37">*</type:modifier><name pos:line="990" pos:column="38">QueryInterface</name> )<parameter_list pos:line="990" pos:column="54">( 
+            <param><decl><type><name pos:line="991" pos:column="13">IVSMDPerPropertyBrowsing</name> <type:modifier pos:line="991" pos:column="38">*</type:modifier></type> <name pos:line="991" pos:column="40">This</name></decl></param>,
+            <comment type="block" pos:line="992" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="992" pos:column="24">__RPC__in</name> <name pos:line="992" pos:column="34">REFIID</name></type> <name pos:line="992" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="993" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="994" pos:column="13">__RPC__deref_out</name>  <name pos:line="994" pos:column="31">void</name> <type:modifier pos:line="994" pos:column="36">*</type:modifier><type:modifier pos:line="994" pos:column="37">*</type:modifier></type><name pos:line="994" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="996" pos:column="9">ULONG</name></type> ( <name pos:line="996" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="996" pos:column="35">*</type:modifier><name pos:line="996" pos:column="36">AddRef</name> )<parameter_list pos:line="996" pos:column="44">( 
+            <param><decl><type><name pos:line="997" pos:column="13">IVSMDPerPropertyBrowsing</name> <type:modifier pos:line="997" pos:column="38">*</type:modifier></type> <name pos:line="997" pos:column="40">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="999" pos:column="9">ULONG</name></type> ( <name pos:line="999" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="999" pos:column="35">*</type:modifier><name pos:line="999" pos:column="36">Release</name> )<parameter_list pos:line="999" pos:column="45">( 
+            <param><decl><type><name pos:line="1000" pos:column="13">IVSMDPerPropertyBrowsing</name> <type:modifier pos:line="1000" pos:column="38">*</type:modifier></type> <name pos:line="1000" pos:column="40">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <comment type="block" pos:line="1002" pos:column="9">/* [helpstring][id] */</comment> <macro><name pos:line="1002" pos:column="32">HRESULT</name> <argument_list pos:line="1002" pos:column="40">( <argument pos:line="1002" pos:column="42">STDMETHODCALLTYPE *GetPropertyAttributes</argument> )</argument_list></macro><expr_stmt><expr><op:operator pos:line="1002" pos:column="84">(</op:operator> 
+            <name pos:line="1003" pos:column="13">IVSMDPerPropertyBrowsing</name> <op:operator pos:line="1003" pos:column="38">*</op:operator> <name pos:line="1003" pos:column="40">This</name><op:operator pos:line="1003" pos:column="44">,</op:operator>
+            <name pos:line="1004" pos:column="13">DISPID</name> <name pos:line="1004" pos:column="20">dispid</name><op:operator pos:line="1004" pos:column="26">,</op:operator>
+            <comment type="block" pos:line="1005" pos:column="13">/* [out] */</comment> <name pos:line="1005" pos:column="25">__RPC__out</name> <name pos:line="1005" pos:column="36">UINT</name> <op:operator pos:line="1005" pos:column="41">*</op:operator><name pos:line="1005" pos:column="42">pceltAttrs</name><op:operator pos:line="1005" pos:column="52">,</op:operator>
+            <comment type="block" pos:line="1006" pos:column="13">/* [size_is][size_is][out] */</comment> <macro><name pos:line="1006" pos:column="43">__RPC__deref_out_ecount_full_opt</name><argument_list pos:line="1006" pos:column="75">(<argument pos:line="1006" pos:column="76">*pceltAttrs</argument>)</argument_list></macro> <name pos:line="1006" pos:column="89">BSTR</name> <op:operator pos:line="1006" pos:column="94">*</op:operator><op:operator pos:line="1006" pos:column="95">*</op:operator><name pos:line="1006" pos:column="96">ppbstrTypeNames</name><op:operator pos:line="1006" pos:column="111">,</op:operator>
+            <comment type="block" pos:line="1007" pos:column="13">/* [size_is][size_is][out] */</comment> <macro><name pos:line="1007" pos:column="43">__RPC__deref_out_ecount_full_opt</name><argument_list pos:line="1007" pos:column="75">(<argument pos:line="1007" pos:column="76">*pceltAttrs</argument>)</argument_list></macro> <name pos:line="1007" pos:column="89">VARIANT</name> <op:operator pos:line="1007" pos:column="97">*</op:operator><op:operator pos:line="1007" pos:column="98">*</op:operator><name pos:line="1007" pos:column="99">ppvarAttrValues</name><op:operator pos:line="1007" pos:column="114">)</op:operator></expr>;</expr_stmt>
+        
+        <macro><name pos:line="1009" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="1010" pos:column="7">IVSMDPerPropertyBrowsingVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="1012" pos:column="5">interface</name></type> <name pos:line="1012" pos:column="15">IVSMDPerPropertyBrowsing</name>
+    <argument_list pos:line="1013" pos:column="5">{
+        <argument><expr><name pos:line="1014" pos:column="9">CONST_VTBL</name> struct <name pos:line="1014" pos:column="27">IVSMDPerPropertyBrowsingVtbl</name> <op:operator pos:line="1014" pos:column="56">*</op:operator><name pos:line="1014" pos:column="57">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="1019" pos:column="1">#<cpp:directive pos:line="1019" pos:column="2">ifdef</cpp:directive> <name pos:line="1019" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="1022" pos:column="1">#<cpp:directive pos:line="1022" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="1022" pos:column="9">IVSMDPerPropertyBrowsing_QueryInterface</name><parameter_list pos:line="1022" pos:column="48">(<param><type><name pos:line="1022" pos:column="49">This</name></type></param>,<param><type><name pos:line="1022" pos:column="54">riid</name></type></param>,<param><type><name pos:line="1022" pos:column="59">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="1023" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="1025" pos:column="1">#<cpp:directive pos:line="1025" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="1025" pos:column="9">IVSMDPerPropertyBrowsing_AddRef</name><parameter_list pos:line="1025" pos:column="40">(<param><type><name pos:line="1025" pos:column="41">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="1026" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="1028" pos:column="1">#<cpp:directive pos:line="1028" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="1028" pos:column="9">IVSMDPerPropertyBrowsing_Release</name><parameter_list pos:line="1028" pos:column="41">(<param><type><name pos:line="1028" pos:column="42">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="1029" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="1032" pos:column="1">#<cpp:directive pos:line="1032" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="1032" pos:column="9">IVSMDPerPropertyBrowsing_GetPropertyAttributes</name><parameter_list pos:line="1032" pos:column="55">(<param><type><name pos:line="1032" pos:column="56">This</name></type></param>,<param><type><name pos:line="1032" pos:column="61">dispid</name></type></param>,<param><type><name pos:line="1032" pos:column="68">pceltAttrs</name></type></param>,<param><type><name pos:line="1032" pos:column="79">ppbstrTypeNames</name></type></param>,<param><type><name pos:line="1032" pos:column="95">ppvarAttrValues</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="1033" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetPropertyAttributes(This,dispid,pceltAttrs,ppbstrTypeNames,ppvarAttrValues) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="1035" pos:column="1">#<cpp:directive pos:line="1035" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="1035" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="1038" pos:column="1">#<cpp:directive pos:line="1038" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="1038" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="1043" pos:column="1">#<cpp:directive pos:line="1043" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="1043" pos:column="9">/* __IVSMDPerPropertyBrowsing_INTERFACE_DEFINED__ */</comment>
+
+<cpp:endif pos:line="1045" pos:column="1">#<cpp:directive pos:line="1045" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="1045" pos:column="8">/* __VSManagedDesigner_LIBRARY_DEFINED__ */</comment>
+
+<comment type="block" pos:line="1047" pos:column="1">/* Additional Prototypes for ALL interfaces */</comment>
+
+<comment type="block" pos:line="1049" pos:column="1">/* end of Additional Prototypes */</comment>
+
+<cpp:ifdef pos:line="1051" pos:column="1">#<cpp:directive pos:line="1051" pos:column="2">ifdef</cpp:directive> <name pos:line="1051" pos:column="8">__cplusplus</name></cpp:ifdef>
+}</block></extern>
+<cpp:endif pos:line="1053" pos:column="1">#<cpp:directive pos:line="1053" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:endif pos:line="1055" pos:column="1">#<cpp:directive pos:line="1055" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+</unit>

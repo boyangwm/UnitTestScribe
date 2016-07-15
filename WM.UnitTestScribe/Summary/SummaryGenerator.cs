@@ -242,10 +242,10 @@ namespace WM.UnitTestScribe.Summary {
             //}
         }
 
-        public void GenerateSummary() {
+        public void GenerateSummary(String outputLoc) {
             Console.WriteLine("Now let's generate summary..");
             HomeGenerator homePageGenerator = new HomeGenerator(this.AllTestSummary);
-            homePageGenerator.Generate(@"c:\temp\test.html");
+            homePageGenerator.Generate(outputLoc);
 
 
         }

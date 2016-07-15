@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensibility\IExecutionTimer.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Core</name><op:operator pos:line="3" pos:column="23">.</op:operator><name pos:line="3" pos:column="24">Extensibility</name></name>
+<block pos:line="4" pos:column="1">{
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="6" pos:column="5">/// Definition for an execution timer which will track how long given executions take.</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class type="interface"><specifier pos:line="8" pos:column="5">public</specifier> interface <name pos:line="8" pos:column="22">IExecutionTimer</name>
+    <block pos:line="9" pos:column="5">{
+        <comment type="line" pos:line="10" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="11" pos:column="9">/// Gets the request start date and time.</comment>
+        <comment type="line" pos:line="12" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// The request start.</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="16" pos:column="9">DateTime</name></type> <name pos:line="16" pos:column="18">RequestStart</name> <block pos:line="16" pos:column="31">{ <function_decl><name pos:line="16" pos:column="33">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="18" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="19" pos:column="9">/// Points this instance.</comment>
+        <comment type="line" pos:line="20" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="21" pos:column="9">/// &lt;returns&gt;A &lt;see cref="TimerResult"/&gt; which represents a single point in time.&lt;/returns&gt;</comment>
+        <function_decl><type><name pos:line="22" pos:column="9">TimerResult</name></type> <name pos:line="22" pos:column="21">Point</name><parameter_list pos:line="22" pos:column="26">()</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// Times the specified function. This will start and stop the timer either side </comment>
+        <comment type="line" pos:line="26" pos:column="9">/// of the function that is executed.</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;typeparam name="T"&gt;Type of result that is expected&lt;/typeparam&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;param name="function"&gt;The function that should be executed.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;returns&gt;Timing info that is collected as a result of the execution.&lt;/returns&gt;</comment>
+        <function_decl><type><name><name pos:line="31" pos:column="9">TimerResult</name><argument_list pos:line="31" pos:column="20">&lt;<argument><name pos:line="31" pos:column="21">T</name></argument>&gt;</argument_list></name></type> <name><name pos:line="31" pos:column="24">Time</name><argument_list pos:line="31" pos:column="28">&lt;<argument><name pos:line="31" pos:column="29">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="31" pos:column="31">(<param><decl><type><name><name pos:line="31" pos:column="32">Func</name><argument_list pos:line="31" pos:column="36">&lt;<argument><name pos:line="31" pos:column="37">T</name></argument>&gt;</argument_list></name></type> <name pos:line="31" pos:column="40">function</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="33" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// Times the specified action. This will start and stop the timer either side </comment>
+        <comment type="line" pos:line="35" pos:column="9">/// of the action that is executed.</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;param name="action"&gt;The action that should be executed.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// &lt;returns&gt;Timing info that is collected as a result of the execution.&lt;/returns&gt;</comment>
+        <function_decl><type><name pos:line="39" pos:column="9">TimerResult</name></type> <name pos:line="39" pos:column="21">Time</name><parameter_list pos:line="39" pos:column="25">(<param><decl><type><name pos:line="39" pos:column="26">Action</name></type> <name pos:line="39" pos:column="33">action</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="41" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// Starts the timer instance.</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// &lt;returns&gt;TimeSpan that represents this timing instance.&lt;/returns&gt;</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// If this method is used, it is up to the developer to manually stop the </comment>
+        <comment type="line" pos:line="47" pos:column="9">/// timer by calling Stop().</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <function_decl><type><name pos:line="49" pos:column="9">TimeSpan</name></type> <name pos:line="49" pos:column="18">Start</name><parameter_list pos:line="49" pos:column="23">()</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="51" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="52" pos:column="9">/// Stops the timer instance.</comment>
+        <comment type="line" pos:line="53" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// &lt;param name="offset"&gt;The offset.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="55" pos:column="9">/// &lt;returns&gt;Timing info that is collected as a result of the execution.&lt;/returns&gt;</comment>
+        <comment type="line" pos:line="56" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="57" pos:column="9">/// Inconsistent results may be experienced if you do not call Start() before</comment>
+        <comment type="line" pos:line="58" pos:column="9">/// calling Stop().</comment>
+        <comment type="line" pos:line="59" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <function_decl><type><name pos:line="60" pos:column="9">TimerResult</name></type> <name pos:line="60" pos:column="21">Stop</name><parameter_list pos:line="60" pos:column="25">(<param><decl><type><name pos:line="60" pos:column="26">TimeSpan</name></type> <name pos:line="60" pos:column="35">offset</name></decl></param>)</parameter_list>;</function_decl>
+    }</block></class>
+}</block></namespace></unit>

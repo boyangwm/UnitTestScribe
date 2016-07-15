@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\editids.h" pos:tabs="8"><comment type="line" pos:line="1" pos:column="1">//</comment>
+<comment type="line" pos:line="2" pos:column="1">// editids.h</comment>
+<comment type="line" pos:line="3" pos:column="1">// NOTE this file is superseded and defines moved to vsshlids.h</comment>
+<comment type="line" pos:line="4" pos:column="1">//</comment>
+<cpp:ifndef pos:line="5" pos:column="1">#<cpp:directive pos:line="5" pos:column="2">ifndef</cpp:directive> <name pos:line="5" pos:column="9">_EDITIDS_H_</name></cpp:ifndef>
+<cpp:define pos:line="6" pos:column="1">#<cpp:directive pos:line="6" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="6" pos:column="9">_EDITIDS_H_</name></cpp:macro></cpp:define>
+
+
+<cpp:include pos:line="9" pos:column="1">#<cpp:directive pos:line="9" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="9" pos:column="10">"msobtnid.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="10" pos:column="1">#<cpp:directive pos:line="10" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="10" pos:column="10">"virtkeys.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="11" pos:column="1">#<cpp:directive pos:line="11" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="11" pos:column="10">"stdidcmd.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="12" pos:column="1">#<cpp:directive pos:line="12" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="12" pos:column="10">"vsshlids.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="13" pos:column="1">#<cpp:directive pos:line="13" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="13" pos:column="10">"sharedids.h"</lit:literal></cpp:file></cpp:include>
+<cpp:endif pos:line="14" pos:column="1">#<cpp:directive pos:line="14" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="14" pos:column="8">//_EDITIDS_H_</comment></unit>

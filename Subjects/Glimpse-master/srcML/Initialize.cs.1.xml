@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Ado\Initialize.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">Glimpse</name><op:operator pos:line="1" pos:column="14">.</op:operator><name pos:line="1" pos:column="15">Ado</name><op:operator pos:line="1" pos:column="18">.</op:operator><name pos:line="1" pos:column="19">Inspector</name><op:operator pos:line="1" pos:column="28">.</op:operator><name pos:line="1" pos:column="29">Core</name></name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Ado</name></name>
+<block pos:line="4" pos:column="1">{
+    <class><specifier pos:line="5" pos:column="5">public</specifier> <specifier pos:line="5" pos:column="12">static</specifier> class <name pos:line="5" pos:column="25">Initialize</name>
+    <block pos:line="6" pos:column="5">{
+        <function><type><specifier pos:line="7" pos:column="9">public</specifier> <specifier pos:line="7" pos:column="16">static</specifier> <name pos:line="7" pos:column="23">void</name></type> <name pos:line="7" pos:column="28">Start</name><parameter_list pos:line="7" pos:column="33">()</parameter_list>
+        <block pos:line="8" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="9" pos:column="13">AdoExecutionBlock</name><op:operator pos:line="9" pos:column="30">.</op:operator><name pos:line="9" pos:column="31">Instance</name><op:operator pos:line="9" pos:column="39">.</op:operator><name pos:line="9" pos:column="40">Execute</name></name><argument_list pos:line="9" pos:column="47">()</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="12" pos:column="9">/// &lt;remarks&gt;For use with .NET 3.5&lt;/remarks&gt;</comment>
+        <function><type><specifier pos:line="13" pos:column="9">public</specifier> <specifier pos:line="13" pos:column="16">static</specifier> <name pos:line="13" pos:column="23">void</name></type> <name pos:line="13" pos:column="28">Ado</name><parameter_list pos:line="13" pos:column="31">(<param><decl><type><name pos:line="13" pos:column="32">this</name> <name><name pos:line="13" pos:column="37">Glimpse</name><op:operator pos:line="13" pos:column="44">.</op:operator><name pos:line="13" pos:column="45">Core</name><op:operator pos:line="13" pos:column="49">.</op:operator><name pos:line="13" pos:column="50">Setting</name><op:operator pos:line="13" pos:column="57">.</op:operator><name pos:line="13" pos:column="58">Initializer</name></name></type> <name pos:line="13" pos:column="70">initializer</name></decl></param>)</parameter_list>
+        <block pos:line="14" pos:column="9">{
+            <expr_stmt><expr><call><name pos:line="15" pos:column="13">Start</name><argument_list pos:line="15" pos:column="18">()</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+    }</block></class>
+}</block></namespace>
+</unit>

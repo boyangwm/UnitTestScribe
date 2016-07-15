@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Framework\ResourceParameters.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">System</name><op:operator pos:line="1" pos:column="13">.</op:operator><name pos:line="1" pos:column="14">Collections</name><op:operator pos:line="1" pos:column="25">.</op:operator><name pos:line="1" pos:column="26">Generic</name></name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Linq</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">Glimpse</name><op:operator pos:line="3" pos:column="14">.</op:operator><name pos:line="3" pos:column="15">Core</name><op:operator pos:line="3" pos:column="19">.</op:operator><name pos:line="3" pos:column="20">Extensibility</name></name>;</using>
+
+<namespace pos:line="5" pos:column="1">namespace <name><name pos:line="5" pos:column="11">Glimpse</name><op:operator pos:line="5" pos:column="18">.</op:operator><name pos:line="5" pos:column="19">Core</name><op:operator pos:line="5" pos:column="23">.</op:operator><name pos:line="5" pos:column="24">Framework</name></name>
+<block pos:line="6" pos:column="1">{
+    <comment type="line" pos:line="7" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// A class which contains all the parameters, whether named or ordered, needed to execute a resource.</comment>
+    <comment type="line" pos:line="9" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="10" pos:column="5">public</specifier> class <name pos:line="10" pos:column="18">ResourceParameters</name>
+    <block pos:line="11" pos:column="5">{
+        <comment type="line" pos:line="12" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// Initializes a new instance of the &lt;see cref="ResourceParameters" /&gt; class with a set of named parameters.</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// &lt;param name="namedParameters"&gt;The named parameters.&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="16" pos:column="9">public</specifier> <name pos:line="16" pos:column="16">ResourceParameters</name><parameter_list pos:line="16" pos:column="34">(<param><decl><type><name><name pos:line="16" pos:column="35">IDictionary</name><argument_list pos:line="16" pos:column="46">&lt;<argument><name pos:line="16" pos:column="47">string</name></argument>, <argument><name pos:line="16" pos:column="55">string</name></argument>&gt;</argument_list></name></type> <name pos:line="16" pos:column="63">namedParameters</name></decl></param>)</parameter_list>
+        <block pos:line="17" pos:column="9">{
+            <expr_stmt><expr><name pos:line="18" pos:column="13">NamedParameters</name> <op:operator pos:line="18" pos:column="29">=</op:operator> <name pos:line="18" pos:column="31">namedParameters</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="21" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="22" pos:column="9">/// Initializes a new instance of the &lt;see cref="ResourceParameters" /&gt; class with a set of ordered parameters.</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;param name="orderedParameters"&gt;The ordered parameters.&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="25" pos:column="9">public</specifier> <name pos:line="25" pos:column="16">ResourceParameters</name><parameter_list pos:line="25" pos:column="34">(<param><decl><type><name><name pos:line="25" pos:column="35">string</name><index pos:line="25" pos:column="41">[]</index></name></type> <name pos:line="25" pos:column="44">orderedParameters</name></decl></param>)</parameter_list>
+        <block pos:line="26" pos:column="9">{
+            <expr_stmt><expr><name pos:line="27" pos:column="13">OrderedParameters</name> <op:operator pos:line="27" pos:column="31">=</op:operator> <name pos:line="27" pos:column="33">orderedParameters</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <decl_stmt><decl><type><specifier pos:line="30" pos:column="9">internal</specifier> <name><name pos:line="30" pos:column="18">IDictionary</name><argument_list pos:line="30" pos:column="29">&lt;<argument><name pos:line="30" pos:column="30">string</name></argument>, <argument><name pos:line="30" pos:column="38">string</name></argument>&gt;</argument_list></name></type> <name pos:line="30" pos:column="46">NamedParameters</name> <block pos:line="30" pos:column="62">{ <function_decl><name pos:line="30" pos:column="64">get</name>;</function_decl> <function_decl><name pos:line="30" pos:column="69">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="32" pos:column="9">internal</specifier> <name pos:line="32" pos:column="18">string</name><index pos:line="32" pos:column="24">[]</index></type> <name pos:line="32" pos:column="27">OrderedParameters</name> <block pos:line="32" pos:column="45">{ <function_decl><name pos:line="32" pos:column="47">get</name>;</function_decl> <function_decl><name pos:line="32" pos:column="52">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="34" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="35" pos:column="9">/// Creates an instance of &lt;see cref="ResourceParameter"/&gt; which contains no parameter values.</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;returns&gt;An implementation of the null object pattern for &lt;see cref="ResourceParameter"/&gt;.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="38" pos:column="9">public</specifier> <specifier pos:line="38" pos:column="16">static</specifier> <name pos:line="38" pos:column="23">ResourceParameters</name></type> <name pos:line="38" pos:column="42">None</name><parameter_list pos:line="38" pos:column="46">()</parameter_list>
+        <block pos:line="39" pos:column="9">{
+            <return pos:line="40" pos:column="13">return <expr><op:operator pos:line="40" pos:column="20">new</op:operator> <call><name pos:line="40" pos:column="24">ResourceParameters</name><argument_list pos:line="40" pos:column="42">(<argument><expr><op:operator pos:line="40" pos:column="43">(</op:operator><name><name pos:line="40" pos:column="44">IDictionary</name><argument_list pos:line="40" pos:column="55">&lt;<argument><name pos:line="40" pos:column="56">string</name></argument>, <argument><name pos:line="40" pos:column="64">string</name></argument>&gt;</argument_list></name><op:operator pos:line="40" pos:column="71">)</op:operator><name pos:line="40" pos:column="72">null</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="43" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// Gets the parameters for a given &lt;see cref="IResource"/&gt;.</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// &lt;param name="resource"&gt;The resource.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// &lt;returns&gt;The parameters for a given resource.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="48" pos:column="9">public</specifier> <name><name pos:line="48" pos:column="16">IDictionary</name><argument_list pos:line="48" pos:column="27">&lt;<argument><name pos:line="48" pos:column="28">string</name></argument>, <argument><name pos:line="48" pos:column="36">string</name></argument>&gt;</argument_list></name></type> <name pos:line="48" pos:column="44">GetParametersFor</name><parameter_list pos:line="48" pos:column="60">(<param><decl><type><name pos:line="48" pos:column="61">IResource</name></type> <name pos:line="48" pos:column="71">resource</name></decl></param>)</parameter_list>
+        <block pos:line="49" pos:column="9">{
+            <if pos:line="50" pos:column="13">if <condition pos:line="50" pos:column="16">(<expr><name pos:line="50" pos:column="17">NamedParameters</name> <op:operator pos:line="50" pos:column="33">!=</op:operator> <name pos:line="50" pos:column="36">null</name></expr>)</condition><then pos:line="50" pos:column="41">
+            <block pos:line="51" pos:column="13">{
+                <return pos:line="52" pos:column="17">return <expr><name pos:line="52" pos:column="24">NamedParameters</name></expr>;</return>
+            }</block></then></if>
+
+            <decl_stmt><decl><type><name pos:line="55" pos:column="13">var</name></type> <name pos:line="55" pos:column="17">result</name> <init pos:line="55" pos:column="24">= <expr><op:operator pos:line="55" pos:column="26">new</op:operator> <call><name><name pos:line="55" pos:column="30">Dictionary</name><argument_list pos:line="55" pos:column="40">&lt;<argument><name pos:line="55" pos:column="41">string</name></argument>, <argument><name pos:line="55" pos:column="49">string</name></argument>&gt;</argument_list></name><argument_list pos:line="55" pos:column="56">()</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <if pos:line="57" pos:column="13">if <condition pos:line="57" pos:column="16">(<expr><name pos:line="57" pos:column="17">OrderedParameters</name> <op:operator pos:line="57" pos:column="35">==</op:operator> <name pos:line="57" pos:column="38">null</name></expr>)</condition><then pos:line="57" pos:column="43">
+            <block pos:line="58" pos:column="13">{
+                <return pos:line="59" pos:column="17">return <expr><name pos:line="59" pos:column="24">result</name></expr>;</return>
+            }</block></then></if>
+
+            <decl_stmt><decl><type><name pos:line="62" pos:column="13">var</name></type> <name pos:line="62" pos:column="17">index</name> <init pos:line="62" pos:column="23">= <expr><lit:literal type="number" pos:line="62" pos:column="25">0</lit:literal></expr></init></decl>;</decl_stmt>
+            <decl_stmt><decl><type><name pos:line="63" pos:column="13">var</name></type> <name pos:line="63" pos:column="17">parameterCount</name> <init pos:line="63" pos:column="32">= <expr><call><name><name pos:line="63" pos:column="34">OrderedParameters</name><op:operator pos:line="63" pos:column="51">.</op:operator><name pos:line="63" pos:column="52">Count</name></name><argument_list pos:line="63" pos:column="57">()</argument_list></call></expr></init></decl>;</decl_stmt>
+            <foreach pos:line="64" pos:column="13">foreach (<init><decl><type><name pos:line="64" pos:column="22">var</name></type> <name pos:line="64" pos:column="26">parameter</name> <range pos:line="64" pos:column="36">in <expr><name><name pos:line="64" pos:column="39">resource</name><op:operator pos:line="64" pos:column="47">.</op:operator><name pos:line="64" pos:column="48">Parameters</name></name></expr></range></decl></init>)
+            <block pos:line="65" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="66" pos:column="17">string</name></type> <name pos:line="66" pos:column="24">value</name> <init pos:line="66" pos:column="30">= <expr><name pos:line="66" pos:column="32">null</name></expr></init></decl>;</decl_stmt>
+
+                <if pos:line="68" pos:column="17">if <condition pos:line="68" pos:column="20">(<expr><name pos:line="68" pos:column="21">index</name> <op:operator pos:line="68" pos:column="27">&lt;</op:operator> <name pos:line="68" pos:column="29">parameterCount</name></expr>)</condition><then pos:line="68" pos:column="44">
+                <block pos:line="69" pos:column="17">{
+                    <expr_stmt><expr><name pos:line="70" pos:column="21">value</name> <op:operator pos:line="70" pos:column="27">=</op:operator> <name><name pos:line="70" pos:column="29">OrderedParameters</name><index pos:line="70" pos:column="46">[<expr><name pos:line="70" pos:column="47">index</name></expr>]</index></name></expr>;</expr_stmt>
+                }</block></then></if>
+
+                <expr_stmt><expr><call><name><name pos:line="73" pos:column="17">result</name><op:operator pos:line="73" pos:column="23">.</op:operator><name pos:line="73" pos:column="24">Add</name></name><argument_list pos:line="73" pos:column="27">(<argument><expr><name><name pos:line="73" pos:column="28">parameter</name><op:operator pos:line="73" pos:column="37">.</op:operator><name pos:line="73" pos:column="38">Name</name></name></expr></argument>, <argument><expr><name pos:line="73" pos:column="44">value</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                <expr_stmt><expr><name pos:line="74" pos:column="17">index</name><op:operator pos:line="74" pos:column="22">++</op:operator></expr>;</expr_stmt>
+            }</block></foreach>
+
+            <return pos:line="77" pos:column="13">return <expr><name pos:line="77" pos:column="20">result</name></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

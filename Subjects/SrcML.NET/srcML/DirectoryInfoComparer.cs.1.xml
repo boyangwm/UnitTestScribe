@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\VisualStudio\ABB.SrcML.VisualStudio.PreviewAddIn\DirectoryInfoComparer.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2011 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Text</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">System</name><op:operator pos:line="16" pos:column="13">.</op:operator><name pos:line="16" pos:column="14">IO</name></name>;</using>
+
+<namespace pos:line="18" pos:column="1">namespace <name><name pos:line="18" pos:column="11">ABB</name><op:operator pos:line="18" pos:column="14">.</op:operator><name pos:line="18" pos:column="15">SrcML</name><op:operator pos:line="18" pos:column="20">.</op:operator><name pos:line="18" pos:column="21">VisualStudio</name><op:operator pos:line="18" pos:column="33">.</op:operator><name pos:line="18" pos:column="34">PreviewAddIn</name></name>
+<block pos:line="19" pos:column="1">{
+    <class><specifier pos:line="20" pos:column="5">public</specifier> class <name pos:line="20" pos:column="18">DirectoryInfoComparer</name> <super pos:line="20" pos:column="40">: <name><name pos:line="20" pos:column="42">EqualityComparer</name><argument_list pos:line="20" pos:column="58">&lt;<argument><name pos:line="20" pos:column="59">DirectoryInfo</name></argument>&gt;</argument_list></name></super>
+    <block pos:line="21" pos:column="5">{
+        <function><type><specifier pos:line="22" pos:column="9">public</specifier> <specifier pos:line="22" pos:column="16">override</specifier> <name pos:line="22" pos:column="25">bool</name></type> <name pos:line="22" pos:column="30">Equals</name><parameter_list pos:line="22" pos:column="36">(<param><decl><type><name pos:line="22" pos:column="37">DirectoryInfo</name></type> <name pos:line="22" pos:column="51">x</name></decl></param>, <param><decl><type><name pos:line="22" pos:column="54">DirectoryInfo</name></type> <name pos:line="22" pos:column="68">y</name></decl></param>)</parameter_list>
+        <block pos:line="23" pos:column="9">{
+            <return pos:line="24" pos:column="13">return <expr><op:operator pos:line="24" pos:column="20">(</op:operator><call><name><name pos:line="24" pos:column="21">x</name><op:operator pos:line="24" pos:column="22">.</op:operator><name pos:line="24" pos:column="23">FullName</name><op:operator pos:line="24" pos:column="31">.</op:operator><name pos:line="24" pos:column="32">Equals</name></name><argument_list pos:line="24" pos:column="38">(<argument><expr><name><name pos:line="24" pos:column="39">y</name><op:operator pos:line="24" pos:column="40">.</op:operator><name pos:line="24" pos:column="41">FullName</name></name></expr></argument>, <argument><expr><name><name pos:line="24" pos:column="51">StringComparison</name><op:operator pos:line="24" pos:column="67">.</op:operator><name pos:line="24" pos:column="68">OrdinalIgnoreCase</name></name></expr></argument>)</argument_list></call><op:operator pos:line="24" pos:column="86">)</op:operator></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="27" pos:column="9">public</specifier> <specifier pos:line="27" pos:column="16">override</specifier> <name pos:line="27" pos:column="25">int</name></type> <name pos:line="27" pos:column="29">GetHashCode</name><parameter_list pos:line="27" pos:column="40">(<param><decl><type><name pos:line="27" pos:column="41">DirectoryInfo</name></type> <name pos:line="27" pos:column="55">obj</name></decl></param>)</parameter_list>
+        <block pos:line="28" pos:column="9">{
+            <return pos:line="29" pos:column="13">return <expr><call><name><name pos:line="29" pos:column="20">obj</name><op:operator pos:line="29" pos:column="23">.</op:operator><name pos:line="29" pos:column="24">FullName</name><op:operator pos:line="29" pos:column="32">.</op:operator><name pos:line="29" pos:column="33">GetHashCode</name></name><argument_list pos:line="29" pos:column="44">()</argument_list></call></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace>
+</unit>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Sando-master\SandoExtensionContracts\QUERYCONTRACTS\IQueryWeightsSupplier.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">System</name><op:operator pos:line="1" pos:column="13">.</op:operator><name pos:line="1" pos:column="14">Collections</name><op:operator pos:line="1" pos:column="25">.</op:operator><name pos:line="1" pos:column="26">Generic</name></name>;</using>
+
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Diagnostics</name><op:operator pos:line="3" pos:column="25">.</op:operator><name pos:line="3" pos:column="26">Contracts</name></name>;</using>
+
+
+
+<namespace pos:line="7" pos:column="1">namespace <name><name pos:line="7" pos:column="11">Sando</name><op:operator pos:line="7" pos:column="16">.</op:operator><name pos:line="7" pos:column="17">ExtensionContracts</name><op:operator pos:line="7" pos:column="35">.</op:operator><name pos:line="7" pos:column="36">QueryContracts</name></name>
+<block pos:line="8" pos:column="1">{
+
+    <class type="interface"><specifier pos:line="10" pos:column="5">public</specifier> <specifier pos:line="10" pos:column="12">partial</specifier> interface <name pos:line="10" pos:column="30">IQueryWeightsSupplier</name>
+    <block pos:line="11" pos:column="5">{
+        <function_decl><type><name><name pos:line="12" pos:column="9">Dictionary</name><argument_list pos:line="12" pos:column="19">&lt;<argument><name pos:line="12" pos:column="20">string</name></argument>, <argument><name pos:line="12" pos:column="28">float</name></argument>&gt;</argument_list></name></type> <name pos:line="12" pos:column="35">GetQueryWeightsValues</name><parameter_list pos:line="12" pos:column="56">()</parameter_list>;</function_decl>
+    }</block></class>
+
+    <cpp:region pos:line="15" pos:column="5">#<cpp:directive pos:line="15" pos:column="6">region</cpp:directive> IQueryWeightsSupplier contract binding</cpp:region>
+    <class type="interface"><attribute pos:line="16" pos:column="5">[<expr><call><name pos:line="16" pos:column="6">ContractClass</name><argument_list pos:line="16" pos:column="19">(<argument><expr><call><name pos:line="16" pos:column="20">typeof</name><argument_list pos:line="16" pos:column="26">(<argument><expr><name pos:line="16" pos:column="27">IQueryWeightsSupplierContract</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>]</attribute>
+    <specifier pos:line="17" pos:column="5">public</specifier> <specifier pos:line="17" pos:column="12">partial</specifier> interface <name pos:line="17" pos:column="30">IQueryWeightsSupplier</name>
+    <block pos:line="18" pos:column="5">{
+
+    }</block></class>
+
+    <class><attribute pos:line="22" pos:column="5">[<expr><call><name pos:line="22" pos:column="6">ContractClassFor</name><argument_list pos:line="22" pos:column="22">(<argument><expr><call><name pos:line="22" pos:column="23">typeof</name><argument_list pos:line="22" pos:column="29">(<argument><expr><name pos:line="22" pos:column="30">IQueryWeightsSupplier</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>]</attribute>
+    <specifier pos:line="23" pos:column="5">abstract</specifier> class <name pos:line="23" pos:column="20">IQueryWeightsSupplierContract</name> <super pos:line="23" pos:column="50">: <name pos:line="23" pos:column="52">IQueryWeightsSupplier</name></super>
+    <block pos:line="24" pos:column="5">{
+
+        <function><type><specifier pos:line="26" pos:column="9">public</specifier> <name><name pos:line="26" pos:column="16">Dictionary</name><argument_list pos:line="26" pos:column="26">&lt;<argument><name pos:line="26" pos:column="27">string</name></argument>, <argument><name pos:line="26" pos:column="35">float</name></argument>&gt;</argument_list></name></type> <name pos:line="26" pos:column="42">GetQueryWeightsValues</name><parameter_list pos:line="26" pos:column="63">()</parameter_list>
+        <block pos:line="27" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="28" pos:column="13">Contract</name><op:operator pos:line="28" pos:column="21">.</op:operator><name pos:line="28" pos:column="22">Ensures</name></name><argument_list pos:line="28" pos:column="29">(<argument><expr><call><name><name pos:line="28" pos:column="30">Contract</name><op:operator pos:line="28" pos:column="38">.</op:operator><name><name pos:line="28" pos:column="39">Result</name><argument_list pos:line="28" pos:column="45">&lt;<argument><name><name pos:line="28" pos:column="46">Dictionary</name><argument_list pos:line="28" pos:column="56">&lt;<argument><name pos:line="28" pos:column="57">string</name></argument>, <argument><name pos:line="28" pos:column="65">float</name></argument>&gt;</argument_list></name></argument>&gt;</argument_list></name></name><argument_list pos:line="28" pos:column="72">()</argument_list></call> <op:operator pos:line="28" pos:column="75">!=</op:operator> <name pos:line="28" pos:column="78">null</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="28" pos:column="84">"IQueryWeightsSupplier:GetQueryWeightsValues - an object must be returned from this method!"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <throw pos:line="29" pos:column="13">throw <expr><op:operator pos:line="29" pos:column="19">new</op:operator> <call><name><name pos:line="29" pos:column="23">System</name><op:operator pos:line="29" pos:column="29">.</op:operator><name pos:line="29" pos:column="30">NotImplementedException</name></name><argument_list pos:line="29" pos:column="53">()</argument_list></call></expr>;</throw>
+        }</block></function>
+
+    }</block></class>
+    <cpp:endregion pos:line="33" pos:column="5">#<cpp:directive pos:line="33" pos:column="6">endregion</cpp:directive></cpp:endregion>
+
+}</block></namespace>
+
+</unit>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Configuration\LoggingLevel.cs" pos:tabs="8"><namespace pos:line="1" pos:column="1">namespace <name><name pos:line="1" pos:column="11">Glimpse</name><op:operator pos:line="1" pos:column="18">.</op:operator><name pos:line="1" pos:column="19">Core</name><op:operator pos:line="1" pos:column="23">.</op:operator><name pos:line="1" pos:column="24">Configuration</name></name>
+<block pos:line="2" pos:column="1">{
+    <comment type="line" pos:line="3" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="4" pos:column="5">/// &lt;c&gt;LoggingLevel&lt;/c&gt; defines the level of output detail to be written to the Glimpse log.</comment>
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;/summary&gt;</comment>
+    <enum><specifier pos:line="6" pos:column="5">public</specifier> enum <macro><name pos:line="6" pos:column="17">LoggingLevel</name></macro>
+    <block pos:line="7" pos:column="5">{
+        <comment type="line" pos:line="8" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="9" pos:column="9">/// The &lt;c&gt;Trace&lt;/c&gt; level is the most detailed level of output in Glimpse.</comment>
+        <comment type="line" pos:line="10" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl><name pos:line="11" pos:column="9">Trace</name> <init pos:line="11" pos:column="15">= <expr><lit:literal type="number" pos:line="11" pos:column="17">0</lit:literal></expr></init></decl><op:operator pos:line="11" pos:column="18">,</op:operator>
+
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// The &lt;c&gt;Debug&lt;/c&gt; level contains debugging information, and is less detailed than trace.</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl><name pos:line="16" pos:column="9">Debug</name> <init pos:line="16" pos:column="15">= <expr><lit:literal type="number" pos:line="16" pos:column="17">1</lit:literal></expr></init></decl><op:operator pos:line="16" pos:column="18">,</op:operator>
+
+        <comment type="line" pos:line="18" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="19" pos:column="9">/// The &lt;c&gt;Info&lt;/c&gt; level contains common information messages.</comment>
+        <comment type="line" pos:line="20" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl><name pos:line="21" pos:column="9">Info</name> <init pos:line="21" pos:column="14">= <expr><lit:literal type="number" pos:line="21" pos:column="16">2</lit:literal></expr></init></decl><op:operator pos:line="21" pos:column="17">,</op:operator>
+
+        <comment type="line" pos:line="23" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// The &lt;c&gt;Warn&lt;/c&gt; level contains warning messages, typically for non-critical issues, which can be recovered or which are temporary failures.</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl><name pos:line="26" pos:column="9">Warn</name> <init pos:line="26" pos:column="14">= <expr><lit:literal type="number" pos:line="26" pos:column="16">3</lit:literal></expr></init></decl><op:operator pos:line="26" pos:column="17">,</op:operator>
+
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// The &lt;c&gt;Error&lt;/c&gt; level contains error messages that Glimpse was able to recover from.</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl><name pos:line="31" pos:column="9">Error</name> <init pos:line="31" pos:column="15">= <expr><lit:literal type="number" pos:line="31" pos:column="17">4</lit:literal></expr></init></decl><op:operator pos:line="31" pos:column="18">,</op:operator>
+
+        <comment type="line" pos:line="33" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// The &lt;c&gt;Fatal&lt;/c&gt; level contains error messages that Glimpse was unable to recover from.</comment>
+        <comment type="line" pos:line="35" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl><name pos:line="36" pos:column="9">Fatal</name> <init pos:line="36" pos:column="15">= <expr><lit:literal type="number" pos:line="36" pos:column="17">5</lit:literal></expr></init></decl><op:operator pos:line="36" pos:column="18">,</op:operator>
+
+        <comment type="line" pos:line="38" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// The &lt;c&gt;Off&lt;/c&gt; level contains no messages. When the logging level is &lt;c&gt;Off&lt;/c&gt;, Glimpse will not even create a log file.</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl><name pos:line="41" pos:column="9">Off</name> <init pos:line="41" pos:column="13">= <expr><lit:literal type="number" pos:line="41" pos:column="15">6</lit:literal></expr></init></decl>
+    }</block>
+<decl/></enum>}</block></namespace></unit>

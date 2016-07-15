@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Sando-master\UI\UI\View\Search\Converters\IsSelectedAndFocusedConverter.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Linq</name></name>;</using>
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">System</name><op:operator pos:line="4" pos:column="13">.</op:operator><name pos:line="4" pos:column="14">Text</name></name>;</using>
+<using pos:line="5" pos:column="1">using <name><name pos:line="5" pos:column="7">System</name><op:operator pos:line="5" pos:column="13">.</op:operator><name pos:line="5" pos:column="14">Windows</name><op:operator pos:line="5" pos:column="21">.</op:operator><name pos:line="5" pos:column="22">Data</name></name>;</using>
+
+<namespace pos:line="7" pos:column="1">namespace <name><name pos:line="7" pos:column="11">Sando</name><op:operator pos:line="7" pos:column="16">.</op:operator><name pos:line="7" pos:column="17">UI</name><op:operator pos:line="7" pos:column="19">.</op:operator><name pos:line="7" pos:column="20">View</name><op:operator pos:line="7" pos:column="24">.</op:operator><name pos:line="7" pos:column="25">Search</name><op:operator pos:line="7" pos:column="31">.</op:operator><name pos:line="7" pos:column="32">Converters</name></name>
+<block pos:line="8" pos:column="1">{
+
+
+    <class><specifier pos:line="11" pos:column="5">public</specifier> class <name pos:line="11" pos:column="18">IsSelectedAndFocusedConverter</name> <super pos:line="11" pos:column="48">: <name pos:line="11" pos:column="50">IMultiValueConverter</name></super>
+    <block pos:line="12" pos:column="5">{
+        <cpp:region pos:line="13" pos:column="9">#<cpp:directive pos:line="13" pos:column="10">region</cpp:directive> IMultiValueConverter Members</cpp:region>
+
+        <function><type><specifier pos:line="15" pos:column="9">public</specifier> <name pos:line="15" pos:column="16">object</name></type> <name pos:line="15" pos:column="23">Convert</name><parameter_list pos:line="15" pos:column="30">(<param><decl><type><name><name pos:line="15" pos:column="31">object</name><index pos:line="15" pos:column="37">[]</index></name></type> <name pos:line="15" pos:column="40">values</name></decl></param>, <param><decl><type><name pos:line="15" pos:column="48">Type</name></type> <name pos:line="15" pos:column="53">targetType</name></decl></param>, <param><decl><type><name pos:line="15" pos:column="65">object</name></type> <name pos:line="15" pos:column="72">parameter</name></decl></param>, <param><decl><type><name><name pos:line="15" pos:column="83">System</name><op:operator pos:line="15" pos:column="89">.</op:operator><name pos:line="15" pos:column="90">Globalization</name><op:operator pos:line="15" pos:column="103">.</op:operator><name pos:line="15" pos:column="104">CultureInfo</name></name></type> <name pos:line="15" pos:column="116">culture</name></decl></param>)</parameter_list>
+        <block pos:line="16" pos:column="9">{
+            <try pos:line="17" pos:column="13">try
+            <block pos:line="18" pos:column="13">{
+                <if pos:line="19" pos:column="17">if <condition pos:line="19" pos:column="20">(<expr><op:operator pos:line="19" pos:column="21">(</op:operator><name pos:line="19" pos:column="22">bool</name><op:operator pos:line="19" pos:column="26">)</op:operator><name><name pos:line="19" pos:column="27">values</name><index pos:line="19" pos:column="33">[<expr><lit:literal type="number" pos:line="19" pos:column="34">0</lit:literal></expr>]</index></name> <op:operator pos:line="19" pos:column="37">&amp;&amp;</op:operator> <op:operator pos:line="19" pos:column="40">(</op:operator><name pos:line="19" pos:column="41">bool</name><op:operator pos:line="19" pos:column="45">)</op:operator><name><name pos:line="19" pos:column="46">values</name><index pos:line="19" pos:column="52">[<expr><lit:literal type="number" pos:line="19" pos:column="53">1</lit:literal></expr>]</index></name></expr>)</condition><then pos:line="19" pos:column="56">
+                    <return pos:line="20" pos:column="21">return <expr><lit:literal type="boolean" pos:line="20" pos:column="28">true</lit:literal></expr>;</return></then></if>
+            }</block>
+            <catch pos:line="22" pos:column="13">catch <parameter_list pos:line="22" pos:column="19">(<param><decl><type><name pos:line="22" pos:column="20">InvalidCastException</name></type> <name pos:line="22" pos:column="41">e</name></decl></param>)</parameter_list>
+            <block pos:line="23" pos:column="13">{
+                <return pos:line="24" pos:column="17">return <expr><lit:literal type="boolean" pos:line="24" pos:column="24">false</lit:literal></expr>;</return>
+            }</block></catch></try>
+            <return pos:line="26" pos:column="13">return <expr><lit:literal type="boolean" pos:line="26" pos:column="20">false</lit:literal></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="29" pos:column="9">public</specifier> <name pos:line="29" pos:column="16">object</name><index pos:line="29" pos:column="22">[]</index></type> <name pos:line="29" pos:column="25">ConvertBack</name><parameter_list pos:line="29" pos:column="36">(<param><decl><type><name pos:line="29" pos:column="37">object</name></type> <name pos:line="29" pos:column="44">value</name></decl></param>, <param><decl><type><name><name pos:line="29" pos:column="51">Type</name><index pos:line="29" pos:column="55">[]</index></name></type> <name pos:line="29" pos:column="58">targetTypes</name></decl></param>, <param><decl><type><name pos:line="29" pos:column="71">object</name></type> <name pos:line="29" pos:column="78">parameter</name></decl></param>, <param><decl><type><name><name pos:line="29" pos:column="89">System</name><op:operator pos:line="29" pos:column="95">.</op:operator><name pos:line="29" pos:column="96">Globalization</name><op:operator pos:line="29" pos:column="109">.</op:operator><name pos:line="29" pos:column="110">CultureInfo</name></name></type> <name pos:line="29" pos:column="122">culture</name></decl></param>)</parameter_list>
+        <block pos:line="30" pos:column="9">{
+            <throw pos:line="31" pos:column="13">throw <expr><op:operator pos:line="31" pos:column="19">new</op:operator> <call><name pos:line="31" pos:column="23">NotImplementedException</name><argument_list pos:line="31" pos:column="46">()</argument_list></call></expr>;</throw>
+        }</block></function>
+
+        <cpp:endregion pos:line="34" pos:column="9">#<cpp:directive pos:line="34" pos:column="10">endregion</cpp:directive></cpp:endregion>
+    }</block></class>
+
+}</block></namespace>
+</unit>

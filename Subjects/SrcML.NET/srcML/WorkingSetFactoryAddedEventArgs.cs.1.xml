@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\VisualStudio\ABB.SrcML.VisualStudio.SrcMLService\WorkingSetFactoryAddedEventArgs.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2014 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine(ABB Group) - Initial implementation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name><name pos:line="12" pos:column="7">ABB</name><op:operator pos:line="12" pos:column="10">.</op:operator><name pos:line="12" pos:column="11">SrcML</name><op:operator pos:line="12" pos:column="16">.</op:operator><name pos:line="12" pos:column="17">Data</name></name>;</using>
+<using pos:line="13" pos:column="1">using <name pos:line="13" pos:column="7">System</name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Collections</name><op:operator pos:line="14" pos:column="25">.</op:operator><name pos:line="14" pos:column="26">Generic</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Linq</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">System</name><op:operator pos:line="16" pos:column="13">.</op:operator><name pos:line="16" pos:column="14">Text</name></name>;</using>
+
+<namespace pos:line="18" pos:column="1">namespace <name><name pos:line="18" pos:column="11">ABB</name><op:operator pos:line="18" pos:column="14">.</op:operator><name pos:line="18" pos:column="15">SrcML</name><op:operator pos:line="18" pos:column="20">.</op:operator><name pos:line="18" pos:column="21">VisualStudio</name></name> <block pos:line="18" pos:column="34">{
+    <comment type="line" pos:line="19" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="20" pos:column="5">/// Event arguments for an added working set factory</comment>
+    <comment type="line" pos:line="21" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="22" pos:column="5">public</specifier> class <name pos:line="22" pos:column="18">WorkingSetFactoryAddedEventArgs</name> <super pos:line="22" pos:column="50">: <name pos:line="22" pos:column="52">EventArgs</name></super> <block pos:line="22" pos:column="62">{
+        <comment type="line" pos:line="23" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// Create a new working set factory added event argument object</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;/summary&gt;</comment>
+        <constructor><specifier pos:line="26" pos:column="9">public</specifier> <name pos:line="26" pos:column="16">WorkingSetFactoryAddedEventArgs</name><parameter_list pos:line="26" pos:column="47">()</parameter_list> <member_list pos:line="26" pos:column="50">: <call><name pos:line="26" pos:column="52">base</name><argument_list pos:line="26" pos:column="56">()</argument_list></call> </member_list><block pos:line="26" pos:column="59">{ }</block></constructor>
+
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// Create a new working set factory added event argument object</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// &lt;param name="addedWorkingSetFactory"&gt;The added working set factory&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="32" pos:column="9">public</specifier> <name pos:line="32" pos:column="16">WorkingSetFactoryAddedEventArgs</name><parameter_list pos:line="32" pos:column="47">(<param><decl><type><name pos:line="32" pos:column="48">AbstractWorkingSetFactory</name></type> <name pos:line="32" pos:column="74">addedWorkingSetFactory</name></decl></param>)</parameter_list>
+            <member_list pos:line="33" pos:column="13">: <call><name pos:line="33" pos:column="15">base</name><argument_list pos:line="33" pos:column="19">()</argument_list></call> </member_list><block pos:line="33" pos:column="22">{
+            <expr_stmt><expr><name pos:line="34" pos:column="13">WorkingSetFactory</name> <op:operator pos:line="34" pos:column="31">=</op:operator> <name pos:line="34" pos:column="33">addedWorkingSetFactory</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// The working set factory that was added</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="40" pos:column="9">public</specifier> <name pos:line="40" pos:column="16">AbstractWorkingSetFactory</name></type> <name pos:line="40" pos:column="42">WorkingSetFactory</name> <block pos:line="40" pos:column="60">{ <function_decl><name pos:line="40" pos:column="62">get</name>;</function_decl> <function_decl><name pos:line="40" pos:column="67">set</name>;</function_decl> }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace>
+</unit>

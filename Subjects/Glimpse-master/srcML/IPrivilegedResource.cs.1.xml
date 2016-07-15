@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensibility\IPrivilegedResource.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">Glimpse</name><op:operator pos:line="1" pos:column="14">.</op:operator><name pos:line="1" pos:column="15">Core</name><op:operator pos:line="1" pos:column="19">.</op:operator><name pos:line="1" pos:column="20">Framework</name></name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Core</name><op:operator pos:line="3" pos:column="23">.</op:operator><name pos:line="3" pos:column="24">Extensibility</name></name>
+<block pos:line="4" pos:column="1">{
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="6" pos:column="5">/// &lt;para&gt;</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// &lt;c&gt;IPrivilegedResource&lt;/c&gt; has the ability to directly access Glimpse internals in order to provide Glimpse clients with data and assets for rendering to the end user.</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// &lt;/para&gt;</comment>
+    <comment type="line" pos:line="9" pos:column="5">/// &lt;para&gt;</comment>
+    <comment type="line" pos:line="10" pos:column="5">/// When implemented, a resource will be discovered and added to the collection of resources. </comment>
+    <comment type="line" pos:line="11" pos:column="5">/// &lt;/para&gt;</comment>
+    <comment type="line" pos:line="12" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class type="interface"><specifier pos:line="13" pos:column="5">internal</specifier> interface <name pos:line="13" pos:column="24">IPrivilegedResource</name> <super pos:line="13" pos:column="44">: <name pos:line="13" pos:column="46">IResource</name></super>
+    <block pos:line="14" pos:column="5">{
+        <comment type="line" pos:line="15" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="16" pos:column="9">/// Executes the specified context.</comment>
+        <comment type="line" pos:line="17" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="18" pos:column="9">/// &lt;param name="context"&gt;</comment>
+        <comment type="line" pos:line="19" pos:column="9">/// The context.</comment>
+        <comment type="line" pos:line="20" pos:column="9">/// &lt;/param&gt;</comment>
+        <comment type="line" pos:line="21" pos:column="9">/// &lt;param name="configuration"&gt;</comment>
+        <comment type="line" pos:line="22" pos:column="9">/// The configuration.</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// &lt;/param&gt;</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// Use of &lt;see cref="IPrivilegedResource"/&gt; is reserved.</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// A &lt;see cref="IResourceResult"/&gt;.</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;/returns&gt;</comment>
+        <function_decl><type><name pos:line="30" pos:column="9">IResourceResult</name></type> <name pos:line="30" pos:column="25">Execute</name><parameter_list pos:line="30" pos:column="32">(<param><decl><type><name pos:line="30" pos:column="33">IResourceContext</name></type> <name pos:line="30" pos:column="50">context</name></decl></param>, <param><decl><type><name pos:line="30" pos:column="59">IGlimpseConfiguration</name></type> <name pos:line="30" pos:column="81">configuration</name></decl></param>)</parameter_list>;</function_decl> 
+    }</block></class>
+}</block></namespace></unit>

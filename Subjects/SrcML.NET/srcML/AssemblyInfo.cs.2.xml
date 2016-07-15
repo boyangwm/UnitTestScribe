@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML.Data\Properties\AssemblyInfo.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2013 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name><name pos:line="12" pos:column="7">System</name><op:operator pos:line="12" pos:column="13">.</op:operator><name pos:line="12" pos:column="14">Reflection</name></name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Runtime</name><op:operator pos:line="13" pos:column="21">.</op:operator><name pos:line="13" pos:column="22">InteropServices</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name pos:line="14" pos:column="7">System</name>;</using>
+
+<comment type="line" pos:line="16" pos:column="1">// General Information about an assembly is controlled through the following </comment>
+<comment type="line" pos:line="17" pos:column="1">// set of attributes. Change these attribute values to modify the information</comment>
+<comment type="line" pos:line="18" pos:column="1">// associated with an assembly.</comment>
+<attribute pos:line="19" pos:column="1">[<target pos:line="19" pos:column="2">assembly</target>: <expr><call><name pos:line="19" pos:column="12">AssemblyTitle</name><argument_list pos:line="19" pos:column="25">(<argument><expr><lit:literal type="string" pos:line="19" pos:column="26">"ABB.SrcML.Data"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+<attribute pos:line="20" pos:column="1">[<target pos:line="20" pos:column="2">assembly</target>: <expr><call><name pos:line="20" pos:column="12">AssemblyProduct</name><argument_list pos:line="20" pos:column="27">(<argument><expr><lit:literal type="string" pos:line="20" pos:column="28">"ABB.SrcML.Data"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+<attribute pos:line="21" pos:column="1">[<target pos:line="21" pos:column="2">assembly</target>: <expr><call><name pos:line="21" pos:column="12">AssemblyDescription</name><argument_list pos:line="21" pos:column="31">(<argument><expr><lit:literal type="string" pos:line="21" pos:column="32">"SrcML Data with Incremental Update"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+<attribute pos:line="22" pos:column="1">[<target pos:line="22" pos:column="2">assembly</target>: <expr><call><name pos:line="22" pos:column="12">AssemblyCopyright</name><argument_list pos:line="22" pos:column="29">(<argument><expr><lit:literal type="string" pos:line="22" pos:column="30">"Copyright © ABB 2013"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+
+<attribute pos:line="24" pos:column="1">[<target pos:line="24" pos:column="2">assembly</target>: <expr><call><name pos:line="24" pos:column="12">CLSCompliant</name><argument_list pos:line="24" pos:column="24">(<argument><expr><lit:literal type="boolean" pos:line="24" pos:column="25">true</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+
+<comment type="line" pos:line="26" pos:column="1">// Setting ComVisible to false makes the types in this assembly not visible </comment>
+<comment type="line" pos:line="27" pos:column="1">// to COM components.  If you need to access a type in this assembly from </comment>
+<comment type="line" pos:line="28" pos:column="1">// COM, set the ComVisible attribute to true on that type.</comment>
+<attribute pos:line="29" pos:column="1">[<target pos:line="29" pos:column="2">assembly</target>: <expr><call><name pos:line="29" pos:column="12">ComVisible</name><argument_list pos:line="29" pos:column="22">(<argument><expr><lit:literal type="boolean" pos:line="29" pos:column="23">false</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+
+<comment type="line" pos:line="31" pos:column="1">// The following GUID is for the ID of the typelib if this project is exposed to COM</comment>
+<attribute pos:line="32" pos:column="1">[<target pos:line="32" pos:column="2">assembly</target>: <expr><call><name pos:line="32" pos:column="12">Guid</name><argument_list pos:line="32" pos:column="16">(<argument><expr><lit:literal type="string" pos:line="32" pos:column="17">"A17DFCB8-314E-4919-8399-937EE12BF8A4"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute></unit>

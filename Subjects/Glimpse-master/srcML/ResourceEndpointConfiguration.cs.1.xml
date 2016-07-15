@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Framework\ResourceEndpointConfiguration.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">Glimpse</name><op:operator pos:line="3" pos:column="14">.</op:operator><name pos:line="3" pos:column="15">Core</name><op:operator pos:line="3" pos:column="19">.</op:operator><name pos:line="3" pos:column="20">Extensibility</name></name>;</using>
+
+<namespace pos:line="5" pos:column="1">namespace <name><name pos:line="5" pos:column="11">Glimpse</name><op:operator pos:line="5" pos:column="18">.</op:operator><name pos:line="5" pos:column="19">Core</name><op:operator pos:line="5" pos:column="23">.</op:operator><name pos:line="5" pos:column="24">Framework</name></name>
+<block pos:line="6" pos:column="1">{
+    <comment type="line" pos:line="7" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// Defines methods to implement a resource endpoint configuration.</comment>
+    <comment type="line" pos:line="9" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="10" pos:column="5">public</specifier> <specifier pos:line="10" pos:column="12">abstract</specifier> class <name pos:line="10" pos:column="27">ResourceEndpointConfiguration</name>
+    <block pos:line="11" pos:column="5">{
+        <comment type="line" pos:line="12" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// Generates the URI template.</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// &lt;param name="resource"&gt;The resource.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="16" pos:column="9">/// &lt;param name="baseUri"&gt;The base URI.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="17" pos:column="9">/// &lt;param name="logger"&gt;The logger.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="18" pos:column="9">/// &lt;returns&gt;A Uri template a client can expand to invoke a resource.&lt;/returns&gt;</comment>
+        <comment type="line" pos:line="19" pos:column="9">/// &lt;exception cref="System.ArgumentNullException"&gt;Throws and exception if &lt;paramref name="resource"/&gt; or &lt;paramref name="logger"/&gt; is &lt;c&gt;null&lt;/c&gt;.&lt;/exception&gt;</comment>
+        <function><type><specifier pos:line="20" pos:column="9">public</specifier> <name pos:line="20" pos:column="16">string</name></type> <name pos:line="20" pos:column="23">GenerateUriTemplate</name><parameter_list pos:line="20" pos:column="42">(<param><decl><type><name pos:line="20" pos:column="43">IResource</name></type> <name pos:line="20" pos:column="53">resource</name></decl></param>, <param><decl><type><name pos:line="20" pos:column="63">string</name></type> <name pos:line="20" pos:column="70">baseUri</name></decl></param>, <param><decl><type><name pos:line="20" pos:column="79">ILogger</name></type> <name pos:line="20" pos:column="87">logger</name></decl></param>)</parameter_list>
+        <block pos:line="21" pos:column="9">{
+            <if pos:line="22" pos:column="13">if <condition pos:line="22" pos:column="16">(<expr><name pos:line="22" pos:column="17">resource</name> <op:operator pos:line="22" pos:column="26">==</op:operator> <name pos:line="22" pos:column="29">null</name></expr>)</condition><then pos:line="22" pos:column="34">
+            <block pos:line="23" pos:column="13">{
+                <throw pos:line="24" pos:column="17">throw <expr><op:operator pos:line="24" pos:column="23">new</op:operator> <call><name pos:line="24" pos:column="27">ArgumentNullException</name><argument_list pos:line="24" pos:column="48">(<argument><expr><lit:literal type="string" pos:line="24" pos:column="49">"resource"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <if pos:line="27" pos:column="13">if <condition pos:line="27" pos:column="16">(<expr><name pos:line="27" pos:column="17">logger</name> <op:operator pos:line="27" pos:column="24">==</op:operator> <name pos:line="27" pos:column="27">null</name></expr>)</condition><then pos:line="27" pos:column="32">
+            <block pos:line="28" pos:column="13">{
+                <throw pos:line="29" pos:column="17">throw <expr><op:operator pos:line="29" pos:column="23">new</op:operator> <call><name pos:line="29" pos:column="27">ArgumentNullException</name><argument_list pos:line="29" pos:column="48">(<argument><expr><lit:literal type="string" pos:line="29" pos:column="49">"logger"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <decl_stmt><decl><type><name pos:line="32" pos:column="13">string</name></type> <name pos:line="32" pos:column="20">result</name> <init pos:line="32" pos:column="27">= <expr><name pos:line="32" pos:column="29">null</name></expr></init></decl>;</decl_stmt>
+            <try pos:line="33" pos:column="13">try
+            <block pos:line="34" pos:column="13">{
+                <expr_stmt><expr><name pos:line="35" pos:column="17">result</name> <op:operator pos:line="35" pos:column="24">=</op:operator> <call><name pos:line="35" pos:column="26">GenerateUriTemplate</name><argument_list pos:line="35" pos:column="45">(<argument><expr><name><name pos:line="35" pos:column="46">resource</name><op:operator pos:line="35" pos:column="54">.</op:operator><name pos:line="35" pos:column="55">Name</name></name></expr></argument>, <argument><expr><name pos:line="35" pos:column="61">baseUri</name></expr></argument>, <argument><expr><name><name pos:line="35" pos:column="70">resource</name><op:operator pos:line="35" pos:column="78">.</op:operator><name pos:line="35" pos:column="79">Parameters</name></name></expr></argument>, <argument><expr><name pos:line="35" pos:column="91">logger</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block>
+            <catch pos:line="37" pos:column="13">catch <parameter_list pos:line="37" pos:column="19">(<param><decl><type><name pos:line="37" pos:column="20">Exception</name></type> <name pos:line="37" pos:column="30">exception</name></decl></param>)</parameter_list>
+            <block pos:line="38" pos:column="13">{
+                <expr_stmt><expr><call><name><name pos:line="39" pos:column="17">logger</name><op:operator pos:line="39" pos:column="23">.</op:operator><name pos:line="39" pos:column="24">Error</name></name><argument_list pos:line="39" pos:column="29">(<argument><expr><name><name pos:line="39" pos:column="30">Resources</name><op:operator pos:line="39" pos:column="39">.</op:operator><name pos:line="39" pos:column="40">GenerateUriExecutionError</name></name></expr></argument>, <argument><expr><name pos:line="39" pos:column="67">exception</name></expr></argument>, <argument><expr><call><name pos:line="39" pos:column="78">GetType</name><argument_list pos:line="39" pos:column="85">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></catch></try>
+
+            <if pos:line="42" pos:column="13">if <condition pos:line="42" pos:column="16">(<expr><name pos:line="42" pos:column="17">result</name> <op:operator pos:line="42" pos:column="24">!=</op:operator> <name pos:line="42" pos:column="27">null</name></expr>)</condition><then pos:line="42" pos:column="32">
+            <block pos:line="43" pos:column="13">{
+                <return pos:line="44" pos:column="17">return <expr><name pos:line="44" pos:column="24">result</name></expr>;</return>
+            }</block></then></if>
+
+            <return pos:line="47" pos:column="13">return <expr><name><name pos:line="47" pos:column="20">string</name><op:operator pos:line="47" pos:column="26">.</op:operator><name pos:line="47" pos:column="27">Empty</name></name></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="50" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="51" pos:column="9">/// Generates the URI template.</comment>
+        <comment type="line" pos:line="52" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="53" pos:column="9">/// &lt;param name="resourceName"&gt;Name of the resource.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// &lt;param name="baseUri"&gt;The base URI.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="55" pos:column="9">/// &lt;param name="parameters"&gt;The parameters.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="56" pos:column="9">/// &lt;param name="logger"&gt;The logger.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="57" pos:column="9">/// &lt;returns&gt;A Uri template a client can expand to invoke a resource.&lt;/returns&gt;</comment>
+        <function_decl><type><specifier pos:line="58" pos:column="9">protected</specifier> <specifier pos:line="58" pos:column="19">abstract</specifier> <name pos:line="58" pos:column="28">string</name></type> <name pos:line="58" pos:column="35">GenerateUriTemplate</name><parameter_list pos:line="58" pos:column="54">(<param><decl><type><name pos:line="58" pos:column="55">string</name></type> <name pos:line="58" pos:column="62">resourceName</name></decl></param>, <param><decl><type><name pos:line="58" pos:column="76">string</name></type> <name pos:line="58" pos:column="83">baseUri</name></decl></param>, <param><decl><type><name><name pos:line="58" pos:column="92">IEnumerable</name><argument_list pos:line="58" pos:column="103">&lt;<argument><name pos:line="58" pos:column="104">ResourceParameterMetadata</name></argument>&gt;</argument_list></name></type> <name pos:line="58" pos:column="131">parameters</name></decl></param>, <param><decl><type><name pos:line="58" pos:column="143">ILogger</name></type> <name pos:line="58" pos:column="151">logger</name></decl></param>)</parameter_list>;</function_decl>
+    }</block></class>
+}</block></namespace>
+</unit>

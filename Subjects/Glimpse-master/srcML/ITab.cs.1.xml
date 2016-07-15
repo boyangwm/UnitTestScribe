@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensibility\ITab.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Core</name><op:operator pos:line="3" pos:column="23">.</op:operator><name pos:line="3" pos:column="24">Extensibility</name></name>
+<block pos:line="4" pos:column="1">{
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="6" pos:column="5">/// &lt;para&gt;</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// Definition for an object which will be represented in the UI as a Tab. To </comment>
+    <comment type="line" pos:line="8" pos:column="5">/// operate you simply need to implement this interface and return an object </comment>
+    <comment type="line" pos:line="9" pos:column="5">/// graph that you would like to view.</comment>
+    <comment type="line" pos:line="10" pos:column="5">/// &lt;/para&gt;</comment>
+    <comment type="line" pos:line="11" pos:column="5">/// &lt;para&gt;</comment>
+    <comment type="line" pos:line="12" pos:column="5">/// When returning data, you can either return the object which represents the </comment>
+    <comment type="line" pos:line="13" pos:column="5">/// Glimpse protocol or return a typed view model. It is recommended that you </comment>
+    <comment type="line" pos:line="14" pos:column="5">/// use typed view models, as it is this object that will be stored in by the </comment>
+    <comment type="line" pos:line="15" pos:column="5">/// Data Store. If this is done, it means that these typed objects can be queried</comment>
+    <comment type="line" pos:line="16" pos:column="5">/// at a latter stage. That said, if you are after simplicity, you can return </comment>
+    <comment type="line" pos:line="17" pos:column="5">/// objects in the shape the Glimpse Protocol requires.</comment>
+    <comment type="line" pos:line="18" pos:column="5">/// &lt;/para&gt;</comment>
+    <comment type="line" pos:line="19" pos:column="5">/// &lt;para&gt;</comment>
+    <comment type="line" pos:line="20" pos:column="5">/// If you do decide to work with a typed view model you can convert this into </comment>
+    <comment type="line" pos:line="21" pos:column="5">/// an objects in the shape the Glimpse Protocol by implementing &lt;see cref="ISerializationConverter"/&gt;</comment>
+    <comment type="line" pos:line="22" pos:column="5">/// targeting the type of the view model.</comment>
+    <comment type="line" pos:line="23" pos:column="5">/// &lt;/para&gt;</comment>
+    <comment type="line" pos:line="24" pos:column="5">/// &lt;para&gt;</comment>
+    <comment type="line" pos:line="25" pos:column="5">/// Alternatively, if you after simplicity and return an object which represents  </comment>
+    <comment type="line" pos:line="26" pos:column="5">/// the Glimpse protocol, you can use &lt;see cref="Glimpse.Core.Tab.Assist.TabObject"/&gt;</comment>
+    <comment type="line" pos:line="27" pos:column="5">/// and &lt;see cref="Glimpse.Core.Tab.Assist.TabSection"/&gt; as helpers.</comment>
+    <comment type="line" pos:line="28" pos:column="5">/// &lt;/para&gt;</comment>
+    <comment type="line" pos:line="29" pos:column="5">/// &lt;para&gt;</comment>
+    <comment type="line" pos:line="30" pos:column="5">/// Additional functionality can be injected into via additionally implementing </comment>
+    <comment type="line" pos:line="31" pos:column="5">/// the following interfaces:</comment>
+    <comment type="line" pos:line="32" pos:column="5">/// - &lt;seealso cref="IKey"/&gt;: Key that will be used to identify the tab within the client.</comment>
+    <comment type="line" pos:line="33" pos:column="5">/// - &lt;seealso cref="IDocumentation"/&gt;: URI that will describe where the documentation for the tab can be found.</comment>
+    <comment type="line" pos:line="34" pos:column="5">/// - &lt;seealso cref="ITabLayout"/&gt;: Control how the layout of the content should look.</comment>
+    <comment type="line" pos:line="35" pos:column="5">/// - &lt;seealso cref="ITabSetup"/&gt;: Allows tab to inject any hooks it needs within the system.</comment>
+    <comment type="line" pos:line="36" pos:column="5">/// - &lt;seealso cref="ISerializationConverter"/&gt;: Allow complex objects to be converted into the Glimpse protocol. </comment>
+    <comment type="line" pos:line="37" pos:column="5">/// &lt;/para&gt;</comment>
+    <comment type="line" pos:line="38" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class type="interface"><specifier pos:line="39" pos:column="5">public</specifier> interface <name pos:line="39" pos:column="22">ITab</name>
+    <block pos:line="40" pos:column="5">{
+        <comment type="line" pos:line="41" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// Gets the name that will show in the tab.</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// &lt;value&gt;The name.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="45" pos:column="9">string</name></type> <name pos:line="45" pos:column="16">Name</name> <block pos:line="45" pos:column="21">{ <function_decl><name pos:line="45" pos:column="23">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="47" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// Gets when the &lt;see cref="ITab.GetData"/&gt; method should run.</comment>
+        <comment type="line" pos:line="49" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="50" pos:column="9">/// &lt;value&gt;The execute on.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="51" pos:column="9">RuntimeEvent</name></type> <name pos:line="51" pos:column="22">ExecuteOn</name> <block pos:line="51" pos:column="32">{ <function_decl><name pos:line="51" pos:column="34">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="53" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// Gets the type of the request context that the Tab relies on. If </comment>
+        <comment type="line" pos:line="55" pos:column="9">/// returns null, the tab can be used in any context.</comment>
+        <comment type="line" pos:line="56" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="57" pos:column="9">/// &lt;value&gt;The type of the request context.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="58" pos:column="9">Type</name></type> <name pos:line="58" pos:column="14">RequestContextType</name> <block pos:line="58" pos:column="33">{ <function_decl><name pos:line="58" pos:column="35">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="60" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="61" pos:column="9">/// Gets the data that should be shown in the UI.</comment>
+        <comment type="line" pos:line="62" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="63" pos:column="9">/// &lt;param name="context"&gt;The context.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="64" pos:column="9">/// &lt;returns&gt;Object that will be shown.&lt;/returns&gt;</comment>
+        <function_decl><type><name pos:line="65" pos:column="9">object</name></type> <name pos:line="65" pos:column="16">GetData</name><parameter_list pos:line="65" pos:column="23">(<param><decl><type><name pos:line="65" pos:column="24">ITabContext</name></type> <name pos:line="65" pos:column="36">context</name></decl></param>)</parameter_list>;</function_decl>
+    }</block></class>
+}</block></namespace>
+</unit>

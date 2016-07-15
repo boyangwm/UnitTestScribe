@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML\Utilities\ExecutableReturnValue.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2010 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Text</name></name>;</using>
+
+<namespace pos:line="17" pos:column="1">namespace <name><name pos:line="17" pos:column="11">ABB</name><op:operator pos:line="17" pos:column="14">.</op:operator><name pos:line="17" pos:column="15">SrcML</name><op:operator pos:line="17" pos:column="20">.</op:operator><name pos:line="17" pos:column="21">Utilities</name></name>
+<block pos:line="18" pos:column="1">{
+    <enum><specifier pos:line="19" pos:column="5">internal</specifier> enum <macro><name pos:line="19" pos:column="19">ExecutableReturnValue</name></macro>
+    <block pos:line="20" pos:column="5">{
+        <decl><name pos:line="21" pos:column="9">Normal</name> <init pos:line="21" pos:column="16">= <expr><lit:literal type="number" pos:line="21" pos:column="18">0</lit:literal></expr></init></decl><op:operator pos:line="21" pos:column="19">,</op:operator>
+        <decl><name pos:line="22" pos:column="9">Error</name> <init pos:line="22" pos:column="15">= <expr><lit:literal type="number" pos:line="22" pos:column="17">1</lit:literal></expr></init></decl><op:operator pos:line="22" pos:column="18">,</op:operator>
+        <decl><name pos:line="23" pos:column="9">ProblemWithInputFile</name> <init pos:line="23" pos:column="30">= <expr><lit:literal type="number" pos:line="23" pos:column="32">2</lit:literal></expr></init></decl><op:operator pos:line="23" pos:column="33">,</op:operator>
+        <decl><name pos:line="24" pos:column="9">UnknownOption</name> <init pos:line="24" pos:column="23">= <expr><lit:literal type="number" pos:line="24" pos:column="25">3</lit:literal></expr></init></decl><op:operator pos:line="24" pos:column="26">,</op:operator>
+        <decl><name pos:line="25" pos:column="9">UnknownEncoding</name> <init pos:line="25" pos:column="25">= <expr><lit:literal type="number" pos:line="25" pos:column="27">4</lit:literal></expr></init></decl><op:operator pos:line="25" pos:column="28">,</op:operator>
+        <decl><name pos:line="26" pos:column="9">InvalidLanguage</name> <init pos:line="26" pos:column="25">= <expr><lit:literal type="number" pos:line="26" pos:column="27">6</lit:literal></expr></init></decl><op:operator pos:line="26" pos:column="28">,</op:operator>
+        <decl><name pos:line="27" pos:column="9">LanguageOptionSpecifiedButValueMissing</name> <init pos:line="27" pos:column="48">= <expr><lit:literal type="number" pos:line="27" pos:column="50">7</lit:literal></expr></init></decl><op:operator pos:line="27" pos:column="51">,</op:operator>
+        <decl><name pos:line="28" pos:column="9">FilenameOptionSpecifiedButValueMissing</name> <init pos:line="28" pos:column="48">= <expr><lit:literal type="number" pos:line="28" pos:column="50">8</lit:literal></expr></init></decl><op:operator pos:line="28" pos:column="51">,</op:operator>
+        <decl><name pos:line="29" pos:column="9">DirectoryOptionSpecifiedButValueMissing</name> <init pos:line="29" pos:column="49">= <expr><lit:literal type="number" pos:line="29" pos:column="51">9</lit:literal></expr></init></decl><op:operator pos:line="29" pos:column="52">,</op:operator>
+        <decl><name pos:line="30" pos:column="9">VersionOptionSpecifiedButValueMissing</name> <init pos:line="30" pos:column="47">= <expr><lit:literal type="number" pos:line="30" pos:column="49">10</lit:literal></expr></init></decl><op:operator pos:line="30" pos:column="51">,</op:operator>
+        <decl><name pos:line="31" pos:column="9">TextEncodingOptionSpecifiedButValueMissing</name> <init pos:line="31" pos:column="52">= <expr><lit:literal type="number" pos:line="31" pos:column="54">11</lit:literal></expr></init></decl><op:operator pos:line="31" pos:column="56">,</op:operator>
+        <decl><name pos:line="32" pos:column="9">XmlEncodingOptionSpecifiedButValueMissing</name> <init pos:line="32" pos:column="51">= <expr><lit:literal type="number" pos:line="32" pos:column="53">12</lit:literal></expr></init></decl><op:operator pos:line="32" pos:column="55">,</op:operator>
+        <decl><name pos:line="33" pos:column="9">UnitOptionSpecifiedButValueMissing</name> <init pos:line="33" pos:column="44">= <expr><lit:literal type="number" pos:line="33" pos:column="46">13</lit:literal></expr></init></decl><op:operator pos:line="33" pos:column="48">,</op:operator>
+        <decl><name pos:line="34" pos:column="9">UnitOptionValueIsNotValid</name> <init pos:line="34" pos:column="35">= <expr><lit:literal type="number" pos:line="34" pos:column="37">14</lit:literal></expr></init></decl><op:operator pos:line="34" pos:column="39">,</op:operator>
+        <decl><name pos:line="35" pos:column="9">InvalidCombinationOfOptions</name> <init pos:line="35" pos:column="37">= <expr><lit:literal type="number" pos:line="35" pos:column="39">15</lit:literal></expr></init></decl><op:operator pos:line="35" pos:column="41">,</op:operator>
+        <decl><name pos:line="36" pos:column="9">IncompleteOutputDueToTermination</name> <init pos:line="36" pos:column="42">= <expr><lit:literal type="number" pos:line="36" pos:column="44">16</lit:literal></expr></init></decl>
+    }</block>
+<decl/></enum>}</block></namespace>
+</unit>

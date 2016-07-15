@@ -1,0 +1,1095 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\msdbg90.h" pos:tabs="8" pos:line="1" pos:column="1">
+
+<comment type="block" pos:line="3" pos:column="1">/* this ALWAYS GENERATED file contains the definitions for the interfaces */</comment>
+
+
+ <comment type="block" pos:line="6" pos:column="2">/* File created by MIDL compiler version 7.00.0499 */</comment>
+<comment type="block" pos:line="7" pos:column="1">/* Compiler settings for msdbg90.idl:
+    Oicf, W1, Zp8, env=Win32 (32b run)
+    protocol : dce , ms_ext, c_ext, robust
+    error checks: allocation ref bounds_check enum stub_data 
+    VC __declspec() decoration level: 
+         __declspec(uuid()), __declspec(selectany), __declspec(novtable)
+         DECLSPEC_UUID(), MIDL_INTERFACE()
+*/</comment>
+<comment type="line" pos:line="15" pos:column="1">//@@MIDL_FILE_HEADING(  )</comment>
+
+<cpp:pragma pos:line="17" pos:column="1">#<cpp:directive pos:line="17" pos:column="2">pragma</cpp:directive> warning( disable: 4049 )</cpp:pragma>  <comment type="block" pos:line="17" pos:column="35">/* more than 64k source lines */</comment>
+
+
+<comment type="block" pos:line="20" pos:column="1">/* verify that the &lt;rpcndr.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="21" pos:column="1">#<cpp:directive pos:line="21" pos:column="2">ifndef</cpp:directive> <name pos:line="21" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="22" pos:column="1">#<cpp:directive pos:line="22" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="22" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:macro> <cpp:value pos:line="22" pos:column="39">475</cpp:value></cpp:define>
+<cpp:endif pos:line="23" pos:column="1">#<cpp:directive pos:line="23" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="25" pos:column="1">/* verify that the &lt;rpcsal.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="26" pos:column="1">#<cpp:directive pos:line="26" pos:column="2">ifndef</cpp:directive> <name pos:line="26" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="27" pos:column="1">#<cpp:directive pos:line="27" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="27" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:macro> <cpp:value pos:line="27" pos:column="39">100</cpp:value></cpp:define>
+<cpp:endif pos:line="28" pos:column="1">#<cpp:directive pos:line="28" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:include pos:line="30" pos:column="1">#<cpp:directive pos:line="30" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="30" pos:column="10">"rpc.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="31" pos:column="1">#<cpp:directive pos:line="31" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="31" pos:column="10">"rpcndr.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifndef pos:line="33" pos:column="1">#<cpp:directive pos:line="33" pos:column="2">ifndef</cpp:directive> <name pos:line="33" pos:column="9">__RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:error pos:line="34" pos:column="1">#<cpp:directive pos:line="34" pos:column="2">error</cpp:directive> this stub requires an updated version of &lt;rpcndr.h&gt;</cpp:error>
+<cpp:endif pos:line="35" pos:column="1">#<cpp:directive pos:line="35" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="35" pos:column="8">// __RPCNDR_H_VERSION__</comment>
+
+<cpp:ifndef pos:line="37" pos:column="1">#<cpp:directive pos:line="37" pos:column="2">ifndef</cpp:directive> <name pos:line="37" pos:column="9">COM_NO_WINDOWS_H</name></cpp:ifndef>
+<cpp:include pos:line="38" pos:column="1">#<cpp:directive pos:line="38" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="38" pos:column="10">"windows.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="39" pos:column="1">#<cpp:directive pos:line="39" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="39" pos:column="10">"ole2.h"</lit:literal></cpp:file></cpp:include>
+<cpp:endif pos:line="40" pos:column="1">#<cpp:directive pos:line="40" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="40" pos:column="8">/*COM_NO_WINDOWS_H*/</comment>
+
+<cpp:ifndef pos:line="42" pos:column="1">#<cpp:directive pos:line="42" pos:column="2">ifndef</cpp:directive> <name pos:line="42" pos:column="9">__msdbg90_h__</name></cpp:ifndef>
+<cpp:define pos:line="43" pos:column="1">#<cpp:directive pos:line="43" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="43" pos:column="9">__msdbg90_h__</name></cpp:macro></cpp:define>
+
+<cpp:if pos:line="45" pos:column="1">#<cpp:directive pos:line="45" pos:column="2">if</cpp:directive> <expr><call><name pos:line="45" pos:column="5">defined</name><argument_list pos:line="45" pos:column="12">(<argument><expr><name pos:line="45" pos:column="13">_MSC_VER</name></expr></argument>)</argument_list></call> <op:operator pos:line="45" pos:column="23">&amp;&amp;</op:operator> <op:operator pos:line="45" pos:column="26">(</op:operator><name pos:line="45" pos:column="27">_MSC_VER</name> <op:operator pos:line="45" pos:column="36">&gt;=</op:operator> <lit:literal type="number" pos:line="45" pos:column="39">1020</lit:literal><op:operator pos:line="45" pos:column="43">)</op:operator></expr></cpp:if>
+<cpp:pragma pos:line="46" pos:column="1">#<cpp:directive pos:line="46" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+<cpp:endif pos:line="47" pos:column="1">#<cpp:directive pos:line="47" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="49" pos:column="1">/* Forward Declarations */</comment> 
+
+<cpp:ifndef pos:line="51" pos:column="1">#<cpp:directive pos:line="51" pos:column="2">ifndef</cpp:directive> <name pos:line="51" pos:column="9">__IDebugCoreServer90_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="52" pos:column="1">#<cpp:directive pos:line="52" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="52" pos:column="9">__IDebugCoreServer90_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="53" pos:column="1">typedef <type><name pos:line="53" pos:column="9">interface</name> <name pos:line="53" pos:column="19">IDebugCoreServer90</name></type> <name pos:line="53" pos:column="38">IDebugCoreServer90</name>;</typedef>
+<cpp:endif pos:line="54" pos:column="1">#<cpp:directive pos:line="54" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="54" pos:column="9">/* __IDebugCoreServer90_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="57" pos:column="1">#<cpp:directive pos:line="57" pos:column="2">ifndef</cpp:directive> <name pos:line="57" pos:column="9">__IDebugThread90_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="58" pos:column="1">#<cpp:directive pos:line="58" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="58" pos:column="9">__IDebugThread90_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="59" pos:column="1">typedef <type><name pos:line="59" pos:column="9">interface</name> <name pos:line="59" pos:column="19">IDebugThread90</name></type> <name pos:line="59" pos:column="34">IDebugThread90</name>;</typedef>
+<cpp:endif pos:line="60" pos:column="1">#<cpp:directive pos:line="60" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="60" pos:column="9">/* __IDebugThread90_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="63" pos:column="1">#<cpp:directive pos:line="63" pos:column="2">ifndef</cpp:directive> <name pos:line="63" pos:column="9">__IDebugStepper90_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="64" pos:column="1">#<cpp:directive pos:line="64" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="64" pos:column="9">__IDebugStepper90_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="65" pos:column="1">typedef <type><name pos:line="65" pos:column="9">interface</name> <name pos:line="65" pos:column="19">IDebugStepper90</name></type> <name pos:line="65" pos:column="35">IDebugStepper90</name>;</typedef>
+<cpp:endif pos:line="66" pos:column="1">#<cpp:directive pos:line="66" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="66" pos:column="9">/* __IDebugStepper90_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="69" pos:column="1">#<cpp:directive pos:line="69" pos:column="2">ifndef</cpp:directive> <name pos:line="69" pos:column="9">__IDebugCodePath90_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="70" pos:column="1">#<cpp:directive pos:line="70" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="70" pos:column="9">__IDebugCodePath90_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="71" pos:column="1">typedef <type><name pos:line="71" pos:column="9">interface</name> <name pos:line="71" pos:column="19">IDebugCodePath90</name></type> <name pos:line="71" pos:column="36">IDebugCodePath90</name>;</typedef>
+<cpp:endif pos:line="72" pos:column="1">#<cpp:directive pos:line="72" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="72" pos:column="9">/* __IDebugCodePath90_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="75" pos:column="1">#<cpp:directive pos:line="75" pos:column="2">ifndef</cpp:directive> <name pos:line="75" pos:column="9">__IEnumDebugCodePaths90_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="76" pos:column="1">#<cpp:directive pos:line="76" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="76" pos:column="9">__IEnumDebugCodePaths90_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="77" pos:column="1">typedef <type><name pos:line="77" pos:column="9">interface</name> <name pos:line="77" pos:column="19">IEnumDebugCodePaths90</name></type> <name pos:line="77" pos:column="41">IEnumDebugCodePaths90</name>;</typedef>
+<cpp:endif pos:line="78" pos:column="1">#<cpp:directive pos:line="78" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="78" pos:column="9">/* __IEnumDebugCodePaths90_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="81" pos:column="1">#<cpp:directive pos:line="81" pos:column="2">ifndef</cpp:directive> <name pos:line="81" pos:column="9">__IDebugProgramEnhancedStep90_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="82" pos:column="1">#<cpp:directive pos:line="82" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="82" pos:column="9">__IDebugProgramEnhancedStep90_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="83" pos:column="1">typedef <type><name pos:line="83" pos:column="9">interface</name> <name pos:line="83" pos:column="19">IDebugProgramEnhancedStep90</name></type> <name pos:line="83" pos:column="47">IDebugProgramEnhancedStep90</name>;</typedef>
+<cpp:endif pos:line="84" pos:column="1">#<cpp:directive pos:line="84" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="84" pos:column="9">/* __IDebugProgramEnhancedStep90_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="87" pos:column="1">#<cpp:directive pos:line="87" pos:column="2">ifndef</cpp:directive> <name pos:line="87" pos:column="9">__IDebugProcessEnhancedStep90_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="88" pos:column="1">#<cpp:directive pos:line="88" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="88" pos:column="9">__IDebugProcessEnhancedStep90_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="89" pos:column="1">typedef <type><name pos:line="89" pos:column="9">interface</name> <name pos:line="89" pos:column="19">IDebugProcessEnhancedStep90</name></type> <name pos:line="89" pos:column="47">IDebugProcessEnhancedStep90</name>;</typedef>
+<cpp:endif pos:line="90" pos:column="1">#<cpp:directive pos:line="90" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="90" pos:column="9">/* __IDebugProcessEnhancedStep90_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="93" pos:column="1">#<cpp:directive pos:line="93" pos:column="2">ifndef</cpp:directive> <name pos:line="93" pos:column="9">__IDebugEngineStepFilterManager90_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="94" pos:column="1">#<cpp:directive pos:line="94" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="94" pos:column="9">__IDebugEngineStepFilterManager90_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="95" pos:column="1">typedef <type><name pos:line="95" pos:column="9">interface</name> <name pos:line="95" pos:column="19">IDebugEngineStepFilterManager90</name></type> <name pos:line="95" pos:column="51">IDebugEngineStepFilterManager90</name>;</typedef>
+<cpp:endif pos:line="96" pos:column="1">#<cpp:directive pos:line="96" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="96" pos:column="9">/* __IDebugEngineStepFilterManager90_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="99" pos:column="1">#<cpp:directive pos:line="99" pos:column="2">ifndef</cpp:directive> <name pos:line="99" pos:column="9">__IDebugStepCompleteEvent90_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="100" pos:column="1">#<cpp:directive pos:line="100" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="100" pos:column="9">__IDebugStepCompleteEvent90_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="101" pos:column="1">typedef <type><name pos:line="101" pos:column="9">interface</name> <name pos:line="101" pos:column="19">IDebugStepCompleteEvent90</name></type> <name pos:line="101" pos:column="45">IDebugStepCompleteEvent90</name>;</typedef>
+<cpp:endif pos:line="102" pos:column="1">#<cpp:directive pos:line="102" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="102" pos:column="9">/* __IDebugStepCompleteEvent90_FWD_DEFINED__ */</comment>
+
+
+<comment type="block" pos:line="105" pos:column="1">/* header files for imported files */</comment>
+<cpp:include pos:line="106" pos:column="1">#<cpp:directive pos:line="106" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="106" pos:column="10">"oaidl.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="107" pos:column="1">#<cpp:directive pos:line="107" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="107" pos:column="10">"ocidl.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="108" pos:column="1">#<cpp:directive pos:line="108" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="108" pos:column="10">"msdbg.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifdef pos:line="110" pos:column="1">#<cpp:directive pos:line="110" pos:column="2">ifdef</cpp:directive> <name pos:line="110" pos:column="8">__cplusplus</name></cpp:ifdef>
+<extern pos:line="111" pos:column="1">extern <lit:literal type="string" pos:line="111" pos:column="8">"C"</lit:literal><block pos:line="111" pos:column="11">{
+<cpp:endif pos:line="112" pos:column="1">#<cpp:directive pos:line="112" pos:column="2">endif</cpp:directive></cpp:endif> 
+
+
+<comment type="block" pos:line="115" pos:column="1">/* interface __MIDL_itf_msdbg90_0000_0000 */</comment>
+<comment type="block" pos:line="116" pos:column="1">/* [local] */</comment> 
+
+
+<enum pos:line="119" pos:column="1">enum <name pos:line="119" pos:column="6">enum_EVALFLAGS90</name>
+    <block pos:line="120" pos:column="5">{	<decl><name pos:line="120" pos:column="9">EVAL90_RETURNVALUE</name>	<init pos:line="120" pos:column="33">= <expr><lit:literal type="number" pos:line="120" pos:column="35">0x2</lit:literal></expr></init></decl><op:operator pos:line="120" pos:column="38">,</op:operator>
+	<decl><name pos:line="121" pos:column="9">EVAL90_NOSIDEEFFECTS</name>	<init pos:line="121" pos:column="33">= <expr><lit:literal type="number" pos:line="121" pos:column="35">0x4</lit:literal></expr></init></decl><op:operator pos:line="121" pos:column="38">,</op:operator>
+	<decl><name pos:line="122" pos:column="9">EVAL90_ALLOWBPS</name>	<init pos:line="122" pos:column="25">= <expr><lit:literal type="number" pos:line="122" pos:column="27">0x8</lit:literal></expr></init></decl><op:operator pos:line="122" pos:column="30">,</op:operator>
+	<decl><name pos:line="123" pos:column="9">EVAL90_ALLOWERRORREPORT</name>	<init pos:line="123" pos:column="33">= <expr><lit:literal type="number" pos:line="123" pos:column="35">0x10</lit:literal></expr></init></decl><op:operator pos:line="123" pos:column="39">,</op:operator>
+	<decl><name pos:line="124" pos:column="9">EVAL90_FUNCTION_AS_ADDRESS</name>	<init pos:line="124" pos:column="41">= <expr><lit:literal type="number" pos:line="124" pos:column="43">0x40</lit:literal></expr></init></decl><op:operator pos:line="124" pos:column="47">,</op:operator>
+	<decl><name pos:line="125" pos:column="9">EVAL90_NOFUNCEVAL</name>	<init pos:line="125" pos:column="33">= <expr><lit:literal type="number" pos:line="125" pos:column="35">0x80</lit:literal></expr></init></decl><op:operator pos:line="125" pos:column="39">,</op:operator>
+	<decl><name pos:line="126" pos:column="9">EVAL90_NOEVENTS</name>	<init pos:line="126" pos:column="25">= <expr><lit:literal type="number" pos:line="126" pos:column="27">0x1000</lit:literal></expr></init></decl><op:operator pos:line="126" pos:column="33">,</op:operator>
+	<decl><name pos:line="127" pos:column="9">EVAL90_DESIGN_TIME_EXPR_EVAL</name>	<init pos:line="127" pos:column="41">= <expr><lit:literal type="number" pos:line="127" pos:column="43">0x2000</lit:literal></expr></init></decl><op:operator pos:line="127" pos:column="49">,</op:operator>
+	<decl><name pos:line="128" pos:column="9">EVAL90_ALLOW_IMPLICIT_VARS</name>	<init pos:line="128" pos:column="41">= <expr><lit:literal type="number" pos:line="128" pos:column="43">0x4000</lit:literal></expr></init></decl><op:operator pos:line="128" pos:column="49">,</op:operator>
+	<decl><name pos:line="129" pos:column="9">EVAL90_FORCE_EVALUATION_NOW</name>	<init pos:line="129" pos:column="41">= <expr><lit:literal type="number" pos:line="129" pos:column="43">0x8000</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+
+<enum pos:line="132" pos:column="1">enum <name pos:line="132" pos:column="6">enum_BP_FLAGS90</name>
+    <block pos:line="133" pos:column="5">{	<decl><name pos:line="133" pos:column="9">BP90_FLAG_NONE</name>	<init pos:line="133" pos:column="25">= <expr><lit:literal type="number" pos:line="133" pos:column="27">0</lit:literal></expr></init></decl><op:operator pos:line="133" pos:column="28">,</op:operator>
+	<decl><name pos:line="134" pos:column="9">BP90_FLAG_MAP_DOCPOSITION</name>	<init pos:line="134" pos:column="41">= <expr><lit:literal type="number" pos:line="134" pos:column="43">0x1</lit:literal></expr></init></decl><op:operator pos:line="134" pos:column="46">,</op:operator>
+	<decl><name pos:line="135" pos:column="9">BP90_FLAG_DONT_STOP</name>	<init pos:line="135" pos:column="33">= <expr><lit:literal type="number" pos:line="135" pos:column="35">0x2</lit:literal></expr></init></decl><op:operator pos:line="135" pos:column="38">,</op:operator>
+	<decl><name pos:line="136" pos:column="9">BP90_FLAG_TRACEPOINT_CONTINUE</name>	<init pos:line="136" pos:column="41">= <expr><lit:literal type="number" pos:line="136" pos:column="43">0x4</lit:literal></expr></init></decl><op:operator pos:line="136" pos:column="46">,</op:operator>
+	<decl><name pos:line="137" pos:column="9">BP90_FLAG_ALLOW_NON_USER</name>	<init pos:line="137" pos:column="41">= <expr><lit:literal type="number" pos:line="137" pos:column="43">0x8</lit:literal></expr></init></decl><op:operator pos:line="137" pos:column="46">,</op:operator>
+	<decl><name pos:line="138" pos:column="9">BP90_FLAG_USE_REQUEST_LANGUAGE</name>	<init pos:line="138" pos:column="41">= <expr><lit:literal type="number" pos:line="138" pos:column="43">0x10</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+
+<enum pos:line="141" pos:column="1">enum <name pos:line="141" pos:column="6">enum_BPREQI_FIELDS90</name>
+    <block pos:line="142" pos:column="5">{	<decl><name pos:line="142" pos:column="9">BPREQI90_BPLOCATION</name>	<init pos:line="142" pos:column="33">= <expr><lit:literal type="number" pos:line="142" pos:column="35">0x1</lit:literal></expr></init></decl><op:operator pos:line="142" pos:column="38">,</op:operator>
+	<decl><name pos:line="143" pos:column="9">BPREQI90_LANGUAGE</name>	<init pos:line="143" pos:column="33">= <expr><lit:literal type="number" pos:line="143" pos:column="35">0x2</lit:literal></expr></init></decl><op:operator pos:line="143" pos:column="38">,</op:operator>
+	<decl><name pos:line="144" pos:column="9">BPREQI90_PROGRAM</name>	<init pos:line="144" pos:column="33">= <expr><lit:literal type="number" pos:line="144" pos:column="35">0x4</lit:literal></expr></init></decl><op:operator pos:line="144" pos:column="38">,</op:operator>
+	<decl><name pos:line="145" pos:column="9">BPREQI90_PROGRAMNAME</name>	<init pos:line="145" pos:column="33">= <expr><lit:literal type="number" pos:line="145" pos:column="35">0x8</lit:literal></expr></init></decl><op:operator pos:line="145" pos:column="38">,</op:operator>
+	<decl><name pos:line="146" pos:column="9">BPREQI90_THREAD</name>	<init pos:line="146" pos:column="25">= <expr><lit:literal type="number" pos:line="146" pos:column="27">0x10</lit:literal></expr></init></decl><op:operator pos:line="146" pos:column="31">,</op:operator>
+	<decl><name pos:line="147" pos:column="9">BPREQI90_THREADNAME</name>	<init pos:line="147" pos:column="33">= <expr><lit:literal type="number" pos:line="147" pos:column="35">0x20</lit:literal></expr></init></decl><op:operator pos:line="147" pos:column="39">,</op:operator>
+	<decl><name pos:line="148" pos:column="9">BPREQI90_PASSCOUNT</name>	<init pos:line="148" pos:column="33">= <expr><lit:literal type="number" pos:line="148" pos:column="35">0x40</lit:literal></expr></init></decl><op:operator pos:line="148" pos:column="39">,</op:operator>
+	<decl><name pos:line="149" pos:column="9">BPREQI90_CONDITION</name>	<init pos:line="149" pos:column="33">= <expr><lit:literal type="number" pos:line="149" pos:column="35">0x80</lit:literal></expr></init></decl><op:operator pos:line="149" pos:column="39">,</op:operator>
+	<decl><name pos:line="150" pos:column="9">BPREQI90_FLAGS</name>	<init pos:line="150" pos:column="25">= <expr><lit:literal type="number" pos:line="150" pos:column="27">0x100</lit:literal></expr></init></decl><op:operator pos:line="150" pos:column="32">,</op:operator>
+	<decl><name pos:line="151" pos:column="9">BPREQI90_ALLOLDFIELDS</name>	<init pos:line="151" pos:column="33">= <expr><lit:literal type="number" pos:line="151" pos:column="35">0x1ff</lit:literal></expr></init></decl><op:operator pos:line="151" pos:column="40">,</op:operator>
+	<decl><name pos:line="152" pos:column="9">BPREQI90_VENDOR</name>	<init pos:line="152" pos:column="25">= <expr><lit:literal type="number" pos:line="152" pos:column="27">0x200</lit:literal></expr></init></decl><op:operator pos:line="152" pos:column="32">,</op:operator>
+	<decl><name pos:line="153" pos:column="9">BPREQI90_CONSTRAINT</name>	<init pos:line="153" pos:column="33">= <expr><lit:literal type="number" pos:line="153" pos:column="35">0x400</lit:literal></expr></init></decl><op:operator pos:line="153" pos:column="40">,</op:operator>
+	<decl><name pos:line="154" pos:column="9">BPREQI90_TRACEPOINT</name>	<init pos:line="154" pos:column="33">= <expr><lit:literal type="number" pos:line="154" pos:column="35">0x800</lit:literal></expr></init></decl><op:operator pos:line="154" pos:column="40">,</op:operator>
+	<decl><name pos:line="155" pos:column="9">BPREQI90_MACROTRACEPOINT</name>	<init pos:line="155" pos:column="41">= <expr><lit:literal type="number" pos:line="155" pos:column="43">0x1000</lit:literal></expr></init></decl><op:operator pos:line="155" pos:column="49">,</op:operator>
+	<decl><name pos:line="156" pos:column="9">BPREQI90_ALLFIELDS</name>	<init pos:line="156" pos:column="33">= <expr><lit:literal type="number" pos:line="156" pos:column="35">0xffff</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+
+<enum pos:line="159" pos:column="1">enum <name pos:line="159" pos:column="6">enum_LAUNCH_FLAGS90</name>
+    <block pos:line="160" pos:column="5">{	<decl><name pos:line="160" pos:column="9">LAUNCH_WAIT_FOR_EVENT</name>	<init pos:line="160" pos:column="33">= <expr><lit:literal type="number" pos:line="160" pos:column="35">0x8</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+<typedef pos:line="162" pos:column="1">typedef <type><name pos:line="162" pos:column="9">DWORD</name></type> <name pos:line="162" pos:column="15">LAUNCH_FLAGS90</name>;</typedef>
+
+
+<enum pos:line="165" pos:column="1">enum <name pos:line="165" pos:column="6">enum_ENUMERATED_PROCESS_FLAGS90</name>
+    <block pos:line="166" pos:column="5">{	<decl><name pos:line="166" pos:column="9">EPFLAG90_SHOW_SECURITY_WARNING</name>	<init pos:line="166" pos:column="41">= <expr><lit:literal type="number" pos:line="166" pos:column="43">0x1</lit:literal></expr></init></decl><op:operator pos:line="166" pos:column="46">,</op:operator>
+	<decl><name pos:line="167" pos:column="9">EPFLAG90_SYSTEM_PROCESS</name>	<init pos:line="167" pos:column="33">= <expr><lit:literal type="number" pos:line="167" pos:column="35">0x2</lit:literal></expr></init></decl><op:operator pos:line="167" pos:column="38">,</op:operator>
+	<decl><name pos:line="168" pos:column="9">EPFLAG90_INTEGRITY_LEVEL_MASK</name>	<init pos:line="168" pos:column="41">= <expr><op:operator pos:line="168" pos:column="43">(</op:operator> <lit:literal type="number" pos:line="168" pos:column="45">7</lit:literal> <op:operator pos:line="168" pos:column="47">&lt;&lt;</op:operator> <lit:literal type="number" pos:line="168" pos:column="50">2</lit:literal> <op:operator pos:line="168" pos:column="52">)</op:operator></expr></init></decl> <op:operator pos:line="168" pos:column="54">,</op:operator>
+	<decl><name pos:line="169" pos:column="9">EPFLAG90_INTEGRITY_LEVEL_NONE</name>	<init pos:line="169" pos:column="41">= <expr><op:operator pos:line="169" pos:column="43">(</op:operator> <lit:literal type="number" pos:line="169" pos:column="45">0</lit:literal> <op:operator pos:line="169" pos:column="47">&lt;&lt;</op:operator> <lit:literal type="number" pos:line="169" pos:column="50">2</lit:literal> <op:operator pos:line="169" pos:column="52">)</op:operator></expr></init></decl> <op:operator pos:line="169" pos:column="54">,</op:operator>
+	<decl><name pos:line="170" pos:column="9">EPFLAG90_INTEGRITY_LEVEL_UNTRUSTED</name>	<init pos:line="170" pos:column="49">= <expr><op:operator pos:line="170" pos:column="51">(</op:operator> <lit:literal type="number" pos:line="170" pos:column="53">1</lit:literal> <op:operator pos:line="170" pos:column="55">&lt;&lt;</op:operator> <lit:literal type="number" pos:line="170" pos:column="58">2</lit:literal> <op:operator pos:line="170" pos:column="60">)</op:operator></expr></init></decl> <op:operator pos:line="170" pos:column="62">,</op:operator>
+	<decl><name pos:line="171" pos:column="9">EPFLAG90_INTEGRITY_LEVEL_LOW</name>	<init pos:line="171" pos:column="41">= <expr><op:operator pos:line="171" pos:column="43">(</op:operator> <lit:literal type="number" pos:line="171" pos:column="45">2</lit:literal> <op:operator pos:line="171" pos:column="47">&lt;&lt;</op:operator> <lit:literal type="number" pos:line="171" pos:column="50">2</lit:literal> <op:operator pos:line="171" pos:column="52">)</op:operator></expr></init></decl> <op:operator pos:line="171" pos:column="54">,</op:operator>
+	<decl><name pos:line="172" pos:column="9">EPFLAG90_INTEGRITY_LEVEL_MEDIUM</name>	<init pos:line="172" pos:column="41">= <expr><op:operator pos:line="172" pos:column="43">(</op:operator> <lit:literal type="number" pos:line="172" pos:column="45">3</lit:literal> <op:operator pos:line="172" pos:column="47">&lt;&lt;</op:operator> <lit:literal type="number" pos:line="172" pos:column="50">2</lit:literal> <op:operator pos:line="172" pos:column="52">)</op:operator></expr></init></decl> <op:operator pos:line="172" pos:column="54">,</op:operator>
+	<decl><name pos:line="173" pos:column="9">EPFLAG90_INTEGRITY_LEVEL_HIGH</name>	<init pos:line="173" pos:column="41">= <expr><op:operator pos:line="173" pos:column="43">(</op:operator> <lit:literal type="number" pos:line="173" pos:column="45">4</lit:literal> <op:operator pos:line="173" pos:column="47">&lt;&lt;</op:operator> <lit:literal type="number" pos:line="173" pos:column="50">2</lit:literal> <op:operator pos:line="173" pos:column="52">)</op:operator></expr></init></decl> <op:operator pos:line="173" pos:column="54">,</op:operator>
+	<decl><name pos:line="174" pos:column="9">EPFLAG90_INTEGRITY_LEVEL_SYSTEM</name>	<init pos:line="174" pos:column="41">= <expr><op:operator pos:line="174" pos:column="43">(</op:operator> <lit:literal type="number" pos:line="174" pos:column="45">5</lit:literal> <op:operator pos:line="174" pos:column="47">&lt;&lt;</op:operator> <lit:literal type="number" pos:line="174" pos:column="50">2</lit:literal> <op:operator pos:line="174" pos:column="52">)</op:operator></expr></init></decl> <op:operator pos:line="174" pos:column="54">,</op:operator>
+	<decl><name pos:line="175" pos:column="9">EPFLAG90_INTEGRITY_LEVEL_PROTECTED</name>	<init pos:line="175" pos:column="49">= <expr><op:operator pos:line="175" pos:column="51">(</op:operator> <lit:literal type="number" pos:line="175" pos:column="53">6</lit:literal> <op:operator pos:line="175" pos:column="55">&lt;&lt;</op:operator> <lit:literal type="number" pos:line="175" pos:column="58">2</lit:literal> <op:operator pos:line="175" pos:column="60">)</op:operator></expr></init></decl> 
+    }</block> ;</enum>
+
+
+<decl_stmt><decl><type><specifier pos:line="179" pos:column="1">extern</specifier> <name pos:line="179" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="179" pos:column="22">__MIDL_itf_msdbg90_0000_0000_v0_0_c_ifspec</name></decl>;</decl_stmt>
+<decl_stmt><decl><type><specifier pos:line="180" pos:column="1">extern</specifier> <name pos:line="180" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="180" pos:column="22">__MIDL_itf_msdbg90_0000_0000_v0_0_s_ifspec</name></decl>;</decl_stmt>
+
+<cpp:ifndef pos:line="182" pos:column="1">#<cpp:directive pos:line="182" pos:column="2">ifndef</cpp:directive> <name pos:line="182" pos:column="9">__IDebugCoreServer90_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="183" pos:column="1">#<cpp:directive pos:line="183" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="183" pos:column="9">__IDebugCoreServer90_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="185" pos:column="1">/* interface IDebugCoreServer90 */</comment>
+<comment type="block" pos:line="186" pos:column="1">/* [unique][uuid][object] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="189" pos:column="1">EXTERN_C</name> <specifier pos:line="189" pos:column="10">const</specifier> <name pos:line="189" pos:column="16">IID</name></type> <name pos:line="189" pos:column="20">IID_IDebugCoreServer90</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="191" pos:column="1">#<cpp:directive pos:line="191" pos:column="2">if</cpp:directive> <expr><call><name pos:line="191" pos:column="5">defined</name><argument_list pos:line="191" pos:column="12">(<argument><expr><name pos:line="191" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="191" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="191" pos:column="29">!</op:operator><call><name pos:line="191" pos:column="30">defined</name><argument_list pos:line="191" pos:column="37">(<argument><expr><name pos:line="191" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="193" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="193" pos:column="19">(<argument pos:line="193" pos:column="20">"1a1b5760-fe45-4958-aa3f-819060b16de9"</argument>)</argument_list></macro>
+    <label><name pos:line="194" pos:column="5">IDebugCoreServer90</name> :</label> <expr_stmt><expr pos:line="194" pos:column="26">public <name pos:line="194" pos:column="33">IUnknown</name>
+    <block pos:line="195" pos:column="5">{
+    <expr pos:line="196" pos:column="5">public<op:operator pos:line="196" pos:column="11">:</op:operator>
+        virtual <name pos:line="197" pos:column="17">HRESULT</name> <name pos:line="197" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="197" pos:column="43">CreateManagedInstanceInServer</name><argument_list pos:line="197" pos:column="72">( 
+            <comment type="block" pos:line="198" pos:column="13">/* [in] */</comment> <argument pos:line="198" pos:column="24">__RPC__in LPCWSTR szClass</argument>,
+            <comment type="block" pos:line="199" pos:column="13">/* [in] */</comment> <argument pos:line="199" pos:column="24">__RPC__in LPCWSTR szAssembly</argument>,
+            <comment type="block" pos:line="200" pos:column="13">/* [in] */</comment> <argument pos:line="200" pos:column="24">WORD wLangId</argument>,
+            <comment type="block" pos:line="201" pos:column="13">/* [in] */</comment> <argument pos:line="201" pos:column="24">__RPC__in REFIID riid</argument>,
+            <comment type="block" pos:line="202" pos:column="13">/* [iid_is][out] */</comment> <argument pos:line="202" pos:column="33">__RPC__deref_out_opt void **ppvObject</argument>)</argument_list></macro> <op:operator pos:line="202" pos:column="72">=</op:operator> <lit:literal type="number" pos:line="202" pos:column="74">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="206" pos:column="1">#<cpp:directive pos:line="206" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="206" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="208" pos:column="5">typedef <type><struct pos:line="208" pos:column="13">struct <name pos:line="208" pos:column="20">IDebugCoreServer90Vtbl</name>
+    <block pos:line="209" pos:column="5">{<public type="default" pos:line="209" pos:column="6">
+        <function_decl><type><name pos:line="210" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="212" pos:column="9">HRESULT</name></type> ( <name pos:line="212" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="212" pos:column="37">*</type:modifier><name pos:line="212" pos:column="38">QueryInterface</name> )<parameter_list pos:line="212" pos:column="54">( 
+            <param><decl><type><name pos:line="213" pos:column="13">IDebugCoreServer90</name> <type:modifier pos:line="213" pos:column="32">*</type:modifier></type> <name pos:line="213" pos:column="34">This</name></decl></param>,
+            <comment type="block" pos:line="214" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="214" pos:column="24">__RPC__in</name> <name pos:line="214" pos:column="34">REFIID</name></type> <name pos:line="214" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="215" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="216" pos:column="13">__RPC__deref_out</name>  <name pos:line="216" pos:column="31">void</name> <type:modifier pos:line="216" pos:column="36">*</type:modifier><type:modifier pos:line="216" pos:column="37">*</type:modifier></type><name pos:line="216" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="218" pos:column="9">ULONG</name></type> ( <name pos:line="218" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="218" pos:column="35">*</type:modifier><name pos:line="218" pos:column="36">AddRef</name> )<parameter_list pos:line="218" pos:column="44">( 
+            <param><decl><type><name pos:line="219" pos:column="13">IDebugCoreServer90</name> <type:modifier pos:line="219" pos:column="32">*</type:modifier></type> <name pos:line="219" pos:column="34">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="221" pos:column="9">ULONG</name></type> ( <name pos:line="221" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="221" pos:column="35">*</type:modifier><name pos:line="221" pos:column="36">Release</name> )<parameter_list pos:line="221" pos:column="45">( 
+            <param><decl><type><name pos:line="222" pos:column="13">IDebugCoreServer90</name> <type:modifier pos:line="222" pos:column="32">*</type:modifier></type> <name pos:line="222" pos:column="34">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="224" pos:column="9">HRESULT</name></type> ( <name pos:line="224" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="224" pos:column="37">*</type:modifier><name pos:line="224" pos:column="38">CreateManagedInstanceInServer</name> )<parameter_list pos:line="224" pos:column="69">( 
+            <param><decl><type><name pos:line="225" pos:column="13">IDebugCoreServer90</name> <type:modifier pos:line="225" pos:column="32">*</type:modifier></type> <name pos:line="225" pos:column="34">This</name></decl></param>,
+            <comment type="block" pos:line="226" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="226" pos:column="24">__RPC__in</name> <name pos:line="226" pos:column="34">LPCWSTR</name></type> <name pos:line="226" pos:column="42">szClass</name></decl></param>,
+            <comment type="block" pos:line="227" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="227" pos:column="24">__RPC__in</name> <name pos:line="227" pos:column="34">LPCWSTR</name></type> <name pos:line="227" pos:column="42">szAssembly</name></decl></param>,
+            <comment type="block" pos:line="228" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="228" pos:column="24">WORD</name></type> <name pos:line="228" pos:column="29">wLangId</name></decl></param>,
+            <comment type="block" pos:line="229" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="229" pos:column="24">__RPC__in</name> <name pos:line="229" pos:column="34">REFIID</name></type> <name pos:line="229" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="230" pos:column="13">/* [iid_is][out] */</comment> <param><decl><type><name pos:line="230" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="230" pos:column="54">void</name> <type:modifier pos:line="230" pos:column="59">*</type:modifier><type:modifier pos:line="230" pos:column="60">*</type:modifier></type><name pos:line="230" pos:column="61">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="232" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="233" pos:column="7">IDebugCoreServer90Vtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="235" pos:column="5">interface</name></type> <name pos:line="235" pos:column="15">IDebugCoreServer90</name>
+    <argument_list pos:line="236" pos:column="5">{
+        <argument><expr><name pos:line="237" pos:column="9">CONST_VTBL</name> struct <name pos:line="237" pos:column="27">IDebugCoreServer90Vtbl</name> <op:operator pos:line="237" pos:column="50">*</op:operator><name pos:line="237" pos:column="51">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="242" pos:column="1">#<cpp:directive pos:line="242" pos:column="2">ifdef</cpp:directive> <name pos:line="242" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="245" pos:column="1">#<cpp:directive pos:line="245" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="245" pos:column="9">IDebugCoreServer90_QueryInterface</name><parameter_list pos:line="245" pos:column="42">(<param><type><name pos:line="245" pos:column="43">This</name></type></param>,<param><type><name pos:line="245" pos:column="48">riid</name></type></param>,<param><type><name pos:line="245" pos:column="53">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="246" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="248" pos:column="1">#<cpp:directive pos:line="248" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="248" pos:column="9">IDebugCoreServer90_AddRef</name><parameter_list pos:line="248" pos:column="34">(<param><type><name pos:line="248" pos:column="35">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="249" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="251" pos:column="1">#<cpp:directive pos:line="251" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="251" pos:column="9">IDebugCoreServer90_Release</name><parameter_list pos:line="251" pos:column="35">(<param><type><name pos:line="251" pos:column="36">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="252" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="255" pos:column="1">#<cpp:directive pos:line="255" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="255" pos:column="9">IDebugCoreServer90_CreateManagedInstanceInServer</name><parameter_list pos:line="255" pos:column="57">(<param><type><name pos:line="255" pos:column="58">This</name></type></param>,<param><type><name pos:line="255" pos:column="63">szClass</name></type></param>,<param><type><name pos:line="255" pos:column="71">szAssembly</name></type></param>,<param><type><name pos:line="255" pos:column="82">wLangId</name></type></param>,<param><type><name pos:line="255" pos:column="90">riid</name></type></param>,<param><type><name pos:line="255" pos:column="95">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="256" pos:column="5">( (This)-&gt;lpVtbl -&gt; CreateManagedInstanceInServer(This,szClass,szAssembly,wLangId,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="258" pos:column="1">#<cpp:directive pos:line="258" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="258" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="261" pos:column="1">#<cpp:directive pos:line="261" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="261" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="266" pos:column="1">#<cpp:directive pos:line="266" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="266" pos:column="9">/* __IDebugCoreServer90_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="269" pos:column="1">#<cpp:directive pos:line="269" pos:column="2">ifndef</cpp:directive> <name pos:line="269" pos:column="9">__IDebugThread90_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="270" pos:column="1">#<cpp:directive pos:line="270" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="270" pos:column="9">__IDebugThread90_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="272" pos:column="1">/* interface IDebugThread90 */</comment>
+<comment type="block" pos:line="273" pos:column="1">/* [unique][uuid][object] */</comment> 
+
+
+<enum pos:line="276" pos:column="1">enum <name pos:line="276" pos:column="6">enum_THREADPROPERTY_FIELDS90</name>
+    <block pos:line="277" pos:column="5">{	<decl><name pos:line="277" pos:column="9">TPF90_ID</name>	<init pos:line="277" pos:column="25">= <expr><lit:literal type="number" pos:line="277" pos:column="27">0x1</lit:literal></expr></init></decl><op:operator pos:line="277" pos:column="30">,</op:operator>
+	<decl><name pos:line="278" pos:column="9">TPF90_SUSPENDCOUNT</name>	<init pos:line="278" pos:column="33">= <expr><lit:literal type="number" pos:line="278" pos:column="35">0x2</lit:literal></expr></init></decl><op:operator pos:line="278" pos:column="38">,</op:operator>
+	<decl><name pos:line="279" pos:column="9">TPF90_STATE</name>	<init pos:line="279" pos:column="25">= <expr><lit:literal type="number" pos:line="279" pos:column="27">0x4</lit:literal></expr></init></decl><op:operator pos:line="279" pos:column="30">,</op:operator>
+	<decl><name pos:line="280" pos:column="9">TPF90_PRIORITY</name>	<init pos:line="280" pos:column="25">= <expr><lit:literal type="number" pos:line="280" pos:column="27">0x8</lit:literal></expr></init></decl><op:operator pos:line="280" pos:column="30">,</op:operator>
+	<decl><name pos:line="281" pos:column="9">TPF90_NAME</name>	<init pos:line="281" pos:column="25">= <expr><lit:literal type="number" pos:line="281" pos:column="27">0x10</lit:literal></expr></init></decl><op:operator pos:line="281" pos:column="31">,</op:operator>
+	<decl><name pos:line="282" pos:column="9">TPF90_LOCATION</name>	<init pos:line="282" pos:column="25">= <expr><lit:literal type="number" pos:line="282" pos:column="27">0x20</lit:literal></expr></init></decl><op:operator pos:line="282" pos:column="31">,</op:operator>
+	<decl><name pos:line="283" pos:column="9">TPF90_ALLFIELDS</name>	<init pos:line="283" pos:column="25">= <expr><lit:literal type="number" pos:line="283" pos:column="27">0xffffffff</lit:literal></expr></init></decl><op:operator pos:line="283" pos:column="37">,</op:operator>
+	<decl><name pos:line="284" pos:column="9">TPF90_DISPLAY_NAME</name>	<init pos:line="284" pos:column="33">= <expr><lit:literal type="number" pos:line="284" pos:column="35">0x40</lit:literal></expr></init></decl><op:operator pos:line="284" pos:column="39">,</op:operator>
+	<decl><name pos:line="285" pos:column="9">TPF90_DISPLAY_NAME_PRIORITY</name>	<init pos:line="285" pos:column="41">= <expr><lit:literal type="number" pos:line="285" pos:column="43">0x80</lit:literal></expr></init></decl><op:operator pos:line="285" pos:column="47">,</op:operator>
+	<decl><name pos:line="286" pos:column="9">TPF90_CATEGORY</name>	<init pos:line="286" pos:column="25">= <expr><lit:literal type="number" pos:line="286" pos:column="27">0x100</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+<typedef pos:line="288" pos:column="1">typedef <type><name pos:line="288" pos:column="9">DWORD</name></type> <name pos:line="288" pos:column="15">THREADPROPERTY_FIELDS90</name>;</typedef>
+
+
+<enum pos:line="291" pos:column="1">enum <name pos:line="291" pos:column="6">enum_DISPLAY_NAME_PRIORITY</name>
+    <block pos:line="292" pos:column="5">{	<decl><name pos:line="292" pos:column="9">DISPLAY_NAME_PRI_LOWEST_CONFIDENCY</name>	<init pos:line="292" pos:column="49">= <expr><lit:literal type="number" pos:line="292" pos:column="51">0x1</lit:literal></expr></init></decl><op:operator pos:line="292" pos:column="54">,</op:operator>
+	<decl><name pos:line="293" pos:column="9">DISPLAY_NAME_PRI_LOW_CONFIDENCY</name>	<init pos:line="293" pos:column="41">= <expr><lit:literal type="number" pos:line="293" pos:column="43">0x10</lit:literal></expr></init></decl><op:operator pos:line="293" pos:column="47">,</op:operator>
+	<decl><name pos:line="294" pos:column="9">DISPLAY_NAM_PRI_DEFAULT</name>	<init pos:line="294" pos:column="33">= <expr><lit:literal type="number" pos:line="294" pos:column="35">0x100</lit:literal></expr></init></decl><op:operator pos:line="294" pos:column="40">,</op:operator>
+	<decl><name pos:line="295" pos:column="9">DISPLAY_NAME_PRI_NORMAL</name>	<init pos:line="295" pos:column="33">= <expr><lit:literal type="number" pos:line="295" pos:column="35">0x1000</lit:literal></expr></init></decl><op:operator pos:line="295" pos:column="41">,</op:operator>
+	<decl><name pos:line="296" pos:column="9">DISPLAY_NAME_PRI_HIGH</name>	<init pos:line="296" pos:column="33">= <expr><lit:literal type="number" pos:line="296" pos:column="35">0x10000</lit:literal></expr></init></decl><op:operator pos:line="296" pos:column="42">,</op:operator>
+	<decl><name pos:line="297" pos:column="9">DISPLAY_NAME_PRI_HIGHEST</name>	<init pos:line="297" pos:column="41">= <expr><lit:literal type="number" pos:line="297" pos:column="43">0x100000</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+<typedef pos:line="299" pos:column="1">typedef <type><enum pos:line="299" pos:column="9">enum <name pos:line="299" pos:column="14">enum_DISPLAY_NAME_PRIORITY</name> <name pos:line="299" pos:column="41">DISPLAY_NAME_PRIORITY</name>;</enum></type></typedef>
+
+<typedef pos:line="301" pos:column="1">typedef <type><struct pos:line="301" pos:column="9">struct <name pos:line="301" pos:column="16">_tagTHREADPROPERTIES90</name>
+    <block pos:line="302" pos:column="5">{<public type="default" pos:line="302" pos:column="6">
+    <decl_stmt><decl><type><name pos:line="303" pos:column="5">THREADPROPERTY_FIELDS90</name></type> <name pos:line="303" pos:column="29">dwFields</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="304" pos:column="5">DWORD</name></type> <name pos:line="304" pos:column="11">dwThreadId</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="305" pos:column="5">DWORD</name></type> <name pos:line="305" pos:column="11">dwSuspendCount</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="306" pos:column="5">DWORD</name></type> <name pos:line="306" pos:column="11">dwThreadState</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="307" pos:column="5">BSTR</name></type> <name pos:line="307" pos:column="10">bstrPriority</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="308" pos:column="5">BSTR</name></type> <name pos:line="308" pos:column="10">bstrName</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="309" pos:column="5">BSTR</name></type> <name pos:line="309" pos:column="10">bstrLocation</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="310" pos:column="5">BSTR</name></type> <name pos:line="310" pos:column="10">bstrDisplayName</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="311" pos:column="5">DWORD</name></type> <name pos:line="311" pos:column="11">DisplayNamePriority</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="312" pos:column="5">DWORD</name></type> <name pos:line="312" pos:column="11">dwThreadCategory</name></decl>;</decl_stmt>
+    </public>}</block></struct></type> 	<name pos:line="313" pos:column="9">THREADPROPERTIES90</name>;</typedef>
+
+
+<decl_stmt><decl><type><name pos:line="316" pos:column="1">EXTERN_C</name> <specifier pos:line="316" pos:column="10">const</specifier> <name pos:line="316" pos:column="16">IID</name></type> <name pos:line="316" pos:column="20">IID_IDebugThread90</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="318" pos:column="1">#<cpp:directive pos:line="318" pos:column="2">if</cpp:directive> <expr><call><name pos:line="318" pos:column="5">defined</name><argument_list pos:line="318" pos:column="12">(<argument><expr><name pos:line="318" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="318" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="318" pos:column="29">!</op:operator><call><name pos:line="318" pos:column="30">defined</name><argument_list pos:line="318" pos:column="37">(<argument><expr><name pos:line="318" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="320" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="320" pos:column="19">(<argument pos:line="320" pos:column="20">"8FD7F3BB-C09E-4c0c-830F-114FFA8BF4F8"</argument>)</argument_list></macro>
+    <label><name pos:line="321" pos:column="5">IDebugThread90</name> :</label> <expr_stmt><expr pos:line="321" pos:column="22">public <name pos:line="321" pos:column="29">IUnknown</name>
+    <block pos:line="322" pos:column="5">{
+    <expr pos:line="323" pos:column="5">public<op:operator pos:line="323" pos:column="11">:</op:operator>
+        virtual <name pos:line="324" pos:column="17">HRESULT</name> <name pos:line="324" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="324" pos:column="43">GetThreadProperties90</name><argument_list pos:line="324" pos:column="64">( 
+            <comment type="block" pos:line="325" pos:column="13">/* [in] */</comment> <argument pos:line="325" pos:column="24">THREADPROPERTY_FIELDS90 dwFields</argument>,
+            <comment type="block" pos:line="326" pos:column="13">/* [out] */</comment> <argument pos:line="326" pos:column="25">__RPC__out THREADPROPERTIES90 *ptp</argument>)</argument_list></macro> <op:operator pos:line="326" pos:column="61">=</op:operator> <lit:literal type="number" pos:line="326" pos:column="63">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="330" pos:column="1">#<cpp:directive pos:line="330" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="330" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="332" pos:column="5">typedef <type><struct pos:line="332" pos:column="13">struct <name pos:line="332" pos:column="20">IDebugThread90Vtbl</name>
+    <block pos:line="333" pos:column="5">{<public type="default" pos:line="333" pos:column="6">
+        <function_decl><type><name pos:line="334" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="336" pos:column="9">HRESULT</name></type> ( <name pos:line="336" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="336" pos:column="37">*</type:modifier><name pos:line="336" pos:column="38">QueryInterface</name> )<parameter_list pos:line="336" pos:column="54">( 
+            <param><decl><type><name pos:line="337" pos:column="13">IDebugThread90</name> <type:modifier pos:line="337" pos:column="28">*</type:modifier></type> <name pos:line="337" pos:column="30">This</name></decl></param>,
+            <comment type="block" pos:line="338" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="338" pos:column="24">__RPC__in</name> <name pos:line="338" pos:column="34">REFIID</name></type> <name pos:line="338" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="339" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="340" pos:column="13">__RPC__deref_out</name>  <name pos:line="340" pos:column="31">void</name> <type:modifier pos:line="340" pos:column="36">*</type:modifier><type:modifier pos:line="340" pos:column="37">*</type:modifier></type><name pos:line="340" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="342" pos:column="9">ULONG</name></type> ( <name pos:line="342" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="342" pos:column="35">*</type:modifier><name pos:line="342" pos:column="36">AddRef</name> )<parameter_list pos:line="342" pos:column="44">( 
+            <param><decl><type><name pos:line="343" pos:column="13">IDebugThread90</name> <type:modifier pos:line="343" pos:column="28">*</type:modifier></type> <name pos:line="343" pos:column="30">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="345" pos:column="9">ULONG</name></type> ( <name pos:line="345" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="345" pos:column="35">*</type:modifier><name pos:line="345" pos:column="36">Release</name> )<parameter_list pos:line="345" pos:column="45">( 
+            <param><decl><type><name pos:line="346" pos:column="13">IDebugThread90</name> <type:modifier pos:line="346" pos:column="28">*</type:modifier></type> <name pos:line="346" pos:column="30">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="348" pos:column="9">HRESULT</name></type> ( <name pos:line="348" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="348" pos:column="37">*</type:modifier><name pos:line="348" pos:column="38">GetThreadProperties90</name> )<parameter_list pos:line="348" pos:column="61">( 
+            <param><decl><type><name pos:line="349" pos:column="13">IDebugThread90</name> <type:modifier pos:line="349" pos:column="28">*</type:modifier></type> <name pos:line="349" pos:column="30">This</name></decl></param>,
+            <comment type="block" pos:line="350" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="350" pos:column="24">THREADPROPERTY_FIELDS90</name></type> <name pos:line="350" pos:column="48">dwFields</name></decl></param>,
+            <comment type="block" pos:line="351" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="351" pos:column="25">__RPC__out</name> <name pos:line="351" pos:column="36">THREADPROPERTIES90</name> <type:modifier pos:line="351" pos:column="55">*</type:modifier></type><name pos:line="351" pos:column="56">ptp</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="353" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="354" pos:column="7">IDebugThread90Vtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="356" pos:column="5">interface</name></type> <name pos:line="356" pos:column="15">IDebugThread90</name>
+    <argument_list pos:line="357" pos:column="5">{
+        <argument><expr><name pos:line="358" pos:column="9">CONST_VTBL</name> struct <name pos:line="358" pos:column="27">IDebugThread90Vtbl</name> <op:operator pos:line="358" pos:column="46">*</op:operator><name pos:line="358" pos:column="47">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="363" pos:column="1">#<cpp:directive pos:line="363" pos:column="2">ifdef</cpp:directive> <name pos:line="363" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="366" pos:column="1">#<cpp:directive pos:line="366" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="366" pos:column="9">IDebugThread90_QueryInterface</name><parameter_list pos:line="366" pos:column="38">(<param><type><name pos:line="366" pos:column="39">This</name></type></param>,<param><type><name pos:line="366" pos:column="44">riid</name></type></param>,<param><type><name pos:line="366" pos:column="49">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="367" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="369" pos:column="1">#<cpp:directive pos:line="369" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="369" pos:column="9">IDebugThread90_AddRef</name><parameter_list pos:line="369" pos:column="30">(<param><type><name pos:line="369" pos:column="31">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="370" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="372" pos:column="1">#<cpp:directive pos:line="372" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="372" pos:column="9">IDebugThread90_Release</name><parameter_list pos:line="372" pos:column="31">(<param><type><name pos:line="372" pos:column="32">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="373" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="376" pos:column="1">#<cpp:directive pos:line="376" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="376" pos:column="9">IDebugThread90_GetThreadProperties90</name><parameter_list pos:line="376" pos:column="45">(<param><type><name pos:line="376" pos:column="46">This</name></type></param>,<param><type><name pos:line="376" pos:column="51">dwFields</name></type></param>,<param><type><name pos:line="376" pos:column="60">ptp</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="377" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetThreadProperties90(This,dwFields,ptp) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="379" pos:column="1">#<cpp:directive pos:line="379" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="379" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="382" pos:column="1">#<cpp:directive pos:line="382" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="382" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="387" pos:column="1">#<cpp:directive pos:line="387" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="387" pos:column="9">/* __IDebugThread90_INTERFACE_DEFINED__ */</comment>
+
+
+<comment type="block" pos:line="390" pos:column="1">/* interface __MIDL_itf_msdbg90_0000_0002 */</comment>
+<comment type="block" pos:line="391" pos:column="1">/* [local] */</comment> 
+
+
+<enum pos:line="394" pos:column="1">enum <name pos:line="394" pos:column="6">enum_DEBUGPROP_INFO_FLAGS90</name>
+    <block pos:line="395" pos:column="5">{	<decl><name pos:line="395" pos:column="9">DEBUGPROP90_INFO_FULLNAME</name>	<init pos:line="395" pos:column="41">= <expr><lit:literal type="number" pos:line="395" pos:column="43">0x1</lit:literal></expr></init></decl><op:operator pos:line="395" pos:column="46">,</op:operator>
+	<decl><name pos:line="396" pos:column="9">DEBUGPROP90_INFO_NAME</name>	<init pos:line="396" pos:column="33">= <expr><lit:literal type="number" pos:line="396" pos:column="35">0x2</lit:literal></expr></init></decl><op:operator pos:line="396" pos:column="38">,</op:operator>
+	<decl><name pos:line="397" pos:column="9">DEBUGPROP90_INFO_TYPE</name>	<init pos:line="397" pos:column="33">= <expr><lit:literal type="number" pos:line="397" pos:column="35">0x4</lit:literal></expr></init></decl><op:operator pos:line="397" pos:column="38">,</op:operator>
+	<decl><name pos:line="398" pos:column="9">DEBUGPROP90_INFO_VALUE</name>	<init pos:line="398" pos:column="33">= <expr><lit:literal type="number" pos:line="398" pos:column="35">0x8</lit:literal></expr></init></decl><op:operator pos:line="398" pos:column="38">,</op:operator>
+	<decl><name pos:line="399" pos:column="9">DEBUGPROP90_INFO_ATTRIB</name>	<init pos:line="399" pos:column="33">= <expr><lit:literal type="number" pos:line="399" pos:column="35">0x10</lit:literal></expr></init></decl><op:operator pos:line="399" pos:column="39">,</op:operator>
+	<decl><name pos:line="400" pos:column="9">DEBUGPROP90_INFO_PROP</name>	<init pos:line="400" pos:column="33">= <expr><lit:literal type="number" pos:line="400" pos:column="35">0x20</lit:literal></expr></init></decl><op:operator pos:line="400" pos:column="39">,</op:operator>
+	<decl><name pos:line="401" pos:column="9">DEBUGPROP90_INFO_VALUE_AUTOEXPAND</name>	<init pos:line="401" pos:column="49">= <expr><lit:literal type="number" pos:line="401" pos:column="51">0x10000</lit:literal></expr></init></decl><op:operator pos:line="401" pos:column="58">,</op:operator>
+	<decl><name pos:line="402" pos:column="9">DEBUGPROP90_INFO_NOFUNCEVAL</name>	<init pos:line="402" pos:column="41">= <expr><lit:literal type="number" pos:line="402" pos:column="43">0x20000</lit:literal></expr></init></decl><op:operator pos:line="402" pos:column="50">,</op:operator>
+	<decl><name pos:line="403" pos:column="9">DEBUGPROP90_INFO_VALUE_RAW</name>	<init pos:line="403" pos:column="41">= <expr><lit:literal type="number" pos:line="403" pos:column="43">0x40000</lit:literal></expr></init></decl><op:operator pos:line="403" pos:column="50">,</op:operator>
+	<decl><name pos:line="404" pos:column="9">DEBUGPROP90_INFO_VALUE_NO_TOSTRING</name>	<init pos:line="404" pos:column="49">= <expr><lit:literal type="number" pos:line="404" pos:column="51">0x80000</lit:literal></expr></init></decl><op:operator pos:line="404" pos:column="58">,</op:operator>
+	<decl><name pos:line="405" pos:column="9">DEBUGPROP90_INFO_NO_NONPUBLIC_MEMBERS</name>	<init pos:line="405" pos:column="49">= <expr><lit:literal type="number" pos:line="405" pos:column="51">0x100000</lit:literal></expr></init></decl><op:operator pos:line="405" pos:column="59">,</op:operator>
+	<decl><name pos:line="406" pos:column="9">DEBUGPROP90_INFO_NONE</name>	<init pos:line="406" pos:column="33">= <expr><lit:literal type="number" pos:line="406" pos:column="35">0</lit:literal></expr></init></decl><op:operator pos:line="406" pos:column="36">,</op:operator>
+	<decl><name pos:line="407" pos:column="9">DEBUGPROP90_INFO_STANDARD</name>	<init pos:line="407" pos:column="41">= <expr><op:operator pos:line="407" pos:column="43">(</op:operator> <op:operator pos:line="407" pos:column="45">(</op:operator> <op:operator pos:line="407" pos:column="47">(</op:operator> <name pos:line="407" pos:column="49">DEBUGPROP90_INFO_ATTRIB</name> <op:operator pos:line="407" pos:column="73">|</op:operator> <name pos:line="407" pos:column="75">DEBUGPROP90_INFO_NAME</name> <op:operator pos:line="407" pos:column="97">)</op:operator>  <op:operator pos:line="407" pos:column="100">|</op:operator> <name pos:line="407" pos:column="102">DEBUGPROP90_INFO_TYPE</name> <op:operator pos:line="407" pos:column="124">)</op:operator>  <op:operator pos:line="407" pos:column="127">|</op:operator> <name pos:line="407" pos:column="129">DEBUGPROP90_INFO_VALUE</name> <op:operator pos:line="407" pos:column="152">)</op:operator></expr></init></decl> <op:operator pos:line="407" pos:column="154">,</op:operator>
+	<decl><name pos:line="408" pos:column="9">DEBUGPROP90_INFO_ALL</name>	<init pos:line="408" pos:column="33">= <expr><lit:literal type="number" pos:line="408" pos:column="35">0xffffffff</lit:literal></expr></init></decl><op:operator pos:line="408" pos:column="45">,</op:operator>
+	<decl><name pos:line="409" pos:column="9">DEBUGPROP90_INFO_NOSIDEEFFECTS</name>	<init pos:line="409" pos:column="41">= <expr><lit:literal type="number" pos:line="409" pos:column="43">0x200000</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+<typedef pos:line="411" pos:column="1">typedef <type><name pos:line="411" pos:column="9">DWORD</name></type> <name pos:line="411" pos:column="15">DEBUGPROP90_INFO_FLAGS</name>;</typedef>
+
+
+<enum pos:line="414" pos:column="1">enum <name pos:line="414" pos:column="6">enum_STEPSTATUS</name>
+    <block pos:line="415" pos:column="5">{	<decl><name pos:line="415" pos:column="9">STEPSTATUS_UNKNOWN</name>	<init pos:line="415" pos:column="33">= <expr><lit:literal type="number" pos:line="415" pos:column="35">0</lit:literal></expr></init></decl><op:operator pos:line="415" pos:column="36">,</op:operator>
+	<decl><name pos:line="416" pos:column="9">STEPSTATUS_IN</name>	<init pos:line="416" pos:column="25">= <expr><lit:literal type="number" pos:line="416" pos:column="27">1</lit:literal></expr></init></decl><op:operator pos:line="416" pos:column="28">,</op:operator>
+	<decl><name pos:line="417" pos:column="9">STEPSTATUS_NORMAL</name>	<init pos:line="417" pos:column="33">= <expr><lit:literal type="number" pos:line="417" pos:column="35">2</lit:literal></expr></init></decl><op:operator pos:line="417" pos:column="36">,</op:operator>
+	<decl><name pos:line="418" pos:column="9">STEPSTATUS_OUT</name>	<init pos:line="418" pos:column="25">= <expr><lit:literal type="number" pos:line="418" pos:column="27">4</lit:literal></expr></init></decl><op:operator pos:line="418" pos:column="28">,</op:operator>
+	<decl><name pos:line="419" pos:column="9">STEPSTATUS_THREAD_EXIT</name>	<init pos:line="419" pos:column="33">= <expr><lit:literal type="number" pos:line="419" pos:column="35">8</lit:literal></expr></init></decl><op:operator pos:line="419" pos:column="36">,</op:operator>
+	<decl><name pos:line="420" pos:column="9">STEPSTATUS_CUSTOM</name>	<init pos:line="420" pos:column="33">= <expr><lit:literal type="number" pos:line="420" pos:column="35">16</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+<typedef pos:line="422" pos:column="1">typedef <type><name pos:line="422" pos:column="9">DWORD</name></type> <name pos:line="422" pos:column="15">STEPSTATUS</name>;</typedef>
+
+
+
+<decl_stmt><decl><type><specifier pos:line="426" pos:column="1">extern</specifier> <name pos:line="426" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="426" pos:column="22">__MIDL_itf_msdbg90_0000_0002_v0_0_c_ifspec</name></decl>;</decl_stmt>
+<decl_stmt><decl><type><specifier pos:line="427" pos:column="1">extern</specifier> <name pos:line="427" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="427" pos:column="22">__MIDL_itf_msdbg90_0000_0002_v0_0_s_ifspec</name></decl>;</decl_stmt>
+
+<cpp:ifndef pos:line="429" pos:column="1">#<cpp:directive pos:line="429" pos:column="2">ifndef</cpp:directive> <name pos:line="429" pos:column="9">__IDebugStepper90_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="430" pos:column="1">#<cpp:directive pos:line="430" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="430" pos:column="9">__IDebugStepper90_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="432" pos:column="1">/* interface IDebugStepper90 */</comment>
+<comment type="block" pos:line="433" pos:column="1">/* [unique][uuid][object] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="436" pos:column="1">EXTERN_C</name> <specifier pos:line="436" pos:column="10">const</specifier> <name pos:line="436" pos:column="16">IID</name></type> <name pos:line="436" pos:column="20">IID_IDebugStepper90</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="438" pos:column="1">#<cpp:directive pos:line="438" pos:column="2">if</cpp:directive> <expr><call><name pos:line="438" pos:column="5">defined</name><argument_list pos:line="438" pos:column="12">(<argument><expr><name pos:line="438" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="438" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="438" pos:column="29">!</op:operator><call><name pos:line="438" pos:column="30">defined</name><argument_list pos:line="438" pos:column="37">(<argument><expr><name pos:line="438" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="440" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="440" pos:column="19">(<argument pos:line="440" pos:column="20">"c0aa96a2-ae7c-4d80-8831-c7c720f14cca"</argument>)</argument_list></macro>
+    <label><name pos:line="441" pos:column="5">IDebugStepper90</name> :</label> <expr_stmt><expr pos:line="441" pos:column="23">public <name pos:line="441" pos:column="30">IUnknown</name>
+    <block pos:line="442" pos:column="5">{
+    <expr pos:line="443" pos:column="5">public<op:operator pos:line="443" pos:column="11">:</op:operator>
+        virtual <name pos:line="444" pos:column="17">HRESULT</name> <name pos:line="444" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="444" pos:column="43">Step</name><argument_list pos:line="444" pos:column="47">( 
+            <comment type="block" pos:line="445" pos:column="13">/* [in] */</comment> <argument pos:line="445" pos:column="24">__RPC__in_opt IDebugProgram2 *pProgram</argument>,
+            <comment type="block" pos:line="446" pos:column="13">/* [in] */</comment> <argument pos:line="446" pos:column="24">__RPC__in_opt IDebugThread2 *pThread</argument>)</argument_list></macro> <op:operator pos:line="446" pos:column="62">=</op:operator> <lit:literal type="number" pos:line="446" pos:column="64">0</lit:literal></expr>;
+        
+        <expr pos:line="448" pos:column="9">virtual <name pos:line="448" pos:column="17">HRESULT</name> <name pos:line="448" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="448" pos:column="43">GetStepKind</name><argument_list pos:line="448" pos:column="54">( 
+            <comment type="block" pos:line="449" pos:column="13">/* [out] */</comment> <argument pos:line="449" pos:column="25">__RPC__out STEPKIND *pSK</argument>)</argument_list></macro> <op:operator pos:line="449" pos:column="51">=</op:operator> <lit:literal type="number" pos:line="449" pos:column="53">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="453" pos:column="1">#<cpp:directive pos:line="453" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="453" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="455" pos:column="5">typedef <type><struct pos:line="455" pos:column="13">struct <name pos:line="455" pos:column="20">IDebugStepper90Vtbl</name>
+    <block pos:line="456" pos:column="5">{<public type="default" pos:line="456" pos:column="6">
+        <function_decl><type><name pos:line="457" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="459" pos:column="9">HRESULT</name></type> ( <name pos:line="459" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="459" pos:column="37">*</type:modifier><name pos:line="459" pos:column="38">QueryInterface</name> )<parameter_list pos:line="459" pos:column="54">( 
+            <param><decl><type><name pos:line="460" pos:column="13">IDebugStepper90</name> <type:modifier pos:line="460" pos:column="29">*</type:modifier></type> <name pos:line="460" pos:column="31">This</name></decl></param>,
+            <comment type="block" pos:line="461" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="461" pos:column="24">__RPC__in</name> <name pos:line="461" pos:column="34">REFIID</name></type> <name pos:line="461" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="462" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="463" pos:column="13">__RPC__deref_out</name>  <name pos:line="463" pos:column="31">void</name> <type:modifier pos:line="463" pos:column="36">*</type:modifier><type:modifier pos:line="463" pos:column="37">*</type:modifier></type><name pos:line="463" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="465" pos:column="9">ULONG</name></type> ( <name pos:line="465" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="465" pos:column="35">*</type:modifier><name pos:line="465" pos:column="36">AddRef</name> )<parameter_list pos:line="465" pos:column="44">( 
+            <param><decl><type><name pos:line="466" pos:column="13">IDebugStepper90</name> <type:modifier pos:line="466" pos:column="29">*</type:modifier></type> <name pos:line="466" pos:column="31">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="468" pos:column="9">ULONG</name></type> ( <name pos:line="468" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="468" pos:column="35">*</type:modifier><name pos:line="468" pos:column="36">Release</name> )<parameter_list pos:line="468" pos:column="45">( 
+            <param><decl><type><name pos:line="469" pos:column="13">IDebugStepper90</name> <type:modifier pos:line="469" pos:column="29">*</type:modifier></type> <name pos:line="469" pos:column="31">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="471" pos:column="9">HRESULT</name></type> ( <name pos:line="471" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="471" pos:column="37">*</type:modifier><name pos:line="471" pos:column="38">Step</name> )<parameter_list pos:line="471" pos:column="44">( 
+            <param><decl><type><name pos:line="472" pos:column="13">IDebugStepper90</name> <type:modifier pos:line="472" pos:column="29">*</type:modifier></type> <name pos:line="472" pos:column="31">This</name></decl></param>,
+            <comment type="block" pos:line="473" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="473" pos:column="24">__RPC__in_opt</name> <name pos:line="473" pos:column="38">IDebugProgram2</name> <type:modifier pos:line="473" pos:column="53">*</type:modifier></type><name pos:line="473" pos:column="54">pProgram</name></decl></param>,
+            <comment type="block" pos:line="474" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="474" pos:column="24">__RPC__in_opt</name> <name pos:line="474" pos:column="38">IDebugThread2</name> <type:modifier pos:line="474" pos:column="52">*</type:modifier></type><name pos:line="474" pos:column="53">pThread</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="476" pos:column="9">HRESULT</name></type> ( <name pos:line="476" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="476" pos:column="37">*</type:modifier><name pos:line="476" pos:column="38">GetStepKind</name> )<parameter_list pos:line="476" pos:column="51">( 
+            <param><decl><type><name pos:line="477" pos:column="13">IDebugStepper90</name> <type:modifier pos:line="477" pos:column="29">*</type:modifier></type> <name pos:line="477" pos:column="31">This</name></decl></param>,
+            <comment type="block" pos:line="478" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="478" pos:column="25">__RPC__out</name> <name pos:line="478" pos:column="36">STEPKIND</name> <type:modifier pos:line="478" pos:column="45">*</type:modifier></type><name pos:line="478" pos:column="46">pSK</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="480" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="481" pos:column="7">IDebugStepper90Vtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="483" pos:column="5">interface</name></type> <name pos:line="483" pos:column="15">IDebugStepper90</name>
+    <argument_list pos:line="484" pos:column="5">{
+        <argument><expr><name pos:line="485" pos:column="9">CONST_VTBL</name> struct <name pos:line="485" pos:column="27">IDebugStepper90Vtbl</name> <op:operator pos:line="485" pos:column="47">*</op:operator><name pos:line="485" pos:column="48">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="490" pos:column="1">#<cpp:directive pos:line="490" pos:column="2">ifdef</cpp:directive> <name pos:line="490" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="493" pos:column="1">#<cpp:directive pos:line="493" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="493" pos:column="9">IDebugStepper90_QueryInterface</name><parameter_list pos:line="493" pos:column="39">(<param><type><name pos:line="493" pos:column="40">This</name></type></param>,<param><type><name pos:line="493" pos:column="45">riid</name></type></param>,<param><type><name pos:line="493" pos:column="50">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="494" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="496" pos:column="1">#<cpp:directive pos:line="496" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="496" pos:column="9">IDebugStepper90_AddRef</name><parameter_list pos:line="496" pos:column="31">(<param><type><name pos:line="496" pos:column="32">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="497" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="499" pos:column="1">#<cpp:directive pos:line="499" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="499" pos:column="9">IDebugStepper90_Release</name><parameter_list pos:line="499" pos:column="32">(<param><type><name pos:line="499" pos:column="33">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="500" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="503" pos:column="1">#<cpp:directive pos:line="503" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="503" pos:column="9">IDebugStepper90_Step</name><parameter_list pos:line="503" pos:column="29">(<param><type><name pos:line="503" pos:column="30">This</name></type></param>,<param><type><name pos:line="503" pos:column="35">pProgram</name></type></param>,<param><type><name pos:line="503" pos:column="44">pThread</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="504" pos:column="5">( (This)-&gt;lpVtbl -&gt; Step(This,pProgram,pThread) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="506" pos:column="1">#<cpp:directive pos:line="506" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="506" pos:column="9">IDebugStepper90_GetStepKind</name><parameter_list pos:line="506" pos:column="36">(<param><type><name pos:line="506" pos:column="37">This</name></type></param>,<param><type><name pos:line="506" pos:column="42">pSK</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="507" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetStepKind(This,pSK) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="509" pos:column="1">#<cpp:directive pos:line="509" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="509" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="512" pos:column="1">#<cpp:directive pos:line="512" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="512" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="517" pos:column="1">#<cpp:directive pos:line="517" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="517" pos:column="9">/* __IDebugStepper90_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="520" pos:column="1">#<cpp:directive pos:line="520" pos:column="2">ifndef</cpp:directive> <name pos:line="520" pos:column="9">__IDebugCodePath90_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="521" pos:column="1">#<cpp:directive pos:line="521" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="521" pos:column="9">__IDebugCodePath90_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="523" pos:column="1">/* interface IDebugCodePath90 */</comment>
+<comment type="block" pos:line="524" pos:column="1">/* [unique][uuid][object] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="527" pos:column="1">EXTERN_C</name> <specifier pos:line="527" pos:column="10">const</specifier> <name pos:line="527" pos:column="16">IID</name></type> <name pos:line="527" pos:column="20">IID_IDebugCodePath90</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="529" pos:column="1">#<cpp:directive pos:line="529" pos:column="2">if</cpp:directive> <expr><call><name pos:line="529" pos:column="5">defined</name><argument_list pos:line="529" pos:column="12">(<argument><expr><name pos:line="529" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="529" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="529" pos:column="29">!</op:operator><call><name pos:line="529" pos:column="30">defined</name><argument_list pos:line="529" pos:column="37">(<argument><expr><name pos:line="529" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="531" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="531" pos:column="19">(<argument pos:line="531" pos:column="20">"7372dce0-f816-4e35-8b42-64b7f50e6395"</argument>)</argument_list></macro>
+    <label><name pos:line="532" pos:column="5">IDebugCodePath90</name> :</label> <expr_stmt><expr pos:line="532" pos:column="24">public <name pos:line="532" pos:column="31">IUnknown</name>
+    <block pos:line="533" pos:column="5">{
+    <expr pos:line="534" pos:column="5">public<op:operator pos:line="534" pos:column="11">:</op:operator>
+        virtual <name pos:line="535" pos:column="17">HRESULT</name> <name pos:line="535" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="535" pos:column="43">GetName</name><argument_list pos:line="535" pos:column="50">( 
+            <comment type="block" pos:line="536" pos:column="13">/* [out] */</comment> <argument pos:line="536" pos:column="25">__RPC__deref_out_opt BSTR *pbstrName</argument>)</argument_list></macro> <op:operator pos:line="536" pos:column="63">=</op:operator> <lit:literal type="number" pos:line="536" pos:column="65">0</lit:literal></expr>;
+        
+        <expr pos:line="538" pos:column="9">virtual <name pos:line="538" pos:column="17">HRESULT</name> <name pos:line="538" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="538" pos:column="43">GetStepper</name><argument_list pos:line="538" pos:column="53">( 
+            <comment type="block" pos:line="539" pos:column="13">/* [out] */</comment> <argument pos:line="539" pos:column="25">__RPC__deref_out_opt IDebugStepper90 **ppStepper</argument>)</argument_list></macro> <op:operator pos:line="539" pos:column="75">=</op:operator> <lit:literal type="number" pos:line="539" pos:column="77">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="543" pos:column="1">#<cpp:directive pos:line="543" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="543" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="545" pos:column="5">typedef <type><struct pos:line="545" pos:column="13">struct <name pos:line="545" pos:column="20">IDebugCodePath90Vtbl</name>
+    <block pos:line="546" pos:column="5">{<public type="default" pos:line="546" pos:column="6">
+        <function_decl><type><name pos:line="547" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="549" pos:column="9">HRESULT</name></type> ( <name pos:line="549" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="549" pos:column="37">*</type:modifier><name pos:line="549" pos:column="38">QueryInterface</name> )<parameter_list pos:line="549" pos:column="54">( 
+            <param><decl><type><name pos:line="550" pos:column="13">IDebugCodePath90</name> <type:modifier pos:line="550" pos:column="30">*</type:modifier></type> <name pos:line="550" pos:column="32">This</name></decl></param>,
+            <comment type="block" pos:line="551" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="551" pos:column="24">__RPC__in</name> <name pos:line="551" pos:column="34">REFIID</name></type> <name pos:line="551" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="552" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="553" pos:column="13">__RPC__deref_out</name>  <name pos:line="553" pos:column="31">void</name> <type:modifier pos:line="553" pos:column="36">*</type:modifier><type:modifier pos:line="553" pos:column="37">*</type:modifier></type><name pos:line="553" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="555" pos:column="9">ULONG</name></type> ( <name pos:line="555" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="555" pos:column="35">*</type:modifier><name pos:line="555" pos:column="36">AddRef</name> )<parameter_list pos:line="555" pos:column="44">( 
+            <param><decl><type><name pos:line="556" pos:column="13">IDebugCodePath90</name> <type:modifier pos:line="556" pos:column="30">*</type:modifier></type> <name pos:line="556" pos:column="32">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="558" pos:column="9">ULONG</name></type> ( <name pos:line="558" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="558" pos:column="35">*</type:modifier><name pos:line="558" pos:column="36">Release</name> )<parameter_list pos:line="558" pos:column="45">( 
+            <param><decl><type><name pos:line="559" pos:column="13">IDebugCodePath90</name> <type:modifier pos:line="559" pos:column="30">*</type:modifier></type> <name pos:line="559" pos:column="32">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="561" pos:column="9">HRESULT</name></type> ( <name pos:line="561" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="561" pos:column="37">*</type:modifier><name pos:line="561" pos:column="38">GetName</name> )<parameter_list pos:line="561" pos:column="47">( 
+            <param><decl><type><name pos:line="562" pos:column="13">IDebugCodePath90</name> <type:modifier pos:line="562" pos:column="30">*</type:modifier></type> <name pos:line="562" pos:column="32">This</name></decl></param>,
+            <comment type="block" pos:line="563" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="563" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="563" pos:column="46">BSTR</name> <type:modifier pos:line="563" pos:column="51">*</type:modifier></type><name pos:line="563" pos:column="52">pbstrName</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="565" pos:column="9">HRESULT</name></type> ( <name pos:line="565" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="565" pos:column="37">*</type:modifier><name pos:line="565" pos:column="38">GetStepper</name> )<parameter_list pos:line="565" pos:column="50">( 
+            <param><decl><type><name pos:line="566" pos:column="13">IDebugCodePath90</name> <type:modifier pos:line="566" pos:column="30">*</type:modifier></type> <name pos:line="566" pos:column="32">This</name></decl></param>,
+            <comment type="block" pos:line="567" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="567" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="567" pos:column="46">IDebugStepper90</name> <type:modifier pos:line="567" pos:column="62">*</type:modifier><type:modifier pos:line="567" pos:column="63">*</type:modifier></type><name pos:line="567" pos:column="64">ppStepper</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="569" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="570" pos:column="7">IDebugCodePath90Vtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="572" pos:column="5">interface</name></type> <name pos:line="572" pos:column="15">IDebugCodePath90</name>
+    <argument_list pos:line="573" pos:column="5">{
+        <argument><expr><name pos:line="574" pos:column="9">CONST_VTBL</name> struct <name pos:line="574" pos:column="27">IDebugCodePath90Vtbl</name> <op:operator pos:line="574" pos:column="48">*</op:operator><name pos:line="574" pos:column="49">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="579" pos:column="1">#<cpp:directive pos:line="579" pos:column="2">ifdef</cpp:directive> <name pos:line="579" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="582" pos:column="1">#<cpp:directive pos:line="582" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="582" pos:column="9">IDebugCodePath90_QueryInterface</name><parameter_list pos:line="582" pos:column="40">(<param><type><name pos:line="582" pos:column="41">This</name></type></param>,<param><type><name pos:line="582" pos:column="46">riid</name></type></param>,<param><type><name pos:line="582" pos:column="51">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="583" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="585" pos:column="1">#<cpp:directive pos:line="585" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="585" pos:column="9">IDebugCodePath90_AddRef</name><parameter_list pos:line="585" pos:column="32">(<param><type><name pos:line="585" pos:column="33">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="586" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="588" pos:column="1">#<cpp:directive pos:line="588" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="588" pos:column="9">IDebugCodePath90_Release</name><parameter_list pos:line="588" pos:column="33">(<param><type><name pos:line="588" pos:column="34">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="589" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="592" pos:column="1">#<cpp:directive pos:line="592" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="592" pos:column="9">IDebugCodePath90_GetName</name><parameter_list pos:line="592" pos:column="33">(<param><type><name pos:line="592" pos:column="34">This</name></type></param>,<param><type><name pos:line="592" pos:column="39">pbstrName</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="593" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetName(This,pbstrName) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="595" pos:column="1">#<cpp:directive pos:line="595" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="595" pos:column="9">IDebugCodePath90_GetStepper</name><parameter_list pos:line="595" pos:column="36">(<param><type><name pos:line="595" pos:column="37">This</name></type></param>,<param><type><name pos:line="595" pos:column="42">ppStepper</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="596" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetStepper(This,ppStepper) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="598" pos:column="1">#<cpp:directive pos:line="598" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="598" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="601" pos:column="1">#<cpp:directive pos:line="601" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="601" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="606" pos:column="1">#<cpp:directive pos:line="606" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="606" pos:column="9">/* __IDebugCodePath90_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="609" pos:column="1">#<cpp:directive pos:line="609" pos:column="2">ifndef</cpp:directive> <name pos:line="609" pos:column="9">__IEnumDebugCodePaths90_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="610" pos:column="1">#<cpp:directive pos:line="610" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="610" pos:column="9">__IEnumDebugCodePaths90_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="612" pos:column="1">/* interface IEnumDebugCodePaths90 */</comment>
+<comment type="block" pos:line="613" pos:column="1">/* [unique][uuid][object] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="616" pos:column="1">EXTERN_C</name> <specifier pos:line="616" pos:column="10">const</specifier> <name pos:line="616" pos:column="16">IID</name></type> <name pos:line="616" pos:column="20">IID_IEnumDebugCodePaths90</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="618" pos:column="1">#<cpp:directive pos:line="618" pos:column="2">if</cpp:directive> <expr><call><name pos:line="618" pos:column="5">defined</name><argument_list pos:line="618" pos:column="12">(<argument><expr><name pos:line="618" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="618" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="618" pos:column="29">!</op:operator><call><name pos:line="618" pos:column="30">defined</name><argument_list pos:line="618" pos:column="37">(<argument><expr><name pos:line="618" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="620" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="620" pos:column="19">(<argument pos:line="620" pos:column="20">"0b6520fb-1417-4599-9806-0d254f3c1869"</argument>)</argument_list></macro>
+    <label><name pos:line="621" pos:column="5">IEnumDebugCodePaths90</name> :</label> <expr_stmt><expr pos:line="621" pos:column="29">public <name pos:line="621" pos:column="36">IUnknown</name>
+    <block pos:line="622" pos:column="5">{
+    <expr pos:line="623" pos:column="5">public<op:operator pos:line="623" pos:column="11">:</op:operator>
+        virtual <name pos:line="624" pos:column="17">HRESULT</name> <name pos:line="624" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="624" pos:column="43">Next</name><argument_list pos:line="624" pos:column="47">( 
+            <comment type="block" pos:line="625" pos:column="13">/* [in] */</comment> <argument pos:line="625" pos:column="24">ULONG celt</argument>,
+            <comment type="block" pos:line="626" pos:column="13">/* [length_is][size_is][out] */</comment> <argument pos:line="626" pos:column="45">__RPC__out_ecount_part(celt, *pceltFetched) IDebugCodePath90 **rgelt</argument>,
+            <comment type="block" pos:line="627" pos:column="13">/* [out][in] */</comment> <argument pos:line="627" pos:column="29">__RPC__inout ULONG *pceltFetched</argument>)</argument_list></macro> <op:operator pos:line="627" pos:column="63">=</op:operator> <lit:literal type="number" pos:line="627" pos:column="65">0</lit:literal></expr>;
+        
+        <expr pos:line="629" pos:column="9">virtual <name pos:line="629" pos:column="17">HRESULT</name> <name pos:line="629" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="629" pos:column="43">Skip</name><argument_list pos:line="629" pos:column="47">( 
+            <comment type="block" pos:line="630" pos:column="13">/* [in] */</comment> <argument pos:line="630" pos:column="24">ULONG celt</argument>)</argument_list></macro> <op:operator pos:line="630" pos:column="36">=</op:operator> <lit:literal type="number" pos:line="630" pos:column="38">0</lit:literal></expr>;
+        
+        <expr pos:line="632" pos:column="9">virtual <name pos:line="632" pos:column="17">HRESULT</name> <name pos:line="632" pos:column="25">STDMETHODCALLTYPE</name> <call><name pos:line="632" pos:column="43">Reset</name><argument_list pos:line="632" pos:column="48">( <argument><expr><name pos:line="632" pos:column="50">void</name></expr></argument>)</argument_list></call> <op:operator pos:line="632" pos:column="56">=</op:operator> <lit:literal type="number" pos:line="632" pos:column="58">0</lit:literal></expr>;
+        
+        <expr pos:line="634" pos:column="9">virtual <name pos:line="634" pos:column="17">HRESULT</name> <name pos:line="634" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="634" pos:column="43">Clone</name><argument_list pos:line="634" pos:column="48">( 
+            <comment type="block" pos:line="635" pos:column="13">/* [out] */</comment> <argument pos:line="635" pos:column="25">__RPC__deref_out_opt IEnumDebugCodePaths90 **ppEnum</argument>)</argument_list></macro> <op:operator pos:line="635" pos:column="78">=</op:operator> <lit:literal type="number" pos:line="635" pos:column="80">0</lit:literal></expr>;
+        
+        <expr pos:line="637" pos:column="9">virtual <name pos:line="637" pos:column="17">HRESULT</name> <name pos:line="637" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="637" pos:column="43">GetCount</name><argument_list pos:line="637" pos:column="51">( 
+            <comment type="block" pos:line="638" pos:column="13">/* [out] */</comment> <argument pos:line="638" pos:column="25">__RPC__out ULONG *pcelt</argument>)</argument_list></macro> <op:operator pos:line="638" pos:column="50">=</op:operator> <lit:literal type="number" pos:line="638" pos:column="52">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="642" pos:column="1">#<cpp:directive pos:line="642" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="642" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="644" pos:column="5">typedef <type><struct pos:line="644" pos:column="13">struct <name pos:line="644" pos:column="20">IEnumDebugCodePaths90Vtbl</name>
+    <block pos:line="645" pos:column="5">{<public type="default" pos:line="645" pos:column="6">
+        <function_decl><type><name pos:line="646" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="648" pos:column="9">HRESULT</name></type> ( <name pos:line="648" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="648" pos:column="37">*</type:modifier><name pos:line="648" pos:column="38">QueryInterface</name> )<parameter_list pos:line="648" pos:column="54">( 
+            <param><decl><type><name pos:line="649" pos:column="13">IEnumDebugCodePaths90</name> <type:modifier pos:line="649" pos:column="35">*</type:modifier></type> <name pos:line="649" pos:column="37">This</name></decl></param>,
+            <comment type="block" pos:line="650" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="650" pos:column="24">__RPC__in</name> <name pos:line="650" pos:column="34">REFIID</name></type> <name pos:line="650" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="651" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="652" pos:column="13">__RPC__deref_out</name>  <name pos:line="652" pos:column="31">void</name> <type:modifier pos:line="652" pos:column="36">*</type:modifier><type:modifier pos:line="652" pos:column="37">*</type:modifier></type><name pos:line="652" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="654" pos:column="9">ULONG</name></type> ( <name pos:line="654" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="654" pos:column="35">*</type:modifier><name pos:line="654" pos:column="36">AddRef</name> )<parameter_list pos:line="654" pos:column="44">( 
+            <param><decl><type><name pos:line="655" pos:column="13">IEnumDebugCodePaths90</name> <type:modifier pos:line="655" pos:column="35">*</type:modifier></type> <name pos:line="655" pos:column="37">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="657" pos:column="9">ULONG</name></type> ( <name pos:line="657" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="657" pos:column="35">*</type:modifier><name pos:line="657" pos:column="36">Release</name> )<parameter_list pos:line="657" pos:column="45">( 
+            <param><decl><type><name pos:line="658" pos:column="13">IEnumDebugCodePaths90</name> <type:modifier pos:line="658" pos:column="35">*</type:modifier></type> <name pos:line="658" pos:column="37">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="660" pos:column="9">HRESULT</name> <argument_list pos:line="660" pos:column="17">( <argument pos:line="660" pos:column="19">STDMETHODCALLTYPE *Next</argument> )</argument_list></macro><expr_stmt><expr><op:operator pos:line="660" pos:column="44">(</op:operator> 
+            <name pos:line="661" pos:column="13">IEnumDebugCodePaths90</name> <op:operator pos:line="661" pos:column="35">*</op:operator> <name pos:line="661" pos:column="37">This</name><op:operator pos:line="661" pos:column="41">,</op:operator>
+            <comment type="block" pos:line="662" pos:column="13">/* [in] */</comment> <name pos:line="662" pos:column="24">ULONG</name> <name pos:line="662" pos:column="30">celt</name><op:operator pos:line="662" pos:column="34">,</op:operator>
+            <comment type="block" pos:line="663" pos:column="13">/* [length_is][size_is][out] */</comment> <macro><name pos:line="663" pos:column="45">__RPC__out_ecount_part</name><argument_list pos:line="663" pos:column="67">(<argument pos:line="663" pos:column="68">celt</argument>, <argument pos:line="663" pos:column="74">*pceltFetched</argument>)</argument_list></macro> <name pos:line="663" pos:column="89">IDebugCodePath90</name> <op:operator pos:line="663" pos:column="106">*</op:operator><op:operator pos:line="663" pos:column="107">*</op:operator><name pos:line="663" pos:column="108">rgelt</name><op:operator pos:line="663" pos:column="113">,</op:operator>
+            <comment type="block" pos:line="664" pos:column="13">/* [out][in] */</comment> <name pos:line="664" pos:column="29">__RPC__inout</name> <name pos:line="664" pos:column="42">ULONG</name> <op:operator pos:line="664" pos:column="48">*</op:operator><name pos:line="664" pos:column="49">pceltFetched</name><op:operator pos:line="664" pos:column="61">)</op:operator></expr>;</expr_stmt>
+        
+        <function_decl><type><name pos:line="666" pos:column="9">HRESULT</name></type> ( <name pos:line="666" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="666" pos:column="37">*</type:modifier><name pos:line="666" pos:column="38">Skip</name> )<parameter_list pos:line="666" pos:column="44">( 
+            <param><decl><type><name pos:line="667" pos:column="13">IEnumDebugCodePaths90</name> <type:modifier pos:line="667" pos:column="35">*</type:modifier></type> <name pos:line="667" pos:column="37">This</name></decl></param>,
+            <comment type="block" pos:line="668" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="668" pos:column="24">ULONG</name></type> <name pos:line="668" pos:column="30">celt</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="670" pos:column="9">HRESULT</name></type> ( <name pos:line="670" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="670" pos:column="37">*</type:modifier><name pos:line="670" pos:column="38">Reset</name> )<parameter_list pos:line="670" pos:column="45">( 
+            <param><decl><type><name pos:line="671" pos:column="13">IEnumDebugCodePaths90</name> <type:modifier pos:line="671" pos:column="35">*</type:modifier></type> <name pos:line="671" pos:column="37">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="673" pos:column="9">HRESULT</name></type> ( <name pos:line="673" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="673" pos:column="37">*</type:modifier><name pos:line="673" pos:column="38">Clone</name> )<parameter_list pos:line="673" pos:column="45">( 
+            <param><decl><type><name pos:line="674" pos:column="13">IEnumDebugCodePaths90</name> <type:modifier pos:line="674" pos:column="35">*</type:modifier></type> <name pos:line="674" pos:column="37">This</name></decl></param>,
+            <comment type="block" pos:line="675" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="675" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="675" pos:column="46">IEnumDebugCodePaths90</name> <type:modifier pos:line="675" pos:column="68">*</type:modifier><type:modifier pos:line="675" pos:column="69">*</type:modifier></type><name pos:line="675" pos:column="70">ppEnum</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="677" pos:column="9">HRESULT</name></type> ( <name pos:line="677" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="677" pos:column="37">*</type:modifier><name pos:line="677" pos:column="38">GetCount</name> )<parameter_list pos:line="677" pos:column="48">( 
+            <param><decl><type><name pos:line="678" pos:column="13">IEnumDebugCodePaths90</name> <type:modifier pos:line="678" pos:column="35">*</type:modifier></type> <name pos:line="678" pos:column="37">This</name></decl></param>,
+            <comment type="block" pos:line="679" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="679" pos:column="25">__RPC__out</name> <name pos:line="679" pos:column="36">ULONG</name> <type:modifier pos:line="679" pos:column="42">*</type:modifier></type><name pos:line="679" pos:column="43">pcelt</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="681" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="682" pos:column="7">IEnumDebugCodePaths90Vtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="684" pos:column="5">interface</name></type> <name pos:line="684" pos:column="15">IEnumDebugCodePaths90</name>
+    <argument_list pos:line="685" pos:column="5">{
+        <argument><expr><name pos:line="686" pos:column="9">CONST_VTBL</name> struct <name pos:line="686" pos:column="27">IEnumDebugCodePaths90Vtbl</name> <op:operator pos:line="686" pos:column="53">*</op:operator><name pos:line="686" pos:column="54">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="691" pos:column="1">#<cpp:directive pos:line="691" pos:column="2">ifdef</cpp:directive> <name pos:line="691" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="694" pos:column="1">#<cpp:directive pos:line="694" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="694" pos:column="9">IEnumDebugCodePaths90_QueryInterface</name><parameter_list pos:line="694" pos:column="45">(<param><type><name pos:line="694" pos:column="46">This</name></type></param>,<param><type><name pos:line="694" pos:column="51">riid</name></type></param>,<param><type><name pos:line="694" pos:column="56">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="695" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="697" pos:column="1">#<cpp:directive pos:line="697" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="697" pos:column="9">IEnumDebugCodePaths90_AddRef</name><parameter_list pos:line="697" pos:column="37">(<param><type><name pos:line="697" pos:column="38">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="698" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="700" pos:column="1">#<cpp:directive pos:line="700" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="700" pos:column="9">IEnumDebugCodePaths90_Release</name><parameter_list pos:line="700" pos:column="38">(<param><type><name pos:line="700" pos:column="39">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="701" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="704" pos:column="1">#<cpp:directive pos:line="704" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="704" pos:column="9">IEnumDebugCodePaths90_Next</name><parameter_list pos:line="704" pos:column="35">(<param><type><name pos:line="704" pos:column="36">This</name></type></param>,<param><type><name pos:line="704" pos:column="41">celt</name></type></param>,<param><type><name pos:line="704" pos:column="46">rgelt</name></type></param>,<param><type><name pos:line="704" pos:column="52">pceltFetched</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="705" pos:column="5">( (This)-&gt;lpVtbl -&gt; Next(This,celt,rgelt,pceltFetched) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="707" pos:column="1">#<cpp:directive pos:line="707" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="707" pos:column="9">IEnumDebugCodePaths90_Skip</name><parameter_list pos:line="707" pos:column="35">(<param><type><name pos:line="707" pos:column="36">This</name></type></param>,<param><type><name pos:line="707" pos:column="41">celt</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="708" pos:column="5">( (This)-&gt;lpVtbl -&gt; Skip(This,celt) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="710" pos:column="1">#<cpp:directive pos:line="710" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="710" pos:column="9">IEnumDebugCodePaths90_Reset</name><parameter_list pos:line="710" pos:column="36">(<param><type><name pos:line="710" pos:column="37">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="711" pos:column="5">( (This)-&gt;lpVtbl -&gt; Reset(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="713" pos:column="1">#<cpp:directive pos:line="713" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="713" pos:column="9">IEnumDebugCodePaths90_Clone</name><parameter_list pos:line="713" pos:column="36">(<param><type><name pos:line="713" pos:column="37">This</name></type></param>,<param><type><name pos:line="713" pos:column="42">ppEnum</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="714" pos:column="5">( (This)-&gt;lpVtbl -&gt; Clone(This,ppEnum) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="716" pos:column="1">#<cpp:directive pos:line="716" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="716" pos:column="9">IEnumDebugCodePaths90_GetCount</name><parameter_list pos:line="716" pos:column="39">(<param><type><name pos:line="716" pos:column="40">This</name></type></param>,<param><type><name pos:line="716" pos:column="45">pcelt</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="717" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetCount(This,pcelt) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="719" pos:column="1">#<cpp:directive pos:line="719" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="719" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="722" pos:column="1">#<cpp:directive pos:line="722" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="722" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="727" pos:column="1">#<cpp:directive pos:line="727" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="727" pos:column="9">/* __IEnumDebugCodePaths90_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="730" pos:column="1">#<cpp:directive pos:line="730" pos:column="2">ifndef</cpp:directive> <name pos:line="730" pos:column="9">__IDebugProgramEnhancedStep90_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="731" pos:column="1">#<cpp:directive pos:line="731" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="731" pos:column="9">__IDebugProgramEnhancedStep90_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="733" pos:column="1">/* interface IDebugProgramEnhancedStep90 */</comment>
+<comment type="block" pos:line="734" pos:column="1">/* [unique][uuid][object] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="737" pos:column="1">EXTERN_C</name> <specifier pos:line="737" pos:column="10">const</specifier> <name pos:line="737" pos:column="16">IID</name></type> <name pos:line="737" pos:column="20">IID_IDebugProgramEnhancedStep90</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="739" pos:column="1">#<cpp:directive pos:line="739" pos:column="2">if</cpp:directive> <expr><call><name pos:line="739" pos:column="5">defined</name><argument_list pos:line="739" pos:column="12">(<argument><expr><name pos:line="739" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="739" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="739" pos:column="29">!</op:operator><call><name pos:line="739" pos:column="30">defined</name><argument_list pos:line="739" pos:column="37">(<argument><expr><name pos:line="739" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="741" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="741" pos:column="19">(<argument pos:line="741" pos:column="20">"6d07112f-b30d-47b4-b5ce-45b26c29205a"</argument>)</argument_list></macro>
+    <label><name pos:line="742" pos:column="5">IDebugProgramEnhancedStep90</name> :</label> <expr_stmt><expr pos:line="742" pos:column="35">public <name pos:line="742" pos:column="42">IUnknown</name>
+    <block pos:line="743" pos:column="5">{
+    <expr pos:line="744" pos:column="5">public<op:operator pos:line="744" pos:column="11">:</op:operator>
+        virtual <name pos:line="745" pos:column="17">HRESULT</name> <name pos:line="745" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="745" pos:column="43">EnumCodePaths</name><argument_list pos:line="745" pos:column="56">( 
+            <comment type="block" pos:line="746" pos:column="13">/* [in] */</comment> <argument pos:line="746" pos:column="24">__RPC__in_opt IDebugThread2 *pThread</argument>,
+            <comment type="block" pos:line="747" pos:column="13">/* [in] */</comment> <argument pos:line="747" pos:column="24">__RPC__in_opt IDebugCodeContext2 *pStart</argument>,
+            <argument pos:line="748" pos:column="13">STEPUNIT stepUnit</argument>,
+            <comment type="block" pos:line="749" pos:column="13">/* [out] */</comment> <argument pos:line="749" pos:column="25">__RPC__deref_out_opt IEnumDebugCodePaths90 **ppEnum</argument>)</argument_list></macro> <op:operator pos:line="749" pos:column="78">=</op:operator> <lit:literal type="number" pos:line="749" pos:column="80">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="753" pos:column="1">#<cpp:directive pos:line="753" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="753" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="755" pos:column="5">typedef <type><struct pos:line="755" pos:column="13">struct <name pos:line="755" pos:column="20">IDebugProgramEnhancedStep90Vtbl</name>
+    <block pos:line="756" pos:column="5">{<public type="default" pos:line="756" pos:column="6">
+        <function_decl><type><name pos:line="757" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="759" pos:column="9">HRESULT</name></type> ( <name pos:line="759" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="759" pos:column="37">*</type:modifier><name pos:line="759" pos:column="38">QueryInterface</name> )<parameter_list pos:line="759" pos:column="54">( 
+            <param><decl><type><name pos:line="760" pos:column="13">IDebugProgramEnhancedStep90</name> <type:modifier pos:line="760" pos:column="41">*</type:modifier></type> <name pos:line="760" pos:column="43">This</name></decl></param>,
+            <comment type="block" pos:line="761" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="761" pos:column="24">__RPC__in</name> <name pos:line="761" pos:column="34">REFIID</name></type> <name pos:line="761" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="762" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="763" pos:column="13">__RPC__deref_out</name>  <name pos:line="763" pos:column="31">void</name> <type:modifier pos:line="763" pos:column="36">*</type:modifier><type:modifier pos:line="763" pos:column="37">*</type:modifier></type><name pos:line="763" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="765" pos:column="9">ULONG</name></type> ( <name pos:line="765" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="765" pos:column="35">*</type:modifier><name pos:line="765" pos:column="36">AddRef</name> )<parameter_list pos:line="765" pos:column="44">( 
+            <param><decl><type><name pos:line="766" pos:column="13">IDebugProgramEnhancedStep90</name> <type:modifier pos:line="766" pos:column="41">*</type:modifier></type> <name pos:line="766" pos:column="43">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="768" pos:column="9">ULONG</name></type> ( <name pos:line="768" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="768" pos:column="35">*</type:modifier><name pos:line="768" pos:column="36">Release</name> )<parameter_list pos:line="768" pos:column="45">( 
+            <param><decl><type><name pos:line="769" pos:column="13">IDebugProgramEnhancedStep90</name> <type:modifier pos:line="769" pos:column="41">*</type:modifier></type> <name pos:line="769" pos:column="43">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="771" pos:column="9">HRESULT</name></type> ( <name pos:line="771" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="771" pos:column="37">*</type:modifier><name pos:line="771" pos:column="38">EnumCodePaths</name> )<parameter_list pos:line="771" pos:column="53">( 
+            <param><decl><type><name pos:line="772" pos:column="13">IDebugProgramEnhancedStep90</name> <type:modifier pos:line="772" pos:column="41">*</type:modifier></type> <name pos:line="772" pos:column="43">This</name></decl></param>,
+            <comment type="block" pos:line="773" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="773" pos:column="24">__RPC__in_opt</name> <name pos:line="773" pos:column="38">IDebugThread2</name> <type:modifier pos:line="773" pos:column="52">*</type:modifier></type><name pos:line="773" pos:column="53">pThread</name></decl></param>,
+            <comment type="block" pos:line="774" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="774" pos:column="24">__RPC__in_opt</name> <name pos:line="774" pos:column="38">IDebugCodeContext2</name> <type:modifier pos:line="774" pos:column="57">*</type:modifier></type><name pos:line="774" pos:column="58">pStart</name></decl></param>,
+            <param><decl><type><name pos:line="775" pos:column="13">STEPUNIT</name></type> <name pos:line="775" pos:column="22">stepUnit</name></decl></param>,
+            <comment type="block" pos:line="776" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="776" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="776" pos:column="46">IEnumDebugCodePaths90</name> <type:modifier pos:line="776" pos:column="68">*</type:modifier><type:modifier pos:line="776" pos:column="69">*</type:modifier></type><name pos:line="776" pos:column="70">ppEnum</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="778" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="779" pos:column="7">IDebugProgramEnhancedStep90Vtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="781" pos:column="5">interface</name></type> <name pos:line="781" pos:column="15">IDebugProgramEnhancedStep90</name>
+    <argument_list pos:line="782" pos:column="5">{
+        <argument><expr><name pos:line="783" pos:column="9">CONST_VTBL</name> struct <name pos:line="783" pos:column="27">IDebugProgramEnhancedStep90Vtbl</name> <op:operator pos:line="783" pos:column="59">*</op:operator><name pos:line="783" pos:column="60">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="788" pos:column="1">#<cpp:directive pos:line="788" pos:column="2">ifdef</cpp:directive> <name pos:line="788" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="791" pos:column="1">#<cpp:directive pos:line="791" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="791" pos:column="9">IDebugProgramEnhancedStep90_QueryInterface</name><parameter_list pos:line="791" pos:column="51">(<param><type><name pos:line="791" pos:column="52">This</name></type></param>,<param><type><name pos:line="791" pos:column="57">riid</name></type></param>,<param><type><name pos:line="791" pos:column="62">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="792" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="794" pos:column="1">#<cpp:directive pos:line="794" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="794" pos:column="9">IDebugProgramEnhancedStep90_AddRef</name><parameter_list pos:line="794" pos:column="43">(<param><type><name pos:line="794" pos:column="44">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="795" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="797" pos:column="1">#<cpp:directive pos:line="797" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="797" pos:column="9">IDebugProgramEnhancedStep90_Release</name><parameter_list pos:line="797" pos:column="44">(<param><type><name pos:line="797" pos:column="45">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="798" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="801" pos:column="1">#<cpp:directive pos:line="801" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="801" pos:column="9">IDebugProgramEnhancedStep90_EnumCodePaths</name><parameter_list pos:line="801" pos:column="50">(<param><type><name pos:line="801" pos:column="51">This</name></type></param>,<param><type><name pos:line="801" pos:column="56">pThread</name></type></param>,<param><type><name pos:line="801" pos:column="64">pStart</name></type></param>,<param><type><name pos:line="801" pos:column="71">stepUnit</name></type></param>,<param><type><name pos:line="801" pos:column="80">ppEnum</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="802" pos:column="5">( (This)-&gt;lpVtbl -&gt; EnumCodePaths(This,pThread,pStart,stepUnit,ppEnum) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="804" pos:column="1">#<cpp:directive pos:line="804" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="804" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="807" pos:column="1">#<cpp:directive pos:line="807" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="807" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="812" pos:column="1">#<cpp:directive pos:line="812" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="812" pos:column="9">/* __IDebugProgramEnhancedStep90_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="815" pos:column="1">#<cpp:directive pos:line="815" pos:column="2">ifndef</cpp:directive> <name pos:line="815" pos:column="9">__IDebugProcessEnhancedStep90_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="816" pos:column="1">#<cpp:directive pos:line="816" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="816" pos:column="9">__IDebugProcessEnhancedStep90_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="818" pos:column="1">/* interface IDebugProcessEnhancedStep90 */</comment>
+<comment type="block" pos:line="819" pos:column="1">/* [unique][uuid][object] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="822" pos:column="1">EXTERN_C</name> <specifier pos:line="822" pos:column="10">const</specifier> <name pos:line="822" pos:column="16">IID</name></type> <name pos:line="822" pos:column="20">IID_IDebugProcessEnhancedStep90</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="824" pos:column="1">#<cpp:directive pos:line="824" pos:column="2">if</cpp:directive> <expr><call><name pos:line="824" pos:column="5">defined</name><argument_list pos:line="824" pos:column="12">(<argument><expr><name pos:line="824" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="824" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="824" pos:column="29">!</op:operator><call><name pos:line="824" pos:column="30">defined</name><argument_list pos:line="824" pos:column="37">(<argument><expr><name pos:line="824" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="826" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="826" pos:column="19">(<argument pos:line="826" pos:column="20">"c446ca51-979a-4096-b996-5934b7ab0455"</argument>)</argument_list></macro>
+    <label><name pos:line="827" pos:column="5">IDebugProcessEnhancedStep90</name> :</label> <expr_stmt><expr pos:line="827" pos:column="35">public <name pos:line="827" pos:column="42">IUnknown</name>
+    <block pos:line="828" pos:column="5">{
+    <expr pos:line="829" pos:column="5">public<op:operator pos:line="829" pos:column="11">:</op:operator>
+        virtual <name pos:line="830" pos:column="17">HRESULT</name> <name pos:line="830" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="830" pos:column="43">Step</name><argument_list pos:line="830" pos:column="47">( 
+            <argument pos:line="831" pos:column="13">__RPC__in_opt IDebugThread2 *pThread</argument>,
+            <argument pos:line="832" pos:column="13">__RPC__in_opt IDebugStepper90 *pStepper</argument>)</argument_list></macro> <op:operator pos:line="832" pos:column="54">=</op:operator> <lit:literal type="number" pos:line="832" pos:column="56">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="836" pos:column="1">#<cpp:directive pos:line="836" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="836" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="838" pos:column="5">typedef <type><struct pos:line="838" pos:column="13">struct <name pos:line="838" pos:column="20">IDebugProcessEnhancedStep90Vtbl</name>
+    <block pos:line="839" pos:column="5">{<public type="default" pos:line="839" pos:column="6">
+        <function_decl><type><name pos:line="840" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="842" pos:column="9">HRESULT</name></type> ( <name pos:line="842" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="842" pos:column="37">*</type:modifier><name pos:line="842" pos:column="38">QueryInterface</name> )<parameter_list pos:line="842" pos:column="54">( 
+            <param><decl><type><name pos:line="843" pos:column="13">IDebugProcessEnhancedStep90</name> <type:modifier pos:line="843" pos:column="41">*</type:modifier></type> <name pos:line="843" pos:column="43">This</name></decl></param>,
+            <comment type="block" pos:line="844" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="844" pos:column="24">__RPC__in</name> <name pos:line="844" pos:column="34">REFIID</name></type> <name pos:line="844" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="845" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="846" pos:column="13">__RPC__deref_out</name>  <name pos:line="846" pos:column="31">void</name> <type:modifier pos:line="846" pos:column="36">*</type:modifier><type:modifier pos:line="846" pos:column="37">*</type:modifier></type><name pos:line="846" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="848" pos:column="9">ULONG</name></type> ( <name pos:line="848" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="848" pos:column="35">*</type:modifier><name pos:line="848" pos:column="36">AddRef</name> )<parameter_list pos:line="848" pos:column="44">( 
+            <param><decl><type><name pos:line="849" pos:column="13">IDebugProcessEnhancedStep90</name> <type:modifier pos:line="849" pos:column="41">*</type:modifier></type> <name pos:line="849" pos:column="43">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="851" pos:column="9">ULONG</name></type> ( <name pos:line="851" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="851" pos:column="35">*</type:modifier><name pos:line="851" pos:column="36">Release</name> )<parameter_list pos:line="851" pos:column="45">( 
+            <param><decl><type><name pos:line="852" pos:column="13">IDebugProcessEnhancedStep90</name> <type:modifier pos:line="852" pos:column="41">*</type:modifier></type> <name pos:line="852" pos:column="43">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="854" pos:column="9">HRESULT</name></type> ( <name pos:line="854" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="854" pos:column="37">*</type:modifier><name pos:line="854" pos:column="38">Step</name> )<parameter_list pos:line="854" pos:column="44">( 
+            <param><decl><type><name pos:line="855" pos:column="13">IDebugProcessEnhancedStep90</name> <type:modifier pos:line="855" pos:column="41">*</type:modifier></type> <name pos:line="855" pos:column="43">This</name></decl></param>,
+            <param><decl><type><name pos:line="856" pos:column="13">__RPC__in_opt</name> <name pos:line="856" pos:column="27">IDebugThread2</name> <type:modifier pos:line="856" pos:column="41">*</type:modifier></type><name pos:line="856" pos:column="42">pThread</name></decl></param>,
+            <param><decl><type><name pos:line="857" pos:column="13">__RPC__in_opt</name> <name pos:line="857" pos:column="27">IDebugStepper90</name> <type:modifier pos:line="857" pos:column="43">*</type:modifier></type><name pos:line="857" pos:column="44">pStepper</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="859" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="860" pos:column="7">IDebugProcessEnhancedStep90Vtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="862" pos:column="5">interface</name></type> <name pos:line="862" pos:column="15">IDebugProcessEnhancedStep90</name>
+    <argument_list pos:line="863" pos:column="5">{
+        <argument><expr><name pos:line="864" pos:column="9">CONST_VTBL</name> struct <name pos:line="864" pos:column="27">IDebugProcessEnhancedStep90Vtbl</name> <op:operator pos:line="864" pos:column="59">*</op:operator><name pos:line="864" pos:column="60">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="869" pos:column="1">#<cpp:directive pos:line="869" pos:column="2">ifdef</cpp:directive> <name pos:line="869" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="872" pos:column="1">#<cpp:directive pos:line="872" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="872" pos:column="9">IDebugProcessEnhancedStep90_QueryInterface</name><parameter_list pos:line="872" pos:column="51">(<param><type><name pos:line="872" pos:column="52">This</name></type></param>,<param><type><name pos:line="872" pos:column="57">riid</name></type></param>,<param><type><name pos:line="872" pos:column="62">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="873" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="875" pos:column="1">#<cpp:directive pos:line="875" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="875" pos:column="9">IDebugProcessEnhancedStep90_AddRef</name><parameter_list pos:line="875" pos:column="43">(<param><type><name pos:line="875" pos:column="44">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="876" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="878" pos:column="1">#<cpp:directive pos:line="878" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="878" pos:column="9">IDebugProcessEnhancedStep90_Release</name><parameter_list pos:line="878" pos:column="44">(<param><type><name pos:line="878" pos:column="45">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="879" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="882" pos:column="1">#<cpp:directive pos:line="882" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="882" pos:column="9">IDebugProcessEnhancedStep90_Step</name><parameter_list pos:line="882" pos:column="41">(<param><type><name pos:line="882" pos:column="42">This</name></type></param>,<param><type><name pos:line="882" pos:column="47">pThread</name></type></param>,<param><type><name pos:line="882" pos:column="55">pStepper</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="883" pos:column="5">( (This)-&gt;lpVtbl -&gt; Step(This,pThread,pStepper) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="885" pos:column="1">#<cpp:directive pos:line="885" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="885" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="888" pos:column="1">#<cpp:directive pos:line="888" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="888" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="893" pos:column="1">#<cpp:directive pos:line="893" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="893" pos:column="9">/* __IDebugProcessEnhancedStep90_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="896" pos:column="1">#<cpp:directive pos:line="896" pos:column="2">ifndef</cpp:directive> <name pos:line="896" pos:column="9">__IDebugEngineStepFilterManager90_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="897" pos:column="1">#<cpp:directive pos:line="897" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="897" pos:column="9">__IDebugEngineStepFilterManager90_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="899" pos:column="1">/* interface IDebugEngineStepFilterManager90 */</comment>
+<comment type="block" pos:line="900" pos:column="1">/* [unique][uuid][object] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="903" pos:column="1">EXTERN_C</name> <specifier pos:line="903" pos:column="10">const</specifier> <name pos:line="903" pos:column="16">IID</name></type> <name pos:line="903" pos:column="20">IID_IDebugEngineStepFilterManager90</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="905" pos:column="1">#<cpp:directive pos:line="905" pos:column="2">if</cpp:directive> <expr><call><name pos:line="905" pos:column="5">defined</name><argument_list pos:line="905" pos:column="12">(<argument><expr><name pos:line="905" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="905" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="905" pos:column="29">!</op:operator><call><name pos:line="905" pos:column="30">defined</name><argument_list pos:line="905" pos:column="37">(<argument><expr><name pos:line="905" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="907" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="907" pos:column="19">(<argument pos:line="907" pos:column="20">"de74abe1-c625-4768-81b3-8eddab72ca20"</argument>)</argument_list></macro>
+    <label><name pos:line="908" pos:column="5">IDebugEngineStepFilterManager90</name> :</label> <expr_stmt><expr pos:line="908" pos:column="39">public <name pos:line="908" pos:column="46">IUnknown</name>
+    <block pos:line="909" pos:column="5">{
+    <expr pos:line="910" pos:column="5">public<op:operator pos:line="910" pos:column="11">:</op:operator>
+        virtual <name pos:line="911" pos:column="17">HRESULT</name> <name pos:line="911" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="911" pos:column="43">ReceiveStepFilterSettings</name><argument_list pos:line="911" pos:column="68">( 
+            <argument pos:line="912" pos:column="13">__RPC__in BSTR stepFilterSettingsFile</argument>)</argument_list></macro> <op:operator pos:line="912" pos:column="52">=</op:operator> <lit:literal type="number" pos:line="912" pos:column="54">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="916" pos:column="1">#<cpp:directive pos:line="916" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="916" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="918" pos:column="5">typedef <type><struct pos:line="918" pos:column="13">struct <name pos:line="918" pos:column="20">IDebugEngineStepFilterManager90Vtbl</name>
+    <block pos:line="919" pos:column="5">{<public type="default" pos:line="919" pos:column="6">
+        <function_decl><type><name pos:line="920" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="922" pos:column="9">HRESULT</name></type> ( <name pos:line="922" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="922" pos:column="37">*</type:modifier><name pos:line="922" pos:column="38">QueryInterface</name> )<parameter_list pos:line="922" pos:column="54">( 
+            <param><decl><type><name pos:line="923" pos:column="13">IDebugEngineStepFilterManager90</name> <type:modifier pos:line="923" pos:column="45">*</type:modifier></type> <name pos:line="923" pos:column="47">This</name></decl></param>,
+            <comment type="block" pos:line="924" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="924" pos:column="24">__RPC__in</name> <name pos:line="924" pos:column="34">REFIID</name></type> <name pos:line="924" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="925" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="926" pos:column="13">__RPC__deref_out</name>  <name pos:line="926" pos:column="31">void</name> <type:modifier pos:line="926" pos:column="36">*</type:modifier><type:modifier pos:line="926" pos:column="37">*</type:modifier></type><name pos:line="926" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="928" pos:column="9">ULONG</name></type> ( <name pos:line="928" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="928" pos:column="35">*</type:modifier><name pos:line="928" pos:column="36">AddRef</name> )<parameter_list pos:line="928" pos:column="44">( 
+            <param><decl><type><name pos:line="929" pos:column="13">IDebugEngineStepFilterManager90</name> <type:modifier pos:line="929" pos:column="45">*</type:modifier></type> <name pos:line="929" pos:column="47">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="931" pos:column="9">ULONG</name></type> ( <name pos:line="931" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="931" pos:column="35">*</type:modifier><name pos:line="931" pos:column="36">Release</name> )<parameter_list pos:line="931" pos:column="45">( 
+            <param><decl><type><name pos:line="932" pos:column="13">IDebugEngineStepFilterManager90</name> <type:modifier pos:line="932" pos:column="45">*</type:modifier></type> <name pos:line="932" pos:column="47">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="934" pos:column="9">HRESULT</name></type> ( <name pos:line="934" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="934" pos:column="37">*</type:modifier><name pos:line="934" pos:column="38">ReceiveStepFilterSettings</name> )<parameter_list pos:line="934" pos:column="65">( 
+            <param><decl><type><name pos:line="935" pos:column="13">IDebugEngineStepFilterManager90</name> <type:modifier pos:line="935" pos:column="45">*</type:modifier></type> <name pos:line="935" pos:column="47">This</name></decl></param>,
+            <param><decl><type><name pos:line="936" pos:column="13">__RPC__in</name> <name pos:line="936" pos:column="23">BSTR</name></type> <name pos:line="936" pos:column="28">stepFilterSettingsFile</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="938" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="939" pos:column="7">IDebugEngineStepFilterManager90Vtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="941" pos:column="5">interface</name></type> <name pos:line="941" pos:column="15">IDebugEngineStepFilterManager90</name>
+    <argument_list pos:line="942" pos:column="5">{
+        <argument><expr><name pos:line="943" pos:column="9">CONST_VTBL</name> struct <name pos:line="943" pos:column="27">IDebugEngineStepFilterManager90Vtbl</name> <op:operator pos:line="943" pos:column="63">*</op:operator><name pos:line="943" pos:column="64">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="948" pos:column="1">#<cpp:directive pos:line="948" pos:column="2">ifdef</cpp:directive> <name pos:line="948" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="951" pos:column="1">#<cpp:directive pos:line="951" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="951" pos:column="9">IDebugEngineStepFilterManager90_QueryInterface</name><parameter_list pos:line="951" pos:column="55">(<param><type><name pos:line="951" pos:column="56">This</name></type></param>,<param><type><name pos:line="951" pos:column="61">riid</name></type></param>,<param><type><name pos:line="951" pos:column="66">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="952" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="954" pos:column="1">#<cpp:directive pos:line="954" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="954" pos:column="9">IDebugEngineStepFilterManager90_AddRef</name><parameter_list pos:line="954" pos:column="47">(<param><type><name pos:line="954" pos:column="48">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="955" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="957" pos:column="1">#<cpp:directive pos:line="957" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="957" pos:column="9">IDebugEngineStepFilterManager90_Release</name><parameter_list pos:line="957" pos:column="48">(<param><type><name pos:line="957" pos:column="49">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="958" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="961" pos:column="1">#<cpp:directive pos:line="961" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="961" pos:column="9">IDebugEngineStepFilterManager90_ReceiveStepFilterSettings</name><parameter_list pos:line="961" pos:column="66">(<param><type><name pos:line="961" pos:column="67">This</name></type></param>,<param><type><name pos:line="961" pos:column="72">stepFilterSettingsFile</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="962" pos:column="5">( (This)-&gt;lpVtbl -&gt; ReceiveStepFilterSettings(This,stepFilterSettingsFile) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="964" pos:column="1">#<cpp:directive pos:line="964" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="964" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="967" pos:column="1">#<cpp:directive pos:line="967" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="967" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="972" pos:column="1">#<cpp:directive pos:line="972" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="972" pos:column="9">/* __IDebugEngineStepFilterManager90_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="975" pos:column="1">#<cpp:directive pos:line="975" pos:column="2">ifndef</cpp:directive> <name pos:line="975" pos:column="9">__IDebugStepCompleteEvent90_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="976" pos:column="1">#<cpp:directive pos:line="976" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="976" pos:column="9">__IDebugStepCompleteEvent90_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="978" pos:column="1">/* interface IDebugStepCompleteEvent90 */</comment>
+<comment type="block" pos:line="979" pos:column="1">/* [unique][uuid][object] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="982" pos:column="1">EXTERN_C</name> <specifier pos:line="982" pos:column="10">const</specifier> <name pos:line="982" pos:column="16">IID</name></type> <name pos:line="982" pos:column="20">IID_IDebugStepCompleteEvent90</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="984" pos:column="1">#<cpp:directive pos:line="984" pos:column="2">if</cpp:directive> <expr><call><name pos:line="984" pos:column="5">defined</name><argument_list pos:line="984" pos:column="12">(<argument><expr><name pos:line="984" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="984" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="984" pos:column="29">!</op:operator><call><name pos:line="984" pos:column="30">defined</name><argument_list pos:line="984" pos:column="37">(<argument><expr><name pos:line="984" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="986" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="986" pos:column="19">(<argument pos:line="986" pos:column="20">"82d3f946-c2f8-495b-8b5f-9c30acdc6c81"</argument>)</argument_list></macro>
+    <label><name pos:line="987" pos:column="5">IDebugStepCompleteEvent90</name> :</label> <expr_stmt><expr pos:line="987" pos:column="33">public <name pos:line="987" pos:column="40">IUnknown</name>
+    <block pos:line="988" pos:column="5">{
+    <expr pos:line="989" pos:column="5">public<op:operator pos:line="989" pos:column="11">:</op:operator>
+        virtual <name pos:line="990" pos:column="17">HRESULT</name> <name pos:line="990" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="990" pos:column="43">GetStepStatus</name><argument_list pos:line="990" pos:column="56">( 
+            <comment type="block" pos:line="991" pos:column="13">/* [out] */</comment> <argument pos:line="991" pos:column="25">__RPC__out STEPSTATUS *pStatus</argument>)</argument_list></macro> <op:operator pos:line="991" pos:column="57">=</op:operator> <lit:literal type="number" pos:line="991" pos:column="59">0</lit:literal></expr>;
+        
+        <expr pos:line="993" pos:column="9">virtual <name pos:line="993" pos:column="17">HRESULT</name> <name pos:line="993" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="993" pos:column="43">EnumBreakpoints</name><argument_list pos:line="993" pos:column="58">( 
+            <comment type="block" pos:line="994" pos:column="13">/* [out] */</comment> <argument pos:line="994" pos:column="25">__RPC__deref_out_opt IEnumDebugBoundBreakpoints2 **ppEnum</argument>)</argument_list></macro> <op:operator pos:line="994" pos:column="84">=</op:operator> <lit:literal type="number" pos:line="994" pos:column="86">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="998" pos:column="1">#<cpp:directive pos:line="998" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="998" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="1000" pos:column="5">typedef <type><struct pos:line="1000" pos:column="13">struct <name pos:line="1000" pos:column="20">IDebugStepCompleteEvent90Vtbl</name>
+    <block pos:line="1001" pos:column="5">{<public type="default" pos:line="1001" pos:column="6">
+        <function_decl><type><name pos:line="1002" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="1004" pos:column="9">HRESULT</name></type> ( <name pos:line="1004" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="1004" pos:column="37">*</type:modifier><name pos:line="1004" pos:column="38">QueryInterface</name> )<parameter_list pos:line="1004" pos:column="54">( 
+            <param><decl><type><name pos:line="1005" pos:column="13">IDebugStepCompleteEvent90</name> <type:modifier pos:line="1005" pos:column="39">*</type:modifier></type> <name pos:line="1005" pos:column="41">This</name></decl></param>,
+            <comment type="block" pos:line="1006" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="1006" pos:column="24">__RPC__in</name> <name pos:line="1006" pos:column="34">REFIID</name></type> <name pos:line="1006" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="1007" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="1008" pos:column="13">__RPC__deref_out</name>  <name pos:line="1008" pos:column="31">void</name> <type:modifier pos:line="1008" pos:column="36">*</type:modifier><type:modifier pos:line="1008" pos:column="37">*</type:modifier></type><name pos:line="1008" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="1010" pos:column="9">ULONG</name></type> ( <name pos:line="1010" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="1010" pos:column="35">*</type:modifier><name pos:line="1010" pos:column="36">AddRef</name> )<parameter_list pos:line="1010" pos:column="44">( 
+            <param><decl><type><name pos:line="1011" pos:column="13">IDebugStepCompleteEvent90</name> <type:modifier pos:line="1011" pos:column="39">*</type:modifier></type> <name pos:line="1011" pos:column="41">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="1013" pos:column="9">ULONG</name></type> ( <name pos:line="1013" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="1013" pos:column="35">*</type:modifier><name pos:line="1013" pos:column="36">Release</name> )<parameter_list pos:line="1013" pos:column="45">( 
+            <param><decl><type><name pos:line="1014" pos:column="13">IDebugStepCompleteEvent90</name> <type:modifier pos:line="1014" pos:column="39">*</type:modifier></type> <name pos:line="1014" pos:column="41">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="1016" pos:column="9">HRESULT</name></type> ( <name pos:line="1016" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="1016" pos:column="37">*</type:modifier><name pos:line="1016" pos:column="38">GetStepStatus</name> )<parameter_list pos:line="1016" pos:column="53">( 
+            <param><decl><type><name pos:line="1017" pos:column="13">IDebugStepCompleteEvent90</name> <type:modifier pos:line="1017" pos:column="39">*</type:modifier></type> <name pos:line="1017" pos:column="41">This</name></decl></param>,
+            <comment type="block" pos:line="1018" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="1018" pos:column="25">__RPC__out</name> <name pos:line="1018" pos:column="36">STEPSTATUS</name> <type:modifier pos:line="1018" pos:column="47">*</type:modifier></type><name pos:line="1018" pos:column="48">pStatus</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="1020" pos:column="9">HRESULT</name></type> ( <name pos:line="1020" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="1020" pos:column="37">*</type:modifier><name pos:line="1020" pos:column="38">EnumBreakpoints</name> )<parameter_list pos:line="1020" pos:column="55">( 
+            <param><decl><type><name pos:line="1021" pos:column="13">IDebugStepCompleteEvent90</name> <type:modifier pos:line="1021" pos:column="39">*</type:modifier></type> <name pos:line="1021" pos:column="41">This</name></decl></param>,
+            <comment type="block" pos:line="1022" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="1022" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="1022" pos:column="46">IEnumDebugBoundBreakpoints2</name> <type:modifier pos:line="1022" pos:column="74">*</type:modifier><type:modifier pos:line="1022" pos:column="75">*</type:modifier></type><name pos:line="1022" pos:column="76">ppEnum</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="1024" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="1025" pos:column="7">IDebugStepCompleteEvent90Vtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="1027" pos:column="5">interface</name></type> <name pos:line="1027" pos:column="15">IDebugStepCompleteEvent90</name>
+    <argument_list pos:line="1028" pos:column="5">{
+        <argument><expr><name pos:line="1029" pos:column="9">CONST_VTBL</name> struct <name pos:line="1029" pos:column="27">IDebugStepCompleteEvent90Vtbl</name> <op:operator pos:line="1029" pos:column="57">*</op:operator><name pos:line="1029" pos:column="58">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="1034" pos:column="1">#<cpp:directive pos:line="1034" pos:column="2">ifdef</cpp:directive> <name pos:line="1034" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="1037" pos:column="1">#<cpp:directive pos:line="1037" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="1037" pos:column="9">IDebugStepCompleteEvent90_QueryInterface</name><parameter_list pos:line="1037" pos:column="49">(<param><type><name pos:line="1037" pos:column="50">This</name></type></param>,<param><type><name pos:line="1037" pos:column="55">riid</name></type></param>,<param><type><name pos:line="1037" pos:column="60">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="1038" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="1040" pos:column="1">#<cpp:directive pos:line="1040" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="1040" pos:column="9">IDebugStepCompleteEvent90_AddRef</name><parameter_list pos:line="1040" pos:column="41">(<param><type><name pos:line="1040" pos:column="42">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="1041" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="1043" pos:column="1">#<cpp:directive pos:line="1043" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="1043" pos:column="9">IDebugStepCompleteEvent90_Release</name><parameter_list pos:line="1043" pos:column="42">(<param><type><name pos:line="1043" pos:column="43">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="1044" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="1047" pos:column="1">#<cpp:directive pos:line="1047" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="1047" pos:column="9">IDebugStepCompleteEvent90_GetStepStatus</name><parameter_list pos:line="1047" pos:column="48">(<param><type><name pos:line="1047" pos:column="49">This</name></type></param>,<param><type><name pos:line="1047" pos:column="54">pStatus</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="1048" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetStepStatus(This,pStatus) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="1050" pos:column="1">#<cpp:directive pos:line="1050" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="1050" pos:column="9">IDebugStepCompleteEvent90_EnumBreakpoints</name><parameter_list pos:line="1050" pos:column="50">(<param><type><name pos:line="1050" pos:column="51">This</name></type></param>,<param><type><name pos:line="1050" pos:column="56">ppEnum</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="1051" pos:column="5">( (This)-&gt;lpVtbl -&gt; EnumBreakpoints(This,ppEnum) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="1053" pos:column="1">#<cpp:directive pos:line="1053" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="1053" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="1056" pos:column="1">#<cpp:directive pos:line="1056" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="1056" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="1061" pos:column="1">#<cpp:directive pos:line="1061" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="1061" pos:column="9">/* __IDebugStepCompleteEvent90_INTERFACE_DEFINED__ */</comment>
+
+
+<comment type="block" pos:line="1064" pos:column="1">/* interface __MIDL_itf_msdbg90_0000_0009 */</comment>
+<comment type="block" pos:line="1065" pos:column="1">/* [local] */</comment> 
+
+
+<enum pos:line="1068" pos:column="1">enum <name pos:line="1068" pos:column="6">enum_MESSAGETYPE90</name>
+    <block pos:line="1069" pos:column="5">{	<decl><name pos:line="1069" pos:column="9">MT_REASON_STEP_FILTER</name>	<init pos:line="1069" pos:column="33">= <expr><lit:literal type="number" pos:line="1069" pos:column="35">0x300</lit:literal></expr></init></decl><op:operator pos:line="1069" pos:column="40">,</op:operator>
+	<decl><name pos:line="1070" pos:column="9">MT_REASON_JMC_PROMPT</name>	<init pos:line="1070" pos:column="33">= <expr><lit:literal type="number" pos:line="1070" pos:column="35">0x400</lit:literal></expr></init></decl><op:operator pos:line="1070" pos:column="40">,</op:operator>
+	<decl><name pos:line="1071" pos:column="9">MT_REASON_STEP_FILTER_PROMPT</name>	<init pos:line="1071" pos:column="41">= <expr><lit:literal type="number" pos:line="1071" pos:column="43">0x500</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+
+
+<decl_stmt><decl><type><specifier pos:line="1075" pos:column="1">extern</specifier> <name pos:line="1075" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="1075" pos:column="22">__MIDL_itf_msdbg90_0000_0009_v0_0_c_ifspec</name></decl>;</decl_stmt>
+<decl_stmt><decl><type><specifier pos:line="1076" pos:column="1">extern</specifier> <name pos:line="1076" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="1076" pos:column="22">__MIDL_itf_msdbg90_0000_0009_v0_0_s_ifspec</name></decl>;</decl_stmt>
+
+<comment type="block" pos:line="1078" pos:column="1">/* Additional Prototypes for ALL interfaces */</comment>
+
+<function_decl><type><name pos:line="1080" pos:column="1">unsigned</name> <name pos:line="1080" pos:column="10">long</name>             <name pos:line="1080" pos:column="27">__RPC_USER</name></type>  <name pos:line="1080" pos:column="39">BSTR_UserSize</name><parameter_list pos:line="1080" pos:column="52">(     <param><decl><type><name pos:line="1080" pos:column="58">unsigned</name></type> <name pos:line="1080" pos:column="67">long</name> <type:modifier pos:line="1080" pos:column="72">*</type:modifier></decl></param>, <param><decl><type><name pos:line="1080" pos:column="75">unsigned</name></type> <name pos:line="1080" pos:column="84">long</name></decl></param>            , <param><decl><type><name pos:line="1080" pos:column="102">BSTR</name> <type:modifier pos:line="1080" pos:column="107">*</type:modifier></type></decl></param> )</parameter_list>;</function_decl> 
+<function_decl><type><name pos:line="1081" pos:column="1">unsigned</name> <name pos:line="1081" pos:column="10">char</name> <type:modifier pos:line="1081" pos:column="15">*</type:modifier> <name pos:line="1081" pos:column="17">__RPC_USER</name></type>  <name pos:line="1081" pos:column="29">BSTR_UserMarshal</name><parameter_list pos:line="1081" pos:column="45">(  <param><decl><type><name pos:line="1081" pos:column="48">unsigned</name></type> <name pos:line="1081" pos:column="57">long</name> <type:modifier pos:line="1081" pos:column="62">*</type:modifier></decl></param>, <param><decl><type><name pos:line="1081" pos:column="65">unsigned</name></type> <name pos:line="1081" pos:column="74">char</name> <type:modifier pos:line="1081" pos:column="79">*</type:modifier></decl></param>, <param><decl><type><name pos:line="1081" pos:column="82">BSTR</name> <type:modifier pos:line="1081" pos:column="87">*</type:modifier></type></decl></param> )</parameter_list>;</function_decl> 
+<function_decl><type><name pos:line="1082" pos:column="1">unsigned</name> <name pos:line="1082" pos:column="10">char</name> <type:modifier pos:line="1082" pos:column="15">*</type:modifier> <name pos:line="1082" pos:column="17">__RPC_USER</name></type>  <name pos:line="1082" pos:column="29">BSTR_UserUnmarshal</name><parameter_list pos:line="1082" pos:column="47">(<param><decl><type><name pos:line="1082" pos:column="48">unsigned</name></type> <name pos:line="1082" pos:column="57">long</name> <type:modifier pos:line="1082" pos:column="62">*</type:modifier></decl></param>, <param><decl><type><name pos:line="1082" pos:column="65">unsigned</name></type> <name pos:line="1082" pos:column="74">char</name> <type:modifier pos:line="1082" pos:column="79">*</type:modifier></decl></param>, <param><decl><type><name pos:line="1082" pos:column="82">BSTR</name> <type:modifier pos:line="1082" pos:column="87">*</type:modifier></type></decl></param> )</parameter_list>;</function_decl> 
+<function_decl><type><name pos:line="1083" pos:column="1">void</name>                      <name pos:line="1083" pos:column="27">__RPC_USER</name></type>  <name pos:line="1083" pos:column="39">BSTR_UserFree</name><parameter_list pos:line="1083" pos:column="52">(     <param><decl><type><name pos:line="1083" pos:column="58">unsigned</name></type> <name pos:line="1083" pos:column="67">long</name> <type:modifier pos:line="1083" pos:column="72">*</type:modifier></decl></param>, <param><decl><type><name pos:line="1083" pos:column="75">BSTR</name> <type:modifier pos:line="1083" pos:column="80">*</type:modifier></type></decl></param> )</parameter_list>;</function_decl> 
+
+<comment type="block" pos:line="1085" pos:column="1">/* end of Additional Prototypes */</comment>
+
+<cpp:ifdef pos:line="1087" pos:column="1">#<cpp:directive pos:line="1087" pos:column="2">ifdef</cpp:directive> <name pos:line="1087" pos:column="8">__cplusplus</name></cpp:ifdef>
+}</block></extern>
+<cpp:endif pos:line="1089" pos:column="1">#<cpp:directive pos:line="1089" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:endif pos:line="1091" pos:column="1">#<cpp:directive pos:line="1091" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+</unit>

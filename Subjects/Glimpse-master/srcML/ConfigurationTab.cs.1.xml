@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Mvc3.MusicStore.Sample\Framework\ConfigurationTab.cs" pos:tabs="8"><comment type="line" pos:line="1" pos:column="1">//using Glimpse.AspNet.Extensibility;</comment>
+<comment type="line" pos:line="2" pos:column="1">//using System;</comment>
+<comment type="line" pos:line="3" pos:column="1">//using System.Collections.Generic;</comment>
+<comment type="line" pos:line="4" pos:column="1">//using System.Linq;</comment>
+<comment type="line" pos:line="5" pos:column="1">//using System.Web;</comment>
+
+<comment type="line" pos:line="7" pos:column="1">//namespace MvcMusicStore.Framework</comment>
+<comment type="line" pos:line="8" pos:column="1">//{</comment>
+<comment type="line" pos:line="9" pos:column="1">//    public class ConfigurationTab : AspNetTab </comment>
+<comment type="line" pos:line="10" pos:column="1">//    {</comment>
+<comment type="line" pos:line="11" pos:column="1">//        public override string Name</comment>
+<comment type="line" pos:line="12" pos:column="1">//        {</comment>
+<comment type="line" pos:line="13" pos:column="1">//            get { return "Setup"; }</comment>
+<comment type="line" pos:line="14" pos:column="1">//        }</comment>
+
+<comment type="line" pos:line="16" pos:column="1">//        public override object GetData(Glimpse.Core.Extensibility.ITabContext context)</comment>
+<comment type="line" pos:line="17" pos:column="1">//        {</comment>
+<comment type="line" pos:line="18" pos:column="1">//            return MvcMusicStore.Framework.Configuration.Current;</comment>
+<comment type="line" pos:line="19" pos:column="1">//        }</comment>
+<comment type="line" pos:line="20" pos:column="1">//    }</comment>
+<comment type="line" pos:line="21" pos:column="1">//}</comment></unit>

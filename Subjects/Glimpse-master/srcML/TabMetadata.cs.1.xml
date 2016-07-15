@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Framework\TabMetadata.cs" pos:tabs="8"><namespace pos:line="1" pos:column="1">namespace <name><name pos:line="1" pos:column="11">Glimpse</name><op:operator pos:line="1" pos:column="18">.</op:operator><name pos:line="1" pos:column="19">Core</name><op:operator pos:line="1" pos:column="23">.</op:operator><name pos:line="1" pos:column="24">Framework</name></name>
+<block pos:line="2" pos:column="1">{
+    <comment type="line" pos:line="3" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="4" pos:column="5">/// Contains any metadata associated with a given tab.</comment>
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="6" pos:column="5">public</specifier> class <name pos:line="6" pos:column="18">TabMetadata</name>
+    <block pos:line="7" pos:column="5">{
+        <comment type="line" pos:line="8" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="9" pos:column="9">/// Gets or sets the documentation Uri.</comment>
+        <comment type="line" pos:line="10" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="11" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="12" pos:column="9">/// The documentation URI.</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="14" pos:column="9">public</specifier> <name pos:line="14" pos:column="16">string</name></type> <name pos:line="14" pos:column="23">DocumentationUri</name> <block pos:line="14" pos:column="40">{ <function_decl><name pos:line="14" pos:column="42">get</name>;</function_decl> <function_decl><name pos:line="14" pos:column="47">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="16" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="17" pos:column="9">/// Gets or sets the layout override instructions.</comment>
+        <comment type="line" pos:line="18" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="19" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="20" pos:column="9">/// The layout.</comment>
+        <comment type="line" pos:line="21" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="22" pos:column="9">public</specifier> <name pos:line="22" pos:column="16">object</name></type> <name pos:line="22" pos:column="23">Layout</name> <block pos:line="22" pos:column="30">{ <function_decl><name pos:line="22" pos:column="32">get</name>;</function_decl> <function_decl><name pos:line="22" pos:column="37">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// Gets or sets whether root level objects should be pivoted when displayed. </comment>
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// Keys Headings.</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="30" pos:column="9">public</specifier> <name pos:line="30" pos:column="16">bool</name></type> <name pos:line="30" pos:column="21">KeysHeadings</name> <block pos:line="30" pos:column="34">{ <function_decl><name pos:line="30" pos:column="36">get</name>;</function_decl> <function_decl><name pos:line="30" pos:column="41">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="32" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="33" pos:column="9">/// Gets a value indicating whether this instance has metadata.</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="35" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// &lt;c&gt;true&lt;/c&gt; if this instance has metadata; otherwise, &lt;c&gt;false&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="38" pos:column="9">public</specifier> <name pos:line="38" pos:column="16">bool</name></type> <name pos:line="38" pos:column="21">HasMetadata</name> 
+        <block pos:line="39" pos:column="9">{ 
+            <function><name pos:line="40" pos:column="13">get</name>
+            <block pos:line="41" pos:column="13">{
+                <return pos:line="42" pos:column="17">return <expr><op:operator pos:line="42" pos:column="24">!</op:operator><call><name><name pos:line="42" pos:column="25">string</name><op:operator pos:line="42" pos:column="31">.</op:operator><name pos:line="42" pos:column="32">IsNullOrEmpty</name></name><argument_list pos:line="42" pos:column="45">(<argument><expr><name pos:line="42" pos:column="46">DocumentationUri</name></expr></argument>)</argument_list></call> <op:operator pos:line="42" pos:column="64">||</op:operator> <name pos:line="42" pos:column="67">Layout</name> <op:operator pos:line="42" pos:column="74">!=</op:operator> <name pos:line="42" pos:column="77">null</name> <op:operator pos:line="42" pos:column="82">||</op:operator> <name pos:line="42" pos:column="85">KeysHeadings</name></expr>;</return>
+            }</block></function> 
+        }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace></unit>

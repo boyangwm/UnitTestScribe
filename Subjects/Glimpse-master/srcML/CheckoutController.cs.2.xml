@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Mvc4.MusicStore.Sample\Controllers\CheckoutController.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Linq</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Web</name><op:operator pos:line="3" pos:column="17">.</op:operator><name pos:line="3" pos:column="18">Mvc</name></name>;</using>
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">MvcMusicStore</name><op:operator pos:line="4" pos:column="20">.</op:operator><name pos:line="4" pos:column="21">Models</name></name>;</using>
+
+<namespace pos:line="6" pos:column="1">namespace <name><name pos:line="6" pos:column="11">MvcMusicStore</name><op:operator pos:line="6" pos:column="24">.</op:operator><name pos:line="6" pos:column="25">Controllers</name></name>
+<block pos:line="7" pos:column="1">{
+    <class><attribute pos:line="8" pos:column="5">[<expr><name pos:line="8" pos:column="6">Authorize</name></expr>]</attribute>
+    <specifier pos:line="9" pos:column="5">public</specifier> class <name pos:line="9" pos:column="18">CheckoutController</name> <super pos:line="9" pos:column="37">: <name pos:line="9" pos:column="39">Controller</name></super>
+    <block pos:line="10" pos:column="5">{
+        <decl_stmt><decl><type><name pos:line="11" pos:column="9">MusicStoreEntities</name></type> <name pos:line="11" pos:column="28">storeDB</name> <init pos:line="11" pos:column="36">= <expr><op:operator pos:line="11" pos:column="38">new</op:operator> <call><name pos:line="11" pos:column="42">MusicStoreEntities</name><argument_list pos:line="11" pos:column="60">()</argument_list></call></expr></init></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="12" pos:column="9">const</specifier> <name pos:line="12" pos:column="15">string</name></type> <name pos:line="12" pos:column="22">PromoCode</name> <init pos:line="12" pos:column="32">= <expr><lit:literal type="string" pos:line="12" pos:column="34">"FREE"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="14" pos:column="9">//</comment>
+        <comment type="line" pos:line="15" pos:column="9">// GET: /Checkout/</comment>
+
+        <function><type><specifier pos:line="17" pos:column="9">public</specifier> <name pos:line="17" pos:column="16">ActionResult</name></type> <name pos:line="17" pos:column="29">AddressAndPayment</name><parameter_list pos:line="17" pos:column="46">()</parameter_list>
+        <block pos:line="18" pos:column="9">{
+            <return pos:line="19" pos:column="13">return <expr><call><name pos:line="19" pos:column="20">View</name><argument_list pos:line="19" pos:column="24">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="22" pos:column="9">//</comment>
+        <comment type="line" pos:line="23" pos:column="9">// POST: /Checkout/AddressAndPayment</comment>
+
+        <function><type><attribute pos:line="25" pos:column="9">[<expr><name pos:line="25" pos:column="10">HttpPost</name></expr>]</attribute>
+        <specifier pos:line="26" pos:column="9">public</specifier> <name pos:line="26" pos:column="16">ActionResult</name></type> <name pos:line="26" pos:column="29">AddressAndPayment</name><parameter_list pos:line="26" pos:column="46">(<param><decl><type><name pos:line="26" pos:column="47">FormCollection</name></type> <name pos:line="26" pos:column="62">values</name></decl></param>)</parameter_list>
+        <block pos:line="27" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="28" pos:column="13">var</name></type> <name pos:line="28" pos:column="17">order</name> <init pos:line="28" pos:column="23">= <expr><op:operator pos:line="28" pos:column="25">new</op:operator> <call><name pos:line="28" pos:column="29">Order</name><argument_list pos:line="28" pos:column="34">()</argument_list></call></expr></init></decl>;</decl_stmt>
+            <expr_stmt><expr><call><name pos:line="29" pos:column="13">TryUpdateModel</name><argument_list pos:line="29" pos:column="27">(<argument><expr><name pos:line="29" pos:column="28">order</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+            <try pos:line="31" pos:column="13">try
+            <block pos:line="32" pos:column="13">{
+                <if pos:line="33" pos:column="17">if <condition pos:line="33" pos:column="20">(<expr><call><name><name pos:line="33" pos:column="21">string</name><op:operator pos:line="33" pos:column="27">.</op:operator><name pos:line="33" pos:column="28">Equals</name></name><argument_list pos:line="33" pos:column="34">(<argument><expr><name><name pos:line="33" pos:column="35">values</name><index pos:line="33" pos:column="41">[<expr><lit:literal type="string" pos:line="33" pos:column="42">"PromoCode"</lit:literal></expr>]</index></name></expr></argument>, <argument><expr><name pos:line="33" pos:column="56">PromoCode</name></expr></argument>,
+                    <argument><expr><name><name pos:line="34" pos:column="21">StringComparison</name><op:operator pos:line="34" pos:column="37">.</op:operator><name pos:line="34" pos:column="38">OrdinalIgnoreCase</name></name></expr></argument>)</argument_list></call> <op:operator pos:line="34" pos:column="57">==</op:operator> <lit:literal type="boolean" pos:line="34" pos:column="60">false</lit:literal></expr>)</condition><then pos:line="34" pos:column="66">
+                <block pos:line="35" pos:column="17">{
+                    <return pos:line="36" pos:column="21">return <expr><call><name pos:line="36" pos:column="28">View</name><argument_list pos:line="36" pos:column="32">(<argument><expr><name pos:line="36" pos:column="33">order</name></expr></argument>)</argument_list></call></expr>;</return>
+                }</block></then>
+                <else pos:line="38" pos:column="17">else
+                <block pos:line="39" pos:column="17">{
+                    <expr_stmt><expr><name><name pos:line="40" pos:column="21">order</name><op:operator pos:line="40" pos:column="26">.</op:operator><name pos:line="40" pos:column="27">Username</name></name> <op:operator pos:line="40" pos:column="36">=</op:operator> <name><name pos:line="40" pos:column="38">User</name><op:operator pos:line="40" pos:column="42">.</op:operator><name pos:line="40" pos:column="43">Identity</name><op:operator pos:line="40" pos:column="51">.</op:operator><name pos:line="40" pos:column="52">Name</name></name></expr>;</expr_stmt>
+                    <expr_stmt><expr><name><name pos:line="41" pos:column="21">order</name><op:operator pos:line="41" pos:column="26">.</op:operator><name pos:line="41" pos:column="27">OrderDate</name></name> <op:operator pos:line="41" pos:column="37">=</op:operator> <name><name pos:line="41" pos:column="39">DateTime</name><op:operator pos:line="41" pos:column="47">.</op:operator><name pos:line="41" pos:column="48">Now</name></name></expr>;</expr_stmt>
+
+                    <comment type="line" pos:line="43" pos:column="21">//Add the Order</comment>
+                    <expr_stmt><expr><call><name><name pos:line="44" pos:column="21">storeDB</name><op:operator pos:line="44" pos:column="28">.</op:operator><name pos:line="44" pos:column="29">Orders</name><op:operator pos:line="44" pos:column="35">.</op:operator><name pos:line="44" pos:column="36">Add</name></name><argument_list pos:line="44" pos:column="39">(<argument><expr><name pos:line="44" pos:column="40">order</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+                    <comment type="line" pos:line="46" pos:column="21">//Process the order</comment>
+                    <decl_stmt><decl><type><name pos:line="47" pos:column="21">var</name></type> <name pos:line="47" pos:column="25">cart</name> <init pos:line="47" pos:column="30">= <expr><call><name><name pos:line="47" pos:column="32">ShoppingCart</name><op:operator pos:line="47" pos:column="44">.</op:operator><name pos:line="47" pos:column="45">GetCart</name></name><argument_list pos:line="47" pos:column="52">(<argument><expr><name pos:line="47" pos:column="53">storeDB</name></expr></argument>, <argument><expr><name><name pos:line="47" pos:column="62">this</name><op:operator pos:line="47" pos:column="66">.</op:operator><name pos:line="47" pos:column="67">HttpContext</name></name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+                    <expr_stmt><expr><call><name><name pos:line="48" pos:column="21">cart</name><op:operator pos:line="48" pos:column="25">.</op:operator><name pos:line="48" pos:column="26">CreateOrder</name></name><argument_list pos:line="48" pos:column="37">(<argument><expr><name pos:line="48" pos:column="38">order</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+                    <comment type="line" pos:line="50" pos:column="21">// Save all changes</comment>
+                    <expr_stmt><expr><call><name><name pos:line="51" pos:column="21">storeDB</name><op:operator pos:line="51" pos:column="28">.</op:operator><name pos:line="51" pos:column="29">SaveChanges</name></name><argument_list pos:line="51" pos:column="40">()</argument_list></call></expr>;</expr_stmt>
+
+                    <return pos:line="53" pos:column="21">return <expr><call><name pos:line="53" pos:column="28">RedirectToAction</name><argument_list pos:line="53" pos:column="44">(<argument><expr><lit:literal type="string" pos:line="53" pos:column="45">"Complete"</lit:literal></expr></argument>,
+                        <argument><expr><op:operator pos:line="54" pos:column="25">new</op:operator> <block pos:line="54" pos:column="29">{ <expr><name pos:line="54" pos:column="31">id</name> <op:operator pos:line="54" pos:column="34">=</op:operator> <name><name pos:line="54" pos:column="36">order</name><op:operator pos:line="54" pos:column="41">.</op:operator><name pos:line="54" pos:column="42">OrderId</name></name></expr> }</block></expr></argument>)</argument_list></call></expr>;</return>
+                }</block></else></if>
+
+            }</block>
+            <catch pos:line="58" pos:column="13">catch
+            <block pos:line="59" pos:column="13">{
+                <comment type="line" pos:line="60" pos:column="17">//Invalid - redisplay with errors</comment>
+                <return pos:line="61" pos:column="17">return <expr><call><name pos:line="61" pos:column="24">View</name><argument_list pos:line="61" pos:column="28">(<argument><expr><name pos:line="61" pos:column="29">order</name></expr></argument>)</argument_list></call></expr>;</return>
+            }</block></catch></try>
+        }</block></function>
+
+        <comment type="line" pos:line="65" pos:column="9">//</comment>
+        <comment type="line" pos:line="66" pos:column="9">// GET: /Checkout/Complete</comment>
+
+        <function><type><specifier pos:line="68" pos:column="9">public</specifier> <name pos:line="68" pos:column="16">ActionResult</name></type> <name pos:line="68" pos:column="29">Complete</name><parameter_list pos:line="68" pos:column="37">(<param><decl><type><name pos:line="68" pos:column="38">int</name></type> <name pos:line="68" pos:column="42">id</name></decl></param>)</parameter_list>
+        <block pos:line="69" pos:column="9">{
+            <comment type="line" pos:line="70" pos:column="13">// Validate customer owns this order</comment>
+            <decl_stmt><decl><type><name pos:line="71" pos:column="13">bool</name></type> <name pos:line="71" pos:column="18">isValid</name> <init pos:line="71" pos:column="26">= <expr><call><name><name pos:line="71" pos:column="28">storeDB</name><op:operator pos:line="71" pos:column="35">.</op:operator><name pos:line="71" pos:column="36">Orders</name><op:operator pos:line="71" pos:column="42">.</op:operator><name pos:line="71" pos:column="43">Any</name></name><argument_list pos:line="71" pos:column="46">(
+                <argument><expr><lambda><name pos:line="72" pos:column="17">o</name> <op:operator pos:line="72" pos:column="19">=&gt;</op:operator> <name><name pos:line="72" pos:column="22">o</name><op:operator pos:line="72" pos:column="23">.</op:operator><name pos:line="72" pos:column="24">OrderId</name></name> <op:operator pos:line="72" pos:column="32">==</op:operator> <name pos:line="72" pos:column="35">id</name> <op:operator pos:line="72" pos:column="38">&amp;&amp;</op:operator>
+                <name><name pos:line="73" pos:column="17">o</name><op:operator pos:line="73" pos:column="18">.</op:operator><name pos:line="73" pos:column="19">Username</name></name> <op:operator pos:line="73" pos:column="28">==</op:operator> <name><name pos:line="73" pos:column="31">User</name><op:operator pos:line="73" pos:column="35">.</op:operator><name pos:line="73" pos:column="36">Identity</name><op:operator pos:line="73" pos:column="44">.</op:operator><name pos:line="73" pos:column="45">Name</name></name></lambda></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <if pos:line="75" pos:column="13">if <condition pos:line="75" pos:column="16">(<expr><name pos:line="75" pos:column="17">isValid</name></expr>)</condition><then pos:line="75" pos:column="25">
+            <block pos:line="76" pos:column="13">{
+                <return pos:line="77" pos:column="17">return <expr><call><name pos:line="77" pos:column="24">View</name><argument_list pos:line="77" pos:column="28">(<argument><expr><name pos:line="77" pos:column="29">id</name></expr></argument>)</argument_list></call></expr>;</return>
+            }</block></then>
+            <else pos:line="79" pos:column="13">else
+            <block pos:line="80" pos:column="13">{
+                <return pos:line="81" pos:column="17">return <expr><call><name pos:line="81" pos:column="24">View</name><argument_list pos:line="81" pos:column="28">(<argument><expr><lit:literal type="string" pos:line="81" pos:column="29">"Error"</lit:literal></expr></argument>)</argument_list></call></expr>;</return>
+            }</block></else></if>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

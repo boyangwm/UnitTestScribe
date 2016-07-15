@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Sando-master\SandoExtensionContracts\ServiceContracts\ISandoLocalService.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2013 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Xiao Qu (ABB Group) - Initial implementation
+ *****************************************************************************/</comment>
+<using pos:line="11" pos:column="1">using <name pos:line="11" pos:column="7">System</name>;</using>
+<using pos:line="12" pos:column="1">using <name><name pos:line="12" pos:column="7">System</name><op:operator pos:line="12" pos:column="13">.</op:operator><name pos:line="12" pos:column="14">Runtime</name><op:operator pos:line="12" pos:column="21">.</op:operator><name pos:line="12" pos:column="22">InteropServices</name></name>;</using>
+
+<namespace pos:line="14" pos:column="1">namespace <name><name pos:line="14" pos:column="11">Sando</name><op:operator pos:line="14" pos:column="16">.</op:operator><name pos:line="14" pos:column="17">ExtensionContracts</name><op:operator pos:line="14" pos:column="35">.</op:operator><name pos:line="14" pos:column="36">ServiceContracts</name></name>
+<block pos:line="15" pos:column="1">{
+    <comment type="line" pos:line="16" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="17" pos:column="5">/// This is the interface implemented by the local service.</comment>
+    <comment type="line" pos:line="18" pos:column="5">/// Notice that we have to define this interface as COM visible so that </comment>
+    <comment type="line" pos:line="19" pos:column="5">/// it will be possible to query for it from the native version of IServiceProvider.</comment>
+    <comment type="line" pos:line="20" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class type="interface"><attribute pos:line="21" pos:column="5">[<expr><call><name pos:line="21" pos:column="6">Guid</name><argument_list pos:line="21" pos:column="10">(<argument><expr><lit:literal type="string" pos:line="21" pos:column="11">"04079195-ce4d-4683-aec3-e2f2be23b936"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+    <attribute pos:line="22" pos:column="5">[<expr><call><name pos:line="22" pos:column="6">ComVisible</name><argument_list pos:line="22" pos:column="16">(<argument><expr><lit:literal type="boolean" pos:line="22" pos:column="17">true</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+    <specifier pos:line="23" pos:column="5">public</specifier> interface <name pos:line="23" pos:column="22">ISandoLocalService</name> <block pos:line="23" pos:column="41">{
+        <function_decl><type><name pos:line="24" pos:column="9">int</name></type> <name pos:line="24" pos:column="13">LocalServiceFunction</name><parameter_list pos:line="24" pos:column="33">()</parameter_list>;</function_decl>
+    }</block></class>
+
+    <comment type="line" pos:line="27" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="28" pos:column="5">/// This interface is used to define the Type or Guid that identifies the service.</comment>
+    <comment type="line" pos:line="29" pos:column="5">/// It is not strictly required because our service will implement only one interface,</comment>
+    <comment type="line" pos:line="30" pos:column="5">/// but in case of services that implement multiple interfaces it is good practice to define</comment>
+    <comment type="line" pos:line="31" pos:column="5">/// a different type to identify the service itself.</comment>
+    <comment type="line" pos:line="32" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class type="interface"><attribute pos:line="33" pos:column="5">[<expr><call><name pos:line="33" pos:column="6">Guid</name><argument_list pos:line="33" pos:column="10">(<argument><expr><lit:literal type="string" pos:line="33" pos:column="11">"ed840427-1df8-4d3a-85eb-38847fba93f6"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+    <specifier pos:line="34" pos:column="5">public</specifier> interface <name pos:line="34" pos:column="22">SSandoLocalService</name> <block pos:line="34" pos:column="41">{
+    }</block></class>
+}</block></namespace>
+</unit>

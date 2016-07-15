@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensibility\IClientScript.cs" pos:tabs="8"><namespace pos:line="1" pos:column="1">namespace <name><name pos:line="1" pos:column="11">Glimpse</name><op:operator pos:line="1" pos:column="18">.</op:operator><name pos:line="1" pos:column="19">Core</name><op:operator pos:line="1" pos:column="23">.</op:operator><name pos:line="1" pos:column="24">Extensibility</name></name>
+<block pos:line="2" pos:column="1">{
+    <comment type="line" pos:line="3" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="4" pos:column="5">/// &lt;c&gt;IClientScript&lt;/c&gt; injects &lt;c&gt;&amp;lt;script&amp;gt;&lt;/c&gt; tags into page responses.</comment>
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;/summary&gt;</comment>
+    <comment type="line" pos:line="6" pos:column="5">/// &lt;remarks&gt;</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// There are three sub-types of &lt;c&gt;IClientScript&lt;/c&gt;: </comment>
+    <comment type="line" pos:line="8" pos:column="5">///  &lt;list type="number"&gt;</comment>
+    <comment type="line" pos:line="9" pos:column="5">///   &lt;item&gt;</comment>
+    <comment type="line" pos:line="10" pos:column="5">///    &lt;term&gt;&lt;see cref="IStaticClientScript"/&gt;&lt;/term&gt;</comment>
+    <comment type="line" pos:line="11" pos:column="5">///    &lt;description&gt;&lt;c&gt;IStaticClientScript&lt;/c&gt;'s create &lt;c&gt;&amp;lt;script&amp;gt;&lt;/c&gt; tag's with a &lt;c&gt;src&lt;/c&gt; attribute pointing to a specific Uri.&lt;/description&gt;</comment>
+    <comment type="line" pos:line="12" pos:column="5">///   &lt;/item&gt;</comment>
+    <comment type="line" pos:line="13" pos:column="5">///   &lt;item&gt;</comment>
+    <comment type="line" pos:line="14" pos:column="5">///    &lt;term&gt;&lt;see cref="IDynamicClientScript"/&gt;&lt;/term&gt;</comment>
+    <comment type="line" pos:line="15" pos:column="5">///    &lt;description&gt;&lt;c&gt;IDynamicClientScript&lt;/c&gt;'s create &lt;c&gt;&amp;lt;script&amp;gt;&lt;/c&gt; tag's with a &lt;c&gt;src&lt;/c&gt; attribute pointing to the Uri of a specific type of &lt;see cref="IResource"/&gt;.&lt;/description&gt;</comment>
+    <comment type="line" pos:line="16" pos:column="5">///   &lt;/item&gt;</comment>
+    <comment type="line" pos:line="17" pos:column="5">///  &lt;/list&gt;</comment>
+    <comment type="line" pos:line="18" pos:column="5">/// &lt;/remarks&gt;</comment>
+    <class type="interface"><specifier pos:line="19" pos:column="5">public</specifier> interface <name pos:line="19" pos:column="22">IClientScript</name>
+    <block pos:line="20" pos:column="5">{
+        <comment type="line" pos:line="21" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="22" pos:column="9">/// Gets the sorting order in which a &lt;c&gt;&amp;lt;script&amp;gt;&lt;/c&gt; tag will be injected a page response, relative to other implementations of &lt;see cref="IClientScript"/&gt;.</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;value&gt;Any value from the &lt;see cref="ScriptOrder"/&gt; enumeration.&lt;/value&gt;</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// Multiple &lt;see cref="IClientScript"/&gt;'s with the same &lt;see cref="ScriptOrder"/&gt; will be sorted in an indeterminate order.</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="28" pos:column="9">ScriptOrder</name></type> <name pos:line="28" pos:column="21">Order</name> <block pos:line="28" pos:column="27">{ <function_decl><name pos:line="28" pos:column="29">get</name>;</function_decl> }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace></unit>

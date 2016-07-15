@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensibility\TabSetupContext.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Core</name><op:operator pos:line="3" pos:column="23">.</op:operator><name pos:line="3" pos:column="24">Extensibility</name></name>
+<block pos:line="4" pos:column="1">{
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="6" pos:column="5">/// The implementation of &lt;see cref="ITabSetupContext"/&gt; used by the &lt;c&gt;Setup&lt;/c&gt; method of &lt;see cref="ITabSetup"/&gt;.</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="8" pos:column="5">public</specifier> class <name pos:line="8" pos:column="18">TabSetupContext</name> <super pos:line="8" pos:column="34">: <name pos:line="8" pos:column="36">ITabSetupContext</name></super>
+    <block pos:line="9" pos:column="5">{
+        <comment type="line" pos:line="10" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="11" pos:column="9">/// Initializes a new instance of the &lt;see cref="TabSetupContext" /&gt; class.</comment>
+        <comment type="line" pos:line="12" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;param name="logger"&gt;The logger.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// &lt;param name="messageBroker"&gt;The message broker.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// &lt;param name="tabStoreStrategy"&gt;The tab store strategy.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="16" pos:column="9">/// &lt;exception cref="System.ArgumentNullException"&gt;Throws an exception if any parameter is &lt;c&gt;null&lt;/c&gt;.&lt;/exception&gt;</comment>
+        <constructor><specifier pos:line="17" pos:column="9">public</specifier> <name pos:line="17" pos:column="16">TabSetupContext</name><parameter_list pos:line="17" pos:column="31">(<param><decl><type><name pos:line="17" pos:column="32">ILogger</name></type> <name pos:line="17" pos:column="40">logger</name></decl></param>, <param><decl><type><name pos:line="17" pos:column="48">IMessageBroker</name></type> <name pos:line="17" pos:column="63">messageBroker</name></decl></param>, <param><decl><type><name><name pos:line="17" pos:column="78">Func</name><argument_list pos:line="17" pos:column="82">&lt;<argument><name pos:line="17" pos:column="83">IDataStore</name></argument>&gt;</argument_list></name></type> <name pos:line="17" pos:column="95">tabStoreStrategy</name></decl></param>)</parameter_list>
+        <block pos:line="18" pos:column="9">{
+            <if pos:line="19" pos:column="13">if <condition pos:line="19" pos:column="16">(<expr><name pos:line="19" pos:column="17">logger</name> <op:operator pos:line="19" pos:column="24">==</op:operator> <name pos:line="19" pos:column="27">null</name></expr>)</condition><then pos:line="19" pos:column="32">
+            <block pos:line="20" pos:column="13">{
+                <throw pos:line="21" pos:column="17">throw <expr><op:operator pos:line="21" pos:column="23">new</op:operator> <call><name pos:line="21" pos:column="27">ArgumentNullException</name><argument_list pos:line="21" pos:column="48">(<argument><expr><lit:literal type="string" pos:line="21" pos:column="49">"logger"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <if pos:line="24" pos:column="13">if <condition pos:line="24" pos:column="16">(<expr><name pos:line="24" pos:column="17">messageBroker</name> <op:operator pos:line="24" pos:column="31">==</op:operator> <name pos:line="24" pos:column="34">null</name></expr>)</condition><then pos:line="24" pos:column="39">
+            <block pos:line="25" pos:column="13">{
+                <throw pos:line="26" pos:column="17">throw <expr><op:operator pos:line="26" pos:column="23">new</op:operator> <call><name pos:line="26" pos:column="27">ArgumentNullException</name><argument_list pos:line="26" pos:column="48">(<argument><expr><lit:literal type="string" pos:line="26" pos:column="49">"messageBroker"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <if pos:line="29" pos:column="13">if <condition pos:line="29" pos:column="16">(<expr><name pos:line="29" pos:column="17">tabStoreStrategy</name> <op:operator pos:line="29" pos:column="34">==</op:operator> <name pos:line="29" pos:column="37">null</name></expr>)</condition><then pos:line="29" pos:column="42">
+            <block pos:line="30" pos:column="13">{
+                <throw pos:line="31" pos:column="17">throw <expr><op:operator pos:line="31" pos:column="23">new</op:operator> <call><name pos:line="31" pos:column="27">ArgumentNullException</name><argument_list pos:line="31" pos:column="48">(<argument><expr><lit:literal type="string" pos:line="31" pos:column="49">"tabStoreStrategy"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+            
+            <expr_stmt><expr><name pos:line="34" pos:column="13">Logger</name> <op:operator pos:line="34" pos:column="20">=</op:operator> <name pos:line="34" pos:column="22">logger</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="35" pos:column="13">MessageBroker</name> <op:operator pos:line="35" pos:column="27">=</op:operator> <name pos:line="35" pos:column="29">messageBroker</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="36" pos:column="13">TabStoreStrategy</name> <op:operator pos:line="36" pos:column="30">=</op:operator> <name pos:line="36" pos:column="32">tabStoreStrategy</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// Gets or sets the logger.</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// The logger.</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="45" pos:column="9">public</specifier> <name pos:line="45" pos:column="16">ILogger</name></type> <name pos:line="45" pos:column="24">Logger</name> <block pos:line="45" pos:column="31">{ <function_decl><name pos:line="45" pos:column="33">get</name>;</function_decl> <function_decl><name pos:line="45" pos:column="38">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="47" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// Gets or sets the message broker.</comment>
+        <comment type="line" pos:line="49" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="50" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="51" pos:column="9">/// The message broker.</comment>
+        <comment type="line" pos:line="52" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="53" pos:column="9">public</specifier> <name pos:line="53" pos:column="16">IMessageBroker</name></type> <name pos:line="53" pos:column="31">MessageBroker</name> <block pos:line="53" pos:column="45">{ <function_decl><name pos:line="53" pos:column="47">get</name>;</function_decl> <function_decl><name pos:line="53" pos:column="52">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="55" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="56" pos:column="9">/// Gets or sets the tab store strategy.</comment>
+        <comment type="line" pos:line="57" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="58" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="59" pos:column="9">/// The tab store strategy.</comment>
+        <comment type="line" pos:line="60" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="61" pos:column="9">private</specifier> <name><name pos:line="61" pos:column="17">Func</name><argument_list pos:line="61" pos:column="21">&lt;<argument><name pos:line="61" pos:column="22">IDataStore</name></argument>&gt;</argument_list></name></type> <name pos:line="61" pos:column="34">TabStoreStrategy</name> <block pos:line="61" pos:column="51">{ <function_decl><name pos:line="61" pos:column="53">get</name>;</function_decl> <function_decl><name pos:line="61" pos:column="58">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="63" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="64" pos:column="9">/// Gets the tab store.</comment>
+        <comment type="line" pos:line="65" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="66" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="67" pos:column="9">/// Data store that can be used.</comment>
+        <comment type="line" pos:line="68" pos:column="9">/// &lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="69" pos:column="9">public</specifier> <name pos:line="69" pos:column="16">IDataStore</name></type> <name pos:line="69" pos:column="27">GetTabStore</name><parameter_list pos:line="69" pos:column="38">()</parameter_list>
+        <block pos:line="70" pos:column="9">{
+            <return pos:line="71" pos:column="13">return <expr><call><name pos:line="71" pos:column="20">TabStoreStrategy</name><argument_list pos:line="71" pos:column="36">()</argument_list></call></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

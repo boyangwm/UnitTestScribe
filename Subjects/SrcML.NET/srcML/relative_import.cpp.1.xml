@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\SrcML.NET\TestInputs\relative_import.cpp" pos:tabs="8"><cpp:include pos:line="1" pos:column="1">#<cpp:directive pos:line="1" pos:column="2">include</cpp:directive> <cpp:file pos:line="1" pos:column="10">&lt;iostream&gt;</cpp:file></cpp:include>
+<cpp:include pos:line="2" pos:column="1">#<cpp:directive pos:line="2" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="2" pos:column="10">"relative_import.h"</lit:literal></cpp:file></cpp:include>
+
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">std</name><op:operator pos:line="4" pos:column="10">::</op:operator><name pos:line="4" pos:column="12">cout</name></name>;</using>
+<using pos:line="5" pos:column="1">using <name><name pos:line="5" pos:column="7">std</name><op:operator pos:line="5" pos:column="10">::</op:operator><name pos:line="5" pos:column="12">endl</name></name>;</using>
+<using pos:line="6" pos:column="1">using namespace <name pos:line="6" pos:column="17">A</name>;</using>
+
+<function><type><name pos:line="8" pos:column="1">int</name></type> <name pos:line="8" pos:column="5">main</name><parameter_list pos:line="8" pos:column="9">()</parameter_list> <block pos:line="8" pos:column="12">{
+  <expr_stmt><expr><call><name pos:line="9" pos:column="3">foo</name><argument_list pos:line="9" pos:column="6">()</argument_list></call></expr>;</expr_stmt>
+  <return pos:line="10" pos:column="3">return <expr><lit:literal type="number" pos:line="10" pos:column="10">0</lit:literal></expr>;</return>
+}</block></function>
+
+<function><type><name pos:line="13" pos:column="1">void</name></type> <name><name pos:line="13" pos:column="6">A</name><op:operator pos:line="13" pos:column="7">::</op:operator><name pos:line="13" pos:column="9">foo</name></name><parameter_list pos:line="13" pos:column="12">()</parameter_list> <block pos:line="13" pos:column="15">{
+  <expr_stmt><expr><name pos:line="14" pos:column="3">cout</name> <op:operator pos:line="14" pos:column="8">&lt;&lt;</op:operator> <lit:literal type="string" pos:line="14" pos:column="11">"A::nested::bar is "</lit:literal> <op:operator pos:line="14" pos:column="32">&lt;&lt;</op:operator> <name><name pos:line="14" pos:column="35">nested</name><op:operator pos:line="14" pos:column="41">::</op:operator><name pos:line="14" pos:column="43">bar</name></name> <op:operator pos:line="14" pos:column="47">&lt;&lt;</op:operator> <name pos:line="14" pos:column="50">endl</name></expr>;</expr_stmt>
+  <expr_stmt><expr><name pos:line="15" pos:column="3">cout</name> <op:operator pos:line="15" pos:column="8">&lt;&lt;</op:operator> <lit:literal type="string" pos:line="15" pos:column="11">"executed A::foo()"</lit:literal> <op:operator pos:line="15" pos:column="31">&lt;&lt;</op:operator> <name pos:line="15" pos:column="34">endl</name></expr>;</expr_stmt>
+}</block></function>
+</unit>

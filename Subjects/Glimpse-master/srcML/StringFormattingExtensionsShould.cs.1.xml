@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Test.Core\Plugin\Assist\StringFormattingExtensionsShould.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">Glimpse</name><op:operator pos:line="1" pos:column="14">.</op:operator><name pos:line="1" pos:column="15">Core</name><op:operator pos:line="1" pos:column="19">.</op:operator><name pos:line="1" pos:column="20">Tab</name><op:operator pos:line="1" pos:column="23">.</op:operator><name pos:line="1" pos:column="24">Assist</name></name>;</using>
+<using pos:line="2" pos:column="1">using <name pos:line="2" pos:column="7">Xunit</name>;</using>
+
+<namespace pos:line="4" pos:column="1">namespace <name><name pos:line="4" pos:column="11">Glimpse</name><op:operator pos:line="4" pos:column="18">.</op:operator><name pos:line="4" pos:column="19">Test</name><op:operator pos:line="4" pos:column="23">.</op:operator><name pos:line="4" pos:column="24">Core</name><op:operator pos:line="4" pos:column="28">.</op:operator><name pos:line="4" pos:column="29">Plugin</name><op:operator pos:line="4" pos:column="35">.</op:operator><name pos:line="4" pos:column="36">Assist</name></name>
+<block pos:line="5" pos:column="1">{
+	<class><specifier pos:line="6" pos:column="9">public</specifier> class <name pos:line="6" pos:column="22">StringFormattingExtensionsShould</name>
+	<block pos:line="7" pos:column="9">{
+		<function><type><attribute pos:line="8" pos:column="17">[<expr><name pos:line="8" pos:column="18">Fact</name></expr>]</attribute>
+		<specifier pos:line="9" pos:column="17">public</specifier> <name pos:line="9" pos:column="24">void</name></type> <name pos:line="9" pos:column="29">ApplyStrongFormatting</name><parameter_list pos:line="9" pos:column="50">()</parameter_list>
+		<block pos:line="10" pos:column="17">{
+			<decl_stmt><decl><type><name pos:line="11" pos:column="25">var</name></type> <name pos:line="11" pos:column="29">result</name> <init pos:line="11" pos:column="36">= <expr><call><name><name pos:line="11" pos:column="38">String</name><op:operator pos:line="11" pos:column="44">.</op:operator><name pos:line="11" pos:column="45">Strong</name></name><argument_list pos:line="11" pos:column="51">()</argument_list></call></expr></init></decl>;</decl_stmt>
+
+			<expr_stmt><expr><call><name><name pos:line="13" pos:column="25">Assert</name><op:operator pos:line="13" pos:column="31">.</op:operator><name pos:line="13" pos:column="32">Equal</name></name><argument_list pos:line="13" pos:column="37">(<argument><expr><name pos:line="13" pos:column="38">result</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="13" pos:column="46">@"*Text*"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+		}</block></function>
+
+        <function><type><attribute pos:line="16" pos:column="9">[<expr><name pos:line="16" pos:column="10">Fact</name></expr>]</attribute>
+        <specifier pos:line="17" pos:column="9">public</specifier> <name pos:line="17" pos:column="16">void</name></type> <name pos:line="17" pos:column="21">ApplyStrongFormattingIf</name><parameter_list pos:line="17" pos:column="44">()</parameter_list>
+        <block pos:line="18" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="19" pos:column="13">var</name></type> <name pos:line="19" pos:column="17">result</name> <init pos:line="19" pos:column="24">= <expr><call><name><name pos:line="19" pos:column="26">String</name><op:operator pos:line="19" pos:column="32">.</op:operator><name pos:line="19" pos:column="33">StrongIf</name></name><argument_list pos:line="19" pos:column="41">(<argument><expr><lit:literal type="boolean" pos:line="19" pos:column="42">true</lit:literal></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <expr_stmt><expr><call><name><name pos:line="21" pos:column="13">Assert</name><op:operator pos:line="21" pos:column="19">.</op:operator><name pos:line="21" pos:column="20">Equal</name></name><argument_list pos:line="21" pos:column="25">(<argument><expr><name pos:line="21" pos:column="26">result</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="21" pos:column="34">@"*Text*"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+            <expr_stmt><expr><name pos:line="23" pos:column="13">result</name> <op:operator pos:line="23" pos:column="20">=</op:operator> <call><name><name pos:line="23" pos:column="22">String</name><op:operator pos:line="23" pos:column="28">.</op:operator><name pos:line="23" pos:column="29">StrongIf</name></name><argument_list pos:line="23" pos:column="37">(<argument><expr><lit:literal type="boolean" pos:line="23" pos:column="38">false</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+            <expr_stmt><expr><call><name><name pos:line="25" pos:column="13">Assert</name><op:operator pos:line="25" pos:column="19">.</op:operator><name pos:line="25" pos:column="20">Equal</name></name><argument_list pos:line="25" pos:column="25">(<argument><expr><name pos:line="25" pos:column="26">result</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="25" pos:column="34">@"Text"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+		<function><type><attribute pos:line="28" pos:column="17">[<expr><name pos:line="28" pos:column="18">Fact</name></expr>]</attribute>
+		<specifier pos:line="29" pos:column="17">public</specifier> <name pos:line="29" pos:column="24">void</name></type> <name pos:line="29" pos:column="29">ApplyEmphasisFormatting</name><parameter_list pos:line="29" pos:column="52">()</parameter_list>
+		<block pos:line="30" pos:column="17">{
+			<decl_stmt><decl><type><name pos:line="31" pos:column="25">var</name></type> <name pos:line="31" pos:column="29">result</name> <init pos:line="31" pos:column="36">= <expr><call><name><name pos:line="31" pos:column="38">String</name><op:operator pos:line="31" pos:column="44">.</op:operator><name pos:line="31" pos:column="45">Emphasis</name></name><argument_list pos:line="31" pos:column="53">()</argument_list></call></expr></init></decl>;</decl_stmt>
+
+			<expr_stmt><expr><call><name><name pos:line="33" pos:column="25">Assert</name><op:operator pos:line="33" pos:column="31">.</op:operator><name pos:line="33" pos:column="32">Equal</name></name><argument_list pos:line="33" pos:column="37">(<argument><expr><name pos:line="33" pos:column="38">result</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="33" pos:column="46">@"\Text\"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+		}</block></function>
+
+        <function><type><attribute pos:line="36" pos:column="9">[<expr><name pos:line="36" pos:column="10">Fact</name></expr>]</attribute>
+        <specifier pos:line="37" pos:column="9">public</specifier> <name pos:line="37" pos:column="16">void</name></type> <name pos:line="37" pos:column="21">ApplyEmphasisFormattingIf</name><parameter_list pos:line="37" pos:column="46">()</parameter_list>
+        <block pos:line="38" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="39" pos:column="13">var</name></type> <name pos:line="39" pos:column="17">result</name> <init pos:line="39" pos:column="24">= <expr><call><name><name pos:line="39" pos:column="26">String</name><op:operator pos:line="39" pos:column="32">.</op:operator><name pos:line="39" pos:column="33">EmphasisIf</name></name><argument_list pos:line="39" pos:column="43">(<argument><expr><lit:literal type="boolean" pos:line="39" pos:column="44">true</lit:literal></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <expr_stmt><expr><call><name><name pos:line="41" pos:column="13">Assert</name><op:operator pos:line="41" pos:column="19">.</op:operator><name pos:line="41" pos:column="20">Equal</name></name><argument_list pos:line="41" pos:column="25">(<argument><expr><name pos:line="41" pos:column="26">result</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="41" pos:column="34">@"\Text\"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+            <expr_stmt><expr><name pos:line="43" pos:column="13">result</name> <op:operator pos:line="43" pos:column="20">=</op:operator> <call><name><name pos:line="43" pos:column="22">String</name><op:operator pos:line="43" pos:column="28">.</op:operator><name pos:line="43" pos:column="29">EmphasisIf</name></name><argument_list pos:line="43" pos:column="39">(<argument><expr><lit:literal type="boolean" pos:line="43" pos:column="40">false</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+            <expr_stmt><expr><call><name><name pos:line="45" pos:column="13">Assert</name><op:operator pos:line="45" pos:column="19">.</op:operator><name pos:line="45" pos:column="20">Equal</name></name><argument_list pos:line="45" pos:column="25">(<argument><expr><name pos:line="45" pos:column="26">result</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="45" pos:column="34">@"Text"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+		<function><type><attribute pos:line="48" pos:column="17">[<expr><name pos:line="48" pos:column="18">Fact</name></expr>]</attribute>
+		<specifier pos:line="49" pos:column="17">public</specifier> <name pos:line="49" pos:column="24">void</name></type> <name pos:line="49" pos:column="29">ApplyRawFormatting</name><parameter_list pos:line="49" pos:column="47">()</parameter_list>
+		<block pos:line="50" pos:column="17">{
+			<decl_stmt><decl><type><name pos:line="51" pos:column="25">var</name></type> <name pos:line="51" pos:column="29">result</name> <init pos:line="51" pos:column="36">= <expr><call><name><name pos:line="51" pos:column="38">String</name><op:operator pos:line="51" pos:column="44">.</op:operator><name pos:line="51" pos:column="45">Raw</name></name><argument_list pos:line="51" pos:column="48">()</argument_list></call></expr></init></decl>;</decl_stmt>
+
+			<expr_stmt><expr><call><name><name pos:line="53" pos:column="25">Assert</name><op:operator pos:line="53" pos:column="31">.</op:operator><name pos:line="53" pos:column="32">Equal</name></name><argument_list pos:line="53" pos:column="37">(<argument><expr><name pos:line="53" pos:column="38">result</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="53" pos:column="46">@"!Text!"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+		}</block></function>
+
+        <function><type><attribute pos:line="56" pos:column="9">[<expr><name pos:line="56" pos:column="10">Fact</name></expr>]</attribute>
+        <specifier pos:line="57" pos:column="9">public</specifier> <name pos:line="57" pos:column="16">void</name></type> <name pos:line="57" pos:column="21">ApplyRawFormattingIf</name><parameter_list pos:line="57" pos:column="41">()</parameter_list>
+        <block pos:line="58" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="59" pos:column="13">var</name></type> <name pos:line="59" pos:column="17">result</name> <init pos:line="59" pos:column="24">= <expr><call><name><name pos:line="59" pos:column="26">String</name><op:operator pos:line="59" pos:column="32">.</op:operator><name pos:line="59" pos:column="33">RawIf</name></name><argument_list pos:line="59" pos:column="38">(<argument><expr><lit:literal type="boolean" pos:line="59" pos:column="39">true</lit:literal></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <expr_stmt><expr><call><name><name pos:line="61" pos:column="13">Assert</name><op:operator pos:line="61" pos:column="19">.</op:operator><name pos:line="61" pos:column="20">Equal</name></name><argument_list pos:line="61" pos:column="25">(<argument><expr><name pos:line="61" pos:column="26">result</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="61" pos:column="34">@"!Text!"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+            <expr_stmt><expr><name pos:line="63" pos:column="13">result</name> <op:operator pos:line="63" pos:column="20">=</op:operator> <call><name><name pos:line="63" pos:column="22">String</name><op:operator pos:line="63" pos:column="28">.</op:operator><name pos:line="63" pos:column="29">RawIf</name></name><argument_list pos:line="63" pos:column="34">(<argument><expr><lit:literal type="boolean" pos:line="63" pos:column="35">false</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+            <expr_stmt><expr><call><name><name pos:line="65" pos:column="13">Assert</name><op:operator pos:line="65" pos:column="19">.</op:operator><name pos:line="65" pos:column="20">Equal</name></name><argument_list pos:line="65" pos:column="25">(<argument><expr><name pos:line="65" pos:column="26">result</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="65" pos:column="34">@"Text"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+		<function><type><attribute pos:line="68" pos:column="17">[<expr><name pos:line="68" pos:column="18">Fact</name></expr>]</attribute>
+		<specifier pos:line="69" pos:column="17">public</specifier> <name pos:line="69" pos:column="24">void</name></type> <name pos:line="69" pos:column="29">ApplySubFormatting</name><parameter_list pos:line="69" pos:column="47">()</parameter_list>
+		<block pos:line="70" pos:column="17">{
+			<decl_stmt><decl><type><name pos:line="71" pos:column="25">var</name></type> <name pos:line="71" pos:column="29">result</name> <init pos:line="71" pos:column="36">= <expr><call><name><name pos:line="71" pos:column="38">String</name><op:operator pos:line="71" pos:column="44">.</op:operator><name pos:line="71" pos:column="45">Sub</name></name><argument_list pos:line="71" pos:column="48">()</argument_list></call></expr></init></decl>;</decl_stmt>
+
+			<expr_stmt><expr><call><name><name pos:line="73" pos:column="25">Assert</name><op:operator pos:line="73" pos:column="31">.</op:operator><name pos:line="73" pos:column="32">Equal</name></name><argument_list pos:line="73" pos:column="37">(<argument><expr><name pos:line="73" pos:column="38">result</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="73" pos:column="46">@"|Text|"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+		}</block></function>
+
+        <function><type><attribute pos:line="76" pos:column="9">[<expr><name pos:line="76" pos:column="10">Fact</name></expr>]</attribute>
+        <specifier pos:line="77" pos:column="9">public</specifier> <name pos:line="77" pos:column="16">void</name></type> <name pos:line="77" pos:column="21">ApplySubFormattingIf</name><parameter_list pos:line="77" pos:column="41">()</parameter_list>
+        <block pos:line="78" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="79" pos:column="13">var</name></type> <name pos:line="79" pos:column="17">result</name> <init pos:line="79" pos:column="24">= <expr><call><name><name pos:line="79" pos:column="26">String</name><op:operator pos:line="79" pos:column="32">.</op:operator><name pos:line="79" pos:column="33">SubIf</name></name><argument_list pos:line="79" pos:column="38">(<argument><expr><lit:literal type="boolean" pos:line="79" pos:column="39">true</lit:literal></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <expr_stmt><expr><call><name><name pos:line="81" pos:column="13">Assert</name><op:operator pos:line="81" pos:column="19">.</op:operator><name pos:line="81" pos:column="20">Equal</name></name><argument_list pos:line="81" pos:column="25">(<argument><expr><name pos:line="81" pos:column="26">result</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="81" pos:column="34">@"|Text|"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+            <expr_stmt><expr><name pos:line="83" pos:column="13">result</name> <op:operator pos:line="83" pos:column="20">=</op:operator> <call><name><name pos:line="83" pos:column="22">String</name><op:operator pos:line="83" pos:column="28">.</op:operator><name pos:line="83" pos:column="29">SubIf</name></name><argument_list pos:line="83" pos:column="34">(<argument><expr><lit:literal type="boolean" pos:line="83" pos:column="35">false</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+            <expr_stmt><expr><call><name><name pos:line="85" pos:column="13">Assert</name><op:operator pos:line="85" pos:column="19">.</op:operator><name pos:line="85" pos:column="20">Equal</name></name><argument_list pos:line="85" pos:column="25">(<argument><expr><name pos:line="85" pos:column="26">result</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="85" pos:column="34">@"Text"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+		<function><type><attribute pos:line="88" pos:column="17">[<expr><name pos:line="88" pos:column="18">Fact</name></expr>]</attribute>
+		<specifier pos:line="89" pos:column="17">public</specifier> <name pos:line="89" pos:column="24">void</name></type> <name pos:line="89" pos:column="29">ApplyUnderlineFormatting</name><parameter_list pos:line="89" pos:column="53">()</parameter_list>
+		<block pos:line="90" pos:column="17">{
+			<decl_stmt><decl><type><name pos:line="91" pos:column="25">var</name></type> <name pos:line="91" pos:column="29">result</name> <init pos:line="91" pos:column="36">= <expr><call><name><name pos:line="91" pos:column="38">String</name><op:operator pos:line="91" pos:column="44">.</op:operator><name pos:line="91" pos:column="45">Underline</name></name><argument_list pos:line="91" pos:column="54">()</argument_list></call></expr></init></decl>;</decl_stmt>
+
+			<expr_stmt><expr><call><name><name pos:line="93" pos:column="25">Assert</name><op:operator pos:line="93" pos:column="31">.</op:operator><name pos:line="93" pos:column="32">Equal</name></name><argument_list pos:line="93" pos:column="37">(<argument><expr><name pos:line="93" pos:column="38">result</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="93" pos:column="46">@"_Text_"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+		}</block></function>
+
+        <function><type><attribute pos:line="96" pos:column="9">[<expr><name pos:line="96" pos:column="10">Fact</name></expr>]</attribute>
+        <specifier pos:line="97" pos:column="9">public</specifier> <name pos:line="97" pos:column="16">void</name></type> <name pos:line="97" pos:column="21">ApplyUnderlineFormattingIf</name><parameter_list pos:line="97" pos:column="47">()</parameter_list>
+        <block pos:line="98" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="99" pos:column="13">var</name></type> <name pos:line="99" pos:column="17">result</name> <init pos:line="99" pos:column="24">= <expr><call><name><name pos:line="99" pos:column="26">String</name><op:operator pos:line="99" pos:column="32">.</op:operator><name pos:line="99" pos:column="33">UnderlineIf</name></name><argument_list pos:line="99" pos:column="44">(<argument><expr><lit:literal type="boolean" pos:line="99" pos:column="45">true</lit:literal></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <expr_stmt><expr><call><name><name pos:line="101" pos:column="13">Assert</name><op:operator pos:line="101" pos:column="19">.</op:operator><name pos:line="101" pos:column="20">Equal</name></name><argument_list pos:line="101" pos:column="25">(<argument><expr><name pos:line="101" pos:column="26">result</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="101" pos:column="34">@"_Text_"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+            <expr_stmt><expr><name pos:line="103" pos:column="13">result</name> <op:operator pos:line="103" pos:column="20">=</op:operator> <call><name><name pos:line="103" pos:column="22">String</name><op:operator pos:line="103" pos:column="28">.</op:operator><name pos:line="103" pos:column="29">UnderlineIf</name></name><argument_list pos:line="103" pos:column="40">(<argument><expr><lit:literal type="boolean" pos:line="103" pos:column="41">false</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+            <expr_stmt><expr><call><name><name pos:line="105" pos:column="13">Assert</name><op:operator pos:line="105" pos:column="19">.</op:operator><name pos:line="105" pos:column="20">Equal</name></name><argument_list pos:line="105" pos:column="25">(<argument><expr><name pos:line="105" pos:column="26">result</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="105" pos:column="34">@"Text"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+		<decl_stmt><decl><type><specifier pos:line="108" pos:column="17">private</specifier> <name pos:line="108" pos:column="25">string</name></type> <name pos:line="108" pos:column="32">String</name> <block pos:line="108" pos:column="39">{ <function_decl><name pos:line="108" pos:column="41">get</name>;</function_decl> <function_decl><name pos:line="108" pos:column="46">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+		<constructor><specifier pos:line="110" pos:column="17">public</specifier> <name pos:line="110" pos:column="24">StringFormattingExtensionsShould</name><parameter_list pos:line="110" pos:column="56">()</parameter_list>
+		<block pos:line="111" pos:column="17">{
+			<expr_stmt><expr><name pos:line="112" pos:column="25">String</name> <op:operator pos:line="112" pos:column="32">=</op:operator> <lit:literal type="string" pos:line="112" pos:column="34">"Text"</lit:literal></expr>;</expr_stmt>
+		}</block></constructor>
+	}</block></class>
+}</block></namespace></unit>

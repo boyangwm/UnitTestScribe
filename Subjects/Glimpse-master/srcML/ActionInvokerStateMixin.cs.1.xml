@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Mvc\AlternateType\ActionInvokerStateMixin.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Mvc</name><op:operator pos:line="3" pos:column="22">.</op:operator><name pos:line="3" pos:column="23">AlternateType</name></name>
+<block pos:line="4" pos:column="1">{
+    <class type="interface"><specifier pos:line="5" pos:column="5">public</specifier> interface <name pos:line="5" pos:column="22">IActionInvokerStateMixin</name>
+    <block pos:line="6" pos:column="5">{
+        <decl_stmt><decl><type><name pos:line="7" pos:column="9">TimeSpan</name></type> <name pos:line="7" pos:column="18">Offset</name> <block pos:line="7" pos:column="25">{ <function_decl><name pos:line="7" pos:column="27">get</name>;</function_decl> <function_decl><name pos:line="7" pos:column="32">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><name><name pos:line="9" pos:column="9">ActionInvoker</name><op:operator pos:line="9" pos:column="22">.</op:operator><name pos:line="9" pos:column="23">InvokeActionMethod</name><op:operator pos:line="9" pos:column="41">.</op:operator><name pos:line="9" pos:column="42">Arguments</name></name></type> <name pos:line="9" pos:column="52">Arguments</name> <block pos:line="9" pos:column="62">{ <function_decl><name pos:line="9" pos:column="64">get</name>;</function_decl> <function_decl><name pos:line="9" pos:column="69">set</name>;</function_decl> }</block></decl></decl_stmt>
+    }</block></class>
+
+    <class><specifier pos:line="12" pos:column="5">public</specifier> class <name pos:line="12" pos:column="18">ActionInvokerStateMixin</name> <super pos:line="12" pos:column="42">: <name pos:line="12" pos:column="44">IActionInvokerStateMixin</name></super>
+    <block pos:line="13" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="14" pos:column="9">public</specifier> <name pos:line="14" pos:column="16">TimeSpan</name></type> <name pos:line="14" pos:column="25">Offset</name> <block pos:line="14" pos:column="32">{ <function_decl><name pos:line="14" pos:column="34">get</name>;</function_decl> <function_decl><name pos:line="14" pos:column="39">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="16" pos:column="9">public</specifier> <name><name pos:line="16" pos:column="16">ActionInvoker</name><op:operator pos:line="16" pos:column="29">.</op:operator><name pos:line="16" pos:column="30">InvokeActionMethod</name><op:operator pos:line="16" pos:column="48">.</op:operator><name pos:line="16" pos:column="49">Arguments</name></name></type> <name pos:line="16" pos:column="59">Arguments</name> <block pos:line="16" pos:column="69">{ <function_decl><name pos:line="16" pos:column="71">get</name>;</function_decl> <function_decl><name pos:line="16" pos:column="76">set</name>;</function_decl> }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace>
+</unit>

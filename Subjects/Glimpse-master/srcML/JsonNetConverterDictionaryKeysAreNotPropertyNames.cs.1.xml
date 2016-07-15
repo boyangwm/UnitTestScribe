@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensibility\JsonNetConverterDictionaryKeysAreNotPropertyNames.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Globalization</name></name>;</using>
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">Newtonsoft</name><op:operator pos:line="4" pos:column="17">.</op:operator><name pos:line="4" pos:column="18">Json</name></name>;</using>
+
+<namespace pos:line="6" pos:column="1">namespace <name><name pos:line="6" pos:column="11">Glimpse</name><op:operator pos:line="6" pos:column="18">.</op:operator><name pos:line="6" pos:column="19">Core</name><op:operator pos:line="6" pos:column="23">.</op:operator><name pos:line="6" pos:column="24">Extensibility</name></name>
+<block pos:line="7" pos:column="1">{
+    <comment type="line" pos:line="8" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="9" pos:column="5">/// A &lt;see cref="JsonConverter"/&gt; that overrides the way Json.Net handles dictionaries.</comment>
+    <comment type="line" pos:line="10" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="11" pos:column="5">public</specifier> class <name pos:line="11" pos:column="18">JsonNetConverterDictionaryKeysAreNotPropertyNames</name> <super pos:line="11" pos:column="68">: <name pos:line="11" pos:column="70">JsonConverter</name></super>
+    <block pos:line="12" pos:column="5">{
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// Gets a value indicating whether this &lt;see cref="T:Newtonsoft.Json.JsonConverter" /&gt; can read JSON.</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="16" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="17" pos:column="9">/// &lt;c&gt;true&lt;/c&gt; if this &lt;see cref="T:Newtonsoft.Json.JsonConverter" /&gt; can read JSON; otherwise, &lt;c&gt;false&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="18" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="19" pos:column="9">public</specifier> <specifier pos:line="19" pos:column="16">override</specifier> <name pos:line="19" pos:column="25">bool</name></type> <name pos:line="19" pos:column="30">CanRead</name>
+        <block pos:line="20" pos:column="9">{
+            <function><name pos:line="21" pos:column="13">get</name> <block pos:line="21" pos:column="17">{ <return pos:line="21" pos:column="19">return <expr><lit:literal type="boolean" pos:line="21" pos:column="26">false</lit:literal></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// Determines whether this instance can convert the specified object type.</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;param name="objectType"&gt;Type of the object.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">///   &lt;c&gt;true&lt;/c&gt; if this instance can convert the specified object type; otherwise, &lt;c&gt;false&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="31" pos:column="9">public</specifier> <specifier pos:line="31" pos:column="16">override</specifier> <name pos:line="31" pos:column="25">bool</name></type> <name pos:line="31" pos:column="30">CanConvert</name><parameter_list pos:line="31" pos:column="40">(<param><decl><type><name pos:line="31" pos:column="41">Type</name></type> <name pos:line="31" pos:column="46">objectType</name></decl></param>)</parameter_list>
+        <block pos:line="32" pos:column="9">{
+            <return pos:line="33" pos:column="13">return <expr><call><name pos:line="33" pos:column="20">typeof</name><argument_list pos:line="33" pos:column="26">(<argument><expr><name pos:line="33" pos:column="27">IDictionary</name></expr></argument>)</argument_list></call><op:operator pos:line="33" pos:column="39">.</op:operator><call><name pos:line="33" pos:column="40">IsAssignableFrom</name><argument_list pos:line="33" pos:column="56">(<argument><expr><name pos:line="33" pos:column="57">objectType</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="36" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// Reads the JSON representation of the object.</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;param name="reader"&gt;The &lt;see cref="T:Newtonsoft.Json.JsonReader" /&gt; to read from.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;param name="objectType"&gt;Type of the object.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// &lt;param name="existingValue"&gt;The existing value of object being read.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;param name="serializer"&gt;The calling serializer.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// The object value.</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// &lt;/returns&gt;</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// &lt;exception cref="System.NotSupportedException"&gt;Throws an exception if called.&lt;/exception&gt;</comment>
+        <function><type><specifier pos:line="47" pos:column="9">public</specifier> <specifier pos:line="47" pos:column="16">override</specifier> <name pos:line="47" pos:column="25">object</name></type> <name pos:line="47" pos:column="32">ReadJson</name><parameter_list pos:line="47" pos:column="40">(<param><decl><type><name pos:line="47" pos:column="41">JsonReader</name></type> <name pos:line="47" pos:column="52">reader</name></decl></param>, <param><decl><type><name pos:line="47" pos:column="60">Type</name></type> <name pos:line="47" pos:column="65">objectType</name></decl></param>, <param><decl><type><name pos:line="47" pos:column="77">object</name></type> <name pos:line="47" pos:column="84">existingValue</name></decl></param>, <param><decl><type><name pos:line="47" pos:column="99">JsonSerializer</name></type> <name pos:line="47" pos:column="114">serializer</name></decl></param>)</parameter_list>
+        <block pos:line="48" pos:column="9">{
+            <throw pos:line="49" pos:column="13">throw <expr><op:operator pos:line="49" pos:column="19">new</op:operator> <call><name pos:line="49" pos:column="23">NotSupportedException</name><argument_list pos:line="49" pos:column="44">()</argument_list></call></expr>;</throw>
+        }</block></function>
+
+        <comment type="line" pos:line="52" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="53" pos:column="9">/// Writes the JSON representation of the object.</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="55" pos:column="9">/// &lt;param name="writer"&gt;The &lt;see cref="T:Newtonsoft.Json.JsonWriter" /&gt; to write to.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="56" pos:column="9">/// &lt;param name="value"&gt;The value.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="57" pos:column="9">/// &lt;param name="serializer"&gt;The calling serializer.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="58" pos:column="9">public</specifier> <specifier pos:line="58" pos:column="16">override</specifier> <name pos:line="58" pos:column="25">void</name></type> <name pos:line="58" pos:column="30">WriteJson</name><parameter_list pos:line="58" pos:column="39">(<param><decl><type><name pos:line="58" pos:column="40">JsonWriter</name></type> <name pos:line="58" pos:column="51">writer</name></decl></param>, <param><decl><type><name pos:line="58" pos:column="59">object</name></type> <name pos:line="58" pos:column="66">value</name></decl></param>, <param><decl><type><name pos:line="58" pos:column="73">JsonSerializer</name></type> <name pos:line="58" pos:column="88">serializer</name></decl></param>)</parameter_list>
+        <block pos:line="59" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="60" pos:column="13">var</name></type> <name pos:line="60" pos:column="17">dictionary</name> <init pos:line="60" pos:column="28">= <expr><op:operator pos:line="60" pos:column="30">(</op:operator><name pos:line="60" pos:column="31">IDictionary</name><op:operator pos:line="60" pos:column="42">)</op:operator><name pos:line="60" pos:column="43">value</name></expr></init></decl>;</decl_stmt>
+
+            <expr_stmt><expr><call><name><name pos:line="62" pos:column="13">writer</name><op:operator pos:line="62" pos:column="19">.</op:operator><name pos:line="62" pos:column="20">WriteStartObject</name></name><argument_list pos:line="62" pos:column="36">()</argument_list></call></expr>;</expr_stmt>
+
+            <foreach pos:line="64" pos:column="13">foreach (<init><decl><type><name pos:line="64" pos:column="22">DictionaryEntry</name></type> <name pos:line="64" pos:column="38">entry</name> <range pos:line="64" pos:column="44">in <expr><name pos:line="64" pos:column="47">dictionary</name></expr></range></decl></init>)
+            <block pos:line="65" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="66" pos:column="17">string</name></type> <name pos:line="66" pos:column="24">key</name> <init pos:line="66" pos:column="28">= <expr><call><name><name pos:line="66" pos:column="30">Convert</name><op:operator pos:line="66" pos:column="37">.</op:operator><name pos:line="66" pos:column="38">ToString</name></name><argument_list pos:line="66" pos:column="46">(<argument><expr><name><name pos:line="66" pos:column="47">entry</name><op:operator pos:line="66" pos:column="52">.</op:operator><name pos:line="66" pos:column="53">Key</name></name></expr></argument>, <argument><expr><name><name pos:line="66" pos:column="58">CultureInfo</name><op:operator pos:line="66" pos:column="69">.</op:operator><name pos:line="66" pos:column="70">InvariantCulture</name></name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+                <expr_stmt><expr><call><name><name pos:line="67" pos:column="17">writer</name><op:operator pos:line="67" pos:column="23">.</op:operator><name pos:line="67" pos:column="24">WritePropertyName</name></name><argument_list pos:line="67" pos:column="41">(<argument><expr><name pos:line="67" pos:column="42">key</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                <expr_stmt><expr><call><name><name pos:line="68" pos:column="17">serializer</name><op:operator pos:line="68" pos:column="27">.</op:operator><name pos:line="68" pos:column="28">Serialize</name></name><argument_list pos:line="68" pos:column="37">(<argument><expr><name pos:line="68" pos:column="38">writer</name></expr></argument>, <argument><expr><name><name pos:line="68" pos:column="46">entry</name><op:operator pos:line="68" pos:column="51">.</op:operator><name pos:line="68" pos:column="52">Value</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></foreach>
+
+            <expr_stmt><expr><call><name><name pos:line="71" pos:column="13">writer</name><op:operator pos:line="71" pos:column="19">.</op:operator><name pos:line="71" pos:column="20">WriteEndObject</name></name><argument_list pos:line="71" pos:column="34">()</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

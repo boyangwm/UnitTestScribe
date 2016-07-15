@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\office10\mso96tl.h" pos:tabs="8"><cpp:ifndef pos:line="1" pos:column="1">#<cpp:directive pos:line="1" pos:column="2">ifndef</cpp:directive> <name pos:line="1" pos:column="9">MSO96TL_H</name></cpp:ifndef>
+<cpp:define pos:line="2" pos:column="1">#<cpp:directive pos:line="2" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="2" pos:column="9">MSO96TL_H</name></cpp:macro></cpp:define>
+
+<cpp:pragma pos:line="4" pos:column="1">#<cpp:directive pos:line="4" pos:column="2">pragma</cpp:directive> message ("Mso96TL.h file is obsolete.  Including MsoTL.h instead.")</cpp:pragma>
+
+<cpp:include pos:line="6" pos:column="1">#<cpp:directive pos:line="6" pos:column="2">include</cpp:directive> <cpp:file pos:line="6" pos:column="10">&lt;msotl.h&gt;</cpp:file></cpp:include>
+
+<cpp:endif pos:line="8" pos:column="1">#<cpp:directive pos:line="8" pos:column="2">endif</cpp:directive></cpp:endif>
+</unit>

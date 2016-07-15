@@ -1,0 +1,836 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\CookieTable.h" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/*--------------------------------------------------------------------------*
+ *
+ *  Microsoft Visual Studio
+ *  Copyright (C) Microsoft Corporation, 1995 - 2008
+ *
+ *  File:       CookieTable.h
+ *
+ *  Contents:   Interface file for CCookieTable
+ *
+ *  History:    20-Jan-2008 jeffro    Created
+ *
+ *--------------------------------------------------------------------------*/</comment>
+
+<cpp:pragma pos:line="14" pos:column="1">#<cpp:directive pos:line="14" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+
+<cpp:include pos:line="16" pos:column="1">#<cpp:directive pos:line="16" pos:column="2">include</cpp:directive> <cpp:file pos:line="16" pos:column="10">&lt;map&gt;</cpp:file></cpp:include>
+<cpp:include pos:line="17" pos:column="1">#<cpp:directive pos:line="17" pos:column="2">include</cpp:directive> <cpp:file pos:line="17" pos:column="10">&lt;algorithm&gt;</cpp:file></cpp:include>
+<cpp:include pos:line="18" pos:column="1">#<cpp:directive pos:line="18" pos:column="2">include</cpp:directive> <cpp:file pos:line="18" pos:column="10">&lt;iterator&gt;</cpp:file></cpp:include>
+<cpp:include pos:line="19" pos:column="1">#<cpp:directive pos:line="19" pos:column="2">include</cpp:directive> <cpp:file pos:line="19" pos:column="10">&lt;atlcomcli.h&gt;</cpp:file></cpp:include>              <comment type="line" pos:line="19" pos:column="37">// for CComPtr, CAdapt</comment>
+<cpp:include pos:line="20" pos:column="1">#<cpp:directive pos:line="20" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="20" pos:column="10">"vsshell.h"</lit:literal></cpp:file></cpp:include>                <comment type="line" pos:line="20" pos:column="37">// for VSCOOKIE, VSCOOKIE_NIL</comment>
+
+<cpp:pragma pos:line="22" pos:column="1">#<cpp:directive pos:line="22" pos:column="2">pragma</cpp:directive> push_macro("min")</cpp:pragma>
+<cpp:undef pos:line="23" pos:column="1">#<cpp:directive pos:line="23" pos:column="2">undef</cpp:directive> <name pos:line="23" pos:column="8">min</name></cpp:undef>
+
+<comment type="block" pos:line="25" pos:column="1">/*+-------------------------------------------------------------------------*
+ * DefaultCookieTraits
+ *
+ * This class defines the default type, range, and issuance policy for
+ * cookies handed out by CCookieTable.
+ *-----------------------------------------------------------------(jeffro)-*/</comment>
+<template pos:line="31" pos:column="1">template<parameter_list pos:line="31" pos:column="9">&lt;<param><type><name pos:line="31" pos:column="10">class</name></type> <name pos:line="31" pos:column="16">CookieType</name>         <init pos:line="31" pos:column="35">= <expr><name pos:line="31" pos:column="37">VSCOOKIE</name></expr></init></param>,
+         <param><type><name pos:line="32" pos:column="10">CookieType</name></type> <name pos:line="32" pos:column="21">Min</name>           <init pos:line="32" pos:column="35">= <expr><lit:literal type="number" pos:line="32" pos:column="37">1</lit:literal></expr></init></param>,
+         <param><type><name pos:line="33" pos:column="10">CookieType</name></type> <name pos:line="33" pos:column="21">Max</name>           <init pos:line="33" pos:column="35">= <expr><lit:literal type="number" pos:line="33" pos:column="37">0xffffffff</lit:literal></expr></init></param>,
+         <param><type><name pos:line="34" pos:column="10">CookieType</name></type> <name pos:line="34" pos:column="21">Invalid</name>       <init pos:line="34" pos:column="35">= <expr><name pos:line="34" pos:column="37">VSCOOKIE_NIL</name></expr></init></param>,
+         <param><type><name pos:line="35" pos:column="10">bool</name></type>       <name pos:line="35" pos:column="21">AllowRollover</name> <init pos:line="35" pos:column="35">= <expr><lit:literal type="boolean" pos:line="35" pos:column="37">true</lit:literal></expr></init></param>&gt;</parameter_list>
+<struct pos:line="36" pos:column="1">struct <name pos:line="36" pos:column="8">DefaultCookieTraits</name>
+<block pos:line="37" pos:column="1">{<public type="default" pos:line="37" pos:column="2">
+    <typedef pos:line="38" pos:column="5">typedef <type><name pos:line="38" pos:column="13">CookieType</name></type> <name pos:line="38" pos:column="24">cookie_type</name>;</typedef>
+
+    <decl_stmt><decl><type><specifier pos:line="40" pos:column="5">static</specifier> <specifier pos:line="40" pos:column="12">const</specifier> <name pos:line="40" pos:column="18">cookie_type</name></type> <name pos:line="40" pos:column="30">MinCookie</name>     <init pos:line="40" pos:column="44">= <expr><name pos:line="40" pos:column="46">Min</name></expr></init></decl>;</decl_stmt>
+    <decl_stmt><decl><type><specifier pos:line="41" pos:column="5">static</specifier> <specifier pos:line="41" pos:column="12">const</specifier> <name pos:line="41" pos:column="18">cookie_type</name></type> <name pos:line="41" pos:column="30">MaxCookie</name>     <init pos:line="41" pos:column="44">= <expr><name pos:line="41" pos:column="46">Max</name></expr></init></decl>;</decl_stmt>
+    <decl_stmt><decl><type><specifier pos:line="42" pos:column="5">static</specifier> <specifier pos:line="42" pos:column="12">const</specifier> <name pos:line="42" pos:column="18">cookie_type</name></type> <name pos:line="42" pos:column="30">InvalidCookie</name> <init pos:line="42" pos:column="44">= <expr><name pos:line="42" pos:column="46">Invalid</name></expr></init></decl>;</decl_stmt>
+
+    <comment type="block" pos:line="44" pos:column="5">/*+-------------------------------------------------------------------------*
+     * state_type
+     *
+     * This structure contains the state used by this type when generating a 
+     * new cookie.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <struct pos:line="50" pos:column="5">struct <name pos:line="50" pos:column="12">state_type</name>
+    <block pos:line="51" pos:column="5">{<public type="default" pos:line="51" pos:column="6">
+        <constructor><name pos:line="52" pos:column="9">state_type</name><parameter_list pos:line="52" pos:column="19">()</parameter_list> 
+            <member_list pos:line="53" pos:column="13">: <call><name pos:line="53" pos:column="15">lastCookieUsed</name> <argument_list pos:line="53" pos:column="30">(<argument><expr><name pos:line="53" pos:column="31">InvalidCookie</name></expr></argument>)</argument_list></call>
+            <op:operator pos:line="54" pos:column="13">,</op:operator> <call><name pos:line="54" pos:column="15">fRolledOver</name>    <argument_list pos:line="54" pos:column="30">(<argument><expr><lit:literal type="boolean" pos:line="54" pos:column="31">false</lit:literal></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="55" pos:column="9">{}</block></constructor>
+        
+        <decl_stmt><decl><type><name pos:line="57" pos:column="9">cookie_type</name></type> <name pos:line="57" pos:column="21">lastCookieUsed</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><name pos:line="58" pos:column="9">bool</name></type>        <name pos:line="58" pos:column="21">fRolledOver</name></decl>;</decl_stmt>
+    </public>}</block>;</struct>
+
+
+    <comment type="block" pos:line="62" pos:column="5">/*+-------------------------------------------------------------------------*
+     * UniqueCookieCount
+     *
+     * Returns the maximum number of unique cookies that this traits class
+     * can issue.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><specifier pos:line="68" pos:column="5">static</specifier> <name pos:line="68" pos:column="12">size_t</name></type> <name pos:line="68" pos:column="19">UniqueCookieCount</name><parameter_list pos:line="68" pos:column="36">()</parameter_list>
+    <block pos:line="69" pos:column="5">{
+        <return pos:line="70" pos:column="9">return <expr><op:operator pos:line="70" pos:column="16">(</op:operator><name pos:line="70" pos:column="17">MaxCookie</name> <op:operator pos:line="70" pos:column="27">-</op:operator> <name pos:line="70" pos:column="29">MinCookie</name> <op:operator pos:line="70" pos:column="39">+</op:operator> <lit:literal type="number" pos:line="70" pos:column="41">1</lit:literal><op:operator pos:line="70" pos:column="42">)</op:operator></expr>;</return>
+    }</block></function>
+
+
+    <comment type="block" pos:line="74" pos:column="5">/*+-------------------------------------------------------------------------*
+     * NextCookie
+     *
+     * Generates a new cookie for the given table.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <template pos:line="79" pos:column="5">template<parameter_list pos:line="79" pos:column="13">&lt;<param><type><name pos:line="79" pos:column="14">class</name></type> <name pos:line="79" pos:column="20">T</name></param>&gt;</parameter_list>
+    <function><type><specifier pos:line="80" pos:column="5">static</specifier> <name pos:line="80" pos:column="12">cookie_type</name></type> <name pos:line="80" pos:column="24">NextCookie</name> <parameter_list pos:line="80" pos:column="35">(<param><decl><type><specifier pos:line="80" pos:column="36">const</specifier> <name pos:line="80" pos:column="42">T</name><type:modifier pos:line="80" pos:column="43">&amp;</type:modifier></type> <name pos:line="80" pos:column="45">table</name></decl></param>, <param><decl><type><name pos:line="80" pos:column="52">state_type</name><type:modifier pos:line="80" pos:column="62">&amp;</type:modifier></type> <name pos:line="80" pos:column="64">state</name></decl></param>)</parameter_list>
+    <block pos:line="81" pos:column="5">{
+        <switch pos:line="82" pos:column="9">switch <condition pos:line="82" pos:column="16">(<expr><name><name pos:line="82" pos:column="17">state</name><op:operator pos:line="82" pos:column="22">.</op:operator><name pos:line="82" pos:column="23">lastCookieUsed</name></name></expr>)</condition>
+        <block pos:line="83" pos:column="9">{
+            <case pos:line="84" pos:column="13">case <expr><name pos:line="84" pos:column="18">InvalidCookie</name></expr>:
+                <expr_stmt><expr><name><name pos:line="85" pos:column="17">state</name><op:operator pos:line="85" pos:column="22">.</op:operator><name pos:line="85" pos:column="23">lastCookieUsed</name></name> <op:operator pos:line="85" pos:column="38">=</op:operator> <name pos:line="85" pos:column="40">MinCookie</name></expr>;</expr_stmt>
+                <break pos:line="86" pos:column="17">break;</break>
+
+            </case><case pos:line="88" pos:column="13">case <expr><name pos:line="88" pos:column="18">MaxCookie</name></expr>:
+                <expr_stmt><expr><name><name pos:line="89" pos:column="17">state</name><op:operator pos:line="89" pos:column="22">.</op:operator><name pos:line="89" pos:column="23">lastCookieUsed</name></name> <op:operator pos:line="89" pos:column="38">=</op:operator> <name pos:line="89" pos:column="40">MinCookie</name></expr>;</expr_stmt>
+                <expr_stmt><expr><name><name pos:line="90" pos:column="17">state</name><op:operator pos:line="90" pos:column="22">.</op:operator><name pos:line="90" pos:column="23">fRolledOver</name></name>    <op:operator pos:line="90" pos:column="38">=</op:operator> <lit:literal type="boolean" pos:line="90" pos:column="40">true</lit:literal></expr>;</expr_stmt>
+                <comment type="line" pos:line="91" pos:column="17">// fall through to default</comment>
+                <expr_stmt><expr><name pos:line="92" pos:column="17">__fallthrough</name></expr>;</expr_stmt>
+            </case><default pos:line="93" pos:column="13">default:
+                <comment type="block" pos:line="94" pos:column="17">/*
+                 * if we haven't rolled over yet (common case), things are 
+                 * easy -- just increment the cookie
+                 */</comment>
+                <if pos:line="98" pos:column="17">if <condition pos:line="98" pos:column="20">(<expr><op:operator pos:line="98" pos:column="21">!</op:operator><name><name pos:line="98" pos:column="22">state</name><op:operator pos:line="98" pos:column="27">.</op:operator><name pos:line="98" pos:column="28">fRolledOver</name></name></expr>)</condition><then pos:line="98" pos:column="40">
+                    <expr_stmt><expr><name><name pos:line="99" pos:column="21">state</name><op:operator pos:line="99" pos:column="26">.</op:operator><name pos:line="99" pos:column="27">lastCookieUsed</name></name><op:operator pos:line="99" pos:column="41">++</op:operator></expr>;</expr_stmt></then>
+
+                <comment type="block" pos:line="101" pos:column="17">/*
+                 * if we have rolled over but the class doesn't support
+                 * issuing cookies beyond that, throw an error
+                 */</comment>
+                <else pos:line="105" pos:column="17">else <if pos:line="105" pos:column="22">if <condition pos:line="105" pos:column="25">(<expr><op:operator pos:line="105" pos:column="26">!</op:operator><name pos:line="105" pos:column="27">AllowRollover</name></expr>)</condition><then pos:line="105" pos:column="41">
+                    <throw pos:line="106" pos:column="21">throw <expr><op:operator pos:line="106" pos:column="27">(</op:operator><call><name><name pos:line="106" pos:column="28">std</name><op:operator pos:line="106" pos:column="31">::</op:operator><name pos:line="106" pos:column="33">bad_alloc</name></name><argument_list pos:line="106" pos:column="42">()</argument_list></call><op:operator pos:line="106" pos:column="44">)</op:operator></expr>;</throw></then>
+
+                <comment type="block" pos:line="108" pos:column="17">/*
+                 * otherwise iterate until we find one that's not in use
+                 */</comment>
+                <else pos:line="111" pos:column="17">else
+                <block pos:line="112" pos:column="17">{
+                    <comment type="block" pos:line="113" pos:column="21">/*
+                     * Do a quick test to see if the table is full.  This
+                     * is highly unlikely unless cookie_type is a narrow
+                     * data type or UniqueCookieCount is small.
+                     */</comment>
+                    <if pos:line="118" pos:column="21">if <condition pos:line="118" pos:column="24">(<expr><call><name><name pos:line="118" pos:column="25">table</name><op:operator pos:line="118" pos:column="30">.</op:operator><name pos:line="118" pos:column="31">pending_size</name></name><argument_list pos:line="118" pos:column="43">()</argument_list></call> <op:operator pos:line="118" pos:column="46">==</op:operator> <call><name><name pos:line="118" pos:column="49">table</name><op:operator pos:line="118" pos:column="54">.</op:operator><name pos:line="118" pos:column="55">max_size</name></name><argument_list pos:line="118" pos:column="63">()</argument_list></call></expr>)</condition><then pos:line="118" pos:column="66">
+                        <throw pos:line="119" pos:column="25">throw <expr><op:operator pos:line="119" pos:column="31">(</op:operator><call><name><name pos:line="119" pos:column="32">std</name><op:operator pos:line="119" pos:column="35">::</op:operator><name pos:line="119" pos:column="37">bad_alloc</name></name><argument_list pos:line="119" pos:column="46">()</argument_list></call><op:operator pos:line="119" pos:column="48">)</op:operator></expr>;</throw></then></if>
+
+                    <comment type="block" pos:line="121" pos:column="21">/*
+                     * Loop until we find a cookie that's not in use.  This is
+                     * O(n), but it's highly unlikely we'll ever get this far.
+                     */</comment>
+                    <while pos:line="125" pos:column="21">while <condition pos:line="125" pos:column="27">(<expr><call><name><name pos:line="125" pos:column="28">table</name><op:operator pos:line="125" pos:column="33">.</op:operator><name pos:line="125" pos:column="34">pending_find</name></name> <argument_list pos:line="125" pos:column="47">(<argument><expr><name><name pos:line="125" pos:column="48">state</name><op:operator pos:line="125" pos:column="53">.</op:operator><name pos:line="125" pos:column="54">lastCookieUsed</name></name></expr></argument>)</argument_list></call></expr>)</condition>
+                    <block pos:line="126" pos:column="21">{
+                        <expr_stmt><expr><name><name pos:line="127" pos:column="25">state</name><op:operator pos:line="127" pos:column="30">.</op:operator><name pos:line="127" pos:column="31">lastCookieUsed</name></name><op:operator pos:line="127" pos:column="45">++</op:operator></expr>;</expr_stmt>
+
+                        <comment type="block" pos:line="129" pos:column="25">/*
+                         * we should never get to MaxCookie (pending_size() == max_size())
+                         * protects us
+                         */</comment>
+                        <if pos:line="133" pos:column="25">if <condition pos:line="133" pos:column="28">(<expr><name><name pos:line="133" pos:column="29">state</name><op:operator pos:line="133" pos:column="34">.</op:operator><name pos:line="133" pos:column="35">lastCookieUsed</name></name> <op:operator pos:line="133" pos:column="50">==</op:operator> <name pos:line="133" pos:column="53">MaxCookie</name></expr>)</condition><then pos:line="133" pos:column="63">
+                        <block pos:line="134" pos:column="25">{
+                            <expr_stmt><expr><call><name pos:line="135" pos:column="29">VSASSERT</name> <argument_list pos:line="135" pos:column="38">(<argument><expr><lit:literal type="boolean" pos:line="135" pos:column="39">false</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="135" pos:column="46">"Should have found a cookie"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                            <throw pos:line="136" pos:column="29">throw <expr><op:operator pos:line="136" pos:column="35">(</op:operator><call><name><name pos:line="136" pos:column="36">std</name><op:operator pos:line="136" pos:column="39">::</op:operator><name pos:line="136" pos:column="41">bad_alloc</name></name><argument_list pos:line="136" pos:column="50">()</argument_list></call><op:operator pos:line="136" pos:column="52">)</op:operator></expr>;</throw>
+                        }</block></then></if>
+                    }</block></while>
+                }</block></else></if></else></if>
+                <break pos:line="140" pos:column="17">break;</break>
+        </default>}</block></switch>
+
+        <return pos:line="143" pos:column="9">return <expr><op:operator pos:line="143" pos:column="16">(</op:operator><name><name pos:line="143" pos:column="17">state</name><op:operator pos:line="143" pos:column="22">.</op:operator><name pos:line="143" pos:column="23">lastCookieUsed</name></name><op:operator pos:line="143" pos:column="37">)</op:operator></expr>;</return>
+    }</block></function></template>
+</public>}</block>;</struct></template>
+
+
+<comment type="block" pos:line="148" pos:column="1">/*+-------------------------------------------------------------------------*
+ * DefaultValueTraits
+ *
+ * This class defines what an invalid value for a CCookieTable is, and the
+ * method of invalidating values.
+ *-----------------------------------------------------------------(jeffro)-*/</comment>
+<template pos:line="154" pos:column="1">template<parameter_list pos:line="154" pos:column="9">&lt;<param><type><name pos:line="154" pos:column="10">class</name></type> <name pos:line="154" pos:column="16">T</name></param>&gt;</parameter_list>
+<struct pos:line="155" pos:column="1">struct <name pos:line="155" pos:column="8">DefaultValueTraits</name>
+<block pos:line="156" pos:column="1">{<public type="default" pos:line="156" pos:column="2">
+    <comment type="block" pos:line="157" pos:column="5">/*
+     * implement Invalidate if you need to detect an element
+     * that has been erased during iteration
+     */</comment>
+    <function><type><specifier pos:line="161" pos:column="5">static</specifier> <name pos:line="161" pos:column="12">void</name></type> <name pos:line="161" pos:column="17">Invalidate</name> <parameter_list pos:line="161" pos:column="28">(<param><decl><type><name pos:line="161" pos:column="29">T</name><type:modifier pos:line="161" pos:column="30">&amp;</type:modifier></type></decl></param>)</parameter_list>
+        <block pos:line="162" pos:column="9">{}</block></function>
+
+    <comment type="block" pos:line="164" pos:column="5">/*
+     * if you implement Invalidate, you should also implement
+     * IsValid to identify an element that was invalidated
+     */</comment>
+    <function><type><specifier pos:line="168" pos:column="5">static</specifier> <name pos:line="168" pos:column="12">bool</name></type> <name pos:line="168" pos:column="17">IsValid</name> <parameter_list pos:line="168" pos:column="25">(<param><decl><type><specifier pos:line="168" pos:column="26">const</specifier></type> <name pos:line="168" pos:column="32">T</name><type:modifier pos:line="168" pos:column="33">&amp;</type:modifier></decl></param>)</parameter_list>
+        <block pos:line="169" pos:column="9">{ <return pos:line="169" pos:column="11">return <expr><op:operator pos:line="169" pos:column="18">(</op:operator><lit:literal type="boolean" pos:line="169" pos:column="19">true</lit:literal><op:operator pos:line="169" pos:column="23">)</op:operator></expr>;</return> }</block></function>
+</public>}</block>;</struct></template>
+
+<comment type="line" pos:line="172" pos:column="1">// specialization for CComPtr&lt;T&gt;</comment>
+<template pos:line="173" pos:column="1">template<parameter_list pos:line="173" pos:column="9">&lt;<param><type><name pos:line="173" pos:column="10">class</name></type> <name pos:line="173" pos:column="16">T</name></param>&gt;</parameter_list>
+<struct pos:line="174" pos:column="1">struct <name><name pos:line="174" pos:column="8">DefaultValueTraits</name><argument_list pos:line="174" pos:column="26">&lt;<argument><expr><name><name pos:line="174" pos:column="27">CComPtr</name><argument_list pos:line="174" pos:column="34">&lt;<argument><expr><name pos:line="174" pos:column="35">T</name></expr></argument>&gt;</argument_list></name></expr></argument>&gt;</argument_list></name>
+<block pos:line="175" pos:column="1">{<public type="default" pos:line="175" pos:column="2">
+    <function><type><specifier pos:line="176" pos:column="5">static</specifier> <name pos:line="176" pos:column="12">void</name></type> <name pos:line="176" pos:column="17">Invalidate</name> <parameter_list pos:line="176" pos:column="28">(<param><decl><type><name><name pos:line="176" pos:column="29">CComPtr</name><argument_list pos:line="176" pos:column="36">&lt;<argument><expr><name pos:line="176" pos:column="37">T</name></expr></argument>&gt;</argument_list></name><type:modifier pos:line="176" pos:column="39">&amp;</type:modifier></type> <name pos:line="176" pos:column="41">spT</name></decl></param>)</parameter_list>
+    <block pos:line="177" pos:column="5">{
+        <expr_stmt><expr><call><name><name pos:line="178" pos:column="9">spT</name><op:operator pos:line="178" pos:column="12">.</op:operator><name pos:line="178" pos:column="13">Release</name></name><argument_list pos:line="178" pos:column="20">()</argument_list></call></expr>;</expr_stmt>
+    }</block></function>
+
+    <function><type><specifier pos:line="181" pos:column="5">static</specifier> <name pos:line="181" pos:column="12">bool</name></type> <name pos:line="181" pos:column="17">IsValid</name> <parameter_list pos:line="181" pos:column="25">(<param><decl><type><specifier pos:line="181" pos:column="26">const</specifier> <name><name pos:line="181" pos:column="32">CComPtr</name><argument_list pos:line="181" pos:column="39">&lt;<argument><expr><name pos:line="181" pos:column="40">T</name></expr></argument>&gt;</argument_list></name><type:modifier pos:line="181" pos:column="42">&amp;</type:modifier></type> <name pos:line="181" pos:column="44">spT</name></decl></param>)</parameter_list>
+    <block pos:line="182" pos:column="5">{
+        <return pos:line="183" pos:column="9">return <expr><op:operator pos:line="183" pos:column="16">(</op:operator><name pos:line="183" pos:column="17">spT</name> <op:operator pos:line="183" pos:column="21">!=</op:operator> <name pos:line="183" pos:column="24">NULL</name><op:operator pos:line="183" pos:column="28">)</op:operator></expr>;</return>
+    }</block></function>
+</public>}</block>;</struct></template>
+
+<comment type="line" pos:line="187" pos:column="1">// specialization for CAdapt&lt;CComPtr&lt;T&gt;&gt;</comment>
+<template pos:line="188" pos:column="1">template<parameter_list pos:line="188" pos:column="9">&lt;<param><type><name pos:line="188" pos:column="10">class</name></type> <name pos:line="188" pos:column="16">T</name></param>&gt;</parameter_list>
+<struct pos:line="189" pos:column="1">struct <name><name pos:line="189" pos:column="8">DefaultValueTraits</name><argument_list pos:line="189" pos:column="26">&lt;<argument><expr><name><name pos:line="189" pos:column="27">CAdapt</name><argument_list pos:line="189" pos:column="33">&lt;<argument><expr><name><name pos:line="189" pos:column="34">CComPtr</name><argument_list pos:line="189" pos:column="41">&lt;<argument><expr><name pos:line="189" pos:column="42">T</name></expr></argument>&gt;</argument_list></name></expr></argument>&gt;</argument_list></name></expr></argument>&gt;</argument_list></name>
+<block pos:line="190" pos:column="1">{<public type="default" pos:line="190" pos:column="2">
+    <function><type><specifier pos:line="191" pos:column="5">static</specifier> <name pos:line="191" pos:column="12">void</name></type> <name pos:line="191" pos:column="17">Invalidate</name> <parameter_list pos:line="191" pos:column="28">(<param><decl><type><name><name pos:line="191" pos:column="29">CAdapt</name><argument_list pos:line="191" pos:column="35">&lt;<argument><expr><name><name pos:line="191" pos:column="36">CComPtr</name><argument_list pos:line="191" pos:column="43">&lt;<argument><expr><name pos:line="191" pos:column="44">T</name></expr></argument>&gt;</argument_list></name></expr></argument>&gt;</argument_list></name><type:modifier pos:line="191" pos:column="47">&amp;</type:modifier></type> <name pos:line="191" pos:column="49">adapt</name></decl></param>)</parameter_list>
+    <block pos:line="192" pos:column="5">{
+        <decl_stmt><decl><type><name><name pos:line="193" pos:column="9">CComPtr</name><argument_list pos:line="193" pos:column="16">&lt;<argument><expr><name pos:line="193" pos:column="17">T</name></expr></argument>&gt;</argument_list></name><type:modifier pos:line="193" pos:column="19">&amp;</type:modifier></type> <name pos:line="193" pos:column="21">spT</name> <init pos:line="193" pos:column="25">= <expr><name pos:line="193" pos:column="27">adapt</name></expr></init></decl>;</decl_stmt>
+        <expr_stmt><expr><call><name><name pos:line="194" pos:column="9">spT</name><op:operator pos:line="194" pos:column="12">.</op:operator><name pos:line="194" pos:column="13">Release</name></name><argument_list pos:line="194" pos:column="20">()</argument_list></call></expr>;</expr_stmt>
+    }</block></function>
+
+    <function><type><specifier pos:line="197" pos:column="5">static</specifier> <name pos:line="197" pos:column="12">bool</name></type> <name pos:line="197" pos:column="17">IsValid</name> <parameter_list pos:line="197" pos:column="25">(<param><decl><type><specifier pos:line="197" pos:column="26">const</specifier> <name><name pos:line="197" pos:column="32">CAdapt</name><argument_list pos:line="197" pos:column="38">&lt;<argument><expr><name><name pos:line="197" pos:column="39">CComPtr</name><argument_list pos:line="197" pos:column="46">&lt;<argument><expr><name pos:line="197" pos:column="47">T</name></expr></argument>&gt;</argument_list></name></expr></argument>&gt;</argument_list></name><type:modifier pos:line="197" pos:column="50">&amp;</type:modifier></type> <name pos:line="197" pos:column="52">adapt</name></decl></param>)</parameter_list>
+    <block pos:line="198" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="199" pos:column="9">const</specifier> <name><name pos:line="199" pos:column="15">CComPtr</name><argument_list pos:line="199" pos:column="22">&lt;<argument><expr><name pos:line="199" pos:column="23">T</name></expr></argument>&gt;</argument_list></name><type:modifier pos:line="199" pos:column="25">&amp;</type:modifier></type> <name pos:line="199" pos:column="27">spT</name> <init pos:line="199" pos:column="31">= <expr><name pos:line="199" pos:column="33">adapt</name></expr></init></decl>;</decl_stmt>
+        <return pos:line="200" pos:column="9">return <expr><op:operator pos:line="200" pos:column="16">(</op:operator><name pos:line="200" pos:column="17">spT</name> <op:operator pos:line="200" pos:column="21">!=</op:operator> <name pos:line="200" pos:column="24">NULL</name><op:operator pos:line="200" pos:column="28">)</op:operator></expr>;</return>
+    }</block></function>
+</public>}</block>;</struct></template>
+
+
+<comment type="block" pos:line="205" pos:column="1">/*+-------------------------------------------------------------------------*
+ * CCookieTable
+ *
+ * This class is intended to be used to support a registration model where
+ * a client registers an object (commonly a COM interface) with a service
+ * and receives a unique cookie for the registration in return.  The cookie
+ * is subsequently used as a key when the object is unregistered.
+ * 
+ * This is an STL-style collection, exposing begin() and end() methods to
+ * provide boundaries for iteration.  If there is a possiblity that the
+ * table could be modified during the iteration, it is important to lock
+ * the table before acquiring iterators.  The table can be locked with the
+ * lock() method (and unlocked with unlock()), or by using the CCookieTable::Lock
+ * RAII helper.
+ * 
+ * While the table is locked, the range of items covered by begin()/end()
+ * is a snapshot representing the state of the table at the time it was
+ * locked.  Additions or deletions from the table while it is locked are
+ * held in a pending modifications list, which are applied to the table
+ * when it is unlocked.  If an element is erased from the table while it
+ * is locked, it is invalidated by ValueTraits::Invalidate; you can use
+ * ValueTraits::IsValid during iteration to avoid using elements that were
+ * erased during iteration.
+ * 
+ * NOTE:  This class provides the same thread-safety guarantees of standard 
+ * STL collections:  it is thread-safe only in the sense that simultaneous 
+ * accesses to distinct instances are safe, and simultaneous read accesses 
+ * to to shared shared are safe. If multiple threads access a single 
+ * instance and at least one thread may potentially write, then the user 
+ * is responsible for ensuring mutual exclusion between the threads during
+ * the accesses. 
+ *-----------------------------------------------------------------(jeffro)-*/</comment>
+<template pos:line="237" pos:column="1">template<parameter_list pos:line="237" pos:column="9">&lt;<param><type><name pos:line="237" pos:column="10">class</name></type> <name pos:line="237" pos:column="16">T</name></param>, 
+         <param><type><name pos:line="238" pos:column="10">class</name></type> <name pos:line="238" pos:column="16">CookieTraits</name> <init pos:line="238" pos:column="29">= <expr><name><name pos:line="238" pos:column="31">DefaultCookieTraits</name><argument_list pos:line="238" pos:column="50">&lt;&gt;</argument_list></name></expr></init></param>,
+         <param><type><name pos:line="239" pos:column="10">class</name></type> <name pos:line="239" pos:column="16">ValueTraits</name>  <init pos:line="239" pos:column="29">= <expr><name><name pos:line="239" pos:column="31">DefaultValueTraits</name><argument_list pos:line="239" pos:column="49">&lt;<argument><expr><name pos:line="239" pos:column="50">T</name></expr></argument>&gt;</argument_list></name></expr></init></param> &gt;</parameter_list>
+<class pos:line="240" pos:column="1">class <name pos:line="240" pos:column="7">CCookieTable</name>
+<block pos:line="241" pos:column="1">{<private type="default" pos:line="241" pos:column="2">
+</private><public pos:line="242" pos:column="1">public:
+    <typedef pos:line="243" pos:column="5">typedef <type><name><name pos:line="243" pos:column="13">CCookieTable</name><argument_list pos:line="243" pos:column="25">&lt;<argument><expr><name pos:line="243" pos:column="26">T</name></expr></argument>, <argument><expr><name pos:line="243" pos:column="29">CookieTraits</name></expr></argument>, <argument><expr><name pos:line="243" pos:column="43">ValueTraits</name></expr></argument>&gt;</argument_list></name></type>  <name pos:line="243" pos:column="57">this_type</name>;</typedef>
+    <typedef pos:line="244" pos:column="5">typedef <type><name pos:line="244" pos:column="13">CookieTraits</name></type>                        <name pos:line="244" pos:column="49">CookieTraits</name>;</typedef>
+    <typedef pos:line="245" pos:column="5">typedef <type><name pos:line="245" pos:column="13">ValueTraits</name></type>                         <name pos:line="245" pos:column="49">ValueTraits</name>;</typedef>
+    <typedef pos:line="246" pos:column="5">typedef <type><typename pos:line="246" pos:column="13">typename</typename> <name><name pos:line="246" pos:column="22">CookieTraits</name><op:operator pos:line="246" pos:column="34">::</op:operator><name pos:line="246" pos:column="36">cookie_type</name></name></type>  <name pos:line="246" pos:column="49">cookie_type</name>;</typedef>
+
+</public><private pos:line="248" pos:column="1">private:
+    <typedef pos:line="249" pos:column="5">typedef <type><name><name pos:line="249" pos:column="13">std</name><op:operator pos:line="249" pos:column="16">::</op:operator><name><name pos:line="249" pos:column="18">map</name><argument_list pos:line="249" pos:column="21">&lt;<argument><expr><name pos:line="249" pos:column="22">cookie_type</name></expr></argument>, <argument><expr><name pos:line="249" pos:column="35">T</name></expr></argument>&gt;</argument_list></name></name></type>            <name pos:line="249" pos:column="49">map_type</name>;</typedef>
+
+</private><public pos:line="251" pos:column="1">public:
+    <typedef pos:line="252" pos:column="5">typedef <type><typename pos:line="252" pos:column="13">typename</typename> <name><name pos:line="252" pos:column="22">map_type</name><op:operator pos:line="252" pos:column="30">::</op:operator><name pos:line="252" pos:column="32">mapped_type</name></name></type>      <name pos:line="252" pos:column="49">mapped_type</name>;</typedef>
+    <typedef pos:line="253" pos:column="5">typedef <type><typename pos:line="253" pos:column="13">typename</typename> <name><name pos:line="253" pos:column="22">map_type</name><op:operator pos:line="253" pos:column="30">::</op:operator><name pos:line="253" pos:column="32">value_type</name></name></type>       <name pos:line="253" pos:column="49">value_type</name>;</typedef>
+    <typedef pos:line="254" pos:column="5">typedef <type><typename pos:line="254" pos:column="13">typename</typename> <name><name pos:line="254" pos:column="22">map_type</name><op:operator pos:line="254" pos:column="30">::</op:operator><name pos:line="254" pos:column="32">size_type</name></name></type>        <name pos:line="254" pos:column="49">size_type</name>;</typedef>
+    <typedef pos:line="255" pos:column="5">typedef <type><typename pos:line="255" pos:column="13">typename</typename> <name><name pos:line="255" pos:column="22">map_type</name><op:operator pos:line="255" pos:column="30">::</op:operator><name pos:line="255" pos:column="32">iterator</name></name></type>         <name pos:line="255" pos:column="49">iterator</name>;</typedef>
+    <typedef pos:line="256" pos:column="5">typedef <type><typename pos:line="256" pos:column="13">typename</typename> <name><name pos:line="256" pos:column="22">map_type</name><op:operator pos:line="256" pos:column="30">::</op:operator><name pos:line="256" pos:column="32">const_iterator</name></name></type>   <name pos:line="256" pos:column="49">const_iterator</name>;</typedef>
+
+    <decl_stmt><decl><type><specifier pos:line="258" pos:column="5">static</specifier> <specifier pos:line="258" pos:column="12">const</specifier> <name pos:line="258" pos:column="18">cookie_type</name></type> <name pos:line="258" pos:column="30">InvalidCookie</name> <init pos:line="258" pos:column="44">= <expr><name><name pos:line="258" pos:column="46">CookieTraits</name><op:operator pos:line="258" pos:column="58">::</op:operator><name pos:line="258" pos:column="60">InvalidCookie</name></name></expr></init></decl>;</decl_stmt>
+
+    <class pos:line="260" pos:column="5">class <name pos:line="260" pos:column="11">Lock</name>
+    <block pos:line="261" pos:column="5">{<private type="default" pos:line="261" pos:column="6">
+    </private><public pos:line="262" pos:column="5">public:
+        <constructor><name pos:line="263" pos:column="9">Lock</name> <parameter_list pos:line="263" pos:column="14">(<param><decl><type><name pos:line="263" pos:column="15">this_type</name><type:modifier pos:line="263" pos:column="24">&amp;</type:modifier></type> <name pos:line="263" pos:column="26">table</name></decl></param>)</parameter_list>  <member_list pos:line="263" pos:column="34">: <call><name pos:line="263" pos:column="36">m_table</name> <argument_list pos:line="263" pos:column="44">(<argument><expr><name pos:line="263" pos:column="45">table</name></expr></argument>)</argument_list></call>
+            </member_list><block pos:line="264" pos:column="13">{ <expr_stmt><expr><call><name><name pos:line="264" pos:column="15">m_table</name><op:operator pos:line="264" pos:column="22">.</op:operator><name pos:line="264" pos:column="23">lock</name></name><argument_list pos:line="264" pos:column="27">()</argument_list></call></expr>;</expr_stmt> }</block></constructor>
+
+        <constructor><name pos:line="266" pos:column="9">Lock</name> <parameter_list pos:line="266" pos:column="14">(<param><decl><type><name pos:line="266" pos:column="15">this_type</name><type:modifier pos:line="266" pos:column="24">*</type:modifier></type> <name pos:line="266" pos:column="26">pTable</name></decl></param>)</parameter_list> <member_list pos:line="266" pos:column="34">: <call><name pos:line="266" pos:column="36">m_table</name> <argument_list pos:line="266" pos:column="44">(<argument><expr><op:operator pos:line="266" pos:column="45">*</op:operator><name pos:line="266" pos:column="46">pTable</name></expr></argument>)</argument_list></call>
+            </member_list><block pos:line="267" pos:column="13">{ <expr_stmt><expr><call><name><name pos:line="267" pos:column="15">m_table</name><op:operator pos:line="267" pos:column="22">.</op:operator><name pos:line="267" pos:column="23">lock</name></name><argument_list pos:line="267" pos:column="27">()</argument_list></call></expr>;</expr_stmt> }</block></constructor>
+
+        <destructor><name pos:line="269" pos:column="9">~<name pos:line="269" pos:column="10">Lock</name></name><parameter_list pos:line="269" pos:column="14">()</parameter_list>
+            <block pos:line="270" pos:column="13">{ <expr_stmt><expr><call><name><name pos:line="270" pos:column="15">m_table</name><op:operator pos:line="270" pos:column="22">.</op:operator><name pos:line="270" pos:column="23">unlock</name></name><argument_list pos:line="270" pos:column="29">()</argument_list></call></expr>;</expr_stmt> }</block></destructor>
+
+    </public><private pos:line="272" pos:column="5">private:
+        <decl_stmt><decl><type><name pos:line="273" pos:column="9">this_type</name><type:modifier pos:line="273" pos:column="18">&amp;</type:modifier></type>  <name pos:line="273" pos:column="21">m_table</name></decl>;</decl_stmt>
+
+        <constructor_decl><name pos:line="275" pos:column="9">Lock</name>            <parameter_list pos:line="275" pos:column="25">(<param><decl><type><specifier pos:line="275" pos:column="26">const</specifier> <name pos:line="275" pos:column="32">Lock</name><type:modifier pos:line="275" pos:column="36">&amp;</type:modifier></type> <name pos:line="275" pos:column="38">other</name></decl></param>)</parameter_list>;</constructor_decl>  <comment type="line" pos:line="275" pos:column="47">// not copy-assignable</comment>
+        <function_decl><type><name pos:line="276" pos:column="9">Lock</name><type:modifier pos:line="276" pos:column="13">&amp;</type:modifier></type> <name pos:line="276" pos:column="15">operator=</name> <parameter_list pos:line="276" pos:column="25">(<param><decl><type><specifier pos:line="276" pos:column="26">const</specifier> <name pos:line="276" pos:column="32">Lock</name><type:modifier pos:line="276" pos:column="36">&amp;</type:modifier></type> <name pos:line="276" pos:column="38">other</name></decl></param>)</parameter_list>;</function_decl>  <comment type="line" pos:line="276" pos:column="47">// not assignable</comment>
+    </private>}</block>;</class>
+
+</public><public pos:line="279" pos:column="1">public:
+    <constructor><name pos:line="280" pos:column="5">CCookieTable</name><parameter_list pos:line="280" pos:column="17">()</parameter_list>
+        <member_list pos:line="281" pos:column="9">: <call><name pos:line="281" pos:column="11">m_cLocks</name> <argument_list pos:line="281" pos:column="20">(<argument><expr><lit:literal type="number" pos:line="281" pos:column="21">0</lit:literal></expr></argument>)</argument_list></call>
+    </member_list><block pos:line="282" pos:column="5">{
+        <expr_stmt><expr><call><name pos:line="283" pos:column="9">VSCASSERT</name> <argument_list pos:line="283" pos:column="19">(<argument><expr><name><name pos:line="283" pos:column="20">CookieTraits</name><op:operator pos:line="283" pos:column="32">::</op:operator><name pos:line="283" pos:column="34">MinCookie</name></name> <op:operator pos:line="283" pos:column="44">&lt;</op:operator> <name><name pos:line="283" pos:column="46">CookieTraits</name><op:operator pos:line="283" pos:column="58">::</op:operator><name pos:line="283" pos:column="60">MaxCookie</name></name></expr></argument>,
+                  <argument><expr><name pos:line="284" pos:column="19">Min_max_cookies_in_CookeTraits_are_out_of_range</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+        <expr_stmt><expr><call><name pos:line="286" pos:column="9">VSCASSERT</name> <argument_list pos:line="286" pos:column="19">(<argument><expr><op:operator pos:line="286" pos:column="20">(</op:operator><name><name pos:line="286" pos:column="21">CookieTraits</name><op:operator pos:line="286" pos:column="33">::</op:operator><name pos:line="286" pos:column="35">InvalidCookie</name></name> <op:operator pos:line="286" pos:column="49">&lt;</op:operator> <name><name pos:line="286" pos:column="51">CookieTraits</name><op:operator pos:line="286" pos:column="63">::</op:operator><name pos:line="286" pos:column="65">MinCookie</name></name><op:operator pos:line="286" pos:column="74">)</op:operator> <op:operator pos:line="286" pos:column="76">||</op:operator>
+                   <op:operator pos:line="287" pos:column="20">(</op:operator><name><name pos:line="287" pos:column="21">CookieTraits</name><op:operator pos:line="287" pos:column="33">::</op:operator><name pos:line="287" pos:column="35">InvalidCookie</name></name> <op:operator pos:line="287" pos:column="49">&gt;</op:operator> <name><name pos:line="287" pos:column="51">CookieTraits</name><op:operator pos:line="287" pos:column="63">::</op:operator><name pos:line="287" pos:column="65">MaxCookie</name></name><op:operator pos:line="287" pos:column="74">)</op:operator></expr></argument>,
+                   <argument><expr><name pos:line="288" pos:column="20">CookieTraits_defines_the_invalid_cookie_between_min_max_cookies</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+    }</block></constructor>
+
+
+    <comment type="block" pos:line="292" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CCookieTable::begin
+     *
+     * Returns a bi-directional iterator addressing the first element in the 
+     * table.  If the table is empty, the iterator addresses the location 
+     * following the empty table.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="299" pos:column="5">iterator</name></type> <name pos:line="299" pos:column="14">begin</name><parameter_list pos:line="299" pos:column="19">()</parameter_list>
+        <block pos:line="300" pos:column="9">{ <return pos:line="300" pos:column="11">return <expr><op:operator pos:line="300" pos:column="18">(</op:operator><call><name><name pos:line="300" pos:column="19">m_map</name><op:operator pos:line="300" pos:column="24">.</op:operator><name pos:line="300" pos:column="25">begin</name></name><argument_list pos:line="300" pos:column="30">()</argument_list></call><op:operator pos:line="300" pos:column="32">)</op:operator></expr>;</return> }</block></function>
+
+    <function><type><name pos:line="302" pos:column="5">const_iterator</name></type> <name pos:line="302" pos:column="20">begin</name><parameter_list pos:line="302" pos:column="25">()</parameter_list> <specifier pos:line="302" pos:column="28">const</specifier>
+        <block pos:line="303" pos:column="9">{ <return pos:line="303" pos:column="11">return <expr><op:operator pos:line="303" pos:column="18">(</op:operator><call><name><name pos:line="303" pos:column="19">m_map</name><op:operator pos:line="303" pos:column="24">.</op:operator><name pos:line="303" pos:column="25">begin</name></name><argument_list pos:line="303" pos:column="30">()</argument_list></call><op:operator pos:line="303" pos:column="32">)</op:operator></expr>;</return> }</block></function>
+
+
+    <comment type="block" pos:line="306" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CCookieTable::end
+     *
+     * Returns a bi-directional iterator that addresses the location following 
+     * the last element in the table.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="312" pos:column="5">iterator</name></type> <name pos:line="312" pos:column="14">end</name><parameter_list pos:line="312" pos:column="17">()</parameter_list>
+        <block pos:line="313" pos:column="9">{ <return pos:line="313" pos:column="11">return <expr><op:operator pos:line="313" pos:column="18">(</op:operator><call><name><name pos:line="313" pos:column="19">m_map</name><op:operator pos:line="313" pos:column="24">.</op:operator><name pos:line="313" pos:column="25">end</name></name><argument_list pos:line="313" pos:column="28">()</argument_list></call><op:operator pos:line="313" pos:column="30">)</op:operator></expr>;</return> }</block></function>
+
+    <function><type><name pos:line="315" pos:column="5">const_iterator</name></type> <name pos:line="315" pos:column="20">end</name><parameter_list pos:line="315" pos:column="23">()</parameter_list> <specifier pos:line="315" pos:column="26">const</specifier>
+        <block pos:line="316" pos:column="9">{ <return pos:line="316" pos:column="11">return <expr><op:operator pos:line="316" pos:column="18">(</op:operator><call><name><name pos:line="316" pos:column="19">m_map</name><op:operator pos:line="316" pos:column="24">.</op:operator><name pos:line="316" pos:column="25">end</name></name><argument_list pos:line="316" pos:column="28">()</argument_list></call><op:operator pos:line="316" pos:column="30">)</op:operator></expr>;</return> }</block></function>
+
+
+    <comment type="block" pos:line="319" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CCookieTable::insert
+     *
+     * Adds an element to the table.  If the table is locked when this function
+     * is called, the element won't be physically added to the table until the
+     * lock count goes to zero.
+     *
+     * Returns the cookie assigned to the new element.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="328" pos:column="5">cookie_type</name></type> <name pos:line="328" pos:column="17">insert</name> <parameter_list pos:line="328" pos:column="24">(<param><decl><type><specifier pos:line="328" pos:column="25">const</specifier> <name pos:line="328" pos:column="31">mapped_type</name><type:modifier pos:line="328" pos:column="42">&amp;</type:modifier></type> <name pos:line="328" pos:column="44">element</name></decl></param>)</parameter_list>
+    <block pos:line="329" pos:column="5">{ 
+        <comment type="block" pos:line="330" pos:column="9">/*
+         * Lock the table before insertion.  Doing this now means we only have
+         * a single code path for inserting items, regardless of whether the
+         * table is externally locked or not.  The new element will actually
+         * be added to the table once its lock count goes to zero.  If the
+         * table isn't locked with this function is called, that time will be
+         * when this function returns.
+         */</comment>
+        <function_decl><type><name pos:line="338" pos:column="9">Lock</name></type> <name pos:line="338" pos:column="14">lock</name><parameter_list pos:line="338" pos:column="18">(<param><decl><type><name pos:line="338" pos:column="19">this</name></type></decl></param>)</parameter_list>;</function_decl>
+
+        <decl_stmt><decl><type><name pos:line="340" pos:column="9">cookie_type</name></type> <name pos:line="340" pos:column="21">cookie</name> <init pos:line="340" pos:column="28">= <expr><call><name><name pos:line="340" pos:column="30">CookieTraits</name><op:operator pos:line="340" pos:column="42">::</op:operator><name pos:line="340" pos:column="44">NextCookie</name></name> <argument_list pos:line="340" pos:column="55">(<argument><expr><op:operator pos:line="340" pos:column="56">*</op:operator><name pos:line="340" pos:column="57">this</name></expr></argument>, <argument><expr><name pos:line="340" pos:column="63">m_CookieTraitsState</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+        <expr_stmt><expr><call><name pos:line="341" pos:column="9">VSASSERT</name> <argument_list pos:line="341" pos:column="18">(<argument><expr><op:operator pos:line="341" pos:column="19">!</op:operator><call><name pos:line="341" pos:column="20">pending_find</name> <argument_list pos:line="341" pos:column="33">(<argument><expr><name pos:line="341" pos:column="34">cookie</name></expr></argument>)</argument_list></call></expr></argument>, <argument><expr><lit:literal type="string" pos:line="341" pos:column="43">"Reissuing a cookie that's in use"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+        <expr_stmt><expr><call><name pos:line="343" pos:column="9">add_pending_insert</name> <argument_list pos:line="343" pos:column="28">(<argument><expr><name pos:line="343" pos:column="29">cookie</name></expr></argument>, <argument><expr><name pos:line="343" pos:column="37">element</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+        <return pos:line="345" pos:column="9">return <expr><op:operator pos:line="345" pos:column="16">(</op:operator><name pos:line="345" pos:column="17">cookie</name><op:operator pos:line="345" pos:column="23">)</op:operator></expr>;</return>
+    }</block></function>
+
+
+    <comment type="block" pos:line="349" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CCookieTable::erase
+     *
+     * Removes the element matching the specified cookie.  If the table is 
+     * locked when this function is called, the removal won't take effect 
+     * until the table's lock count goes to zero.
+     *
+     * Returns a boolean indicating success.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="358" pos:column="5">bool</name></type> <name pos:line="358" pos:column="10">erase</name> <parameter_list pos:line="358" pos:column="16">(<param><decl><type><specifier pos:line="358" pos:column="17">const</specifier> <name pos:line="358" pos:column="23">cookie_type</name><type:modifier pos:line="358" pos:column="34">&amp;</type:modifier></type> <name pos:line="358" pos:column="36">cookie</name></decl></param>)</parameter_list>
+    <block pos:line="359" pos:column="5">{
+        <decl_stmt><decl><type><name pos:line="360" pos:column="9">bool</name></type> <name pos:line="360" pos:column="14">fErased</name> <init pos:line="360" pos:column="22">= <expr><lit:literal type="boolean" pos:line="360" pos:column="24">false</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="block" pos:line="362" pos:column="9">/*
+         * Lock the table before deletion.  Doing this now means we only have
+         * a single code path for deleting items, regardless of whether the
+         * table is externally locked or not.  The element will actually be
+         * be removed from the table once its lock count goes to zero.  If the
+         * table isn't locked with this function is called, that time will be
+         * when this function returns.
+         */</comment>
+        <function_decl><type><name pos:line="370" pos:column="9">Lock</name></type> <name pos:line="370" pos:column="14">lock</name><parameter_list pos:line="370" pos:column="18">(<param><decl><type><name pos:line="370" pos:column="19">this</name></type></decl></param>)</parameter_list>;</function_decl>
+        <expr_stmt><expr><call><name pos:line="371" pos:column="9">VSASSERT</name> <argument_list pos:line="371" pos:column="18">(<argument><expr><call><name pos:line="371" pos:column="19">locked</name><argument_list pos:line="371" pos:column="25">()</argument_list></call></expr></argument>, <argument><expr><lit:literal type="string" pos:line="371" pos:column="29">"Table should be locked"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+        <comment type="block" pos:line="373" pos:column="9">/*
+         * look for an item in the table proper; if found and it hasn't already
+         * been previously erased, invalidate it and add the cookie to the set of 
+         * cookies to erase when unlocked
+         */</comment>
+        <decl_stmt><decl><type><name pos:line="378" pos:column="9">iterator</name></type> <name pos:line="378" pos:column="18">it</name> <init pos:line="378" pos:column="21">= <expr><call><name pos:line="378" pos:column="23">find</name> <argument_list pos:line="378" pos:column="28">(<argument><expr><name pos:line="378" pos:column="29">cookie</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+        <if pos:line="379" pos:column="9">if <condition pos:line="379" pos:column="12">(<expr><op:operator pos:line="379" pos:column="13">(</op:operator><name pos:line="379" pos:column="14">it</name> <op:operator pos:line="379" pos:column="17">!=</op:operator> <call><name pos:line="379" pos:column="20">end</name><argument_list pos:line="379" pos:column="23">()</argument_list></call><op:operator pos:line="379" pos:column="25">)</op:operator> <op:operator pos:line="379" pos:column="27">&amp;&amp;</op:operator> <op:operator pos:line="379" pos:column="30">!</op:operator><call><name pos:line="379" pos:column="31">find_pending_erasure</name> <argument_list pos:line="379" pos:column="52">(<argument><expr><name pos:line="379" pos:column="53">cookie</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="379" pos:column="61">
+        <block pos:line="380" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="381" pos:column="13">ValueTraits</name><op:operator pos:line="381" pos:column="24">::</op:operator><name pos:line="381" pos:column="26">Invalidate</name></name> <argument_list pos:line="381" pos:column="37">(<argument><expr><name><name pos:line="381" pos:column="38">it</name><op:operator pos:line="381" pos:column="40">-&gt;</op:operator><name pos:line="381" pos:column="42">second</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name pos:line="382" pos:column="13">add_pending_erasure</name> <argument_list pos:line="382" pos:column="33">(<argument><expr><name pos:line="382" pos:column="34">cookie</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="383" pos:column="13">fErased</name> <op:operator pos:line="383" pos:column="21">=</op:operator> <lit:literal type="boolean" pos:line="383" pos:column="23">true</lit:literal></expr>;</expr_stmt>
+        }</block></then></if>
+
+        <comment type="block" pos:line="386" pos:column="9">/*
+         * if we didn't find the item in the table proper, see if it's in the
+         * pending inserts
+         */</comment>
+        <if pos:line="390" pos:column="9">if <condition pos:line="390" pos:column="12">(<expr><op:operator pos:line="390" pos:column="13">!</op:operator><name pos:line="390" pos:column="14">fErased</name> <op:operator pos:line="390" pos:column="22">&amp;&amp;</op:operator> <call><name pos:line="390" pos:column="25">find_pending_insert</name> <argument_list pos:line="390" pos:column="45">(<argument><expr><name pos:line="390" pos:column="46">cookie</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="390" pos:column="54">
+        <block pos:line="391" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="392" pos:column="13">m_spPendingMods</name><op:operator pos:line="392" pos:column="28">-&gt;</op:operator><name pos:line="392" pos:column="30">m_inserts</name><op:operator pos:line="392" pos:column="39">.</op:operator><name pos:line="392" pos:column="40">erase</name></name> <argument_list pos:line="392" pos:column="46">(<argument><expr><name pos:line="392" pos:column="47">cookie</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="393" pos:column="13">fErased</name> <op:operator pos:line="393" pos:column="21">=</op:operator> <lit:literal type="boolean" pos:line="393" pos:column="23">true</lit:literal></expr>;</expr_stmt>
+        }</block></then></if>
+
+        <return pos:line="396" pos:column="9">return <expr><op:operator pos:line="396" pos:column="16">(</op:operator><name pos:line="396" pos:column="17">fErased</name><op:operator pos:line="396" pos:column="24">)</op:operator></expr>;</return>
+    }</block></function>
+
+
+    <comment type="block" pos:line="400" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CCookieTable::clear
+     *
+     * Removes all elements from the table.  If the table is locked when this
+     * function is called, the clear won't take effect until the table's lock
+     * count goes to zero.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="407" pos:column="5">void</name></type> <name pos:line="407" pos:column="10">clear</name><parameter_list pos:line="407" pos:column="15">()</parameter_list>
+    <block pos:line="408" pos:column="5">{ 
+        <comment type="block" pos:line="409" pos:column="9">/*
+         * Lock the table before clearing.  Doing this now means we only have
+         * a single code path for clearing items, regardless of whether the
+         * table is externally locked or not.  The table will actually be 
+         * cleared once its lock count goes to zero.  If the table isn't 
+         * locked with this function is called, that time will be when this
+         * function returns.
+         */</comment>
+        <function_decl><type><name pos:line="417" pos:column="9">Lock</name></type> <name pos:line="417" pos:column="14">lock</name><parameter_list pos:line="417" pos:column="18">(<param><decl><type><name pos:line="417" pos:column="19">this</name></type></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="block" pos:line="419" pos:column="9">/*
+         * invalidate all of the items in the table
+         */</comment>
+        <expr_stmt><expr><call><name><name pos:line="422" pos:column="9">std</name><op:operator pos:line="422" pos:column="12">::</op:operator><name pos:line="422" pos:column="14">for_each</name></name> <argument_list pos:line="422" pos:column="23">(<argument><expr><call><name pos:line="422" pos:column="24">begin</name><argument_list pos:line="422" pos:column="29">()</argument_list></call></expr></argument>, <argument><expr><call><name pos:line="422" pos:column="33">end</name><argument_list pos:line="422" pos:column="36">()</argument_list></call></expr></argument>, <argument><expr><call><name pos:line="422" pos:column="40">Invalidate</name><argument_list pos:line="422" pos:column="50">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+        <expr_stmt><expr><call><name pos:line="424" pos:column="9">ensure_pending_mods</name><argument_list pos:line="424" pos:column="28">()</argument_list></call></expr>;</expr_stmt>
+        <expr_stmt><expr><name><name pos:line="425" pos:column="9">m_spPendingMods</name><op:operator pos:line="425" pos:column="24">-&gt;</op:operator><name pos:line="425" pos:column="26">m_clear</name></name> <op:operator pos:line="425" pos:column="34">=</op:operator> <lit:literal type="boolean" pos:line="425" pos:column="36">true</lit:literal></expr>;</expr_stmt>
+
+        <comment type="block" pos:line="427" pos:column="9">/*
+         * now that the table has been cleared, we no longer have any pending
+         * inserts/erasures
+         */</comment>
+        <expr_stmt><expr><call><name><name pos:line="431" pos:column="9">m_spPendingMods</name><op:operator pos:line="431" pos:column="24">-&gt;</op:operator><name pos:line="431" pos:column="26">m_inserts</name><op:operator pos:line="431" pos:column="35">.</op:operator><name pos:line="431" pos:column="36">clear</name></name><argument_list pos:line="431" pos:column="41">()</argument_list></call></expr>;</expr_stmt>
+        <expr_stmt><expr><call><name><name pos:line="432" pos:column="9">m_spPendingMods</name><op:operator pos:line="432" pos:column="24">-&gt;</op:operator><name pos:line="432" pos:column="26">m_erasures</name><op:operator pos:line="432" pos:column="36">.</op:operator><name pos:line="432" pos:column="37">clear</name></name><argument_list pos:line="432" pos:column="42">()</argument_list></call></expr>;</expr_stmt>
+    }</block></function>
+
+    <struct pos:line="435" pos:column="5">struct <name pos:line="435" pos:column="12">Invalidate</name> <super pos:line="435" pos:column="23">: <specifier pos:line="435" pos:column="25">public</specifier> <name><name pos:line="435" pos:column="32">std</name><op:operator pos:line="435" pos:column="35">::</op:operator><name><name pos:line="435" pos:column="37">unary_function</name><argument_list pos:line="435" pos:column="51">&lt;<argument><expr><name pos:line="435" pos:column="52">value_type</name></expr></argument>, <argument><expr><name pos:line="435" pos:column="64">void</name></expr></argument>&gt;</argument_list></name></name></super>
+    <block pos:line="436" pos:column="5">{<public type="default" pos:line="436" pos:column="6">
+        <function><type><name pos:line="437" pos:column="9">void</name></type> <name pos:line="437" pos:column="14">operator()</name><parameter_list pos:line="437" pos:column="24">(<param><decl><type><name pos:line="437" pos:column="25">value_type</name><type:modifier pos:line="437" pos:column="35">&amp;</type:modifier></type> <name pos:line="437" pos:column="37">pair</name></decl></param>)</parameter_list> <specifier pos:line="437" pos:column="43">const</specifier>
+        <block pos:line="438" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="439" pos:column="13">ValueTraits</name><op:operator pos:line="439" pos:column="24">::</op:operator><name pos:line="439" pos:column="26">Invalidate</name></name> <argument_list pos:line="439" pos:column="37">(<argument><expr><name><name pos:line="439" pos:column="38">pair</name><op:operator pos:line="439" pos:column="42">.</op:operator><name pos:line="439" pos:column="43">second</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+    </public>}</block>;</struct>
+
+
+    <comment type="block" pos:line="444" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CCookieTable::find
+     *
+     * Returns an iterator addressing the location of an element with the 
+     * specified cookie.  If no such element exists, the iterator addresses the 
+     * location following the last element in the table.
+     *
+     * If this function is called when the table is locked, the find operation
+     * will not take into account any changes made to the table while locked
+     * (see pending_find()).
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="455" pos:column="5">iterator</name></type> <name pos:line="455" pos:column="14">find</name> <parameter_list pos:line="455" pos:column="19">(<param><decl><type><specifier pos:line="455" pos:column="20">const</specifier> <name pos:line="455" pos:column="26">cookie_type</name><type:modifier pos:line="455" pos:column="37">&amp;</type:modifier></type> <name pos:line="455" pos:column="39">cookie</name></decl></param>)</parameter_list>
+        <block pos:line="456" pos:column="9">{ <return pos:line="456" pos:column="11">return <expr><op:operator pos:line="456" pos:column="18">(</op:operator><call><name><name pos:line="456" pos:column="19">m_map</name><op:operator pos:line="456" pos:column="24">.</op:operator><name pos:line="456" pos:column="25">find</name></name> <argument_list pos:line="456" pos:column="30">(<argument><expr><name pos:line="456" pos:column="31">cookie</name></expr></argument>)</argument_list></call><op:operator pos:line="456" pos:column="38">)</op:operator></expr>;</return> }</block></function>
+
+    <function><type><name pos:line="458" pos:column="5">const_iterator</name></type> <name pos:line="458" pos:column="20">find</name> <parameter_list pos:line="458" pos:column="25">(<param><decl><type><specifier pos:line="458" pos:column="26">const</specifier> <name pos:line="458" pos:column="32">cookie_type</name><type:modifier pos:line="458" pos:column="43">&amp;</type:modifier></type> <name pos:line="458" pos:column="45">cookie</name></decl></param>)</parameter_list> <specifier pos:line="458" pos:column="53">const</specifier>
+        <block pos:line="459" pos:column="9">{ <return pos:line="459" pos:column="11">return <expr><op:operator pos:line="459" pos:column="18">(</op:operator><call><name><name pos:line="459" pos:column="19">m_map</name><op:operator pos:line="459" pos:column="24">.</op:operator><name pos:line="459" pos:column="25">find</name></name> <argument_list pos:line="459" pos:column="30">(<argument><expr><name pos:line="459" pos:column="31">cookie</name></expr></argument>)</argument_list></call><op:operator pos:line="459" pos:column="38">)</op:operator></expr>;</return> }</block></function>
+
+
+    <comment type="block" pos:line="462" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CCookieTable::pending_find
+     *
+     * Returns a boolean indicating whether the given cookie is in use in the 
+     * table, including all pending modifications to the table.  
+     * 
+     * If the table is unlocked with this function is called then the return 
+     * value for this function is identical to (find(cookie) != end()).
+     *
+     * If the table is locked, the return value indicates the what the value
+     * of (find(cookie) != end()) will be when all pending changes are applied.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="474" pos:column="5">bool</name></type> <name pos:line="474" pos:column="10">pending_find</name> <parameter_list pos:line="474" pos:column="23">(<param><decl><type><specifier pos:line="474" pos:column="24">const</specifier> <name pos:line="474" pos:column="30">cookie_type</name><type:modifier pos:line="474" pos:column="41">&amp;</type:modifier></type> <name pos:line="474" pos:column="43">cookie</name></decl></param>)</parameter_list> <specifier pos:line="474" pos:column="51">const</specifier>
+    <block pos:line="475" pos:column="5">{ 
+        <decl_stmt><decl><type><name pos:line="476" pos:column="9">bool</name></type> <name pos:line="476" pos:column="14">found</name> <init pos:line="476" pos:column="20">= <expr><op:operator pos:line="476" pos:column="22">(</op:operator><call><name><name pos:line="476" pos:column="23">m_map</name><op:operator pos:line="476" pos:column="28">.</op:operator><name pos:line="476" pos:column="29">find</name></name> <argument_list pos:line="476" pos:column="34">(<argument><expr><name pos:line="476" pos:column="35">cookie</name></expr></argument>)</argument_list></call> <op:operator pos:line="476" pos:column="43">!=</op:operator> <call><name pos:line="476" pos:column="46">end</name><argument_list pos:line="476" pos:column="49">()</argument_list></call><op:operator pos:line="476" pos:column="51">)</op:operator></expr></init></decl>;</decl_stmt>       <comment type="line" pos:line="476" pos:column="60">// assume unlocked</comment>
+
+        <comment type="block" pos:line="478" pos:column="9">/*
+         * if we have pending modifications to the table, there's more work to do
+         */</comment>
+        <if pos:line="481" pos:column="9">if <condition pos:line="481" pos:column="12">(<expr><call><name pos:line="481" pos:column="13">have_pending_mods</name><argument_list pos:line="481" pos:column="30">()</argument_list></call></expr>)</condition><then pos:line="481" pos:column="33">
+        <block pos:line="482" pos:column="9">{
+            <comment type="block" pos:line="483" pos:column="13">/*
+             * if we found the cookie in the table proper, then its pending-
+             * find state will only be true if there's not a pending clear
+             * or a pending erasure
+             */</comment>
+            <if pos:line="488" pos:column="13">if <condition pos:line="488" pos:column="16">(<expr><name pos:line="488" pos:column="17">found</name></expr>)</condition><then pos:line="488" pos:column="23">
+                <expr_stmt><expr><name pos:line="489" pos:column="17">found</name> <op:operator pos:line="489" pos:column="23">=</op:operator> <op:operator pos:line="489" pos:column="25">!</op:operator><name><name pos:line="489" pos:column="26">m_spPendingMods</name><op:operator pos:line="489" pos:column="41">-&gt;</op:operator><name pos:line="489" pos:column="43">m_clear</name></name> <op:operator pos:line="489" pos:column="51">&amp;&amp;</op:operator> <op:operator pos:line="489" pos:column="54">!</op:operator><call><name pos:line="489" pos:column="55">find_pending_erasure</name><argument_list pos:line="489" pos:column="75">(<argument><expr><name pos:line="489" pos:column="76">cookie</name></expr></argument>)</argument_list></call></expr>;</expr_stmt></then>
+
+            <comment type="block" pos:line="491" pos:column="13">/* 
+             * otherwise, the cookie wasn't found in the table proper; its
+             * pending-find state is only true if there's a pending insert
+             * for the item
+             */</comment>
+            <else pos:line="496" pos:column="13">else
+                <expr_stmt><expr><name pos:line="497" pos:column="17">found</name> <op:operator pos:line="497" pos:column="23">=</op:operator> <call><name pos:line="497" pos:column="25">find_pending_insert</name> <argument_list pos:line="497" pos:column="45">(<argument><expr><name pos:line="497" pos:column="46">cookie</name></expr></argument>)</argument_list></call></expr>;</expr_stmt></else></if>
+        }</block></then></if>
+
+        <return pos:line="500" pos:column="9">return <expr><op:operator pos:line="500" pos:column="16">(</op:operator><name pos:line="500" pos:column="17">found</name><op:operator pos:line="500" pos:column="22">)</op:operator></expr>;</return>
+    }</block></function>
+
+
+    <comment type="block" pos:line="504" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CCookieTable::empty
+     *
+     * Returns a boolean indicating whether the table is empty.  If the table is 
+     * locked when this function is called, the value returned represents the
+     * table's state at the time it was locked.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="511" pos:column="5">bool</name></type> <name pos:line="511" pos:column="10">empty</name><parameter_list pos:line="511" pos:column="15">()</parameter_list> <specifier pos:line="511" pos:column="18">const</specifier>
+        <block pos:line="512" pos:column="9">{ <return pos:line="512" pos:column="11">return <expr><op:operator pos:line="512" pos:column="18">(</op:operator><call><name><name pos:line="512" pos:column="19">m_map</name><op:operator pos:line="512" pos:column="24">.</op:operator><name pos:line="512" pos:column="25">empty</name></name><argument_list pos:line="512" pos:column="30">()</argument_list></call><op:operator pos:line="512" pos:column="32">)</op:operator></expr>;</return> }</block></function>
+
+
+    <comment type="block" pos:line="515" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CCookieTable::size
+     *
+     * Returns the number of elements in the table.  If the table is locked
+     * when this function is called, the value returned is the size of the
+     * table at the time it was locked.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="522" pos:column="5">size_type</name></type> <name pos:line="522" pos:column="15">size</name><parameter_list pos:line="522" pos:column="19">()</parameter_list> <specifier pos:line="522" pos:column="22">const</specifier>
+        <block pos:line="523" pos:column="9">{ <return pos:line="523" pos:column="11">return <expr><op:operator pos:line="523" pos:column="18">(</op:operator><call><name><name pos:line="523" pos:column="19">m_map</name><op:operator pos:line="523" pos:column="24">.</op:operator><name pos:line="523" pos:column="25">size</name></name><argument_list pos:line="523" pos:column="29">()</argument_list></call><op:operator pos:line="523" pos:column="31">)</op:operator></expr>;</return> }</block></function>
+
+
+    <comment type="block" pos:line="526" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CCookieTable::pending_size
+     *
+     * Returns the number of elements that will be in the table when it is
+     * unlocked, including all pending modifications to the table.  
+     *
+     * If the table is unlocked when this function is called, this is identical
+     * to the value returned by size().
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="535" pos:column="5">size_type</name></type> <name pos:line="535" pos:column="15">pending_size</name><parameter_list pos:line="535" pos:column="27">()</parameter_list> <specifier pos:line="535" pos:column="30">const</specifier>
+    <block pos:line="536" pos:column="5">{
+        <decl_stmt><decl><type><name pos:line="537" pos:column="9">size_type</name></type> <name pos:line="537" pos:column="19">count</name> <init pos:line="537" pos:column="25">= <expr><call><name pos:line="537" pos:column="27">size</name><argument_list pos:line="537" pos:column="31">()</argument_list></call></expr></init></decl>;</decl_stmt>       <comment type="line" pos:line="537" pos:column="41">// assume unlocked</comment>
+
+        <if pos:line="539" pos:column="9">if <condition pos:line="539" pos:column="12">(<expr><call><name pos:line="539" pos:column="13">have_pending_mods</name><argument_list pos:line="539" pos:column="30">()</argument_list></call></expr>)</condition><then pos:line="539" pos:column="33">
+        <block pos:line="540" pos:column="9">{
+            <comment type="block" pos:line="541" pos:column="13">/*
+             * if the table was cleared while it was locked, the size when
+             * unlocked will be the number of elements added to the table
+             * since it was last cleared (to-erase collection should be empty)
+             */</comment>
+            <if pos:line="546" pos:column="13">if <condition pos:line="546" pos:column="16">(<expr><name><name pos:line="546" pos:column="17">m_spPendingMods</name><op:operator pos:line="546" pos:column="32">-&gt;</op:operator><name pos:line="546" pos:column="34">m_clear</name></name></expr>)</condition><then pos:line="546" pos:column="42">
+            <block pos:line="547" pos:column="13">{
+                <expr_stmt><expr><call><name pos:line="548" pos:column="17">VSASSERT</name> <argument_list pos:line="548" pos:column="26">(<argument><expr><call><name><name pos:line="548" pos:column="27">m_spPendingMods</name><op:operator pos:line="548" pos:column="42">-&gt;</op:operator><name pos:line="548" pos:column="44">m_erasures</name><op:operator pos:line="548" pos:column="54">.</op:operator><name pos:line="548" pos:column="55">size</name></name><argument_list pos:line="548" pos:column="59">()</argument_list></call> <op:operator pos:line="548" pos:column="62">==</op:operator> <lit:literal type="number" pos:line="548" pos:column="65">0</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="548" pos:column="68">"Unexpected pending erasures"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                <expr_stmt><expr><name pos:line="549" pos:column="17">count</name> <op:operator pos:line="549" pos:column="23">=</op:operator>   <call><name><name pos:line="549" pos:column="27">m_spPendingMods</name><op:operator pos:line="549" pos:column="42">-&gt;</op:operator><name pos:line="549" pos:column="44">m_inserts</name><op:operator pos:line="549" pos:column="53">.</op:operator><name pos:line="549" pos:column="54">size</name></name><argument_list pos:line="549" pos:column="58">()</argument_list></call></expr>;</expr_stmt>
+            }</block></then>
+            <else pos:line="551" pos:column="13">else
+            <block pos:line="552" pos:column="13">{
+                <comment type="block" pos:line="553" pos:column="17">/*
+                 * decrement the count before incrementing to avoid overflow 
+                 * (underflow isn't a concern)
+                 */</comment>
+                <expr_stmt><expr><call><name pos:line="557" pos:column="17">VSASSERT</name> <argument_list pos:line="557" pos:column="26">(<argument><expr><call><name><name pos:line="557" pos:column="27">m_spPendingMods</name><op:operator pos:line="557" pos:column="42">-&gt;</op:operator><name pos:line="557" pos:column="44">m_erasures</name><op:operator pos:line="557" pos:column="54">.</op:operator><name pos:line="557" pos:column="55">size</name></name><argument_list pos:line="557" pos:column="59">()</argument_list></call> <op:operator pos:line="557" pos:column="62">&lt;=</op:operator> <name pos:line="557" pos:column="65">count</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="557" pos:column="72">"Too many pending erasures"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                <expr_stmt><expr><name pos:line="558" pos:column="17">count</name> <op:operator pos:line="558" pos:column="23">-=</op:operator>  <call><name><name pos:line="558" pos:column="27">m_spPendingMods</name><op:operator pos:line="558" pos:column="42">-&gt;</op:operator><name pos:line="558" pos:column="44">m_erasures</name><op:operator pos:line="558" pos:column="54">.</op:operator><name pos:line="558" pos:column="55">size</name></name><argument_list pos:line="558" pos:column="59">()</argument_list></call></expr>;</expr_stmt>
+                <expr_stmt><expr><name pos:line="559" pos:column="17">count</name> <op:operator pos:line="559" pos:column="23">+=</op:operator>  <call><name><name pos:line="559" pos:column="27">m_spPendingMods</name><op:operator pos:line="559" pos:column="42">-&gt;</op:operator><name pos:line="559" pos:column="44">m_inserts</name><op:operator pos:line="559" pos:column="53">.</op:operator><name pos:line="559" pos:column="54">size</name></name><argument_list pos:line="559" pos:column="58">()</argument_list></call></expr>;</expr_stmt>
+            }</block></else></if>
+        }</block></then></if>
+
+        <return pos:line="563" pos:column="9">return <expr><op:operator pos:line="563" pos:column="16">(</op:operator><name pos:line="563" pos:column="17">count</name><op:operator pos:line="563" pos:column="22">)</op:operator></expr>;</return> 
+    }</block></function>
+
+
+    <comment type="block" pos:line="567" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CCookieTable::for_each
+     *
+     * Calls a function for each elements in the table, optionally skipping 
+     * invalid elements.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <template pos:line="573" pos:column="5">template<parameter_list pos:line="573" pos:column="13">&lt;<param><type><name pos:line="573" pos:column="14">class</name></type> <name pos:line="573" pos:column="20">Func</name></param>&gt;</parameter_list>
+    <function><type><name pos:line="574" pos:column="5">Func</name></type> <name pos:line="574" pos:column="10">for_each</name> <parameter_list pos:line="574" pos:column="19">(<param><decl><type><name pos:line="574" pos:column="20">Func</name></type> <name pos:line="574" pos:column="25">func</name></decl></param>, <param><decl><type><name pos:line="574" pos:column="31">bool</name></type> <name pos:line="574" pos:column="36">fIncludeInvalidElements</name> <init pos:line="574" pos:column="60">= <expr><lit:literal type="boolean" pos:line="574" pos:column="62">false</lit:literal></expr></init></decl></param>)</parameter_list>
+    <block pos:line="575" pos:column="5">{
+        <comment type="block" pos:line="576" pos:column="9">/*
+         * micro-optimization: short out without locking if the table is empty
+         */</comment>
+        <if pos:line="579" pos:column="9">if <condition pos:line="579" pos:column="12">(<expr><call><name pos:line="579" pos:column="13">empty</name><argument_list pos:line="579" pos:column="18">()</argument_list></call></expr>)</condition><then pos:line="579" pos:column="21">
+            <return pos:line="580" pos:column="13">return <expr><op:operator pos:line="580" pos:column="20">(</op:operator><name pos:line="580" pos:column="21">func</name><op:operator pos:line="580" pos:column="25">)</op:operator></expr>;</return></then></if>
+
+        <comment type="block" pos:line="582" pos:column="9">/*
+         * lock the table so changes potentially made by the callback function 
+         * don't invalidate our iterators
+         */</comment>
+        <function_decl><type><name pos:line="586" pos:column="9">Lock</name></type> <name pos:line="586" pos:column="14">lock</name><parameter_list pos:line="586" pos:column="18">(<param><decl><type><name pos:line="586" pos:column="19">this</name></type></decl></param>)</parameter_list>;</function_decl>
+
+        <for pos:line="588" pos:column="9">for (<init><decl><type><name pos:line="588" pos:column="14">const_iterator</name></type> <name pos:line="588" pos:column="29">it</name> <init pos:line="588" pos:column="32">= <expr><call><name pos:line="588" pos:column="34">begin</name><argument_list pos:line="588" pos:column="39">()</argument_list></call></expr></init></decl>;</init> <condition><expr><name pos:line="588" pos:column="43">it</name> <op:operator pos:line="588" pos:column="46">!=</op:operator> <call><name pos:line="588" pos:column="49">end</name><argument_list pos:line="588" pos:column="52">()</argument_list></call></expr>;</condition> <incr><expr><op:operator pos:line="588" pos:column="56">++</op:operator><name pos:line="588" pos:column="58">it</name></expr></incr>)
+        <block pos:line="589" pos:column="9">{
+            <decl_stmt><decl><type><specifier pos:line="590" pos:column="13">const</specifier> <name pos:line="590" pos:column="19">cookie_type</name><type:modifier pos:line="590" pos:column="30">&amp;</type:modifier></type> <name pos:line="590" pos:column="32">cookie</name> <init pos:line="590" pos:column="39">= <expr><name><name pos:line="590" pos:column="41">it</name><op:operator pos:line="590" pos:column="43">-&gt;</op:operator><name pos:line="590" pos:column="45">first</name></name></expr></init></decl>;</decl_stmt>
+            <decl_stmt><decl><type><specifier pos:line="591" pos:column="13">const</specifier> <name pos:line="591" pos:column="19">mapped_type</name><type:modifier pos:line="591" pos:column="30">&amp;</type:modifier></type> <name pos:line="591" pos:column="32">value</name>  <init pos:line="591" pos:column="39">= <expr><name><name pos:line="591" pos:column="41">it</name><op:operator pos:line="591" pos:column="43">-&gt;</op:operator><name pos:line="591" pos:column="45">second</name></name></expr></init></decl>;</decl_stmt>
+
+            <if pos:line="593" pos:column="13">if <condition pos:line="593" pos:column="16">(<expr><name pos:line="593" pos:column="17">fIncludeInvalidElements</name> <op:operator pos:line="593" pos:column="41">||</op:operator> <call><name><name pos:line="593" pos:column="44">ValueTraits</name><op:operator pos:line="593" pos:column="55">::</op:operator><name pos:line="593" pos:column="57">IsValid</name></name><argument_list pos:line="593" pos:column="64">(<argument><expr><name pos:line="593" pos:column="65">value</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="593" pos:column="72">
+            <block pos:line="594" pos:column="13">{
+                <expr_stmt><expr><call><name pos:line="595" pos:column="17">func</name> <argument_list pos:line="595" pos:column="22">(<argument><expr><name pos:line="595" pos:column="23">cookie</name></expr></argument>, <argument><expr><name pos:line="595" pos:column="31">value</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+        }</block></for>
+
+        <return pos:line="599" pos:column="9">return <expr><op:operator pos:line="599" pos:column="16">(</op:operator><name pos:line="599" pos:column="17">func</name><op:operator pos:line="599" pos:column="21">)</op:operator></expr>;</return>
+    }</block></function></template>
+
+
+    <comment type="block" pos:line="603" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CCookieTable::max_size
+     *
+     * Returns the largest number of elements this table can hold.  This value
+     * will be limited by the lesser of the maximum number of elements that 
+     * the underlying map can hold and the cookie range specified by the 
+     * CookieTraits class.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="611" pos:column="5">size_type</name></type> <name pos:line="611" pos:column="15">max_size</name><parameter_list pos:line="611" pos:column="23">()</parameter_list> <specifier pos:line="611" pos:column="26">const</specifier>
+    <block pos:line="612" pos:column="5">{ 
+        <decl_stmt><decl><type><name pos:line="613" pos:column="9">size_type</name></type> <name pos:line="613" pos:column="19">cookie_count</name> <init pos:line="613" pos:column="32">= <expr><call><name><name pos:line="613" pos:column="34">CookieTraits</name><op:operator pos:line="613" pos:column="46">::</op:operator><name pos:line="613" pos:column="48">UniqueCookieCount</name></name><argument_list pos:line="613" pos:column="65">()</argument_list></call></expr></init></decl>;</decl_stmt>
+        <return pos:line="614" pos:column="9">return <expr><op:operator pos:line="614" pos:column="16">(</op:operator><call><name><name pos:line="614" pos:column="17">std</name><op:operator pos:line="614" pos:column="20">::</op:operator><name pos:line="614" pos:column="22">min</name></name> <argument_list pos:line="614" pos:column="26">(<argument><expr><call><name><name pos:line="614" pos:column="27">m_map</name><op:operator pos:line="614" pos:column="32">.</op:operator><name pos:line="614" pos:column="33">max_size</name></name><argument_list pos:line="614" pos:column="41">()</argument_list></call></expr></argument>, <argument><expr><name pos:line="614" pos:column="45">cookie_count</name></expr></argument>)</argument_list></call><op:operator pos:line="614" pos:column="58">)</op:operator></expr>;</return>
+    }</block></function>
+
+
+    <comment type="block" pos:line="618" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CCookieTable::lock
+     *
+     * Locks the table so subsequent insertions and deletions won't invalidate
+     * iterators into the table.
+     * 
+     * NOTE: Locking the table DOES NOT provide exclusive access to the locking
+     * thread.  There is NO thread safety implied by this function.  If exclusive
+     * access to an instance of the table is required, it is the user's 
+     * responsibility to provide it.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="629" pos:column="5">size_type</name></type> <name pos:line="629" pos:column="15">lock</name><parameter_list pos:line="629" pos:column="19">()</parameter_list>
+    <block pos:line="630" pos:column="5">{
+        <comment type="block" pos:line="631" pos:column="9">/*
+         * bump the lock count
+         */</comment>
+        <expr_stmt><expr><name pos:line="634" pos:column="9">m_cLocks</name><op:operator pos:line="634" pos:column="17">++</op:operator></expr>;</expr_stmt>
+
+        <expr_stmt><expr><call><name pos:line="636" pos:column="9">VSASSERT</name> <argument_list pos:line="636" pos:column="18">(<argument><expr><call><name pos:line="636" pos:column="19">locked</name><argument_list pos:line="636" pos:column="25">()</argument_list></call></expr></argument>, <argument><expr><lit:literal type="string" pos:line="636" pos:column="29">"Table should be locked"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        <return pos:line="637" pos:column="9">return <expr><op:operator pos:line="637" pos:column="16">(</op:operator><name pos:line="637" pos:column="17">m_cLocks</name><op:operator pos:line="637" pos:column="25">)</op:operator></expr>;</return>
+    }</block></function>
+
+
+    <comment type="block" pos:line="641" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CCookieTable::locked
+     *
+     * Returns a boolean indicating whether the table is locked or not.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="646" pos:column="5">bool</name></type> <name pos:line="646" pos:column="10">locked</name><parameter_list pos:line="646" pos:column="16">()</parameter_list> <specifier pos:line="646" pos:column="19">const</specifier>
+    <block pos:line="647" pos:column="5">{
+        <comment type="block" pos:line="648" pos:column="9">/*
+         * If we're not locked, we shouldn't have a modification tracking structure.
+         * Note that the converse is not true:  If we're locked, we may or may not
+         * have a modification tracking structure, depending on whether insert,
+         * erase, or clear has been called while locked.
+         */</comment>
+        <expr_stmt><expr><call><name pos:line="654" pos:column="9">VSASSERT</name> <argument_list pos:line="654" pos:column="18">(<argument><expr><op:operator pos:line="654" pos:column="19">(</op:operator><name pos:line="654" pos:column="20">m_cLocks</name> <op:operator pos:line="654" pos:column="29">&gt;</op:operator> <lit:literal type="number" pos:line="654" pos:column="31">0</lit:literal><op:operator pos:line="654" pos:column="32">)</op:operator> <op:operator pos:line="654" pos:column="34">||</op:operator> <op:operator pos:line="654" pos:column="37">!</op:operator><call><name pos:line="654" pos:column="38">have_pending_mods</name><argument_list pos:line="654" pos:column="55">()</argument_list></call></expr></argument>,
+                  <argument><expr><lit:literal type="string" pos:line="655" pos:column="19">"Shouldn't have pending mods if we're not locked"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+        <return pos:line="657" pos:column="9">return <expr><op:operator pos:line="657" pos:column="16">(</op:operator><name pos:line="657" pos:column="17">m_cLocks</name> <op:operator pos:line="657" pos:column="26">&gt;</op:operator> <lit:literal type="number" pos:line="657" pos:column="28">0</lit:literal><op:operator pos:line="657" pos:column="29">)</op:operator></expr>;</return>
+    }</block></function>
+
+
+    <comment type="block" pos:line="661" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CCookieTable::unlock
+     *
+     * Decrements the lock count on the table.  If the lock count goes to zero,
+     * any changes to the table made while the table was locked are applied.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="667" pos:column="5">size_type</name></type> <name pos:line="667" pos:column="15">unlock</name><parameter_list pos:line="667" pos:column="21">()</parameter_list>
+    <block pos:line="668" pos:column="5">{
+        <comment type="block" pos:line="669" pos:column="9">/*
+         * Shouldn't be unlocking if not locked.  Consider using the Lock class
+         * above to automate locking semantics.
+         */</comment>
+        <expr_stmt><expr><call><name pos:line="673" pos:column="9">VSASSERT</name> <argument_list pos:line="673" pos:column="18">(<argument><expr><call><name pos:line="673" pos:column="19">locked</name><argument_list pos:line="673" pos:column="25">()</argument_list></call></expr></argument>, <argument><expr><lit:literal type="string" pos:line="673" pos:column="29">"Table should be locked"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+        <comment type="block" pos:line="675" pos:column="9">/*
+         * if this is the final unlock, apply the pending changes
+         */</comment>
+        <if pos:line="678" pos:column="9">if <condition pos:line="678" pos:column="12">(<expr><call><name pos:line="678" pos:column="13">locked</name><argument_list pos:line="678" pos:column="19">()</argument_list></call> <op:operator pos:line="678" pos:column="22">&amp;&amp;</op:operator> <op:operator pos:line="678" pos:column="25">(</op:operator><op:operator pos:line="678" pos:column="26">--</op:operator><name pos:line="678" pos:column="28">m_cLocks</name> <op:operator pos:line="678" pos:column="37">==</op:operator> <lit:literal type="number" pos:line="678" pos:column="40">0</lit:literal><op:operator pos:line="678" pos:column="41">)</op:operator> <op:operator pos:line="678" pos:column="43">&amp;&amp;</op:operator> <call><name pos:line="678" pos:column="46">have_pending_mods</name><argument_list pos:line="678" pos:column="63">()</argument_list></call></expr>)</condition><then pos:line="678" pos:column="66">
+        <block pos:line="679" pos:column="9">{
+            <comment type="block" pos:line="680" pos:column="13">/*
+             * apply pending clear/erasures
+             */</comment>
+            <if pos:line="683" pos:column="13">if <condition pos:line="683" pos:column="16">(<expr><name><name pos:line="683" pos:column="17">m_spPendingMods</name><op:operator pos:line="683" pos:column="32">-&gt;</op:operator><name pos:line="683" pos:column="34">m_clear</name></name></expr>)</condition><then pos:line="683" pos:column="42">
+            <block pos:line="684" pos:column="13">{
+                <expr_stmt><expr><call><name><name pos:line="685" pos:column="17">m_map</name><op:operator pos:line="685" pos:column="22">.</op:operator><name pos:line="685" pos:column="23">clear</name></name><argument_list pos:line="685" pos:column="28">()</argument_list></call></expr>;</expr_stmt>
+            }</block></then>
+            <else pos:line="687" pos:column="13">else
+            <block pos:line="688" pos:column="13">{
+                <expr_stmt><expr><call><name><name pos:line="689" pos:column="17">std</name><op:operator pos:line="689" pos:column="20">::</op:operator><name pos:line="689" pos:column="22">for_each</name></name> <argument_list pos:line="689" pos:column="31">(<argument><expr><call><name><name pos:line="689" pos:column="32">m_spPendingMods</name><op:operator pos:line="689" pos:column="47">-&gt;</op:operator><name pos:line="689" pos:column="49">m_erasures</name><op:operator pos:line="689" pos:column="59">.</op:operator><name pos:line="689" pos:column="60">begin</name></name><argument_list pos:line="689" pos:column="65">()</argument_list></call></expr></argument>, 
+                               <argument><expr><call><name><name pos:line="690" pos:column="32">m_spPendingMods</name><op:operator pos:line="690" pos:column="47">-&gt;</op:operator><name pos:line="690" pos:column="49">m_erasures</name><op:operator pos:line="690" pos:column="59">.</op:operator><name pos:line="690" pos:column="60">end</name></name><argument_list pos:line="690" pos:column="63">()</argument_list></call></expr></argument>,
+                               <argument><expr><call><name pos:line="691" pos:column="32">Erase</name> <argument_list pos:line="691" pos:column="38">(<argument><expr><name pos:line="691" pos:column="39">m_map</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></else></if>
+
+            <comment type="block" pos:line="694" pos:column="13">/*
+             * apply pending inserts
+             */</comment>
+            <expr_stmt><expr><call><name><name pos:line="697" pos:column="13">std</name><op:operator pos:line="697" pos:column="16">::</op:operator><name pos:line="697" pos:column="18">copy</name></name> <argument_list pos:line="697" pos:column="23">(<argument><expr><call><name><name pos:line="697" pos:column="24">m_spPendingMods</name><op:operator pos:line="697" pos:column="39">-&gt;</op:operator><name pos:line="697" pos:column="41">m_inserts</name><op:operator pos:line="697" pos:column="50">.</op:operator><name pos:line="697" pos:column="51">begin</name></name><argument_list pos:line="697" pos:column="56">()</argument_list></call></expr></argument>, 
+                       <argument><expr><call><name><name pos:line="698" pos:column="24">m_spPendingMods</name><op:operator pos:line="698" pos:column="39">-&gt;</op:operator><name pos:line="698" pos:column="41">m_inserts</name><op:operator pos:line="698" pos:column="50">.</op:operator><name pos:line="698" pos:column="51">end</name></name><argument_list pos:line="698" pos:column="54">()</argument_list></call></expr></argument>,
+                       <argument><expr><call><name><name pos:line="699" pos:column="24">std</name><op:operator pos:line="699" pos:column="27">::</op:operator><name pos:line="699" pos:column="29">inserter</name></name> <argument_list pos:line="699" pos:column="38">(<argument><expr><name pos:line="699" pos:column="39">m_map</name></expr></argument>, <argument><expr><call><name><name pos:line="699" pos:column="46">m_map</name><op:operator pos:line="699" pos:column="51">.</op:operator><name pos:line="699" pos:column="52">end</name></name><argument_list pos:line="699" pos:column="55">()</argument_list></call></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+            <comment type="block" pos:line="701" pos:column="13">/*
+             * let go of the tracking structure
+             */</comment>
+            <expr_stmt><expr><call><name><name pos:line="704" pos:column="13">m_spPendingMods</name><op:operator pos:line="704" pos:column="28">.</op:operator><name pos:line="704" pos:column="29">reset</name></name><argument_list pos:line="704" pos:column="34">()</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name pos:line="705" pos:column="13">VSASSERT</name> <argument_list pos:line="705" pos:column="22">(<argument><expr><op:operator pos:line="705" pos:column="23">!</op:operator><call><name pos:line="705" pos:column="24">locked</name><argument_list pos:line="705" pos:column="30">()</argument_list></call></expr></argument>, <argument><expr><lit:literal type="string" pos:line="705" pos:column="34">"Table should be unlocked"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></then></if>
+
+        <return pos:line="708" pos:column="9">return <expr><op:operator pos:line="708" pos:column="16">(</op:operator><name pos:line="708" pos:column="17">m_cLocks</name><op:operator pos:line="708" pos:column="25">)</op:operator></expr>;</return>
+    }</block></function>
+
+    <struct pos:line="711" pos:column="5">struct <name pos:line="711" pos:column="12">Erase</name> <super pos:line="711" pos:column="18">: <specifier pos:line="711" pos:column="20">public</specifier> <name><name pos:line="711" pos:column="27">std</name><op:operator pos:line="711" pos:column="30">::</op:operator><name><name pos:line="711" pos:column="32">unary_function</name><argument_list pos:line="711" pos:column="46">&lt;<argument><expr><name pos:line="711" pos:column="47">cookie_type</name></expr></argument>, <argument><expr><name pos:line="711" pos:column="60">void</name></expr></argument>&gt;</argument_list></name></name></super>
+    <block pos:line="712" pos:column="5">{<public type="default" pos:line="712" pos:column="6">
+        <constructor><name pos:line="713" pos:column="9">Erase</name> <parameter_list pos:line="713" pos:column="15">(<param><decl><type><name pos:line="713" pos:column="16">map_type</name><type:modifier pos:line="713" pos:column="24">&amp;</type:modifier></type> <name pos:line="713" pos:column="26">table</name></decl></param>)</parameter_list> <member_list pos:line="713" pos:column="33">: <call><name pos:line="713" pos:column="35">m_pTable</name> <argument_list pos:line="713" pos:column="44">(<argument><expr><op:operator pos:line="713" pos:column="45">&amp;</op:operator><name pos:line="713" pos:column="46">table</name></expr></argument>)</argument_list></call> 
+            </member_list><block pos:line="714" pos:column="13">{}</block></constructor>
+
+        <function><type><name pos:line="716" pos:column="9">void</name></type> <name pos:line="716" pos:column="14">operator()</name><parameter_list pos:line="716" pos:column="24">(<param><decl><type><specifier pos:line="716" pos:column="25">const</specifier> <name pos:line="716" pos:column="31">cookie_type</name><type:modifier pos:line="716" pos:column="42">&amp;</type:modifier></type> <name pos:line="716" pos:column="44">cookie</name></decl></param>)</parameter_list> <specifier pos:line="716" pos:column="52">const</specifier>
+            <block pos:line="717" pos:column="13">{ <expr_stmt><expr><call><name><name pos:line="717" pos:column="15">m_pTable</name><op:operator pos:line="717" pos:column="23">-&gt;</op:operator><name pos:line="717" pos:column="25">erase</name></name> <argument_list pos:line="717" pos:column="31">(<argument><expr><name pos:line="717" pos:column="32">cookie</name></expr></argument>)</argument_list></call></expr>;</expr_stmt> }</block></function>
+
+    </public><private pos:line="719" pos:column="5">private:
+        <decl_stmt><decl><type><name pos:line="720" pos:column="9">map_type</name><type:modifier pos:line="720" pos:column="17">*</type:modifier></type>  <name pos:line="720" pos:column="20">m_pTable</name></decl>;</decl_stmt>
+    </private>}</block>;</struct>
+
+
+</public><private pos:line="724" pos:column="1">private:
+    <comment type="block" pos:line="725" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CCookieTable::find_pending_insert
+     *
+     * Returns a boolean indicating whether the given cookie is in the pending 
+     * add collection.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="731" pos:column="5">bool</name></type> <name pos:line="731" pos:column="10">find_pending_insert</name> <parameter_list pos:line="731" pos:column="30">(<param><decl><type><name pos:line="731" pos:column="31">cookie_type</name></type> <name pos:line="731" pos:column="43">cookie</name></decl></param>)</parameter_list> <specifier pos:line="731" pos:column="51">const</specifier>
+    <block pos:line="732" pos:column="5">{
+        <if pos:line="733" pos:column="9">if <condition pos:line="733" pos:column="12">(<expr><op:operator pos:line="733" pos:column="13">!</op:operator><call><name pos:line="733" pos:column="14">have_pending_mods</name><argument_list pos:line="733" pos:column="31">()</argument_list></call></expr>)</condition><then pos:line="733" pos:column="34">
+            <return pos:line="734" pos:column="13">return <expr><op:operator pos:line="734" pos:column="20">(</op:operator><lit:literal type="boolean" pos:line="734" pos:column="21">false</lit:literal><op:operator pos:line="734" pos:column="26">)</op:operator></expr>;</return></then></if>
+
+        <return pos:line="736" pos:column="9">return <expr><op:operator pos:line="736" pos:column="16">(</op:operator><call><name><name pos:line="736" pos:column="17">m_spPendingMods</name><op:operator pos:line="736" pos:column="32">-&gt;</op:operator><name pos:line="736" pos:column="34">m_inserts</name><op:operator pos:line="736" pos:column="43">.</op:operator><name pos:line="736" pos:column="44">find</name></name><argument_list pos:line="736" pos:column="48">(<argument><expr><name pos:line="736" pos:column="49">cookie</name></expr></argument>)</argument_list></call> <op:operator pos:line="736" pos:column="57">!=</op:operator> <call><name><name pos:line="736" pos:column="60">m_spPendingMods</name><op:operator pos:line="736" pos:column="75">-&gt;</op:operator><name pos:line="736" pos:column="77">m_inserts</name><op:operator pos:line="736" pos:column="86">.</op:operator><name pos:line="736" pos:column="87">end</name></name><argument_list pos:line="736" pos:column="90">()</argument_list></call><op:operator pos:line="736" pos:column="92">)</op:operator></expr>;</return>
+    }</block></function>
+
+
+    <comment type="block" pos:line="740" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CCookieTable::add_pending_insert
+     *
+     * Adds an entry to the pending inserts collection, creating the PendingMods
+     * structure if necessary.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="746" pos:column="5">void</name></type> <name pos:line="746" pos:column="10">add_pending_insert</name> <parameter_list pos:line="746" pos:column="29">(<param><decl><type><name pos:line="746" pos:column="30">cookie_type</name></type> <name pos:line="746" pos:column="42">cookie</name></decl></param>, <param><decl><type><specifier pos:line="746" pos:column="50">const</specifier> <name pos:line="746" pos:column="56">mapped_type</name><type:modifier pos:line="746" pos:column="67">&amp;</type:modifier></type> <name pos:line="746" pos:column="69">element</name></decl></param>)</parameter_list>
+    <block pos:line="747" pos:column="5">{
+        <expr_stmt><expr><call><name pos:line="748" pos:column="9">ensure_pending_mods</name><argument_list pos:line="748" pos:column="28">()</argument_list></call></expr>;</expr_stmt>
+        <expr_stmt><expr><name><name pos:line="749" pos:column="9">m_spPendingMods</name><op:operator pos:line="749" pos:column="24">-&gt;</op:operator><name pos:line="749" pos:column="26">m_inserts</name><index pos:line="749" pos:column="35">[<expr><name pos:line="749" pos:column="36">cookie</name></expr>]</index></name> <op:operator pos:line="749" pos:column="44">=</op:operator> <name pos:line="749" pos:column="46">element</name></expr>;</expr_stmt>
+    }</block></function>
+
+
+    <comment type="block" pos:line="753" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CCookieTable::find_pending_erasure
+     *
+     * Returns a boolean indicating whether the given cookie is in the pending 
+     * erasure collection.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="759" pos:column="5">bool</name></type> <name pos:line="759" pos:column="10">find_pending_erasure</name> <parameter_list pos:line="759" pos:column="31">(<param><decl><type><name pos:line="759" pos:column="32">cookie_type</name></type> <name pos:line="759" pos:column="44">cookie</name></decl></param>)</parameter_list> <specifier pos:line="759" pos:column="52">const</specifier>
+    <block pos:line="760" pos:column="5">{
+        <if pos:line="761" pos:column="9">if <condition pos:line="761" pos:column="12">(<expr><op:operator pos:line="761" pos:column="13">!</op:operator><call><name pos:line="761" pos:column="14">have_pending_mods</name><argument_list pos:line="761" pos:column="31">()</argument_list></call></expr>)</condition><then pos:line="761" pos:column="34">
+            <return pos:line="762" pos:column="13">return <expr><op:operator pos:line="762" pos:column="20">(</op:operator><lit:literal type="boolean" pos:line="762" pos:column="21">false</lit:literal><op:operator pos:line="762" pos:column="26">)</op:operator></expr>;</return></then></if>
+
+        <return pos:line="764" pos:column="9">return <expr><op:operator pos:line="764" pos:column="16">(</op:operator><call><name><name pos:line="764" pos:column="17">std</name><op:operator pos:line="764" pos:column="20">::</op:operator><name pos:line="764" pos:column="22">find</name></name> <argument_list pos:line="764" pos:column="27">(<argument><expr><call><name><name pos:line="764" pos:column="28">m_spPendingMods</name><op:operator pos:line="764" pos:column="43">-&gt;</op:operator><name pos:line="764" pos:column="45">m_erasures</name><op:operator pos:line="764" pos:column="55">.</op:operator><name pos:line="764" pos:column="56">begin</name></name><argument_list pos:line="764" pos:column="61">()</argument_list></call></expr></argument>,
+                           <argument><expr><call><name><name pos:line="765" pos:column="28">m_spPendingMods</name><op:operator pos:line="765" pos:column="43">-&gt;</op:operator><name pos:line="765" pos:column="45">m_erasures</name><op:operator pos:line="765" pos:column="55">.</op:operator><name pos:line="765" pos:column="56">end</name></name><argument_list pos:line="765" pos:column="59">()</argument_list></call></expr></argument>,
+                           <argument><expr><name pos:line="766" pos:column="28">cookie</name></expr></argument>)</argument_list></call> <op:operator pos:line="766" pos:column="36">!=</op:operator> <call><name><name pos:line="766" pos:column="39">m_spPendingMods</name><op:operator pos:line="766" pos:column="54">-&gt;</op:operator><name pos:line="766" pos:column="56">m_erasures</name><op:operator pos:line="766" pos:column="66">.</op:operator><name pos:line="766" pos:column="67">end</name></name><argument_list pos:line="766" pos:column="70">()</argument_list></call><op:operator pos:line="766" pos:column="72">)</op:operator></expr>;</return>
+    }</block></function>
+
+
+    <comment type="block" pos:line="770" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CCookieTable::add_pending_erasure
+     *
+     * Adds an entry to the pending erasures collection, creating the PendingMods
+     * structure if necessary.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="776" pos:column="5">void</name></type> <name pos:line="776" pos:column="10">add_pending_erasure</name> <parameter_list pos:line="776" pos:column="30">(<param><decl><type><name pos:line="776" pos:column="31">cookie_type</name></type> <name pos:line="776" pos:column="43">cookie</name></decl></param>)</parameter_list>
+    <block pos:line="777" pos:column="5">{
+        <expr_stmt><expr><call><name pos:line="778" pos:column="9">ensure_pending_mods</name><argument_list pos:line="778" pos:column="28">()</argument_list></call></expr>;</expr_stmt>
+        <expr_stmt><expr><call><name><name pos:line="779" pos:column="9">m_spPendingMods</name><op:operator pos:line="779" pos:column="24">-&gt;</op:operator><name pos:line="779" pos:column="26">m_erasures</name><op:operator pos:line="779" pos:column="36">.</op:operator><name pos:line="779" pos:column="37">push_back</name></name> <argument_list pos:line="779" pos:column="47">(<argument><expr><name pos:line="779" pos:column="48">cookie</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+    }</block></function>
+
+
+    <comment type="block" pos:line="783" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CCookieTable::ensure_pending_mods
+     *
+     * Creates the PendingMods structure if we don't have one.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="788" pos:column="5">void</name></type> <name pos:line="788" pos:column="10">ensure_pending_mods</name><parameter_list pos:line="788" pos:column="29">()</parameter_list>
+    <block pos:line="789" pos:column="5">{
+        <expr_stmt><expr><call><name pos:line="790" pos:column="9">VSASSERT</name> <argument_list pos:line="790" pos:column="18">(<argument><expr><call><name pos:line="790" pos:column="19">locked</name><argument_list pos:line="790" pos:column="25">()</argument_list></call></expr></argument>, <argument><expr><lit:literal type="string" pos:line="790" pos:column="29">"Shouldn't need a PendingMods structure unless we're locked"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+        <if pos:line="792" pos:column="9">if <condition pos:line="792" pos:column="12">(<expr><op:operator pos:line="792" pos:column="13">!</op:operator><call><name pos:line="792" pos:column="14">have_pending_mods</name><argument_list pos:line="792" pos:column="31">()</argument_list></call></expr>)</condition><then pos:line="792" pos:column="34">
+            <expr_stmt><expr><name pos:line="793" pos:column="13">m_spPendingMods</name> <op:operator pos:line="793" pos:column="29">=</op:operator> <call><name><name pos:line="793" pos:column="31">std</name><op:operator pos:line="793" pos:column="34">::</op:operator><name><name pos:line="793" pos:column="36">auto_ptr</name><argument_list pos:line="793" pos:column="44">&lt;<argument><expr><name pos:line="793" pos:column="45">PendingMods</name></expr></argument>&gt;</argument_list></name></name><argument_list pos:line="793" pos:column="57">(<argument><expr><op:operator pos:line="793" pos:column="58">new</op:operator> <name pos:line="793" pos:column="62">PendingMods</name></expr></argument>)</argument_list></call></expr>;</expr_stmt></then></if>
+    }</block></function>
+
+
+    <comment type="block" pos:line="797" pos:column="5">/*+-------------------------------------------------------------------------*
+     * CCookieTable::have_pending_mods
+     *
+     * Returns a boolean indicating whether we have pending modifications.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <function><type><name pos:line="802" pos:column="5">bool</name></type> <name pos:line="802" pos:column="10">have_pending_mods</name><parameter_list pos:line="802" pos:column="27">()</parameter_list> <specifier pos:line="802" pos:column="30">const</specifier>
+    <block pos:line="803" pos:column="5">{
+        <return pos:line="804" pos:column="9">return <expr><op:operator pos:line="804" pos:column="16">(</op:operator><call><name><name pos:line="804" pos:column="17">m_spPendingMods</name><op:operator pos:line="804" pos:column="32">.</op:operator><name pos:line="804" pos:column="33">get</name></name><argument_list pos:line="804" pos:column="36">()</argument_list></call> <op:operator pos:line="804" pos:column="39">!=</op:operator> <name pos:line="804" pos:column="42">NULL</name><op:operator pos:line="804" pos:column="46">)</op:operator></expr>;</return>
+    }</block></function>
+
+
+</private><private pos:line="808" pos:column="1">private:
+    <comment type="block" pos:line="809" pos:column="5">/*+-------------------------------------------------------------------------*
+     * PendingMods
+     *
+     * This data structure tracks changes made to the table while locked.
+     *-----------------------------------------------------------------(jeffro)-*/</comment>
+    <struct pos:line="814" pos:column="5">struct <name pos:line="814" pos:column="12">PendingMods</name>
+    <block pos:line="815" pos:column="5">{<public type="default" pos:line="815" pos:column="6">
+        <constructor><name pos:line="816" pos:column="9">PendingMods</name><parameter_list pos:line="816" pos:column="20">()</parameter_list> <member_list pos:line="816" pos:column="23">: <call><name pos:line="816" pos:column="25">m_clear</name> <argument_list pos:line="816" pos:column="33">(<argument><expr><lit:literal type="boolean" pos:line="816" pos:column="34">false</lit:literal></expr></argument>)</argument_list></call> </member_list><block pos:line="816" pos:column="41">{}</block></constructor>
+
+        <typedef pos:line="818" pos:column="9">typedef <type><name pos:line="818" pos:column="17">map_type</name></type>                    <name pos:line="818" pos:column="45">Inserts</name>;</typedef>
+        <typedef pos:line="819" pos:column="9">typedef <type><name><name pos:line="819" pos:column="17">std</name><op:operator pos:line="819" pos:column="20">::</op:operator><name><name pos:line="819" pos:column="22">vector</name><argument_list pos:line="819" pos:column="28">&lt;<argument><expr><name pos:line="819" pos:column="29">cookie_type</name></expr></argument>&gt;</argument_list></name></name></type>    <name pos:line="819" pos:column="45">Erasures</name>;</typedef>
+
+        <decl_stmt><decl><type><name pos:line="821" pos:column="9">Inserts</name></type>     <name pos:line="821" pos:column="21">m_inserts</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><name pos:line="822" pos:column="9">Erasures</name></type>    <name pos:line="822" pos:column="21">m_erasures</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><name pos:line="823" pos:column="9">bool</name></type>        <name pos:line="823" pos:column="21">m_clear</name></decl>;</decl_stmt>
+    </public>}</block>;</struct>
+
+    <decl_stmt><decl><type><name pos:line="826" pos:column="5">map_type</name></type>                            <name pos:line="826" pos:column="41">m_map</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name><name pos:line="827" pos:column="5">std</name><op:operator pos:line="827" pos:column="8">::</op:operator><name><name pos:line="827" pos:column="10">auto_ptr</name><argument_list pos:line="827" pos:column="18">&lt;<argument><expr><name pos:line="827" pos:column="19">PendingMods</name></expr></argument>&gt;</argument_list></name></name></type>          <name pos:line="827" pos:column="41">m_spPendingMods</name></decl>;</decl_stmt>    <comment type="line" pos:line="827" pos:column="61">// used when locked and mods are pending</comment>
+    <decl_stmt><decl><type><name pos:line="828" pos:column="5">size_type</name></type>                           <name pos:line="828" pos:column="41">m_cLocks</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><typename pos:line="829" pos:column="5">typename</typename> <name><name pos:line="829" pos:column="14">CookieTraits</name><op:operator pos:line="829" pos:column="26">::</op:operator><name pos:line="829" pos:column="28">state_type</name></name></type>   <name pos:line="829" pos:column="41">m_CookieTraitsState</name></decl>;</decl_stmt>
+
+    <constructor_decl><name pos:line="831" pos:column="5">CCookieTable</name>         <parameter_list pos:line="831" pos:column="26">(<param><decl><type><specifier pos:line="831" pos:column="27">const</specifier> <name pos:line="831" pos:column="33">this_type</name><type:modifier pos:line="831" pos:column="42">&amp;</type:modifier></type> <name pos:line="831" pos:column="44">other</name></decl></param>)</parameter_list>;</constructor_decl>  <comment type="line" pos:line="831" pos:column="53">// not copy-assignable</comment>
+    <function_decl><type><name pos:line="832" pos:column="5">this_type</name><type:modifier pos:line="832" pos:column="14">&amp;</type:modifier></type> <name pos:line="832" pos:column="16">operator=</name> <parameter_list pos:line="832" pos:column="26">(<param><decl><type><specifier pos:line="832" pos:column="27">const</specifier> <name pos:line="832" pos:column="33">this_type</name><type:modifier pos:line="832" pos:column="42">&amp;</type:modifier></type> <name pos:line="832" pos:column="44">other</name></decl></param>)</parameter_list>;</function_decl>  <comment type="line" pos:line="832" pos:column="53">// not assignable</comment>
+</private>}</block>;
+
+<cpp:pragma pos:line="835" pos:column="1">#<cpp:directive pos:line="835" pos:column="2">pragma</cpp:directive> pop_macro("min")</cpp:pragma></class></template></unit>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\dte.h" pos:tabs="8"><comment type="block" format="doxygen" pos:line="1" pos:column="1">/*****************************************************************************
+*  dte.h
+*
+*  Copyright (C) 1995-2000, Microsoft Corporation.  All Rights Reserved.
+*
+******************************************************************************/</comment>
+
+<namespace pos:line="8" pos:column="1">namespace <name pos:line="8" pos:column="11">VxDTE</name>
+<block pos:line="9" pos:column="1">{
+    <cpp:include pos:line="10" pos:column="5">#<cpp:directive pos:line="10" pos:column="6">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="10" pos:column="14">"dteinternal.h"</lit:literal></cpp:file></cpp:include>
+}</block></namespace><empty_stmt pos:line="11" pos:column="2">;</empty_stmt>
+
+<cpp:ifndef pos:line="13" pos:column="1">#<cpp:directive pos:line="13" pos:column="2">ifndef</cpp:directive> <name pos:line="13" pos:column="9">FORCE_EXPLICIT_DTE_NAMESPACE</name></cpp:ifndef>
+<using pos:line="14" pos:column="1">using namespace <name pos:line="14" pos:column="17">VxDTE</name>;</using>
+<cpp:endif pos:line="15" pos:column="1">#<cpp:directive pos:line="15" pos:column="2">endif</cpp:directive></cpp:endif>
+</unit>

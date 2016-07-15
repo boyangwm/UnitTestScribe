@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\SrcML.NET\TestInputs\SrcMLService\TestCPPSolution\TestCPPSolution\targetver.h" pos:tabs="8"><cpp:pragma pos:line="1" pos:column="1">#<cpp:directive pos:line="1" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+
+<comment type="line" pos:line="3" pos:column="1">// Including SDKDDKVer.h defines the highest available Windows platform.</comment>
+
+<comment type="line" pos:line="5" pos:column="1">// If you wish to build your application for a previous Windows platform, include WinSDKVer.h and</comment>
+<comment type="line" pos:line="6" pos:column="1">// set the _WIN32_WINNT macro to the platform you wish to support before including SDKDDKVer.h.</comment>
+
+<cpp:include pos:line="8" pos:column="1">#<cpp:directive pos:line="8" pos:column="2">include</cpp:directive> <cpp:file pos:line="8" pos:column="10">&lt;SDKDDKVer.h&gt;</cpp:file></cpp:include>
+</unit>

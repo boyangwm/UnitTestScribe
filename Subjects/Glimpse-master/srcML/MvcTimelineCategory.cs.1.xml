@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Ado\Message\MvcTimelineCategory.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">TimelineCategoryItem</name> <init pos:line="1" pos:column="28">= <expr><name><name pos:line="1" pos:column="30">Glimpse</name><op:operator pos:line="1" pos:column="37">.</op:operator><name pos:line="1" pos:column="38">Core</name><op:operator pos:line="1" pos:column="42">.</op:operator><name pos:line="1" pos:column="43">Message</name><op:operator pos:line="1" pos:column="50">.</op:operator><name pos:line="1" pos:column="51">TimelineCategoryItem</name></name></expr></init>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Ado</name><op:operator pos:line="3" pos:column="22">.</op:operator><name pos:line="3" pos:column="23">Message</name></name>
+<block pos:line="4" pos:column="1">{
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="6" pos:column="5">/// Options that can used for timeline events.</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="8" pos:column="5">public</specifier> class <name pos:line="8" pos:column="18">AdoTimelineCategory</name> <super pos:line="8" pos:column="38">: <name><name pos:line="8" pos:column="40">Glimpse</name><op:operator pos:line="8" pos:column="47">.</op:operator><name pos:line="8" pos:column="48">Core</name><op:operator pos:line="8" pos:column="52">.</op:operator><name pos:line="8" pos:column="53">Message</name><op:operator pos:line="8" pos:column="60">.</op:operator><name pos:line="8" pos:column="61">TimelineCategory</name></name></super>
+    <block pos:line="9" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="10" pos:column="9">private</specifier> <specifier pos:line="10" pos:column="17">static</specifier> <name pos:line="10" pos:column="24">TimelineCategoryItem</name></type> <name pos:line="10" pos:column="45">connection</name> <init pos:line="10" pos:column="56">= <expr><op:operator pos:line="10" pos:column="58">new</op:operator> <call><name pos:line="10" pos:column="62">TimelineCategoryItem</name><argument_list pos:line="10" pos:column="82">(<argument><expr><lit:literal type="string" pos:line="10" pos:column="83">"Connection"</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="10" pos:column="97">"#F0ED5D"</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="10" pos:column="108">"#DEE81A"</lit:literal></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="11" pos:column="9">private</specifier> <specifier pos:line="11" pos:column="17">static</specifier> <name pos:line="11" pos:column="24">TimelineCategoryItem</name></type> <name pos:line="11" pos:column="45">command</name> <init pos:line="11" pos:column="53">= <expr><op:operator pos:line="11" pos:column="55">new</op:operator> <call><name pos:line="11" pos:column="59">TimelineCategoryItem</name><argument_list pos:line="11" pos:column="79">(<argument><expr><lit:literal type="string" pos:line="11" pos:column="80">"Command"</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="11" pos:column="91">"#FD45F7"</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="11" pos:column="102">"#DD31DA"</lit:literal></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt> 
+         
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// Gets the timeline category for a connection.</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="16" pos:column="9">public</specifier> <specifier pos:line="16" pos:column="16">static</specifier> <name pos:line="16" pos:column="23">TimelineCategoryItem</name></type> <name pos:line="16" pos:column="44">Connection</name>
+        <block pos:line="17" pos:column="9">{
+            <function><name pos:line="18" pos:column="13">get</name> <block pos:line="18" pos:column="17">{ <return pos:line="18" pos:column="19">return <expr><name pos:line="18" pos:column="26">connection</name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="21" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="22" pos:column="9">/// Gets the timeline category for a command.</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="24" pos:column="9">public</specifier> <specifier pos:line="24" pos:column="16">static</specifier> <name pos:line="24" pos:column="23">TimelineCategoryItem</name></type> <name pos:line="24" pos:column="44">Command</name>
+        <block pos:line="25" pos:column="9">{
+            <function><name pos:line="26" pos:column="13">get</name> <block pos:line="26" pos:column="17">{ <return pos:line="26" pos:column="19">return <expr><name pos:line="26" pos:column="26">command</name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace>
+</unit>

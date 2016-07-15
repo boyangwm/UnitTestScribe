@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core.Net35\Backport\Net35Backport.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Core</name><op:operator pos:line="3" pos:column="23">.</op:operator><name pos:line="3" pos:column="24">Backport</name></name>
+<block pos:line="4" pos:column="1">{
+    <class><specifier pos:line="5" pos:column="5">public</specifier> <specifier pos:line="5" pos:column="12">static</specifier> class <name pos:line="5" pos:column="25">Net35Backport</name>
+    <block pos:line="6" pos:column="5">{
+        <function><type><specifier pos:line="7" pos:column="9">public</specifier> <specifier pos:line="7" pos:column="16">static</specifier> <name pos:line="7" pos:column="23">bool</name></type> <name><name pos:line="7" pos:column="28">HasFlag</name><argument_list pos:line="7" pos:column="35">&lt;<argument><name pos:line="7" pos:column="36">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="7" pos:column="38">(<param><decl><type><name pos:line="7" pos:column="39">this</name> <name pos:line="7" pos:column="44">Enum</name></type> <name pos:line="7" pos:column="49">type</name></decl></param>, <param><decl><type><name pos:line="7" pos:column="55">T</name></type> <name pos:line="7" pos:column="57">flag</name></decl></param>)</parameter_list>
+        <block pos:line="8" pos:column="9">{
+            <try pos:line="9" pos:column="13">try
+            <block pos:line="10" pos:column="13">{
+                <return pos:line="11" pos:column="17">return <expr><op:operator pos:line="11" pos:column="24">(</op:operator><op:operator pos:line="11" pos:column="25">(</op:operator><op:operator pos:line="11" pos:column="26">(</op:operator><name pos:line="11" pos:column="27">int</name><op:operator pos:line="11" pos:column="30">)</op:operator> <op:operator pos:line="11" pos:column="32">(</op:operator><name pos:line="11" pos:column="33">object</name><op:operator pos:line="11" pos:column="39">)</op:operator> <name pos:line="11" pos:column="41">type</name> <op:operator pos:line="11" pos:column="46">&amp;</op:operator> <op:operator pos:line="11" pos:column="48">(</op:operator><name pos:line="11" pos:column="49">int</name><op:operator pos:line="11" pos:column="52">)</op:operator> <op:operator pos:line="11" pos:column="54">(</op:operator><name pos:line="11" pos:column="55">object</name><op:operator pos:line="11" pos:column="61">)</op:operator> <name pos:line="11" pos:column="63">flag</name><op:operator pos:line="11" pos:column="67">)</op:operator> <op:operator pos:line="11" pos:column="69">==</op:operator> <op:operator pos:line="11" pos:column="72">(</op:operator><name pos:line="11" pos:column="73">int</name><op:operator pos:line="11" pos:column="76">)</op:operator> <op:operator pos:line="11" pos:column="78">(</op:operator><name pos:line="11" pos:column="79">object</name><op:operator pos:line="11" pos:column="85">)</op:operator> <name pos:line="11" pos:column="87">flag</name><op:operator pos:line="11" pos:column="91">)</op:operator></expr>;</return>
+            }</block>
+            <catch pos:line="13" pos:column="13">catch
+            <block pos:line="14" pos:column="13">{
+                <return pos:line="15" pos:column="17">return <expr><lit:literal type="boolean" pos:line="15" pos:column="24">false</lit:literal></expr>;</return>
+            }</block></catch></try>
+        }</block></function>
+
+        <function><type><specifier pos:line="19" pos:column="9">public</specifier> <specifier pos:line="19" pos:column="16">static</specifier> <name pos:line="19" pos:column="23">bool</name></type> <name pos:line="19" pos:column="28">TryParseGuid</name><parameter_list pos:line="19" pos:column="40">(<param><decl><type><name pos:line="19" pos:column="41">string</name></type> <name pos:line="19" pos:column="48">input</name></decl></param>, <param><decl><type><specifier pos:line="19" pos:column="55">out</specifier> <name pos:line="19" pos:column="59">Guid</name></type> <name pos:line="19" pos:column="64">output</name></decl></param>)</parameter_list>
+        <block pos:line="20" pos:column="9">{
+            <try pos:line="21" pos:column="13">try
+            <block pos:line="22" pos:column="13">{
+                <expr_stmt><expr><name pos:line="23" pos:column="17">output</name> <op:operator pos:line="23" pos:column="24">=</op:operator> <op:operator pos:line="23" pos:column="26">new</op:operator> <call><name pos:line="23" pos:column="30">Guid</name><argument_list pos:line="23" pos:column="34">(<argument><expr><name pos:line="23" pos:column="35">input</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                <return pos:line="24" pos:column="17">return <expr><lit:literal type="boolean" pos:line="24" pos:column="24">true</lit:literal></expr>;</return>
+            }</block>
+            <catch pos:line="26" pos:column="13">catch
+            <block pos:line="27" pos:column="13">{
+                <expr_stmt><expr><name pos:line="28" pos:column="17">output</name> <op:operator pos:line="28" pos:column="24">=</op:operator> <call><name pos:line="28" pos:column="26">default</name><argument_list pos:line="28" pos:column="33">(<argument><expr><name pos:line="28" pos:column="34">Guid</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                <return pos:line="29" pos:column="17">return <expr><lit:literal type="boolean" pos:line="29" pos:column="24">false</lit:literal></expr>;</return>
+            }</block></catch></try>
+        }</block></function>
+
+        <function><type><specifier pos:line="33" pos:column="9">public</specifier> <specifier pos:line="33" pos:column="16">static</specifier> <name pos:line="33" pos:column="23">bool</name></type> <name><name pos:line="33" pos:column="28">TryParseEnum</name><argument_list pos:line="33" pos:column="40">&lt;<argument><name pos:line="33" pos:column="41">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="33" pos:column="43">(<param><decl><type><name pos:line="33" pos:column="44">string</name></type> <name pos:line="33" pos:column="51">input</name></decl></param>, <param><decl><type><name pos:line="33" pos:column="58">bool</name></type> <name pos:line="33" pos:column="63">ignoreCase</name></decl></param>, <param><decl><type><specifier pos:line="33" pos:column="75">out</specifier> <name pos:line="33" pos:column="79">T</name></type> <name pos:line="33" pos:column="81">result</name></decl></param>)</parameter_list>
+        <block pos:line="34" pos:column="9">{
+            <try pos:line="35" pos:column="13">try
+            <block pos:line="36" pos:column="13">{
+                <expr_stmt><expr><name pos:line="37" pos:column="17">result</name> <op:operator pos:line="37" pos:column="24">=</op:operator> <op:operator pos:line="37" pos:column="26">(</op:operator><name pos:line="37" pos:column="27">T</name><op:operator pos:line="37" pos:column="28">)</op:operator> <call><name><name pos:line="37" pos:column="30">Enum</name><op:operator pos:line="37" pos:column="34">.</op:operator><name pos:line="37" pos:column="35">Parse</name></name><argument_list pos:line="37" pos:column="40">(<argument><expr><call><name pos:line="37" pos:column="41">typeof</name> <argument_list pos:line="37" pos:column="48">(<argument><expr><name pos:line="37" pos:column="49">T</name></expr></argument>)</argument_list></call></expr></argument>, <argument><expr><name pos:line="37" pos:column="53">input</name></expr></argument>, <argument><expr><name pos:line="37" pos:column="60">ignoreCase</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                <return pos:line="38" pos:column="17">return <expr><lit:literal type="boolean" pos:line="38" pos:column="24">true</lit:literal></expr>;</return>
+            }</block>
+            <catch pos:line="40" pos:column="13">catch
+            <block pos:line="41" pos:column="13">{
+                <expr_stmt><expr><name pos:line="42" pos:column="17">result</name> <op:operator pos:line="42" pos:column="24">=</op:operator> <call><name pos:line="42" pos:column="26">default</name><argument_list pos:line="42" pos:column="33">(<argument><expr><name pos:line="42" pos:column="34">T</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                <return pos:line="43" pos:column="17">return <expr><lit:literal type="boolean" pos:line="43" pos:column="24">false</lit:literal></expr>;</return>
+            }</block></catch></try>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

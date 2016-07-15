@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML.Data\NameHelper.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2013 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Xml</name><op:operator pos:line="15" pos:column="17">.</op:operator><name pos:line="15" pos:column="18">Linq</name></name>;</using>
+
+<namespace pos:line="17" pos:column="1">namespace <name><name pos:line="17" pos:column="11">ABB</name><op:operator pos:line="17" pos:column="14">.</op:operator><name pos:line="17" pos:column="15">SrcML</name><op:operator pos:line="17" pos:column="20">.</op:operator><name pos:line="17" pos:column="21">Data</name></name> <block pos:line="17" pos:column="26">{
+
+    <comment type="line" pos:line="19" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="20" pos:column="5">/// &lt;para&gt;NameHelper provides a collection of static methods that aid in parsing elements of</comment>
+    <comment type="line" pos:line="21" pos:column="5">/// with a node type of &lt;see cref="ABB.SrcML.SRC.Name"/&gt;.&lt;/para&gt; &lt;para&gt;The functions are</comment>
+    <comment type="line" pos:line="22" pos:column="5">/// targetted at helping to parse the common srcML idiom of nesting</comment>
+    <comment type="line" pos:line="23" pos:column="5">/// &lt;see cref="ABB.SrcML.SRC.Name"/&gt; elements within other &lt;see cref="ABB.SrcML.SRC.Name"&gt;name</comment>
+    <comment type="line" pos:line="24" pos:column="5">/// elements.&lt;/see&gt;&lt;/para&gt;</comment>
+    <comment type="line" pos:line="25" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="26" pos:column="5">public</specifier> <specifier pos:line="26" pos:column="12">static</specifier> class <name pos:line="26" pos:column="25">NameHelper</name> <block pos:line="26" pos:column="36">{
+
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// Gets the string value for the &lt;see cref="GetLastNameElement(XElement)"&gt;last name</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// element&lt;/see&gt; of</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// &lt;paramref name="nameElement"/&gt;&lt;/summary&gt;</comment>
+        <comment type="line" pos:line="32" pos:column="9">/// &lt;param name="nameElement"&gt;The name element&lt;/param&gt;</comment>
+        <comment type="line" pos:line="33" pos:column="9">/// &lt;returns&gt;the string value for the last name in</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// &lt;paramref name="nameElement"/&gt;&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="35" pos:column="9">public</specifier> <specifier pos:line="35" pos:column="16">static</specifier> <name pos:line="35" pos:column="23">string</name></type> <name pos:line="35" pos:column="30">GetLastName</name><parameter_list pos:line="35" pos:column="41">(<param><decl><type><name pos:line="35" pos:column="42">XElement</name></type> <name pos:line="35" pos:column="51">nameElement</name></decl></param>)</parameter_list> <block pos:line="35" pos:column="64">{
+            <decl_stmt><decl><type><name pos:line="36" pos:column="13">var</name></type> <name pos:line="36" pos:column="17">lastNameElement</name> <init pos:line="36" pos:column="33">= <expr><call><name pos:line="36" pos:column="35">GetLastNameElement</name><argument_list pos:line="36" pos:column="53">(<argument><expr><name pos:line="36" pos:column="54">nameElement</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+            <return pos:line="37" pos:column="13">return <expr><op:operator pos:line="37" pos:column="20">(</op:operator><name pos:line="37" pos:column="21">null</name> <op:operator pos:line="37" pos:column="26">==</op:operator> <name pos:line="37" pos:column="29">lastNameElement</name> <op:operator pos:line="37" pos:column="45">?</op:operator> <name><name pos:line="37" pos:column="47">String</name><op:operator pos:line="37" pos:column="53">.</op:operator><name pos:line="37" pos:column="54">Empty</name></name> <op:operator pos:line="37" pos:column="60">:</op:operator> <name><name pos:line="37" pos:column="62">lastNameElement</name><op:operator pos:line="37" pos:column="77">.</op:operator><name pos:line="37" pos:column="78">Value</name></name><op:operator pos:line="37" pos:column="83">)</op:operator></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// Gets the last name from</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;paramref name="nameElement"/&gt;. If</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// &lt;paramref name="nameElement"/&gt; has no children of type &lt;see cref="ABB.SrcML.SRC.Name"/&gt;,</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// it just returns</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// &lt;paramref name="nameElement"/&gt;.</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// &lt;param name="nameElement"&gt;The name element&lt;/param&gt;</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// &lt;returns&gt;The last &lt;see cref="ABB.SrcML.SRC.Name"&gt;name element&lt;/see&gt; in</comment>
+        <comment type="line" pos:line="49" pos:column="9">/// &lt;paramref name="nameElement"/&gt;. If there are none, it returns</comment>
+        <comment type="line" pos:line="50" pos:column="9">/// &lt;paramref name="nameElement"/&gt;&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="51" pos:column="9">public</specifier> <specifier pos:line="51" pos:column="16">static</specifier> <name pos:line="51" pos:column="23">XElement</name></type> <name pos:line="51" pos:column="32">GetLastNameElement</name><parameter_list pos:line="51" pos:column="50">(<param><decl><type><name pos:line="51" pos:column="51">XElement</name></type> <name pos:line="51" pos:column="60">nameElement</name></decl></param>)</parameter_list> <block pos:line="51" pos:column="73">{
+            <decl_stmt><decl><type><name pos:line="52" pos:column="13">var</name></type> <name pos:line="52" pos:column="17">names</name> <init pos:line="52" pos:column="23">= <expr><call><name pos:line="52" pos:column="25">GetNameElementsFromName</name><argument_list pos:line="52" pos:column="48">(<argument><expr><name pos:line="52" pos:column="49">nameElement</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+            <decl_stmt><decl><type><name pos:line="53" pos:column="13">var</name></type> <name pos:line="53" pos:column="17">lastName</name> <init pos:line="53" pos:column="26">= <expr><call><name><name pos:line="53" pos:column="28">names</name><op:operator pos:line="53" pos:column="33">.</op:operator><name pos:line="53" pos:column="34">Last</name></name><argument_list pos:line="53" pos:column="38">()</argument_list></call></expr></init></decl>;</decl_stmt>
+            <return pos:line="54" pos:column="13">return <expr><name pos:line="54" pos:column="20">lastName</name></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="57" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="58" pos:column="9">/// Gets all of the name elements from &lt;paramref name="nameElement"/&gt; except for the last one. If</comment>
+        <comment type="line" pos:line="59" pos:column="9">/// &lt;paramref name="nameElement"/&gt;has no children of type &lt;see cref="ABB.SrcML.SRC.Name"/&gt;,</comment>
+        <comment type="line" pos:line="60" pos:column="9">/// returns an empty enumerable.</comment>
+        <comment type="line" pos:line="61" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="62" pos:column="9">/// &lt;param name="nameElement"&gt;The name element&lt;/param&gt;</comment>
+        <comment type="line" pos:line="63" pos:column="9">/// &lt;returns&gt;An enumerable of &lt;see cref="ABB.SrcML.SRC.Name"&gt;name elements&lt;/see&gt; in</comment>
+        <comment type="line" pos:line="64" pos:column="9">/// &lt;paramref name="nameElement"/&gt;except for the &lt;see cref="GetLastNameElement"&gt;last</comment>
+        <comment type="line" pos:line="65" pos:column="9">/// &lt;/see&gt;&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="66" pos:column="9">public</specifier> <specifier pos:line="66" pos:column="16">static</specifier> <name><name pos:line="66" pos:column="23">IEnumerable</name><argument_list pos:line="66" pos:column="34">&lt;<argument><name pos:line="66" pos:column="35">XElement</name></argument>&gt;</argument_list></name></type> <name pos:line="66" pos:column="45">GetNameElementsExceptLast</name><parameter_list pos:line="66" pos:column="70">(<param><decl><type><name pos:line="66" pos:column="71">XElement</name></type> <name pos:line="66" pos:column="80">nameElement</name></decl></param>)</parameter_list> <block pos:line="66" pos:column="93">{
+            <decl_stmt><decl><type><name pos:line="67" pos:column="13">var</name></type> <name pos:line="67" pos:column="17">last</name> <init pos:line="67" pos:column="22">= <expr><call><name pos:line="67" pos:column="24">GetLastNameElement</name><argument_list pos:line="67" pos:column="42">(<argument><expr><name pos:line="67" pos:column="43">nameElement</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+            <return pos:line="68" pos:column="13">return <expr><call><name pos:line="68" pos:column="20">GetNameElementsFromName</name><argument_list pos:line="68" pos:column="43">(<argument><expr><name pos:line="68" pos:column="44">nameElement</name></expr></argument>)</argument_list></call><op:operator pos:line="68" pos:column="56">.</op:operator><call><name pos:line="68" pos:column="57">TakeWhile</name><argument_list pos:line="68" pos:column="66">(<argument><expr><lambda><name pos:line="68" pos:column="67">e</name> <op:operator pos:line="68" pos:column="69">=&gt;</op:operator> <name pos:line="68" pos:column="72">e</name> <op:operator pos:line="68" pos:column="74">!=</op:operator> <name pos:line="68" pos:column="77">last</name></lambda></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="71" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="72" pos:column="9">/// This helper function returns all of the names from a name element. If a name element has</comment>
+        <comment type="line" pos:line="73" pos:column="9">/// no children, it just yields the name element back. However, if the name element has</comment>
+        <comment type="line" pos:line="74" pos:column="9">/// child elements, it yields all of the child name elements.</comment>
+        <comment type="line" pos:line="75" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="76" pos:column="9">/// &lt;param name="nameElement"&gt;The name element&lt;/param&gt;</comment>
+        <comment type="line" pos:line="77" pos:column="9">/// &lt;returns&gt;An enumerable of either all the child names, or the root if there are</comment>
+        <comment type="line" pos:line="78" pos:column="9">/// none.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="79" pos:column="9">public</specifier> <specifier pos:line="79" pos:column="16">static</specifier> <name><name pos:line="79" pos:column="23">IEnumerable</name><argument_list pos:line="79" pos:column="34">&lt;<argument><name pos:line="79" pos:column="35">XElement</name></argument>&gt;</argument_list></name></type> <name pos:line="79" pos:column="45">GetNameElementsFromName</name><parameter_list pos:line="79" pos:column="68">(<param><decl><type><name pos:line="79" pos:column="69">XElement</name></type> <name pos:line="79" pos:column="78">nameElement</name></decl></param>)</parameter_list> <block pos:line="79" pos:column="91">{
+            <if pos:line="80" pos:column="13">if<condition pos:line="80" pos:column="15">(<expr><name pos:line="80" pos:column="16">nameElement</name> <op:operator pos:line="80" pos:column="28">==</op:operator> <name pos:line="80" pos:column="31">null</name></expr>)</condition><then pos:line="80" pos:column="36">
+                <throw pos:line="81" pos:column="17">throw <expr><op:operator pos:line="81" pos:column="23">new</op:operator> <call><name pos:line="81" pos:column="27">ArgumentNullException</name><argument_list pos:line="81" pos:column="48">(<argument><expr><lit:literal type="string" pos:line="81" pos:column="49">"nameElement"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw></then></if>
+            <if pos:line="82" pos:column="13">if<condition pos:line="82" pos:column="15">(<expr><name><name pos:line="82" pos:column="16">nameElement</name><op:operator pos:line="82" pos:column="27">.</op:operator><name pos:line="82" pos:column="28">Name</name></name> <op:operator pos:line="82" pos:column="33">!=</op:operator> <name><name pos:line="82" pos:column="36">SRC</name><op:operator pos:line="82" pos:column="39">.</op:operator><name pos:line="82" pos:column="40">Name</name></name></expr>)</condition><then pos:line="82" pos:column="45">
+                <throw pos:line="83" pos:column="17">throw <expr><op:operator pos:line="83" pos:column="23">new</op:operator> <call><name pos:line="83" pos:column="27">ArgumentException</name><argument_list pos:line="83" pos:column="44">(<argument><expr><lit:literal type="string" pos:line="83" pos:column="45">"should be a SRC.Name"</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="83" pos:column="69">"nameElement"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw></then></if>
+
+            <if pos:line="85" pos:column="13">if<condition pos:line="85" pos:column="15">(<expr><op:operator pos:line="85" pos:column="16">!</op:operator><call><name><name pos:line="85" pos:column="17">nameElement</name><op:operator pos:line="85" pos:column="28">.</op:operator><name pos:line="85" pos:column="29">Elements</name></name><argument_list pos:line="85" pos:column="37">(<argument><expr><name><name pos:line="85" pos:column="38">SRC</name><op:operator pos:line="85" pos:column="41">.</op:operator><name pos:line="85" pos:column="42">Name</name></name></expr></argument>)</argument_list></call><op:operator pos:line="85" pos:column="47">.</op:operator><call><name pos:line="85" pos:column="48">Any</name><argument_list pos:line="85" pos:column="51">()</argument_list></call></expr>)</condition><then pos:line="85" pos:column="54"> <block pos:line="85" pos:column="55">{
+                <return><specifier pos:line="86" pos:column="17">yield</specifier> return <expr><name pos:line="86" pos:column="30">nameElement</name></expr>;</return>
+            }</block></then> <else pos:line="87" pos:column="15">else <block pos:line="87" pos:column="20">{
+                <foreach pos:line="88" pos:column="17">foreach(<init><decl><type><name pos:line="88" pos:column="25">var</name></type> <name pos:line="88" pos:column="29">name</name> <range pos:line="88" pos:column="34">in <expr><call><name><name pos:line="88" pos:column="37">nameElement</name><op:operator pos:line="88" pos:column="48">.</op:operator><name pos:line="88" pos:column="49">Elements</name></name><argument_list pos:line="88" pos:column="57">(<argument><expr><name><name pos:line="88" pos:column="58">SRC</name><op:operator pos:line="88" pos:column="61">.</op:operator><name pos:line="88" pos:column="62">Name</name></name></expr></argument>)</argument_list></call></expr></range></decl></init>) <block pos:line="88" pos:column="69">{
+                    <return><specifier pos:line="89" pos:column="21">yield</specifier> return <expr><name pos:line="89" pos:column="34">name</name></expr>;</return>
+                }</block></foreach>
+            }</block></else></if>
+        }</block></function>
+
+        <comment type="line" pos:line="94" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="95" pos:column="9">/// Gets the string values for all of the name elements in</comment>
+        <comment type="line" pos:line="96" pos:column="9">/// &lt;paramref name="nameElement"/&gt;&lt;see cref="GetNameElementsExceptLast(XElement)"&gt;except for</comment>
+        <comment type="line" pos:line="97" pos:column="9">/// the last one&lt;/see&gt;.</comment>
+        <comment type="line" pos:line="98" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="99" pos:column="9">/// &lt;param name="nameElement"&gt;The name element&lt;/param&gt;</comment>
+        <comment type="line" pos:line="100" pos:column="9">/// &lt;returns&gt;An enumerable of strings of all the name elements in</comment>
+        <comment type="line" pos:line="101" pos:column="9">/// &lt;paramref name="nameElement"/&gt;except for the last one. If there are no child elements,</comment>
+        <comment type="line" pos:line="102" pos:column="9">/// it returns an empty enumerable.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="103" pos:column="9">public</specifier> <specifier pos:line="103" pos:column="16">static</specifier> <name><name pos:line="103" pos:column="23">IEnumerable</name><argument_list pos:line="103" pos:column="34">&lt;<argument><name pos:line="103" pos:column="35">string</name></argument>&gt;</argument_list></name></type> <name pos:line="103" pos:column="43">GetNamesExceptLast</name><parameter_list pos:line="103" pos:column="61">(<param><decl><type><name pos:line="103" pos:column="62">XElement</name></type> <name pos:line="103" pos:column="71">nameElement</name></decl></param>)</parameter_list> <block pos:line="103" pos:column="84">{
+            <decl_stmt><decl><type><name pos:line="104" pos:column="13">var</name></type> <name pos:line="104" pos:column="17">names</name> <init pos:line="104" pos:column="23">= <expr><linq><from pos:line="104" pos:column="25">from <expr><name pos:line="104" pos:column="30">name</name></expr> <in pos:line="104" pos:column="35">in <expr><call><name pos:line="104" pos:column="38">GetNameElementsExceptLast</name><argument_list pos:line="104" pos:column="63">(<argument><expr><name pos:line="104" pos:column="64">nameElement</name></expr></argument>)</argument_list></call></expr></in></from>
+                        <select pos:line="105" pos:column="25">select <expr><name><name pos:line="105" pos:column="32">name</name><op:operator pos:line="105" pos:column="36">.</op:operator><name pos:line="105" pos:column="37">Value</name></name></expr></select></linq></expr></init></decl>;</decl_stmt>
+            <return pos:line="106" pos:column="13">return <expr><name pos:line="106" pos:column="20">names</name></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

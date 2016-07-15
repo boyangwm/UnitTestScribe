@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Sando-master\TestInputs\tictactoe\TicTacToe.Classes\GameMove.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Text</name></name>;</using>
+
+<namespace pos:line="5" pos:column="1">namespace <name><name pos:line="5" pos:column="11">TicTacToe</name><op:operator pos:line="5" pos:column="20">.</op:operator><name pos:line="5" pos:column="21">Classes</name></name>
+<block pos:line="6" pos:column="1">{
+    <class><specifier pos:line="7" pos:column="5">public</specifier> class <name pos:line="7" pos:column="18">GameMove</name>
+    <block pos:line="8" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="9" pos:column="9">private</specifier> <name pos:line="9" pos:column="17">XOSymbol</name></type> <name pos:line="9" pos:column="26">xoSymbol</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="10" pos:column="9">private</specifier> <name pos:line="10" pos:column="17">int</name></type> <name pos:line="10" pos:column="21">position</name></decl>;</decl_stmt> <comment type="line" pos:line="10" pos:column="31">//Valid positions are : 0,1,2 ... 7,8</comment>
+
+        <constructor><specifier pos:line="12" pos:column="9">public</specifier> <name pos:line="12" pos:column="16">GameMove</name><parameter_list pos:line="12" pos:column="24">(<param><decl><type><name pos:line="12" pos:column="25">int</name></type> <name pos:line="12" pos:column="29">position</name></decl></param>, <param><decl><type><name pos:line="12" pos:column="39">XOSymbol</name></type> <name pos:line="12" pos:column="48">xoSymbol</name></decl></param>)</parameter_list>
+        <block pos:line="13" pos:column="9">{
+            <if pos:line="14" pos:column="13">if <condition pos:line="14" pos:column="16">(<expr><name pos:line="14" pos:column="17">position</name> <op:operator pos:line="14" pos:column="26">&gt;</op:operator> <lit:literal type="number" pos:line="14" pos:column="28">8</lit:literal> <op:operator pos:line="14" pos:column="30">||</op:operator> <name pos:line="14" pos:column="33">position</name> <op:operator pos:line="14" pos:column="42">&lt;</op:operator> <lit:literal type="number" pos:line="14" pos:column="44">0</lit:literal></expr>)</condition><then pos:line="14" pos:column="46">
+                <throw pos:line="15" pos:column="17">throw <expr><op:operator pos:line="15" pos:column="23">new</op:operator> <call><name pos:line="15" pos:column="27">Exception</name><argument_list pos:line="15" pos:column="36">(<argument><expr><lit:literal type="string" pos:line="15" pos:column="37">"Invlaid position. Valid Positions from Right to Left, Top Down is : 0,1,2,3,4,5,6,7,8"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw></then></if>
+            <expr_stmt><expr><name><name pos:line="16" pos:column="13">this</name><op:operator pos:line="16" pos:column="17">.</op:operator><name pos:line="16" pos:column="18">xoSymbol</name></name> <op:operator pos:line="16" pos:column="27">=</op:operator> <name pos:line="16" pos:column="29">xoSymbol</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="17" pos:column="13">this</name><op:operator pos:line="17" pos:column="17">.</op:operator><name pos:line="17" pos:column="18">position</name></name> <op:operator pos:line="17" pos:column="27">=</op:operator> <name pos:line="17" pos:column="29">position</name></expr>;</expr_stmt>
+        }</block></constructor>
+    
+        <decl_stmt><decl><type><specifier pos:line="20" pos:column="9">public</specifier> <name pos:line="20" pos:column="16">XOSymbol</name></type> <name pos:line="20" pos:column="25">XOSymbol</name>
+        <block pos:line="21" pos:column="9">{
+            <function><name pos:line="22" pos:column="13">get</name>
+            <block pos:line="23" pos:column="13">{
+                <return pos:line="24" pos:column="17">return <expr><name><name pos:line="24" pos:column="24">this</name><op:operator pos:line="24" pos:column="28">.</op:operator><name pos:line="24" pos:column="29">xoSymbol</name></name></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="28" pos:column="9">public</specifier> <name pos:line="28" pos:column="16">int</name></type> <name pos:line="28" pos:column="20">Position</name>
+        <block pos:line="29" pos:column="9">{
+            <function><name pos:line="30" pos:column="13">get</name>
+            <block pos:line="31" pos:column="13">{
+                <return pos:line="32" pos:column="17">return <expr><name><name pos:line="32" pos:column="24">this</name><op:operator pos:line="32" pos:column="28">.</op:operator><name pos:line="32" pos:column="29">position</name></name></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="36" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// Returns the row index from the GameMove position</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;param name="position"&gt;&lt;/param&gt;</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;returns&gt;&lt;/returns&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="41" pos:column="9">public</specifier> <name pos:line="41" pos:column="16">int</name></type> <name pos:line="41" pos:column="20">RowIndex</name>
+        <block pos:line="42" pos:column="9">{
+            <function><name pos:line="43" pos:column="13">get</name>
+            <block pos:line="44" pos:column="13">{
+                <return pos:line="45" pos:column="17">return <expr><name pos:line="45" pos:column="24">position</name> <op:operator pos:line="45" pos:column="33">/</op:operator> <lit:literal type="number" pos:line="45" pos:column="35">3</lit:literal></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="49" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="50" pos:column="9">/// Returns the column index from the GameMove position</comment>
+        <comment type="line" pos:line="51" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="52" pos:column="9">/// &lt;param name="position"&gt;&lt;/param&gt;</comment>
+        <comment type="line" pos:line="53" pos:column="9">/// &lt;returns&gt;&lt;/returns&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="54" pos:column="9">public</specifier> <name pos:line="54" pos:column="16">int</name></type> <name pos:line="54" pos:column="20">ColumnIndex</name>
+        <block pos:line="55" pos:column="9">{
+            <function><name pos:line="56" pos:column="13">get</name>
+            <block pos:line="57" pos:column="13">{
+                <return pos:line="58" pos:column="17">return <expr><name pos:line="58" pos:column="24">position</name> <op:operator pos:line="58" pos:column="33">%</op:operator> <lit:literal type="number" pos:line="58" pos:column="35">3</lit:literal></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace>
+</unit>

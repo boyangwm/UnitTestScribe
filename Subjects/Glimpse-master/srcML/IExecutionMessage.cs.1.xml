@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Mvc\Message\IExecutionMessage.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Linq</name></name>;</using>
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">System</name><op:operator pos:line="4" pos:column="13">.</op:operator><name pos:line="4" pos:column="14">Text</name></name>;</using>
+
+<using pos:line="6" pos:column="1">using <name><name pos:line="6" pos:column="7">Glimpse</name><op:operator pos:line="6" pos:column="14">.</op:operator><name pos:line="6" pos:column="15">Core</name><op:operator pos:line="6" pos:column="19">.</op:operator><name pos:line="6" pos:column="20">Message</name></name>;</using>
+
+<namespace pos:line="8" pos:column="1">namespace <name><name pos:line="8" pos:column="11">Glimpse</name><op:operator pos:line="8" pos:column="18">.</op:operator><name pos:line="8" pos:column="19">Mvc</name><op:operator pos:line="8" pos:column="22">.</op:operator><name pos:line="8" pos:column="23">Message</name></name>
+<block pos:line="9" pos:column="1">{
+    <class type="interface"><specifier pos:line="10" pos:column="5">public</specifier> interface <name pos:line="10" pos:column="22">IExecutionMessage</name> <super pos:line="10" pos:column="40">: <name pos:line="10" pos:column="42">ISourceMessage</name>, <name pos:line="10" pos:column="58">IChildActionMessage</name>, <name pos:line="10" pos:column="79">ITimelineMessage</name></super>
+    <block pos:line="11" pos:column="5">{
+    }</block></class>
+}</block></namespace>
+</unit>

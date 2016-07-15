@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Resource\FileResource.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Reflection</name></name>;</using>
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">Glimpse</name><op:operator pos:line="4" pos:column="14">.</op:operator><name pos:line="4" pos:column="15">Core</name><op:operator pos:line="4" pos:column="19">.</op:operator><name pos:line="4" pos:column="20">Extensibility</name></name>;</using>
+<using pos:line="5" pos:column="1">using <name><name pos:line="5" pos:column="7">Glimpse</name><op:operator pos:line="5" pos:column="14">.</op:operator><name pos:line="5" pos:column="15">Core</name><op:operator pos:line="5" pos:column="19">.</op:operator><name pos:line="5" pos:column="20">Framework</name></name>;</using>
+<using pos:line="6" pos:column="1">using <name><name pos:line="6" pos:column="7">Glimpse</name><op:operator pos:line="6" pos:column="14">.</op:operator><name pos:line="6" pos:column="15">Core</name><op:operator pos:line="6" pos:column="19">.</op:operator><name pos:line="6" pos:column="20">ResourceResult</name></name>;</using>
+
+<namespace pos:line="8" pos:column="1">namespace <name><name pos:line="8" pos:column="11">Glimpse</name><op:operator pos:line="8" pos:column="18">.</op:operator><name pos:line="8" pos:column="19">Core</name><op:operator pos:line="8" pos:column="23">.</op:operator><name pos:line="8" pos:column="24">Resource</name></name>
+<block pos:line="9" pos:column="1">{
+    <comment type="line" pos:line="10" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="11" pos:column="5">/// The &lt;see cref="IResource"/&gt; abstraction which makes returning static resources embedded into an assembly easier.</comment>
+    <comment type="line" pos:line="12" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="13" pos:column="5">public</specifier> <specifier pos:line="13" pos:column="12">abstract</specifier> class <name pos:line="13" pos:column="27">FileResource</name> <super pos:line="13" pos:column="40">: <name pos:line="13" pos:column="42">IResource</name></super>
+    <block pos:line="14" pos:column="5">{
+        <comment type="line" pos:line="15" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="16" pos:column="9">/// Gets or sets the name of the resource.</comment>
+        <comment type="line" pos:line="17" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="18" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="19" pos:column="9">/// The name.</comment>
+        <comment type="line" pos:line="20" pos:column="9">/// &lt;/value&gt;</comment>
+        <comment type="line" pos:line="21" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="22" pos:column="9">/// Resource name's should be unique across a given web application. If multiple &lt;see cref="IResource" /&gt; implementations contain the same name, Glimpse may throw an exception resulting in an Http 500 Server Error.</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="24" pos:column="9">public</specifier> <name pos:line="24" pos:column="16">string</name></type> <name pos:line="24" pos:column="23">Name</name> <block pos:line="24" pos:column="28">{ <function_decl><name pos:line="24" pos:column="30">get</name>;</function_decl> <function_decl><specifier pos:line="24" pos:column="35">protected</specifier> <name pos:line="24" pos:column="45">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// Gets the required or optional parameters that a resource needs as processing input.</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// The parameters.</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="32" pos:column="9">public</specifier> <specifier pos:line="32" pos:column="16">virtual</specifier> <name><name pos:line="32" pos:column="24">IEnumerable</name><argument_list pos:line="32" pos:column="35">&lt;<argument><name pos:line="32" pos:column="36">ResourceParameterMetadata</name></argument>&gt;</argument_list></name></type> <name pos:line="32" pos:column="63">Parameters</name>
+        <block pos:line="33" pos:column="9">{
+            <function><name pos:line="34" pos:column="13">get</name> <block pos:line="34" pos:column="17">{ <return pos:line="34" pos:column="19">return <expr><op:operator pos:line="34" pos:column="26">new</op:operator><index pos:line="34" pos:column="29">[]</index> <block pos:line="34" pos:column="32">{ <expr><name><name pos:line="34" pos:column="34">ResourceParameter</name><op:operator pos:line="34" pos:column="51">.</op:operator><name pos:line="34" pos:column="52">Hash</name></name></expr> }</block></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// Gets the duration of the cache, in seconds.</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// The duration of the cache, in seconds.</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;/value&gt;</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// CacheDuration will be set as the &lt;c&gt;max-age&lt;/c&gt; parameter of the &lt;c&gt;Cache-Control&lt;/c&gt; Http response header.</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="46" pos:column="9">protected</specifier> <specifier pos:line="46" pos:column="19">virtual</specifier> <name pos:line="46" pos:column="27">int</name></type> <name pos:line="46" pos:column="31">CacheDuration</name>
+        <block pos:line="47" pos:column="9">{
+            <function><name pos:line="48" pos:column="13">get</name> <block pos:line="48" pos:column="17">{ <return pos:line="48" pos:column="19">return <expr><lit:literal type="number" pos:line="48" pos:column="26">12960000</lit:literal></expr>;</return> <comment type="block" pos:line="48" pos:column="36">/*150 days*/</comment> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="51" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="52" pos:column="9">/// Executes the specified resource with the specific context.</comment>
+        <comment type="line" pos:line="53" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// &lt;param name="context"&gt;The context.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="55" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="56" pos:column="9">///   &lt;see cref="IResourceResult" /&gt; that can be executed when the Http response is ready to be returned.</comment>
+        <comment type="line" pos:line="57" pos:column="9">/// &lt;/returns&gt;</comment>
+        <comment type="line" pos:line="58" pos:column="9">/// &lt;exception cref="System.ArgumentNullException"&gt;Throws an exception if &lt;paramref name="context "/&gt; is &lt;c&gt;null&lt;/c&gt;.&lt;/exception&gt;</comment>
+        <function><type><specifier pos:line="59" pos:column="9">public</specifier> <name pos:line="59" pos:column="16">IResourceResult</name></type> <name pos:line="59" pos:column="32">Execute</name><parameter_list pos:line="59" pos:column="39">(<param><decl><type><name pos:line="59" pos:column="40">IResourceContext</name></type> <name pos:line="59" pos:column="57">context</name></decl></param>)</parameter_list>
+        <block pos:line="60" pos:column="9">{
+            <if pos:line="61" pos:column="13">if <condition pos:line="61" pos:column="16">(<expr><name pos:line="61" pos:column="17">context</name> <op:operator pos:line="61" pos:column="25">==</op:operator> <name pos:line="61" pos:column="28">null</name></expr>)</condition><then pos:line="61" pos:column="33">
+            <block pos:line="62" pos:column="13">{
+                <throw pos:line="63" pos:column="17">throw <expr><op:operator pos:line="63" pos:column="23">new</op:operator> <call><name pos:line="63" pos:column="27">ArgumentNullException</name><argument_list pos:line="63" pos:column="48">(<argument><expr><lit:literal type="string" pos:line="63" pos:column="49">"context"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <decl_stmt><decl><type><name pos:line="66" pos:column="13">var</name></type> <name pos:line="66" pos:column="17">embeddedResourceInfo</name> <init pos:line="66" pos:column="38">= <expr><call><name><name pos:line="66" pos:column="40">this</name><op:operator pos:line="66" pos:column="44">.</op:operator><name pos:line="66" pos:column="45">GetEmbeddedResourceInfo</name></name><argument_list pos:line="66" pos:column="68">(<argument><expr><name pos:line="66" pos:column="69">context</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+            <if pos:line="67" pos:column="13">if <condition pos:line="67" pos:column="16">(<expr><name pos:line="67" pos:column="17">embeddedResourceInfo</name> <op:operator pos:line="67" pos:column="38">==</op:operator> <name pos:line="67" pos:column="41">null</name></expr>)</condition><then pos:line="67" pos:column="46">
+            <block pos:line="68" pos:column="13">{
+                <return pos:line="69" pos:column="17">return <expr><op:operator pos:line="69" pos:column="24">new</op:operator> <call><name pos:line="69" pos:column="28">StatusCodeResourceResult</name><argument_list pos:line="69" pos:column="52">(<argument><expr><lit:literal type="number" pos:line="69" pos:column="53">404</lit:literal></expr></argument>, <argument><expr><call><name><name pos:line="69" pos:column="58">string</name><op:operator pos:line="69" pos:column="64">.</op:operator><name pos:line="69" pos:column="65">Format</name></name><argument_list pos:line="69" pos:column="71">(<argument><expr><lit:literal type="string" pos:line="69" pos:column="72">"Could not get embedded resource information."</lit:literal></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</return>
+            }</block></then></if>
+
+            <using pos:line="72" pos:column="13">using (<decl><type><name pos:line="72" pos:column="20">var</name></type> <name pos:line="72" pos:column="24">resourceStream</name> <init pos:line="72" pos:column="39">= <expr><call><name><name pos:line="72" pos:column="41">embeddedResourceInfo</name><op:operator pos:line="72" pos:column="61">.</op:operator><name pos:line="72" pos:column="62">Assembly</name><op:operator pos:line="72" pos:column="70">.</op:operator><name pos:line="72" pos:column="71">GetManifestResourceStream</name></name><argument_list pos:line="72" pos:column="96">(<argument><expr><name><name pos:line="72" pos:column="97">embeddedResourceInfo</name><op:operator pos:line="72" pos:column="117">.</op:operator><name pos:line="72" pos:column="118">Name</name></name></expr></argument>)</argument_list></call></expr></init></decl>)
+            <block pos:line="73" pos:column="13">{
+                <if pos:line="74" pos:column="17">if <condition pos:line="74" pos:column="20">(<expr><name pos:line="74" pos:column="21">resourceStream</name> <op:operator pos:line="74" pos:column="36">!=</op:operator> <name pos:line="74" pos:column="39">null</name></expr>)</condition><then pos:line="74" pos:column="44">
+                <block pos:line="75" pos:column="17">{
+                    <decl_stmt><decl><type><name pos:line="76" pos:column="21">var</name></type> <name pos:line="76" pos:column="25">content</name> <init pos:line="76" pos:column="33">= <expr><op:operator pos:line="76" pos:column="35">new</op:operator> <name><name pos:line="76" pos:column="39">byte</name><index pos:line="76" pos:column="43">[<expr><name><name pos:line="76" pos:column="44">resourceStream</name><op:operator pos:line="76" pos:column="58">.</op:operator><name pos:line="76" pos:column="59">Length</name></name></expr>]</index></name></expr></init></decl>;</decl_stmt>
+                    <expr_stmt><expr><call><name><name pos:line="77" pos:column="21">resourceStream</name><op:operator pos:line="77" pos:column="35">.</op:operator><name pos:line="77" pos:column="36">Read</name></name><argument_list pos:line="77" pos:column="40">(<argument><expr><name pos:line="77" pos:column="41">content</name></expr></argument>, <argument><expr><lit:literal type="number" pos:line="77" pos:column="50">0</lit:literal></expr></argument>, <argument><expr><name><name pos:line="77" pos:column="53">content</name><op:operator pos:line="77" pos:column="60">.</op:operator><name pos:line="77" pos:column="61">Length</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+                    <return pos:line="79" pos:column="21">return <expr><op:operator pos:line="79" pos:column="28">new</op:operator> <call><name pos:line="79" pos:column="32">CacheControlDecorator</name><argument_list pos:line="79" pos:column="53">(<argument><expr><name pos:line="79" pos:column="54">CacheDuration</name></expr></argument>, <argument><expr><name><name pos:line="79" pos:column="69">CacheSetting</name><op:operator pos:line="79" pos:column="81">.</op:operator><name pos:line="79" pos:column="82">Public</name></name></expr></argument>, <argument><expr><op:operator pos:line="79" pos:column="90">new</op:operator> <call><name pos:line="79" pos:column="94">FileResourceResult</name><argument_list pos:line="79" pos:column="112">(<argument><expr><name pos:line="79" pos:column="113">content</name></expr></argument>, <argument><expr><name><name pos:line="79" pos:column="122">embeddedResourceInfo</name><op:operator pos:line="79" pos:column="142">.</op:operator><name pos:line="79" pos:column="143">ContentType</name></name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</return>
+                }</block></then></if>
+            }</block></using>
+
+            <return pos:line="83" pos:column="13">return <expr><op:operator pos:line="83" pos:column="20">new</op:operator> <call><name pos:line="83" pos:column="24">StatusCodeResourceResult</name><argument_list pos:line="83" pos:column="48">(<argument><expr><lit:literal type="number" pos:line="83" pos:column="49">404</lit:literal></expr></argument>, <argument><expr><call><name><name pos:line="83" pos:column="54">string</name><op:operator pos:line="83" pos:column="60">.</op:operator><name pos:line="83" pos:column="61">Format</name></name><argument_list pos:line="83" pos:column="67">(<argument><expr><lit:literal type="string" pos:line="83" pos:column="68">"Could not locate embedded resource with name '{0}' inside assembly '{1}'."</lit:literal></expr></argument>, <argument><expr><name><name pos:line="83" pos:column="145">embeddedResourceInfo</name><op:operator pos:line="83" pos:column="165">.</op:operator><name pos:line="83" pos:column="166">Name</name></name></expr></argument>, <argument><expr><name><name pos:line="83" pos:column="172">embeddedResourceInfo</name><op:operator pos:line="83" pos:column="192">.</op:operator><name pos:line="83" pos:column="193">Assembly</name><op:operator pos:line="83" pos:column="201">.</op:operator><name pos:line="83" pos:column="202">FullName</name></name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="86" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="87" pos:column="9">/// Returns, based on the resource context, the embedded resource that will be returned during the execution of the &lt;see cref="FileResource"/&gt;</comment>
+        <comment type="line" pos:line="88" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="89" pos:column="9">/// &lt;param name="context"&gt;The resource context&lt;/param&gt;</comment>
+        <comment type="line" pos:line="90" pos:column="9">/// &lt;returns&gt;Information about the embedded resource&lt;/returns&gt;</comment>
+        <function_decl><type><specifier pos:line="91" pos:column="9">protected</specifier> <specifier pos:line="91" pos:column="19">abstract</specifier> <name pos:line="91" pos:column="28">EmbeddedResourceInfo</name></type> <name pos:line="91" pos:column="49">GetEmbeddedResourceInfo</name><parameter_list pos:line="91" pos:column="72">(<param><decl><type><name pos:line="91" pos:column="73">IResourceContext</name></type> <name pos:line="91" pos:column="90">context</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="93" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="94" pos:column="9">/// Contains the details of an embedded resource</comment>
+        <comment type="line" pos:line="95" pos:column="9">/// &lt;/summary&gt;</comment>
+        <class><specifier pos:line="96" pos:column="9">public</specifier> class <name pos:line="96" pos:column="22">EmbeddedResourceInfo</name>
+        <block pos:line="97" pos:column="9">{
+            <comment type="line" pos:line="98" pos:column="13">/// &lt;summary&gt;</comment>
+            <comment type="line" pos:line="99" pos:column="13">/// Initializes a new instance of the &lt;see cref="EmbeddedResourceInfo"/&gt; class</comment>
+            <comment type="line" pos:line="100" pos:column="13">/// &lt;/summary&gt;</comment>
+            <comment type="line" pos:line="101" pos:column="13">/// &lt;param name="resourceAssembly"&gt;The assembly containing the embedded resource&lt;/param&gt;</comment>
+            <comment type="line" pos:line="102" pos:column="13">/// &lt;param name="resourceName"&gt;The name of the embedded resource&lt;/param&gt;</comment>
+            <comment type="line" pos:line="103" pos:column="13">/// &lt;param name="contentType"&gt;The content type of the embedded resource&lt;/param&gt;</comment>
+            <constructor><specifier pos:line="104" pos:column="13">public</specifier> <name pos:line="104" pos:column="20">EmbeddedResourceInfo</name><parameter_list pos:line="104" pos:column="40">(<param><decl><type><name pos:line="104" pos:column="41">Assembly</name></type> <name pos:line="104" pos:column="50">resourceAssembly</name></decl></param>, <param><decl><type><name pos:line="104" pos:column="68">string</name></type> <name pos:line="104" pos:column="75">resourceName</name></decl></param>, <param><decl><type><name pos:line="104" pos:column="89">string</name></type> <name pos:line="104" pos:column="96">contentType</name></decl></param>)</parameter_list>
+            <block pos:line="105" pos:column="13">{
+                <if pos:line="106" pos:column="17">if <condition pos:line="106" pos:column="20">(<expr><name pos:line="106" pos:column="21">resourceAssembly</name> <op:operator pos:line="106" pos:column="38">==</op:operator> <name pos:line="106" pos:column="41">null</name></expr>)</condition><then pos:line="106" pos:column="46">
+                <block pos:line="107" pos:column="17">{
+                    <throw pos:line="108" pos:column="21">throw <expr><op:operator pos:line="108" pos:column="27">new</op:operator> <call><name pos:line="108" pos:column="31">ArgumentNullException</name><argument_list pos:line="108" pos:column="52">(<argument><expr><lit:literal type="string" pos:line="108" pos:column="53">"resourceAssembly"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+                }</block></then></if>
+
+                <if pos:line="111" pos:column="17">if <condition pos:line="111" pos:column="20">(<expr><name pos:line="111" pos:column="21">resourceName</name> <op:operator pos:line="111" pos:column="34">==</op:operator> <name pos:line="111" pos:column="37">null</name></expr>)</condition><then pos:line="111" pos:column="42">
+                <block pos:line="112" pos:column="17">{
+                    <throw pos:line="113" pos:column="21">throw <expr><op:operator pos:line="113" pos:column="27">new</op:operator> <call><name pos:line="113" pos:column="31">ArgumentNullException</name><argument_list pos:line="113" pos:column="52">(<argument><expr><lit:literal type="string" pos:line="113" pos:column="53">"resourceName"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+                }</block></then></if>
+
+                <if pos:line="116" pos:column="17">if <condition pos:line="116" pos:column="20">(<expr><name pos:line="116" pos:column="21">contentType</name> <op:operator pos:line="116" pos:column="33">==</op:operator> <name pos:line="116" pos:column="36">null</name></expr>)</condition><then pos:line="116" pos:column="41">
+                <block pos:line="117" pos:column="17">{
+                    <throw pos:line="118" pos:column="21">throw <expr><op:operator pos:line="118" pos:column="27">new</op:operator> <call><name pos:line="118" pos:column="31">ArgumentNullException</name><argument_list pos:line="118" pos:column="52">(<argument><expr><lit:literal type="string" pos:line="118" pos:column="53">"contentType"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+                }</block></then></if>
+
+                <expr_stmt><expr><name pos:line="121" pos:column="17">Assembly</name> <op:operator pos:line="121" pos:column="26">=</op:operator> <name pos:line="121" pos:column="28">resourceAssembly</name></expr>;</expr_stmt>
+                <expr_stmt><expr><name pos:line="122" pos:column="17">Name</name> <op:operator pos:line="122" pos:column="22">=</op:operator> <name pos:line="122" pos:column="24">resourceName</name></expr>;</expr_stmt>
+                <expr_stmt><expr><name pos:line="123" pos:column="17">ContentType</name> <op:operator pos:line="123" pos:column="29">=</op:operator> <name pos:line="123" pos:column="31">contentType</name></expr>;</expr_stmt>
+            }</block></constructor>
+
+            <comment type="line" pos:line="126" pos:column="13">/// &lt;summary&gt;</comment>
+            <comment type="line" pos:line="127" pos:column="13">/// Gets the assembly containing the embedded resource.</comment>
+            <comment type="line" pos:line="128" pos:column="13">/// &lt;/summary&gt;</comment>
+            <comment type="line" pos:line="129" pos:column="13">/// &lt;value&gt;</comment>
+            <comment type="line" pos:line="130" pos:column="13">/// The assembly containing the embedded resource.</comment>
+            <comment type="line" pos:line="131" pos:column="13">/// &lt;/value&gt;</comment>
+            <decl_stmt><decl><type><specifier pos:line="132" pos:column="13">public</specifier> <name pos:line="132" pos:column="20">Assembly</name></type> <name pos:line="132" pos:column="29">Assembly</name> <block pos:line="132" pos:column="38">{ <function_decl><name pos:line="132" pos:column="40">get</name>;</function_decl> <function_decl><specifier pos:line="132" pos:column="45">private</specifier> <name pos:line="132" pos:column="53">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+            <comment type="line" pos:line="134" pos:column="13">/// &lt;summary&gt;</comment>
+            <comment type="line" pos:line="135" pos:column="13">/// Gets the name of the embedded resource.</comment>
+            <comment type="line" pos:line="136" pos:column="13">/// &lt;/summary&gt;</comment>
+            <comment type="line" pos:line="137" pos:column="13">/// &lt;value&gt;</comment>
+            <comment type="line" pos:line="138" pos:column="13">/// The name of the embedded resource.</comment>
+            <comment type="line" pos:line="139" pos:column="13">/// &lt;/value&gt;</comment>
+            <decl_stmt><decl><type><specifier pos:line="140" pos:column="13">public</specifier> <name pos:line="140" pos:column="20">string</name></type> <name pos:line="140" pos:column="27">Name</name> <block pos:line="140" pos:column="32">{ <function_decl><name pos:line="140" pos:column="34">get</name>;</function_decl> <function_decl><specifier pos:line="140" pos:column="39">private</specifier> <name pos:line="140" pos:column="47">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+            <comment type="line" pos:line="142" pos:column="13">/// &lt;summary&gt;</comment>
+            <comment type="line" pos:line="143" pos:column="13">/// Gets the content type of the embedded resource.</comment>
+            <comment type="line" pos:line="144" pos:column="13">/// &lt;/summary&gt;</comment>
+            <comment type="line" pos:line="145" pos:column="13">/// &lt;value&gt;</comment>
+            <comment type="line" pos:line="146" pos:column="13">/// The content type of the embedded resource.</comment>
+            <comment type="line" pos:line="147" pos:column="13">/// &lt;/value&gt;</comment>
+            <decl_stmt><decl><type><specifier pos:line="148" pos:column="13">public</specifier> <name pos:line="148" pos:column="20">string</name></type> <name pos:line="148" pos:column="27">ContentType</name> <block pos:line="148" pos:column="39">{ <function_decl><name pos:line="148" pos:column="41">get</name>;</function_decl> <function_decl><specifier pos:line="148" pos:column="46">private</specifier> <name pos:line="148" pos:column="54">set</name>;</function_decl> }</block></decl></decl_stmt>
+        }</block></class>
+    }</block></class>
+}</block></namespace></unit>

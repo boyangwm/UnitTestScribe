@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Sando-master\SandoExtensionContracts\ServiceContracts\ISandoGlobalService.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2013 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Xiao Qu (ABB Group) - Initial implementation
+ *****************************************************************************/</comment>
+<using pos:line="11" pos:column="1">using <name pos:line="11" pos:column="7">System</name>;</using>
+<using pos:line="12" pos:column="1">using <name><name pos:line="12" pos:column="7">System</name><op:operator pos:line="12" pos:column="13">.</op:operator><name pos:line="12" pos:column="14">Collections</name><op:operator pos:line="12" pos:column="25">.</op:operator><name pos:line="12" pos:column="26">Generic</name></name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Runtime</name><op:operator pos:line="13" pos:column="21">.</op:operator><name pos:line="13" pos:column="22">InteropServices</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">Sando</name><op:operator pos:line="14" pos:column="12">.</op:operator><name pos:line="14" pos:column="13">ExtensionContracts</name><op:operator pos:line="14" pos:column="31">.</op:operator><name pos:line="14" pos:column="32">ResultsReordererContracts</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">Sando</name><op:operator pos:line="15" pos:column="12">.</op:operator><name pos:line="15" pos:column="13">ExtensionContracts</name><op:operator pos:line="15" pos:column="31">.</op:operator><name pos:line="15" pos:column="32">SearchContracts</name></name>;</using>
+
+<namespace pos:line="17" pos:column="1">namespace <name><name pos:line="17" pos:column="11">Sando</name><op:operator pos:line="17" pos:column="16">.</op:operator><name pos:line="17" pos:column="17">ExtensionContracts</name><op:operator pos:line="17" pos:column="35">.</op:operator><name pos:line="17" pos:column="36">ServiceContracts</name></name>
+<block pos:line="18" pos:column="1">{
+    <comment type="line" pos:line="19" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="20" pos:column="5">/// This is the interface that will be implemented by the global service exposed</comment>
+    <comment type="line" pos:line="21" pos:column="5">/// by the package defined in Sando.Service.</comment>
+    <comment type="line" pos:line="22" pos:column="5">/// Notice that we have to define this interface as COM visible so that </comment>
+    <comment type="line" pos:line="23" pos:column="5">/// it will be possible to query for it from the native version of IServiceProvider.</comment>
+    <comment type="line" pos:line="24" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class type="interface"><attribute pos:line="25" pos:column="5">[<expr><call><name pos:line="25" pos:column="6">Guid</name><argument_list pos:line="25" pos:column="10">(<argument><expr><lit:literal type="string" pos:line="25" pos:column="11">"ba9fe7a3-e216-424e-87f9-dee001228d05"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+    <attribute pos:line="26" pos:column="5">[<expr><call><name pos:line="26" pos:column="6">ComVisible</name><argument_list pos:line="26" pos:column="16">(<argument><expr><lit:literal type="boolean" pos:line="26" pos:column="17">true</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+    <specifier pos:line="27" pos:column="5">public</specifier> interface <name pos:line="27" pos:column="22">ISandoGlobalService</name> <block pos:line="27" pos:column="42">{
+        <function_decl><type><name pos:line="28" pos:column="9">void</name></type> <name pos:line="28" pos:column="14">GlobalServiceFunction</name><parameter_list pos:line="28" pos:column="35">()</parameter_list>;</function_decl>
+        <function_decl><type><name pos:line="29" pos:column="9">int</name></type> <name pos:line="29" pos:column="13">CallLocalService</name><parameter_list pos:line="29" pos:column="29">()</parameter_list>;</function_decl>
+
+        <function_decl><type><name><name pos:line="31" pos:column="9">List</name><argument_list pos:line="31" pos:column="13">&lt;<argument><name pos:line="31" pos:column="14">CodeSearchResult</name></argument>&gt;</argument_list></name></type> <name pos:line="31" pos:column="32">GetSearchResults</name><parameter_list pos:line="31" pos:column="48">(<param><decl><type><name pos:line="31" pos:column="49">string</name></type> <name pos:line="31" pos:column="56">searchkeywords</name></decl></param>)</parameter_list>;</function_decl>
+        <function_decl><type><name pos:line="32" pos:column="9">void</name></type> <name pos:line="32" pos:column="14">AddUISearchResultsListener</name><parameter_list pos:line="32" pos:column="40">(<param><decl><type><name pos:line="32" pos:column="41">ISearchResultListener</name></type> <name pos:line="32" pos:column="63">listener</name></decl></param>)</parameter_list>;</function_decl>
+
+    }</block></class>
+
+    <comment type="line" pos:line="36" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="37" pos:column="5">/// The goal of this interface is actually just to define a Type (or Guid from the native</comment>
+    <comment type="line" pos:line="38" pos:column="5">/// client's point of view) that will be used to identify the service.</comment>
+    <comment type="line" pos:line="39" pos:column="5">/// In theory, we could use the interface defined above, but it is a good practice to always</comment>
+    <comment type="line" pos:line="40" pos:column="5">/// define a new type as the service's identifier because a service can expose different interfaces.</comment>
+    <comment type="line" pos:line="41" pos:column="5">/// </comment>
+    <comment type="line" pos:line="42" pos:column="5">/// It is registered at: </comment>
+    <comment type="line" pos:line="43" pos:column="5">/// HKEY_USERS\S-1-5-21-1472859983-109138142-169162935-138973\Software\Microsoft\VisualStudio\11.0Exp_Config\Services\{fafafdfb-60f3-47e4-b38c-1bae05b44242}</comment>
+    <comment type="line" pos:line="44" pos:column="5">/// </comment>
+    <comment type="line" pos:line="45" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class type="interface"><attribute pos:line="46" pos:column="5">[<expr><call><name pos:line="46" pos:column="6">Guid</name><argument_list pos:line="46" pos:column="10">(<argument><expr><lit:literal type="string" pos:line="46" pos:column="11">"fafafdfb-60f3-47e4-b38c-1bae05b44242"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+    <specifier pos:line="47" pos:column="5">public</specifier> interface <name pos:line="47" pos:column="22">SSandoGlobalService</name> <block pos:line="47" pos:column="42">{
+    }</block></class>
+}</block></namespace>
+</unit>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Test.Mvc\TestDoubles\DummyDefaultModelBinder.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">System</name><op:operator pos:line="1" pos:column="13">.</op:operator><name pos:line="1" pos:column="14">Web</name><op:operator pos:line="1" pos:column="17">.</op:operator><name pos:line="1" pos:column="18">Mvc</name></name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Test</name><op:operator pos:line="3" pos:column="23">.</op:operator><name pos:line="3" pos:column="24">Mvc</name><op:operator pos:line="3" pos:column="27">.</op:operator><name pos:line="3" pos:column="28">TestDoubles</name></name>
+<block pos:line="4" pos:column="1">{
+    <class><specifier pos:line="5" pos:column="5">public</specifier> class <name pos:line="5" pos:column="18">DummyDefaultModelBinder</name> <super pos:line="5" pos:column="42">: <name pos:line="5" pos:column="44">DefaultModelBinder</name></super>
+    <block pos:line="6" pos:column="5">{
+    }</block></class>
+}</block></namespace></unit>

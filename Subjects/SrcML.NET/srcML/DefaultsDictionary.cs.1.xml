@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML\Utilities\DefaultsDictionary.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2010 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Text</name></name>;</using>
+
+<namespace pos:line="17" pos:column="1">namespace <name><name pos:line="17" pos:column="11">ABB</name><op:operator pos:line="17" pos:column="14">.</op:operator><name pos:line="17" pos:column="15">SrcML</name><op:operator pos:line="17" pos:column="20">.</op:operator><name pos:line="17" pos:column="21">Utilities</name></name>
+<block pos:line="18" pos:column="1">{
+    <comment type="line" pos:line="19" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="20" pos:column="5">/// DefaultsDictionary is a dictionary that starts with a list of default keys and values.</comment>
+    <comment type="line" pos:line="21" pos:column="5">/// For functions that return only a single key, value, or Key-Value Pair, the method will first check its collection of non-default values. Then, it will check its collection of *default* values.</comment>
+    <comment type="line" pos:line="22" pos:column="5">/// </comment>
+    <comment type="line" pos:line="23" pos:column="5">/// For functions that return a collection or enumerator, the WillReturnDefaultValues flag controls whether or not default values are returned. If false (the default), default values are *not* returned.</comment>
+    <comment type="line" pos:line="24" pos:column="5">/// This means that a DefaultsDictionary that consists of only default Key-Value Pairs will return an empty enumerator/collection.</comment>
+    <comment type="line" pos:line="25" pos:column="5">/// &lt;/summary&gt;</comment>
+    <comment type="line" pos:line="26" pos:column="5">/// &lt;typeparam name="TKey"&gt;The Key&lt;/typeparam&gt;</comment>
+    <comment type="line" pos:line="27" pos:column="5">/// &lt;typeparam name="TValue"&gt;The Value&lt;/typeparam&gt;</comment>
+    <class><specifier pos:line="28" pos:column="5">public</specifier> class <name><name pos:line="28" pos:column="18">DefaultsDictionary</name><argument_list pos:line="28" pos:column="36">&lt;<argument><name pos:line="28" pos:column="37">TKey</name></argument>, <argument><name pos:line="28" pos:column="43">TValue</name></argument>&gt;</argument_list></name> <super pos:line="28" pos:column="51">: <name><name pos:line="28" pos:column="53">IDictionary</name><argument_list pos:line="28" pos:column="64">&lt;<argument><name pos:line="28" pos:column="65">TKey</name></argument>, <argument><name pos:line="28" pos:column="71">TValue</name></argument>&gt;</argument_list></name></super>
+    <block pos:line="29" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="30" pos:column="9">private</specifier> <specifier pos:line="30" pos:column="17">readonly</specifier> <name><name pos:line="30" pos:column="26">ReadOnlyDictionary</name><argument_list pos:line="30" pos:column="44">&lt;<argument><name pos:line="30" pos:column="45">TKey</name></argument>, <argument><name pos:line="30" pos:column="51">TValue</name></argument>&gt;</argument_list></name></type> <name pos:line="30" pos:column="59">defaults</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="31" pos:column="9">private</specifier> <name><name pos:line="31" pos:column="17">Dictionary</name><argument_list pos:line="31" pos:column="27">&lt;<argument><name pos:line="31" pos:column="28">TKey</name></argument>, <argument><name pos:line="31" pos:column="34">TValue</name></argument>&gt;</argument_list></name></type> <name pos:line="31" pos:column="42">options</name></decl>;</decl_stmt>
+
+        <constructor><specifier pos:line="33" pos:column="9">private</specifier> <name pos:line="33" pos:column="17">DefaultsDictionary</name><parameter_list pos:line="33" pos:column="35">()</parameter_list>
+        <block pos:line="34" pos:column="9">{
+
+        }</block></constructor>
+
+        <comment type="line" pos:line="38" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// Constructs a new defaults dictionary.</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// &lt;param name="defaultDictionary"&gt;the initial dictionary of defaultsDictionary&lt;/param&gt;</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;param name="willReturnDefaultValues"&gt;true if it should return default values in collections and enumerators&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="43" pos:column="9">public</specifier> <name pos:line="43" pos:column="16">DefaultsDictionary</name><parameter_list pos:line="43" pos:column="34">(<param><decl><type><name><name pos:line="43" pos:column="35">IDictionary</name><argument_list pos:line="43" pos:column="46">&lt;<argument><name pos:line="43" pos:column="47">TKey</name></argument>, <argument><name pos:line="43" pos:column="53">TValue</name></argument>&gt;</argument_list></name></type> <name pos:line="43" pos:column="61">defaultDictionary</name></decl></param>, <param><decl><type><name pos:line="43" pos:column="80">bool</name></type> <name pos:line="43" pos:column="85">willReturnDefaultValues</name></decl></param>)</parameter_list>
+        <block pos:line="44" pos:column="9">{
+            <expr_stmt><expr><name><name pos:line="45" pos:column="13">this</name><op:operator pos:line="45" pos:column="17">.</op:operator><name pos:line="45" pos:column="18">defaults</name></name> <op:operator pos:line="45" pos:column="27">=</op:operator> <op:operator pos:line="45" pos:column="29">new</op:operator> <call><name><name pos:line="45" pos:column="33">ReadOnlyDictionary</name><argument_list pos:line="45" pos:column="51">&lt;<argument><name pos:line="45" pos:column="52">TKey</name></argument>, <argument><name pos:line="45" pos:column="58">TValue</name></argument>&gt;</argument_list></name><argument_list pos:line="45" pos:column="65">(<argument><expr><name pos:line="45" pos:column="66">defaultDictionary</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="46" pos:column="13">this</name><op:operator pos:line="46" pos:column="17">.</op:operator><name pos:line="46" pos:column="18">options</name></name> <op:operator pos:line="46" pos:column="26">=</op:operator> <op:operator pos:line="46" pos:column="28">new</op:operator> <call><name><name pos:line="46" pos:column="32">Dictionary</name><argument_list pos:line="46" pos:column="42">&lt;<argument><name pos:line="46" pos:column="43">TKey</name></argument>, <argument><name pos:line="46" pos:column="49">TValue</name></argument>&gt;</argument_list></name><argument_list pos:line="46" pos:column="56">()</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="47" pos:column="13">WillReturnDefaultValues</name> <op:operator pos:line="47" pos:column="37">=</op:operator> <name pos:line="47" pos:column="39">willReturnDefaultValues</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="50" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="51" pos:column="9">/// Constructs a new defaults dictionary.</comment>
+        <comment type="line" pos:line="52" pos:column="9">/// WillReturnDefaultValues is set to false by default.</comment>
+        <comment type="line" pos:line="53" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// &lt;param name="defaultDictionary"&gt;the initial dictionary of defaultsDictionary&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="55" pos:column="9">public</specifier> <name pos:line="55" pos:column="16">DefaultsDictionary</name><parameter_list pos:line="55" pos:column="34">(<param><decl><type><name><name pos:line="55" pos:column="35">IDictionary</name><argument_list pos:line="55" pos:column="46">&lt;<argument><name pos:line="55" pos:column="47">TKey</name></argument>, <argument><name pos:line="55" pos:column="53">TValue</name></argument>&gt;</argument_list></name></type> <name pos:line="55" pos:column="61">defaultDictionary</name></decl></param>)</parameter_list> <member_list pos:line="55" pos:column="80">: <call><name pos:line="55" pos:column="82">this</name><argument_list pos:line="55" pos:column="86">(<argument><expr><name pos:line="55" pos:column="87">defaultDictionary</name></expr></argument>, <argument><expr><lit:literal type="boolean" pos:line="55" pos:column="106">false</lit:literal></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="56" pos:column="9">{
+        }</block></constructor>
+
+        <comment type="line" pos:line="59" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="60" pos:column="9">/// This boolean determines whether or not enumerators, iterators, etc will return both default and non-default values.</comment>
+        <comment type="line" pos:line="61" pos:column="9">/// If true, then default values will be returned as long as a non-default value is not present.</comment>
+        <comment type="line" pos:line="62" pos:column="9">/// If false, then only changed values will be returned in iterators.</comment>
+        <comment type="line" pos:line="63" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="64" pos:column="9">public</specifier> <name pos:line="64" pos:column="16">bool</name></type> <name pos:line="64" pos:column="21">WillReturnDefaultValues</name>
+        <block pos:line="65" pos:column="9">{
+            <function_decl><name pos:line="66" pos:column="13">get</name>;</function_decl>
+            <function_decl><name pos:line="67" pos:column="13">set</name>;</function_decl>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="70" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="71" pos:column="9">/// The number of non-default Key-Value Pairs present in this dictionary.</comment>
+        <comment type="line" pos:line="72" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="73" pos:column="9">public</specifier> <name pos:line="73" pos:column="16">int</name></type> <name pos:line="73" pos:column="20">NonDefaultValueCount</name>
+        <block pos:line="74" pos:column="9">{
+            <function><name pos:line="75" pos:column="13">get</name> <block pos:line="75" pos:column="17">{ <return pos:line="75" pos:column="19">return <expr><name><name pos:line="75" pos:column="26">options</name><op:operator pos:line="75" pos:column="33">.</op:operator><name pos:line="75" pos:column="34">Count</name></name></expr>;</return>  }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="78" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="79" pos:column="9">/// The number of default Key-Value pairs present in this dictionary.</comment>
+        <comment type="line" pos:line="80" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="81" pos:column="9">public</specifier> <name pos:line="81" pos:column="16">int</name></type> <name pos:line="81" pos:column="20">DefaultValueCount</name>
+        <block pos:line="82" pos:column="9">{
+            <function><name pos:line="83" pos:column="13">get</name> <block pos:line="83" pos:column="17">{ <return pos:line="83" pos:column="19">return <expr><name><name pos:line="83" pos:column="26">defaults</name><op:operator pos:line="83" pos:column="34">.</op:operator><name pos:line="83" pos:column="35">Count</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <cpp:region pos:line="86" pos:column="9">#<cpp:directive pos:line="86" pos:column="10">region</cpp:directive> IDictionary&lt;TKey,TValue&gt; Members</cpp:region>
+
+        <comment type="line" pos:line="88" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="89" pos:column="9">/// Adds the key to the non-default set of key-value pairs</comment>
+        <comment type="line" pos:line="90" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="91" pos:column="9">/// &lt;param name="key"&gt;the key to add&lt;/param&gt;</comment>
+        <comment type="line" pos:line="92" pos:column="9">/// &lt;param name="value"&gt;the value corresponding to the key&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="93" pos:column="9">public</specifier> <name pos:line="93" pos:column="16">void</name></type> <name pos:line="93" pos:column="21">Add</name><parameter_list pos:line="93" pos:column="24">(<param><decl><type><name pos:line="93" pos:column="25">TKey</name></type> <name pos:line="93" pos:column="30">key</name></decl></param>, <param><decl><type><name pos:line="93" pos:column="35">TValue</name></type> <name pos:line="93" pos:column="42">value</name></decl></param>)</parameter_list>
+        <block pos:line="94" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="95" pos:column="13">this</name><op:operator pos:line="95" pos:column="17">.</op:operator><name pos:line="95" pos:column="18">options</name><op:operator pos:line="95" pos:column="25">.</op:operator><name pos:line="95" pos:column="26">Add</name></name><argument_list pos:line="95" pos:column="29">(<argument><expr><name pos:line="95" pos:column="30">key</name></expr></argument>, <argument><expr><name pos:line="95" pos:column="35">value</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="98" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="99" pos:column="9">/// ContainsKey returns true if there is either a default or non-default key that matches &lt;paramref name="key"/&gt;.</comment>
+        <comment type="line" pos:line="100" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="101" pos:column="9">/// &lt;param name="key"&gt;the key to search for&lt;/param&gt;</comment>
+        <comment type="line" pos:line="102" pos:column="9">/// &lt;returns&gt;true if the key is present; false otherwise&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="103" pos:column="9">public</specifier> <name pos:line="103" pos:column="16">bool</name></type> <name pos:line="103" pos:column="21">ContainsKey</name><parameter_list pos:line="103" pos:column="32">(<param><decl><type><name pos:line="103" pos:column="33">TKey</name></type> <name pos:line="103" pos:column="38">key</name></decl></param>)</parameter_list>
+        <block pos:line="104" pos:column="9">{
+            <return pos:line="105" pos:column="13">return <expr><call><name><name pos:line="105" pos:column="20">this</name><op:operator pos:line="105" pos:column="24">.</op:operator><name pos:line="105" pos:column="25">defaults</name><op:operator pos:line="105" pos:column="33">.</op:operator><name pos:line="105" pos:column="34">ContainsKey</name></name><argument_list pos:line="105" pos:column="45">(<argument><expr><name pos:line="105" pos:column="46">key</name></expr></argument>)</argument_list></call> <op:operator pos:line="105" pos:column="51">||</op:operator> <call><name><name pos:line="105" pos:column="54">this</name><op:operator pos:line="105" pos:column="58">.</op:operator><name pos:line="105" pos:column="59">options</name><op:operator pos:line="105" pos:column="66">.</op:operator><name pos:line="105" pos:column="67">ContainsKey</name></name><argument_list pos:line="105" pos:column="78">(<argument><expr><name pos:line="105" pos:column="79">key</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="108" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="109" pos:column="9">/// If WillReturnDefaultValues is false, this returns the set of non-default keys</comment>
+        <comment type="line" pos:line="110" pos:column="9">/// If true, it returns the union of non-default and default keys</comment>
+        <comment type="line" pos:line="111" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="112" pos:column="9">public</specifier> <name><name pos:line="112" pos:column="16">ICollection</name><argument_list pos:line="112" pos:column="27">&lt;<argument><name pos:line="112" pos:column="28">TKey</name></argument>&gt;</argument_list></name></type> <name pos:line="112" pos:column="34">Keys</name>
+        <block pos:line="113" pos:column="9">{
+            <function><name pos:line="114" pos:column="13">get</name>
+            <block pos:line="115" pos:column="13">{
+                <if pos:line="116" pos:column="17">if<condition pos:line="116" pos:column="19">(<expr><name pos:line="116" pos:column="20">WillReturnDefaultValues</name></expr>)</condition><then pos:line="116" pos:column="44">
+                    <return pos:line="117" pos:column="21">return <expr><call><name><name pos:line="117" pos:column="28">options</name><op:operator pos:line="117" pos:column="35">.</op:operator><name pos:line="117" pos:column="36">Keys</name><op:operator pos:line="117" pos:column="40">.</op:operator><name pos:line="117" pos:column="41">Union</name></name><argument_list pos:line="117" pos:column="46">(<argument><expr><name><name pos:line="117" pos:column="47">defaults</name><op:operator pos:line="117" pos:column="55">.</op:operator><name pos:line="117" pos:column="56">Keys</name></name></expr></argument>)</argument_list></call><op:operator pos:line="117" pos:column="61">.</op:operator><call><name><name pos:line="117" pos:column="62">ToArray</name><argument_list pos:line="117" pos:column="69">&lt;<argument><name pos:line="117" pos:column="70">TKey</name></argument>&gt;</argument_list></name><argument_list pos:line="117" pos:column="75">()</argument_list></call></expr>;</return></then></if>
+                <return pos:line="118" pos:column="17">return <expr><name><name pos:line="118" pos:column="24">options</name><op:operator pos:line="118" pos:column="31">.</op:operator><name pos:line="118" pos:column="32">Keys</name></name></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="122" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="123" pos:column="9">/// Removes the given key from the dictionary only if it is not in the initial set of defaults</comment>
+        <comment type="line" pos:line="124" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="125" pos:column="9">/// &lt;param name="key"&gt;The key to remove&lt;/param&gt;</comment>
+        <comment type="line" pos:line="126" pos:column="9">/// &lt;returns&gt;true if the key was removed&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="127" pos:column="9">public</specifier> <name pos:line="127" pos:column="16">bool</name></type> <name pos:line="127" pos:column="21">Remove</name><parameter_list pos:line="127" pos:column="27">(<param><decl><type><name pos:line="127" pos:column="28">TKey</name></type> <name pos:line="127" pos:column="33">key</name></decl></param>)</parameter_list>
+        <block pos:line="128" pos:column="9">{
+            <if pos:line="129" pos:column="13">if <condition pos:line="129" pos:column="16">(<expr><call><name><name pos:line="129" pos:column="17">options</name><op:operator pos:line="129" pos:column="24">.</op:operator><name pos:line="129" pos:column="25">ContainsKey</name></name><argument_list pos:line="129" pos:column="36">(<argument><expr><name pos:line="129" pos:column="37">key</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="129" pos:column="42">
+                <return pos:line="130" pos:column="17">return <expr><call><name><name pos:line="130" pos:column="24">options</name><op:operator pos:line="130" pos:column="31">.</op:operator><name pos:line="130" pos:column="32">Remove</name></name><argument_list pos:line="130" pos:column="38">(<argument><expr><name pos:line="130" pos:column="39">key</name></expr></argument>)</argument_list></call></expr>;</return></then></if>
+            <return pos:line="131" pos:column="13">return <expr><lit:literal type="boolean" pos:line="131" pos:column="20">false</lit:literal></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="134" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="135" pos:column="9">/// Tries to get the value for the  given key from the set of non-default KVPs and default KVPs.</comment>
+        <comment type="line" pos:line="136" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="137" pos:column="9">/// &lt;param name="key"&gt;the key to find&lt;/param&gt;</comment>
+        <comment type="line" pos:line="138" pos:column="9">/// &lt;param name="value"&gt;the value related to &lt;paramref name="key"/&gt;&lt;/param&gt;</comment>
+        <comment type="line" pos:line="139" pos:column="9">/// &lt;returns&gt;true  if the Key-Value pair was present, false otherwise.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="140" pos:column="9">public</specifier> <name pos:line="140" pos:column="16">bool</name></type> <name pos:line="140" pos:column="21">TryGetValue</name><parameter_list pos:line="140" pos:column="32">(<param><decl><type><name pos:line="140" pos:column="33">TKey</name></type> <name pos:line="140" pos:column="38">key</name></decl></param>, <param><decl><type><specifier pos:line="140" pos:column="43">out</specifier> <name pos:line="140" pos:column="47">TValue</name></type> <name pos:line="140" pos:column="54">value</name></decl></param>)</parameter_list>
+        <block pos:line="141" pos:column="9">{
+            <if pos:line="142" pos:column="13">if <condition pos:line="142" pos:column="16">(<expr><call><name><name pos:line="142" pos:column="17">options</name><op:operator pos:line="142" pos:column="24">.</op:operator><name pos:line="142" pos:column="25">TryGetValue</name></name><argument_list pos:line="142" pos:column="36">(<argument><expr><name pos:line="142" pos:column="37">key</name></expr></argument>, <argument><expr pos:line="142" pos:column="42">out <name pos:line="142" pos:column="46">value</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="142" pos:column="53">
+                <return pos:line="143" pos:column="17">return <expr><lit:literal type="boolean" pos:line="143" pos:column="24">true</lit:literal></expr>;</return></then>
+            <else pos:line="144" pos:column="13">else <if pos:line="144" pos:column="18">if <condition pos:line="144" pos:column="21">(<expr><call><name><name pos:line="144" pos:column="22">defaults</name><op:operator pos:line="144" pos:column="30">.</op:operator><name pos:line="144" pos:column="31">TryGetValue</name></name><argument_list pos:line="144" pos:column="42">(<argument><expr><name pos:line="144" pos:column="43">key</name></expr></argument>, <argument><expr pos:line="144" pos:column="48">out <name pos:line="144" pos:column="52">value</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="144" pos:column="59">
+                <return pos:line="145" pos:column="17">return <expr><lit:literal type="boolean" pos:line="145" pos:column="24">true</lit:literal></expr>;</return></then></if></else></if>
+            <return pos:line="146" pos:column="13">return <expr><lit:literal type="boolean" pos:line="146" pos:column="20">false</lit:literal></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="149" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="150" pos:column="9">/// Returns a list of the default</comment>
+        <comment type="line" pos:line="151" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="152" pos:column="9">public</specifier> <name><name pos:line="152" pos:column="16">ICollection</name><argument_list pos:line="152" pos:column="27">&lt;<argument><name pos:line="152" pos:column="28">TValue</name></argument>&gt;</argument_list></name></type> <name pos:line="152" pos:column="36">Values</name>
+        <block pos:line="153" pos:column="9">{
+            <function><name pos:line="154" pos:column="13">get</name>
+            <block pos:line="155" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="156" pos:column="17">var</name></type> <name pos:line="156" pos:column="21">nonDefaultValues</name> <init pos:line="156" pos:column="38">= <expr><linq><from pos:line="156" pos:column="40">from <expr><name pos:line="156" pos:column="45">key</name></expr> <in pos:line="156" pos:column="49">in <expr><name><name pos:line="156" pos:column="52">this</name><op:operator pos:line="156" pos:column="56">.</op:operator><name pos:line="156" pos:column="57">options</name><op:operator pos:line="156" pos:column="64">.</op:operator><name pos:line="156" pos:column="65">Keys</name></name></expr></in></from>
+                                       <select pos:line="157" pos:column="40">select <expr><name><name pos:line="157" pos:column="47">this</name><op:operator pos:line="157" pos:column="51">.</op:operator><name pos:line="157" pos:column="52">options</name><index pos:line="157" pos:column="59">[<expr><name pos:line="157" pos:column="60">key</name></expr>]</index></name></expr></select></linq></expr></init></decl>;</decl_stmt>
+                <if pos:line="158" pos:column="17">if <condition pos:line="158" pos:column="20">(<expr><name pos:line="158" pos:column="21">WillReturnDefaultValues</name></expr>)</condition><then pos:line="158" pos:column="45">
+                <block pos:line="159" pos:column="17">{
+                    <decl_stmt><decl><type><name pos:line="160" pos:column="21">var</name></type> <name pos:line="160" pos:column="25">defaultValues</name> <init pos:line="160" pos:column="39">= <expr><linq><from pos:line="160" pos:column="41">from <expr><name pos:line="160" pos:column="46">key</name></expr> <in pos:line="160" pos:column="50">in <expr><call><name><name pos:line="160" pos:column="53">this</name><op:operator pos:line="160" pos:column="57">.</op:operator><name pos:line="160" pos:column="58">defaults</name><op:operator pos:line="160" pos:column="66">.</op:operator><name pos:line="160" pos:column="67">Keys</name><op:operator pos:line="160" pos:column="71">.</op:operator><name pos:line="160" pos:column="72">Except</name></name><argument_list pos:line="160" pos:column="78">(<argument><expr><name><name pos:line="160" pos:column="79">this</name><op:operator pos:line="160" pos:column="83">.</op:operator><name pos:line="160" pos:column="84">options</name><op:operator pos:line="160" pos:column="91">.</op:operator><name pos:line="160" pos:column="92">Keys</name></name></expr></argument>)</argument_list></call></expr></in></from>
+                                        <select pos:line="161" pos:column="41">select <expr><name><name pos:line="161" pos:column="48">this</name><op:operator pos:line="161" pos:column="52">.</op:operator><name pos:line="161" pos:column="53">defaults</name><index pos:line="161" pos:column="61">[<expr><name pos:line="161" pos:column="62">key</name></expr>]</index></name></expr></select></linq></expr></init></decl>;</decl_stmt>
+                    <return pos:line="162" pos:column="21">return <expr><call><name><name pos:line="162" pos:column="28">nonDefaultValues</name><op:operator pos:line="162" pos:column="44">.</op:operator><name pos:line="162" pos:column="45">Union</name></name><argument_list pos:line="162" pos:column="50">(<argument><expr><name pos:line="162" pos:column="51">defaultValues</name></expr></argument>)</argument_list></call><op:operator pos:line="162" pos:column="65">.</op:operator><call><name pos:line="162" pos:column="66">ToArray</name><argument_list pos:line="162" pos:column="73">()</argument_list></call></expr>;</return>
+                }</block></then></if>
+                <return pos:line="164" pos:column="17">return <expr><call><name><name pos:line="164" pos:column="24">nonDefaultValues</name><op:operator pos:line="164" pos:column="40">.</op:operator><name pos:line="164" pos:column="41">ToArray</name></name><argument_list pos:line="164" pos:column="48">()</argument_list></call></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="168" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="169" pos:column="9">/// Indexer for getting/setting Key-Value Pairs in the dictionary.</comment>
+        <comment type="line" pos:line="170" pos:column="9">/// </comment>
+        <comment type="line" pos:line="171" pos:column="9">/// Setting a Key-Value Pair causes a new non-default KVP to be set.</comment>
+        <comment type="line" pos:line="172" pos:column="9">/// </comment>
+        <comment type="line" pos:line="173" pos:column="9">/// Getting a Key-Value Pair first checks the non-default KVP set, and then checks the default KVP set.</comment>
+        <comment type="line" pos:line="174" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="175" pos:column="9">/// &lt;param name="key"&gt;The key to set/get&lt;/param&gt;</comment>
+        <comment type="line" pos:line="176" pos:column="9">/// &lt;returns&gt;The value corresponding to the key&lt;/returns&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="177" pos:column="9">public</specifier> <name pos:line="177" pos:column="16">TValue</name></type> <name pos:line="177" pos:column="23">this</name><parameter_list pos:line="177" pos:column="27">[<param><decl><type><name pos:line="177" pos:column="28">TKey</name></type> <name pos:line="177" pos:column="33">key</name></decl></param>]</parameter_list>
+        <block pos:line="178" pos:column="9">{
+            <function><name pos:line="179" pos:column="13">get</name>
+            <block pos:line="180" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="181" pos:column="17">TValue</name></type> <name pos:line="181" pos:column="24">value</name></decl>;</decl_stmt>
+                <if pos:line="182" pos:column="17">if <condition pos:line="182" pos:column="20">(<expr><call><name><name pos:line="182" pos:column="21">options</name><op:operator pos:line="182" pos:column="28">.</op:operator><name pos:line="182" pos:column="29">TryGetValue</name></name><argument_list pos:line="182" pos:column="40">(<argument><expr><name pos:line="182" pos:column="41">key</name></expr></argument>, <argument><expr pos:line="182" pos:column="46">out <name pos:line="182" pos:column="50">value</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="182" pos:column="57">
+                    <return pos:line="183" pos:column="21">return <expr><name pos:line="183" pos:column="28">value</name></expr>;</return></then></if>
+                <expr_stmt><expr><name pos:line="184" pos:column="17">value</name> <op:operator pos:line="184" pos:column="23">=</op:operator> <name><name pos:line="184" pos:column="25">defaults</name><index pos:line="184" pos:column="33">[<expr><name pos:line="184" pos:column="34">key</name></expr>]</index></name></expr>;</expr_stmt>
+                <return pos:line="185" pos:column="17">return <expr><name pos:line="185" pos:column="24">value</name></expr>;</return>
+            }</block></function>
+            <function><name pos:line="187" pos:column="13">set</name>
+            <block pos:line="188" pos:column="13">{
+                <expr_stmt><expr><name><name pos:line="189" pos:column="17">this</name><op:operator pos:line="189" pos:column="21">.</op:operator><name pos:line="189" pos:column="22">options</name><index pos:line="189" pos:column="29">[<expr><name pos:line="189" pos:column="30">key</name></expr>]</index></name> <op:operator pos:line="189" pos:column="35">=</op:operator> <name pos:line="189" pos:column="37">value</name></expr>;</expr_stmt>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <cpp:endregion pos:line="193" pos:column="9">#<cpp:directive pos:line="193" pos:column="10">endregion</cpp:directive></cpp:endregion>
+
+        <cpp:region pos:line="195" pos:column="9">#<cpp:directive pos:line="195" pos:column="10">region</cpp:directive> ICollection&lt;KeyValuePair&lt;TKey,TValue&gt;&gt; Members</cpp:region>
+
+        <comment type="line" pos:line="197" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="198" pos:column="9">/// Adds a new Key-Value Pair to the non-default set</comment>
+        <comment type="line" pos:line="199" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="200" pos:column="9">/// &lt;param name="item"&gt;The Key-Value Pair to add.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="201" pos:column="9">public</specifier> <name pos:line="201" pos:column="16">void</name></type> <name pos:line="201" pos:column="21">Add</name><parameter_list pos:line="201" pos:column="24">(<param><decl><type><name><name pos:line="201" pos:column="25">KeyValuePair</name><argument_list pos:line="201" pos:column="37">&lt;<argument><name pos:line="201" pos:column="38">TKey</name></argument>, <argument><name pos:line="201" pos:column="44">TValue</name></argument>&gt;</argument_list></name></type> <name pos:line="201" pos:column="52">item</name></decl></param>)</parameter_list>
+        <block pos:line="202" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="203" pos:column="13">options</name><op:operator pos:line="203" pos:column="20">.</op:operator><name pos:line="203" pos:column="21">Add</name></name><argument_list pos:line="203" pos:column="24">(<argument><expr><name><name pos:line="203" pos:column="25">item</name><op:operator pos:line="203" pos:column="29">.</op:operator><name pos:line="203" pos:column="30">Key</name></name></expr></argument>, <argument><expr><name><name pos:line="203" pos:column="35">item</name><op:operator pos:line="203" pos:column="39">.</op:operator><name pos:line="203" pos:column="40">Value</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="206" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="207" pos:column="9">/// Clears the non-default values from the dictionary</comment>
+        <comment type="line" pos:line="208" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="209" pos:column="9">public</specifier> <name pos:line="209" pos:column="16">void</name></type> <name pos:line="209" pos:column="21">Clear</name><parameter_list pos:line="209" pos:column="26">()</parameter_list>
+        <block pos:line="210" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="211" pos:column="13">options</name><op:operator pos:line="211" pos:column="20">.</op:operator><name pos:line="211" pos:column="21">Clear</name></name><argument_list pos:line="211" pos:column="26">()</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="214" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="215" pos:column="9">/// Checks whether or not the given item is present in the dictionary. First, the non-default KVPs are checked, followed by the default KVPs.</comment>
+        <comment type="line" pos:line="216" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="217" pos:column="9">/// &lt;param name="item"&gt;The item to check for&lt;/param&gt;</comment>
+        <comment type="line" pos:line="218" pos:column="9">/// &lt;returns&gt;True if the item is contained in this dictionary&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="219" pos:column="9">public</specifier> <name pos:line="219" pos:column="16">bool</name></type> <name pos:line="219" pos:column="21">Contains</name><parameter_list pos:line="219" pos:column="29">(<param><decl><type><name><name pos:line="219" pos:column="30">KeyValuePair</name><argument_list pos:line="219" pos:column="42">&lt;<argument><name pos:line="219" pos:column="43">TKey</name></argument>, <argument><name pos:line="219" pos:column="49">TValue</name></argument>&gt;</argument_list></name></type> <name pos:line="219" pos:column="57">item</name></decl></param>)</parameter_list>
+        <block pos:line="220" pos:column="9">{
+            <if pos:line="221" pos:column="13">if <condition pos:line="221" pos:column="16">(<expr><call><name><name pos:line="221" pos:column="17">options</name><op:operator pos:line="221" pos:column="24">.</op:operator><name pos:line="221" pos:column="25">ContainsKey</name></name><argument_list pos:line="221" pos:column="36">(<argument><expr><name><name pos:line="221" pos:column="37">item</name><op:operator pos:line="221" pos:column="41">.</op:operator><name pos:line="221" pos:column="42">Key</name></name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="221" pos:column="47">
+                <return pos:line="222" pos:column="17">return <expr><call><name><name pos:line="222" pos:column="24">item</name><op:operator pos:line="222" pos:column="28">.</op:operator><name pos:line="222" pos:column="29">Value</name><op:operator pos:line="222" pos:column="34">.</op:operator><name pos:line="222" pos:column="35">Equals</name></name><argument_list pos:line="222" pos:column="41">(<argument><expr><name><name pos:line="222" pos:column="42">options</name><index pos:line="222" pos:column="49">[<expr><name><name pos:line="222" pos:column="50">item</name><op:operator pos:line="222" pos:column="54">.</op:operator><name pos:line="222" pos:column="55">Key</name></name></expr>]</index></name></expr></argument>)</argument_list></call></expr>;</return></then></if>
+            <if pos:line="223" pos:column="13">if <condition pos:line="223" pos:column="16">(<expr><call><name><name pos:line="223" pos:column="17">defaults</name><op:operator pos:line="223" pos:column="25">.</op:operator><name pos:line="223" pos:column="26">ContainsKey</name></name><argument_list pos:line="223" pos:column="37">(<argument><expr><name><name pos:line="223" pos:column="38">item</name><op:operator pos:line="223" pos:column="42">.</op:operator><name pos:line="223" pos:column="43">Key</name></name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="223" pos:column="48">
+                <return pos:line="224" pos:column="17">return <expr><call><name><name pos:line="224" pos:column="24">item</name><op:operator pos:line="224" pos:column="28">.</op:operator><name pos:line="224" pos:column="29">Value</name><op:operator pos:line="224" pos:column="34">.</op:operator><name pos:line="224" pos:column="35">Equals</name></name><argument_list pos:line="224" pos:column="41">(<argument><expr><name><name pos:line="224" pos:column="42">defaults</name><index pos:line="224" pos:column="50">[<expr><name><name pos:line="224" pos:column="51">item</name><op:operator pos:line="224" pos:column="55">.</op:operator><name pos:line="224" pos:column="56">Key</name></name></expr>]</index></name></expr></argument>)</argument_list></call></expr>;</return></then></if>
+            <return pos:line="225" pos:column="13">return <expr><lit:literal type="boolean" pos:line="225" pos:column="20">false</lit:literal></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="228" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="229" pos:column="9">/// Copies the Key-Value Pairs to the specified array. If WillReturnDefaultValues is true, then this copies all of the non-default KVPs, followed by any default KVPs.</comment>
+        <comment type="line" pos:line="230" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="231" pos:column="9">/// &lt;param name="array"&gt;The array to copy to&lt;/param&gt;</comment>
+        <comment type="line" pos:line="232" pos:column="9">/// &lt;param name="arrayIndex"&gt;The array index to start copying at&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="233" pos:column="9">public</specifier> <name pos:line="233" pos:column="16">void</name></type> <name pos:line="233" pos:column="21">CopyTo</name><parameter_list pos:line="233" pos:column="27">(<param><decl><type><name><name><name pos:line="233" pos:column="28">KeyValuePair</name><argument_list pos:line="233" pos:column="40">&lt;<argument><name pos:line="233" pos:column="41">TKey</name></argument>, <argument><name pos:line="233" pos:column="47">TValue</name></argument>&gt;</argument_list></name><index pos:line="233" pos:column="54">[]</index></name></type> <name pos:line="233" pos:column="57">array</name></decl></param>, <param><decl><type><name pos:line="233" pos:column="64">int</name></type> <name pos:line="233" pos:column="68">arrayIndex</name></decl></param>)</parameter_list>
+        <block pos:line="234" pos:column="9">{
+            <expr_stmt><expr><op:operator pos:line="235" pos:column="13">(</op:operator><name pos:line="235" pos:column="14">options</name> <op:operator pos:line="235" pos:column="22">as</op:operator> <name><name pos:line="235" pos:column="25">ICollection</name><argument_list pos:line="235" pos:column="36">&lt;<argument><name><name pos:line="235" pos:column="37">KeyValuePair</name><argument_list pos:line="235" pos:column="49">&lt;<argument><name pos:line="235" pos:column="50">TKey</name></argument>, <argument><name pos:line="235" pos:column="56">TValue</name></argument>&gt;</argument_list></name></argument>&gt;</argument_list></name><op:operator pos:line="235" pos:column="64">)</op:operator><op:operator pos:line="235" pos:column="65">.</op:operator><call><name pos:line="235" pos:column="66">CopyTo</name><argument_list pos:line="235" pos:column="72">(<argument><expr><name pos:line="235" pos:column="73">array</name></expr></argument>, <argument><expr><name pos:line="235" pos:column="80">arrayIndex</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <if pos:line="236" pos:column="13">if <condition pos:line="236" pos:column="16">(<expr><name pos:line="236" pos:column="17">WillReturnDefaultValues</name></expr>)</condition><then pos:line="236" pos:column="41">
+            <block pos:line="237" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="238" pos:column="17">var</name></type> <name pos:line="238" pos:column="21">defaultKvps</name> <init pos:line="238" pos:column="33">= <expr><linq><from pos:line="238" pos:column="35">from <expr><name pos:line="238" pos:column="40">key</name></expr> <in pos:line="238" pos:column="44">in <expr><call><name><name pos:line="238" pos:column="47">defaults</name><op:operator pos:line="238" pos:column="55">.</op:operator><name pos:line="238" pos:column="56">Keys</name><op:operator pos:line="238" pos:column="60">.</op:operator><name pos:line="238" pos:column="61">Except</name></name><argument_list pos:line="238" pos:column="67">(<argument><expr><name><name pos:line="238" pos:column="68">options</name><op:operator pos:line="238" pos:column="75">.</op:operator><name pos:line="238" pos:column="76">Keys</name></name></expr></argument>)</argument_list></call></expr></in></from>
+                                  <select pos:line="239" pos:column="35">select <expr><op:operator pos:line="239" pos:column="42">new</op:operator> <call><name><name pos:line="239" pos:column="46">KeyValuePair</name><argument_list pos:line="239" pos:column="58">&lt;<argument><name pos:line="239" pos:column="59">TKey</name></argument>, <argument><name pos:line="239" pos:column="65">TValue</name></argument>&gt;</argument_list></name><argument_list pos:line="239" pos:column="72">(<argument><expr><name pos:line="239" pos:column="73">key</name></expr></argument>, <argument><expr><name><name pos:line="239" pos:column="78">defaults</name><index pos:line="239" pos:column="86">[<expr><name pos:line="239" pos:column="87">key</name></expr>]</index></name></expr></argument>)</argument_list></call></expr></select></linq></expr></init></decl>;</decl_stmt>
+                <expr_stmt><expr><call><name><name pos:line="240" pos:column="17">defaultKvps</name><op:operator pos:line="240" pos:column="28">.</op:operator><name pos:line="240" pos:column="29">ToArray</name></name><argument_list pos:line="240" pos:column="36">()</argument_list></call><op:operator pos:line="240" pos:column="38">.</op:operator><call><name pos:line="240" pos:column="39">CopyTo</name><argument_list pos:line="240" pos:column="45">(<argument><expr><name pos:line="240" pos:column="46">array</name></expr></argument>, <argument><expr><name pos:line="240" pos:column="53">arrayIndex</name> <op:operator pos:line="240" pos:column="64">+</op:operator> <name><name pos:line="240" pos:column="66">options</name><op:operator pos:line="240" pos:column="73">.</op:operator><name pos:line="240" pos:column="74">Count</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+        }</block></function>
+
+        <comment type="line" pos:line="244" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="245" pos:column="9">/// The number of Key-Value Pairs in this default dictionary. If WillReturnDefaultValues is true, then this is equal to both default and non-default counts.</comment>
+        <comment type="line" pos:line="246" pos:column="9">/// If WillReturnDefaultValues is false, then Count == NonDefaultValueCount.</comment>
+        <comment type="line" pos:line="247" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="248" pos:column="9">public</specifier> <name pos:line="248" pos:column="16">int</name></type> <name pos:line="248" pos:column="20">Count</name>
+        <block pos:line="249" pos:column="9">{
+            <function><name pos:line="250" pos:column="13">get</name>
+            <block pos:line="251" pos:column="13">{
+                <if pos:line="252" pos:column="17">if<condition pos:line="252" pos:column="19">(<expr><name pos:line="252" pos:column="20">WillReturnDefaultValues</name></expr>)</condition><then pos:line="252" pos:column="44">
+                    <return pos:line="253" pos:column="21">return <expr><call><name><name pos:line="253" pos:column="28">options</name><op:operator pos:line="253" pos:column="35">.</op:operator><name pos:line="253" pos:column="36">Keys</name><op:operator pos:line="253" pos:column="40">.</op:operator><name pos:line="253" pos:column="41">Union</name></name><argument_list pos:line="253" pos:column="46">(<argument><expr><name><name pos:line="253" pos:column="47">defaults</name><op:operator pos:line="253" pos:column="55">.</op:operator><name pos:line="253" pos:column="56">Keys</name></name></expr></argument>)</argument_list></call><op:operator pos:line="253" pos:column="61">.</op:operator><call><name pos:line="253" pos:column="62">Count</name><argument_list pos:line="253" pos:column="67">()</argument_list></call></expr>;</return></then></if>
+                <return pos:line="254" pos:column="17">return <expr><call><name><name pos:line="254" pos:column="24">options</name><op:operator pos:line="254" pos:column="31">.</op:operator><name pos:line="254" pos:column="32">Keys</name><op:operator pos:line="254" pos:column="36">.</op:operator><name pos:line="254" pos:column="37">Count</name></name><argument_list pos:line="254" pos:column="42">()</argument_list></call></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="258" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="259" pos:column="9">/// Returns false, as this dictionary is never read-only</comment>
+        <comment type="line" pos:line="260" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="261" pos:column="9">public</specifier> <name pos:line="261" pos:column="16">bool</name></type> <name pos:line="261" pos:column="21">IsReadOnly</name>
+        <block pos:line="262" pos:column="9">{
+            <function><name pos:line="263" pos:column="13">get</name> <block pos:line="263" pos:column="17">{ <return pos:line="263" pos:column="19">return <expr><lit:literal type="boolean" pos:line="263" pos:column="26">false</lit:literal></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="266" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="267" pos:column="9">/// Removes the given Key-Value Pair from the list of non-default Key-Value Pairs; false otherwise.</comment>
+        <comment type="line" pos:line="268" pos:column="9">/// This will return false if the Key-Value Pair is a default value.</comment>
+        <comment type="line" pos:line="269" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="270" pos:column="9">/// &lt;param name="item"&gt;The Key-Value pair to remove&lt;/param&gt;</comment>
+        <comment type="line" pos:line="271" pos:column="9">/// &lt;returns&gt;true if the item was removed; false otherwise&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="272" pos:column="9">public</specifier> <name pos:line="272" pos:column="16">bool</name></type> <name pos:line="272" pos:column="21">Remove</name><parameter_list pos:line="272" pos:column="27">(<param><decl><type><name><name pos:line="272" pos:column="28">KeyValuePair</name><argument_list pos:line="272" pos:column="40">&lt;<argument><name pos:line="272" pos:column="41">TKey</name></argument>, <argument><name pos:line="272" pos:column="47">TValue</name></argument>&gt;</argument_list></name></type> <name pos:line="272" pos:column="55">item</name></decl></param>)</parameter_list>
+        <block pos:line="273" pos:column="9">{
+            <if pos:line="274" pos:column="13">if <condition pos:line="274" pos:column="16">(<expr><call><name><name pos:line="274" pos:column="17">options</name><op:operator pos:line="274" pos:column="24">.</op:operator><name pos:line="274" pos:column="25">ContainsKey</name></name><argument_list pos:line="274" pos:column="36">(<argument><expr><name><name pos:line="274" pos:column="37">item</name><op:operator pos:line="274" pos:column="41">.</op:operator><name pos:line="274" pos:column="42">Key</name></name></expr></argument>)</argument_list></call> <op:operator pos:line="274" pos:column="47">&amp;&amp;</op:operator> <name><name pos:line="274" pos:column="50">options</name><index pos:line="274" pos:column="57">[<expr><name><name pos:line="274" pos:column="58">item</name><op:operator pos:line="274" pos:column="62">.</op:operator><name pos:line="274" pos:column="63">Key</name></name></expr>]</index></name><op:operator pos:line="274" pos:column="67">.</op:operator><call><name pos:line="274" pos:column="68">Equals</name><argument_list pos:line="274" pos:column="74">(<argument><expr><name><name pos:line="274" pos:column="75">item</name><op:operator pos:line="274" pos:column="79">.</op:operator><name pos:line="274" pos:column="80">Value</name></name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="274" pos:column="87">
+                <return pos:line="275" pos:column="17">return <expr><call><name><name pos:line="275" pos:column="24">options</name><op:operator pos:line="275" pos:column="31">.</op:operator><name pos:line="275" pos:column="32">Remove</name></name><argument_list pos:line="275" pos:column="38">(<argument><expr><name><name pos:line="275" pos:column="39">item</name><op:operator pos:line="275" pos:column="43">.</op:operator><name pos:line="275" pos:column="44">Key</name></name></expr></argument>)</argument_list></call></expr>;</return></then></if>
+            <return pos:line="276" pos:column="13">return <expr><lit:literal type="boolean" pos:line="276" pos:column="20">false</lit:literal></expr>;</return>
+        }</block></function>
+
+        <cpp:endregion pos:line="279" pos:column="9">#<cpp:directive pos:line="279" pos:column="10">endregion</cpp:directive></cpp:endregion>
+
+        <cpp:region pos:line="281" pos:column="9">#<cpp:directive pos:line="281" pos:column="10">region</cpp:directive> IEnumerable&lt;KeyValuePair&lt;TKey,TValue&gt;&gt; Members</cpp:region>
+        <comment type="line" pos:line="282" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="283" pos:column="9">/// Returns an enumerator over the contents of this dictionary. If WillReturnDefaultValues is true, this will include both default &amp;amp; non-default options.</comment>
+        <comment type="line" pos:line="284" pos:column="9">/// If WillReturnDefaultValues is false, this will include only default options.</comment>
+        <comment type="line" pos:line="285" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="286" pos:column="9">/// &lt;returns&gt;The enumerator&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="287" pos:column="9">public</specifier> <name><name pos:line="287" pos:column="16">IEnumerator</name><argument_list pos:line="287" pos:column="27">&lt;<argument><name><name pos:line="287" pos:column="28">KeyValuePair</name><argument_list pos:line="287" pos:column="40">&lt;<argument><name pos:line="287" pos:column="41">TKey</name></argument>, <argument><name pos:line="287" pos:column="47">TValue</name></argument>&gt;</argument_list></name></argument>&gt;</argument_list></name></type> <name pos:line="287" pos:column="56">GetEnumerator</name><parameter_list pos:line="287" pos:column="69">()</parameter_list>
+        <block pos:line="288" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="289" pos:column="13">var</name></type> <name pos:line="289" pos:column="17">kvps</name> <init pos:line="289" pos:column="22">= <expr><linq><from pos:line="289" pos:column="24">from <expr><name pos:line="289" pos:column="29">key</name></expr> <in pos:line="289" pos:column="33">in <expr><op:operator pos:line="289" pos:column="36">(</op:operator><name pos:line="289" pos:column="37">this</name> <op:operator pos:line="289" pos:column="42">as</op:operator> <name><name pos:line="289" pos:column="45">IDictionary</name><argument_list pos:line="289" pos:column="56">&lt;<argument><name pos:line="289" pos:column="57">TKey</name></argument>, <argument><name pos:line="289" pos:column="63">TValue</name></argument>&gt;</argument_list></name><op:operator pos:line="289" pos:column="70">)</op:operator><op:operator pos:line="289" pos:column="71">.</op:operator><name pos:line="289" pos:column="72">Keys</name></expr></in></from>
+                       <let pos:line="290" pos:column="24">let <expr><name pos:line="290" pos:column="28">val</name> <op:operator pos:line="290" pos:column="32">=</op:operator> <call><name><name pos:line="290" pos:column="34">options</name><op:operator pos:line="290" pos:column="41">.</op:operator><name pos:line="290" pos:column="42">ContainsKey</name></name><argument_list pos:line="290" pos:column="53">(<argument><expr><name pos:line="290" pos:column="54">key</name></expr></argument>)</argument_list></call> <op:operator pos:line="290" pos:column="59">?</op:operator> <name><name pos:line="290" pos:column="61">options</name><index pos:line="290" pos:column="68">[<expr><name pos:line="290" pos:column="69">key</name></expr>]</index></name> : <name><name pos:line="290" pos:column="76">defaults</name><index pos:line="290" pos:column="84">[<expr><name pos:line="290" pos:column="85">key</name></expr>]</index></name></expr></let>
+                       <select pos:line="291" pos:column="24">select <expr><op:operator pos:line="291" pos:column="31">new</op:operator> <call><name><name pos:line="291" pos:column="35">KeyValuePair</name><argument_list pos:line="291" pos:column="47">&lt;<argument><name pos:line="291" pos:column="48">TKey</name></argument>, <argument><name pos:line="291" pos:column="54">TValue</name></argument>&gt;</argument_list></name><argument_list pos:line="291" pos:column="61">(<argument><expr><name pos:line="291" pos:column="62">key</name></expr></argument>, <argument><expr><name pos:line="291" pos:column="67">val</name></expr></argument>)</argument_list></call></expr></select></linq></expr></init></decl>;</decl_stmt>
+            <return pos:line="292" pos:column="13">return <expr><call><name><name pos:line="292" pos:column="20">kvps</name><op:operator pos:line="292" pos:column="24">.</op:operator><name pos:line="292" pos:column="25">GetEnumerator</name></name><argument_list pos:line="292" pos:column="38">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <cpp:endregion pos:line="295" pos:column="9">#<cpp:directive pos:line="295" pos:column="10">endregion</cpp:directive></cpp:endregion>
+
+        <cpp:region pos:line="297" pos:column="9">#<cpp:directive pos:line="297" pos:column="10">region</cpp:directive> IEnumerable Members</cpp:region>
+
+        <function><type><name><name pos:line="299" pos:column="9">System</name><op:operator pos:line="299" pos:column="15">.</op:operator><name pos:line="299" pos:column="16">Collections</name><op:operator pos:line="299" pos:column="27">.</op:operator><name pos:line="299" pos:column="28">IEnumerator</name></name></type> <name><name pos:line="299" pos:column="40">System</name><op:operator pos:line="299" pos:column="46">.</op:operator><name pos:line="299" pos:column="47">Collections</name><op:operator pos:line="299" pos:column="58">.</op:operator><name pos:line="299" pos:column="59">IEnumerable</name><op:operator pos:line="299" pos:column="70">.</op:operator><name pos:line="299" pos:column="71">GetEnumerator</name></name><parameter_list pos:line="299" pos:column="84">()</parameter_list>
+        <block pos:line="300" pos:column="9">{
+            <return pos:line="301" pos:column="13">return <expr><op:operator pos:line="301" pos:column="20">(</op:operator><name pos:line="301" pos:column="21">this</name> <op:operator pos:line="301" pos:column="26">as</op:operator> <name><name pos:line="301" pos:column="29">IEnumerable</name><argument_list pos:line="301" pos:column="40">&lt;<argument><name><name pos:line="301" pos:column="41">KeyValuePair</name><argument_list pos:line="301" pos:column="53">&lt;<argument><name pos:line="301" pos:column="54">TKey</name></argument>, <argument><name pos:line="301" pos:column="60">TValue</name></argument>&gt;</argument_list></name></argument>&gt;</argument_list></name><op:operator pos:line="301" pos:column="68">)</op:operator><op:operator pos:line="301" pos:column="69">.</op:operator><call><name pos:line="301" pos:column="70">GetEnumerator</name><argument_list pos:line="301" pos:column="83">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <cpp:endregion pos:line="304" pos:column="9">#<cpp:directive pos:line="304" pos:column="10">endregion</cpp:directive></cpp:endregion>
+    }</block></class>
+}</block></namespace>
+</unit>

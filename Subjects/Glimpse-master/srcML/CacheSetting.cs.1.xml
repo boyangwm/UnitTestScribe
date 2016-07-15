@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Framework\CacheSetting.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">ComponentModel</name></name>;</using>
+
+<namespace pos:line="4" pos:column="1">namespace <name><name pos:line="4" pos:column="11">Glimpse</name><op:operator pos:line="4" pos:column="18">.</op:operator><name pos:line="4" pos:column="19">Core</name><op:operator pos:line="4" pos:column="23">.</op:operator><name pos:line="4" pos:column="24">Framework</name></name>
+<block pos:line="5" pos:column="1">{
+    <comment type="line" pos:line="6" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// The &lt;see cref="Enum"/&gt; providing type safe access to cache directives as defined in &lt;see href="http://www.w3.org/Protocols/rfc2616/rfc2616.html"&gt;Section 14.9 of RFC 2616&lt;/see&gt;.</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// &lt;/summary&gt;</comment>
+    <comment type="line" pos:line="9" pos:column="5">/// &lt;seealso href="http://www.w3.org/Protocols/rfc2616/rfc2616.html"&gt;Hypertext Transfer Protocol Protocol - HTTP/1.1&lt;/seealso&gt;</comment>
+    <enum><specifier pos:line="10" pos:column="5">public</specifier> enum <macro><name pos:line="10" pos:column="17">CacheSetting</name></macro>
+    <block pos:line="11" pos:column="5">{
+        <comment type="line" pos:line="12" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// Indicates that the response may be cached by any cache.</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><attribute pos:line="15" pos:column="9">[<expr><call><name pos:line="15" pos:column="10">Description</name><argument_list pos:line="15" pos:column="21">(<argument><expr><lit:literal type="string" pos:line="15" pos:column="22">"public"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute></type>
+        <name pos:line="16" pos:column="9">Public</name></decl></decl_stmt><op:operator pos:line="16" pos:column="15">,</op:operator>
+        
+        <comment type="line" pos:line="18" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="19" pos:column="9">/// Indicates that the response is intended for a single user and must not be cached by a shared cache. </comment>
+        <comment type="line" pos:line="20" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><attribute pos:line="21" pos:column="9">[<expr><call><name pos:line="21" pos:column="10">Description</name><argument_list pos:line="21" pos:column="21">(<argument><expr><lit:literal type="string" pos:line="21" pos:column="22">"private"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute></type>
+        <name pos:line="22" pos:column="9">Private</name></decl></decl_stmt><op:operator pos:line="22" pos:column="16">,</op:operator>
+
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// Indicates that the response should not be cached.</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><attribute pos:line="27" pos:column="9">[<expr><call><name pos:line="27" pos:column="10">Description</name><argument_list pos:line="27" pos:column="21">(<argument><expr><lit:literal type="string" pos:line="27" pos:column="22">"no-cache"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute></type>
+        <name pos:line="28" pos:column="9">NoCache</name></decl></decl_stmt><op:operator pos:line="28" pos:column="16">,</op:operator>
+
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// Indicates that the response should not be stored for sensitivity purposes.</comment>
+        <comment type="line" pos:line="32" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><attribute pos:line="33" pos:column="9">[<expr><call><name pos:line="33" pos:column="10">Description</name><argument_list pos:line="33" pos:column="21">(<argument><expr><lit:literal type="string" pos:line="33" pos:column="22">"no-store"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute></type>
+        <name pos:line="34" pos:column="9">NoStore</name></decl></decl_stmt><op:operator pos:line="34" pos:column="16">,</op:operator>
+    }</block>
+<decl/></enum>}</block></namespace></unit>

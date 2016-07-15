@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\office10\msodig.h" pos:tabs="8"><comment type="block" format="doxygen" pos:line="1" pos:column="1">/******************************************************************************
+	File: msodig.h
+
+	Owner: HAILIU
+	Copyright (c): 1999 Microsoft Corp.
+
+	Digitial Signature for Office10
+*****************************************************************************/</comment>
+<cpp:pragma pos:line="9" pos:column="1">#<cpp:directive pos:line="9" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+
+<cpp:ifndef pos:line="11" pos:column="1">#<cpp:directive pos:line="11" pos:column="2">ifndef</cpp:directive> <name pos:line="11" pos:column="9">__MSODIG_H__</name></cpp:ifndef>
+<cpp:define pos:line="12" pos:column="1">#<cpp:directive pos:line="12" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="12" pos:column="9">__MSODIG_H__</name></cpp:macro></cpp:define>
+
+<cpp:include pos:line="14" pos:column="1">#<cpp:directive pos:line="14" pos:column="2">include</cpp:directive> <cpp:file pos:line="14" pos:column="10">&lt;wincrypt.h&gt;</cpp:file></cpp:include>
+
+
+<comment type="line" pos:line="17" pos:column="1">// flag to pass to IMsoSignatureSetClient::PistgGet to get different storages</comment>
+<comment type="line" pos:line="18" pos:column="1">// of the document</comment>
+<enum pos:line="19" pos:column="1">enum
+	<block pos:line="20" pos:column="9">{
+	<decl><name pos:line="21" pos:column="9">msofdsstgLoad</name> <init pos:line="21" pos:column="23">= <expr><lit:literal type="number" pos:line="21" pos:column="25">0</lit:literal></expr></init></decl><op:operator pos:line="21" pos:column="26">,</op:operator>  <comment type="line" pos:line="21" pos:column="29">// the document storage to load any existing signature</comment>
+						<comment type="line" pos:line="22" pos:column="49">// this is called when the signature tab is initialized</comment>
+	<decl><name pos:line="23" pos:column="9">msofdsstgAdd</name></decl><op:operator pos:line="23" pos:column="21">,</op:operator>       <comment type="line" pos:line="23" pos:column="29">// the document storage to add signatures to, client should</comment>
+					  	<comment type="line" pos:line="24" pos:column="49">// app should take this opportunity to prompt user for saving</comment>
+					  	<comment type="line" pos:line="25" pos:column="49">// never saved document (or save dirty document)</comment>
+	<decl><name pos:line="26" pos:column="9">msofdsstgCommit</name></decl><op:operator pos:line="26" pos:column="24">,</op:operator>    <comment type="line" pos:line="26" pos:column="29">// the document storage to write the signatures to</comment>
+	<decl><name pos:line="27" pos:column="9">msofdsstgRemove</name></decl><op:operator pos:line="27" pos:column="24">,</op:operator>    <comment type="line" pos:line="27" pos:column="29">// we are about to delete a signature, ask for an stg that</comment>
+	                    <comment type="line" pos:line="28" pos:column="29">// is writable.</comment>
+	}</block>;</enum>
+
+	
+<decl_stmt><decl><type><name pos:line="32" pos:column="1">interface</name></type> <name pos:line="32" pos:column="11">IMsoSignature</name></decl>;</decl_stmt>
+<decl_stmt><decl><type><name pos:line="33" pos:column="1">interface</name></type> <name pos:line="33" pos:column="11">IMsoSignatureSet</name></decl>;</decl_stmt>
+<decl_stmt><decl><type><name pos:line="34" pos:column="1">interface</name></type> <name pos:line="34" pos:column="11">IMsoSignatureSetClient</name></decl>;</decl_stmt>
+
+
+<cpp:ifndef pos:line="37" pos:column="1">#<cpp:directive pos:line="37" pos:column="2">ifndef</cpp:directive> <name pos:line="37" pos:column="9">MSO_NO_INTERFACES</name></cpp:ifndef>
+<cpp:undef pos:line="38" pos:column="1">#<cpp:directive pos:line="38" pos:column="2">undef</cpp:directive>  <name pos:line="38" pos:column="9">INTERFACE</name></cpp:undef>
+<cpp:define pos:line="39" pos:column="1">#<cpp:directive pos:line="39" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="39" pos:column="9">INTERFACE</name></cpp:macro>  <cpp:value pos:line="39" pos:column="20">IMsoSignature</cpp:value></cpp:define>
+
+<macro><name pos:line="41" pos:column="1">DECLARE_INTERFACE</name><argument_list pos:line="41" pos:column="18">(<argument pos:line="41" pos:column="19">IMsoSignature</argument>)</argument_list></macro>
+<block pos:line="42" pos:column="1">{
+	<comment type="line" pos:line="43" pos:column="9">// returns TRUE iff the signature is valid wrt the storage passed in</comment>
+	<comment type="line" pos:line="44" pos:column="9">// MsoFCreateSignatureSet</comment>
+	<macro><name pos:line="45" pos:column="9">MSOMETHOD_</name><argument_list pos:line="45" pos:column="19">(<argument pos:line="45" pos:column="20">BOOL</argument>, <argument pos:line="45" pos:column="26">FValid</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="45" pos:column="33">(</op:operator><name pos:line="45" pos:column="34">THIS</name><op:operator pos:line="45" pos:column="38">)</op:operator> <name pos:line="45" pos:column="40">PURE</name></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="47" pos:column="9">// use the method to get the name of the singer</comment>
+	<comment type="line" pos:line="48" pos:column="9">// [out] pwz --&gt; *pwz is the name of the signer. *pwz could point to an internal</comment>
+	<comment type="line" pos:line="49" pos:column="9">//               buffer of the signature object, so the caller should </comment>
+	<comment type="line" pos:line="50" pos:column="9">//               NOT change, release, realloc the pointer.</comment>
+	<comment type="line" pos:line="51" pos:column="9">// the method returns the number of chars (excluding NULL) of *pwz.</comment>
+	<macro><name pos:line="52" pos:column="9">MSOMETHOD_</name><argument_list pos:line="52" pos:column="19">(<argument pos:line="52" pos:column="20">UINT</argument>, <argument pos:line="52" pos:column="26">CchGetWzSigner</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="52" pos:column="41">(</op:operator><name pos:line="52" pos:column="42">THIS_</name> <name pos:line="52" pos:column="48">LPCWSTR</name> <op:operator pos:line="52" pos:column="56">*</op:operator><name pos:line="52" pos:column="57">pwz</name><op:operator pos:line="52" pos:column="60">)</op:operator> <name pos:line="52" pos:column="62">PURE</name></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="54" pos:column="9">// use the method to get the name of the issuer</comment>
+	<comment type="line" pos:line="55" pos:column="9">// [out] pwz --&gt; *pwz is the name of the issuer. *pwz could point to an internal</comment>
+	<comment type="line" pos:line="56" pos:column="9">//               buffer of the signature object, so the caller should </comment>
+	<comment type="line" pos:line="57" pos:column="9">//               NOT change, release, realloc the pointer.</comment>
+	<comment type="line" pos:line="58" pos:column="9">// the method returns the number of chars (excluding NULL) of *pwz.</comment>
+	<macro><name pos:line="59" pos:column="9">MSOMETHOD_</name><argument_list pos:line="59" pos:column="19">(<argument pos:line="59" pos:column="20">UINT</argument>, <argument pos:line="59" pos:column="26">CchGetWzIssuer</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="59" pos:column="41">(</op:operator><name pos:line="59" pos:column="42">THIS_</name> <name pos:line="59" pos:column="48">LPCWSTR</name> <op:operator pos:line="59" pos:column="56">*</op:operator><name pos:line="59" pos:column="57">pwz</name><op:operator pos:line="59" pos:column="60">)</op:operator> <name pos:line="59" pos:column="62">PURE</name></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="61" pos:column="9">// returns the expiration date of the signature certificate in a FILETIME.</comment>
+	<comment type="line" pos:line="62" pos:column="9">// The caller should not modify the returned FILETIME, since this may come</comment>
+	<comment type="line" pos:line="63" pos:column="9">// from the signature's internal data structure</comment>
+	<macro><name pos:line="64" pos:column="9">MSOMETHOD_</name><argument_list pos:line="64" pos:column="19">(<argument pos:line="64" pos:column="20">const FILETIME*</argument>, <argument pos:line="64" pos:column="37">PftExpire</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="64" pos:column="47">(</op:operator><name pos:line="64" pos:column="48">THIS</name><op:operator pos:line="64" pos:column="52">)</op:operator> <name pos:line="64" pos:column="54">PURE</name></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="66" pos:column="9">// the user can choose to attach the signature certificate to the signed doc</comment>
+	<comment type="line" pos:line="67" pos:column="9">// Use this method to find out whether user has choose to do so.</comment>
+	<macro><name pos:line="68" pos:column="9">MSOMETHOD_</name><argument_list pos:line="68" pos:column="19">(<argument pos:line="68" pos:column="20">BOOL</argument>, <argument pos:line="68" pos:column="26">FAttachCertGet</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="68" pos:column="41">(</op:operator><name pos:line="68" pos:column="42">THIS</name><op:operator pos:line="68" pos:column="46">)</op:operator> <name pos:line="68" pos:column="48">PURE</name></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="70" pos:column="9">// change the attach signature certificate properpty.</comment>
+	<comment type="line" pos:line="71" pos:column="9">// [in] fAttach --&gt; TRUE to attach certificate</comment>
+	<comment type="line" pos:line="72" pos:column="9">// returns the old property value.</comment>
+	<macro><name pos:line="73" pos:column="9">MSOMETHOD_</name><argument_list pos:line="73" pos:column="19">(<argument pos:line="73" pos:column="20">BOOL</argument>, <argument pos:line="73" pos:column="26">FAttachCertSet</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="73" pos:column="41">(</op:operator><name pos:line="73" pos:column="42">THIS_</name> <name pos:line="73" pos:column="48">BOOL</name> <name pos:line="73" pos:column="53">fAttach</name><op:operator pos:line="73" pos:column="60">)</op:operator> <name pos:line="73" pos:column="62">PURE</name></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="75" pos:column="9">// The client app can attach a DWORD value to be saved with a signature.</comment>
+	<comment type="line" pos:line="76" pos:column="9">// This value can be used to keep versioning info. For example, Word 11 may</comment>
+	<comment type="line" pos:line="77" pos:column="9">// decide to hash plain-text view in addition to the disk file image. Word 11</comment>
+	<comment type="line" pos:line="78" pos:column="9">// still needs to verify signature created by word 10, so word 11 must be</comment>
+	<comment type="line" pos:line="79" pos:column="9">// able to tell v10 signature and v11 signature apart. Word 10 can set</comment>
+	<comment type="line" pos:line="80" pos:column="9">// dwVersion to 1, and word11 can set the Version to 2.</comment>
+	<comment type="line" pos:line="81" pos:column="9">//</comment>
+	<comment type="line" pos:line="82" pos:column="9">// The default value of the Version is 0</comment>
+	<comment type="line" pos:line="83" pos:column="9">//</comment>
+	<comment type="line" pos:line="84" pos:column="9">// DwVersionSet returns the old Version value</comment>
+	<macro><name pos:line="85" pos:column="9">MSOMETHOD_</name><argument_list pos:line="85" pos:column="19">(<argument pos:line="85" pos:column="20">DWORD</argument>, <argument pos:line="85" pos:column="27">DwVersionGet</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="85" pos:column="40">(</op:operator><name pos:line="85" pos:column="41">THIS</name><op:operator pos:line="85" pos:column="45">)</op:operator> <name pos:line="85" pos:column="47">PURE</name></expr>;</expr_stmt>
+	<macro><name pos:line="86" pos:column="9">MSOMETHOD_</name><argument_list pos:line="86" pos:column="19">(<argument pos:line="86" pos:column="20">DWORD</argument>, <argument pos:line="86" pos:column="27">DwVersionSet</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="86" pos:column="40">(</op:operator><name pos:line="86" pos:column="41">THIS_</name> <name pos:line="86" pos:column="47">DWORD</name> <name pos:line="86" pos:column="53">dwVersion</name><op:operator pos:line="86" pos:column="62">)</op:operator> <name pos:line="86" pos:column="64">PURE</name></expr>;</expr_stmt>
+}</block><empty_stmt pos:line="87" pos:column="2">;</empty_stmt>
+<cpp:endif pos:line="88" pos:column="1">#<cpp:directive pos:line="88" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="88" pos:column="8">// MSO_NO_INTERFACES</comment>
+
+
+<cpp:ifndef pos:line="91" pos:column="1">#<cpp:directive pos:line="91" pos:column="2">ifndef</cpp:directive> <name pos:line="91" pos:column="9">MSO_NO_INTERFACES</name></cpp:ifndef>
+<cpp:undef pos:line="92" pos:column="1">#<cpp:directive pos:line="92" pos:column="2">undef</cpp:directive>  <name pos:line="92" pos:column="9">INTERFACE</name></cpp:undef>
+<cpp:define pos:line="93" pos:column="1">#<cpp:directive pos:line="93" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="93" pos:column="9">INTERFACE</name></cpp:macro>  <cpp:value pos:line="93" pos:column="20">IMsoSignatureSet</cpp:value></cpp:define>
+
+<macro><name pos:line="95" pos:column="1">DECLARE_INTERFACE</name><argument_list pos:line="95" pos:column="18">(<argument pos:line="95" pos:column="19">IMsoSignatureSet</argument>)</argument_list></macro>
+<block pos:line="96" pos:column="1">{
+	<comment type="line" pos:line="97" pos:column="9">// Standard FDebugMessage method, with ppv passed in lParam.</comment>
+	<decl_stmt><decl><type><name pos:line="98" pos:column="9">MSODEBUGMETHOD</name></type>
+
+	<comment type="line" pos:line="100" pos:column="9">// The client app call this method to release the signature set.</comment>
+	<comment type="line" pos:line="101" pos:column="9">// The client's IMsoSignatureSetClient::Release will be called.</comment>
+	<comment type="line" pos:line="102" pos:column="9">// Any IMsoSignature created thru this signature set is no longer</comment>
+	<comment type="line" pos:line="103" pos:column="9">// usable after this method returns.</comment>
+	<name pos:line="104" pos:column="9">MSOMETHOD_</name><argument_list pos:line="104" pos:column="19">(<argument><expr><name pos:line="104" pos:column="20">VOID</name></expr></argument>, <argument><expr><name pos:line="104" pos:column="26">Release</name></expr></argument>)</argument_list><argument_list pos:line="104" pos:column="34">(<argument><expr><name pos:line="104" pos:column="35">THIS</name></expr></argument>)</argument_list> <name pos:line="104" pos:column="41">PURE</name></decl>;</decl_stmt>
+
+	<comment type="line" pos:line="106" pos:column="9">// Return the number of signatures in this signature set. This</comment>
+	<comment type="line" pos:line="107" pos:column="9">// incluldes all previously exsiting (last save) signatures (</comment>
+	<comment type="line" pos:line="108" pos:column="9">// valid and invalid), and all the new signatures added in the</comment>
+	<comment type="line" pos:line="109" pos:column="9">// current session.</comment>
+	<macro><name pos:line="110" pos:column="9">MSOMETHOD_</name><argument_list pos:line="110" pos:column="19">(<argument pos:line="110" pos:column="20">UINT</argument>, <argument pos:line="110" pos:column="26">CSignature</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="110" pos:column="37">(</op:operator><name pos:line="110" pos:column="38">THIS</name><op:operator pos:line="110" pos:column="42">)</op:operator> <name pos:line="110" pos:column="44">PURE</name></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="112" pos:column="9">// Use this method get any signature in this signature set. </comment>
+	<comment type="line" pos:line="113" pos:column="9">// [in] dwIndex --&gt; 0 &lt;= dwIndex &lt; CSignature</comment>
+	<comment type="line" pos:line="114" pos:column="9">// [out] pps --&gt; if successful, *pps is the signature object specified</comment>
+	<comment type="line" pos:line="115" pos:column="9">//               by dwIndex</comment>
+	<comment type="line" pos:line="116" pos:column="9">// The client app can use this method to enumerate signatures in a set</comment>
+	<comment type="line" pos:line="117" pos:column="9">// For example:</comment>
+	<comment type="line" pos:line="118" pos:column="9">//     dwIndex = 0;</comment>
+	<comment type="line" pos:line="119" pos:column="9">//     while (piSignatureSet-&gt;FGetSignature(dwIndex, &amp;pis))</comment>
+	<comment type="line" pos:line="120" pos:column="9">//        {</comment>
+	<comment type="line" pos:line="121" pos:column="9">//        if (!pis-&gt;FValid())</comment>
+	<comment type="line" pos:line="122" pos:column="9">//           Alert("Signaure not valid");</comment>
+	<comment type="line" pos:line="123" pos:column="9">//        dwIndex++;</comment>
+	<comment type="line" pos:line="124" pos:column="9">//        }</comment>
+	<comment type="line" pos:line="125" pos:column="9">// NOTE: the client should not call FAddSignature during the enumeration</comment>
+	<comment type="line" pos:line="126" pos:column="9">//       loop. The meaning of the dwIndex is getting changed when signature</comment>
+	<comment type="line" pos:line="127" pos:column="9">//       is added. This may cause infinite loop.</comment>
+	<macro><name pos:line="128" pos:column="9">MSOMETHOD_</name><argument_list pos:line="128" pos:column="19">(<argument pos:line="128" pos:column="20">BOOL</argument>, <argument pos:line="128" pos:column="26">FGetSignature</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="128" pos:column="40">(</op:operator><name pos:line="128" pos:column="41">THIS_</name> <name pos:line="128" pos:column="47">DWORD</name> <name pos:line="128" pos:column="53">dwIndex</name><op:operator pos:line="128" pos:column="60">,</op:operator>
+		<name pos:line="129" pos:column="17">interface</name> <name pos:line="129" pos:column="27">IMsoSignature</name> <op:operator pos:line="129" pos:column="41">*</op:operator><op:operator pos:line="129" pos:column="42">*</op:operator><name pos:line="129" pos:column="43">pps</name><op:operator pos:line="129" pos:column="46">)</op:operator> <name pos:line="129" pos:column="48">PURE</name></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="131" pos:column="9">// Use this method to let the user choose a signature to add. This method</comment>
+	<comment type="line" pos:line="132" pos:column="9">// brings up a modal dialog with a list of signatrue certificate the user can</comment>
+	<comment type="line" pos:line="133" pos:column="9">// choose to add the document. The user can bring up sub dialogs from this dialog.</comment>
+	<comment type="line" pos:line="134" pos:column="9">// For example, the "view" button brings up the certficate view dialog; the "wizard"</comment>
+	<comment type="line" pos:line="135" pos:column="9">// button brings up the certificate wizard (so user can manage his certificate store)</comment>
+	<comment type="line" pos:line="136" pos:column="9">//</comment>
+	<comment type="line" pos:line="137" pos:column="9">// [in] hwnd --&gt; The parent window of the dialog</comment>
+	<comment type="line" pos:line="138" pos:column="9">// [out] pps --&gt; If user chose a signature certificate and click ok, *pps is the</comment>
+	<comment type="line" pos:line="139" pos:column="9">//               the signature object of that the user chosed. Otherwize *pps == NULL</comment>
+	<comment type="line" pos:line="140" pos:column="9">// If user ok the dialog, FAddSignature returns TURE, and *pps is the signature chosen.</comment>
+	<comment type="line" pos:line="141" pos:column="9">// If user cancel the dialog, FAddSignature returns TRUE, but *pps is NULL.</comment>
+	<comment type="line" pos:line="142" pos:column="9">// If there is an error, FAddSignature return FALSE.</comment>
+	<macro><name pos:line="143" pos:column="9">MSOMETHOD_</name><argument_list pos:line="143" pos:column="19">(<argument pos:line="143" pos:column="20">BOOL</argument>, <argument pos:line="143" pos:column="26">FAddSignature</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="143" pos:column="40">(</op:operator><name pos:line="143" pos:column="41">THIS_</name> <name pos:line="143" pos:column="47">HWND</name> <name pos:line="143" pos:column="52">hwnd</name><op:operator pos:line="143" pos:column="56">,</op:operator>
+		<name pos:line="144" pos:column="17">interface</name> <name pos:line="144" pos:column="27">IMsoSignature</name> <op:operator pos:line="144" pos:column="41">*</op:operator><op:operator pos:line="144" pos:column="42">*</op:operator><name pos:line="144" pos:column="43">pps</name><op:operator pos:line="144" pos:column="46">)</op:operator> <name pos:line="144" pos:column="48">PURE</name></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="146" pos:column="9">// Call this method to commit all the signatures to the storage. The signatures are</comment>
+	<comment type="line" pos:line="147" pos:column="9">// serialized into a stream named "_signatures" (not localized) under the root of the</comment>
+	<comment type="line" pos:line="148" pos:column="9">// storage. Only valid signatures are serialized, all invalid signatures are discarded.</comment>
+	<comment type="line" pos:line="149" pos:column="9">// [in] pistg --&gt; the root storage that the signature stream will live. If there is a</comment>
+	<comment type="line" pos:line="150" pos:column="9">//                signatrue stream under the stg already, it is overwritten. This stg</comment>
+	<comment type="line" pos:line="151" pos:column="9">//                can be different from the one used to create the signature set, this</comment>
+	<comment type="line" pos:line="152" pos:column="9">//                so because on Save, the client app may save the doc to a tmp file and then</comment>
+	<comment type="line" pos:line="153" pos:column="9">//                copy the tmp file over the original. In this case, pistg here should point</comment>
+	<comment type="line" pos:line="154" pos:column="9">//                to the temp file</comment>
+	<comment type="line" pos:line="155" pos:column="9">// return value --&gt; S_OK the signatures were commited</comment>
+	<comment type="line" pos:line="156" pos:column="9">//              --&gt; S_FALSE the document is dirty and HrCommit did nothing so we don't lose</comment>
+	<comment type="line" pos:line="157" pos:column="9">//                  any previously existing signatures</comment>
+	<function_decl><type><name pos:line="158" pos:column="9">MSOMETHOD</name></type>(<name pos:line="158" pos:column="19">HrCommit</name>)<parameter_list pos:line="158" pos:column="28">(<param><decl><type><name pos:line="158" pos:column="29">THIS_</name> <name pos:line="158" pos:column="35">LPSTORAGE</name></type> <name pos:line="158" pos:column="45">pistg</name></decl></param>)</parameter_list> <name pos:line="158" pos:column="52">PURE</name>;</function_decl>
+
+	<comment type="line" pos:line="160" pos:column="9">// The client should only call this method in its implementation of FProcessExtraData.</comment>
+	<comment type="line" pos:line="161" pos:column="9">// See comments below for IMsoSignatureSetClient::FProcessExtraData for reaons why this</comment>
+	<comment type="line" pos:line="162" pos:column="9">// is so.</comment>
+	<comment type="line" pos:line="163" pos:column="9">// [in] pb --&gt; poniter to the extra data to hash</comment>
+	<comment type="line" pos:line="164" pos:column="9">// [in] cb --&gt; number of bytes to hash</comment>
+	<comment type="line" pos:line="165" pos:column="9">// return TRUE if successful.</comment>
+	<macro><name pos:line="166" pos:column="9">MSOMETHOD_</name><argument_list pos:line="166" pos:column="19">(<argument pos:line="166" pos:column="20">BOOL</argument>, <argument pos:line="166" pos:column="26">FHashExtraData</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="166" pos:column="41">(</op:operator><name pos:line="166" pos:column="42">THIS_</name> <name pos:line="166" pos:column="48">PBYTE</name> <name pos:line="166" pos:column="54">pb</name><op:operator pos:line="166" pos:column="56">,</op:operator> <name pos:line="166" pos:column="58">UINT</name> <name pos:line="166" pos:column="63">cb</name><op:operator pos:line="166" pos:column="65">)</op:operator> <name pos:line="166" pos:column="67">PURE</name></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="168" pos:column="9">// choose whether newly added signatures for this set will have their certificate</comment>
+	<comment type="line" pos:line="169" pos:column="9">// chain attached when the HrCommit is called. This is used by the signature dialog.</comment>
+	<comment type="line" pos:line="170" pos:column="9">// It only effects signatures that has been added to this point. It doesn't effect</comment>
+	<comment type="line" pos:line="171" pos:column="9">// signatures added after AttachCertForNewItems is called</comment>
+	<macro><name pos:line="172" pos:column="9">MSOMETHOD_</name><argument_list pos:line="172" pos:column="19">(<argument pos:line="172" pos:column="20">VOID</argument>, <argument pos:line="172" pos:column="26">AttachCertForNewItems</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="172" pos:column="48">(</op:operator><name pos:line="172" pos:column="49">THIS_</name> <name pos:line="172" pos:column="55">BOOL</name> <name pos:line="172" pos:column="60">fAttach</name><op:operator pos:line="172" pos:column="67">)</op:operator> <name pos:line="172" pos:column="69">PURE</name></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="174" pos:column="9">// delete the signature from the set</comment>
+	<comment type="line" pos:line="175" pos:column="9">// [in] pis --&gt; the signature to delete, after this function returns the</comment>
+	<comment type="line" pos:line="176" pos:column="9">// IMsoSignature pointed by pis is undefined and you should not call it</comment>
+	<comment type="line" pos:line="177" pos:column="9">// any more.</comment>
+	<function_decl><type><name pos:line="178" pos:column="9">MSOMETHOD</name></type>(<name pos:line="178" pos:column="19">HrDelete</name>)<parameter_list pos:line="178" pos:column="28">(<param><decl><type><name pos:line="178" pos:column="29">THIS_</name> <name pos:line="178" pos:column="35">IMsoSignature</name><type:modifier pos:line="178" pos:column="48">*</type:modifier></type> <name pos:line="178" pos:column="50">pis</name></decl></param>)</parameter_list> <name pos:line="178" pos:column="55">PURE</name>;</function_decl>
+
+	<comment type="line" pos:line="180" pos:column="9">// only called by IMsoSignatureSetClient::HrFilterStream,when the client</comment>
+	<comment type="line" pos:line="181" pos:column="9">// wishes to filter out some bytes in the stream</comment>
+	<macro><name pos:line="182" pos:column="9">MSOMETHOD_</name><argument_list pos:line="182" pos:column="19">(<argument pos:line="182" pos:column="20">BOOL</argument>, <argument pos:line="182" pos:column="26">FHashBytes</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="182" pos:column="37">(</op:operator><name pos:line="182" pos:column="38">THIS_</name> <name pos:line="182" pos:column="44">HANDLE</name> <name pos:line="182" pos:column="51">hash</name><op:operator pos:line="182" pos:column="55">,</op:operator> <name pos:line="182" pos:column="57">LPBYTE</name> <name pos:line="182" pos:column="64">pb</name><op:operator pos:line="182" pos:column="66">,</op:operator> <name pos:line="182" pos:column="68">DWORD</name> <name pos:line="182" pos:column="74">cb</name><op:operator pos:line="182" pos:column="76">)</op:operator> <name pos:line="182" pos:column="78">PURE</name></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="184" pos:column="9">// Called when user wants to sign a dirty doc. In this case, the client</comment>
+	<comment type="line" pos:line="185" pos:column="9">// need to re-save the doc can call this method to gives us the new doc</comment>
+	<comment type="line" pos:line="186" pos:column="9">// storage. If the office code decides that the stg doesn't change, it returns</comment>
+	<comment type="line" pos:line="187" pos:column="9">// S_FALSE, if the stg does change, returns S_OK. If failed to reset, returns</comment>
+	<comment type="line" pos:line="188" pos:column="9">// FAILURE code (&lt;0)</comment>
+	<function_decl><type><name pos:line="189" pos:column="9">MSOMETHOD</name></type>(<name pos:line="189" pos:column="19">HrResetStgForSigning</name>)<parameter_list pos:line="189" pos:column="40">(<param><decl><type><name pos:line="189" pos:column="41">THIS_</name> <name pos:line="189" pos:column="47">IStorage</name> <type:modifier pos:line="189" pos:column="56">*</type:modifier></type><name pos:line="189" pos:column="57">pistg</name></decl></param>)</parameter_list> <name pos:line="189" pos:column="64">PURE</name>;</function_decl>
+
+	<comment type="line" pos:line="191" pos:column="9">// Called by the dlg proc to remove all the signatures added/removed during the</comment>
+	<comment type="line" pos:line="192" pos:column="9">// current dlg session.</comment>
+	<function_decl><type><name pos:line="193" pos:column="9">MSOMETHOD</name></type>(<name pos:line="193" pos:column="19">HrRevert</name>)<parameter_list pos:line="193" pos:column="28">(<param><decl><type><name pos:line="193" pos:column="29">THIS</name></type></decl></param>)</parameter_list> <name pos:line="193" pos:column="35">PURE</name>;</function_decl>
+
+	<comment type="line" pos:line="195" pos:column="9">// For ppt read-only scenario. ppt needs to close the document stg after the open.</comment>
+	<comment type="line" pos:line="196" pos:column="9">// To use this method, ppt must returns FALSE in its</comment>
+	<comment type="line" pos:line="197" pos:column="9">// IMsoSignatureSetClient::FReleaseStorageRef so we will know to create a copy of</comment>
+	<comment type="line" pos:line="198" pos:column="9">// the storage ourselves during the creation of the signature set. Ppt can then</comment>
+	<comment type="line" pos:line="199" pos:column="9">// cal HrHandsOffStorage and we will release our reference on the storage.</comment>
+	<function_decl><type><name pos:line="200" pos:column="9">MSOMETHOD</name></type>(<name pos:line="200" pos:column="19">HrHandsOffStorage</name>)<parameter_list pos:line="200" pos:column="37">(<param><decl><type><name pos:line="200" pos:column="38">THIS</name></type></decl></param>)</parameter_list> <name pos:line="200" pos:column="44">PURE</name>;</function_decl>
+}</block><empty_stmt pos:line="201" pos:column="2">;</empty_stmt>
+<cpp:endif pos:line="202" pos:column="1">#<cpp:directive pos:line="202" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="202" pos:column="8">// MSO_NO_INTERFACES</comment>
+
+
+<enum pos:line="205" pos:column="1">enum
+	<block pos:line="206" pos:column="9">{
+	<decl><name pos:line="207" pos:column="9">msodigevtSSDispFreed</name> <init pos:line="207" pos:column="30">= <expr><lit:literal type="number" pos:line="207" pos:column="32">0</lit:literal></expr></init></decl><op:operator pos:line="207" pos:column="33">,</op:operator> <comment type="line" pos:line="207" pos:column="35">// let the client know that the dispatch object</comment>
+							  <comment type="line" pos:line="208" pos:column="59">// on the signature set is going to be freed.</comment>
+							  <comment type="line" pos:line="209" pos:column="59">// the client  should invalidate any cached pointer</comment>
+							  <comment type="line" pos:line="210" pos:column="59">// to this object</comment>
+	<decl><name pos:line="211" pos:column="9">msodigevtSSCommited</name></decl><op:operator pos:line="211" pos:column="28">,</op:operator>      <comment type="line" pos:line="211" pos:column="35">// fired when the signature set is commited</comment>
+	<decl><name pos:line="212" pos:column="9">msodigevtMax</name></decl>
+	}</block>;</enum>
+	
+<cpp:ifndef pos:line="215" pos:column="1">#<cpp:directive pos:line="215" pos:column="2">ifndef</cpp:directive> <name pos:line="215" pos:column="9">MSO_NO_INTERFACES</name></cpp:ifndef>
+<cpp:undef pos:line="216" pos:column="1">#<cpp:directive pos:line="216" pos:column="2">undef</cpp:directive>  <name pos:line="216" pos:column="9">INTERFACE</name></cpp:undef>
+<cpp:define pos:line="217" pos:column="1">#<cpp:directive pos:line="217" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="217" pos:column="9">INTERFACE</name></cpp:macro>  <cpp:value pos:line="217" pos:column="20">IMsoSignatureSetClient</cpp:value></cpp:define>
+
+<macro><name pos:line="219" pos:column="1">DECLARE_INTERFACE</name><argument_list pos:line="219" pos:column="18">(<argument pos:line="219" pos:column="19">IMsoSignatureSetClient</argument>)</argument_list></macro>
+<block pos:line="220" pos:column="1">{
+	<comment type="line" pos:line="221" pos:column="9">// office no longer needs the client interface</comment>
+	<comment type="line" pos:line="222" pos:column="9">// [in] pvClient --&gt; pvClient passed in MsoFCreateSignatureSet</comment>
+	<macro><name pos:line="223" pos:column="9">MSOMETHOD_</name><argument_list pos:line="223" pos:column="19">(<argument pos:line="223" pos:column="20">VOID</argument>, <argument pos:line="223" pos:column="26">Release</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="223" pos:column="34">(</op:operator><name pos:line="223" pos:column="35">THIS_</name> <name pos:line="223" pos:column="41">LPVOID</name> <name pos:line="223" pos:column="48">pvClient</name><op:operator pos:line="223" pos:column="56">)</op:operator> <name pos:line="223" pos:column="58">PURE</name></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="225" pos:column="9">// the client app should return FALSE iff the doc in question has not changed</comment>
+	<comment type="line" pos:line="226" pos:column="9">// (excluding changes to the signature stream, which the client should have</comment>
+	<comment type="line" pos:line="227" pos:column="9">// no knowledge of) since MsoFCreateSignatureSet. If the client returns TURE,</comment>
+	<comment type="line" pos:line="228" pos:column="9">// all signatures (newly added or existing) on the doc are invalidated. If the client</comment>
+	<comment type="line" pos:line="229" pos:column="9">// then commits the signature set, all signature data will be discarded. To add</comment>
+	<comment type="line" pos:line="230" pos:column="9">// signature back to the doc, the client must create a new signature set object.</comment>
+	<comment type="line" pos:line="231" pos:column="9">//</comment>
+	<comment type="line" pos:line="232" pos:column="9">// Note to implementer:</comment>
+	<comment type="line" pos:line="233" pos:column="9">// This should be fast (preferrably a bit check) since it will get called</comment>
+	<comment type="line" pos:line="234" pos:column="9">// a lot.</comment>
+	<macro><name pos:line="235" pos:column="9">MSOMETHOD_</name><argument_list pos:line="235" pos:column="19">(<argument pos:line="235" pos:column="20">BOOL</argument>, <argument pos:line="235" pos:column="26">FContentChanged</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="235" pos:column="42">(</op:operator><name pos:line="235" pos:column="43">THIS_</name> <name pos:line="235" pos:column="49">LPVOID</name> <name pos:line="235" pos:column="56">pvClient</name><op:operator pos:line="235" pos:column="64">)</op:operator> <name pos:line="235" pos:column="66">PURE</name></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="237" pos:column="9">// the signature set will call this method to get the doc's storage </comment>
+	<comment type="line" pos:line="238" pos:column="9">// [in] fdsstg --&gt; one of msofdsstgLoad, msofdsstgAdd, msofdsstgCommit</comment>
+	<comment type="line" pos:line="239" pos:column="9">// [in] pvClient --&gt; client specific data</comment>
+	<macro><name pos:line="240" pos:column="9">MSOMETHOD_</name><argument_list pos:line="240" pos:column="19">(<argument pos:line="240" pos:column="20">LPSTORAGE</argument>, <argument pos:line="240" pos:column="31">PistgGet</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="240" pos:column="40">(</op:operator><name pos:line="240" pos:column="41">THIS_</name> <name pos:line="240" pos:column="47">DWORD</name> <name pos:line="240" pos:column="53">fdsstg</name><op:operator pos:line="240" pos:column="59">,</op:operator> <name pos:line="240" pos:column="61">LPVOID</name> <name pos:line="240" pos:column="68">pvClient</name><op:operator pos:line="240" pos:column="76">)</op:operator> <name pos:line="240" pos:column="78">PURE</name></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="242" pos:column="9">// before office starts enumerate the storage, it calls FReleaseStorageRef with</comment>
+	<comment type="line" pos:line="243" pos:column="9">// fRelease to TRUE. The client should release all the exclusive references it has</comment>
+	<comment type="line" pos:line="244" pos:column="9">// on that storage (except the root stg) so the office code can open the children</comment>
+	<comment type="line" pos:line="245" pos:column="9">// elements of the storage. Once office code is done, it calls FReleaseStorageRef</comment>
+	<comment type="line" pos:line="246" pos:column="9">// with fRelease set to FALSE</comment>
+	<macro><name pos:line="247" pos:column="9">MSOMETHOD_</name><argument_list pos:line="247" pos:column="19">(<argument pos:line="247" pos:column="20">BOOL</argument>, <argument pos:line="247" pos:column="26">FReleaseStorageRef</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="247" pos:column="45">(</op:operator><name pos:line="247" pos:column="46">THIS_</name> <name pos:line="247" pos:column="52">BOOL</name> <name pos:line="247" pos:column="57">fRelease</name><op:operator pos:line="247" pos:column="65">,</op:operator> <name pos:line="247" pos:column="67">LPVOID</name> <name pos:line="247" pos:column="74">pvClient</name><op:operator pos:line="247" pos:column="82">)</op:operator> <name pos:line="247" pos:column="84">PURE</name></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="249" pos:column="9">// In addition to hashing the bits in the storage. Office code will calls this</comment>
+	<comment type="line" pos:line="250" pos:column="9">// method to ask the client app for other data to hash. For example, word can</comment>
+	<comment type="line" pos:line="251" pos:column="9">// hash the plain text of the document for added security. The client should call</comment>
+	<comment type="line" pos:line="252" pos:column="9">// IMsoSignatureSet::FHashExtraData to send the data back to the signature set.</comment>
+	<comment type="line" pos:line="253" pos:column="9">// This method is called once for each different hash algorithm for existing </comment>
+	<comment type="line" pos:line="254" pos:column="9">// signatures, and once per newly added signature.</comment>
+	<comment type="line" pos:line="255" pos:column="9">//</comment>
+	<comment type="line" pos:line="256" pos:column="9">// [in] pis --&gt; signature in question, the client app may want to call</comment>
+	<comment type="line" pos:line="257" pos:column="9">//              pis-&gt;DwVersionGet to check version info and call</comment>
+	<comment type="line" pos:line="258" pos:column="9">//              IMsoSignatureSet::FHashExtraData accordingly</comment>
+	<macro><name pos:line="259" pos:column="9">MSOMETHOD_</name><argument_list pos:line="259" pos:column="19">(<argument pos:line="259" pos:column="20">BOOL</argument>, <argument pos:line="259" pos:column="26">FProcessExtraData</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="259" pos:column="44">(</op:operator><name pos:line="259" pos:column="45">THIS_</name> <name pos:line="259" pos:column="51">IMsoSignature</name> <op:operator pos:line="259" pos:column="65">*</op:operator><name pos:line="259" pos:column="66">pis</name><op:operator pos:line="259" pos:column="69">,</op:operator> <name pos:line="259" pos:column="71">LPVOID</name> <name pos:line="259" pos:column="78">pvClient</name><op:operator pos:line="259" pos:column="86">)</op:operator> <name pos:line="259" pos:column="88">PURE</name></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="261" pos:column="9">// during file properties dialog, the office code will create a signature set</comment>
+	<comment type="line" pos:line="262" pos:column="9">// on-behalf of the client app. The following 2 methods, let office keep track</comment>
+	<comment type="line" pos:line="263" pos:column="9">// of the signature created.</comment>
+	<macro><name pos:line="264" pos:column="9">MSOMETHOD_</name><argument_list pos:line="264" pos:column="19">(<argument pos:line="264" pos:column="20">VOID</argument>, <argument pos:line="264" pos:column="26">SetSignatureSet</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="264" pos:column="42">(</op:operator><name pos:line="264" pos:column="43">THIS_</name> <name pos:line="264" pos:column="49">IMsoSignatureSet</name><op:operator pos:line="264" pos:column="65">*</op:operator> <name pos:line="264" pos:column="67">piss</name><op:operator pos:line="264" pos:column="71">,</op:operator> <name pos:line="264" pos:column="73">LPVOID</name> <name pos:line="264" pos:column="80">pvClient</name><op:operator pos:line="264" pos:column="88">)</op:operator> <name pos:line="264" pos:column="90">PURE</name></expr>;</expr_stmt>
+	<macro><name pos:line="265" pos:column="9">MSOMETHOD_</name><argument_list pos:line="265" pos:column="19">(<argument pos:line="265" pos:column="20">IMsoSignatureSet*</argument>, <argument pos:line="265" pos:column="39">GetSignatureSet</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="265" pos:column="55">(</op:operator><name pos:line="265" pos:column="56">THIS_</name> <name pos:line="265" pos:column="62">LPVOID</name> <name pos:line="265" pos:column="69">pvClient</name><op:operator pos:line="265" pos:column="77">)</op:operator> <name pos:line="265" pos:column="79">PURE</name></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="267" pos:column="9">// get the msoinst of from the client</comment>
+	<macro><name pos:line="268" pos:column="9">MSOMETHOD_</name><argument_list pos:line="268" pos:column="19">(<argument pos:line="268" pos:column="20">HMSOINST</argument>, <argument pos:line="268" pos:column="30">Hmsoinst</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="268" pos:column="39">(</op:operator><name pos:line="268" pos:column="40">THIS_</name> <name pos:line="268" pos:column="46">LPVOID</name> <name pos:line="268" pos:column="53">pvClient</name><op:operator pos:line="268" pos:column="61">)</op:operator> <name pos:line="268" pos:column="63">PURE</name></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="270" pos:column="9">// get the parent window from which we will put up the signature dialog</comment>
+	<macro><name pos:line="271" pos:column="9">MSOMETHOD_</name><argument_list pos:line="271" pos:column="19">(<argument pos:line="271" pos:column="20">HWND</argument>, <argument pos:line="271" pos:column="26">HwndParentForDlg</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="271" pos:column="43">(</op:operator><name pos:line="271" pos:column="44">THIS_</name> <name pos:line="271" pos:column="50">LPVOID</name> <name pos:line="271" pos:column="57">pvClient</name><op:operator pos:line="271" pos:column="65">)</op:operator> <name pos:line="271" pos:column="67">PURE</name></expr>;</expr_stmt>
+
+	<comment type="line" pos:line="273" pos:column="9">// give the client the opportunity to filter the stream we are about to hash</comment>
+	<comment type="line" pos:line="274" pos:column="9">// client should return E_NOTIMPL if it is not interested in filter the stream.</comment>
+	<comment type="line" pos:line="275" pos:column="9">// otherwise, client should read the stream, filtering out unnecessary bytes </comment>
+	<comment type="line" pos:line="276" pos:column="9">// and send the bytes to IMsoSignatureSet::HashBytes with the hash handle</comment>
+	<comment type="line" pos:line="277" pos:column="9">// XL will filter out the current user info in the workbook stream.</comment>
+	<comment type="line" pos:line="278" pos:column="9">// PPT will skip the pptuser stream altogether</comment>
+	<function_decl><type><name pos:line="279" pos:column="9">MSOMETHOD</name></type>(<name pos:line="279" pos:column="19">HrFilterStream</name>)<parameter_list pos:line="279" pos:column="34">(<param><decl><type><name pos:line="279" pos:column="35">THIS_</name> <name pos:line="279" pos:column="41">LPSTREAM</name></type> <name pos:line="279" pos:column="50">pistm</name></decl></param>, <param><decl><type><name pos:line="279" pos:column="57">LPCWSTR</name></type> <name pos:line="279" pos:column="65">cwzStmName</name></decl></param>,
+		<param><decl><type><name pos:line="280" pos:column="17">HANDLE</name></type> <name pos:line="280" pos:column="24">hash</name></decl></param>, <param><decl><type><name pos:line="280" pos:column="30">LPVOID</name></type> <name pos:line="280" pos:column="37">pvClient</name></decl></param>)</parameter_list> <name pos:line="280" pos:column="47">PURE</name>;</function_decl>
+
+	<comment type="line" pos:line="282" pos:column="9">// event notification</comment>
+	<macro><name pos:line="283" pos:column="9">MSOMETHOD_</name><argument_list pos:line="283" pos:column="19">(<argument pos:line="283" pos:column="20">VOID</argument>, <argument pos:line="283" pos:column="26">NotifyEvent</argument>)</argument_list></macro><expr_stmt><expr><op:operator pos:line="283" pos:column="38">(</op:operator><name pos:line="283" pos:column="39">THIS_</name> <name pos:line="283" pos:column="45">DWORD</name> <name pos:line="283" pos:column="51">dwEvt</name><op:operator pos:line="283" pos:column="56">,</op:operator> <name pos:line="283" pos:column="58">LPVOID</name> <name pos:line="283" pos:column="65">pvEvent</name><op:operator pos:line="283" pos:column="72">,</op:operator> <name pos:line="283" pos:column="74">LPVOID</name> <name pos:line="283" pos:column="81">pvClient</name><op:operator pos:line="283" pos:column="89">)</op:operator> <name pos:line="283" pos:column="91">PURE</name></expr>;</expr_stmt>
+}</block><empty_stmt pos:line="284" pos:column="2">;</empty_stmt>
+<cpp:endif pos:line="285" pos:column="1">#<cpp:directive pos:line="285" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="285" pos:column="8">// MSO_NO_INTERFACES</comment>
+
+
+<comment type="block" pos:line="288" pos:column="1">/*-----------------------------------------------------------------------------
+	MsoFCreateSignatureSet
+
+	We only sign storage. All the functionality is accessed by the client app 
+	through a signature set object. This is the API the client app will call to
+	create a signature set object.
+
+	[in] pistg --&gt; the storage that the client wants to sign and or verify exiting
+				 	signatures.
+	[in] pissc --&gt; the signature client interface implemented by the client app
+	[in] pvClient --&gt; client specific data structure, this is passed back to each
+					call to the signature set client interface.
+	[out] ppss --&gt; if successful, *ppss is the signature set created, otherwise
+					*ppss is not defined.
+	return TRUE if successful, FALSE otherwise. If return FALSE, *ppiss is
+	undefined.
+
+	The caller is responsible to call IMsoSignatureSet::Release when
+	it is done with the signature set object.
+
+	The caller is responsible to call IMsoSignatureSet::FDebugMessage during mem leak
+	checking.
+-------------------------------------------------------------------- HAILIU -*/</comment>
+<macro><name pos:line="311" pos:column="1">MSOAPI_</name><argument_list pos:line="311" pos:column="8">(<argument pos:line="311" pos:column="9">BOOL</argument>)</argument_list></macro> <macro><name pos:line="311" pos:column="15">MsoFCreateSignatureSet</name><argument_list pos:line="311" pos:column="37">(<argument pos:line="311" pos:column="38">LPSTORAGE pistg</argument>, <argument pos:line="311" pos:column="55">IMsoSignatureSetClient *pissc</argument>,
+	<argument pos:line="312" pos:column="9">LPVOID pvClient</argument>, <argument pos:line="312" pos:column="26">IMsoSignatureSet **ppiss</argument>)</argument_list></macro><empty_stmt pos:line="312" pos:column="51">;</empty_stmt>
+
+	
+<comment type="block" pos:line="315" pos:column="1">/*-----------------------------------------------------------------------------
+	MsoHrCreateSignatureSetDisp
+
+	Similar to MsoFCreateSignatureSet except that this API creates an IDispatch
+	object that is used to implement the object model. 
+	TODO (hailiu): The exact object model is still TBD.
+-------------------------------------------------------------------- HAILIU -*/</comment>
+<macro><name pos:line="322" pos:column="1">MSOAPI_</name><argument_list pos:line="322" pos:column="8">(<argument pos:line="322" pos:column="9">HRESULT</argument>)</argument_list></macro> <macro><name pos:line="322" pos:column="18">MsoHrCreateSignatureSetDisp</name><argument_list pos:line="322" pos:column="45">(<argument pos:line="322" pos:column="46">LPSTORAGE pistg</argument>,
+	<argument pos:line="323" pos:column="9">IMsoSignatureSetClient *pissc</argument>, <argument pos:line="323" pos:column="40">LPVOID pvClient</argument>, <argument pos:line="323" pos:column="57">IUnknown *punkParent</argument>,
+	<argument pos:line="324" pos:column="9">IDispatch **ppdisp</argument>)</argument_list></macro><empty_stmt pos:line="324" pos:column="28">;</empty_stmt>
+
+
+<comment type="block" pos:line="327" pos:column="1">/*-----------------------------------------------------------------------------
+	MsoFStgHasSignature
+
+	return TRUE if the passed pistg has an immediate child stream named
+	"_signatures". This means that the doc based on this stg has
+	digital signature info with it. This doesn't indicate the validness of those
+	info.
+
+	NOTE: The API has to open the sub stream in order to check its existence.
+	It is suggested that the client app cache the return result and avoid calling
+	it many times for performance reasons
+-------------------------------------------------------------------- HAILIU -*/</comment>
+<macro><name pos:line="339" pos:column="1">MSOAPI_</name><argument_list pos:line="339" pos:column="8">(<argument pos:line="339" pos:column="9">BOOL</argument>)</argument_list></macro> <macro><name pos:line="339" pos:column="15">MsoFStgHasSignature</name><argument_list pos:line="339" pos:column="34">(<argument pos:line="339" pos:column="35">LPSTORAGE pistg</argument>)</argument_list></macro><empty_stmt pos:line="339" pos:column="51">;</empty_stmt>
+
+
+<comment type="block" pos:line="342" pos:column="1">/*-----------------------------------------------------------------------------
+	MsoPissFromPdispSigSet
+
+	Given a IDispatch returned from MsoHrCreateSignatureSetDisp, return the
+	IMsoSignatureSet interface pointer contained in the IDipatch object.
+
+	Note: no addref is called on the IDispatch object, and the client should
+	not call IMsoSignatureSet::Release on the returned pointer, because this
+	will cause the IDispatch object to point to freed memory. Instead, use
+	AddRef/Release on the IDispatch interface pointer
+-------------------------------------------------------------------- HAILIU -*/</comment>
+<macro><name pos:line="353" pos:column="1">MSOAPI_</name><argument_list pos:line="353" pos:column="8">(<argument pos:line="353" pos:column="9">IMsoSignatureSet*</argument>)</argument_list></macro> <expr_stmt><expr><call><name pos:line="353" pos:column="28">MsoPissFromPdispSigSet</name><argument_list pos:line="353" pos:column="50">(<argument><expr><name pos:line="353" pos:column="51">IDispatch</name> <op:operator pos:line="353" pos:column="61">*</op:operator><name pos:line="353" pos:column="62">pdisp</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+
+
+<comment type="block" pos:line="357" pos:column="1">/*-----------------------------------------------------------------------------
+	MsoGetSignatrueStmName
+
+	wz must be at least long enough to fit vcwzSignatureStm in fundig.cpp
+-------------------------------------------------------------------- HAILIU -*/</comment>
+<macro><name pos:line="362" pos:column="1">MSOAPI_</name><argument_list pos:line="362" pos:column="8">(<argument pos:line="362" pos:column="9">void</argument>)</argument_list></macro> <macro><name pos:line="362" pos:column="15">MsoGetSignatrueStmName</name><argument_list pos:line="362" pos:column="37">(<argument pos:line="362" pos:column="38">LPWSTR wz</argument>)</argument_list></macro><empty_stmt pos:line="362" pos:column="48">;</empty_stmt>
+
+
+
+<cpp:if pos:line="366" pos:column="1">#<cpp:directive pos:line="366" pos:column="2">if</cpp:directive> <expr><name pos:line="366" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+<comment type="block" pos:line="367" pos:column="1">/*-----------------------------------------------------------------------------
+	MsoFDebugSignatureSetDisp
+
+	for mem leak detection
+	[in] pidisp --&gt; must be returned from previous call to 
+					MsoHrCreateSignatureSetDisp
+-------------------------------------------------------------------- HAILIU -*/</comment>
+<macro><name pos:line="374" pos:column="1">MSOAPI_</name><argument_list pos:line="374" pos:column="8">(<argument pos:line="374" pos:column="9">BOOL</argument>)</argument_list></macro> <macro><name pos:line="374" pos:column="15">MsoFDebugSignatureSetDisp</name><argument_list pos:line="374" pos:column="40">(<argument pos:line="374" pos:column="41">IDispatch *pidisp</argument>,
+	<argument pos:line="375" pos:column="9">HMSOINST hinst</argument>, <argument pos:line="375" pos:column="25">UINT uMsg</argument>, <argument pos:line="375" pos:column="36">WPARAM wparam</argument>, <argument pos:line="375" pos:column="51">LPARAM lparam</argument>)</argument_list></macro><empty_stmt pos:line="375" pos:column="65">;</empty_stmt>
+<cpp:else pos:line="376" pos:column="1">#<cpp:directive pos:line="376" pos:column="2">else</cpp:directive></cpp:else>
+<cpp:define pos:line="377" pos:column="1">#<cpp:directive pos:line="377" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="377" pos:column="9">MsoFDebugSignatureSetDisp</name><parameter_list pos:line="377" pos:column="34">(<param><type><name pos:line="377" pos:column="35">pdisp</name></type></param>, <param><type><name pos:line="377" pos:column="42">hinst</name></type></param>, <param><type><name pos:line="377" pos:column="49">uMsg</name></type></param>, <param><type><name pos:line="377" pos:column="55">wparam</name></type></param>, <param><type><name pos:line="377" pos:column="63">lparam</name></type></param>)</parameter_list></cpp:macro></cpp:define> 
+<cpp:endif pos:line="378" pos:column="1">#<cpp:directive pos:line="378" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="378" pos:column="8">// VSMSODEBUG</comment>
+
+<cpp:endif pos:line="380" pos:column="1">#<cpp:directive pos:line="380" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="380" pos:column="8">// __MSODIG_H__</comment>
+</unit>

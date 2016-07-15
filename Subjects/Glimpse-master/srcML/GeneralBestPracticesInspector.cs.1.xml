@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.WindowsAzure.Storage\Infrastructure\Inspections\GeneralBestPracticesInspector.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">System</name><op:operator pos:line="1" pos:column="13">.</op:operator><name pos:line="1" pos:column="14">Collections</name><op:operator pos:line="1" pos:column="25">.</op:operator><name pos:line="1" pos:column="26">Generic</name></name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Net</name></name>;</using>
+
+<namespace pos:line="4" pos:column="1">namespace <name><name pos:line="4" pos:column="11">Glimpse</name><op:operator pos:line="4" pos:column="18">.</op:operator><name pos:line="4" pos:column="19">WindowsAzure</name><op:operator pos:line="4" pos:column="31">.</op:operator><name pos:line="4" pos:column="32">Storage</name><op:operator pos:line="4" pos:column="39">.</op:operator><name pos:line="4" pos:column="40">Infrastructure</name><op:operator pos:line="4" pos:column="54">.</op:operator><name pos:line="4" pos:column="55">Inspections</name></name>
+<block pos:line="5" pos:column="1">{
+    <class><specifier pos:line="6" pos:column="5">public</specifier> class <name pos:line="6" pos:column="18">GeneralBestPracticesInspector</name>
+        <super pos:line="7" pos:column="9">: <name pos:line="7" pos:column="11">WindowsAzureStorageInspectorBase</name></super>
+    <block pos:line="8" pos:column="5">{
+        <function><type><specifier pos:line="9" pos:column="9">public</specifier> <specifier pos:line="9" pos:column="16">override</specifier> <name><name pos:line="9" pos:column="25">IEnumerable</name><argument_list pos:line="9" pos:column="36">&lt;<argument><name pos:line="9" pos:column="37">string</name></argument>&gt;</argument_list></name></type> <name pos:line="9" pos:column="45">Inspect</name><parameter_list pos:line="9" pos:column="52">()</parameter_list>
+        <block pos:line="10" pos:column="9">{
+            <if pos:line="11" pos:column="13">if <condition pos:line="11" pos:column="16">(<expr><name><name pos:line="11" pos:column="17">ServicePointManager</name><op:operator pos:line="11" pos:column="36">.</op:operator><name pos:line="11" pos:column="37">UseNagleAlgorithm</name></name></expr>)</condition><then pos:line="11" pos:column="55">
+            <block pos:line="12" pos:column="13">{
+                <return><specifier pos:line="13" pos:column="17">yield</specifier> return <expr><lit:literal type="string" pos:line="13" pos:column="30">"For optimal Windows Azure Storage throughput, it is best to set ServicePointManager.UseNagleAlgorithm = false"</lit:literal></expr>;</return>
+            }</block></then></if>
+
+            <if pos:line="16" pos:column="13">if <condition pos:line="16" pos:column="16">(<expr><name><name pos:line="16" pos:column="17">ServicePointManager</name><op:operator pos:line="16" pos:column="36">.</op:operator><name pos:line="16" pos:column="37">Expect100Continue</name></name></expr>)</condition><then pos:line="16" pos:column="55">
+            <block pos:line="17" pos:column="13">{
+                <return><specifier pos:line="18" pos:column="17">yield</specifier> return <expr><lit:literal type="string" pos:line="18" pos:column="30">"For optimal Windows Azure Storage throughput, it is best to set ServicePointManager.Expect100Continue = false"</lit:literal></expr>;</return>
+            }</block></then></if>
+
+            <if pos:line="21" pos:column="13">if <condition pos:line="21" pos:column="16">(<expr><name><name pos:line="21" pos:column="17">ServicePointManager</name><op:operator pos:line="21" pos:column="36">.</op:operator><name pos:line="21" pos:column="37">DefaultConnectionLimit</name></name> <op:operator pos:line="21" pos:column="60">&lt;</op:operator> <lit:literal type="number" pos:line="21" pos:column="62">100</lit:literal></expr>)</condition><then pos:line="21" pos:column="66">
+            <block pos:line="22" pos:column="13">{
+                <return><specifier pos:line="23" pos:column="17">yield</specifier> return <expr><lit:literal type="string" pos:line="23" pos:column="30">"For optimal Windows Azure Storage throughput, it is best to set ServicePointManager.DefaultConnectionLimit = 100 (or more)"</lit:literal></expr>;</return>
+            }</block></then></if>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

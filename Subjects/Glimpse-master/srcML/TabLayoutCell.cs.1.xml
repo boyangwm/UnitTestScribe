@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Tab\Assist\TabLayoutCell.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Core</name><op:operator pos:line="3" pos:column="23">.</op:operator><name pos:line="3" pos:column="24">Tab</name><op:operator pos:line="3" pos:column="27">.</op:operator><name pos:line="3" pos:column="28">Assist</name></name>
+<block pos:line="4" pos:column="1">{
+    <class><specifier pos:line="5" pos:column="5">public</specifier> class <name pos:line="5" pos:column="18">TabLayoutCell</name> <super pos:line="5" pos:column="32">: <name pos:line="5" pos:column="34">ITabBuild</name></super>
+    <block pos:line="6" pos:column="5">{
+        <constructor><specifier pos:line="7" pos:column="9">public</specifier> <name pos:line="7" pos:column="16">TabLayoutCell</name><parameter_list pos:line="7" pos:column="29">(<param><decl><type><name pos:line="7" pos:column="30">int</name></type> <name pos:line="7" pos:column="34">cell</name></decl></param>)</parameter_list>
+        <block pos:line="8" pos:column="9">{
+            <if pos:line="9" pos:column="13">if <condition pos:line="9" pos:column="16">(<expr><name pos:line="9" pos:column="17">cell</name> <op:operator pos:line="9" pos:column="22">&lt;</op:operator> <lit:literal type="number" pos:line="9" pos:column="24">0</lit:literal></expr>)</condition><then pos:line="9" pos:column="26">
+            <block pos:line="10" pos:column="13">{
+                <throw pos:line="11" pos:column="17">throw <expr><op:operator pos:line="11" pos:column="23">new</op:operator> <call><name pos:line="11" pos:column="27">ArgumentException</name><argument_list pos:line="11" pos:column="44">(<argument><expr><lit:literal type="string" pos:line="11" pos:column="45">"Cell must not be a negative value."</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="11" pos:column="83">"cell"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="14" pos:column="13">Data</name> <op:operator pos:line="14" pos:column="18">=</op:operator> <name pos:line="14" pos:column="20">cell</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <constructor><specifier pos:line="17" pos:column="9">public</specifier> <name pos:line="17" pos:column="16">TabLayoutCell</name><parameter_list pos:line="17" pos:column="29">(<param><decl><type><name pos:line="17" pos:column="30">string</name></type> <name pos:line="17" pos:column="37">format</name></decl></param>)</parameter_list>
+        <block pos:line="18" pos:column="9">{
+            <if pos:line="19" pos:column="13">if <condition pos:line="19" pos:column="16">(<expr><call><name><name pos:line="19" pos:column="17">string</name><op:operator pos:line="19" pos:column="23">.</op:operator><name pos:line="19" pos:column="24">IsNullOrEmpty</name></name><argument_list pos:line="19" pos:column="37">(<argument><expr><name pos:line="19" pos:column="38">format</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="19" pos:column="46">
+            <block pos:line="20" pos:column="13">{
+                <throw pos:line="21" pos:column="17">throw <expr><op:operator pos:line="21" pos:column="23">new</op:operator> <call><name pos:line="21" pos:column="27">ArgumentException</name><argument_list pos:line="21" pos:column="44">(<argument><expr><lit:literal type="string" pos:line="21" pos:column="45">"Format must not be null or empty."</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="21" pos:column="82">"format"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="24" pos:column="13">Data</name> <op:operator pos:line="24" pos:column="18">=</op:operator> <name pos:line="24" pos:column="20">format</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <decl_stmt><decl><type><specifier pos:line="27" pos:column="9">public</specifier> <name pos:line="27" pos:column="16">object</name></type> <name pos:line="27" pos:column="23">Data</name> <block pos:line="27" pos:column="28">{ <function_decl><name pos:line="27" pos:column="30">get</name>;</function_decl> <function_decl><specifier pos:line="27" pos:column="35">private</specifier> <name pos:line="27" pos:column="43">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="29" pos:column="9">public</specifier> <name pos:line="29" pos:column="16">object</name></type> <name pos:line="29" pos:column="23">Layout</name> <block pos:line="29" pos:column="30">{ <function_decl><name pos:line="29" pos:column="32">get</name>;</function_decl> <function_decl><specifier pos:line="29" pos:column="37">private</specifier> <name pos:line="29" pos:column="45">set</name>;</function_decl> }</block></decl></decl_stmt>
+        
+        <decl_stmt><decl><type><specifier pos:line="31" pos:column="9">public</specifier> <name pos:line="31" pos:column="16">bool</name><type:modifier pos:line="31" pos:column="20">?</type:modifier></type> <name pos:line="31" pos:column="22">Key</name> <block pos:line="31" pos:column="26">{ <function_decl><name pos:line="31" pos:column="28">get</name>;</function_decl> <function_decl><specifier pos:line="31" pos:column="33">private</specifier> <name pos:line="31" pos:column="41">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="33" pos:column="9">public</specifier> <name pos:line="33" pos:column="16">bool</name><type:modifier pos:line="33" pos:column="20">?</type:modifier></type> <name pos:line="33" pos:column="22">IsCode</name> <block pos:line="33" pos:column="29">{ <function_decl><name pos:line="33" pos:column="31">get</name>;</function_decl> <function_decl><specifier pos:line="33" pos:column="36">private</specifier> <name pos:line="33" pos:column="44">set</name>;</function_decl> }</block></decl></decl_stmt>
+        
+        <decl_stmt><decl><type><specifier pos:line="35" pos:column="9">public</specifier> <name pos:line="35" pos:column="16">string</name></type> <name pos:line="35" pos:column="23">CodeType</name> <block pos:line="35" pos:column="32">{ <function_decl><name pos:line="35" pos:column="34">get</name>;</function_decl> <function_decl><specifier pos:line="35" pos:column="39">private</specifier> <name pos:line="35" pos:column="47">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="37" pos:column="9">public</specifier> <name pos:line="37" pos:column="16">string</name></type> <name pos:line="37" pos:column="23">Align</name> <block pos:line="37" pos:column="29">{ <function_decl><name pos:line="37" pos:column="31">get</name>;</function_decl> <function_decl><specifier pos:line="37" pos:column="36">private</specifier> <name pos:line="37" pos:column="44">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="39" pos:column="9">public</specifier> <name pos:line="39" pos:column="16">string</name></type> <name pos:line="39" pos:column="23">Width</name> <block pos:line="39" pos:column="29">{ <function_decl><name pos:line="39" pos:column="31">get</name>;</function_decl> <function_decl><specifier pos:line="39" pos:column="36">private</specifier> <name pos:line="39" pos:column="44">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="41" pos:column="9">public</specifier> <name pos:line="41" pos:column="16">string</name></type> <name pos:line="41" pos:column="23">PaddingLeft</name> <block pos:line="41" pos:column="35">{ <function_decl><name pos:line="41" pos:column="37">get</name>;</function_decl> <function_decl><specifier pos:line="41" pos:column="42">private</specifier> <name pos:line="41" pos:column="50">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="43" pos:column="9">public</specifier> <name pos:line="43" pos:column="16">string</name></type> <name pos:line="43" pos:column="23">PaddingRight</name> <block pos:line="43" pos:column="36">{ <function_decl><name pos:line="43" pos:column="38">get</name>;</function_decl> <function_decl><specifier pos:line="43" pos:column="43">private</specifier> <name pos:line="43" pos:column="51">set</name>;</function_decl> }</block></decl></decl_stmt>
+        
+        <decl_stmt><decl><type><specifier pos:line="45" pos:column="9">public</specifier> <name pos:line="45" pos:column="16">int</name><type:modifier pos:line="45" pos:column="19">?</type:modifier></type> <name pos:line="45" pos:column="21">Span</name> <block pos:line="45" pos:column="26">{ <function_decl><name pos:line="45" pos:column="28">get</name>;</function_decl> <function_decl><specifier pos:line="45" pos:column="33">private</specifier> <name pos:line="45" pos:column="41">set</name>;</function_decl> }</block></decl></decl_stmt>
+        
+        <decl_stmt><decl><type><specifier pos:line="47" pos:column="9">public</specifier> <name pos:line="47" pos:column="16">string</name></type> <name pos:line="47" pos:column="23">ClassName</name> <block pos:line="47" pos:column="33">{ <function_decl><name pos:line="47" pos:column="35">get</name>;</function_decl> <function_decl><specifier pos:line="47" pos:column="40">private</specifier> <name pos:line="47" pos:column="48">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="49" pos:column="9">public</specifier> <name pos:line="49" pos:column="16">bool</name><type:modifier pos:line="49" pos:column="20">?</type:modifier></type> <name pos:line="49" pos:column="22">ForceFull</name> <block pos:line="49" pos:column="32">{ <function_decl><name pos:line="49" pos:column="34">get</name>;</function_decl> <function_decl><specifier pos:line="49" pos:column="39">private</specifier> <name pos:line="49" pos:column="47">set</name>;</function_decl> }</block></decl></decl_stmt>
+        
+        <decl_stmt><decl><type><specifier pos:line="51" pos:column="9">public</specifier> <name pos:line="51" pos:column="16">int</name><type:modifier pos:line="51" pos:column="19">?</type:modifier></type> <name pos:line="51" pos:column="21">Limit</name> <block pos:line="51" pos:column="27">{ <function_decl><name pos:line="51" pos:column="29">get</name>;</function_decl> <function_decl><specifier pos:line="51" pos:column="34">private</specifier> <name pos:line="51" pos:column="42">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="53" pos:column="9">public</specifier> <name pos:line="53" pos:column="16">string</name></type> <name pos:line="53" pos:column="23">Pre</name> <block pos:line="53" pos:column="27">{ <function_decl><name pos:line="53" pos:column="29">get</name>;</function_decl> <function_decl><specifier pos:line="53" pos:column="34">private</specifier> <name pos:line="53" pos:column="42">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="55" pos:column="9">public</specifier> <name pos:line="55" pos:column="16">string</name></type> <name pos:line="55" pos:column="23">Post</name> <block pos:line="55" pos:column="28">{ <function_decl><name pos:line="55" pos:column="30">get</name>;</function_decl> <function_decl><specifier pos:line="55" pos:column="35">private</specifier> <name pos:line="55" pos:column="43">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="57" pos:column="9">public</specifier> <name pos:line="57" pos:column="16">bool</name></type> <name pos:line="57" pos:column="21">MinDisplay</name> <block pos:line="57" pos:column="32">{ <function_decl><name pos:line="57" pos:column="34">get</name>;</function_decl> <function_decl><specifier pos:line="57" pos:column="39">private</specifier> <name pos:line="57" pos:column="47">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="59" pos:column="9">public</specifier> <name pos:line="59" pos:column="16">string</name></type> <name pos:line="59" pos:column="23">Title</name> <block pos:line="59" pos:column="29">{ <function_decl><name pos:line="59" pos:column="31">get</name>;</function_decl> <function_decl><specifier pos:line="59" pos:column="36">private</specifier> <name pos:line="59" pos:column="44">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <function><type><specifier pos:line="61" pos:column="9">public</specifier> <name pos:line="61" pos:column="16">TabLayoutCell</name></type> <name pos:line="61" pos:column="30">Format</name><parameter_list pos:line="61" pos:column="36">(<param><decl><type><name pos:line="61" pos:column="37">string</name></type> <name pos:line="61" pos:column="44">format</name></decl></param>)</parameter_list>
+        <block pos:line="62" pos:column="9">{
+            <if pos:line="63" pos:column="13">if <condition pos:line="63" pos:column="16">(<expr><call><name><name pos:line="63" pos:column="17">string</name><op:operator pos:line="63" pos:column="23">.</op:operator><name pos:line="63" pos:column="24">IsNullOrEmpty</name></name><argument_list pos:line="63" pos:column="37">(<argument><expr><name pos:line="63" pos:column="38">format</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="63" pos:column="46">
+            <block pos:line="64" pos:column="13">{
+                <throw pos:line="65" pos:column="17">throw <expr><op:operator pos:line="65" pos:column="23">new</op:operator> <call><name pos:line="65" pos:column="27">ArgumentException</name><argument_list pos:line="65" pos:column="44">(<argument><expr><lit:literal type="string" pos:line="65" pos:column="45">"Format must not be null or empty."</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="65" pos:column="82">"format"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="68" pos:column="13">Data</name> <op:operator pos:line="68" pos:column="18">=</op:operator> <name pos:line="68" pos:column="20">format</name></expr>;</expr_stmt>
+            <return pos:line="69" pos:column="13">return <expr><name pos:line="69" pos:column="20">this</name></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="72" pos:column="9">public</specifier> <name pos:line="72" pos:column="16">TabLayoutCell</name></type> <name pos:line="72" pos:column="30">SetLayout</name><parameter_list pos:line="72" pos:column="39">(<param><decl><type><name pos:line="72" pos:column="40">TabLayout</name></type> <name pos:line="72" pos:column="50">layout</name></decl></param>)</parameter_list>
+        <block pos:line="73" pos:column="9">{
+            <expr_stmt><expr><name><name pos:line="74" pos:column="13">this</name><op:operator pos:line="74" pos:column="17">.</op:operator><name pos:line="74" pos:column="18">Layout</name></name> <op:operator pos:line="74" pos:column="25">=</op:operator> <call><name><name pos:line="74" pos:column="27">layout</name><op:operator pos:line="74" pos:column="33">.</op:operator><name pos:line="74" pos:column="34">Build</name></name><argument_list pos:line="74" pos:column="39">()</argument_list></call></expr>;</expr_stmt> 
+            <return pos:line="75" pos:column="13">return <expr><name pos:line="75" pos:column="20">this</name></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="78" pos:column="9">public</specifier> <name pos:line="78" pos:column="16">TabLayoutCell</name></type> <name pos:line="78" pos:column="30">SetLayout</name><parameter_list pos:line="78" pos:column="39">(<param><decl><type><name><name pos:line="78" pos:column="40">Action</name><argument_list pos:line="78" pos:column="46">&lt;<argument><name pos:line="78" pos:column="47">TabLayout</name></argument>&gt;</argument_list></name></type> <name pos:line="78" pos:column="58">layout</name></decl></param>)</parameter_list>
+        <block pos:line="79" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="80" pos:column="13">var</name></type> <name pos:line="80" pos:column="17">tabLayout</name> <init pos:line="80" pos:column="27">= <expr><call><name><name pos:line="80" pos:column="29">Assist</name><op:operator pos:line="80" pos:column="35">.</op:operator><name pos:line="80" pos:column="36">TabLayout</name><op:operator pos:line="80" pos:column="45">.</op:operator><name pos:line="80" pos:column="46">Create</name></name><argument_list pos:line="80" pos:column="52">(<argument><expr><name pos:line="80" pos:column="53">layout</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+            <expr_stmt><expr><name><name pos:line="81" pos:column="13">this</name><op:operator pos:line="81" pos:column="17">.</op:operator><name pos:line="81" pos:column="18">Layout</name></name> <op:operator pos:line="81" pos:column="25">=</op:operator> <name><name pos:line="81" pos:column="27">tabLayout</name><op:operator pos:line="81" pos:column="36">.</op:operator><name pos:line="81" pos:column="37">Rows</name></name></expr>;</expr_stmt>
+            <return pos:line="82" pos:column="13">return <expr><name pos:line="82" pos:column="20">this</name></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="85" pos:column="9">public</specifier> <name pos:line="85" pos:column="16">TabLayoutCell</name></type> <name pos:line="85" pos:column="30">AsKey</name><parameter_list pos:line="85" pos:column="35">()</parameter_list>
+        <block pos:line="86" pos:column="9">{
+            <expr_stmt><expr><name><name pos:line="87" pos:column="13">this</name><op:operator pos:line="87" pos:column="17">.</op:operator><name pos:line="87" pos:column="18">Key</name></name> <op:operator pos:line="87" pos:column="22">=</op:operator> <lit:literal type="boolean" pos:line="87" pos:column="24">true</lit:literal></expr>;</expr_stmt>
+            <return pos:line="88" pos:column="13">return <expr><name pos:line="88" pos:column="20">this</name></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="91" pos:column="9">public</specifier> <name pos:line="91" pos:column="16">TabLayoutCell</name></type> <name pos:line="91" pos:column="30">AsCode</name><parameter_list pos:line="91" pos:column="36">(<param><decl><type><name pos:line="91" pos:column="37">CodeType</name></type> <name pos:line="91" pos:column="46">codeType</name></decl></param>)</parameter_list>
+        <block pos:line="92" pos:column="9">{
+            <expr_stmt><expr><name pos:line="93" pos:column="13">IsCode</name> <op:operator pos:line="93" pos:column="20">=</op:operator> <lit:literal type="boolean" pos:line="93" pos:column="22">true</lit:literal></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="94" pos:column="13">CodeType</name> <op:operator pos:line="94" pos:column="22">=</op:operator> <call><name><name pos:line="94" pos:column="24">CodeTypeConverter</name><op:operator pos:line="94" pos:column="41">.</op:operator><name pos:line="94" pos:column="42">Convert</name></name><argument_list pos:line="94" pos:column="49">(<argument><expr><name pos:line="94" pos:column="50">codeType</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <return pos:line="95" pos:column="13">return <expr><name pos:line="95" pos:column="20">this</name></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="98" pos:column="9">public</specifier> <name pos:line="98" pos:column="16">TabLayoutCell</name></type> <name pos:line="98" pos:column="30">AlignRight</name><parameter_list pos:line="98" pos:column="40">()</parameter_list>
+        <block pos:line="99" pos:column="9">{
+            <expr_stmt><expr><name pos:line="100" pos:column="13">Align</name> <op:operator pos:line="100" pos:column="19">=</op:operator> <lit:literal type="string" pos:line="100" pos:column="21">"Right"</lit:literal></expr>;</expr_stmt>
+            <return pos:line="101" pos:column="13">return <expr><name pos:line="101" pos:column="20">this</name></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="104" pos:column="9">public</specifier> <name pos:line="104" pos:column="16">TabLayoutCell</name></type> <name pos:line="104" pos:column="30">WidthInPixels</name><parameter_list pos:line="104" pos:column="43">(<param><decl><type><name pos:line="104" pos:column="44">int</name></type> <name pos:line="104" pos:column="48">pixels</name></decl></param>)</parameter_list>
+        <block pos:line="105" pos:column="9">{
+            <if pos:line="106" pos:column="13">if <condition pos:line="106" pos:column="16">(<expr><name pos:line="106" pos:column="17">pixels</name> <op:operator pos:line="106" pos:column="24">&lt;</op:operator> <lit:literal type="number" pos:line="106" pos:column="26">0</lit:literal></expr>)</condition><then pos:line="106" pos:column="28">
+            <block pos:line="107" pos:column="13">{
+                <throw pos:line="108" pos:column="17">throw <expr><op:operator pos:line="108" pos:column="23">new</op:operator> <call><name pos:line="108" pos:column="27">ArgumentException</name><argument_list pos:line="108" pos:column="44">(<argument><expr><lit:literal type="string" pos:line="108" pos:column="45">"Pixels must not be a negative value."</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="108" pos:column="85">"pixels"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="111" pos:column="13">Width</name> <op:operator pos:line="111" pos:column="19">=</op:operator> <name pos:line="111" pos:column="21">pixels</name> <op:operator pos:line="111" pos:column="28">+</op:operator> <lit:literal type="string" pos:line="111" pos:column="30">"px"</lit:literal></expr>;</expr_stmt>
+            <return pos:line="112" pos:column="13">return <expr><name pos:line="112" pos:column="20">this</name></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="115" pos:column="9">public</specifier> <name pos:line="115" pos:column="16">TabLayoutCell</name></type> <name pos:line="115" pos:column="30">WidthInPercent</name><parameter_list pos:line="115" pos:column="44">(<param><decl><type><name pos:line="115" pos:column="45">int</name></type> <name pos:line="115" pos:column="49">percent</name></decl></param>)</parameter_list>
+        <block pos:line="116" pos:column="9">{
+            <if pos:line="117" pos:column="13">if <condition pos:line="117" pos:column="16">(<expr><name pos:line="117" pos:column="17">percent</name> <op:operator pos:line="117" pos:column="25">&lt;</op:operator> <lit:literal type="number" pos:line="117" pos:column="27">0</lit:literal></expr>)</condition><then pos:line="117" pos:column="29">
+            <block pos:line="118" pos:column="13">{
+                <throw pos:line="119" pos:column="17">throw <expr><op:operator pos:line="119" pos:column="23">new</op:operator> <call><name pos:line="119" pos:column="27">ArgumentException</name><argument_list pos:line="119" pos:column="44">(<argument><expr><lit:literal type="string" pos:line="119" pos:column="45">"Percent must not be a negative value."</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="119" pos:column="86">"percent"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="122" pos:column="13">Width</name> <op:operator pos:line="122" pos:column="19">=</op:operator> <name pos:line="122" pos:column="21">percent</name> <op:operator pos:line="122" pos:column="29">+</op:operator> <lit:literal type="string" pos:line="122" pos:column="31">"%"</lit:literal></expr>;</expr_stmt>
+            <return pos:line="123" pos:column="13">return <expr><name pos:line="123" pos:column="20">this</name></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="126" pos:column="9">public</specifier> <name pos:line="126" pos:column="16">TabLayoutCell</name></type> <name pos:line="126" pos:column="30">PaddingLeftInPixels</name><parameter_list pos:line="126" pos:column="49">(<param><decl><type><name pos:line="126" pos:column="50">int</name></type> <name pos:line="126" pos:column="54">pixels</name></decl></param>)</parameter_list>
+        <block pos:line="127" pos:column="9">{
+            <if pos:line="128" pos:column="13">if <condition pos:line="128" pos:column="16">(<expr><name pos:line="128" pos:column="17">pixels</name> <op:operator pos:line="128" pos:column="24">&lt;</op:operator> <lit:literal type="number" pos:line="128" pos:column="26">0</lit:literal></expr>)</condition><then pos:line="128" pos:column="28">
+            <block pos:line="129" pos:column="13">{
+                <throw pos:line="130" pos:column="17">throw <expr><op:operator pos:line="130" pos:column="23">new</op:operator> <call><name pos:line="130" pos:column="27">ArgumentException</name><argument_list pos:line="130" pos:column="44">(<argument><expr><lit:literal type="string" pos:line="130" pos:column="45">"Pixels must not be a negative value."</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="130" pos:column="85">"pixels"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="133" pos:column="13">PaddingLeft</name> <op:operator pos:line="133" pos:column="25">=</op:operator> <name pos:line="133" pos:column="27">pixels</name> <op:operator pos:line="133" pos:column="34">+</op:operator> <lit:literal type="string" pos:line="133" pos:column="36">"px"</lit:literal></expr>;</expr_stmt>
+            <return pos:line="134" pos:column="13">return <expr><name pos:line="134" pos:column="20">this</name></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="137" pos:column="9">public</specifier> <name pos:line="137" pos:column="16">TabLayoutCell</name></type> <name pos:line="137" pos:column="30">PaddingLeftInPercent</name><parameter_list pos:line="137" pos:column="50">(<param><decl><type><name pos:line="137" pos:column="51">int</name></type> <name pos:line="137" pos:column="55">percent</name></decl></param>)</parameter_list>
+        <block pos:line="138" pos:column="9">{
+            <if pos:line="139" pos:column="13">if <condition pos:line="139" pos:column="16">(<expr><name pos:line="139" pos:column="17">percent</name> <op:operator pos:line="139" pos:column="25">&lt;</op:operator> <lit:literal type="number" pos:line="139" pos:column="27">0</lit:literal></expr>)</condition><then pos:line="139" pos:column="29">
+            <block pos:line="140" pos:column="13">{
+                <throw pos:line="141" pos:column="17">throw <expr><op:operator pos:line="141" pos:column="23">new</op:operator> <call><name pos:line="141" pos:column="27">ArgumentException</name><argument_list pos:line="141" pos:column="44">(<argument><expr><lit:literal type="string" pos:line="141" pos:column="45">"Percent must not be a negative value."</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="141" pos:column="86">"percent"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="144" pos:column="13">PaddingLeft</name> <op:operator pos:line="144" pos:column="25">=</op:operator> <name pos:line="144" pos:column="27">percent</name> <op:operator pos:line="144" pos:column="35">+</op:operator> <lit:literal type="string" pos:line="144" pos:column="37">"%"</lit:literal></expr>;</expr_stmt>
+            <return pos:line="145" pos:column="13">return <expr><name pos:line="145" pos:column="20">this</name></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="148" pos:column="9">public</specifier> <name pos:line="148" pos:column="16">TabLayoutCell</name></type> <name pos:line="148" pos:column="30">PaddingRightInPixels</name><parameter_list pos:line="148" pos:column="50">(<param><decl><type><name pos:line="148" pos:column="51">int</name></type> <name pos:line="148" pos:column="55">pixels</name></decl></param>)</parameter_list>
+        <block pos:line="149" pos:column="9">{
+            <if pos:line="150" pos:column="13">if <condition pos:line="150" pos:column="16">(<expr><name pos:line="150" pos:column="17">pixels</name> <op:operator pos:line="150" pos:column="24">&lt;</op:operator> <lit:literal type="number" pos:line="150" pos:column="26">0</lit:literal></expr>)</condition><then pos:line="150" pos:column="28">
+            <block pos:line="151" pos:column="13">{
+                <throw pos:line="152" pos:column="17">throw <expr><op:operator pos:line="152" pos:column="23">new</op:operator> <call><name pos:line="152" pos:column="27">ArgumentException</name><argument_list pos:line="152" pos:column="44">(<argument><expr><lit:literal type="string" pos:line="152" pos:column="45">"Pixels must not be a negative value."</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="152" pos:column="85">"pixels"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="155" pos:column="13">PaddingRight</name> <op:operator pos:line="155" pos:column="26">=</op:operator> <name pos:line="155" pos:column="28">pixels</name> <op:operator pos:line="155" pos:column="35">+</op:operator> <lit:literal type="string" pos:line="155" pos:column="37">"px"</lit:literal></expr>;</expr_stmt>
+            <return pos:line="156" pos:column="13">return <expr><name pos:line="156" pos:column="20">this</name></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="159" pos:column="9">public</specifier> <name pos:line="159" pos:column="16">TabLayoutCell</name></type> <name pos:line="159" pos:column="30">PaddingRightInPercent</name><parameter_list pos:line="159" pos:column="51">(<param><decl><type><name pos:line="159" pos:column="52">int</name></type> <name pos:line="159" pos:column="56">percent</name></decl></param>)</parameter_list>
+        <block pos:line="160" pos:column="9">{
+            <if pos:line="161" pos:column="13">if <condition pos:line="161" pos:column="16">(<expr><name pos:line="161" pos:column="17">percent</name> <op:operator pos:line="161" pos:column="25">&lt;</op:operator> <lit:literal type="number" pos:line="161" pos:column="27">0</lit:literal></expr>)</condition><then pos:line="161" pos:column="29">
+            <block pos:line="162" pos:column="13">{
+                <throw pos:line="163" pos:column="17">throw <expr><op:operator pos:line="163" pos:column="23">new</op:operator> <call><name pos:line="163" pos:column="27">ArgumentException</name><argument_list pos:line="163" pos:column="44">(<argument><expr><lit:literal type="string" pos:line="163" pos:column="45">"Percent must not be a negative value."</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="163" pos:column="86">"percent"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="166" pos:column="13">PaddingRight</name> <op:operator pos:line="166" pos:column="26">=</op:operator> <name pos:line="166" pos:column="28">percent</name> <op:operator pos:line="166" pos:column="36">+</op:operator> <lit:literal type="string" pos:line="166" pos:column="38">"%"</lit:literal></expr>;</expr_stmt>
+            <return pos:line="167" pos:column="13">return <expr><name pos:line="167" pos:column="20">this</name></expr>;</return>
+        }</block></function>
+         
+        <function><type><specifier pos:line="170" pos:column="9">public</specifier> <name pos:line="170" pos:column="16">TabLayoutCell</name></type> <name pos:line="170" pos:column="30">SpanColumns</name><parameter_list pos:line="170" pos:column="41">(<param><decl><type><name pos:line="170" pos:column="42">int</name></type> <name pos:line="170" pos:column="46">rows</name></decl></param>)</parameter_list>
+        <block pos:line="171" pos:column="9">{
+            <if pos:line="172" pos:column="13">if <condition pos:line="172" pos:column="16">(<expr><name pos:line="172" pos:column="17">rows</name> <op:operator pos:line="172" pos:column="22">&lt;</op:operator> <lit:literal type="number" pos:line="172" pos:column="24">1</lit:literal></expr>)</condition><then pos:line="172" pos:column="26">
+            <block pos:line="173" pos:column="13">{
+                <throw pos:line="174" pos:column="17">throw <expr><op:operator pos:line="174" pos:column="23">new</op:operator> <call><name pos:line="174" pos:column="27">ArgumentException</name><argument_list pos:line="174" pos:column="44">(<argument><expr><lit:literal type="string" pos:line="174" pos:column="45">"Rows must not be less then 0."</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="174" pos:column="78">"rows"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="177" pos:column="13">Span</name> <op:operator pos:line="177" pos:column="18">=</op:operator> <name pos:line="177" pos:column="20">rows</name></expr>;</expr_stmt>
+            <return pos:line="178" pos:column="13">return <expr><name pos:line="178" pos:column="20">this</name></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="181" pos:column="9">public</specifier> <name pos:line="181" pos:column="16">TabLayoutCell</name></type> <name pos:line="181" pos:column="30">Class</name><parameter_list pos:line="181" pos:column="35">(<param><decl><type><name pos:line="181" pos:column="36">string</name></type> <name pos:line="181" pos:column="43">className</name></decl></param>)</parameter_list>
+        <block pos:line="182" pos:column="9">{
+            <if pos:line="183" pos:column="13">if <condition pos:line="183" pos:column="16">(<expr><call><name><name pos:line="183" pos:column="17">string</name><op:operator pos:line="183" pos:column="23">.</op:operator><name pos:line="183" pos:column="24">IsNullOrEmpty</name></name><argument_list pos:line="183" pos:column="37">(<argument><expr><name pos:line="183" pos:column="38">className</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="183" pos:column="49">
+            <block pos:line="184" pos:column="13">{
+                <throw pos:line="185" pos:column="17">throw <expr><op:operator pos:line="185" pos:column="23">new</op:operator> <call><name pos:line="185" pos:column="27">ArgumentException</name><argument_list pos:line="185" pos:column="44">(<argument><expr><lit:literal type="string" pos:line="185" pos:column="45">"Class name must not be null or empty."</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="185" pos:column="86">"className"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="188" pos:column="13">ClassName</name> <op:operator pos:line="188" pos:column="23">=</op:operator> <name pos:line="188" pos:column="25">className</name></expr>;</expr_stmt>
+            <return pos:line="189" pos:column="13">return <expr><name pos:line="189" pos:column="20">this</name></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="192" pos:column="9">public</specifier> <name pos:line="192" pos:column="16">TabLayoutCell</name></type> <name pos:line="192" pos:column="30">DisablePreview</name><parameter_list pos:line="192" pos:column="44">()</parameter_list>
+        <block pos:line="193" pos:column="9">{
+            <expr_stmt><expr><name pos:line="194" pos:column="13">ForceFull</name> <op:operator pos:line="194" pos:column="23">=</op:operator> <lit:literal type="boolean" pos:line="194" pos:column="25">true</lit:literal></expr>;</expr_stmt>
+            <return pos:line="195" pos:column="13">return <expr><name pos:line="195" pos:column="20">this</name></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="198" pos:column="9">public</specifier> <name pos:line="198" pos:column="16">TabLayoutCell</name></type> <name pos:line="198" pos:column="30">LimitTo</name><parameter_list pos:line="198" pos:column="37">(<param><decl><type><name pos:line="198" pos:column="38">int</name></type> <name pos:line="198" pos:column="42">rows</name></decl></param>)</parameter_list>
+        <block pos:line="199" pos:column="9">{
+            <if pos:line="200" pos:column="13">if <condition pos:line="200" pos:column="16">(<expr><name pos:line="200" pos:column="17">rows</name> <op:operator pos:line="200" pos:column="22">&lt;</op:operator> <lit:literal type="number" pos:line="200" pos:column="24">1</lit:literal></expr>)</condition><then pos:line="200" pos:column="26">
+            <block pos:line="201" pos:column="13">{
+                <throw pos:line="202" pos:column="17">throw <expr><op:operator pos:line="202" pos:column="23">new</op:operator> <call><name pos:line="202" pos:column="27">ArgumentException</name><argument_list pos:line="202" pos:column="44">(<argument><expr><lit:literal type="string" pos:line="202" pos:column="45">"Rows must not be less then 0."</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="202" pos:column="78">"rows"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="205" pos:column="13">Limit</name> <op:operator pos:line="205" pos:column="19">=</op:operator> <name pos:line="205" pos:column="21">rows</name></expr>;</expr_stmt>
+            <return pos:line="206" pos:column="13">return <expr><name pos:line="206" pos:column="20">this</name></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="209" pos:column="9">public</specifier> <name pos:line="209" pos:column="16">TabLayoutCell</name></type> <name pos:line="209" pos:column="30">Prefix</name><parameter_list pos:line="209" pos:column="36">(<param><decl><type><name pos:line="209" pos:column="37">string</name></type> <name pos:line="209" pos:column="44">prefix</name></decl></param>)</parameter_list>
+        <block pos:line="210" pos:column="9">{
+            <if pos:line="211" pos:column="13">if <condition pos:line="211" pos:column="16">(<expr><call><name><name pos:line="211" pos:column="17">string</name><op:operator pos:line="211" pos:column="23">.</op:operator><name pos:line="211" pos:column="24">IsNullOrEmpty</name></name><argument_list pos:line="211" pos:column="37">(<argument><expr><name pos:line="211" pos:column="38">prefix</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="211" pos:column="46">
+            <block pos:line="212" pos:column="13">{
+                <throw pos:line="213" pos:column="17">throw <expr><op:operator pos:line="213" pos:column="23">new</op:operator> <call><name pos:line="213" pos:column="27">ArgumentException</name><argument_list pos:line="213" pos:column="44">(<argument><expr><lit:literal type="string" pos:line="213" pos:column="45">"Prefix must not be null or empty."</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="213" pos:column="82">"prefix"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="216" pos:column="13">Pre</name> <op:operator pos:line="216" pos:column="17">=</op:operator> <name pos:line="216" pos:column="19">prefix</name></expr>;</expr_stmt>
+            <return pos:line="217" pos:column="13">return <expr><name pos:line="217" pos:column="20">this</name></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="220" pos:column="9">public</specifier> <name pos:line="220" pos:column="16">TabLayoutCell</name></type> <name pos:line="220" pos:column="30">Suffix</name><parameter_list pos:line="220" pos:column="36">(<param><decl><type><name pos:line="220" pos:column="37">string</name></type> <name pos:line="220" pos:column="44">suffix</name></decl></param>)</parameter_list>
+        <block pos:line="221" pos:column="9">{
+            <if pos:line="222" pos:column="13">if <condition pos:line="222" pos:column="16">(<expr><call><name><name pos:line="222" pos:column="17">string</name><op:operator pos:line="222" pos:column="23">.</op:operator><name pos:line="222" pos:column="24">IsNullOrEmpty</name></name><argument_list pos:line="222" pos:column="37">(<argument><expr><name pos:line="222" pos:column="38">suffix</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="222" pos:column="46">
+            <block pos:line="223" pos:column="13">{
+                <throw pos:line="224" pos:column="17">throw <expr><op:operator pos:line="224" pos:column="23">new</op:operator> <call><name pos:line="224" pos:column="27">ArgumentException</name><argument_list pos:line="224" pos:column="44">(<argument><expr><lit:literal type="string" pos:line="224" pos:column="45">"Suffix must not be null or empty."</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="224" pos:column="82">"suffix"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="227" pos:column="13">Post</name> <op:operator pos:line="227" pos:column="18">=</op:operator> <name pos:line="227" pos:column="20">suffix</name></expr>;</expr_stmt>
+            <return pos:line="228" pos:column="13">return <expr><name pos:line="228" pos:column="20">this</name></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="231" pos:column="9">public</specifier> <name pos:line="231" pos:column="16">TabLayoutCell</name></type> <name pos:line="231" pos:column="30">WithTitle</name><parameter_list pos:line="231" pos:column="39">(<param><decl><type><name pos:line="231" pos:column="40">string</name></type> <name pos:line="231" pos:column="47">title</name></decl></param>)</parameter_list>
+        <block pos:line="232" pos:column="9">{
+            <if pos:line="233" pos:column="13">if <condition pos:line="233" pos:column="16">(<expr><call><name><name pos:line="233" pos:column="17">string</name><op:operator pos:line="233" pos:column="23">.</op:operator><name pos:line="233" pos:column="24">IsNullOrEmpty</name></name><argument_list pos:line="233" pos:column="37">(<argument><expr><name pos:line="233" pos:column="38">title</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="233" pos:column="45">
+            <block pos:line="234" pos:column="13">{
+                <throw pos:line="235" pos:column="17">throw <expr><op:operator pos:line="235" pos:column="23">new</op:operator> <call><name pos:line="235" pos:column="27">ArgumentException</name><argument_list pos:line="235" pos:column="44">(<argument><expr><lit:literal type="string" pos:line="235" pos:column="45">"Title must not be null or empty."</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="235" pos:column="81">"title"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="238" pos:column="13">Title</name> <op:operator pos:line="238" pos:column="19">=</op:operator> <name pos:line="238" pos:column="21">title</name></expr>;</expr_stmt>
+            <return pos:line="239" pos:column="13">return <expr><name pos:line="239" pos:column="20">this</name></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="242" pos:column="9">public</specifier> <name pos:line="242" pos:column="16">TabLayoutCell</name></type> <name pos:line="242" pos:column="30">AsMinimalDisplay</name><parameter_list pos:line="242" pos:column="46">()</parameter_list>
+        <block pos:line="243" pos:column="9">{
+            <expr_stmt><expr><name pos:line="244" pos:column="13">MinDisplay</name> <op:operator pos:line="244" pos:column="24">=</op:operator> <lit:literal type="boolean" pos:line="244" pos:column="26">true</lit:literal></expr>;</expr_stmt>
+            <return pos:line="245" pos:column="13">return <expr><name pos:line="245" pos:column="20">this</name></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="248" pos:column="9">public</specifier> <name pos:line="248" pos:column="16">object</name></type> <name pos:line="248" pos:column="23">Build</name><parameter_list pos:line="248" pos:column="28">()</parameter_list>
+        <block pos:line="249" pos:column="9">{
+            <return pos:line="250" pos:column="13">return <expr><name pos:line="250" pos:column="20">this</name></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML.Data\StatementDebugView.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2014 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Patrick Francis (ABB Group) - initial API, implementation, &amp; documentation
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="13" pos:column="1">using <name pos:line="13" pos:column="7">System</name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Collections</name><op:operator pos:line="14" pos:column="25">.</op:operator><name pos:line="14" pos:column="26">Generic</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Diagnostics</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">System</name><op:operator pos:line="16" pos:column="13">.</op:operator><name pos:line="16" pos:column="14">Linq</name></name>;</using>
+<using pos:line="17" pos:column="1">using <name><name pos:line="17" pos:column="7">System</name><op:operator pos:line="17" pos:column="13">.</op:operator><name pos:line="17" pos:column="14">Text</name></name>;</using>
+
+<namespace pos:line="19" pos:column="1">namespace <name><name pos:line="19" pos:column="11">ABB</name><op:operator pos:line="19" pos:column="14">.</op:operator><name pos:line="19" pos:column="15">SrcML</name><op:operator pos:line="19" pos:column="20">.</op:operator><name pos:line="19" pos:column="21">Data</name></name> <block pos:line="19" pos:column="26">{
+    <class><specifier pos:line="20" pos:column="5">internal</specifier> class <name pos:line="20" pos:column="20">StatementDebugView</name> <block pos:line="20" pos:column="39">{
+        <decl_stmt><decl><type><specifier pos:line="21" pos:column="9">private</specifier> <name pos:line="21" pos:column="17">Statement</name></type> <name pos:line="21" pos:column="27">statement</name></decl>;</decl_stmt>
+
+        <constructor><specifier pos:line="23" pos:column="9">public</specifier> <name pos:line="23" pos:column="16">StatementDebugView</name><parameter_list pos:line="23" pos:column="34">(<param><decl><type><name pos:line="23" pos:column="35">Statement</name></type> <name pos:line="23" pos:column="45">statement</name></decl></param>)</parameter_list> <block pos:line="23" pos:column="56">{
+            <expr_stmt><expr><name><name pos:line="24" pos:column="13">this</name><op:operator pos:line="24" pos:column="17">.</op:operator><name pos:line="24" pos:column="18">statement</name></name> <op:operator pos:line="24" pos:column="28">=</op:operator> <name pos:line="24" pos:column="30">statement</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <decl_stmt><decl><type><attribute pos:line="27" pos:column="9">[<expr><call><name pos:line="27" pos:column="10">DebuggerBrowsable</name><argument_list pos:line="27" pos:column="27">(<argument><expr><name><name pos:line="27" pos:column="28">DebuggerBrowsableState</name><op:operator pos:line="27" pos:column="50">.</op:operator><name pos:line="27" pos:column="51">RootHidden</name></name></expr></argument>)</argument_list></call></expr>]</attribute>
+        <specifier pos:line="28" pos:column="9">public</specifier> <name pos:line="28" pos:column="16">Statement</name><index pos:line="28" pos:column="25">[]</index></type> <name pos:line="28" pos:column="28">ChildStatements</name> <block pos:line="28" pos:column="44">{
+            <function><name pos:line="29" pos:column="13">get</name> <block pos:line="29" pos:column="17">{ <return pos:line="29" pos:column="19">return <expr><call><name><name pos:line="29" pos:column="26">this</name><op:operator pos:line="29" pos:column="30">.</op:operator><name pos:line="29" pos:column="31">statement</name><op:operator pos:line="29" pos:column="40">.</op:operator><name pos:line="29" pos:column="41">ChildStatements</name><op:operator pos:line="29" pos:column="56">.</op:operator><name pos:line="29" pos:column="57">ToArray</name></name><argument_list pos:line="29" pos:column="64">()</argument_list></call></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="32" pos:column="9">public</specifier> <name pos:line="32" pos:column="16">Expression</name></type> <name pos:line="32" pos:column="27">Content</name> <block pos:line="32" pos:column="35">{
+            <function><name pos:line="33" pos:column="13">get</name> <block pos:line="33" pos:column="17">{ <return pos:line="33" pos:column="19">return <expr><name><name pos:line="33" pos:column="26">this</name><op:operator pos:line="33" pos:column="30">.</op:operator><name pos:line="33" pos:column="31">statement</name><op:operator pos:line="33" pos:column="40">.</op:operator><name pos:line="33" pos:column="41">Content</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <function><type><specifier pos:line="36" pos:column="9">public</specifier> <specifier pos:line="36" pos:column="16">override</specifier> <name pos:line="36" pos:column="25">string</name></type> <name pos:line="36" pos:column="32">ToString</name><parameter_list pos:line="36" pos:column="40">()</parameter_list> <block pos:line="36" pos:column="43">{
+            <return pos:line="37" pos:column="13">return <expr><call><name><name pos:line="37" pos:column="20">statement</name><op:operator pos:line="37" pos:column="29">.</op:operator><name pos:line="37" pos:column="30">ToString</name></name><argument_list pos:line="37" pos:column="38">()</argument_list></call></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace>
+</unit>

@@ -1,0 +1,34 @@
+syntax: regexp
+Sando/_ReSharper*
+Sando/.HistoryData/*
+syntax: glob
+*/bin/*
+Indexer/Indexer.suo
+Indexer/TraceAndTestImpact.testsettings
+Indexer/Local.testsettings
+Indexer/Indexer.vsmdi
+*/obj/*
+.hgignore.orig
+*.orig
+Search Engine/Search Engine/StyleCop.Cache
+*.suo
+Sando/Local.testsettings
+Sando/Sando.vsmdi
+Sando/TraceAndTestImpact.testsettings
+bin/*
+Sando/Sando.ncrunchsolution.user
+Sando/Sando.crunchsolution.cache
+*.ncrunchproject
+*.ncrunchsolution
+**.crunchsolution.cache
+**.DotSettings.user
+Sando/.klocwork/**
+Recommender/Recommender/Recommender.csproj.user
+Recommender/Recommender.UnitTests/Recommender.UnitTests.csproj.user
+Sando/_UpgradeReport_Files/*
+Sando/Backup/*
+Sando/UpgradeLog.*
+Sando/TestResults/*
+*.csproj.user
+SandoTests.nunit
+Sando/.HistoryData/LocalHistory/.git/hooks/README.sample

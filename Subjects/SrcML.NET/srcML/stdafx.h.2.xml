@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\SrcML.NET\TestInputs\SrcMLService\TestCPPSolution\TestCPPSolution\stdafx.h" pos:tabs="8"><comment type="line" pos:line="1" pos:column="1">// stdafx.h : include file for standard system include files,</comment>
+<comment type="line" pos:line="2" pos:column="1">// or project specific include files that are used frequently, but</comment>
+<comment type="line" pos:line="3" pos:column="1">// are changed infrequently</comment>
+<comment type="line" pos:line="4" pos:column="1">//</comment>
+
+<cpp:pragma pos:line="6" pos:column="1">#<cpp:directive pos:line="6" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+
+<cpp:include pos:line="8" pos:column="1">#<cpp:directive pos:line="8" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="8" pos:column="10">"targetver.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:include pos:line="10" pos:column="1">#<cpp:directive pos:line="10" pos:column="2">include</cpp:directive> <cpp:file pos:line="10" pos:column="10">&lt;stdio.h&gt;</cpp:file></cpp:include>
+<cpp:include pos:line="11" pos:column="1">#<cpp:directive pos:line="11" pos:column="2">include</cpp:directive> <cpp:file pos:line="11" pos:column="10">&lt;tchar.h&gt;</cpp:file></cpp:include>
+
+
+
+<comment type="line" pos:line="15" pos:column="1">// TODO: reference additional headers your program requires here</comment>
+</unit>

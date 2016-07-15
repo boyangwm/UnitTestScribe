@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Mvc\Model\MetadataItemModel.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+
+<namespace pos:line="4" pos:column="1">namespace <name><name pos:line="4" pos:column="11">Glimpse</name><op:operator pos:line="4" pos:column="18">.</op:operator><name pos:line="4" pos:column="19">Mvc</name><op:operator pos:line="4" pos:column="22">.</op:operator><name pos:line="4" pos:column="23">Model</name></name>
+<block pos:line="5" pos:column="1">{
+    <class><specifier pos:line="6" pos:column="5">public</specifier> class <name pos:line="6" pos:column="18">MetadataItemModel</name>
+    <block pos:line="7" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="8" pos:column="9">public</specifier> <name pos:line="8" pos:column="16">string</name></type> <name pos:line="8" pos:column="23">Controller</name> <block pos:line="8" pos:column="34">{ <function_decl><name pos:line="8" pos:column="36">get</name>;</function_decl> <function_decl><name pos:line="8" pos:column="41">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="10" pos:column="9">public</specifier> <name pos:line="10" pos:column="16">string</name></type> <name pos:line="10" pos:column="23">Action</name> <block pos:line="10" pos:column="30">{ <function_decl><name pos:line="10" pos:column="32">get</name>;</function_decl> <function_decl><name pos:line="10" pos:column="37">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="12" pos:column="9">public</specifier> <name pos:line="12" pos:column="16">MetadataContentModel</name></type> <name pos:line="12" pos:column="37">ModelMetadata</name> <block pos:line="12" pos:column="51">{ <function_decl><name pos:line="12" pos:column="53">get</name>;</function_decl> <function_decl><name pos:line="12" pos:column="58">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="14" pos:column="9">public</specifier> <name><name pos:line="14" pos:column="16">IList</name><argument_list pos:line="14" pos:column="21">&lt;<argument><name pos:line="14" pos:column="22">MetadataPropertyItemModel</name></argument>&gt;</argument_list></name></type> <name pos:line="14" pos:column="49">PropertyMetadata</name> <block pos:line="14" pos:column="66">{ <function_decl><name pos:line="14" pos:column="68">get</name>;</function_decl> <function_decl><name pos:line="14" pos:column="73">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="16" pos:column="9">public</specifier> <name pos:line="16" pos:column="16">string</name></type> <name pos:line="16" pos:column="23">Name</name> <block pos:line="16" pos:column="28">{ <function_decl><name pos:line="16" pos:column="30">get</name>;</function_decl> <function_decl><name pos:line="16" pos:column="35">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="18" pos:column="9">public</specifier> <name pos:line="18" pos:column="16">string</name></type> <name pos:line="18" pos:column="23">DisplayName</name> <block pos:line="18" pos:column="35">{ <function_decl><name pos:line="18" pos:column="37">get</name>;</function_decl> <function_decl><name pos:line="18" pos:column="42">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="20" pos:column="9">public</specifier> <name pos:line="20" pos:column="16">Type</name></type> <name pos:line="20" pos:column="21">Type</name> <block pos:line="20" pos:column="26">{ <function_decl><name pos:line="20" pos:column="28">get</name>;</function_decl> <function_decl><name pos:line="20" pos:column="33">set</name>;</function_decl> }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace></unit>

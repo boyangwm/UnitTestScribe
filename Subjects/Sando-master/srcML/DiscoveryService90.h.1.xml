@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\DiscoveryService90.h" pos:tabs="8" pos:line="1" pos:column="1">
+
+<comment type="block" pos:line="3" pos:column="1">/* this ALWAYS GENERATED file contains the definitions for the interfaces */</comment>
+
+
+ <comment type="block" pos:line="6" pos:column="2">/* File created by MIDL compiler version 7.00.0499 */</comment>
+<comment type="block" pos:line="7" pos:column="1">/* Compiler settings for discoveryservice90.idl:
+    Oicf, W0, Zp8, env=Win32 (32b run)
+    protocol : dce , ms_ext, c_ext, robust
+    error checks: allocation ref bounds_check enum stub_data 
+    VC __declspec() decoration level: 
+         __declspec(uuid()), __declspec(selectany), __declspec(novtable)
+         DECLSPEC_UUID(), MIDL_INTERFACE()
+*/</comment>
+<comment type="line" pos:line="15" pos:column="1">//@@MIDL_FILE_HEADING(  )</comment>
+
+<cpp:pragma pos:line="17" pos:column="1">#<cpp:directive pos:line="17" pos:column="2">pragma</cpp:directive> warning( disable: 4049 )</cpp:pragma>  <comment type="block" pos:line="17" pos:column="35">/* more than 64k source lines */</comment>
+
+
+<comment type="block" pos:line="20" pos:column="1">/* verify that the &lt;rpcndr.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="21" pos:column="1">#<cpp:directive pos:line="21" pos:column="2">ifndef</cpp:directive> <name pos:line="21" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="22" pos:column="1">#<cpp:directive pos:line="22" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="22" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:macro> <cpp:value pos:line="22" pos:column="39">475</cpp:value></cpp:define>
+<cpp:endif pos:line="23" pos:column="1">#<cpp:directive pos:line="23" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="25" pos:column="1">/* verify that the &lt;rpcsal.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="26" pos:column="1">#<cpp:directive pos:line="26" pos:column="2">ifndef</cpp:directive> <name pos:line="26" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="27" pos:column="1">#<cpp:directive pos:line="27" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="27" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:macro> <cpp:value pos:line="27" pos:column="39">100</cpp:value></cpp:define>
+<cpp:endif pos:line="28" pos:column="1">#<cpp:directive pos:line="28" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:include pos:line="30" pos:column="1">#<cpp:directive pos:line="30" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="30" pos:column="10">"rpc.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="31" pos:column="1">#<cpp:directive pos:line="31" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="31" pos:column="10">"rpcndr.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifndef pos:line="33" pos:column="1">#<cpp:directive pos:line="33" pos:column="2">ifndef</cpp:directive> <name pos:line="33" pos:column="9">__RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:error pos:line="34" pos:column="1">#<cpp:directive pos:line="34" pos:column="2">error</cpp:directive> this stub requires an updated version of &lt;rpcndr.h&gt;</cpp:error>
+<cpp:endif pos:line="35" pos:column="1">#<cpp:directive pos:line="35" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="35" pos:column="8">// __RPCNDR_H_VERSION__</comment>
+
+<cpp:ifndef pos:line="37" pos:column="1">#<cpp:directive pos:line="37" pos:column="2">ifndef</cpp:directive> <name pos:line="37" pos:column="9">COM_NO_WINDOWS_H</name></cpp:ifndef>
+<cpp:include pos:line="38" pos:column="1">#<cpp:directive pos:line="38" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="38" pos:column="10">"windows.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="39" pos:column="1">#<cpp:directive pos:line="39" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="39" pos:column="10">"ole2.h"</lit:literal></cpp:file></cpp:include>
+<cpp:endif pos:line="40" pos:column="1">#<cpp:directive pos:line="40" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="40" pos:column="8">/*COM_NO_WINDOWS_H*/</comment>
+
+<cpp:ifndef pos:line="42" pos:column="1">#<cpp:directive pos:line="42" pos:column="2">ifndef</cpp:directive> <name pos:line="42" pos:column="9">__discoveryservice90_h__</name></cpp:ifndef>
+<cpp:define pos:line="43" pos:column="1">#<cpp:directive pos:line="43" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="43" pos:column="9">__discoveryservice90_h__</name></cpp:macro></cpp:define>
+
+<cpp:if pos:line="45" pos:column="1">#<cpp:directive pos:line="45" pos:column="2">if</cpp:directive> <expr><call><name pos:line="45" pos:column="5">defined</name><argument_list pos:line="45" pos:column="12">(<argument><expr><name pos:line="45" pos:column="13">_MSC_VER</name></expr></argument>)</argument_list></call> <op:operator pos:line="45" pos:column="23">&amp;&amp;</op:operator> <op:operator pos:line="45" pos:column="26">(</op:operator><name pos:line="45" pos:column="27">_MSC_VER</name> <op:operator pos:line="45" pos:column="36">&gt;=</op:operator> <lit:literal type="number" pos:line="45" pos:column="39">1020</lit:literal><op:operator pos:line="45" pos:column="43">)</op:operator></expr></cpp:if>
+<cpp:pragma pos:line="46" pos:column="1">#<cpp:directive pos:line="46" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+<cpp:endif pos:line="47" pos:column="1">#<cpp:directive pos:line="47" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="49" pos:column="1">/* Forward Declarations */</comment> 
+
+<cpp:ifndef pos:line="51" pos:column="1">#<cpp:directive pos:line="51" pos:column="2">ifndef</cpp:directive> <name pos:line="51" pos:column="9">__IDiscoveryResult3_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="52" pos:column="1">#<cpp:directive pos:line="52" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="52" pos:column="9">__IDiscoveryResult3_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="53" pos:column="1">typedef <type><name pos:line="53" pos:column="9">interface</name> <name pos:line="53" pos:column="19">IDiscoveryResult3</name></type> <name pos:line="53" pos:column="37">IDiscoveryResult3</name>;</typedef>
+<cpp:endif pos:line="54" pos:column="1">#<cpp:directive pos:line="54" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="54" pos:column="9">/* __IDiscoveryResult3_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="57" pos:column="1">#<cpp:directive pos:line="57" pos:column="2">ifndef</cpp:directive> <name pos:line="57" pos:column="9">__IDiscoverySession2_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="58" pos:column="1">#<cpp:directive pos:line="58" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="58" pos:column="9">__IDiscoverySession2_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="59" pos:column="1">typedef <type><name pos:line="59" pos:column="9">interface</name> <name pos:line="59" pos:column="19">IDiscoverySession2</name></type> <name pos:line="59" pos:column="38">IDiscoverySession2</name>;</typedef>
+<cpp:endif pos:line="60" pos:column="1">#<cpp:directive pos:line="60" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="60" pos:column="9">/* __IDiscoverySession2_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="63" pos:column="1">#<cpp:directive pos:line="63" pos:column="2">ifndef</cpp:directive> <name pos:line="63" pos:column="9">__IReferenceInfo2_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="64" pos:column="1">#<cpp:directive pos:line="64" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="64" pos:column="9">__IReferenceInfo2_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="65" pos:column="1">typedef <type><name pos:line="65" pos:column="9">interface</name> <name pos:line="65" pos:column="19">IReferenceInfo2</name></type> <name pos:line="65" pos:column="35">IReferenceInfo2</name>;</typedef>
+<cpp:endif pos:line="66" pos:column="1">#<cpp:directive pos:line="66" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="66" pos:column="9">/* __IReferenceInfo2_FWD_DEFINED__ */</comment>
+
+
+<comment type="block" pos:line="69" pos:column="1">/* header files for imported files */</comment>
+<cpp:include pos:line="70" pos:column="1">#<cpp:directive pos:line="70" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="70" pos:column="10">"oaidl.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="71" pos:column="1">#<cpp:directive pos:line="71" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="71" pos:column="10">"ocidl.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="72" pos:column="1">#<cpp:directive pos:line="72" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="72" pos:column="10">"oleipc.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="73" pos:column="1">#<cpp:directive pos:line="73" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="73" pos:column="10">"vsshell.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="74" pos:column="1">#<cpp:directive pos:line="74" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="74" pos:column="10">"discoveryservice80.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifdef pos:line="76" pos:column="1">#<cpp:directive pos:line="76" pos:column="2">ifdef</cpp:directive> <name pos:line="76" pos:column="8">__cplusplus</name></cpp:ifdef>
+<extern pos:line="77" pos:column="1">extern <lit:literal type="string" pos:line="77" pos:column="8">"C"</lit:literal><block pos:line="77" pos:column="11">{
+<cpp:endif pos:line="78" pos:column="1">#<cpp:directive pos:line="78" pos:column="2">endif</cpp:directive></cpp:endif> 
+
+
+<comment type="block" pos:line="81" pos:column="1">/* interface __MIDL_itf_discoveryservice90_0000_0000 */</comment>
+<comment type="block" pos:line="82" pos:column="1">/* [local] */</comment> 
+
+
+
+
+
+<enum pos:line="88" pos:column="1">enum <name pos:line="88" pos:column="6">DiscoveryProtocol</name>
+    <block pos:line="89" pos:column="5">{	<decl><name pos:line="89" pos:column="9">DP_DiscoveryClientProtocol</name>	<init pos:line="89" pos:column="41">= <expr><lit:literal type="number" pos:line="89" pos:column="43">1</lit:literal></expr></init></decl><op:operator pos:line="89" pos:column="44">,</op:operator>
+	<decl><name pos:line="90" pos:column="9">DP_MetadataExchangeProtocol</name>	<init pos:line="90" pos:column="41">= <expr><lit:literal type="number" pos:line="90" pos:column="43">2</lit:literal></expr></init></decl><op:operator pos:line="90" pos:column="44">,</op:operator>
+	<decl><name pos:line="91" pos:column="9">DP_DiscoveryDataServiceProtocol</name>	<init pos:line="91" pos:column="41">= <expr><lit:literal type="number" pos:line="91" pos:column="43">3</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+<typedef pos:line="93" pos:column="1">typedef <type><enum pos:line="93" pos:column="9">enum <name pos:line="93" pos:column="14">DiscoveryProtocol</name> <name pos:line="93" pos:column="32">DiscoveryProtocol</name>;</enum></type></typedef>
+
+
+
+<decl_stmt><decl><type><specifier pos:line="97" pos:column="1">extern</specifier> <name pos:line="97" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="97" pos:column="22">__MIDL_itf_discoveryservice90_0000_0000_v0_0_c_ifspec</name></decl>;</decl_stmt>
+<decl_stmt><decl><type><specifier pos:line="98" pos:column="1">extern</specifier> <name pos:line="98" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="98" pos:column="22">__MIDL_itf_discoveryservice90_0000_0000_v0_0_s_ifspec</name></decl>;</decl_stmt>
+
+<cpp:ifndef pos:line="100" pos:column="1">#<cpp:directive pos:line="100" pos:column="2">ifndef</cpp:directive> <name pos:line="100" pos:column="9">__IDiscoveryResult3_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="101" pos:column="1">#<cpp:directive pos:line="101" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="101" pos:column="9">__IDiscoveryResult3_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="103" pos:column="1">/* interface IDiscoveryResult3 */</comment>
+<comment type="block" pos:line="104" pos:column="1">/* [object][uuid][unique][version] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="107" pos:column="1">EXTERN_C</name> <specifier pos:line="107" pos:column="10">const</specifier> <name pos:line="107" pos:column="16">IID</name></type> <name pos:line="107" pos:column="20">IID_IDiscoveryResult3</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="109" pos:column="1">#<cpp:directive pos:line="109" pos:column="2">if</cpp:directive> <expr><call><name pos:line="109" pos:column="5">defined</name><argument_list pos:line="109" pos:column="12">(<argument><expr><name pos:line="109" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="109" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="109" pos:column="29">!</op:operator><call><name pos:line="109" pos:column="30">defined</name><argument_list pos:line="109" pos:column="37">(<argument><expr><name pos:line="109" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="111" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="111" pos:column="19">(<argument pos:line="111" pos:column="20">"6e1073e5-a112-441a-8386-232cecc0c29b"</argument>)</argument_list></macro>
+    <label><name pos:line="112" pos:column="5">IDiscoveryResult3</name> :</label> <expr_stmt><expr pos:line="112" pos:column="25">public <name pos:line="112" pos:column="32">IUnknown</name>
+    <block pos:line="113" pos:column="5">{
+    <expr pos:line="114" pos:column="5">public<op:operator pos:line="114" pos:column="11">:</op:operator>
+        virtual <name pos:line="115" pos:column="17">HRESULT</name> <name pos:line="115" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="115" pos:column="43">GetProtocol</name><argument_list pos:line="115" pos:column="54">( 
+            <comment type="block" pos:line="116" pos:column="13">/* [retval][out] */</comment> <argument pos:line="116" pos:column="33">__RPC__out DiscoveryProtocol *pDiscoveryProtocol</argument>)</argument_list></macro> <op:operator pos:line="116" pos:column="83">=</op:operator> <lit:literal type="number" pos:line="116" pos:column="85">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="120" pos:column="1">#<cpp:directive pos:line="120" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="120" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="122" pos:column="5">typedef <type><struct pos:line="122" pos:column="13">struct <name pos:line="122" pos:column="20">IDiscoveryResult3Vtbl</name>
+    <block pos:line="123" pos:column="5">{<public type="default" pos:line="123" pos:column="6">
+        <function_decl><type><name pos:line="124" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="126" pos:column="9">HRESULT</name></type> ( <name pos:line="126" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="126" pos:column="37">*</type:modifier><name pos:line="126" pos:column="38">QueryInterface</name> )<parameter_list pos:line="126" pos:column="54">( 
+            <param><decl><type><name pos:line="127" pos:column="13">IDiscoveryResult3</name> <type:modifier pos:line="127" pos:column="31">*</type:modifier></type> <name pos:line="127" pos:column="33">This</name></decl></param>,
+            <comment type="block" pos:line="128" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="128" pos:column="24">__RPC__in</name> <name pos:line="128" pos:column="34">REFIID</name></type> <name pos:line="128" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="129" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="130" pos:column="13">__RPC__deref_out</name>  <name pos:line="130" pos:column="31">void</name> <type:modifier pos:line="130" pos:column="36">*</type:modifier><type:modifier pos:line="130" pos:column="37">*</type:modifier></type><name pos:line="130" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="132" pos:column="9">ULONG</name></type> ( <name pos:line="132" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="132" pos:column="35">*</type:modifier><name pos:line="132" pos:column="36">AddRef</name> )<parameter_list pos:line="132" pos:column="44">( 
+            <param><decl><type><name pos:line="133" pos:column="13">IDiscoveryResult3</name> <type:modifier pos:line="133" pos:column="31">*</type:modifier></type> <name pos:line="133" pos:column="33">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="135" pos:column="9">ULONG</name></type> ( <name pos:line="135" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="135" pos:column="35">*</type:modifier><name pos:line="135" pos:column="36">Release</name> )<parameter_list pos:line="135" pos:column="45">( 
+            <param><decl><type><name pos:line="136" pos:column="13">IDiscoveryResult3</name> <type:modifier pos:line="136" pos:column="31">*</type:modifier></type> <name pos:line="136" pos:column="33">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="138" pos:column="9">HRESULT</name></type> ( <name pos:line="138" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="138" pos:column="37">*</type:modifier><name pos:line="138" pos:column="38">GetProtocol</name> )<parameter_list pos:line="138" pos:column="51">( 
+            <param><decl><type><name pos:line="139" pos:column="13">IDiscoveryResult3</name> <type:modifier pos:line="139" pos:column="31">*</type:modifier></type> <name pos:line="139" pos:column="33">This</name></decl></param>,
+            <comment type="block" pos:line="140" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="140" pos:column="33">__RPC__out</name> <name pos:line="140" pos:column="44">DiscoveryProtocol</name> <type:modifier pos:line="140" pos:column="62">*</type:modifier></type><name pos:line="140" pos:column="63">pDiscoveryProtocol</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="142" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="143" pos:column="7">IDiscoveryResult3Vtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="145" pos:column="5">interface</name></type> <name pos:line="145" pos:column="15">IDiscoveryResult3</name>
+    <argument_list pos:line="146" pos:column="5">{
+        <argument><expr><name pos:line="147" pos:column="9">CONST_VTBL</name> struct <name pos:line="147" pos:column="27">IDiscoveryResult3Vtbl</name> <op:operator pos:line="147" pos:column="49">*</op:operator><name pos:line="147" pos:column="50">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="152" pos:column="1">#<cpp:directive pos:line="152" pos:column="2">ifdef</cpp:directive> <name pos:line="152" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="155" pos:column="1">#<cpp:directive pos:line="155" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="155" pos:column="9">IDiscoveryResult3_QueryInterface</name><parameter_list pos:line="155" pos:column="41">(<param><type><name pos:line="155" pos:column="42">This</name></type></param>,<param><type><name pos:line="155" pos:column="47">riid</name></type></param>,<param><type><name pos:line="155" pos:column="52">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="156" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="158" pos:column="1">#<cpp:directive pos:line="158" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="158" pos:column="9">IDiscoveryResult3_AddRef</name><parameter_list pos:line="158" pos:column="33">(<param><type><name pos:line="158" pos:column="34">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="159" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="161" pos:column="1">#<cpp:directive pos:line="161" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="161" pos:column="9">IDiscoveryResult3_Release</name><parameter_list pos:line="161" pos:column="34">(<param><type><name pos:line="161" pos:column="35">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="162" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="165" pos:column="1">#<cpp:directive pos:line="165" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="165" pos:column="9">IDiscoveryResult3_GetProtocol</name><parameter_list pos:line="165" pos:column="38">(<param><type><name pos:line="165" pos:column="39">This</name></type></param>,<param><type><name pos:line="165" pos:column="44">pDiscoveryProtocol</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="166" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetProtocol(This,pDiscoveryProtocol) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="168" pos:column="1">#<cpp:directive pos:line="168" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="168" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="171" pos:column="1">#<cpp:directive pos:line="171" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="171" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="176" pos:column="1">#<cpp:directive pos:line="176" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="176" pos:column="9">/* __IDiscoveryResult3_INTERFACE_DEFINED__ */</comment>
+
+
+<comment type="block" pos:line="179" pos:column="1">/* interface __MIDL_itf_discoveryservice90_0000_0001 */</comment>
+<comment type="block" pos:line="180" pos:column="1">/* [local] */</comment> 
+
+
+<enum pos:line="183" pos:column="1">enum <name pos:line="183" pos:column="6">DiscoverySessionProtocolPriority</name>
+    <block pos:line="184" pos:column="5">{	<decl><name pos:line="184" pos:column="9">DSPP_NoPriority</name>	<init pos:line="184" pos:column="25">= <expr><lit:literal type="number" pos:line="184" pos:column="27">0</lit:literal></expr></init></decl><op:operator pos:line="184" pos:column="28">,</op:operator>
+	<decl><name pos:line="185" pos:column="9">DSPP_DiscoveryProtocolFirst</name>	<init pos:line="185" pos:column="41">= <expr><lit:literal type="number" pos:line="185" pos:column="43">1</lit:literal></expr></init></decl><op:operator pos:line="185" pos:column="44">,</op:operator>
+	<decl><name pos:line="186" pos:column="9">DSPP_MetadataExchangeFirst</name>	<init pos:line="186" pos:column="41">= <expr><lit:literal type="number" pos:line="186" pos:column="43">2</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+<typedef pos:line="188" pos:column="1">typedef <type><enum pos:line="188" pos:column="9">enum <name pos:line="188" pos:column="14">DiscoverySessionProtocolPriority</name> <name pos:line="188" pos:column="47">DiscoverySessionProtocolPriority</name>;</enum></type></typedef>
+
+
+
+<decl_stmt><decl><type><specifier pos:line="192" pos:column="1">extern</specifier> <name pos:line="192" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="192" pos:column="22">__MIDL_itf_discoveryservice90_0000_0001_v0_0_c_ifspec</name></decl>;</decl_stmt>
+<decl_stmt><decl><type><specifier pos:line="193" pos:column="1">extern</specifier> <name pos:line="193" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="193" pos:column="22">__MIDL_itf_discoveryservice90_0000_0001_v0_0_s_ifspec</name></decl>;</decl_stmt>
+
+<cpp:ifndef pos:line="195" pos:column="1">#<cpp:directive pos:line="195" pos:column="2">ifndef</cpp:directive> <name pos:line="195" pos:column="9">__IDiscoverySession2_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="196" pos:column="1">#<cpp:directive pos:line="196" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="196" pos:column="9">__IDiscoverySession2_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="198" pos:column="1">/* interface IDiscoverySession2 */</comment>
+<comment type="block" pos:line="199" pos:column="1">/* [object][uuid][unique][version] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="202" pos:column="1">EXTERN_C</name> <specifier pos:line="202" pos:column="10">const</specifier> <name pos:line="202" pos:column="16">IID</name></type> <name pos:line="202" pos:column="20">IID_IDiscoverySession2</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="204" pos:column="1">#<cpp:directive pos:line="204" pos:column="2">if</cpp:directive> <expr><call><name pos:line="204" pos:column="5">defined</name><argument_list pos:line="204" pos:column="12">(<argument><expr><name pos:line="204" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="204" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="204" pos:column="29">!</op:operator><call><name pos:line="204" pos:column="30">defined</name><argument_list pos:line="204" pos:column="37">(<argument><expr><name pos:line="204" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="206" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="206" pos:column="19">(<argument pos:line="206" pos:column="20">"182b5eb4-9a58-47b7-a3fe-ac7ed8b891ff"</argument>)</argument_list></macro>
+    <label><name pos:line="207" pos:column="5">IDiscoverySession2</name> :</label> <expr_stmt><expr pos:line="207" pos:column="26">public <name pos:line="207" pos:column="33">IUnknown</name>
+    <block pos:line="208" pos:column="5">{
+    <expr pos:line="209" pos:column="5">public<op:operator pos:line="209" pos:column="11">:</op:operator>
+        virtual <name pos:line="210" pos:column="17">HRESULT</name> <name pos:line="210" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="210" pos:column="43">DiscoverUrlWithMetadataExchange</name><argument_list pos:line="210" pos:column="74">( 
+            <argument pos:line="211" pos:column="13">__RPC__in LPCOLESTR url</argument>,
+            <argument pos:line="212" pos:column="13">DiscoverySessionProtocolPriority protocolPriority</argument>,
+            <argument pos:line="213" pos:column="13">BOOL resolveAllFiles</argument>,
+            <argument pos:line="214" pos:column="13">__RPC__in LPCOLESTR toolConfigurationPath</argument>,
+            <comment type="block" pos:line="215" pos:column="13">/* [out] */</comment> <argument pos:line="215" pos:column="25">__RPC__deref_out_opt IDiscoveryResult **ppDiscoverResult</argument>)</argument_list></macro> <op:operator pos:line="215" pos:column="83">=</op:operator> <lit:literal type="number" pos:line="215" pos:column="85">0</lit:literal></expr>;
+        
+        <expr pos:line="217" pos:column="9">virtual <name pos:line="217" pos:column="17">HRESULT</name> <name pos:line="217" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="217" pos:column="43">DiscoverUrlAsyncWithMetadataExchange</name><argument_list pos:line="217" pos:column="79">( 
+            <argument pos:line="218" pos:column="13">__RPC__in LPCOLESTR url</argument>,
+            <argument pos:line="219" pos:column="13">DiscoverySessionProtocolPriority protocolPriority</argument>,
+            <argument pos:line="220" pos:column="13">BOOL resolveAllFiles</argument>,
+            <argument pos:line="221" pos:column="13">__RPC__in LPCOLESTR toolConfigurationPath</argument>,
+            <argument pos:line="222" pos:column="13">__RPC__in_opt IDiscoverUrlCallBack *pDiscoverUrlCallBack</argument>,
+            <comment type="block" pos:line="223" pos:column="13">/* [out] */</comment> <argument pos:line="223" pos:column="25">__RPC__out int *pCookieID</argument>)</argument_list></macro> <op:operator pos:line="223" pos:column="52">=</op:operator> <lit:literal type="number" pos:line="223" pos:column="54">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="227" pos:column="1">#<cpp:directive pos:line="227" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="227" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="229" pos:column="5">typedef <type><struct pos:line="229" pos:column="13">struct <name pos:line="229" pos:column="20">IDiscoverySession2Vtbl</name>
+    <block pos:line="230" pos:column="5">{<public type="default" pos:line="230" pos:column="6">
+        <function_decl><type><name pos:line="231" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="233" pos:column="9">HRESULT</name></type> ( <name pos:line="233" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="233" pos:column="37">*</type:modifier><name pos:line="233" pos:column="38">QueryInterface</name> )<parameter_list pos:line="233" pos:column="54">( 
+            <param><decl><type><name pos:line="234" pos:column="13">IDiscoverySession2</name> <type:modifier pos:line="234" pos:column="32">*</type:modifier></type> <name pos:line="234" pos:column="34">This</name></decl></param>,
+            <comment type="block" pos:line="235" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="235" pos:column="24">__RPC__in</name> <name pos:line="235" pos:column="34">REFIID</name></type> <name pos:line="235" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="236" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="237" pos:column="13">__RPC__deref_out</name>  <name pos:line="237" pos:column="31">void</name> <type:modifier pos:line="237" pos:column="36">*</type:modifier><type:modifier pos:line="237" pos:column="37">*</type:modifier></type><name pos:line="237" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="239" pos:column="9">ULONG</name></type> ( <name pos:line="239" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="239" pos:column="35">*</type:modifier><name pos:line="239" pos:column="36">AddRef</name> )<parameter_list pos:line="239" pos:column="44">( 
+            <param><decl><type><name pos:line="240" pos:column="13">IDiscoverySession2</name> <type:modifier pos:line="240" pos:column="32">*</type:modifier></type> <name pos:line="240" pos:column="34">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="242" pos:column="9">ULONG</name></type> ( <name pos:line="242" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="242" pos:column="35">*</type:modifier><name pos:line="242" pos:column="36">Release</name> )<parameter_list pos:line="242" pos:column="45">( 
+            <param><decl><type><name pos:line="243" pos:column="13">IDiscoverySession2</name> <type:modifier pos:line="243" pos:column="32">*</type:modifier></type> <name pos:line="243" pos:column="34">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="245" pos:column="9">HRESULT</name></type> ( <name pos:line="245" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="245" pos:column="37">*</type:modifier><name pos:line="245" pos:column="38">DiscoverUrlWithMetadataExchange</name> )<parameter_list pos:line="245" pos:column="71">( 
+            <param><decl><type><name pos:line="246" pos:column="13">IDiscoverySession2</name> <type:modifier pos:line="246" pos:column="32">*</type:modifier></type> <name pos:line="246" pos:column="34">This</name></decl></param>,
+            <param><decl><type><name pos:line="247" pos:column="13">__RPC__in</name> <name pos:line="247" pos:column="23">LPCOLESTR</name></type> <name pos:line="247" pos:column="33">url</name></decl></param>,
+            <param><decl><type><name pos:line="248" pos:column="13">DiscoverySessionProtocolPriority</name></type> <name pos:line="248" pos:column="46">protocolPriority</name></decl></param>,
+            <param><decl><type><name pos:line="249" pos:column="13">BOOL</name></type> <name pos:line="249" pos:column="18">resolveAllFiles</name></decl></param>,
+            <param><decl><type><name pos:line="250" pos:column="13">__RPC__in</name> <name pos:line="250" pos:column="23">LPCOLESTR</name></type> <name pos:line="250" pos:column="33">toolConfigurationPath</name></decl></param>,
+            <comment type="block" pos:line="251" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="251" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="251" pos:column="46">IDiscoveryResult</name> <type:modifier pos:line="251" pos:column="63">*</type:modifier><type:modifier pos:line="251" pos:column="64">*</type:modifier></type><name pos:line="251" pos:column="65">ppDiscoverResult</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="253" pos:column="9">HRESULT</name></type> ( <name pos:line="253" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="253" pos:column="37">*</type:modifier><name pos:line="253" pos:column="38">DiscoverUrlAsyncWithMetadataExchange</name> )<parameter_list pos:line="253" pos:column="76">( 
+            <param><decl><type><name pos:line="254" pos:column="13">IDiscoverySession2</name> <type:modifier pos:line="254" pos:column="32">*</type:modifier></type> <name pos:line="254" pos:column="34">This</name></decl></param>,
+            <param><decl><type><name pos:line="255" pos:column="13">__RPC__in</name> <name pos:line="255" pos:column="23">LPCOLESTR</name></type> <name pos:line="255" pos:column="33">url</name></decl></param>,
+            <param><decl><type><name pos:line="256" pos:column="13">DiscoverySessionProtocolPriority</name></type> <name pos:line="256" pos:column="46">protocolPriority</name></decl></param>,
+            <param><decl><type><name pos:line="257" pos:column="13">BOOL</name></type> <name pos:line="257" pos:column="18">resolveAllFiles</name></decl></param>,
+            <param><decl><type><name pos:line="258" pos:column="13">__RPC__in</name> <name pos:line="258" pos:column="23">LPCOLESTR</name></type> <name pos:line="258" pos:column="33">toolConfigurationPath</name></decl></param>,
+            <param><decl><type><name pos:line="259" pos:column="13">__RPC__in_opt</name> <name pos:line="259" pos:column="27">IDiscoverUrlCallBack</name> <type:modifier pos:line="259" pos:column="48">*</type:modifier></type><name pos:line="259" pos:column="49">pDiscoverUrlCallBack</name></decl></param>,
+            <comment type="block" pos:line="260" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="260" pos:column="25">__RPC__out</name> <name pos:line="260" pos:column="36">int</name> <type:modifier pos:line="260" pos:column="40">*</type:modifier></type><name pos:line="260" pos:column="41">pCookieID</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="262" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="263" pos:column="7">IDiscoverySession2Vtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="265" pos:column="5">interface</name></type> <name pos:line="265" pos:column="15">IDiscoverySession2</name>
+    <argument_list pos:line="266" pos:column="5">{
+        <argument><expr><name pos:line="267" pos:column="9">CONST_VTBL</name> struct <name pos:line="267" pos:column="27">IDiscoverySession2Vtbl</name> <op:operator pos:line="267" pos:column="50">*</op:operator><name pos:line="267" pos:column="51">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="272" pos:column="1">#<cpp:directive pos:line="272" pos:column="2">ifdef</cpp:directive> <name pos:line="272" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="275" pos:column="1">#<cpp:directive pos:line="275" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="275" pos:column="9">IDiscoverySession2_QueryInterface</name><parameter_list pos:line="275" pos:column="42">(<param><type><name pos:line="275" pos:column="43">This</name></type></param>,<param><type><name pos:line="275" pos:column="48">riid</name></type></param>,<param><type><name pos:line="275" pos:column="53">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="276" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="278" pos:column="1">#<cpp:directive pos:line="278" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="278" pos:column="9">IDiscoverySession2_AddRef</name><parameter_list pos:line="278" pos:column="34">(<param><type><name pos:line="278" pos:column="35">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="279" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="281" pos:column="1">#<cpp:directive pos:line="281" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="281" pos:column="9">IDiscoverySession2_Release</name><parameter_list pos:line="281" pos:column="35">(<param><type><name pos:line="281" pos:column="36">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="282" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="285" pos:column="1">#<cpp:directive pos:line="285" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="285" pos:column="9">IDiscoverySession2_DiscoverUrlWithMetadataExchange</name><parameter_list pos:line="285" pos:column="59">(<param><type><name pos:line="285" pos:column="60">This</name></type></param>,<param><type><name pos:line="285" pos:column="65">url</name></type></param>,<param><type><name pos:line="285" pos:column="69">protocolPriority</name></type></param>,<param><type><name pos:line="285" pos:column="86">resolveAllFiles</name></type></param>,<param><type><name pos:line="285" pos:column="102">toolConfigurationPath</name></type></param>,<param><type><name pos:line="285" pos:column="124">ppDiscoverResult</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="286" pos:column="5">( (This)-&gt;lpVtbl -&gt; DiscoverUrlWithMetadataExchange(This,url,protocolPriority,resolveAllFiles,toolConfigurationPath,ppDiscoverResult) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="288" pos:column="1">#<cpp:directive pos:line="288" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="288" pos:column="9">IDiscoverySession2_DiscoverUrlAsyncWithMetadataExchange</name><parameter_list pos:line="288" pos:column="64">(<param><type><name pos:line="288" pos:column="65">This</name></type></param>,<param><type><name pos:line="288" pos:column="70">url</name></type></param>,<param><type><name pos:line="288" pos:column="74">protocolPriority</name></type></param>,<param><type><name pos:line="288" pos:column="91">resolveAllFiles</name></type></param>,<param><type><name pos:line="288" pos:column="107">toolConfigurationPath</name></type></param>,<param><type><name pos:line="288" pos:column="129">pDiscoverUrlCallBack</name></type></param>,<param><type><name pos:line="288" pos:column="150">pCookieID</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="289" pos:column="5">( (This)-&gt;lpVtbl -&gt; DiscoverUrlAsyncWithMetadataExchange(This,url,protocolPriority,resolveAllFiles,toolConfigurationPath,pDiscoverUrlCallBack,pCookieID) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="291" pos:column="1">#<cpp:directive pos:line="291" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="291" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="294" pos:column="1">#<cpp:directive pos:line="294" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="294" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="299" pos:column="1">#<cpp:directive pos:line="299" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="299" pos:column="9">/* __IDiscoverySession2_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="302" pos:column="1">#<cpp:directive pos:line="302" pos:column="2">ifndef</cpp:directive> <name pos:line="302" pos:column="9">__IReferenceInfo2_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="303" pos:column="1">#<cpp:directive pos:line="303" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="303" pos:column="9">__IReferenceInfo2_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="305" pos:column="1">/* interface IReferenceInfo2 */</comment>
+<comment type="block" pos:line="306" pos:column="1">/* [object][uuid][unique][version] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="309" pos:column="1">EXTERN_C</name> <specifier pos:line="309" pos:column="10">const</specifier> <name pos:line="309" pos:column="16">IID</name></type> <name pos:line="309" pos:column="20">IID_IReferenceInfo2</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="311" pos:column="1">#<cpp:directive pos:line="311" pos:column="2">if</cpp:directive> <expr><call><name pos:line="311" pos:column="5">defined</name><argument_list pos:line="311" pos:column="12">(<argument><expr><name pos:line="311" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="311" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="311" pos:column="29">!</op:operator><call><name pos:line="311" pos:column="30">defined</name><argument_list pos:line="311" pos:column="37">(<argument><expr><name pos:line="311" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="313" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="313" pos:column="19">(<argument pos:line="313" pos:column="20">"e316ff6d-ca00-49dd-969f-441399132ac7"</argument>)</argument_list></macro>
+    <label><name pos:line="314" pos:column="5">IReferenceInfo2</name> :</label> <expr_stmt><expr pos:line="314" pos:column="23">public <name pos:line="314" pos:column="30">IUnknown</name>
+    <block pos:line="315" pos:column="5">{
+    <expr pos:line="316" pos:column="5">public<op:operator pos:line="316" pos:column="11">:</op:operator>
+        virtual <name pos:line="317" pos:column="17">HRESULT</name> <name pos:line="317" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="317" pos:column="43">GetDefaultFileName</name><argument_list pos:line="317" pos:column="61">( 
+            <comment type="block" pos:line="318" pos:column="13">/* [retval][out] */</comment> <argument pos:line="318" pos:column="33">__RPC__deref_out_opt BSTR *pbstrDefaultName</argument>)</argument_list></macro> <op:operator pos:line="318" pos:column="78">=</op:operator> <lit:literal type="number" pos:line="318" pos:column="80">0</lit:literal></expr>;
+        
+        <expr pos:line="320" pos:column="9">virtual <name pos:line="320" pos:column="17">HRESULT</name> <name pos:line="320" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="320" pos:column="43">GetDocumentContents</name><argument_list pos:line="320" pos:column="62">( 
+            <comment type="block" pos:line="321" pos:column="13">/* [retval][out] */</comment> <argument pos:line="321" pos:column="33">__RPC__deref_out_opt SAFEARRAY * *pContent</argument>)</argument_list></macro> <op:operator pos:line="321" pos:column="77">=</op:operator> <lit:literal type="number" pos:line="321" pos:column="79">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="325" pos:column="1">#<cpp:directive pos:line="325" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="325" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="327" pos:column="5">typedef <type><struct pos:line="327" pos:column="13">struct <name pos:line="327" pos:column="20">IReferenceInfo2Vtbl</name>
+    <block pos:line="328" pos:column="5">{<public type="default" pos:line="328" pos:column="6">
+        <function_decl><type><name pos:line="329" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="331" pos:column="9">HRESULT</name></type> ( <name pos:line="331" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="331" pos:column="37">*</type:modifier><name pos:line="331" pos:column="38">QueryInterface</name> )<parameter_list pos:line="331" pos:column="54">( 
+            <param><decl><type><name pos:line="332" pos:column="13">IReferenceInfo2</name> <type:modifier pos:line="332" pos:column="29">*</type:modifier></type> <name pos:line="332" pos:column="31">This</name></decl></param>,
+            <comment type="block" pos:line="333" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="333" pos:column="24">__RPC__in</name> <name pos:line="333" pos:column="34">REFIID</name></type> <name pos:line="333" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="334" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="335" pos:column="13">__RPC__deref_out</name>  <name pos:line="335" pos:column="31">void</name> <type:modifier pos:line="335" pos:column="36">*</type:modifier><type:modifier pos:line="335" pos:column="37">*</type:modifier></type><name pos:line="335" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="337" pos:column="9">ULONG</name></type> ( <name pos:line="337" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="337" pos:column="35">*</type:modifier><name pos:line="337" pos:column="36">AddRef</name> )<parameter_list pos:line="337" pos:column="44">( 
+            <param><decl><type><name pos:line="338" pos:column="13">IReferenceInfo2</name> <type:modifier pos:line="338" pos:column="29">*</type:modifier></type> <name pos:line="338" pos:column="31">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="340" pos:column="9">ULONG</name></type> ( <name pos:line="340" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="340" pos:column="35">*</type:modifier><name pos:line="340" pos:column="36">Release</name> )<parameter_list pos:line="340" pos:column="45">( 
+            <param><decl><type><name pos:line="341" pos:column="13">IReferenceInfo2</name> <type:modifier pos:line="341" pos:column="29">*</type:modifier></type> <name pos:line="341" pos:column="31">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="343" pos:column="9">HRESULT</name></type> ( <name pos:line="343" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="343" pos:column="37">*</type:modifier><name pos:line="343" pos:column="38">GetDefaultFileName</name> )<parameter_list pos:line="343" pos:column="58">( 
+            <param><decl><type><name pos:line="344" pos:column="13">IReferenceInfo2</name> <type:modifier pos:line="344" pos:column="29">*</type:modifier></type> <name pos:line="344" pos:column="31">This</name></decl></param>,
+            <comment type="block" pos:line="345" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="345" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="345" pos:column="54">BSTR</name> <type:modifier pos:line="345" pos:column="59">*</type:modifier></type><name pos:line="345" pos:column="60">pbstrDefaultName</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="347" pos:column="9">HRESULT</name></type> ( <name pos:line="347" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="347" pos:column="37">*</type:modifier><name pos:line="347" pos:column="38">GetDocumentContents</name> )<parameter_list pos:line="347" pos:column="59">( 
+            <param><decl><type><name pos:line="348" pos:column="13">IReferenceInfo2</name> <type:modifier pos:line="348" pos:column="29">*</type:modifier></type> <name pos:line="348" pos:column="31">This</name></decl></param>,
+            <comment type="block" pos:line="349" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="349" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="349" pos:column="54">SAFEARRAY</name> <type:modifier pos:line="349" pos:column="64">*</type:modifier> <type:modifier pos:line="349" pos:column="66">*</type:modifier></type><name pos:line="349" pos:column="67">pContent</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="351" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="352" pos:column="7">IReferenceInfo2Vtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="354" pos:column="5">interface</name></type> <name pos:line="354" pos:column="15">IReferenceInfo2</name>
+    <argument_list pos:line="355" pos:column="5">{
+        <argument><expr><name pos:line="356" pos:column="9">CONST_VTBL</name> struct <name pos:line="356" pos:column="27">IReferenceInfo2Vtbl</name> <op:operator pos:line="356" pos:column="47">*</op:operator><name pos:line="356" pos:column="48">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="361" pos:column="1">#<cpp:directive pos:line="361" pos:column="2">ifdef</cpp:directive> <name pos:line="361" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="364" pos:column="1">#<cpp:directive pos:line="364" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="364" pos:column="9">IReferenceInfo2_QueryInterface</name><parameter_list pos:line="364" pos:column="39">(<param><type><name pos:line="364" pos:column="40">This</name></type></param>,<param><type><name pos:line="364" pos:column="45">riid</name></type></param>,<param><type><name pos:line="364" pos:column="50">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="365" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="367" pos:column="1">#<cpp:directive pos:line="367" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="367" pos:column="9">IReferenceInfo2_AddRef</name><parameter_list pos:line="367" pos:column="31">(<param><type><name pos:line="367" pos:column="32">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="368" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="370" pos:column="1">#<cpp:directive pos:line="370" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="370" pos:column="9">IReferenceInfo2_Release</name><parameter_list pos:line="370" pos:column="32">(<param><type><name pos:line="370" pos:column="33">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="371" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="374" pos:column="1">#<cpp:directive pos:line="374" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="374" pos:column="9">IReferenceInfo2_GetDefaultFileName</name><parameter_list pos:line="374" pos:column="43">(<param><type><name pos:line="374" pos:column="44">This</name></type></param>,<param><type><name pos:line="374" pos:column="49">pbstrDefaultName</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="375" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetDefaultFileName(This,pbstrDefaultName) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="377" pos:column="1">#<cpp:directive pos:line="377" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="377" pos:column="9">IReferenceInfo2_GetDocumentContents</name><parameter_list pos:line="377" pos:column="44">(<param><type><name pos:line="377" pos:column="45">This</name></type></param>,<param><type><name pos:line="377" pos:column="50">pContent</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="378" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetDocumentContents(This,pContent) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="380" pos:column="1">#<cpp:directive pos:line="380" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="380" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="383" pos:column="1">#<cpp:directive pos:line="383" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="383" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="388" pos:column="1">#<cpp:directive pos:line="388" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="388" pos:column="9">/* __IReferenceInfo2_INTERFACE_DEFINED__ */</comment>
+
+
+<comment type="block" pos:line="391" pos:column="1">/* Additional Prototypes for ALL interfaces */</comment>
+
+<function_decl><type><name pos:line="393" pos:column="1">unsigned</name> <name pos:line="393" pos:column="10">long</name>             <name pos:line="393" pos:column="27">__RPC_USER</name></type>  <name pos:line="393" pos:column="39">BSTR_UserSize</name><parameter_list pos:line="393" pos:column="52">(     <param><decl><type><name pos:line="393" pos:column="58">unsigned</name></type> <name pos:line="393" pos:column="67">long</name> <type:modifier pos:line="393" pos:column="72">*</type:modifier></decl></param>, <param><decl><type><name pos:line="393" pos:column="75">unsigned</name></type> <name pos:line="393" pos:column="84">long</name></decl></param>            , <param><decl><type><name pos:line="393" pos:column="102">BSTR</name> <type:modifier pos:line="393" pos:column="107">*</type:modifier></type></decl></param> )</parameter_list>;</function_decl> 
+<function_decl><type><name pos:line="394" pos:column="1">unsigned</name> <name pos:line="394" pos:column="10">char</name> <type:modifier pos:line="394" pos:column="15">*</type:modifier> <name pos:line="394" pos:column="17">__RPC_USER</name></type>  <name pos:line="394" pos:column="29">BSTR_UserMarshal</name><parameter_list pos:line="394" pos:column="45">(  <param><decl><type><name pos:line="394" pos:column="48">unsigned</name></type> <name pos:line="394" pos:column="57">long</name> <type:modifier pos:line="394" pos:column="62">*</type:modifier></decl></param>, <param><decl><type><name pos:line="394" pos:column="65">unsigned</name></type> <name pos:line="394" pos:column="74">char</name> <type:modifier pos:line="394" pos:column="79">*</type:modifier></decl></param>, <param><decl><type><name pos:line="394" pos:column="82">BSTR</name> <type:modifier pos:line="394" pos:column="87">*</type:modifier></type></decl></param> )</parameter_list>;</function_decl> 
+<function_decl><type><name pos:line="395" pos:column="1">unsigned</name> <name pos:line="395" pos:column="10">char</name> <type:modifier pos:line="395" pos:column="15">*</type:modifier> <name pos:line="395" pos:column="17">__RPC_USER</name></type>  <name pos:line="395" pos:column="29">BSTR_UserUnmarshal</name><parameter_list pos:line="395" pos:column="47">(<param><decl><type><name pos:line="395" pos:column="48">unsigned</name></type> <name pos:line="395" pos:column="57">long</name> <type:modifier pos:line="395" pos:column="62">*</type:modifier></decl></param>, <param><decl><type><name pos:line="395" pos:column="65">unsigned</name></type> <name pos:line="395" pos:column="74">char</name> <type:modifier pos:line="395" pos:column="79">*</type:modifier></decl></param>, <param><decl><type><name pos:line="395" pos:column="82">BSTR</name> <type:modifier pos:line="395" pos:column="87">*</type:modifier></type></decl></param> )</parameter_list>;</function_decl> 
+<function_decl><type><name pos:line="396" pos:column="1">void</name>                      <name pos:line="396" pos:column="27">__RPC_USER</name></type>  <name pos:line="396" pos:column="39">BSTR_UserFree</name><parameter_list pos:line="396" pos:column="52">(     <param><decl><type><name pos:line="396" pos:column="58">unsigned</name></type> <name pos:line="396" pos:column="67">long</name> <type:modifier pos:line="396" pos:column="72">*</type:modifier></decl></param>, <param><decl><type><name pos:line="396" pos:column="75">BSTR</name> <type:modifier pos:line="396" pos:column="80">*</type:modifier></type></decl></param> )</parameter_list>;</function_decl> 
+
+<function_decl><type><name pos:line="398" pos:column="1">unsigned</name> <name pos:line="398" pos:column="10">long</name>             <name pos:line="398" pos:column="27">__RPC_USER</name></type>  <name pos:line="398" pos:column="39">LPSAFEARRAY_UserSize</name><parameter_list pos:line="398" pos:column="59">(     <param><decl><type><name pos:line="398" pos:column="65">unsigned</name></type> <name pos:line="398" pos:column="74">long</name> <type:modifier pos:line="398" pos:column="79">*</type:modifier></decl></param>, <param><decl><type><name pos:line="398" pos:column="82">unsigned</name></type> <name pos:line="398" pos:column="91">long</name></decl></param>            , <param><decl><type><name pos:line="398" pos:column="109">LPSAFEARRAY</name> <type:modifier pos:line="398" pos:column="121">*</type:modifier></type></decl></param> )</parameter_list>;</function_decl> 
+<function_decl><type><name pos:line="399" pos:column="1">unsigned</name> <name pos:line="399" pos:column="10">char</name> <type:modifier pos:line="399" pos:column="15">*</type:modifier> <name pos:line="399" pos:column="17">__RPC_USER</name></type>  <name pos:line="399" pos:column="29">LPSAFEARRAY_UserMarshal</name><parameter_list pos:line="399" pos:column="52">(  <param><decl><type><name pos:line="399" pos:column="55">unsigned</name></type> <name pos:line="399" pos:column="64">long</name> <type:modifier pos:line="399" pos:column="69">*</type:modifier></decl></param>, <param><decl><type><name pos:line="399" pos:column="72">unsigned</name></type> <name pos:line="399" pos:column="81">char</name> <type:modifier pos:line="399" pos:column="86">*</type:modifier></decl></param>, <param><decl><type><name pos:line="399" pos:column="89">LPSAFEARRAY</name> <type:modifier pos:line="399" pos:column="101">*</type:modifier></type></decl></param> )</parameter_list>;</function_decl> 
+<function_decl><type><name pos:line="400" pos:column="1">unsigned</name> <name pos:line="400" pos:column="10">char</name> <type:modifier pos:line="400" pos:column="15">*</type:modifier> <name pos:line="400" pos:column="17">__RPC_USER</name></type>  <name pos:line="400" pos:column="29">LPSAFEARRAY_UserUnmarshal</name><parameter_list pos:line="400" pos:column="54">(<param><decl><type><name pos:line="400" pos:column="55">unsigned</name></type> <name pos:line="400" pos:column="64">long</name> <type:modifier pos:line="400" pos:column="69">*</type:modifier></decl></param>, <param><decl><type><name pos:line="400" pos:column="72">unsigned</name></type> <name pos:line="400" pos:column="81">char</name> <type:modifier pos:line="400" pos:column="86">*</type:modifier></decl></param>, <param><decl><type><name pos:line="400" pos:column="89">LPSAFEARRAY</name> <type:modifier pos:line="400" pos:column="101">*</type:modifier></type></decl></param> )</parameter_list>;</function_decl> 
+<function_decl><type><name pos:line="401" pos:column="1">void</name>                      <name pos:line="401" pos:column="27">__RPC_USER</name></type>  <name pos:line="401" pos:column="39">LPSAFEARRAY_UserFree</name><parameter_list pos:line="401" pos:column="59">(     <param><decl><type><name pos:line="401" pos:column="65">unsigned</name></type> <name pos:line="401" pos:column="74">long</name> <type:modifier pos:line="401" pos:column="79">*</type:modifier></decl></param>, <param><decl><type><name pos:line="401" pos:column="82">LPSAFEARRAY</name> <type:modifier pos:line="401" pos:column="94">*</type:modifier></type></decl></param> )</parameter_list>;</function_decl> 
+
+<comment type="block" pos:line="403" pos:column="1">/* end of Additional Prototypes */</comment>
+
+<cpp:ifdef pos:line="405" pos:column="1">#<cpp:directive pos:line="405" pos:column="2">ifdef</cpp:directive> <name pos:line="405" pos:column="8">__cplusplus</name></cpp:ifdef>
+}</block></extern>
+<cpp:endif pos:line="407" pos:column="1">#<cpp:directive pos:line="407" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:endif pos:line="409" pos:column="1">#<cpp:directive pos:line="409" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+</unit>

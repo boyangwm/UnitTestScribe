@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Framework\IGlimpseConfiguration.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">Glimpse</name><op:operator pos:line="3" pos:column="14">.</op:operator><name pos:line="3" pos:column="15">Core</name><op:operator pos:line="3" pos:column="19">.</op:operator><name pos:line="3" pos:column="20">Extensibility</name></name>;</using>
+
+<namespace pos:line="5" pos:column="1">namespace <name><name pos:line="5" pos:column="11">Glimpse</name><op:operator pos:line="5" pos:column="18">.</op:operator><name pos:line="5" pos:column="19">Core</name><op:operator pos:line="5" pos:column="23">.</op:operator><name pos:line="5" pos:column="24">Framework</name></name>
+<block pos:line="6" pos:column="1">{
+    <comment type="line" pos:line="7" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// Defines properties to provide access to system providers, stores, collections,</comment>
+    <comment type="line" pos:line="9" pos:column="5">/// factories, etc.</comment>
+    <comment type="line" pos:line="10" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class type="interface"><specifier pos:line="11" pos:column="5">public</specifier> interface <name pos:line="11" pos:column="22">IGlimpseConfiguration</name>
+    <block pos:line="12" pos:column="5">{
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// Gets the client scripts.</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="16" pos:column="9">/// &lt;value&gt;The client scripts.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name><name pos:line="17" pos:column="9">ICollection</name><argument_list pos:line="17" pos:column="20">&lt;<argument><name pos:line="17" pos:column="21">IClientScript</name></argument>&gt;</argument_list></name></type> <name pos:line="17" pos:column="36">ClientScripts</name> <block pos:line="17" pos:column="50">{ <function_decl><name pos:line="17" pos:column="52">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="19" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="20" pos:column="9">/// Gets the framework provider.</comment>
+        <comment type="line" pos:line="21" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="22" pos:column="9">/// &lt;value&gt;The framework provider.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="23" pos:column="9">IFrameworkProvider</name></type> <name pos:line="23" pos:column="28">FrameworkProvider</name> <block pos:line="23" pos:column="46">{ <function_decl><name pos:line="23" pos:column="48">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// Gets the HTML encoder.</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;value&gt;The HTML encoder.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="29" pos:column="9">IHtmlEncoder</name></type> <name pos:line="29" pos:column="22">HtmlEncoder</name> <block pos:line="29" pos:column="34">{ <function_decl><name pos:line="29" pos:column="36">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="31" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="32" pos:column="9">/// Gets the logger.</comment>
+        <comment type="line" pos:line="33" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// &lt;value&gt;The logger.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="35" pos:column="9">ILogger</name></type> <name pos:line="35" pos:column="17">Logger</name> <block pos:line="35" pos:column="24">{ <function_decl><name pos:line="35" pos:column="26">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// Gets the persistence store.</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;value&gt;The persistence store.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="41" pos:column="9">IPersistenceStore</name></type> <name pos:line="41" pos:column="27">PersistenceStore</name> <block pos:line="41" pos:column="44">{ <function_decl><name pos:line="41" pos:column="46">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="43" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// Gets the inspectors.</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// &lt;value&gt;The inspectors.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name><name pos:line="47" pos:column="9">ICollection</name><argument_list pos:line="47" pos:column="20">&lt;<argument><name pos:line="47" pos:column="21">IInspector</name></argument>&gt;</argument_list></name></type> <name pos:line="47" pos:column="33">Inspectors</name> <block pos:line="47" pos:column="44">{ <function_decl><name pos:line="47" pos:column="46">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="49" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="50" pos:column="9">/// Gets the resource endpoint.</comment>
+        <comment type="line" pos:line="51" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="52" pos:column="9">/// &lt;value&gt;The resource endpoint.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="53" pos:column="9">ResourceEndpointConfiguration</name></type> <name pos:line="53" pos:column="39">ResourceEndpoint</name> <block pos:line="53" pos:column="56">{ <function_decl><name pos:line="53" pos:column="58">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="55" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="56" pos:column="9">/// Gets the resources.</comment>
+        <comment type="line" pos:line="57" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="58" pos:column="9">/// &lt;value&gt;The resources.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name><name pos:line="59" pos:column="9">ICollection</name><argument_list pos:line="59" pos:column="20">&lt;<argument><name pos:line="59" pos:column="21">IResource</name></argument>&gt;</argument_list></name></type> <name pos:line="59" pos:column="32">Resources</name> <block pos:line="59" pos:column="42">{ <function_decl><name pos:line="59" pos:column="44">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="61" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="62" pos:column="9">/// Gets the serializer.</comment>
+        <comment type="line" pos:line="63" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="64" pos:column="9">/// &lt;value&gt;The serializer.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="65" pos:column="9">ISerializer</name></type> <name pos:line="65" pos:column="21">Serializer</name> <block pos:line="65" pos:column="32">{ <function_decl><name pos:line="65" pos:column="34">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="67" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="68" pos:column="9">/// Gets the tabs.</comment>
+        <comment type="line" pos:line="69" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="70" pos:column="9">/// &lt;value&gt;The tabs.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name><name pos:line="71" pos:column="9">ICollection</name><argument_list pos:line="71" pos:column="20">&lt;<argument><name pos:line="71" pos:column="21">ITab</name></argument>&gt;</argument_list></name></type> <name pos:line="71" pos:column="27">Tabs</name> <block pos:line="71" pos:column="32">{ <function_decl><name pos:line="71" pos:column="34">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><attribute pos:line="73" pos:column="9">[<expr><name pos:line="73" pos:column="10">Obsolete</name></expr>]</attribute>
+        <name><name pos:line="74" pos:column="9">ICollection</name><argument_list pos:line="74" pos:column="20">&lt;<argument><name pos:line="74" pos:column="21">IDisplay</name></argument>&gt;</argument_list></name></type> <name pos:line="74" pos:column="31">Displays</name> <block pos:line="74" pos:column="40">{ <function_decl><name pos:line="74" pos:column="42">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="76" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="77" pos:column="9">/// Gets the runtime policies.</comment>
+        <comment type="line" pos:line="78" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="79" pos:column="9">/// &lt;value&gt;The runtime policies.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name><name pos:line="80" pos:column="9">ICollection</name><argument_list pos:line="80" pos:column="20">&lt;<argument><name pos:line="80" pos:column="21">IRuntimePolicy</name></argument>&gt;</argument_list></name></type> <name pos:line="80" pos:column="37">RuntimePolicies</name> <block pos:line="80" pos:column="53">{ <function_decl><name pos:line="80" pos:column="55">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="82" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="83" pos:column="9">/// Gets the default resource.</comment>
+        <comment type="line" pos:line="84" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="85" pos:column="9">/// &lt;value&gt;The default resource.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="86" pos:column="9">IResource</name></type> <name pos:line="86" pos:column="19">DefaultResource</name> <block pos:line="86" pos:column="35">{ <function_decl><name pos:line="86" pos:column="37">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="88" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="89" pos:column="9">/// Gets the default runtime policy.</comment>
+        <comment type="line" pos:line="90" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="91" pos:column="9">/// &lt;value&gt;The default runtime policy.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="92" pos:column="9">RuntimePolicy</name></type> <name pos:line="92" pos:column="23">DefaultRuntimePolicy</name> <block pos:line="92" pos:column="44">{ <function_decl><name pos:line="92" pos:column="46">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="94" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="95" pos:column="9">/// Gets the proxy factory.</comment>
+        <comment type="line" pos:line="96" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="97" pos:column="9">/// &lt;value&gt;The proxy factory.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="98" pos:column="9">IProxyFactory</name></type> <name pos:line="98" pos:column="23">ProxyFactory</name> <block pos:line="98" pos:column="36">{ <function_decl><name pos:line="98" pos:column="38">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="100" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="101" pos:column="9">/// Gets the message broker.</comment>
+        <comment type="line" pos:line="102" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="103" pos:column="9">/// &lt;value&gt;The message broker.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="104" pos:column="9">IMessageBroker</name></type> <name pos:line="104" pos:column="24">MessageBroker</name> <block pos:line="104" pos:column="38">{ <function_decl><name pos:line="104" pos:column="40">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="106" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="107" pos:column="9">/// Gets the endpoint base URI.</comment>
+        <comment type="line" pos:line="108" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="109" pos:column="9">/// &lt;value&gt;The endpoint base URI.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="110" pos:column="9">string</name></type> <name pos:line="110" pos:column="16">EndpointBaseUri</name> <block pos:line="110" pos:column="32">{ <function_decl><name pos:line="110" pos:column="34">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="112" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="113" pos:column="9">/// Gets the configuration hash.</comment>
+        <comment type="line" pos:line="114" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="115" pos:column="9">/// &lt;value&gt;The hash.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="116" pos:column="9">string</name></type> <name pos:line="116" pos:column="16">Hash</name> <block pos:line="116" pos:column="21">{ <function_decl><name pos:line="116" pos:column="23">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="118" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="119" pos:column="9">/// Gets or sets the runtime policy strategy.</comment>
+        <comment type="line" pos:line="120" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="121" pos:column="9">/// &lt;value&gt;The runtime policy strategy.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name><name pos:line="122" pos:column="9">Func</name><argument_list pos:line="122" pos:column="13">&lt;<argument><name pos:line="122" pos:column="14">RuntimePolicy</name></argument>&gt;</argument_list></name></type> <name pos:line="122" pos:column="29">RuntimePolicyStrategy</name> <block pos:line="122" pos:column="51">{ <function_decl><name pos:line="122" pos:column="53">get</name>;</function_decl> <function_decl><name pos:line="122" pos:column="58">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="124" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="125" pos:column="9">/// Gets or sets the timer strategy.</comment>
+        <comment type="line" pos:line="126" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="127" pos:column="9">/// &lt;value&gt;The timer strategy.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name><name pos:line="128" pos:column="9">Func</name><argument_list pos:line="128" pos:column="13">&lt;<argument><name pos:line="128" pos:column="14">IExecutionTimer</name></argument>&gt;</argument_list></name></type> <name pos:line="128" pos:column="31">TimerStrategy</name> <block pos:line="128" pos:column="45">{ <function_decl><name pos:line="128" pos:column="47">get</name>;</function_decl> <function_decl><name pos:line="128" pos:column="52">set</name>;</function_decl> }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace></unit>

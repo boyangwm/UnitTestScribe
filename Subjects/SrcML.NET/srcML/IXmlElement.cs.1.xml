@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML.Data\IXmlElement.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2014 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *    Patrick Francis (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="13" pos:column="1">using <name pos:line="13" pos:column="7">System</name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Collections</name><op:operator pos:line="14" pos:column="25">.</op:operator><name pos:line="14" pos:column="26">Generic</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Linq</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">System</name><op:operator pos:line="16" pos:column="13">.</op:operator><name pos:line="16" pos:column="14">Text</name></name>;</using>
+<using pos:line="17" pos:column="1">using <name><name pos:line="17" pos:column="7">System</name><op:operator pos:line="17" pos:column="13">.</op:operator><name pos:line="17" pos:column="14">Xml</name><op:operator pos:line="17" pos:column="17">.</op:operator><name pos:line="17" pos:column="18">Serialization</name></name>;</using>
+
+<namespace pos:line="19" pos:column="1">namespace <name><name pos:line="19" pos:column="11">ABB</name><op:operator pos:line="19" pos:column="14">.</op:operator><name pos:line="19" pos:column="15">SrcML</name><op:operator pos:line="19" pos:column="20">.</op:operator><name pos:line="19" pos:column="21">Data</name></name> <block pos:line="19" pos:column="26">{
+    <comment type="line" pos:line="20" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="21" pos:column="5">/// IXmlElement is an internal interface used to aid in serialization. The &lt;see cref="GetXmlName()"/&gt; method is used by the</comment>
+    <comment type="line" pos:line="22" pos:column="5">/// serialization code to determine the XML element to surround the contents.</comment>
+    <comment type="line" pos:line="23" pos:column="5">/// </comment>
+    <comment type="line" pos:line="24" pos:column="5">/// In order to support both serialization and deserialization, there is a pattern for implementing this method:</comment>
+    <comment type="line" pos:line="25" pos:column="5">/// </comment>
+    <comment type="line" pos:line="26" pos:column="5">/// &lt;example&gt;</comment>
+    <comment type="line" pos:line="27" pos:column="5">/// This is how to implement &lt;see cref="GetXmlName"/&gt; in order to support serialization and deserialization.</comment>
+    <comment type="line" pos:line="28" pos:column="5">/// &lt;code&gt;</comment>
+    <comment type="line" pos:line="29" pos:column="5">/// public class MyClass : IXmlElement {</comment>
+    <comment type="line" pos:line="30" pos:column="5">///     public const string XmlName = "MyClass";</comment>
+    <comment type="line" pos:line="31" pos:column="5">///     </comment>
+    <comment type="line" pos:line="32" pos:column="5">///     public string GetXmlName() { return MyClass.XmlName; }</comment>
+    <comment type="line" pos:line="33" pos:column="5">/// }</comment>
+    <comment type="line" pos:line="34" pos:column="5">/// &lt;/code&gt;</comment>
+    <comment type="line" pos:line="35" pos:column="5">/// &lt;/example&gt;</comment>
+    <comment type="line" pos:line="36" pos:column="5">/// </comment>
+    <comment type="line" pos:line="37" pos:column="5">/// If your new class is a subclass of &lt;see cref="Statement"/&gt; or &lt;see cref="Expression"/&gt;, you should also add it to</comment>
+    <comment type="line" pos:line="38" pos:column="5">/// either &lt;see cref="XmlSerialization.XmlStatementMap"/&gt; or &lt;see cref="XmlSerialization.XmlExpressionMap"/&gt;.</comment>
+    <comment type="line" pos:line="39" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class type="interface"><specifier pos:line="40" pos:column="5">public</specifier> interface <name pos:line="40" pos:column="22">IXmlElement</name> <super pos:line="40" pos:column="34">: <name pos:line="40" pos:column="36">IXmlSerializable</name></super> <block pos:line="40" pos:column="53">{
+        <comment type="line" pos:line="41" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// Returns the default XML element name to use for this class.</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// &lt;returns&gt;The XML element name&lt;/returns&gt;</comment>
+        <function_decl><type><name pos:line="45" pos:column="9">string</name></type> <name pos:line="45" pos:column="16">GetXmlName</name><parameter_list pos:line="45" pos:column="26">()</parameter_list>;</function_decl>
+    }</block></class>
+}</block></namespace>
+</unit>

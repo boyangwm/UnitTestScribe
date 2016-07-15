@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensibility\IInspectorContext.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Core</name><op:operator pos:line="3" pos:column="23">.</op:operator><name pos:line="3" pos:column="24">Extensibility</name></name>
+<block pos:line="4" pos:column="1">{
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="6" pos:column="5">/// Definition of a context that is used by the &lt;see cref="IInspector"/&gt;.</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class type="interface"><specifier pos:line="8" pos:column="5">public</specifier> interface <name pos:line="8" pos:column="22">IInspectorContext</name> <super pos:line="8" pos:column="40">: <name pos:line="8" pos:column="42">IContext</name></super>
+    <block pos:line="9" pos:column="5">{
+        <comment type="line" pos:line="10" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="11" pos:column="9">/// Gets the proxy factory.</comment>
+        <comment type="line" pos:line="12" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;value&gt;The proxy factory.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="14" pos:column="9">IProxyFactory</name></type> <name pos:line="14" pos:column="23">ProxyFactory</name> <block pos:line="14" pos:column="36">{ <function_decl><name pos:line="14" pos:column="38">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="16" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="17" pos:column="9">/// Gets the timer strategy.</comment>
+        <comment type="line" pos:line="18" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="19" pos:column="9">/// &lt;value&gt;The timer strategy.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name><name pos:line="20" pos:column="9">Func</name><argument_list pos:line="20" pos:column="13">&lt;<argument><name pos:line="20" pos:column="14">IExecutionTimer</name></argument>&gt;</argument_list></name></type> <name pos:line="20" pos:column="31">TimerStrategy</name> <block pos:line="20" pos:column="45">{ <function_decl><name pos:line="20" pos:column="47">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="22" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// Gets the message broker.</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;value&gt;The message broker.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="26" pos:column="9">IMessageBroker</name></type> <name pos:line="26" pos:column="24">MessageBroker</name> <block pos:line="26" pos:column="38">{ <function_decl><name pos:line="26" pos:column="40">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// Gets the runtime policy strategy.</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// &lt;value&gt;The runtime policy strategy.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name><name pos:line="32" pos:column="9">Func</name><argument_list pos:line="32" pos:column="13">&lt;<argument><name pos:line="32" pos:column="14">RuntimePolicy</name></argument>&gt;</argument_list></name></type> <name pos:line="32" pos:column="29">RuntimePolicyStrategy</name> <block pos:line="32" pos:column="51">{ <function_decl><name pos:line="32" pos:column="53">get</name>;</function_decl> }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace></unit>

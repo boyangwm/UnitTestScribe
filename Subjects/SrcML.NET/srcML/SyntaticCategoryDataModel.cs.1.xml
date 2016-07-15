@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\VisualStudio\SDML.SrcMLVSAddin.SyntaticCategory\SyntaticCategoryDataModel.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2011 Brian Bartman
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Brian Bartman (SDML) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Text</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">System</name><op:operator pos:line="16" pos:column="13">.</op:operator><name pos:line="16" pos:column="14">Xml</name></name>;</using>
+<using pos:line="17" pos:column="1">using <name><name pos:line="17" pos:column="7">System</name><op:operator pos:line="17" pos:column="13">.</op:operator><name pos:line="17" pos:column="14">Xml</name><op:operator pos:line="17" pos:column="17">.</op:operator><name pos:line="17" pos:column="18">Linq</name></name>;</using>
+
+<namespace pos:line="19" pos:column="1">namespace <name><name pos:line="19" pos:column="11">SDML</name><op:operator pos:line="19" pos:column="15">.</op:operator><name pos:line="19" pos:column="16">SrcMLVSAddin</name><op:operator pos:line="19" pos:column="28">.</op:operator><name pos:line="19" pos:column="29">SyntaticCategory</name></name>
+<block pos:line="20" pos:column="1">{
+    <comment type="line" pos:line="21" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="22" pos:column="5">/// This class is the data model created when a the occurances of </comment>
+    <comment type="line" pos:line="23" pos:column="5">/// a generalized syntatic expression are generated, by preformming a</comment>
+    <comment type="line" pos:line="24" pos:column="5">/// search with the generalized syntatic expression.</comment>
+    <comment type="line" pos:line="25" pos:column="5">/// This data structure is used to present all of the different syntatic</comment>
+    <comment type="line" pos:line="26" pos:column="5">/// category occurances within a given srcml archive or msvc project.</comment>
+    <comment type="line" pos:line="27" pos:column="5">/// &lt;/summary&gt;</comment>
+    <comment type="line" pos:line="28" pos:column="5">/// &lt;remarks&gt;</comment>
+    <comment type="line" pos:line="29" pos:column="5">/// TODO/Think-About: this class may need a private constructor and could</comment>
+    <comment type="line" pos:line="30" pos:column="5">/// be produced inside of a single function which would be used</comment>
+    <comment type="line" pos:line="31" pos:column="5">/// to do all of the necessary searching and loading of this</comment>
+    <comment type="line" pos:line="32" pos:column="5">/// data structure.</comment>
+    <comment type="line" pos:line="33" pos:column="5">/// &lt;/remarks&gt;</comment>
+    <class><specifier pos:line="34" pos:column="5">public</specifier> class <name pos:line="34" pos:column="18">SyntaticCategoryDataModel</name>
+    <block pos:line="35" pos:column="5">{
+        <cpp:region pos:line="36" pos:column="9">#<cpp:directive pos:line="36" pos:column="10">region</cpp:directive> Constructor/s.</cpp:region>
+
+        <comment type="line" pos:line="38" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// Simple Default constuctor.</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;/summary&gt;</comment>
+        <constructor><specifier pos:line="41" pos:column="9">public</specifier> <name pos:line="41" pos:column="16">SyntaticCategoryDataModel</name><parameter_list pos:line="41" pos:column="41">()</parameter_list>
+        <block pos:line="42" pos:column="9">{
+            <expr_stmt><expr><name pos:line="43" pos:column="13">SyntaticCategoryGenerationType</name> <op:operator pos:line="43" pos:column="44">=</op:operator> <name><name pos:line="43" pos:column="46">SyntaticCategoryPathTypes</name><op:operator pos:line="43" pos:column="71">.</op:operator><name pos:line="43" pos:column="72">OuterStatmentCategory</name></name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="44" pos:column="13">SyntaticCategories</name> <op:operator pos:line="44" pos:column="32">=</op:operator> <op:operator pos:line="44" pos:column="34">new</op:operator> <call><name><name pos:line="44" pos:column="38">Dictionary</name><argument_list pos:line="44" pos:column="48">&lt;<argument><name pos:line="44" pos:column="49">String</name></argument>, <argument><name><name pos:line="44" pos:column="57">List</name><argument_list pos:line="44" pos:column="61">&lt;<argument><name pos:line="44" pos:column="62">SyntaticOccurance</name></argument>&gt;</argument_list></name></argument>&gt;</argument_list></name><argument_list pos:line="44" pos:column="81">()</argument_list></call></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <cpp:endregion pos:line="47" pos:column="9">#<cpp:directive pos:line="47" pos:column="10">endregion</cpp:directive></cpp:endregion>
+
+        <cpp:region pos:line="49" pos:column="9">#<cpp:directive pos:line="49" pos:column="10">region</cpp:directive> Properties.</cpp:region>
+
+        <comment type="line" pos:line="51" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="52" pos:column="9">/// Gets the syntatic category used to display the</comment>
+        <comment type="line" pos:line="53" pos:column="9">/// the multiple categories.</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="55" pos:column="9">public</specifier> <name pos:line="55" pos:column="16">SyntaticCategoryPathTypes</name></type> <name pos:line="55" pos:column="42">SyntaticCategoryGenerationType</name>
+        <block pos:line="56" pos:column="9">{
+            <function_decl><name pos:line="57" pos:column="13">get</name>;</function_decl>
+            <function_decl><name pos:line="58" pos:column="13">set</name>;</function_decl>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="61" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="62" pos:column="9">/// A dictionary of syntatic categories indexed by it's</comment>
+        <comment type="line" pos:line="63" pos:column="9">/// syntatic category and containing a list of the syntatic occurances</comment>
+        <comment type="line" pos:line="64" pos:column="9">/// of that category.</comment>
+        <comment type="line" pos:line="65" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="66" pos:column="9">public</specifier> <name><name pos:line="66" pos:column="16">Dictionary</name><argument_list pos:line="66" pos:column="26">&lt;<argument><name pos:line="66" pos:column="27">String</name></argument>, <argument><name><name pos:line="66" pos:column="35">List</name><argument_list pos:line="66" pos:column="39">&lt;<argument><name pos:line="66" pos:column="40">SyntaticOccurance</name></argument>&gt;</argument_list></name></argument>&gt;</argument_list></name></type> <name pos:line="66" pos:column="60">SyntaticCategories</name>
+        <block pos:line="67" pos:column="9">{
+            <function_decl><name pos:line="68" pos:column="13">get</name>;</function_decl>
+            <function_decl><name pos:line="69" pos:column="13">set</name>;</function_decl>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="72" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="73" pos:column="9">/// This string represents the search pattern to obtain the current</comment>
+        <comment type="line" pos:line="74" pos:column="9">/// search context. This is the XPath string.</comment>
+        <comment type="line" pos:line="75" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="76" pos:column="9">public</specifier> <name pos:line="76" pos:column="16">String</name></type> <name pos:line="76" pos:column="23">XPathSearchString</name>
+        <block pos:line="77" pos:column="9">{
+            <function_decl><name pos:line="78" pos:column="13">get</name>;</function_decl>
+            <function_decl><name pos:line="79" pos:column="13">set</name>;</function_decl>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="82" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="83" pos:column="9">/// The code string used to create the xpath search pattern.</comment>
+        <comment type="line" pos:line="84" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="85" pos:column="9">public</specifier> <name pos:line="85" pos:column="16">String</name></type> <name pos:line="85" pos:column="23">GeneralizedCodeString</name>
+        <block pos:line="86" pos:column="9">{
+            <function_decl><name pos:line="87" pos:column="13">get</name>;</function_decl>
+            <function_decl><name pos:line="88" pos:column="13">set</name>;</function_decl>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="91" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="92" pos:column="9">/// The document which all of the of the crc contexts</comment>
+        <comment type="line" pos:line="93" pos:column="9">/// come from.</comment>
+        <comment type="line" pos:line="94" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="95" pos:column="9">public</specifier> <name pos:line="95" pos:column="16">XDocument</name></type> <name pos:line="95" pos:column="26">Document</name>
+        <block pos:line="96" pos:column="9">{
+            <function_decl><name pos:line="97" pos:column="13">get</name>;</function_decl>
+            <function_decl><name pos:line="98" pos:column="13">set</name>;</function_decl>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="101" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="102" pos:column="9">/// An xpath expression document which was used to create the generalized</comment>
+        <comment type="line" pos:line="103" pos:column="9">/// xpath expression and then used to gather the syntatic context.</comment>
+        <comment type="line" pos:line="104" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="105" pos:column="9">public</specifier> <name pos:line="105" pos:column="16">XDocument</name></type> <name pos:line="105" pos:column="26">XPathExpressionDocument</name>
+        <block pos:line="106" pos:column="9">{
+            <function_decl><name pos:line="107" pos:column="13">get</name>;</function_decl>
+            <function_decl><name pos:line="108" pos:column="13">set</name>;</function_decl>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="111" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="112" pos:column="9">/// Returns the first element associated with the </comment>
+        <comment type="line" pos:line="113" pos:column="9">/// generalized xpath expression.</comment>
+        <comment type="line" pos:line="114" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="115" pos:column="9">public</specifier> <name pos:line="115" pos:column="16">XElement</name></type> <name pos:line="115" pos:column="25">XPathExpressionFirstNode</name>
+        <block pos:line="116" pos:column="9">{
+            <function_decl><name pos:line="117" pos:column="13">get</name>;</function_decl>
+            <function_decl><name pos:line="118" pos:column="13">set</name>;</function_decl>
+        }</block></decl></decl_stmt>
+           
+        <cpp:endregion pos:line="121" pos:column="9">#<cpp:directive pos:line="121" pos:column="10">endregion</cpp:directive></cpp:endregion>
+
+        <cpp:region pos:line="123" pos:column="9">#<cpp:directive pos:line="123" pos:column="10">region</cpp:directive> Public Member Functions.</cpp:region>
+
+        <comment type="line" pos:line="125" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="126" pos:column="9">/// Updates all of the different occurances and all of the </comment>
+        <comment type="line" pos:line="127" pos:column="9">/// SyntaticCategories dictionary.</comment>
+        <comment type="line" pos:line="128" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="129" pos:column="9">public</specifier> <name pos:line="129" pos:column="16">void</name></type> <name pos:line="129" pos:column="21">UpdateCategories</name><parameter_list pos:line="129" pos:column="37">()</parameter_list>
+        <block pos:line="130" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="131" pos:column="13">SyntaticCategories</name><op:operator pos:line="131" pos:column="31">.</op:operator><name pos:line="131" pos:column="32">Clear</name></name><argument_list pos:line="131" pos:column="37">()</argument_list></call></expr>;</expr_stmt>
+            <foreach pos:line="132" pos:column="13">foreach (<init><decl><type><name pos:line="132" pos:column="22">SyntaticOccurance</name></type> <name pos:line="132" pos:column="40">occurance</name> <range pos:line="132" pos:column="50">in <expr><name pos:line="132" pos:column="53">mSyntaticOccurances</name></expr></range></decl></init>)
+            <block pos:line="133" pos:column="13">{
+                <expr_stmt><expr><call><name><name pos:line="134" pos:column="17">occurance</name><op:operator pos:line="134" pos:column="26">.</op:operator><name pos:line="134" pos:column="27">UpdateCategory</name></name><argument_list pos:line="134" pos:column="41">()</argument_list></call></expr>;</expr_stmt>
+                <expr_stmt><expr><call><name pos:line="135" pos:column="17">AddToSyntaticCategory</name><argument_list pos:line="135" pos:column="38">(<argument><expr><name pos:line="135" pos:column="39">occurance</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></foreach>
+        }</block></function>
+
+        <comment type="line" pos:line="139" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="140" pos:column="9">/// Adds an instance of an occurance into the syntatic category list.</comment>
+        <comment type="line" pos:line="141" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="142" pos:column="9">/// &lt;param name="occurance"&gt;An instance of a syntatic occurance.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="143" pos:column="9">public</specifier> <name pos:line="143" pos:column="16">void</name></type> <name pos:line="143" pos:column="21">AddOccurance</name><parameter_list pos:line="143" pos:column="33">(<param><decl><type><name pos:line="143" pos:column="34">SyntaticOccurance</name></type> <name pos:line="143" pos:column="52">occurance</name></decl></param>)</parameter_list>
+        <block pos:line="144" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="145" pos:column="13">mSyntaticOccurances</name><op:operator pos:line="145" pos:column="32">.</op:operator><name pos:line="145" pos:column="33">Add</name></name><argument_list pos:line="145" pos:column="36">(<argument><expr><name pos:line="145" pos:column="37">occurance</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name pos:line="146" pos:column="13">AddToSyntaticCategory</name><argument_list pos:line="146" pos:column="34">(<argument><expr><name pos:line="146" pos:column="35">occurance</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="149" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="150" pos:column="9">/// Creates the syntatic occurance and adds it into the syntatic categories</comment>
+        <comment type="line" pos:line="151" pos:column="9">/// dictionary.</comment>
+        <comment type="line" pos:line="152" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="153" pos:column="9">/// &lt;param name="searchInstance"&gt;An element represents a syntatic occurance of a pattern.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="154" pos:column="9">public</specifier> <name pos:line="154" pos:column="16">void</name></type> <name pos:line="154" pos:column="21">AddOccurance</name><parameter_list pos:line="154" pos:column="33">(<param><decl><type><name pos:line="154" pos:column="34">XElement</name></type> <name pos:line="154" pos:column="43">searchInstance</name></decl></param>)</parameter_list>
+        <block pos:line="155" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="156" pos:column="13">SyntaticOccurance</name></type> <name pos:line="156" pos:column="31">occurance</name> <init pos:line="156" pos:column="41">= <expr><op:operator pos:line="156" pos:column="43">new</op:operator> <call><name pos:line="156" pos:column="47">SyntaticOccurance</name><argument_list pos:line="156" pos:column="64">(<argument><expr><name pos:line="156" pos:column="65">this</name></expr></argument>, <argument><expr><name pos:line="156" pos:column="71">searchInstance</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+            <expr_stmt><expr><call><name pos:line="157" pos:column="13">AddOccurance</name><argument_list pos:line="157" pos:column="25">(<argument><expr><name pos:line="157" pos:column="26">occurance</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="160" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="161" pos:column="9">/// Clears all occurances and syntatic categories.</comment>
+        <comment type="line" pos:line="162" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="163" pos:column="9">public</specifier> <name pos:line="163" pos:column="16">void</name></type> <name pos:line="163" pos:column="21">Clear</name><parameter_list pos:line="163" pos:column="26">()</parameter_list>
+        <block pos:line="164" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="165" pos:column="13">SyntaticCategories</name><op:operator pos:line="165" pos:column="31">.</op:operator><name pos:line="165" pos:column="32">Clear</name></name><argument_list pos:line="165" pos:column="37">()</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="166" pos:column="13">mSyntaticOccurances</name><op:operator pos:line="166" pos:column="32">.</op:operator><name pos:line="166" pos:column="33">Clear</name></name><argument_list pos:line="166" pos:column="38">()</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+        <cpp:endregion pos:line="168" pos:column="9">#<cpp:directive pos:line="168" pos:column="10">endregion</cpp:directive></cpp:endregion>
+
+        <cpp:region pos:line="170" pos:column="9">#<cpp:directive pos:line="170" pos:column="10">region</cpp:directive> Private Utility Functions.</cpp:region>
+
+        <comment type="line" pos:line="172" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="173" pos:column="9">/// Takes an occurance and adds it into the syntatic categories </comment>
+        <comment type="line" pos:line="174" pos:column="9">/// dictionary.</comment>
+        <comment type="line" pos:line="175" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="176" pos:column="9">/// &lt;param name="occurance"&gt;&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="177" pos:column="9">private</specifier> <name pos:line="177" pos:column="17">void</name></type> <name pos:line="177" pos:column="22">AddToSyntaticCategory</name><parameter_list pos:line="177" pos:column="43">(<param><decl><type><name pos:line="177" pos:column="44">SyntaticOccurance</name></type> <name pos:line="177" pos:column="62">occurance</name></decl></param>)</parameter_list>
+        <block pos:line="178" pos:column="9">{
+            <if pos:line="179" pos:column="13">if <condition pos:line="179" pos:column="16">(<expr><op:operator pos:line="179" pos:column="17">!</op:operator><call><name><name pos:line="179" pos:column="18">SyntaticCategories</name><op:operator pos:line="179" pos:column="36">.</op:operator><name pos:line="179" pos:column="37">ContainsKey</name></name><argument_list pos:line="179" pos:column="48">(<argument><expr><name><name pos:line="179" pos:column="49">occurance</name><op:operator pos:line="179" pos:column="58">.</op:operator><name pos:line="179" pos:column="59">Category</name></name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="179" pos:column="69">
+            <block pos:line="180" pos:column="13">{
+                <expr_stmt><expr><call><name><name pos:line="181" pos:column="17">SyntaticCategories</name><op:operator pos:line="181" pos:column="35">.</op:operator><name pos:line="181" pos:column="36">Add</name></name><argument_list pos:line="181" pos:column="39">(<argument><expr><name><name pos:line="181" pos:column="40">occurance</name><op:operator pos:line="181" pos:column="49">.</op:operator><name pos:line="181" pos:column="50">Category</name></name></expr></argument>,<argument><expr><op:operator pos:line="181" pos:column="59">new</op:operator> <call><name><name pos:line="181" pos:column="63">List</name><argument_list pos:line="181" pos:column="67">&lt;<argument><name pos:line="181" pos:column="68">SyntaticOccurance</name></argument>&gt;</argument_list></name><argument_list pos:line="181" pos:column="86">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+            <expr_stmt><expr><name><name pos:line="183" pos:column="13">SyntaticCategories</name><index pos:line="183" pos:column="31">[<expr><name><name pos:line="183" pos:column="32">occurance</name><op:operator pos:line="183" pos:column="41">.</op:operator><name pos:line="183" pos:column="42">Category</name></name></expr>]</index></name><op:operator pos:line="183" pos:column="51">.</op:operator><call><name pos:line="183" pos:column="52">Add</name><argument_list pos:line="183" pos:column="55">(<argument><expr><name pos:line="183" pos:column="56">occurance</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+        <cpp:endregion pos:line="185" pos:column="9">#<cpp:directive pos:line="185" pos:column="10">endregion</cpp:directive></cpp:endregion>
+
+        <decl_stmt><decl><type><specifier pos:line="187" pos:column="9">private</specifier> <name><name pos:line="187" pos:column="17">List</name><argument_list pos:line="187" pos:column="21">&lt;<argument><name pos:line="187" pos:column="22">SyntaticOccurance</name></argument>&gt;</argument_list></name></type> <name pos:line="187" pos:column="41">mSyntaticOccurances</name> <init pos:line="187" pos:column="61">= <expr><op:operator pos:line="187" pos:column="63">new</op:operator> <call><name><name pos:line="187" pos:column="67">List</name><argument_list pos:line="187" pos:column="71">&lt;<argument><name pos:line="187" pos:column="72">SyntaticOccurance</name></argument>&gt;</argument_list></name><argument_list pos:line="187" pos:column="90">()</argument_list></call></expr></init></decl>;</decl_stmt>
+    }</block></class>
+}</block></namespace>
+</unit>

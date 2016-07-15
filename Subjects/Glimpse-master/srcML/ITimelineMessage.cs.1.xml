@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Message\ITimelineMessage.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">System</name><op:operator pos:line="1" pos:column="13">.</op:operator><name pos:line="1" pos:column="14">Collections</name><op:operator pos:line="1" pos:column="25">.</op:operator><name pos:line="1" pos:column="26">Generic</name></name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Core</name><op:operator pos:line="3" pos:column="23">.</op:operator><name pos:line="3" pos:column="24">Message</name></name>
+<block pos:line="4" pos:column="1">{
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="6" pos:column="5">/// Describes the message that the timeline will look for</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// when recording events.</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class type="interface"><specifier pos:line="9" pos:column="5">public</specifier> interface <name pos:line="9" pos:column="22">ITimelineMessage</name> <super pos:line="9" pos:column="39">: <name pos:line="9" pos:column="41">ITimedMessage</name></super>
+    <block pos:line="10" pos:column="5">{
+        <comment type="line" pos:line="11" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="12" pos:column="9">/// Gets or sets the name of the event.</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// &lt;value&gt;The name of the event.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="15" pos:column="9">string</name></type> <name pos:line="15" pos:column="16">EventName</name> <block pos:line="15" pos:column="26">{ <function_decl><name pos:line="15" pos:column="28">get</name>;</function_decl> <function_decl><name pos:line="15" pos:column="33">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="17" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="18" pos:column="9">/// Gets or sets the event category.</comment>
+        <comment type="line" pos:line="19" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="20" pos:column="9">/// &lt;value&gt;The event category.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="21" pos:column="9">TimelineCategoryItem</name></type> <name pos:line="21" pos:column="30">EventCategory</name> <block pos:line="21" pos:column="44">{ <function_decl><name pos:line="21" pos:column="46">get</name>;</function_decl> <function_decl><name pos:line="21" pos:column="51">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="23" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// Gets or sets the event sub text.</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;value&gt;The event sub text.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="27" pos:column="9">string</name></type> <name pos:line="27" pos:column="16">EventSubText</name> <block pos:line="27" pos:column="29">{ <function_decl><name pos:line="27" pos:column="31">get</name>;</function_decl> <function_decl><name pos:line="27" pos:column="36">set</name>;</function_decl> }</block></decl></decl_stmt>
+    }</block></class>
+
+    <comment type="line" pos:line="30" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="31" pos:column="5">/// Class TimelineMessageExtension</comment>
+    <comment type="line" pos:line="32" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="33" pos:column="5">public</specifier> <specifier pos:line="33" pos:column="12">static</specifier> class <name pos:line="33" pos:column="25">TimelineMessageExtension</name>
+    <block pos:line="34" pos:column="5">{
+        <comment type="line" pos:line="35" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// Extension method that makes building up a timeline event easy.</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// &lt;typeparam name="T"&gt;&lt;/typeparam&gt;</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;param name="eventName"&gt;Name of the event.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// &lt;param name="eventCategory"&gt;The event category.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;param name="eventSubText"&gt;The event sub text.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// &lt;returns&gt;Original message instance.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="44" pos:column="9">public</specifier> <specifier pos:line="44" pos:column="16">static</specifier> <name pos:line="44" pos:column="23">T</name></type> <name><name pos:line="44" pos:column="25">AsTimelineMessage</name><argument_list pos:line="44" pos:column="42">&lt;<argument><name pos:line="44" pos:column="43">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="44" pos:column="45">(<param><decl><type><name pos:line="44" pos:column="46">this</name> <name pos:line="44" pos:column="51">T</name></type> <name pos:line="44" pos:column="53">message</name></decl></param>, <param><decl><type><name pos:line="44" pos:column="62">string</name></type> <name pos:line="44" pos:column="69">eventName</name></decl></param>, <param><decl><type><name pos:line="44" pos:column="80">TimelineCategoryItem</name></type> <name pos:line="44" pos:column="101">eventCategory</name></decl></param>, <param><decl><type><name pos:line="44" pos:column="116">string</name></type> <name pos:line="44" pos:column="123">eventSubText</name> <init pos:line="44" pos:column="136">= <expr><name pos:line="44" pos:column="138">null</name></expr></init></decl></param>)</parameter_list>
+            <where pos:line="45" pos:column="13">where <name pos:line="45" pos:column="19">T</name> : <name pos:line="45" pos:column="23">ITimelineMessage</name></where>
+        <block pos:line="46" pos:column="9">{
+            <expr_stmt><expr><name><name pos:line="47" pos:column="13">message</name><op:operator pos:line="47" pos:column="20">.</op:operator><name pos:line="47" pos:column="21">EventName</name></name> <op:operator pos:line="47" pos:column="31">=</op:operator> <name pos:line="47" pos:column="33">eventName</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="48" pos:column="13">message</name><op:operator pos:line="48" pos:column="20">.</op:operator><name pos:line="48" pos:column="21">EventCategory</name></name> <op:operator pos:line="48" pos:column="35">=</op:operator> <name pos:line="48" pos:column="37">eventCategory</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="49" pos:column="13">message</name><op:operator pos:line="49" pos:column="20">.</op:operator><name pos:line="49" pos:column="21">EventSubText</name></name> <op:operator pos:line="49" pos:column="34">=</op:operator> <name pos:line="49" pos:column="36">eventSubText</name></expr>;</expr_stmt>
+
+            <return pos:line="51" pos:column="13">return <expr><name pos:line="51" pos:column="20">message</name></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="54" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="55" pos:column="9">/// Extension method that makes building up a timeline event easy.</comment>
+        <comment type="line" pos:line="56" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="57" pos:column="9">/// &lt;typeparam name="T"&gt;&lt;/typeparam&gt;</comment>
+        <comment type="line" pos:line="58" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="59" pos:column="9">/// &lt;param name="eventCategory"&gt;The event category.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="60" pos:column="9">/// &lt;param name="eventSubText"&gt;The event sub text.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="61" pos:column="9">/// &lt;returns&gt;Original message instance.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="62" pos:column="9">public</specifier> <specifier pos:line="62" pos:column="16">static</specifier> <name pos:line="62" pos:column="23">T</name></type> <name><name pos:line="62" pos:column="25">AsTimelineMessage</name><argument_list pos:line="62" pos:column="42">&lt;<argument><name pos:line="62" pos:column="43">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="62" pos:column="45">(<param><decl><type><name pos:line="62" pos:column="46">this</name> <name pos:line="62" pos:column="51">T</name></type> <name pos:line="62" pos:column="53">message</name></decl></param>, <param><decl><type><name pos:line="62" pos:column="62">TimelineCategoryItem</name></type> <name pos:line="62" pos:column="83">eventCategory</name></decl></param>, <param><decl><type><name pos:line="62" pos:column="98">string</name></type> <name pos:line="62" pos:column="105">eventSubText</name> <init pos:line="62" pos:column="118">= <expr><name pos:line="62" pos:column="120">null</name></expr></init></decl></param>)</parameter_list>
+            <where pos:line="63" pos:column="13">where <name pos:line="63" pos:column="19">T</name> : <name pos:line="63" pos:column="23">ITimelineMessage</name></where>
+        <block pos:line="64" pos:column="9">{ 
+            <expr_stmt><expr><call><name><name pos:line="65" pos:column="13">message</name><op:operator pos:line="65" pos:column="20">.</op:operator><name pos:line="65" pos:column="21">AsTimelineMessage</name></name><argument_list pos:line="65" pos:column="38">(<argument><expr><name><name pos:line="65" pos:column="39">string</name><op:operator pos:line="65" pos:column="45">.</op:operator><name pos:line="65" pos:column="46">Empty</name></name></expr></argument>, <argument><expr><name pos:line="65" pos:column="53">eventCategory</name></expr></argument>, <argument><expr><name pos:line="65" pos:column="68">eventSubText</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+            <return pos:line="67" pos:column="13">return <expr><name pos:line="67" pos:column="20">message</name></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

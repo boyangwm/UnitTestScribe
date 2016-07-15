@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\scpedtid.h" pos:tabs="8"><comment type="line" format="doxygen" pos:line="1" pos:column="1">//////////////////////////////////////////////////////////////////////////////</comment>
+<comment type="line" pos:line="2" pos:column="1">//</comment>
+<comment type="line" pos:line="3" pos:column="1">//Microsoft Confidential</comment>
+<comment type="line" pos:line="4" pos:column="1">//Copyright 1996-1997 Microsoft Corporation.  All Rights Reserved.</comment>
+<comment type="line" pos:line="5" pos:column="1">//</comment>
+<comment type="line" pos:line="6" pos:column="1">//File: scpedtid.h</comment>
+<comment type="line" pos:line="7" pos:column="1">//</comment>
+<comment type="line" pos:line="8" pos:column="1">//Contents:</comment>
+<comment type="line" pos:line="9" pos:column="1">//</comment>
+<comment type="line" format="doxygen" pos:line="10" pos:column="1">//////////////////////////////////////////////////////////////////////////////</comment>
+
+
+<cpp:ifndef pos:line="13" pos:column="1">#<cpp:directive pos:line="13" pos:column="2">ifndef</cpp:directive> <name pos:line="13" pos:column="9">_SCPEDTID_H_</name></cpp:ifndef>
+<cpp:define pos:line="14" pos:column="1">#<cpp:directive pos:line="14" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="14" pos:column="9">_SCPEDTID_H_</name></cpp:macro></cpp:define>
+
+<cpp:ifndef pos:line="16" pos:column="1">#<cpp:directive pos:line="16" pos:column="2">ifndef</cpp:directive> <name pos:line="16" pos:column="9">NOGUIDS</name></cpp:ifndef>
+
+<cpp:ifdef pos:line="18" pos:column="1">#<cpp:directive pos:line="18" pos:column="2">ifdef</cpp:directive> <name pos:line="18" pos:column="8">DEFINE_GUID</name></cpp:ifdef>
+
+  <comment type="line" pos:line="20" pos:column="3">// Guids for the script editor package.</comment>
+  <expr_stmt><expr><call><name pos:line="21" pos:column="3">DEFINE_GUID</name><argument_list pos:line="21" pos:column="14">(<argument><expr><name pos:line="21" pos:column="15">guidSCPGrpId</name></expr></argument>, 
+  <argument><expr><lit:literal type="number" pos:line="22" pos:column="3">0xd842f011</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="22" pos:column="15">0xdd01</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="22" pos:column="23">0x11d0</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="22" pos:column="31">0xa7</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="22" pos:column="37">0x68</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="22" pos:column="43">0x0</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="22" pos:column="48">0xa0</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="22" pos:column="54">0xc9</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="22" pos:column="60">0x11</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="22" pos:column="66">0x10</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="22" pos:column="72">0xc3</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+  <expr_stmt><expr><call><name pos:line="24" pos:column="3">DEFINE_GUID</name><argument_list pos:line="24" pos:column="14">(<argument><expr><name pos:line="24" pos:column="15">guidSCPCmdId</name></expr></argument>, 
+  <argument><expr><lit:literal type="number" pos:line="25" pos:column="3">0xd842f010</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="25" pos:column="15">0xdd01</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="25" pos:column="23">0x11d0</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="25" pos:column="31">0xa7</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="25" pos:column="37">0x68</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="25" pos:column="43">0x0</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="25" pos:column="48">0xa0</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="25" pos:column="54">0xc9</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="25" pos:column="60">0x11</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="25" pos:column="66">0x10</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="25" pos:column="72">0xc3</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+<cpp:else pos:line="27" pos:column="1">#<cpp:directive pos:line="27" pos:column="2">else</cpp:directive></cpp:else>
+
+  <comment type="line" pos:line="29" pos:column="3">// Guids for the script editor</comment>
+  <cpp:define pos:line="30" pos:column="3">#<cpp:directive pos:line="30" pos:column="4">define</cpp:directive> <cpp:macro><name pos:line="30" pos:column="11">guidSCPCmdId</name></cpp:macro> <cpp:value pos:line="30" pos:column="24">{ 0xd842f010, 0xdd01, 0x11d0, { 0xa7, 0x68, 0x0, 0xa0, 0xc9, 0x11, 0x10, 0xc3 } }</cpp:value></cpp:define>
+  <cpp:define pos:line="31" pos:column="3">#<cpp:directive pos:line="31" pos:column="4">define</cpp:directive> <cpp:macro><name pos:line="31" pos:column="11">guidSCPGrpId</name></cpp:macro> <cpp:value pos:line="31" pos:column="24">{ 0xd842f011, 0xdd01, 0x11d0, { 0xa7, 0x68, 0x0, 0xa0, 0xc9, 0x11, 0x10, 0xc3 } }</cpp:value></cpp:define>
+<cpp:endif pos:line="32" pos:column="1">#<cpp:directive pos:line="32" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:endif pos:line="34" pos:column="1">#<cpp:directive pos:line="34" pos:column="2">endif</cpp:directive></cpp:endif>  <comment type="line" pos:line="34" pos:column="9">// NOGUIDS</comment>
+
+
+
+<comment type="line" pos:line="38" pos:column="1">// Script Editor Group</comment>
+<cpp:define pos:line="39" pos:column="1">#<cpp:directive pos:line="39" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="39" pos:column="9">IDG_SCP_MainMenu</name></cpp:macro>        <cpp:value pos:line="39" pos:column="33">0x0900</cpp:value></cpp:define>
+
+<comment type="line" pos:line="41" pos:column="1">// Script Editor Commands.</comment>
+<cpp:define pos:line="42" pos:column="1">#<cpp:directive pos:line="42" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="42" pos:column="9">cmdSCPSynchTree</name></cpp:macro>            <cpp:value pos:line="42" pos:column="36">0x0300</cpp:value></cpp:define>
+<cpp:define pos:line="43" pos:column="1">#<cpp:directive pos:line="43" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="43" pos:column="9">cmdSCPGotoDefinition</name></cpp:macro>       <cpp:value pos:line="43" pos:column="36">0x0400</cpp:value></cpp:define>
+<cpp:define pos:line="44" pos:column="1">#<cpp:directive pos:line="44" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="44" pos:column="9">cmdSCPSortCascade</name></cpp:macro>          <cpp:value pos:line="44" pos:column="36">0x0700</cpp:value></cpp:define>
+<cpp:define pos:line="45" pos:column="1">#<cpp:directive pos:line="45" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="45" pos:column="9">cmdSCPToggleUnimplEvents</name></cpp:macro>   <cpp:value pos:line="45" pos:column="36">0x0800</cpp:value></cpp:define>
+
+
+<cpp:endif pos:line="48" pos:column="1">#<cpp:directive pos:line="48" pos:column="2">endif</cpp:directive></cpp:endif>
+</unit>

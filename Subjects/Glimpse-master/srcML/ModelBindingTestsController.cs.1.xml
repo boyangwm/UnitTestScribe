@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Mvc3.MusicStore.Sample\Controllers\ModelBindingTestsController.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">System</name><op:operator pos:line="1" pos:column="13">.</op:operator><name pos:line="1" pos:column="14">Web</name><op:operator pos:line="1" pos:column="17">.</op:operator><name pos:line="1" pos:column="18">Mvc</name></name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">MvcMusicStore</name><op:operator pos:line="3" pos:column="24">.</op:operator><name pos:line="3" pos:column="25">Controllers</name></name>
+<block pos:line="4" pos:column="1">{
+    <class><specifier pos:line="5" pos:column="5">public</specifier> class <name pos:line="5" pos:column="18">ModelBindingTestsController</name> <super pos:line="5" pos:column="46">: <name pos:line="5" pos:column="48">Controller</name></super>
+    <block pos:line="6" pos:column="5">{
+        <function><type><specifier pos:line="7" pos:column="9">public</specifier> <name pos:line="7" pos:column="16">ActionResult</name></type> <name pos:line="7" pos:column="29">Index</name><parameter_list pos:line="7" pos:column="34">()</parameter_list>
+        <block pos:line="8" pos:column="9">{
+            <return pos:line="9" pos:column="13">return <expr><call><name pos:line="9" pos:column="20">View</name><argument_list pos:line="9" pos:column="24">(<argument><expr><lit:literal type="string" pos:line="9" pos:column="25">"Index"</lit:literal></expr></argument>, <argument><expr><op:operator pos:line="9" pos:column="34">new</op:operator> <call><name pos:line="9" pos:column="38">ComplexType</name><argument_list pos:line="9" pos:column="49">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <function><type><attribute pos:line="12" pos:column="9">[<expr><name pos:line="12" pos:column="10">HttpPost</name></expr>]</attribute>
+        <specifier pos:line="13" pos:column="9">public</specifier> <name pos:line="13" pos:column="16">ActionResult</name></type> <name pos:line="13" pos:column="29">SimplePost</name><parameter_list pos:line="13" pos:column="39">(<param><decl><type><name pos:line="13" pos:column="40">string</name></type> <name pos:line="13" pos:column="47">firstname</name></decl></param>, <param><decl><type><name pos:line="13" pos:column="58">string</name></type> <name pos:line="13" pos:column="65">lastname</name></decl></param>)</parameter_list>
+        <block pos:line="14" pos:column="9">{
+            <return pos:line="15" pos:column="13">return <expr><call><name pos:line="15" pos:column="20">View</name><argument_list pos:line="15" pos:column="24">(<argument><expr><lit:literal type="string" pos:line="15" pos:column="25">"Index"</lit:literal></expr></argument>, <argument><expr><op:operator pos:line="15" pos:column="34">new</op:operator> <call><name pos:line="15" pos:column="38">ComplexType</name><argument_list pos:line="15" pos:column="49">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <function><type><attribute pos:line="18" pos:column="9">[<expr><name pos:line="18" pos:column="10">HttpPost</name></expr>]</attribute>
+        <specifier pos:line="19" pos:column="9">public</specifier> <name pos:line="19" pos:column="16">ActionResult</name></type> <name pos:line="19" pos:column="29">ComplexPost</name><parameter_list pos:line="19" pos:column="40">(<param><decl><type><name pos:line="19" pos:column="41">ComplexType</name></type> <name pos:line="19" pos:column="53">complexType</name></decl></param>, <param><decl><type><name pos:line="19" pos:column="66">string</name></type> <name pos:line="19" pos:column="73">additionalSimpleValue</name></decl></param>)</parameter_list>
+        <block pos:line="20" pos:column="9">{
+            <return pos:line="21" pos:column="13">return <expr><call><name pos:line="21" pos:column="20">View</name><argument_list pos:line="21" pos:column="24">(<argument><expr><lit:literal type="string" pos:line="21" pos:column="25">"Index"</lit:literal></expr></argument>, <argument><expr><op:operator pos:line="21" pos:column="34">new</op:operator> <call><name pos:line="21" pos:column="38">ComplexType</name><argument_list pos:line="21" pos:column="49">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <class><specifier pos:line="24" pos:column="9">public</specifier> class <name pos:line="24" pos:column="22">ComplexType</name>
+        <block pos:line="25" pos:column="9">{
+            <constructor><specifier pos:line="26" pos:column="13">public</specifier> <name pos:line="26" pos:column="20">ComplexType</name><parameter_list pos:line="26" pos:column="31">()</parameter_list>
+            <block pos:line="27" pos:column="13">{
+                <expr_stmt><expr><name><name pos:line="28" pos:column="17">this</name><op:operator pos:line="28" pos:column="21">.</op:operator><name pos:line="28" pos:column="22">Name</name></name> <op:operator pos:line="28" pos:column="27">=</op:operator> <lit:literal type="string" pos:line="28" pos:column="29">"Foo"</lit:literal></expr>;</expr_stmt>
+                <expr_stmt><expr><name><name pos:line="29" pos:column="17">this</name><op:operator pos:line="29" pos:column="21">.</op:operator><name pos:line="29" pos:column="22">Another</name></name> <op:operator pos:line="29" pos:column="30">=</op:operator> <op:operator pos:line="29" pos:column="32">new</op:operator> <call><name pos:line="29" pos:column="36">SecondLevelComplexType</name><argument_list pos:line="29" pos:column="58">()</argument_list></call></expr>;</expr_stmt>
+            }</block></constructor>
+
+            <decl_stmt><decl><type><specifier pos:line="32" pos:column="13">public</specifier> <name pos:line="32" pos:column="20">string</name></type> <name pos:line="32" pos:column="27">Name</name> <block pos:line="32" pos:column="32">{ <function_decl><name pos:line="32" pos:column="34">get</name>;</function_decl> <function_decl><name pos:line="32" pos:column="39">set</name>;</function_decl> }</block></decl></decl_stmt>
+            <decl_stmt><decl><type><specifier pos:line="33" pos:column="13">public</specifier> <name pos:line="33" pos:column="20">SecondLevelComplexType</name></type> <name pos:line="33" pos:column="43">Another</name> <block pos:line="33" pos:column="51">{ <function_decl><name pos:line="33" pos:column="53">get</name>;</function_decl> <function_decl><name pos:line="33" pos:column="58">set</name>;</function_decl> }</block></decl></decl_stmt>
+        }</block></class>
+
+        <class><specifier pos:line="36" pos:column="9">public</specifier> class <name pos:line="36" pos:column="22">SecondLevelComplexType</name>
+        <block pos:line="37" pos:column="9">{
+            <constructor><specifier pos:line="38" pos:column="13">public</specifier> <name pos:line="38" pos:column="20">SecondLevelComplexType</name><parameter_list pos:line="38" pos:column="42">()</parameter_list>
+            <block pos:line="39" pos:column="13">{
+                <expr_stmt><expr><name><name pos:line="40" pos:column="17">this</name><op:operator pos:line="40" pos:column="21">.</op:operator><name pos:line="40" pos:column="22">Name</name></name> <op:operator pos:line="40" pos:column="27">=</op:operator> <lit:literal type="string" pos:line="40" pos:column="29">"Bar"</lit:literal></expr>;</expr_stmt>
+                <expr_stmt><expr><name><name pos:line="41" pos:column="17">this</name><op:operator pos:line="41" pos:column="21">.</op:operator><name pos:line="41" pos:column="22">Values</name></name> <op:operator pos:line="41" pos:column="29">=</op:operator> <op:operator pos:line="41" pos:column="31">new</op:operator> <call><name pos:line="41" pos:column="35">ThirdLevelComplexType</name><argument_list pos:line="41" pos:column="56">(<argument><expr><name><name pos:line="41" pos:column="57">this</name><op:operator pos:line="41" pos:column="61">.</op:operator><name pos:line="41" pos:column="62">Name</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></constructor>
+
+            <decl_stmt><decl><type><specifier pos:line="44" pos:column="13">public</specifier> <name pos:line="44" pos:column="20">string</name></type> <name pos:line="44" pos:column="27">Name</name> <block pos:line="44" pos:column="32">{ <function_decl><name pos:line="44" pos:column="34">get</name>;</function_decl> <function_decl><name pos:line="44" pos:column="39">set</name>;</function_decl> }</block></decl></decl_stmt>
+            <decl_stmt><decl><type><specifier pos:line="45" pos:column="13">public</specifier> <name pos:line="45" pos:column="20">ThirdLevelComplexType</name></type> <name pos:line="45" pos:column="42">Values</name> <block pos:line="45" pos:column="49">{ <function_decl><name pos:line="45" pos:column="51">get</name>;</function_decl> <function_decl><name pos:line="45" pos:column="56">set</name>;</function_decl> }</block></decl></decl_stmt>
+        }</block></class>
+
+        <class><specifier pos:line="48" pos:column="9">public</specifier> class <name pos:line="48" pos:column="22">ThirdLevelComplexType</name>
+        <block pos:line="49" pos:column="9">{
+            <constructor><specifier pos:line="50" pos:column="13">public</specifier> <name pos:line="50" pos:column="20">ThirdLevelComplexType</name><parameter_list pos:line="50" pos:column="41">(<param><decl><type><name pos:line="50" pos:column="42">string</name></type> <name pos:line="50" pos:column="49">valueFor</name></decl></param>)</parameter_list>
+            <block pos:line="51" pos:column="13">{
+                <expr_stmt><expr><name><name pos:line="52" pos:column="17">this</name><op:operator pos:line="52" pos:column="21">.</op:operator><name pos:line="52" pos:column="22">Value1</name></name> <op:operator pos:line="52" pos:column="29">=</op:operator> <lit:literal type="string" pos:line="52" pos:column="31">"Value 1 for "</lit:literal> <op:operator pos:line="52" pos:column="46">+</op:operator> <name pos:line="52" pos:column="48">valueFor</name></expr>;</expr_stmt>
+                <expr_stmt><expr><name><name pos:line="53" pos:column="17">this</name><op:operator pos:line="53" pos:column="21">.</op:operator><name pos:line="53" pos:column="22">Value2</name></name> <op:operator pos:line="53" pos:column="29">=</op:operator> <lit:literal type="string" pos:line="53" pos:column="31">"Value 2 for "</lit:literal> <op:operator pos:line="53" pos:column="46">+</op:operator> <name pos:line="53" pos:column="48">valueFor</name></expr>;</expr_stmt>
+            }</block></constructor>
+
+            <decl_stmt><decl><type><specifier pos:line="56" pos:column="13">public</specifier> <name pos:line="56" pos:column="20">string</name></type> <name pos:line="56" pos:column="27">Value1</name> <block pos:line="56" pos:column="34">{ <function_decl><name pos:line="56" pos:column="36">get</name>;</function_decl> <function_decl><name pos:line="56" pos:column="41">set</name>;</function_decl> }</block></decl></decl_stmt>
+            <decl_stmt><decl><type><specifier pos:line="57" pos:column="13">public</specifier> <name pos:line="57" pos:column="20">string</name></type> <name pos:line="57" pos:column="27">Value2</name> <block pos:line="57" pos:column="34">{ <function_decl><name pos:line="57" pos:column="36">get</name>;</function_decl> <function_decl><name pos:line="57" pos:column="41">set</name>;</function_decl> }</block></decl></decl_stmt>
+        }</block></class>
+    }</block></class>
+}</block></namespace>
+</unit>

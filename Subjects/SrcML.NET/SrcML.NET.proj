@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0" DefaultTargets="Clean;Build">
+  <ItemGroup>
+    <SolutionToBuild Include="SrcML.NET.sln" />
+	  <TestProject Include="SrcML.NET.nunit" />
+	  <TestRunner Include="packages\NUnit.Runners.2.6.3\tools\nunit-console.exe" />
+	  <NugetExe Include="$(MSBuildThisFileDirectory)\External\Nuget\nuget.exe" />
+    <ExternalFiles Include="External\**\*.*" Exclude="External\MSBuildTasks\*.*;External\NuGet\*.*" />
+  </ItemGroup>
+  <PropertyGroup>
+    <MSBuildCommunityTasksPath>$(MSBuildThisFileDirectory)\External\BuildScripts\MSBuildTasks</MSBuildCommunityTasksPath>
+    <Configuration Condition="'$(Configuration)'==''">Debug</Configuration>
+    <DeployExtension Condition="'$(DeployExtension)'==''">False</DeployExtension>
+    <OutDir>Build</OutDir>
+    <VersionOutputFile>$(MSBuildThisFileDirectory)\Version.txt</VersionOutputFile>
+  </PropertyGroup>
+  <ItemGroup>
+	  <AssemblyInfoFiles Include="SolutionInfo.cs" />
+	  <SourceManifests Include="VisualStudio\ABB.SrcML.VisualStudio.SrcMLService\source.extension.vsixmanifest" />
+	  <NuspecFiles Include="**/*.nuspec" />
+  </ItemGroup>
+  
+  <Import Project="External\BuildScripts\Version.targets" />
+  
+  <Target Name="Build" Outputs="$(OutDir)\$(Configuration)" DependsOnTargets="CreateAssemblyInfo;SetVsixVersion">
+    <MSBuild Projects="@(SolutionToBuild)" Properties="Configuration=$(Configuration);Platform=Any CPU" />
+  </Target>
+  
+  <Target Name="CopyExternals">
+    <MakeDir Directories="$(OutDir)\External" />
+    <Copy SourceFiles="@(ExternalFiles)"
+          Destinationfiles="@(ExternalFiles->'$(OutDir)\External\%(RecursiveDir)%(Filename)%(Extension)')" />
+  </Target>
+  
+  <Target Name="Test" DependsOnTargets="Build" Condition="Exists('@(TestRunner)')">
+    <Exec Command="@(TestRunner) @(TestProject) /exclude=Todo,LongRunning,SrcMLUpdate" />
+  </Target>
+  
+  <Target Name="TestData" DependsOnTargets="Build" Condition="Exists('@(TestRunner)')">
+    <Exec Command="@(TestRunner) @(TestProject) /include=Data" />
+  </Target>
+  
+  <Target Name="TestAll" DependsOnTargets="Build" Condition="Exists('@(TestRunner)')">
+	<Exec Command="@(TestRunner) @(TestProject)" />
+  </Target>
+  
+  <Target Name="CreatePackages" DependsOnTargets="SetNuspecVersion;Build">
+	<Exec Command="@(NugetExe) pack %(NuspecFiles.RelativeDir)%(NuspecFiles.Filename).csproj -IncludeReferencedProjects -OutputDirectory $(OutDir)\$(Configuration) -Prop Configuration=$(Configuration)" />
+  </Target>
+  
+  <Target Name="PublishPackages" DependsOnTargets="CreatePackages" Condition="'$(Configuration)'=='Release'">
+	<Exec Command="@(NugetExe) push $(OutDir)\$(Configuration)\%(NuspecFiles.Filename).nupkg" />
+  </Target>
+  <Target Name="Clean">
+    <RemoveDir Directories="$(OutDir)\Release;$(OutDir)\Debug;$(OutDir)\External;$(OutDir)" />
+  </Target>
+  
+  <Target Name="RestorePackages" BeforeTargets="Build;Test;TestData;TestAll">
+    <Exec Command="&quot;@(NugetExe)&quot; restore &quot;%(SolutionToBuild.Identity)&quot;" />
+  </Target>
+</Project>

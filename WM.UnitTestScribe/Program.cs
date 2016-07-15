@@ -22,11 +22,11 @@ namespace WM.UnitTestScribe {
         //public static readonly string LocalProj = @"D:\Research\myTestSubjects\Callgraph\CallgraphSubject";
         //public static readonly string LocalProj = @"D:\Research\Subjects\google-api-dotnet-client-master";
         //public static readonly string LocalProj = @"D:\Research\Subjects\Sando-master";
-        //public static readonly string LocalProj = @"D:\Research\Subjects\SrcML.NET";
-        public static readonly string LocalProj = @"D:\Research\Subjects\Glimpse-master";
+        public static readonly string LocalProj = @"D:\Research\Subjects\SrcML.NET";
+        //public static readonly string LocalProj = @"D:\Research\Subjects\Glimpse-master";
         /// <summary> SrcML directory location </summary>
         public static readonly string SrcmlLoc = @"D:\Research\SrcML\";
-
+        public static readonly string outputLoc = @"c:\temp\test.html";
 
         /// <summary>
         /// Command line testing
@@ -36,7 +36,7 @@ namespace WM.UnitTestScribe {
             DateTime dt = DateTime.Now;
            //args = new string[] { "hello" };
            // args = new string[] { "testcases", "--loc", LocalProj, "--srcmlPath", SrcmlLoc }; 
-           args = new string[] { "summary", "--loc", LocalProj, "--srcmlPath", SrcmlLoc }; 
+           args = new string[] { "summary", "--loc", LocalProj, "--srcmlPath", SrcmlLoc, "--outputLoc",  outputLoc }; 
             var options = new Options();
             string invokedVerb = null;
             object invokedVerbOptions = null;
@@ -66,7 +66,7 @@ namespace WM.UnitTestScribe {
                 var summary = new SummaryGenerator(SummaryOp.LocationsPath, SummaryOp.SrcMLPath);
                 Console.WriteLine("This is summary");
                 summary.AnalyzeSummary();
-                summary.GenerateSummary();
+                summary.GenerateSummary(SummaryOp.OutputLoc);
                 Console.WriteLine("Done!!!!!!  Thanks.");
 
             } else if (invokedVerb == "hello") {
@@ -110,79 +110,6 @@ namespace WM.UnitTestScribe {
               
 
                 Console.ReadLine();
-
-
-                //StringTemplateGroup group = new StringTemplateGroup("myGroup", @".\Templet");
-                //StringTemplate st = group.GetInstanceOf("FocalAssert");
-                //st.SetAttribute("Statment", "st1");
-                //st.SetAttribute("LineNumber", "line 1 ");
-
-                //st.SetAttribute("Statment", "st2");
-                //st.SetAttribute("LineNumber", "line 2 ");
-
-                //st.SetAttribute("Message", "hihi ");
-                //String result = st.ToString(); // yields "int x = 0;"
-                //Console.WriteLine(result);
-
-                //=======================
-                //StringTemplate hello = new StringTemplate("Hello, $name$");
-                //hello.SetAttribute("name", "World");
-                //Console.Out.WriteLine(hello.ToString());
-
-                //StringTemplateGroup group = new StringTemplateGroup("myGroup", @"C:\Tutorials");
-                //StringTemplate helloAgain = group.GetInstanceOf("homepage");
-
-                //helloAgain.SetAttribute("title", "Welcome To StringTemplate");
-                //helloAgain.SetAttribute("name", "World");
-                //helloAgain.SetAttribute("friends", "Terence");
-                //helloAgain.SetAttribute("friends", "Kunle");
-                //helloAgain.SetAttribute("friends", "Micheal");
-                //helloAgain.SetAttribute("friends", "Marq");
-
-
-                //Console.Out.WriteLine(helloAgain.ToString());
-
-                //============================================================
-
-                //StringTemplateGroup group = new StringTemplateGroup("myGroup", @"c:\Tutorials");
-                //StringTemplate query = group.GetInstanceOf("SqlParameters");
-
-                //query.SetAttribute("ID", "SqlDataSource1");
-                //query.SetAttribute("ID", "SqlDataSource1");
-
-                //query.SetAttribute("Prefixes", "Cookie");
-                //query.SetAttribute("ParamNames", "City");
-                //query.SetAttribute("Types", "string");
-                //query.SetAttribute("SourceNames", "CookieName");
-                //query.SetAttribute("SourceIds", "cookieCity");
-
-                //query.SetAttribute("Prefixes", "");
-                //query.SetAttribute("ParamNames", "Country");
-                //query.SetAttribute("Types", "string");
-                //query.SetAttribute("SourceNames", false);
-                //query.SetAttribute("SourceIds", "");
-
-                //query.SetAttribute("Prefixes", "QueryString");
-                //query.SetAttribute("ParamNames", "Address");
-                //query.SetAttribute("Types", "string");
-                //query.SetAttribute("SourceNames", "QueryStringField");
-                //query.SetAttribute("SourceIds", "qsAddr");
-
-
-                //query.SetAttribute("Prefixes", "Boyang");
-                //query.SetAttribute("ParamNames", "BoyangTest");
-                //query.SetAttribute("Types", "int");
-                //query.SetAttribute("SourceNames", "");
-                ////query.SetAttribute("SourceIds", "qsAddr");
-
-                //query.SetAttribute("Prefixes", "Boyang2");
-                //query.SetAttribute("ParamNames", "2222");
-                //query.SetAttribute("Types", "int");
-                ////query.SetAttribute("SourceNames", "");
-
-
-                //Console.WriteLine(query.ToString());
-
                 Console.WriteLine("print hello");
 
             }
@@ -254,6 +181,11 @@ namespace WM.UnitTestScribe {
 
             [Option("srcmlPath", Required = true, HelpText = "The path to Srcml.exe")]
             public string SrcMLPath { get; set; }
+
+
+
+            [Option("outputLoc", Required = true, HelpText = "Summary Output location")]
+            public string OutputLoc { get; set; }
         }
 
 

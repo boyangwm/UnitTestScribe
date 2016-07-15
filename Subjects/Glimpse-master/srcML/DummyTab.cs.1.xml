@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Test.Core\TestDoubles\DummyTab.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">Glimpse</name><op:operator pos:line="1" pos:column="14">.</op:operator><name pos:line="1" pos:column="15">Core</name><op:operator pos:line="1" pos:column="19">.</op:operator><name pos:line="1" pos:column="20">Extensibility</name></name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Test</name><op:operator pos:line="3" pos:column="23">.</op:operator><name pos:line="3" pos:column="24">Core</name><op:operator pos:line="3" pos:column="28">.</op:operator><name pos:line="3" pos:column="29">TestDoubles</name></name>
+<block pos:line="4" pos:column="1">{
+    <class><specifier pos:line="5" pos:column="5">public</specifier> class <name pos:line="5" pos:column="18">DummyTab</name><super pos:line="5" pos:column="26">:<name><name pos:line="5" pos:column="27">TabBase</name><argument_list pos:line="5" pos:column="34">&lt;<argument><name pos:line="5" pos:column="35">DummyObjectContext</name></argument>&gt;</argument_list></name></super>
+    <block pos:line="6" pos:column="5">{
+        <function><type><specifier pos:line="7" pos:column="9">public</specifier> <specifier pos:line="7" pos:column="16">override</specifier> <name pos:line="7" pos:column="25">object</name></type> <name pos:line="7" pos:column="32">GetData</name><parameter_list pos:line="7" pos:column="39">(<param><decl><type><name pos:line="7" pos:column="40">ITabContext</name></type> <name pos:line="7" pos:column="52">context</name></decl></param>)</parameter_list>
+        <block pos:line="8" pos:column="9">{
+            <throw pos:line="9" pos:column="13">throw <expr><op:operator pos:line="9" pos:column="19">new</op:operator> <call><name><name pos:line="9" pos:column="23">System</name><op:operator pos:line="9" pos:column="29">.</op:operator><name pos:line="9" pos:column="30">NotSupportedException</name></name><argument_list pos:line="9" pos:column="51">(<argument><expr><lit:literal type="string" pos:line="9" pos:column="52">"I am DummyTab"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+        }</block></function>
+
+        <decl_stmt><decl><type><specifier pos:line="12" pos:column="9">public</specifier> <specifier pos:line="12" pos:column="16">override</specifier> <name pos:line="12" pos:column="25">string</name></type> <name pos:line="12" pos:column="32">Name</name>
+        <block pos:line="13" pos:column="9">{
+            <function><name pos:line="14" pos:column="13">get</name> <block pos:line="14" pos:column="17">{ <return pos:line="14" pos:column="19">return <expr><lit:literal type="string" pos:line="14" pos:column="26">"Dummy Tab"</lit:literal></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace></unit>

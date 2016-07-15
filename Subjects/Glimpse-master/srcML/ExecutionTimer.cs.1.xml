@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensibility\ExecutionTimer.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Diagnostics</name></name>;</using>
+
+<namespace pos:line="4" pos:column="1">namespace <name><name pos:line="4" pos:column="11">Glimpse</name><op:operator pos:line="4" pos:column="18">.</op:operator><name pos:line="4" pos:column="19">Core</name><op:operator pos:line="4" pos:column="23">.</op:operator><name pos:line="4" pos:column="24">Extensibility</name></name>
+<block pos:line="5" pos:column="1">{
+    <comment type="line" pos:line="6" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// An implementation of &lt;see cref="IExecutionTimer"/&gt;.</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="9" pos:column="5">public</specifier> class <name pos:line="9" pos:column="18">ExecutionTimer</name> <super pos:line="9" pos:column="33">: <name pos:line="9" pos:column="35">IExecutionTimer</name></super>
+    <block pos:line="10" pos:column="5">{
+        <comment type="line" pos:line="11" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="12" pos:column="9">/// Initializes a new instance of the &lt;see cref="ExecutionTimer" /&gt; class.</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// &lt;param name="stopwatch"&gt;The stopwatch.&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="15" pos:column="9">public</specifier> <name pos:line="15" pos:column="16">ExecutionTimer</name><parameter_list pos:line="15" pos:column="30">(<param><decl><type><name pos:line="15" pos:column="31">Stopwatch</name></type> <name pos:line="15" pos:column="41">stopwatch</name></decl></param>)</parameter_list>
+        <block pos:line="16" pos:column="9">{
+            <if pos:line="17" pos:column="13">if <condition pos:line="17" pos:column="16">(<expr><op:operator pos:line="17" pos:column="17">!</op:operator><name><name pos:line="17" pos:column="18">stopwatch</name><op:operator pos:line="17" pos:column="27">.</op:operator><name pos:line="17" pos:column="28">IsRunning</name></name></expr>)</condition><then pos:line="17" pos:column="38">
+            <block pos:line="18" pos:column="13">{
+                <expr_stmt><expr><call><name><name pos:line="19" pos:column="17">stopwatch</name><op:operator pos:line="19" pos:column="26">.</op:operator><name pos:line="19" pos:column="27">Start</name></name><argument_list pos:line="19" pos:column="32">()</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="22" pos:column="13">Stopwatch</name> <op:operator pos:line="22" pos:column="23">=</op:operator> <name pos:line="22" pos:column="25">stopwatch</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="23" pos:column="13">RequestStart</name> <op:operator pos:line="23" pos:column="26">=</op:operator> <name><name pos:line="23" pos:column="28">DateTime</name><op:operator pos:line="23" pos:column="36">.</op:operator><name pos:line="23" pos:column="37">Now</name></name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// Gets the request start date and time.</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// The request start.</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="32" pos:column="9">public</specifier> <name pos:line="32" pos:column="16">DateTime</name></type> <name pos:line="32" pos:column="25">RequestStart</name> <block pos:line="32" pos:column="38">{ <function_decl><name pos:line="32" pos:column="40">get</name>;</function_decl> <function_decl><specifier pos:line="32" pos:column="45">private</specifier> <name pos:line="32" pos:column="53">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="34" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="35" pos:column="9">/// Gets or sets the stopwatch.</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// The stopwatch.</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="40" pos:column="9">internal</specifier> <name pos:line="40" pos:column="18">Stopwatch</name></type> <name pos:line="40" pos:column="28">Stopwatch</name> <block pos:line="40" pos:column="38">{ <function_decl><name pos:line="40" pos:column="40">get</name>;</function_decl> <function_decl><name pos:line="40" pos:column="45">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// Returns a special &lt;see cref="TimerResult "/&gt; which represents a single point in time.</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// A TimerResult of a single point in time.</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// &lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="48" pos:column="9">public</specifier> <name pos:line="48" pos:column="16">TimerResult</name></type> <name pos:line="48" pos:column="28">Point</name><parameter_list pos:line="48" pos:column="33">()</parameter_list>
+        <block pos:line="49" pos:column="9">{
+            <return pos:line="50" pos:column="13">return <expr><op:operator pos:line="50" pos:column="20">new</op:operator> <name pos:line="50" pos:column="24">TimerResult</name>
+                <block pos:line="51" pos:column="17">{
+                    <expr><name pos:line="52" pos:column="21">StartTime</name> <op:operator pos:line="52" pos:column="31">=</op:operator> <name><name pos:line="52" pos:column="33">DateTime</name><op:operator pos:line="52" pos:column="41">.</op:operator><name pos:line="52" pos:column="42">Now</name></name></expr><op:operator pos:line="52" pos:column="45">,</op:operator>
+                    <expr><name pos:line="53" pos:column="21">Offset</name> <op:operator pos:line="53" pos:column="28">=</op:operator> <name><name pos:line="53" pos:column="30">Stopwatch</name><op:operator pos:line="53" pos:column="39">.</op:operator><name pos:line="53" pos:column="40">Elapsed</name></name></expr><op:operator pos:line="53" pos:column="47">,</op:operator>
+                    <expr><name pos:line="54" pos:column="21">Duration</name> <op:operator pos:line="54" pos:column="30">=</op:operator> <name><name pos:line="54" pos:column="32">TimeSpan</name><op:operator pos:line="54" pos:column="40">.</op:operator><name pos:line="54" pos:column="41">Zero</name></name></expr>
+                }</block></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="58" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="59" pos:column="9">/// Times the specified function. This will start and stop the timer either side</comment>
+        <comment type="line" pos:line="60" pos:column="9">/// of the function that is executed.</comment>
+        <comment type="line" pos:line="61" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="62" pos:column="9">/// &lt;typeparam name="T"&gt;Type of result that is expected&lt;/typeparam&gt;</comment>
+        <comment type="line" pos:line="63" pos:column="9">/// &lt;param name="function"&gt;The function that should be executed.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="64" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="65" pos:column="9">/// Timing info that is collected as a result of the execution.</comment>
+        <comment type="line" pos:line="66" pos:column="9">/// &lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="67" pos:column="9">public</specifier> <name><name pos:line="67" pos:column="16">TimerResult</name><argument_list pos:line="67" pos:column="27">&lt;<argument><name pos:line="67" pos:column="28">T</name></argument>&gt;</argument_list></name></type> <name><name pos:line="67" pos:column="31">Time</name><argument_list pos:line="67" pos:column="35">&lt;<argument><name pos:line="67" pos:column="36">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="67" pos:column="38">(<param><decl><type><name><name pos:line="67" pos:column="39">Func</name><argument_list pos:line="67" pos:column="43">&lt;<argument><name pos:line="67" pos:column="44">T</name></argument>&gt;</argument_list></name></type> <name pos:line="67" pos:column="47">function</name></decl></param>)</parameter_list>
+        <block pos:line="68" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="69" pos:column="13">var</name></type> <name pos:line="69" pos:column="17">result</name> <init pos:line="69" pos:column="24">= <expr><op:operator pos:line="69" pos:column="26">new</op:operator> <name><name pos:line="69" pos:column="30">TimerResult</name><argument_list pos:line="69" pos:column="41">&lt;<argument><name pos:line="69" pos:column="42">T</name></argument>&gt;</argument_list></name>
+                <block pos:line="70" pos:column="17">{
+                    <expr><name pos:line="71" pos:column="21">StartTime</name> <op:operator pos:line="71" pos:column="31">=</op:operator> <name><name pos:line="71" pos:column="33">DateTime</name><op:operator pos:line="71" pos:column="41">.</op:operator><name pos:line="71" pos:column="42">Now</name></name></expr>, 
+                    <expr><name pos:line="72" pos:column="21">Offset</name> <op:operator pos:line="72" pos:column="28">=</op:operator> <name><name pos:line="72" pos:column="30">Stopwatch</name><op:operator pos:line="72" pos:column="39">.</op:operator><name pos:line="72" pos:column="40">Elapsed</name></name></expr>, 
+                    <expr><name pos:line="73" pos:column="21">Result</name> <op:operator pos:line="73" pos:column="28">=</op:operator> <call><name pos:line="73" pos:column="30">function</name><argument_list pos:line="73" pos:column="38">()</argument_list></call></expr>
+                }</block></expr></init></decl>;</decl_stmt>
+            <expr_stmt><expr><name><name pos:line="75" pos:column="13">result</name><op:operator pos:line="75" pos:column="19">.</op:operator><name pos:line="75" pos:column="20">Duration</name></name> <op:operator pos:line="75" pos:column="29">=</op:operator> <name><name pos:line="75" pos:column="31">Stopwatch</name><op:operator pos:line="75" pos:column="40">.</op:operator><name pos:line="75" pos:column="41">Elapsed</name></name> <op:operator pos:line="75" pos:column="49">-</op:operator> <name><name pos:line="75" pos:column="51">result</name><op:operator pos:line="75" pos:column="57">.</op:operator><name pos:line="75" pos:column="58">Offset</name></name></expr>;</expr_stmt>
+
+            <return pos:line="77" pos:column="13">return <expr><name pos:line="77" pos:column="20">result</name></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="80" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="81" pos:column="9">/// Times the specified action. This will start and stop the timer either side</comment>
+        <comment type="line" pos:line="82" pos:column="9">/// of the action that is executed.</comment>
+        <comment type="line" pos:line="83" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="84" pos:column="9">/// &lt;param name="action"&gt;The action that should be executed.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="85" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="86" pos:column="9">/// Timing info that is collected as a result of the execution.</comment>
+        <comment type="line" pos:line="87" pos:column="9">/// &lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="88" pos:column="9">public</specifier> <name pos:line="88" pos:column="16">TimerResult</name></type> <name pos:line="88" pos:column="28">Time</name><parameter_list pos:line="88" pos:column="32">(<param><decl><type><name pos:line="88" pos:column="33">Action</name></type> <name pos:line="88" pos:column="40">action</name></decl></param>)</parameter_list>
+        <block pos:line="89" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="90" pos:column="13">var</name></type> <name pos:line="90" pos:column="17">result</name> <init pos:line="90" pos:column="24">= <expr><op:operator pos:line="90" pos:column="26">new</op:operator> <name pos:line="90" pos:column="30">TimerResult</name>
+                <block pos:line="91" pos:column="17">{
+                    <expr><name pos:line="92" pos:column="21">StartTime</name> <op:operator pos:line="92" pos:column="31">=</op:operator> <name><name pos:line="92" pos:column="33">DateTime</name><op:operator pos:line="92" pos:column="41">.</op:operator><name pos:line="92" pos:column="42">Now</name></name></expr>, 
+                    <expr><name pos:line="93" pos:column="21">Offset</name> <op:operator pos:line="93" pos:column="28">=</op:operator> <name><name pos:line="93" pos:column="30">Stopwatch</name><op:operator pos:line="93" pos:column="39">.</op:operator><name pos:line="93" pos:column="40">Elapsed</name></name></expr>
+                }</block></expr></init></decl>;</decl_stmt>
+            <expr_stmt><expr><call><name pos:line="95" pos:column="13">action</name><argument_list pos:line="95" pos:column="19">()</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="96" pos:column="13">result</name><op:operator pos:line="96" pos:column="19">.</op:operator><name pos:line="96" pos:column="20">Duration</name></name> <op:operator pos:line="96" pos:column="29">=</op:operator> <name><name pos:line="96" pos:column="31">Stopwatch</name><op:operator pos:line="96" pos:column="40">.</op:operator><name pos:line="96" pos:column="41">Elapsed</name></name> <op:operator pos:line="96" pos:column="49">-</op:operator> <name><name pos:line="96" pos:column="51">result</name><op:operator pos:line="96" pos:column="57">.</op:operator><name pos:line="96" pos:column="58">Offset</name></name></expr>;</expr_stmt>
+            
+            <return pos:line="98" pos:column="13">return <expr><name pos:line="98" pos:column="20">result</name></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="101" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="102" pos:column="9">/// Starts the timer instance.</comment>
+        <comment type="line" pos:line="103" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="104" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="105" pos:column="9">/// TimeSpan that represents this timing instance.</comment>
+        <comment type="line" pos:line="106" pos:column="9">/// &lt;/returns&gt;</comment>
+        <comment type="line" pos:line="107" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="108" pos:column="9">/// If this method is used, it is up to the developer to manually stop the</comment>
+        <comment type="line" pos:line="109" pos:column="9">/// timer by calling Stop().</comment>
+        <comment type="line" pos:line="110" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <function><type><specifier pos:line="111" pos:column="9">public</specifier> <name pos:line="111" pos:column="16">TimeSpan</name></type> <name pos:line="111" pos:column="25">Start</name><parameter_list pos:line="111" pos:column="30">()</parameter_list>
+        <block pos:line="112" pos:column="9">{
+            <return pos:line="113" pos:column="13">return <expr><name><name pos:line="113" pos:column="20">Stopwatch</name><op:operator pos:line="113" pos:column="29">.</op:operator><name pos:line="113" pos:column="30">Elapsed</name></name></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="116" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="117" pos:column="9">/// Stops the timer instance.</comment>
+        <comment type="line" pos:line="118" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="119" pos:column="9">/// &lt;param name="offset"&gt;The offset.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="120" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="121" pos:column="9">/// Timing info that is collected as a result of the execution.</comment>
+        <comment type="line" pos:line="122" pos:column="9">/// &lt;/returns&gt;</comment>
+        <comment type="line" pos:line="123" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="124" pos:column="9">/// Inconsistent results may be experienced if you do not call Start() before</comment>
+        <comment type="line" pos:line="125" pos:column="9">/// calling Stop().</comment>
+        <comment type="line" pos:line="126" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <function><type><specifier pos:line="127" pos:column="9">public</specifier> <name pos:line="127" pos:column="16">TimerResult</name></type> <name pos:line="127" pos:column="28">Stop</name><parameter_list pos:line="127" pos:column="32">(<param><decl><type><name pos:line="127" pos:column="33">TimeSpan</name></type> <name pos:line="127" pos:column="42">offset</name></decl></param>)</parameter_list>
+        <block pos:line="128" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="129" pos:column="13">var</name></type> <name pos:line="129" pos:column="17">result</name> <init pos:line="129" pos:column="24">= <expr><op:operator pos:line="129" pos:column="26">new</op:operator> <name pos:line="129" pos:column="30">TimerResult</name>
+                <block pos:line="130" pos:column="17">{
+                    <expr><name pos:line="131" pos:column="21">StartTime</name> <op:operator pos:line="131" pos:column="31">=</op:operator> <name><name pos:line="131" pos:column="33">DateTime</name><op:operator pos:line="131" pos:column="41">.</op:operator><name pos:line="131" pos:column="42">Now</name></name> <op:operator pos:line="131" pos:column="46">-</op:operator> <name pos:line="131" pos:column="48">offset</name></expr>, 
+                    <expr><name pos:line="132" pos:column="21">Offset</name> <op:operator pos:line="132" pos:column="28">=</op:operator> <name pos:line="132" pos:column="30">offset</name></expr>
+                }</block></expr></init></decl>;</decl_stmt>
+            <expr_stmt><expr><name><name pos:line="134" pos:column="13">result</name><op:operator pos:line="134" pos:column="19">.</op:operator><name pos:line="134" pos:column="20">Duration</name></name> <op:operator pos:line="134" pos:column="29">=</op:operator> <name><name pos:line="134" pos:column="31">Stopwatch</name><op:operator pos:line="134" pos:column="40">.</op:operator><name pos:line="134" pos:column="41">Elapsed</name></name> <op:operator pos:line="134" pos:column="49">-</op:operator> <name><name pos:line="134" pos:column="51">result</name><op:operator pos:line="134" pos:column="57">.</op:operator><name pos:line="134" pos:column="58">Offset</name></name></expr>;</expr_stmt>
+
+            <return pos:line="136" pos:column="13">return <expr><name pos:line="136" pos:column="20">result</name></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

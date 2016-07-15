@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensibility\TabBaseOfT.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Core</name><op:operator pos:line="3" pos:column="23">.</op:operator><name pos:line="3" pos:column="24">Extensibility</name></name>
+<block pos:line="4" pos:column="1">{
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="6" pos:column="5">/// Base implementation that allows simplified the implementation of a </comment>
+    <comment type="line" pos:line="7" pos:column="5">/// tab. NOTE, this implementation is intended for by tabs that can  </comment>
+    <comment type="line" pos:line="8" pos:column="5">/// only be executed by a specific provider (i.e. ones bound to </comment>
+    <comment type="line" pos:line="9" pos:column="5">/// HttpContextBase in the case of the ASP.NET provider). </comment>
+    <comment type="line" pos:line="10" pos:column="5">/// &lt;/summary&gt;</comment>
+    <comment type="line" pos:line="11" pos:column="5">/// &lt;typeparam name="T"&gt;Type of the code provider that the tab is bound to&lt;/typeparam&gt;</comment>
+    <class><specifier pos:line="12" pos:column="5">public</specifier> <specifier pos:line="12" pos:column="12">abstract</specifier> class <name><name pos:line="12" pos:column="27">TabBase</name><argument_list pos:line="12" pos:column="34">&lt;<argument><name pos:line="12" pos:column="35">T</name></argument>&gt;</argument_list></name> <super pos:line="12" pos:column="38">: <name pos:line="12" pos:column="40">ITab</name></super>
+    <block pos:line="13" pos:column="5">{
+        <comment type="line" pos:line="14" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// Gets the name that will show in the tab.</comment>
+        <comment type="line" pos:line="16" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="17" pos:column="9">/// &lt;value&gt;The name.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="18" pos:column="9">public</specifier> <specifier pos:line="18" pos:column="16">abstract</specifier> <name pos:line="18" pos:column="25">string</name></type> <name pos:line="18" pos:column="32">Name</name> <block pos:line="18" pos:column="37">{ <function_decl><name pos:line="18" pos:column="39">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="20" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="21" pos:column="9">/// Gets when the &lt;see cref="ITab.GetData" /&gt; method should run.</comment>
+        <comment type="line" pos:line="22" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// &lt;value&gt;The execute on.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="24" pos:column="9">public</specifier> <specifier pos:line="24" pos:column="16">virtual</specifier> <name pos:line="24" pos:column="24">RuntimeEvent</name></type> <name pos:line="24" pos:column="37">ExecuteOn</name>
+        <block pos:line="25" pos:column="9">{
+            <function><name pos:line="26" pos:column="13">get</name>
+            <block pos:line="27" pos:column="13">{
+                <return pos:line="28" pos:column="17">return <expr><name><name pos:line="28" pos:column="24">RuntimeEvent</name><op:operator pos:line="28" pos:column="36">.</op:operator><name pos:line="28" pos:column="37">EndRequest</name></name></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="32" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="33" pos:column="9">/// Gets the type of the request context that the Tab relies on. NOTE,</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// this implementation returns the type that the base was inherited with..</comment>
+        <comment type="line" pos:line="35" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// &lt;value&gt;The type of the request context.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="37" pos:column="9">public</specifier> <name pos:line="37" pos:column="16">Type</name></type> <name pos:line="37" pos:column="21">RequestContextType</name>
+        <block pos:line="38" pos:column="9">{
+            <function><name pos:line="39" pos:column="13">get</name> <block pos:line="39" pos:column="17">{ <return pos:line="39" pos:column="19">return <expr><call><name pos:line="39" pos:column="26">typeof</name><argument_list pos:line="39" pos:column="32">(<argument><expr><name pos:line="39" pos:column="33">T</name></expr></argument>)</argument_list></call></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// Gets the data that should be shown in the UI.</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// &lt;param name="context"&gt;The context.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// &lt;returns&gt;Object that will be shown.&lt;/returns&gt;</comment>
+        <function_decl><type><specifier pos:line="47" pos:column="9">public</specifier> <specifier pos:line="47" pos:column="16">abstract</specifier> <name pos:line="47" pos:column="25">object</name></type> <name pos:line="47" pos:column="32">GetData</name><parameter_list pos:line="47" pos:column="39">(<param><decl><type><name pos:line="47" pos:column="40">ITabContext</name></type> <name pos:line="47" pos:column="52">context</name></decl></param>)</parameter_list>;</function_decl>
+    }</block></class>
+}</block></namespace></unit>

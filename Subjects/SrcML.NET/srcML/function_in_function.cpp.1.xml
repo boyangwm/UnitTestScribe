@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\SrcML.NET\TestInputs\function_in_function.cpp" pos:tabs="8"><function_decl><type><name pos:line="1" pos:column="1">int</name></type> <name pos:line="1" pos:column="5">foo</name><parameter_list pos:line="1" pos:column="8">()</parameter_list>;</function_decl>
+<function><type><name pos:line="2" pos:column="1">int</name></type> <name pos:line="2" pos:column="5">main</name><parameter_list pos:line="2" pos:column="9">()</parameter_list> <block pos:line="2" pos:column="12">{
+  <return pos:line="3" pos:column="3">return <expr><call><name pos:line="3" pos:column="10">foo</name><argument_list pos:line="3" pos:column="13">()</argument_list></call></expr>;</return>
+}</block></function>
+
+  <function><type><name pos:line="6" pos:column="3">int</name></type> <name pos:line="6" pos:column="7">foo</name><parameter_list pos:line="6" pos:column="10">()</parameter_list> <block pos:line="6" pos:column="13">{
+    <return pos:line="7" pos:column="5">return <expr><lit:literal type="number" pos:line="7" pos:column="12">0</lit:literal></expr>;</return>
+  }</block></function>
+</unit>

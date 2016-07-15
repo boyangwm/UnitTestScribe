@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML\Utilities\ErrorModeContext.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Linq</name></name>;</using>
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">System</name><op:operator pos:line="4" pos:column="13">.</op:operator><name pos:line="4" pos:column="14">Runtime</name><op:operator pos:line="4" pos:column="21">.</op:operator><name pos:line="4" pos:column="22">InteropServices</name></name>;</using>
+<using pos:line="5" pos:column="1">using <name><name pos:line="5" pos:column="7">System</name><op:operator pos:line="5" pos:column="13">.</op:operator><name pos:line="5" pos:column="14">Text</name></name>;</using>
+
+<namespace pos:line="7" pos:column="1">namespace <name><name pos:line="7" pos:column="11">ABB</name><op:operator pos:line="7" pos:column="14">.</op:operator><name pos:line="7" pos:column="15">SrcML</name><op:operator pos:line="7" pos:column="20">.</op:operator><name pos:line="7" pos:column="21">Utilities</name></name> <block pos:line="7" pos:column="31">{
+    <comment type="line" pos:line="8" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="9" pos:column="5">/// Used to disable the "[Application] has stopped working" dialog in subprocesses</comment>
+    <comment type="line" pos:line="10" pos:column="5">/// From &lt;see href="http://dev.flauschig.ch/wordpress/?p=284"/&gt;</comment>
+    <comment type="line" pos:line="11" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="12" pos:column="5">internal</specifier> class <name pos:line="12" pos:column="20">ErrorModeContext</name> <super pos:line="12" pos:column="37">: <name pos:line="12" pos:column="39">IDisposable</name></super> <block pos:line="12" pos:column="51">{
+        <decl_stmt><decl><type><specifier pos:line="13" pos:column="9">private</specifier> <specifier pos:line="13" pos:column="17">readonly</specifier> <name pos:line="13" pos:column="26">int</name></type> <name pos:line="13" pos:column="30">_oldMode</name></decl>;</decl_stmt>
+
+        <constructor><specifier pos:line="15" pos:column="9">public</specifier> <name pos:line="15" pos:column="16">ErrorModeContext</name><parameter_list pos:line="15" pos:column="32">(<param><decl><type><name pos:line="15" pos:column="33">ErrorModes</name></type> <name pos:line="15" pos:column="44">mode</name></decl></param>)</parameter_list> <block pos:line="15" pos:column="50">{
+            <expr_stmt><expr><name pos:line="16" pos:column="13">_oldMode</name> <op:operator pos:line="16" pos:column="22">=</op:operator> <call><name pos:line="16" pos:column="24">SetErrorMode</name><argument_list pos:line="16" pos:column="36">(<argument><expr><op:operator pos:line="16" pos:column="37">(</op:operator><name pos:line="16" pos:column="38">int</name><op:operator pos:line="16" pos:column="41">)</op:operator> <name pos:line="16" pos:column="43">mode</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <destructor><name pos:line="19" pos:column="9">~<name pos:line="19" pos:column="10">ErrorModeContext</name></name><parameter_list pos:line="19" pos:column="26">()</parameter_list> <block pos:line="19" pos:column="29">{
+            <expr_stmt><expr><call><name pos:line="20" pos:column="13">Dispose</name><argument_list pos:line="20" pos:column="20">(<argument><expr><lit:literal type="boolean" pos:line="20" pos:column="21">false</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></destructor>
+
+        <function><type><specifier pos:line="23" pos:column="9">private</specifier> <name pos:line="23" pos:column="17">void</name></type> <name pos:line="23" pos:column="22">Dispose</name><parameter_list pos:line="23" pos:column="29">(<param><decl><type><name pos:line="23" pos:column="30">bool</name></type> <name pos:line="23" pos:column="35">disposing</name></decl></param>)</parameter_list> <block pos:line="23" pos:column="46">{
+            <expr_stmt><expr><call><name pos:line="24" pos:column="13">SetErrorMode</name><argument_list pos:line="24" pos:column="25">(<argument><expr><name pos:line="24" pos:column="26">_oldMode</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <function><type><specifier pos:line="27" pos:column="9">public</specifier> <name pos:line="27" pos:column="16">void</name></type> <name pos:line="27" pos:column="21">Dispose</name><parameter_list pos:line="27" pos:column="28">()</parameter_list> <block pos:line="27" pos:column="31">{
+            <expr_stmt><expr><call><name pos:line="28" pos:column="13">Dispose</name><argument_list pos:line="28" pos:column="20">(<argument><expr><lit:literal type="boolean" pos:line="28" pos:column="21">true</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="29" pos:column="13">GC</name><op:operator pos:line="29" pos:column="15">.</op:operator><name pos:line="29" pos:column="16">SuppressFinalize</name></name><argument_list pos:line="29" pos:column="32">(<argument><expr><name pos:line="29" pos:column="33">this</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <function_decl><type><attribute pos:line="32" pos:column="9">[<expr><call><name pos:line="32" pos:column="10">DllImport</name><argument_list pos:line="32" pos:column="19">(<argument><expr><lit:literal type="string" pos:line="32" pos:column="20">"kernel32.dll"</lit:literal></expr></argument>)</argument_list></call></expr>]</attribute>
+        <specifier pos:line="33" pos:column="9">private</specifier> <specifier pos:line="33" pos:column="17">static</specifier> <specifier pos:line="33" pos:column="24">extern</specifier> <name pos:line="33" pos:column="31">int</name></type> <name pos:line="33" pos:column="35">SetErrorMode</name><parameter_list pos:line="33" pos:column="47">(<param><decl><type><name pos:line="33" pos:column="48">int</name></type> <name pos:line="33" pos:column="52">newMode</name></decl></param>)</parameter_list>;</function_decl>
+    }</block></class>
+
+    <enum><attribute pos:line="36" pos:column="5">[<expr><name pos:line="36" pos:column="6">Flags</name></expr>]</attribute>
+    <specifier pos:line="37" pos:column="5">internal</specifier> enum <macro><name pos:line="37" pos:column="19">ErrorModes</name></macro> <block pos:line="37" pos:column="30">{
+        <decl><name pos:line="38" pos:column="9">Default</name> <init pos:line="38" pos:column="17">= <expr><lit:literal type="number" pos:line="38" pos:column="19">0x0</lit:literal></expr></init></decl><op:operator pos:line="38" pos:column="22">,</op:operator>
+        <decl><name pos:line="39" pos:column="9">FailCriticalErrors</name> <init pos:line="39" pos:column="28">= <expr><lit:literal type="number" pos:line="39" pos:column="30">0x1</lit:literal></expr></init></decl><op:operator pos:line="39" pos:column="33">,</op:operator>
+        <decl><name pos:line="40" pos:column="9">NoGpFaultErrorBox</name> <init pos:line="40" pos:column="27">= <expr><lit:literal type="number" pos:line="40" pos:column="29">0x2</lit:literal></expr></init></decl><op:operator pos:line="40" pos:column="32">,</op:operator>
+        <decl><name pos:line="41" pos:column="9">NoAlignmentFaultExcept</name> <init pos:line="41" pos:column="32">= <expr><lit:literal type="number" pos:line="41" pos:column="34">0x4</lit:literal></expr></init></decl><op:operator pos:line="41" pos:column="37">,</op:operator>
+        <decl><name pos:line="42" pos:column="9">NoOpenFileErrorBox</name> <init pos:line="42" pos:column="28">= <expr><lit:literal type="number" pos:line="42" pos:column="30">0x8000</lit:literal></expr></init></decl><op:operator pos:line="42" pos:column="36">,</op:operator>
+    }</block>
+<decl/></enum>}</block></namespace>
+</unit>

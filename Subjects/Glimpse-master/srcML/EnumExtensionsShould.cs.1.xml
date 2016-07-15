@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Test.Core\Extensions\EnumExtensionsShould.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">Glimpse</name><op:operator pos:line="1" pos:column="14">.</op:operator><name pos:line="1" pos:column="15">Core</name><op:operator pos:line="1" pos:column="19">.</op:operator><name pos:line="1" pos:column="20">Extensions</name></name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">Glimpse</name><op:operator pos:line="2" pos:column="14">.</op:operator><name pos:line="2" pos:column="15">Test</name><op:operator pos:line="2" pos:column="19">.</op:operator><name pos:line="2" pos:column="20">Core</name><op:operator pos:line="2" pos:column="24">.</op:operator><name pos:line="2" pos:column="25">TestDoubles</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name pos:line="3" pos:column="7">Xunit</name>;</using>
+
+<namespace pos:line="5" pos:column="1">namespace <name><name pos:line="5" pos:column="11">Glimpse</name><op:operator pos:line="5" pos:column="18">.</op:operator><name pos:line="5" pos:column="19">Test</name><op:operator pos:line="5" pos:column="23">.</op:operator><name pos:line="5" pos:column="24">Core</name><op:operator pos:line="5" pos:column="28">.</op:operator><name pos:line="5" pos:column="29">Extensions</name></name>
+<block pos:line="6" pos:column="1">{
+    <class><specifier pos:line="7" pos:column="5">public</specifier> class <name pos:line="7" pos:column="18">EnumExtensionsShould</name>
+    <block pos:line="8" pos:column="5">{
+        <function><type><attribute pos:line="9" pos:column="9">[<expr><name pos:line="9" pos:column="10">Fact</name></expr>]</attribute>
+        <specifier pos:line="10" pos:column="9">public</specifier> <name pos:line="10" pos:column="16">void</name></type> <name pos:line="10" pos:column="21">ReturnDescriptWhenItExists</name><parameter_list pos:line="10" pos:column="47">()</parameter_list>
+        <block pos:line="11" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="12" pos:column="13">Assert</name><op:operator pos:line="12" pos:column="19">.</op:operator><name pos:line="12" pos:column="20">Equal</name></name><argument_list pos:line="12" pos:column="25">(<argument><expr><lit:literal type="string" pos:line="12" pos:column="26">"I am described"</lit:literal></expr></argument>, <argument><expr><call><name><name pos:line="12" pos:column="44">DummyEnum</name><op:operator pos:line="12" pos:column="53">.</op:operator><name pos:line="12" pos:column="54">WithDescription</name><op:operator pos:line="12" pos:column="69">.</op:operator><name pos:line="12" pos:column="70">ToDescription</name></name><argument_list pos:line="12" pos:column="83">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <function><type><attribute pos:line="15" pos:column="9">[<expr><name pos:line="15" pos:column="10">Fact</name></expr>]</attribute>
+        <specifier pos:line="16" pos:column="9">public</specifier> <name pos:line="16" pos:column="16">void</name></type> <name pos:line="16" pos:column="21">ReturnEmptyStringWithItDoesNotExist</name><parameter_list pos:line="16" pos:column="56">()</parameter_list>
+        <block pos:line="17" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="18" pos:column="13">Assert</name><op:operator pos:line="18" pos:column="19">.</op:operator><name pos:line="18" pos:column="20">Empty</name></name><argument_list pos:line="18" pos:column="25">(<argument><expr><call><name><name pos:line="18" pos:column="26">DummyEnum</name><op:operator pos:line="18" pos:column="35">.</op:operator><name pos:line="18" pos:column="36">WithoutDescription</name><op:operator pos:line="18" pos:column="54">.</op:operator><name pos:line="18" pos:column="55">ToDescription</name></name><argument_list pos:line="18" pos:column="68">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

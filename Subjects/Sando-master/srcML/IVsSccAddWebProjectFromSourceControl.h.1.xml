@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\IVsSccAddWebProjectFromSourceControl.h" pos:tabs="8" pos:line="1" pos:column="1">
+
+<comment type="block" pos:line="3" pos:column="1">/* this ALWAYS GENERATED file contains the definitions for the interfaces */</comment>
+
+
+ <comment type="block" pos:line="6" pos:column="2">/* File created by MIDL compiler version 7.00.0499 */</comment>
+<comment type="block" pos:line="7" pos:column="1">/* Compiler settings for IVsSccAddWebProjectFromSourceControl.idl:
+    Oicf, W1, Zp8, env=Win32 (32b run)
+    protocol : dce , ms_ext, c_ext, robust
+    error checks: allocation ref bounds_check enum stub_data 
+    VC __declspec() decoration level: 
+         __declspec(uuid()), __declspec(selectany), __declspec(novtable)
+         DECLSPEC_UUID(), MIDL_INTERFACE()
+*/</comment>
+<comment type="line" pos:line="15" pos:column="1">//@@MIDL_FILE_HEADING(  )</comment>
+
+<cpp:pragma pos:line="17" pos:column="1">#<cpp:directive pos:line="17" pos:column="2">pragma</cpp:directive> warning( disable: 4049 )</cpp:pragma>  <comment type="block" pos:line="17" pos:column="35">/* more than 64k source lines */</comment>
+
+
+<comment type="block" pos:line="20" pos:column="1">/* verify that the &lt;rpcndr.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="21" pos:column="1">#<cpp:directive pos:line="21" pos:column="2">ifndef</cpp:directive> <name pos:line="21" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="22" pos:column="1">#<cpp:directive pos:line="22" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="22" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:macro> <cpp:value pos:line="22" pos:column="39">475</cpp:value></cpp:define>
+<cpp:endif pos:line="23" pos:column="1">#<cpp:directive pos:line="23" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="25" pos:column="1">/* verify that the &lt;rpcsal.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="26" pos:column="1">#<cpp:directive pos:line="26" pos:column="2">ifndef</cpp:directive> <name pos:line="26" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="27" pos:column="1">#<cpp:directive pos:line="27" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="27" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:macro> <cpp:value pos:line="27" pos:column="39">100</cpp:value></cpp:define>
+<cpp:endif pos:line="28" pos:column="1">#<cpp:directive pos:line="28" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:include pos:line="30" pos:column="1">#<cpp:directive pos:line="30" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="30" pos:column="10">"rpc.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="31" pos:column="1">#<cpp:directive pos:line="31" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="31" pos:column="10">"rpcndr.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifndef pos:line="33" pos:column="1">#<cpp:directive pos:line="33" pos:column="2">ifndef</cpp:directive> <name pos:line="33" pos:column="9">__RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:error pos:line="34" pos:column="1">#<cpp:directive pos:line="34" pos:column="2">error</cpp:directive> this stub requires an updated version of &lt;rpcndr.h&gt;</cpp:error>
+<cpp:endif pos:line="35" pos:column="1">#<cpp:directive pos:line="35" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="35" pos:column="8">// __RPCNDR_H_VERSION__</comment>
+
+<cpp:ifndef pos:line="37" pos:column="1">#<cpp:directive pos:line="37" pos:column="2">ifndef</cpp:directive> <name pos:line="37" pos:column="9">COM_NO_WINDOWS_H</name></cpp:ifndef>
+<cpp:include pos:line="38" pos:column="1">#<cpp:directive pos:line="38" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="38" pos:column="10">"windows.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="39" pos:column="1">#<cpp:directive pos:line="39" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="39" pos:column="10">"ole2.h"</lit:literal></cpp:file></cpp:include>
+<cpp:endif pos:line="40" pos:column="1">#<cpp:directive pos:line="40" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="40" pos:column="8">/*COM_NO_WINDOWS_H*/</comment>
+
+<cpp:ifndef pos:line="42" pos:column="1">#<cpp:directive pos:line="42" pos:column="2">ifndef</cpp:directive> <name pos:line="42" pos:column="9">__IVsSccAddWebProjectFromSourceControl_h__</name></cpp:ifndef>
+<cpp:define pos:line="43" pos:column="1">#<cpp:directive pos:line="43" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="43" pos:column="9">__IVsSccAddWebProjectFromSourceControl_h__</name></cpp:macro></cpp:define>
+
+<cpp:if pos:line="45" pos:column="1">#<cpp:directive pos:line="45" pos:column="2">if</cpp:directive> <expr><call><name pos:line="45" pos:column="5">defined</name><argument_list pos:line="45" pos:column="12">(<argument><expr><name pos:line="45" pos:column="13">_MSC_VER</name></expr></argument>)</argument_list></call> <op:operator pos:line="45" pos:column="23">&amp;&amp;</op:operator> <op:operator pos:line="45" pos:column="26">(</op:operator><name pos:line="45" pos:column="27">_MSC_VER</name> <op:operator pos:line="45" pos:column="36">&gt;=</op:operator> <lit:literal type="number" pos:line="45" pos:column="39">1020</lit:literal><op:operator pos:line="45" pos:column="43">)</op:operator></expr></cpp:if>
+<cpp:pragma pos:line="46" pos:column="1">#<cpp:directive pos:line="46" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+<cpp:endif pos:line="47" pos:column="1">#<cpp:directive pos:line="47" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="49" pos:column="1">/* Forward Declarations */</comment> 
+
+<cpp:ifndef pos:line="51" pos:column="1">#<cpp:directive pos:line="51" pos:column="2">ifndef</cpp:directive> <name pos:line="51" pos:column="9">__IVsSccAddWebProjectFromSourceControl_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="52" pos:column="1">#<cpp:directive pos:line="52" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="52" pos:column="9">__IVsSccAddWebProjectFromSourceControl_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="53" pos:column="1">typedef <type><name pos:line="53" pos:column="9">interface</name> <name pos:line="53" pos:column="19">IVsSccAddWebProjectFromSourceControl</name></type> <name pos:line="53" pos:column="56">IVsSccAddWebProjectFromSourceControl</name>;</typedef>
+<cpp:endif pos:line="54" pos:column="1">#<cpp:directive pos:line="54" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="54" pos:column="9">/* __IVsSccAddWebProjectFromSourceControl_FWD_DEFINED__ */</comment>
+
+
+<comment type="block" pos:line="57" pos:column="1">/* header files for imported files */</comment>
+<cpp:include pos:line="58" pos:column="1">#<cpp:directive pos:line="58" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="58" pos:column="10">"oaidl.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifdef pos:line="60" pos:column="1">#<cpp:directive pos:line="60" pos:column="2">ifdef</cpp:directive> <name pos:line="60" pos:column="8">__cplusplus</name></cpp:ifdef>
+<extern pos:line="61" pos:column="1">extern <lit:literal type="string" pos:line="61" pos:column="8">"C"</lit:literal><block pos:line="61" pos:column="11">{
+<cpp:endif pos:line="62" pos:column="1">#<cpp:directive pos:line="62" pos:column="2">endif</cpp:directive></cpp:endif> 
+
+
+<comment type="block" pos:line="65" pos:column="1">/* interface __MIDL_itf_IVsSccAddWebProjectFromSourceControl_0000_0000 */</comment>
+<comment type="block" pos:line="66" pos:column="1">/* [local] */</comment> 
+
+<cpp:pragma pos:line="68" pos:column="1">#<cpp:directive pos:line="68" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+
+
+<decl_stmt><decl><type><specifier pos:line="71" pos:column="1">extern</specifier> <name pos:line="71" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="71" pos:column="22">__MIDL_itf_IVsSccAddWebProjectFromSourceControl_0000_0000_v0_0_c_ifspec</name></decl>;</decl_stmt>
+<decl_stmt><decl><type><specifier pos:line="72" pos:column="1">extern</specifier> <name pos:line="72" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="72" pos:column="22">__MIDL_itf_IVsSccAddWebProjectFromSourceControl_0000_0000_v0_0_s_ifspec</name></decl>;</decl_stmt>
+
+<cpp:ifndef pos:line="74" pos:column="1">#<cpp:directive pos:line="74" pos:column="2">ifndef</cpp:directive> <name pos:line="74" pos:column="9">__IVsSccAddWebProjectFromSourceControl_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="75" pos:column="1">#<cpp:directive pos:line="75" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="75" pos:column="9">__IVsSccAddWebProjectFromSourceControl_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="77" pos:column="1">/* interface IVsSccAddWebProjectFromSourceControl */</comment>
+<comment type="block" pos:line="78" pos:column="1">/* [object][uuid] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="81" pos:column="1">EXTERN_C</name> <specifier pos:line="81" pos:column="10">const</specifier> <name pos:line="81" pos:column="16">IID</name></type> <name pos:line="81" pos:column="20">IID_IVsSccAddWebProjectFromSourceControl</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="83" pos:column="1">#<cpp:directive pos:line="83" pos:column="2">if</cpp:directive> <expr><call><name pos:line="83" pos:column="5">defined</name><argument_list pos:line="83" pos:column="12">(<argument><expr><name pos:line="83" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="83" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="83" pos:column="29">!</op:operator><call><name pos:line="83" pos:column="30">defined</name><argument_list pos:line="83" pos:column="37">(<argument><expr><name pos:line="83" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="85" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="85" pos:column="19">(<argument pos:line="85" pos:column="20">"53544c4d-724A-46C8-8D01-6D4518CA118C"</argument>)</argument_list></macro>
+    <label><name pos:line="86" pos:column="5">IVsSccAddWebProjectFromSourceControl</name> :</label> <expr_stmt><expr pos:line="86" pos:column="44">public <name pos:line="86" pos:column="51">IUnknown</name>
+    <block pos:line="87" pos:column="5">{
+    <expr pos:line="88" pos:column="5">public<op:operator pos:line="88" pos:column="11">:</op:operator>
+        virtual <name pos:line="89" pos:column="17">HRESULT</name> <name pos:line="89" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="89" pos:column="43">IsAddWebProjectSupported</name><argument_list pos:line="89" pos:column="67">( 
+            <comment type="block" pos:line="90" pos:column="13">/* [out] */</comment> <argument pos:line="90" pos:column="25">__RPC__out VARIANT_BOOL *pfResult</argument>)</argument_list></macro> <op:operator pos:line="90" pos:column="60">=</op:operator> <lit:literal type="number" pos:line="90" pos:column="62">0</lit:literal></expr>;
+        
+        <expr pos:line="92" pos:column="9">virtual <name pos:line="92" pos:column="17">HRESULT</name> <name pos:line="92" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="92" pos:column="43">BrowseForServerLocation</name><argument_list pos:line="92" pos:column="66">( 
+            <comment type="block" pos:line="93" pos:column="13">/* [out] */</comment> <argument pos:line="93" pos:column="25">__RPC__deref_out_opt BSTR *pbstrLocationDescription</argument>,
+            <comment type="block" pos:line="94" pos:column="13">/* [out] */</comment> <argument pos:line="94" pos:column="25">__RPC__deref_out_opt BSTR *pbstrLocalPath</argument>,
+            <comment type="block" pos:line="95" pos:column="13">/* [out] */</comment> <argument pos:line="95" pos:column="25">__RPC__deref_out_opt BSTR *pbstrDatabasePath</argument>,
+            <comment type="block" pos:line="96" pos:column="13">/* [out] */</comment> <argument pos:line="96" pos:column="25">__RPC__deref_out_opt BSTR *pbstrAuxiliarPath</argument>,
+            <comment type="block" pos:line="97" pos:column="13">/* [out] */</comment> <argument pos:line="97" pos:column="25">__RPC__deref_out_opt BSTR *pbstrProviderName</argument>)</argument_list></macro> <op:operator pos:line="97" pos:column="71">=</op:operator> <lit:literal type="number" pos:line="97" pos:column="73">0</lit:literal></expr>;
+        
+        <expr pos:line="99" pos:column="9">virtual <name pos:line="99" pos:column="17">HRESULT</name> <name pos:line="99" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="99" pos:column="43">AddWebProjectFromSourceControl</name><argument_list pos:line="99" pos:column="73">( 
+            <comment type="block" pos:line="100" pos:column="13">/* [in] */</comment> <argument pos:line="100" pos:column="24">__RPC__in BSTR bstrLocalPath</argument>,
+            <comment type="block" pos:line="101" pos:column="13">/* [in] */</comment> <argument pos:line="101" pos:column="24">__RPC__in BSTR bstrDatabasePath</argument>,
+            <comment type="block" pos:line="102" pos:column="13">/* [in] */</comment> <argument pos:line="102" pos:column="24">__RPC__in BSTR bstrAuxiliarPath</argument>,
+            <comment type="block" pos:line="103" pos:column="13">/* [in] */</comment> <argument pos:line="103" pos:column="24">__RPC__in BSTR bstrProviderName</argument>,
+            <comment type="block" pos:line="104" pos:column="13">/* [in] */</comment> <argument pos:line="104" pos:column="24">__RPC__in BSTR bstrDebuggingPath</argument>)</argument_list></macro> <op:operator pos:line="104" pos:column="58">=</op:operator> <lit:literal type="number" pos:line="104" pos:column="60">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="108" pos:column="1">#<cpp:directive pos:line="108" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="108" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="110" pos:column="5">typedef <type><struct pos:line="110" pos:column="13">struct <name pos:line="110" pos:column="20">IVsSccAddWebProjectFromSourceControlVtbl</name>
+    <block pos:line="111" pos:column="5">{<public type="default" pos:line="111" pos:column="6">
+        <function_decl><type><name pos:line="112" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="114" pos:column="9">HRESULT</name></type> ( <name pos:line="114" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="114" pos:column="37">*</type:modifier><name pos:line="114" pos:column="38">QueryInterface</name> )<parameter_list pos:line="114" pos:column="54">( 
+            <param><decl><type><name pos:line="115" pos:column="13">IVsSccAddWebProjectFromSourceControl</name> <type:modifier pos:line="115" pos:column="50">*</type:modifier></type> <name pos:line="115" pos:column="52">This</name></decl></param>,
+            <comment type="block" pos:line="116" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="116" pos:column="24">__RPC__in</name> <name pos:line="116" pos:column="34">REFIID</name></type> <name pos:line="116" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="117" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="118" pos:column="13">__RPC__deref_out</name>  <name pos:line="118" pos:column="31">void</name> <type:modifier pos:line="118" pos:column="36">*</type:modifier><type:modifier pos:line="118" pos:column="37">*</type:modifier></type><name pos:line="118" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="120" pos:column="9">ULONG</name></type> ( <name pos:line="120" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="120" pos:column="35">*</type:modifier><name pos:line="120" pos:column="36">AddRef</name> )<parameter_list pos:line="120" pos:column="44">( 
+            <param><decl><type><name pos:line="121" pos:column="13">IVsSccAddWebProjectFromSourceControl</name> <type:modifier pos:line="121" pos:column="50">*</type:modifier></type> <name pos:line="121" pos:column="52">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="123" pos:column="9">ULONG</name></type> ( <name pos:line="123" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="123" pos:column="35">*</type:modifier><name pos:line="123" pos:column="36">Release</name> )<parameter_list pos:line="123" pos:column="45">( 
+            <param><decl><type><name pos:line="124" pos:column="13">IVsSccAddWebProjectFromSourceControl</name> <type:modifier pos:line="124" pos:column="50">*</type:modifier></type> <name pos:line="124" pos:column="52">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="126" pos:column="9">HRESULT</name></type> ( <name pos:line="126" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="126" pos:column="37">*</type:modifier><name pos:line="126" pos:column="38">IsAddWebProjectSupported</name> )<parameter_list pos:line="126" pos:column="64">( 
+            <param><decl><type><name pos:line="127" pos:column="13">IVsSccAddWebProjectFromSourceControl</name> <type:modifier pos:line="127" pos:column="50">*</type:modifier></type> <name pos:line="127" pos:column="52">This</name></decl></param>,
+            <comment type="block" pos:line="128" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="128" pos:column="25">__RPC__out</name> <name pos:line="128" pos:column="36">VARIANT_BOOL</name> <type:modifier pos:line="128" pos:column="49">*</type:modifier></type><name pos:line="128" pos:column="50">pfResult</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="130" pos:column="9">HRESULT</name></type> ( <name pos:line="130" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="130" pos:column="37">*</type:modifier><name pos:line="130" pos:column="38">BrowseForServerLocation</name> )<parameter_list pos:line="130" pos:column="63">( 
+            <param><decl><type><name pos:line="131" pos:column="13">IVsSccAddWebProjectFromSourceControl</name> <type:modifier pos:line="131" pos:column="50">*</type:modifier></type> <name pos:line="131" pos:column="52">This</name></decl></param>,
+            <comment type="block" pos:line="132" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="132" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="132" pos:column="46">BSTR</name> <type:modifier pos:line="132" pos:column="51">*</type:modifier></type><name pos:line="132" pos:column="52">pbstrLocationDescription</name></decl></param>,
+            <comment type="block" pos:line="133" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="133" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="133" pos:column="46">BSTR</name> <type:modifier pos:line="133" pos:column="51">*</type:modifier></type><name pos:line="133" pos:column="52">pbstrLocalPath</name></decl></param>,
+            <comment type="block" pos:line="134" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="134" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="134" pos:column="46">BSTR</name> <type:modifier pos:line="134" pos:column="51">*</type:modifier></type><name pos:line="134" pos:column="52">pbstrDatabasePath</name></decl></param>,
+            <comment type="block" pos:line="135" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="135" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="135" pos:column="46">BSTR</name> <type:modifier pos:line="135" pos:column="51">*</type:modifier></type><name pos:line="135" pos:column="52">pbstrAuxiliarPath</name></decl></param>,
+            <comment type="block" pos:line="136" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="136" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="136" pos:column="46">BSTR</name> <type:modifier pos:line="136" pos:column="51">*</type:modifier></type><name pos:line="136" pos:column="52">pbstrProviderName</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="138" pos:column="9">HRESULT</name></type> ( <name pos:line="138" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="138" pos:column="37">*</type:modifier><name pos:line="138" pos:column="38">AddWebProjectFromSourceControl</name> )<parameter_list pos:line="138" pos:column="70">( 
+            <param><decl><type><name pos:line="139" pos:column="13">IVsSccAddWebProjectFromSourceControl</name> <type:modifier pos:line="139" pos:column="50">*</type:modifier></type> <name pos:line="139" pos:column="52">This</name></decl></param>,
+            <comment type="block" pos:line="140" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="140" pos:column="24">__RPC__in</name> <name pos:line="140" pos:column="34">BSTR</name></type> <name pos:line="140" pos:column="39">bstrLocalPath</name></decl></param>,
+            <comment type="block" pos:line="141" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="141" pos:column="24">__RPC__in</name> <name pos:line="141" pos:column="34">BSTR</name></type> <name pos:line="141" pos:column="39">bstrDatabasePath</name></decl></param>,
+            <comment type="block" pos:line="142" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="142" pos:column="24">__RPC__in</name> <name pos:line="142" pos:column="34">BSTR</name></type> <name pos:line="142" pos:column="39">bstrAuxiliarPath</name></decl></param>,
+            <comment type="block" pos:line="143" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="143" pos:column="24">__RPC__in</name> <name pos:line="143" pos:column="34">BSTR</name></type> <name pos:line="143" pos:column="39">bstrProviderName</name></decl></param>,
+            <comment type="block" pos:line="144" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="144" pos:column="24">__RPC__in</name> <name pos:line="144" pos:column="34">BSTR</name></type> <name pos:line="144" pos:column="39">bstrDebuggingPath</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="146" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="147" pos:column="7">IVsSccAddWebProjectFromSourceControlVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="149" pos:column="5">interface</name></type> <name pos:line="149" pos:column="15">IVsSccAddWebProjectFromSourceControl</name>
+    <argument_list pos:line="150" pos:column="5">{
+        <argument><expr><name pos:line="151" pos:column="9">CONST_VTBL</name> struct <name pos:line="151" pos:column="27">IVsSccAddWebProjectFromSourceControlVtbl</name> <op:operator pos:line="151" pos:column="68">*</op:operator><name pos:line="151" pos:column="69">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="156" pos:column="1">#<cpp:directive pos:line="156" pos:column="2">ifdef</cpp:directive> <name pos:line="156" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="159" pos:column="1">#<cpp:directive pos:line="159" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="159" pos:column="9">IVsSccAddWebProjectFromSourceControl_QueryInterface</name><parameter_list pos:line="159" pos:column="60">(<param><type><name pos:line="159" pos:column="61">This</name></type></param>,<param><type><name pos:line="159" pos:column="66">riid</name></type></param>,<param><type><name pos:line="159" pos:column="71">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="160" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="162" pos:column="1">#<cpp:directive pos:line="162" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="162" pos:column="9">IVsSccAddWebProjectFromSourceControl_AddRef</name><parameter_list pos:line="162" pos:column="52">(<param><type><name pos:line="162" pos:column="53">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="163" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="165" pos:column="1">#<cpp:directive pos:line="165" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="165" pos:column="9">IVsSccAddWebProjectFromSourceControl_Release</name><parameter_list pos:line="165" pos:column="53">(<param><type><name pos:line="165" pos:column="54">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="166" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="169" pos:column="1">#<cpp:directive pos:line="169" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="169" pos:column="9">IVsSccAddWebProjectFromSourceControl_IsAddWebProjectSupported</name><parameter_list pos:line="169" pos:column="70">(<param><type><name pos:line="169" pos:column="71">This</name></type></param>,<param><type><name pos:line="169" pos:column="76">pfResult</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="170" pos:column="5">( (This)-&gt;lpVtbl -&gt; IsAddWebProjectSupported(This,pfResult) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="172" pos:column="1">#<cpp:directive pos:line="172" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="172" pos:column="9">IVsSccAddWebProjectFromSourceControl_BrowseForServerLocation</name><parameter_list pos:line="172" pos:column="69">(<param><type><name pos:line="172" pos:column="70">This</name></type></param>,<param><type><name pos:line="172" pos:column="75">pbstrLocationDescription</name></type></param>,<param><type><name pos:line="172" pos:column="100">pbstrLocalPath</name></type></param>,<param><type><name pos:line="172" pos:column="115">pbstrDatabasePath</name></type></param>,<param><type><name pos:line="172" pos:column="133">pbstrAuxiliarPath</name></type></param>,<param><type><name pos:line="172" pos:column="151">pbstrProviderName</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="173" pos:column="5">( (This)-&gt;lpVtbl -&gt; BrowseForServerLocation(This,pbstrLocationDescription,pbstrLocalPath,pbstrDatabasePath,pbstrAuxiliarPath,pbstrProviderName) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="175" pos:column="1">#<cpp:directive pos:line="175" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="175" pos:column="9">IVsSccAddWebProjectFromSourceControl_AddWebProjectFromSourceControl</name><parameter_list pos:line="175" pos:column="76">(<param><type><name pos:line="175" pos:column="77">This</name></type></param>,<param><type><name pos:line="175" pos:column="82">bstrLocalPath</name></type></param>,<param><type><name pos:line="175" pos:column="96">bstrDatabasePath</name></type></param>,<param><type><name pos:line="175" pos:column="113">bstrAuxiliarPath</name></type></param>,<param><type><name pos:line="175" pos:column="130">bstrProviderName</name></type></param>,<param><type><name pos:line="175" pos:column="147">bstrDebuggingPath</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="176" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddWebProjectFromSourceControl(This,bstrLocalPath,bstrDatabasePath,bstrAuxiliarPath,bstrProviderName,bstrDebuggingPath) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="178" pos:column="1">#<cpp:directive pos:line="178" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="178" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="181" pos:column="1">#<cpp:directive pos:line="181" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="181" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="186" pos:column="1">#<cpp:directive pos:line="186" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="186" pos:column="9">/* __IVsSccAddWebProjectFromSourceControl_INTERFACE_DEFINED__ */</comment>
+
+
+<comment type="block" pos:line="189" pos:column="1">/* Additional Prototypes for ALL interfaces */</comment>
+
+<function_decl><type><name pos:line="191" pos:column="1">unsigned</name> <name pos:line="191" pos:column="10">long</name>             <name pos:line="191" pos:column="27">__RPC_USER</name></type>  <name pos:line="191" pos:column="39">BSTR_UserSize</name><parameter_list pos:line="191" pos:column="52">(     <param><decl><type><name pos:line="191" pos:column="58">unsigned</name></type> <name pos:line="191" pos:column="67">long</name> <type:modifier pos:line="191" pos:column="72">*</type:modifier></decl></param>, <param><decl><type><name pos:line="191" pos:column="75">unsigned</name></type> <name pos:line="191" pos:column="84">long</name></decl></param>            , <param><decl><type><name pos:line="191" pos:column="102">BSTR</name> <type:modifier pos:line="191" pos:column="107">*</type:modifier></type></decl></param> )</parameter_list>;</function_decl> 
+<function_decl><type><name pos:line="192" pos:column="1">unsigned</name> <name pos:line="192" pos:column="10">char</name> <type:modifier pos:line="192" pos:column="15">*</type:modifier> <name pos:line="192" pos:column="17">__RPC_USER</name></type>  <name pos:line="192" pos:column="29">BSTR_UserMarshal</name><parameter_list pos:line="192" pos:column="45">(  <param><decl><type><name pos:line="192" pos:column="48">unsigned</name></type> <name pos:line="192" pos:column="57">long</name> <type:modifier pos:line="192" pos:column="62">*</type:modifier></decl></param>, <param><decl><type><name pos:line="192" pos:column="65">unsigned</name></type> <name pos:line="192" pos:column="74">char</name> <type:modifier pos:line="192" pos:column="79">*</type:modifier></decl></param>, <param><decl><type><name pos:line="192" pos:column="82">BSTR</name> <type:modifier pos:line="192" pos:column="87">*</type:modifier></type></decl></param> )</parameter_list>;</function_decl> 
+<function_decl><type><name pos:line="193" pos:column="1">unsigned</name> <name pos:line="193" pos:column="10">char</name> <type:modifier pos:line="193" pos:column="15">*</type:modifier> <name pos:line="193" pos:column="17">__RPC_USER</name></type>  <name pos:line="193" pos:column="29">BSTR_UserUnmarshal</name><parameter_list pos:line="193" pos:column="47">(<param><decl><type><name pos:line="193" pos:column="48">unsigned</name></type> <name pos:line="193" pos:column="57">long</name> <type:modifier pos:line="193" pos:column="62">*</type:modifier></decl></param>, <param><decl><type><name pos:line="193" pos:column="65">unsigned</name></type> <name pos:line="193" pos:column="74">char</name> <type:modifier pos:line="193" pos:column="79">*</type:modifier></decl></param>, <param><decl><type><name pos:line="193" pos:column="82">BSTR</name> <type:modifier pos:line="193" pos:column="87">*</type:modifier></type></decl></param> )</parameter_list>;</function_decl> 
+<function_decl><type><name pos:line="194" pos:column="1">void</name>                      <name pos:line="194" pos:column="27">__RPC_USER</name></type>  <name pos:line="194" pos:column="39">BSTR_UserFree</name><parameter_list pos:line="194" pos:column="52">(     <param><decl><type><name pos:line="194" pos:column="58">unsigned</name></type> <name pos:line="194" pos:column="67">long</name> <type:modifier pos:line="194" pos:column="72">*</type:modifier></decl></param>, <param><decl><type><name pos:line="194" pos:column="75">BSTR</name> <type:modifier pos:line="194" pos:column="80">*</type:modifier></type></decl></param> )</parameter_list>;</function_decl> 
+
+<comment type="block" pos:line="196" pos:column="1">/* end of Additional Prototypes */</comment>
+
+<cpp:ifdef pos:line="198" pos:column="1">#<cpp:directive pos:line="198" pos:column="2">ifdef</cpp:directive> <name pos:line="198" pos:column="8">__cplusplus</name></cpp:ifdef>
+}</block></extern>
+<cpp:endif pos:line="200" pos:column="1">#<cpp:directive pos:line="200" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:endif pos:line="202" pos:column="1">#<cpp:directive pos:line="202" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+</unit>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML.Data\LiteralKind.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2014 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *    Patrick Francis (ABB Group) - API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<namespace pos:line="14" pos:column="1">namespace <name><name pos:line="14" pos:column="11">ABB</name><op:operator pos:line="14" pos:column="14">.</op:operator><name pos:line="14" pos:column="15">SrcML</name><op:operator pos:line="14" pos:column="20">.</op:operator><name pos:line="14" pos:column="21">Data</name></name> <block pos:line="14" pos:column="26">{
+
+    <comment type="line" pos:line="16" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="17" pos:column="5">/// An enumeration of the different kinds of literals</comment>
+    <comment type="line" pos:line="18" pos:column="5">/// &lt;/summary&gt;</comment>
+    <enum><specifier pos:line="19" pos:column="5">public</specifier> enum <macro><name pos:line="19" pos:column="17">LiteralKind</name></macro> <block pos:line="19" pos:column="29">{
+
+        <comment type="line" pos:line="21" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="22" pos:column="9">/// String literal</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl><name pos:line="24" pos:column="9">String</name></decl><op:operator pos:line="24" pos:column="15">,</op:operator>
+
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// Boolean literal</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl><name pos:line="29" pos:column="9">Boolean</name></decl><op:operator pos:line="29" pos:column="16">,</op:operator>
+
+        <comment type="line" pos:line="31" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="32" pos:column="9">/// Character literal</comment>
+        <comment type="line" pos:line="33" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl><name pos:line="34" pos:column="9">Character</name></decl><op:operator pos:line="34" pos:column="18">,</op:operator>
+
+        <comment type="line" pos:line="36" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// Number literal</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl><name pos:line="39" pos:column="9">Number</name></decl><op:operator pos:line="39" pos:column="15">,</op:operator>
+
+        <comment type="line" pos:line="41" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// Null literal</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl><name pos:line="44" pos:column="9">Null</name></decl>
+    }</block>
+
+    <comment type="line" pos:line="47" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="48" pos:column="5">/// Contains extension methods for the LiteralKind enum.</comment>
+    <comment type="line" pos:line="49" pos:column="5">/// &lt;/summary&gt;</comment>
+    <decl pos:line="50" pos:column="5">public static <name pos:line="50" pos:column="19">class</name> <name pos:line="50" pos:column="25">LiteralKindExtensions</name> <block pos:line="50" pos:column="47">{
+        <comment type="line" pos:line="51" pos:column="9">/// &lt;summary&gt; Returns a keyword string for this LiteralKind. &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="52" pos:column="9">public</specifier> <specifier pos:line="52" pos:column="16">static</specifier> <name pos:line="52" pos:column="23">string</name></type> <name pos:line="52" pos:column="30">ToKeyword</name><parameter_list pos:line="52" pos:column="39">(<param><decl><type><name pos:line="52" pos:column="40">this</name> <name pos:line="52" pos:column="45">LiteralKind</name></type> <name pos:line="52" pos:column="57">lk</name></decl></param>)</parameter_list> <block pos:line="52" pos:column="61">{
+            <switch pos:line="53" pos:column="13">switch<condition pos:line="53" pos:column="19">(<expr><name pos:line="53" pos:column="20">lk</name></expr>)</condition> <block pos:line="53" pos:column="24">{
+                <case pos:line="54" pos:column="17">case <expr><name><name pos:line="54" pos:column="22">LiteralKind</name><op:operator pos:line="54" pos:column="33">.</op:operator><name pos:line="54" pos:column="34">String</name></name></expr>:
+                    <return pos:line="55" pos:column="21">return <expr><lit:literal type="string" pos:line="55" pos:column="28">"String"</lit:literal></expr>;</return>
+                </case><case pos:line="56" pos:column="17">case <expr><name><name pos:line="56" pos:column="22">LiteralKind</name><op:operator pos:line="56" pos:column="33">.</op:operator><name pos:line="56" pos:column="34">Boolean</name></name></expr>:
+                    <return pos:line="57" pos:column="21">return <expr><lit:literal type="string" pos:line="57" pos:column="28">"Boolean"</lit:literal></expr>;</return>
+                </case><case pos:line="58" pos:column="17">case <expr><name><name pos:line="58" pos:column="22">LiteralKind</name><op:operator pos:line="58" pos:column="33">.</op:operator><name pos:line="58" pos:column="34">Character</name></name></expr>:
+                    <return pos:line="59" pos:column="21">return <expr><lit:literal type="string" pos:line="59" pos:column="28">"Character"</lit:literal></expr>;</return>
+                </case><case pos:line="60" pos:column="17">case <expr><name><name pos:line="60" pos:column="22">LiteralKind</name><op:operator pos:line="60" pos:column="33">.</op:operator><name pos:line="60" pos:column="34">Number</name></name></expr>:
+                    <return pos:line="61" pos:column="21">return <expr><lit:literal type="string" pos:line="61" pos:column="28">"Number"</lit:literal></expr>;</return>
+                </case><case pos:line="62" pos:column="17">case <expr><name><name pos:line="62" pos:column="22">LiteralKind</name><op:operator pos:line="62" pos:column="33">.</op:operator><name pos:line="62" pos:column="34">Null</name></name></expr>:
+                    <return pos:line="63" pos:column="21">return <expr><lit:literal type="string" pos:line="63" pos:column="28">"Null"</lit:literal></expr>;</return>
+                </case><default pos:line="64" pos:column="17">default:
+                    <return pos:line="65" pos:column="21">return <expr><name><name pos:line="65" pos:column="28">string</name><op:operator pos:line="65" pos:column="34">.</op:operator><name pos:line="65" pos:column="35">Empty</name></name></expr>;</return>
+            </default>}</block></switch>
+        }</block></function>
+
+        <comment type="line" pos:line="69" pos:column="9">/// &lt;summary&gt; Returns a LiteralKind for the given keyword string. &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="70" pos:column="9">public</specifier> <specifier pos:line="70" pos:column="16">static</specifier> <name pos:line="70" pos:column="23">LiteralKind</name></type> <name pos:line="70" pos:column="35">FromKeyword</name><parameter_list pos:line="70" pos:column="46">(<param><decl><type><name pos:line="70" pos:column="47">string</name></type> <name pos:line="70" pos:column="54">keyword</name></decl></param>)</parameter_list> <block pos:line="70" pos:column="63">{
+            <decl_stmt><decl><type><name pos:line="71" pos:column="13">var</name></type> <name pos:line="71" pos:column="17">mapping</name> <init pos:line="71" pos:column="25">= <expr><op:operator pos:line="71" pos:column="27">new</op:operator> <call><name><name pos:line="71" pos:column="31">Dictionary</name><argument_list pos:line="71" pos:column="41">&lt;<argument><name pos:line="71" pos:column="42">string</name></argument>, <argument><name pos:line="71" pos:column="50">LiteralKind</name></argument>&gt;</argument_list></name><argument_list pos:line="71" pos:column="62">()</argument_list></call> <block pos:line="71" pos:column="65">{
+                <expr><block pos:line="72" pos:column="17">{<expr><lit:literal type="string" pos:line="72" pos:column="18">"String"</lit:literal></expr>, <expr><name><name pos:line="72" pos:column="28">LiteralKind</name><op:operator pos:line="72" pos:column="39">.</op:operator><name pos:line="72" pos:column="40">String</name></name></expr>}</block></expr>,
+                <expr><block pos:line="73" pos:column="17">{<expr><lit:literal type="string" pos:line="73" pos:column="18">"Boolean"</lit:literal></expr>, <expr><name><name pos:line="73" pos:column="29">LiteralKind</name><op:operator pos:line="73" pos:column="40">.</op:operator><name pos:line="73" pos:column="41">Boolean</name></name></expr>}</block></expr>,
+                <expr><block pos:line="74" pos:column="17">{<expr><lit:literal type="string" pos:line="74" pos:column="18">"Character"</lit:literal></expr>, <expr><name><name pos:line="74" pos:column="31">LiteralKind</name><op:operator pos:line="74" pos:column="42">.</op:operator><name pos:line="74" pos:column="43">Character</name></name></expr>}</block></expr>,
+                <expr><block pos:line="75" pos:column="17">{<expr><lit:literal type="string" pos:line="75" pos:column="18">"Number"</lit:literal></expr>, <expr><name><name pos:line="75" pos:column="28">LiteralKind</name><op:operator pos:line="75" pos:column="39">.</op:operator><name pos:line="75" pos:column="40">Number</name></name></expr>}</block></expr>,
+                <expr><block pos:line="76" pos:column="17">{<expr><lit:literal type="string" pos:line="76" pos:column="18">"Null"</lit:literal></expr>, <expr><name><name pos:line="76" pos:column="26">LiteralKind</name><op:operator pos:line="76" pos:column="37">.</op:operator><name pos:line="76" pos:column="38">Null</name></name></expr>}</block></expr>
+            }</block></expr></init></decl>;</decl_stmt>
+
+            <decl_stmt><decl><type><name pos:line="79" pos:column="13">LiteralKind</name></type> <name pos:line="79" pos:column="25">output</name></decl>;</decl_stmt>
+            <if pos:line="80" pos:column="13">if<condition pos:line="80" pos:column="15">(<expr><op:operator pos:line="80" pos:column="16">!</op:operator><call><name><name pos:line="80" pos:column="17">string</name><op:operator pos:line="80" pos:column="23">.</op:operator><name pos:line="80" pos:column="24">IsNullOrEmpty</name></name><argument_list pos:line="80" pos:column="37">(<argument><expr><name pos:line="80" pos:column="38">keyword</name></expr></argument>)</argument_list></call> <op:operator pos:line="80" pos:column="47">&amp;&amp;</op:operator> <call><name><name pos:line="80" pos:column="50">mapping</name><op:operator pos:line="80" pos:column="57">.</op:operator><name pos:line="80" pos:column="58">TryGetValue</name></name><argument_list pos:line="80" pos:column="69">(<argument><expr><name pos:line="80" pos:column="70">keyword</name></expr></argument>, <argument><expr pos:line="80" pos:column="79">out <name pos:line="80" pos:column="83">output</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="80" pos:column="91"> <block pos:line="80" pos:column="92">{
+                <return pos:line="81" pos:column="17">return <expr><name pos:line="81" pos:column="24">output</name></expr>;</return>
+            }</block></then></if>
+            <throw pos:line="83" pos:column="13">throw <expr><op:operator pos:line="83" pos:column="19">new</op:operator> <call><name pos:line="83" pos:column="23">SrcMLException</name><argument_list pos:line="83" pos:column="37">(<argument><expr><lit:literal type="string" pos:line="83" pos:column="38">"not a valid literal"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+        }</block></function>
+    }</block></decl>
+<decl/></enum>}</block></namespace></unit>

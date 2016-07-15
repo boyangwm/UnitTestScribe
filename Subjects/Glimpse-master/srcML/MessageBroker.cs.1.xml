@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensibility\MessageBroker.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+
+<namespace pos:line="4" pos:column="1">namespace <name><name pos:line="4" pos:column="11">Glimpse</name><op:operator pos:line="4" pos:column="18">.</op:operator><name pos:line="4" pos:column="19">Core</name><op:operator pos:line="4" pos:column="23">.</op:operator><name pos:line="4" pos:column="24">Extensibility</name></name>
+<block pos:line="5" pos:column="1">{
+    <comment type="line" pos:line="6" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// The default implementation of &lt;see cref="IMessageBroker"/&gt; which supports subscribing to messages based on types, base types and interfaces.</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="9" pos:column="5">public</specifier> class <name pos:line="9" pos:column="18">MessageBroker</name> <super pos:line="9" pos:column="32">: <name pos:line="9" pos:column="34">IMessageBroker</name></super>
+    <block pos:line="10" pos:column="5">{
+        <comment type="line" pos:line="11" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="12" pos:column="9">/// Initializes a new instance of the &lt;see cref="MessageBroker" /&gt; class.</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// &lt;param name="logger"&gt;The logger.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// &lt;exception cref="System.ArgumentNullException"&gt;Throws an exception if &lt;paramref name="logger"/&gt; is &lt;c&gt;null&lt;/c&gt;.&lt;/exception&gt;</comment>
+        <constructor><specifier pos:line="16" pos:column="9">public</specifier> <name pos:line="16" pos:column="16">MessageBroker</name><parameter_list pos:line="16" pos:column="29">(<param><decl><type><name pos:line="16" pos:column="30">ILogger</name></type> <name pos:line="16" pos:column="38">logger</name></decl></param>)</parameter_list>
+        <block pos:line="17" pos:column="9">{
+            <if pos:line="18" pos:column="13">if <condition pos:line="18" pos:column="16">(<expr><name pos:line="18" pos:column="17">logger</name> <op:operator pos:line="18" pos:column="24">==</op:operator> <name pos:line="18" pos:column="27">null</name></expr>)</condition><then pos:line="18" pos:column="32">
+            <block pos:line="19" pos:column="13">{
+                <throw pos:line="20" pos:column="17">throw <expr><op:operator pos:line="20" pos:column="23">new</op:operator> <call><name pos:line="20" pos:column="27">ArgumentNullException</name><argument_list pos:line="20" pos:column="48">(<argument><expr><lit:literal type="string" pos:line="20" pos:column="49">"logger"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="23" pos:column="13">Subscriptions</name> <op:operator pos:line="23" pos:column="27">=</op:operator> <op:operator pos:line="23" pos:column="29">new</op:operator> <call><name><name pos:line="23" pos:column="33">Dictionary</name><argument_list pos:line="23" pos:column="43">&lt;<argument><name pos:line="23" pos:column="44">Type</name></argument>, <argument><name><name pos:line="23" pos:column="50">List</name><argument_list pos:line="23" pos:column="54">&lt;<argument><name pos:line="23" pos:column="55">Subscriber</name></argument>&gt;</argument_list></name></argument>&gt;</argument_list></name><argument_list pos:line="23" pos:column="67">()</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="24" pos:column="13">Logger</name> <op:operator pos:line="24" pos:column="20">=</op:operator> <name pos:line="24" pos:column="22">logger</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// Gets or sets the logger.</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// The logger.</comment>
+        <comment type="line" pos:line="32" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="33" pos:column="9">public</specifier> <name pos:line="33" pos:column="16">ILogger</name></type> <name pos:line="33" pos:column="24">Logger</name> <block pos:line="33" pos:column="31">{ <function_decl><name pos:line="33" pos:column="33">get</name>;</function_decl> <function_decl><name pos:line="33" pos:column="38">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="35" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// Gets or sets the subscriptions.</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// The subscriptions.</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="41" pos:column="9">internal</specifier> <name><name pos:line="41" pos:column="18">IDictionary</name><argument_list pos:line="41" pos:column="29">&lt;<argument><name pos:line="41" pos:column="30">Type</name></argument>, <argument><name><name pos:line="41" pos:column="36">List</name><argument_list pos:line="41" pos:column="40">&lt;<argument><name pos:line="41" pos:column="41">Subscriber</name></argument>&gt;</argument_list></name></argument>&gt;</argument_list></name></type> <name pos:line="41" pos:column="54">Subscriptions</name> <block pos:line="41" pos:column="68">{ <function_decl><name pos:line="41" pos:column="70">get</name>;</function_decl> <function_decl><name pos:line="41" pos:column="75">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="43" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// Publishes the specified message using the type as the topic.</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// &lt;typeparam name="T"&gt;Type of the message&lt;/typeparam&gt;</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="48" pos:column="9">public</specifier> <name pos:line="48" pos:column="16">void</name></type> <name><name pos:line="48" pos:column="21">Publish</name><argument_list pos:line="48" pos:column="28">&lt;<argument><name pos:line="48" pos:column="29">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="48" pos:column="31">(<param><decl><type><name pos:line="48" pos:column="32">T</name></type> <name pos:line="48" pos:column="34">message</name></decl></param>)</parameter_list>
+        <block pos:line="49" pos:column="9">{
+            <foreach pos:line="50" pos:column="13">foreach (<init><decl><type><name pos:line="50" pos:column="22">var</name></type> <name pos:line="50" pos:column="26">subscriptions</name> <range pos:line="50" pos:column="40">in <expr><name pos:line="50" pos:column="43">Subscriptions</name></expr></range></decl></init>)
+            <block pos:line="51" pos:column="13">{
+                <if pos:line="52" pos:column="17">if <condition pos:line="52" pos:column="20">(<expr><call><name><name pos:line="52" pos:column="21">subscriptions</name><op:operator pos:line="52" pos:column="34">.</op:operator><name pos:line="52" pos:column="35">Key</name><op:operator pos:line="52" pos:column="38">.</op:operator><name pos:line="52" pos:column="39">IsInstanceOfType</name></name><argument_list pos:line="52" pos:column="55">(<argument><expr><name pos:line="52" pos:column="56">message</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="52" pos:column="65">
+                <block pos:line="53" pos:column="17">{
+                    <foreach pos:line="54" pos:column="21">foreach (<init><decl><type><name pos:line="54" pos:column="30">var</name></type> <name pos:line="54" pos:column="34">subscriber</name> <range pos:line="54" pos:column="45">in <expr><name><name pos:line="54" pos:column="48">subscriptions</name><op:operator pos:line="54" pos:column="61">.</op:operator><name pos:line="54" pos:column="62">Value</name></name></expr></range></decl></init>)
+                    <block pos:line="55" pos:column="21">{
+                        <try pos:line="56" pos:column="25">try
+                        <block pos:line="57" pos:column="25">{
+                            <expr_stmt><expr><call><name><name pos:line="58" pos:column="29">subscriber</name><op:operator pos:line="58" pos:column="39">.</op:operator><name pos:line="58" pos:column="40">Execute</name></name><argument_list pos:line="58" pos:column="47">(<argument><expr><name pos:line="58" pos:column="48">message</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                        }</block>
+                        <catch pos:line="60" pos:column="25">catch <parameter_list pos:line="60" pos:column="31">(<param><decl><type><name pos:line="60" pos:column="32">Exception</name></type> <name pos:line="60" pos:column="42">exception</name></decl></param>)</parameter_list>
+                        <block pos:line="61" pos:column="25">{
+                            <expr_stmt><expr><call><name><name pos:line="62" pos:column="29">Logger</name><op:operator pos:line="62" pos:column="35">.</op:operator><name pos:line="62" pos:column="36">Error</name></name><argument_list pos:line="62" pos:column="41">(<argument><expr><lit:literal type="string" pos:line="62" pos:column="42">"Exception calling subscriber with message of type '{0}'."</lit:literal></expr></argument>, <argument><expr><name pos:line="62" pos:column="102">exception</name></expr></argument>, <argument><expr><call><name pos:line="62" pos:column="113">typeof</name><argument_list pos:line="62" pos:column="119">(<argument><expr><name pos:line="62" pos:column="120">T</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                        }</block></catch></try>
+                    }</block></foreach>
+                }</block></then></if>
+            }</block></foreach>
+        }</block></function>
+
+        <comment type="line" pos:line="69" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="70" pos:column="9">/// Subscribes the specified action to the Type specified.</comment>
+        <comment type="line" pos:line="71" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="72" pos:column="9">/// &lt;typeparam name="T"&gt;Type of the message&lt;/typeparam&gt;</comment>
+        <comment type="line" pos:line="73" pos:column="9">/// &lt;param name="action"&gt;The action.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="74" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="75" pos:column="9">/// A subscription Id, which should be retained in order to unsubscribe.</comment>
+        <comment type="line" pos:line="76" pos:column="9">/// &lt;/returns&gt;</comment>
+        <comment type="line" pos:line="77" pos:column="9">/// &lt;exception cref="System.ArgumentNullException"&gt;Throws an exception if &lt;paramref name="action"/&gt; is &lt;c&gt;null&lt;/c&gt;.&lt;/exception&gt;</comment>
+        <function><type><specifier pos:line="78" pos:column="9">public</specifier> <name pos:line="78" pos:column="16">Guid</name></type> <name><name pos:line="78" pos:column="21">Subscribe</name><argument_list pos:line="78" pos:column="30">&lt;<argument><name pos:line="78" pos:column="31">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="78" pos:column="33">(<param><decl><type><name><name pos:line="78" pos:column="34">Action</name><argument_list pos:line="78" pos:column="40">&lt;<argument><name pos:line="78" pos:column="41">T</name></argument>&gt;</argument_list></name></type> <name pos:line="78" pos:column="44">action</name></decl></param>)</parameter_list>
+        <block pos:line="79" pos:column="9">{
+            <if pos:line="80" pos:column="13">if <condition pos:line="80" pos:column="16">(<expr><name pos:line="80" pos:column="17">action</name> <op:operator pos:line="80" pos:column="24">==</op:operator> <name pos:line="80" pos:column="27">null</name></expr>)</condition><then pos:line="80" pos:column="32">
+            <block pos:line="81" pos:column="13">{
+                <throw pos:line="82" pos:column="17">throw <expr><op:operator pos:line="82" pos:column="23">new</op:operator> <call><name pos:line="82" pos:column="27">ArgumentNullException</name><argument_list pos:line="82" pos:column="48">(<argument><expr><lit:literal type="string" pos:line="82" pos:column="49">"action"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <decl_stmt><decl><type><name pos:line="85" pos:column="13">var</name></type> <name pos:line="85" pos:column="17">subscriptions</name> <init pos:line="85" pos:column="31">= <expr><call><name pos:line="85" pos:column="33">GetSubscriptions</name><argument_list pos:line="85" pos:column="49">(<argument><expr><call><name pos:line="85" pos:column="50">typeof</name><argument_list pos:line="85" pos:column="56">(<argument><expr><name pos:line="85" pos:column="57">T</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <decl_stmt><decl><type><name pos:line="87" pos:column="13">var</name></type> <name pos:line="87" pos:column="17">subscriptionId</name> <init pos:line="87" pos:column="32">= <expr><call><name><name pos:line="87" pos:column="34">Guid</name><op:operator pos:line="87" pos:column="38">.</op:operator><name pos:line="87" pos:column="39">NewGuid</name></name><argument_list pos:line="87" pos:column="46">()</argument_list></call></expr></init></decl>;</decl_stmt>
+            <expr_stmt><expr><call><name><name pos:line="88" pos:column="13">subscriptions</name><op:operator pos:line="88" pos:column="26">.</op:operator><name pos:line="88" pos:column="27">Add</name></name><argument_list pos:line="88" pos:column="30">(<argument><expr><op:operator pos:line="88" pos:column="31">new</op:operator> <call><name><name pos:line="88" pos:column="35">Subscriber</name><argument_list pos:line="88" pos:column="45">&lt;<argument><name pos:line="88" pos:column="46">T</name></argument>&gt;</argument_list></name><argument_list pos:line="88" pos:column="48">(<argument><expr><name pos:line="88" pos:column="49">action</name></expr></argument>, <argument><expr><name pos:line="88" pos:column="57">subscriptionId</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+            <expr_stmt><expr><call><name><name pos:line="90" pos:column="13">Logger</name><op:operator pos:line="90" pos:column="19">.</op:operator><name pos:line="90" pos:column="20">Debug</name></name><argument_list pos:line="90" pos:column="25">(<argument><expr><name><name pos:line="90" pos:column="26">Resources</name><op:operator pos:line="90" pos:column="35">.</op:operator><name pos:line="90" pos:column="36">MessageBrokerSubscribe</name></name></expr></argument>, <argument><expr><name><name pos:line="90" pos:column="60">action</name><op:operator pos:line="90" pos:column="66">.</op:operator><name pos:line="90" pos:column="67">Method</name><op:operator pos:line="90" pos:column="73">.</op:operator><name pos:line="90" pos:column="74">Name</name></name></expr></argument>, <argument><expr><name><name pos:line="90" pos:column="80">action</name><op:operator pos:line="90" pos:column="86">.</op:operator><name pos:line="90" pos:column="87">Method</name><op:operator pos:line="90" pos:column="93">.</op:operator><name pos:line="90" pos:column="94">DeclaringType</name></name></expr></argument>, <argument><expr><call><name pos:line="90" pos:column="109">typeof</name><argument_list pos:line="90" pos:column="115">(<argument><expr><name pos:line="90" pos:column="116">T</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+            <return pos:line="92" pos:column="13">return <expr><name pos:line="92" pos:column="20">subscriptionId</name></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="95" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="96" pos:column="9">/// Unsubscribes the listener from the specified subscription id.</comment>
+        <comment type="line" pos:line="97" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="98" pos:column="9">/// &lt;typeparam name="T"&gt;Type of the message&lt;/typeparam&gt;</comment>
+        <comment type="line" pos:line="99" pos:column="9">/// &lt;param name="subscriptionId"&gt;The subscription id.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="100" pos:column="9">public</specifier> <name pos:line="100" pos:column="16">void</name></type> <name><name pos:line="100" pos:column="21">Unsubscribe</name><argument_list pos:line="100" pos:column="32">&lt;<argument><name pos:line="100" pos:column="33">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="100" pos:column="35">(<param><decl><type><name pos:line="100" pos:column="36">Guid</name></type> <name pos:line="100" pos:column="41">subscriptionId</name></decl></param>)</parameter_list>
+        <block pos:line="101" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="102" pos:column="13">var</name></type> <name pos:line="102" pos:column="17">subscriptions</name> <init pos:line="102" pos:column="31">= <expr><call><name pos:line="102" pos:column="33">GetSubscriptions</name><argument_list pos:line="102" pos:column="49">(<argument><expr><call><name pos:line="102" pos:column="50">typeof</name><argument_list pos:line="102" pos:column="56">(<argument><expr><name pos:line="102" pos:column="57">T</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+            <expr_stmt><expr><call><name><name pos:line="103" pos:column="13">subscriptions</name><op:operator pos:line="103" pos:column="26">.</op:operator><name pos:line="103" pos:column="27">RemoveAll</name></name><argument_list pos:line="103" pos:column="36">(<argument><expr><lambda><name pos:line="103" pos:column="37">i</name> <op:operator pos:line="103" pos:column="39">=&gt;</op:operator> <name><name pos:line="103" pos:column="42">i</name><op:operator pos:line="103" pos:column="43">.</op:operator><name pos:line="103" pos:column="44">SubscriptionId</name></name> <op:operator pos:line="103" pos:column="59">==</op:operator> <name pos:line="103" pos:column="62">subscriptionId</name></lambda></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <function><type><specifier pos:line="106" pos:column="9">private</specifier> <name><name pos:line="106" pos:column="17">List</name><argument_list pos:line="106" pos:column="21">&lt;<argument><name pos:line="106" pos:column="22">Subscriber</name></argument>&gt;</argument_list></name></type> <name pos:line="106" pos:column="34">GetSubscriptions</name><parameter_list pos:line="106" pos:column="50">(<param><decl><type><name pos:line="106" pos:column="51">Type</name></type> <name pos:line="106" pos:column="56">type</name></decl></param>)</parameter_list>
+        <block pos:line="107" pos:column="9">{
+            <if pos:line="108" pos:column="13">if <condition pos:line="108" pos:column="16">(<expr><call><name><name pos:line="108" pos:column="17">Subscriptions</name><op:operator pos:line="108" pos:column="30">.</op:operator><name pos:line="108" pos:column="31">ContainsKey</name></name><argument_list pos:line="108" pos:column="42">(<argument><expr><name pos:line="108" pos:column="43">type</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="108" pos:column="49">
+            <block pos:line="109" pos:column="13">{
+                <return pos:line="110" pos:column="17">return <expr><name><name pos:line="110" pos:column="24">Subscriptions</name><index pos:line="110" pos:column="37">[<expr><name pos:line="110" pos:column="38">type</name></expr>]</index></name></expr>;</return>
+            }</block></then></if>
+
+            <decl_stmt><decl><type><name pos:line="113" pos:column="13">var</name></type> <name pos:line="113" pos:column="17">result</name> <init pos:line="113" pos:column="24">= <expr><op:operator pos:line="113" pos:column="26">new</op:operator> <call><name><name pos:line="113" pos:column="30">List</name><argument_list pos:line="113" pos:column="34">&lt;<argument><name pos:line="113" pos:column="35">Subscriber</name></argument>&gt;</argument_list></name><argument_list pos:line="113" pos:column="46">()</argument_list></call></expr></init></decl>;</decl_stmt>
+            <expr_stmt><expr><call><name><name pos:line="114" pos:column="13">Subscriptions</name><op:operator pos:line="114" pos:column="26">.</op:operator><name pos:line="114" pos:column="27">Add</name></name><argument_list pos:line="114" pos:column="30">(<argument><expr><name pos:line="114" pos:column="31">type</name></expr></argument>, <argument><expr><name pos:line="114" pos:column="37">result</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+            <return pos:line="116" pos:column="13">return <expr><name pos:line="116" pos:column="20">result</name></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

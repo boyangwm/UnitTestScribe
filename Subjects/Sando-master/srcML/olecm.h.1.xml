@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\olecm.h" pos:tabs="8" pos:line="1" pos:column="1">
+
+<comment type="block" pos:line="3" pos:column="1">/* this ALWAYS GENERATED file contains the definitions for the interfaces */</comment>
+
+
+ <comment type="block" pos:line="6" pos:column="2">/* File created by MIDL compiler version 7.00.0499 */</comment>
+<comment type="block" pos:line="7" pos:column="1">/* Compiler settings for olecm.idl:
+    Oicf, W0, Zp8, env=Win32 (32b run)
+    protocol : dce , ms_ext, c_ext, robust
+    error checks: allocation ref bounds_check enum stub_data 
+    VC __declspec() decoration level: 
+         __declspec(uuid()), __declspec(selectany), __declspec(novtable)
+         DECLSPEC_UUID(), MIDL_INTERFACE()
+*/</comment>
+<comment type="line" pos:line="15" pos:column="1">//@@MIDL_FILE_HEADING(  )</comment>
+
+<cpp:pragma pos:line="17" pos:column="1">#<cpp:directive pos:line="17" pos:column="2">pragma</cpp:directive> warning( disable: 4049 )</cpp:pragma>  <comment type="block" pos:line="17" pos:column="35">/* more than 64k source lines */</comment>
+
+
+<comment type="block" pos:line="20" pos:column="1">/* verify that the &lt;rpcndr.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="21" pos:column="1">#<cpp:directive pos:line="21" pos:column="2">ifndef</cpp:directive> <name pos:line="21" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="22" pos:column="1">#<cpp:directive pos:line="22" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="22" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:macro> <cpp:value pos:line="22" pos:column="39">475</cpp:value></cpp:define>
+<cpp:endif pos:line="23" pos:column="1">#<cpp:directive pos:line="23" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="25" pos:column="1">/* verify that the &lt;rpcsal.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="26" pos:column="1">#<cpp:directive pos:line="26" pos:column="2">ifndef</cpp:directive> <name pos:line="26" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="27" pos:column="1">#<cpp:directive pos:line="27" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="27" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:macro> <cpp:value pos:line="27" pos:column="39">100</cpp:value></cpp:define>
+<cpp:endif pos:line="28" pos:column="1">#<cpp:directive pos:line="28" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:include pos:line="30" pos:column="1">#<cpp:directive pos:line="30" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="30" pos:column="10">"rpc.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="31" pos:column="1">#<cpp:directive pos:line="31" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="31" pos:column="10">"rpcndr.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifndef pos:line="33" pos:column="1">#<cpp:directive pos:line="33" pos:column="2">ifndef</cpp:directive> <name pos:line="33" pos:column="9">__RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:error pos:line="34" pos:column="1">#<cpp:directive pos:line="34" pos:column="2">error</cpp:directive> this stub requires an updated version of &lt;rpcndr.h&gt;</cpp:error>
+<cpp:endif pos:line="35" pos:column="1">#<cpp:directive pos:line="35" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="35" pos:column="8">// __RPCNDR_H_VERSION__</comment>
+
+<cpp:ifndef pos:line="37" pos:column="1">#<cpp:directive pos:line="37" pos:column="2">ifndef</cpp:directive> <name pos:line="37" pos:column="9">COM_NO_WINDOWS_H</name></cpp:ifndef>
+<cpp:include pos:line="38" pos:column="1">#<cpp:directive pos:line="38" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="38" pos:column="10">"windows.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="39" pos:column="1">#<cpp:directive pos:line="39" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="39" pos:column="10">"ole2.h"</lit:literal></cpp:file></cpp:include>
+<cpp:endif pos:line="40" pos:column="1">#<cpp:directive pos:line="40" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="40" pos:column="8">/*COM_NO_WINDOWS_H*/</comment>
+
+<cpp:ifndef pos:line="42" pos:column="1">#<cpp:directive pos:line="42" pos:column="2">ifndef</cpp:directive> <name pos:line="42" pos:column="9">__olecm_h__</name></cpp:ifndef>
+<cpp:define pos:line="43" pos:column="1">#<cpp:directive pos:line="43" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="43" pos:column="9">__olecm_h__</name></cpp:macro></cpp:define>
+
+<cpp:if pos:line="45" pos:column="1">#<cpp:directive pos:line="45" pos:column="2">if</cpp:directive> <expr><call><name pos:line="45" pos:column="5">defined</name><argument_list pos:line="45" pos:column="12">(<argument><expr><name pos:line="45" pos:column="13">_MSC_VER</name></expr></argument>)</argument_list></call> <op:operator pos:line="45" pos:column="23">&amp;&amp;</op:operator> <op:operator pos:line="45" pos:column="26">(</op:operator><name pos:line="45" pos:column="27">_MSC_VER</name> <op:operator pos:line="45" pos:column="36">&gt;=</op:operator> <lit:literal type="number" pos:line="45" pos:column="39">1020</lit:literal><op:operator pos:line="45" pos:column="43">)</op:operator></expr></cpp:if>
+<cpp:pragma pos:line="46" pos:column="1">#<cpp:directive pos:line="46" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+<cpp:endif pos:line="47" pos:column="1">#<cpp:directive pos:line="47" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="49" pos:column="1">/* Forward Declarations */</comment> 
+
+<cpp:ifndef pos:line="51" pos:column="1">#<cpp:directive pos:line="51" pos:column="2">ifndef</cpp:directive> <name pos:line="51" pos:column="9">__IOleComponent_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="52" pos:column="1">#<cpp:directive pos:line="52" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="52" pos:column="9">__IOleComponent_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="53" pos:column="1">typedef <type><name pos:line="53" pos:column="9">interface</name> <name pos:line="53" pos:column="19">IOleComponent</name></type> <name pos:line="53" pos:column="33">IOleComponent</name>;</typedef>
+<cpp:endif pos:line="54" pos:column="1">#<cpp:directive pos:line="54" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="54" pos:column="9">/* __IOleComponent_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="57" pos:column="1">#<cpp:directive pos:line="57" pos:column="2">ifndef</cpp:directive> <name pos:line="57" pos:column="9">__IOleComponentManager_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="58" pos:column="1">#<cpp:directive pos:line="58" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="58" pos:column="9">__IOleComponentManager_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="59" pos:column="1">typedef <type><name pos:line="59" pos:column="9">interface</name> <name pos:line="59" pos:column="19">IOleComponentManager</name></type> <name pos:line="59" pos:column="40">IOleComponentManager</name>;</typedef>
+<cpp:endif pos:line="60" pos:column="1">#<cpp:directive pos:line="60" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="60" pos:column="9">/* __IOleComponentManager_FWD_DEFINED__ */</comment>
+
+
+<comment type="block" pos:line="63" pos:column="1">/* header files for imported files */</comment>
+<cpp:include pos:line="64" pos:column="1">#<cpp:directive pos:line="64" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="64" pos:column="10">"oleidl.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="65" pos:column="1">#<cpp:directive pos:line="65" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="65" pos:column="10">"servprov.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="66" pos:column="1">#<cpp:directive pos:line="66" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="66" pos:column="10">"oaidl.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="67" pos:column="1">#<cpp:directive pos:line="67" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="67" pos:column="10">"docobj.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="68" pos:column="1">#<cpp:directive pos:line="68" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="68" pos:column="10">"designer.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="69" pos:column="1">#<cpp:directive pos:line="69" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="69" pos:column="10">"textmgr.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="70" pos:column="1">#<cpp:directive pos:line="70" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="70" pos:column="10">"oleipc.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifdef pos:line="72" pos:column="1">#<cpp:directive pos:line="72" pos:column="2">ifdef</cpp:directive> <name pos:line="72" pos:column="8">__cplusplus</name></cpp:ifdef>
+<extern pos:line="73" pos:column="1">extern <lit:literal type="string" pos:line="73" pos:column="8">"C"</lit:literal><block pos:line="73" pos:column="11">{
+<cpp:endif pos:line="74" pos:column="1">#<cpp:directive pos:line="74" pos:column="2">endif</cpp:directive></cpp:endif> 
+
+
+<comment type="block" pos:line="77" pos:column="1">/* interface __MIDL_itf_olecm_0000_0000 */</comment>
+<comment type="block" pos:line="78" pos:column="1">/* [local] */</comment> 
+
+
+<enum pos:line="81" pos:column="1">enum <name pos:line="81" pos:column="6">_OLECRF</name>
+    <block pos:line="82" pos:column="5">{	<decl><name pos:line="82" pos:column="9">olecrfNeedIdleTime</name>	<init pos:line="82" pos:column="33">= <expr><lit:literal type="number" pos:line="82" pos:column="35">1</lit:literal></expr></init></decl><op:operator pos:line="82" pos:column="36">,</op:operator>
+	<decl><name pos:line="83" pos:column="9">olecrfNeedPeriodicIdleTime</name>	<init pos:line="83" pos:column="41">= <expr><lit:literal type="number" pos:line="83" pos:column="43">2</lit:literal></expr></init></decl><op:operator pos:line="83" pos:column="44">,</op:operator>
+	<decl><name pos:line="84" pos:column="9">olecrfPreTranslateKeys</name>	<init pos:line="84" pos:column="33">= <expr><lit:literal type="number" pos:line="84" pos:column="35">4</lit:literal></expr></init></decl><op:operator pos:line="84" pos:column="36">,</op:operator>
+	<decl><name pos:line="85" pos:column="9">olecrfPreTranslateAll</name>	<init pos:line="85" pos:column="33">= <expr><lit:literal type="number" pos:line="85" pos:column="35">8</lit:literal></expr></init></decl><op:operator pos:line="85" pos:column="36">,</op:operator>
+	<decl><name pos:line="86" pos:column="9">olecrfNeedSpecActiveNotifs</name>	<init pos:line="86" pos:column="41">= <expr><lit:literal type="number" pos:line="86" pos:column="43">16</lit:literal></expr></init></decl><op:operator pos:line="86" pos:column="45">,</op:operator>
+	<decl><name pos:line="87" pos:column="9">olecrfNeedAllActiveNotifs</name>	<init pos:line="87" pos:column="41">= <expr><lit:literal type="number" pos:line="87" pos:column="43">32</lit:literal></expr></init></decl><op:operator pos:line="87" pos:column="45">,</op:operator>
+	<decl><name pos:line="88" pos:column="9">olecrfExclusiveBorderSpace</name>	<init pos:line="88" pos:column="41">= <expr><lit:literal type="number" pos:line="88" pos:column="43">64</lit:literal></expr></init></decl><op:operator pos:line="88" pos:column="45">,</op:operator>
+	<decl><name pos:line="89" pos:column="9">olecrfExclusiveActivation</name>	<init pos:line="89" pos:column="41">= <expr><lit:literal type="number" pos:line="89" pos:column="43">128</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+<typedef pos:line="91" pos:column="1">typedef <type><name pos:line="91" pos:column="9">DWORD</name></type> <name pos:line="91" pos:column="15">OLECRF</name>;</typedef>
+
+
+<enum pos:line="94" pos:column="1">enum <name pos:line="94" pos:column="6">_OLECADVF</name>
+    <block pos:line="95" pos:column="5">{	<decl><name pos:line="95" pos:column="9">olecadvfModal</name>	<init pos:line="95" pos:column="25">= <expr><lit:literal type="number" pos:line="95" pos:column="27">1</lit:literal></expr></init></decl><op:operator pos:line="95" pos:column="28">,</op:operator>
+	<decl><name pos:line="96" pos:column="9">olecadvfRedrawOff</name>	<init pos:line="96" pos:column="33">= <expr><lit:literal type="number" pos:line="96" pos:column="35">2</lit:literal></expr></init></decl><op:operator pos:line="96" pos:column="36">,</op:operator>
+	<decl><name pos:line="97" pos:column="9">olecadvfWarningsOff</name>	<init pos:line="97" pos:column="33">= <expr><lit:literal type="number" pos:line="97" pos:column="35">4</lit:literal></expr></init></decl><op:operator pos:line="97" pos:column="36">,</op:operator>
+	<decl><name pos:line="98" pos:column="9">olecadvfRecording</name>	<init pos:line="98" pos:column="33">= <expr><lit:literal type="number" pos:line="98" pos:column="35">8</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+<typedef pos:line="100" pos:column="1">typedef <type><name pos:line="100" pos:column="9">DWORD</name></type> <name pos:line="100" pos:column="15">OLECADVF</name>;</typedef>
+
+<typedef pos:line="102" pos:column="1">typedef <type><struct pos:line="102" pos:column="9">struct <name pos:line="102" pos:column="16">_OLECRINFO</name>
+    <block pos:line="103" pos:column="5">{<public type="default" pos:line="103" pos:column="6">
+    <decl_stmt><decl><type><name pos:line="104" pos:column="5">ULONG</name></type> <name pos:line="104" pos:column="11">cbSize</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="105" pos:column="5">ULONG</name></type> <name pos:line="105" pos:column="11">uIdleTimeInterval</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="106" pos:column="5">OLECRF</name></type> <name pos:line="106" pos:column="12">grfcrf</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="107" pos:column="5">OLECADVF</name></type> <name pos:line="107" pos:column="14">grfcadvf</name></decl>;</decl_stmt>
+    </public>}</block></struct></type> 	<name pos:line="108" pos:column="9">OLECRINFO</name>;</typedef>
+
+
+<enum pos:line="111" pos:column="1">enum <name pos:line="111" pos:column="6">_OLECHOSTF</name>
+    <block pos:line="112" pos:column="5">{	<decl><name pos:line="112" pos:column="9">olechostfExclusiveBorderSpace</name>	<init pos:line="112" pos:column="41">= <expr><lit:literal type="number" pos:line="112" pos:column="43">1</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+<typedef pos:line="114" pos:column="1">typedef <type><name pos:line="114" pos:column="9">DWORD</name></type> <name pos:line="114" pos:column="15">OLECHOSTF</name>;</typedef>
+
+<typedef pos:line="116" pos:column="1">typedef <type><struct pos:line="116" pos:column="9">struct <name pos:line="116" pos:column="16">_OLECHOSTINFO</name>
+    <block pos:line="117" pos:column="5">{<public type="default" pos:line="117" pos:column="6">
+    <decl_stmt><decl><type><name pos:line="118" pos:column="5">ULONG</name></type> <name pos:line="118" pos:column="11">cbSize</name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="119" pos:column="5">OLECHOSTF</name></type> <name pos:line="119" pos:column="15">grfchostf</name></decl>;</decl_stmt>
+    </public>}</block></struct></type> 	<name pos:line="120" pos:column="9">OLECHOSTINFO</name>;</typedef>
+
+
+<enum pos:line="123" pos:column="1">enum <name pos:line="123" pos:column="6">_OLEIDLEF</name>
+    <block pos:line="124" pos:column="5">{	<decl><name pos:line="124" pos:column="9">oleidlefPeriodic</name>	<init pos:line="124" pos:column="33">= <expr><lit:literal type="number" pos:line="124" pos:column="35">1</lit:literal></expr></init></decl><op:operator pos:line="124" pos:column="36">,</op:operator>
+	<decl><name pos:line="125" pos:column="9">oleidlefNonPeriodic</name>	<init pos:line="125" pos:column="33">= <expr><lit:literal type="number" pos:line="125" pos:column="35">2</lit:literal></expr></init></decl><op:operator pos:line="125" pos:column="36">,</op:operator>
+	<decl><name pos:line="126" pos:column="9">oleidlefPriority</name>	<init pos:line="126" pos:column="33">= <expr><lit:literal type="number" pos:line="126" pos:column="35">4</lit:literal></expr></init></decl><op:operator pos:line="126" pos:column="36">,</op:operator>
+	<decl><name pos:line="127" pos:column="9">oleidlefAll</name>	<init pos:line="127" pos:column="25">= <expr><op:operator pos:line="127" pos:column="27">-</op:operator><lit:literal type="number" pos:line="127" pos:column="28">1</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+<typedef pos:line="129" pos:column="1">typedef <type><name pos:line="129" pos:column="9">DWORD</name></type> <name pos:line="129" pos:column="15">OLEIDLEF</name>;</typedef>
+
+
+<enum pos:line="132" pos:column="1">enum <name pos:line="132" pos:column="6">_OLELOOP</name>
+    <block pos:line="133" pos:column="5">{	<decl><name pos:line="133" pos:column="9">oleloopFocusWait</name>	<init pos:line="133" pos:column="33">= <expr><lit:literal type="number" pos:line="133" pos:column="35">1</lit:literal></expr></init></decl><op:operator pos:line="133" pos:column="36">,</op:operator>
+	<decl><name pos:line="134" pos:column="9">oleloopDoEvents</name>	<init pos:line="134" pos:column="25">= <expr><lit:literal type="number" pos:line="134" pos:column="27">2</lit:literal></expr></init></decl><op:operator pos:line="134" pos:column="28">,</op:operator>
+	<decl><name pos:line="135" pos:column="9">oleloopDebug</name>	<init pos:line="135" pos:column="25">= <expr><lit:literal type="number" pos:line="135" pos:column="27">3</lit:literal></expr></init></decl><op:operator pos:line="135" pos:column="28">,</op:operator>
+	<decl><name pos:line="136" pos:column="9">oleloopModalForm</name>	<init pos:line="136" pos:column="33">= <expr><lit:literal type="number" pos:line="136" pos:column="35">4</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+<typedef pos:line="138" pos:column="1">typedef <type><name pos:line="138" pos:column="9">ULONG</name></type> <name pos:line="138" pos:column="15">OLELOOP</name>;</typedef>
+
+
+<enum pos:line="141" pos:column="1">enum <name pos:line="141" pos:column="6">_OLECSTATE</name>
+    <block pos:line="142" pos:column="5">{	<decl><name pos:line="142" pos:column="9">olecstateModal</name>	<init pos:line="142" pos:column="25">= <expr><lit:literal type="number" pos:line="142" pos:column="27">1</lit:literal></expr></init></decl><op:operator pos:line="142" pos:column="28">,</op:operator>
+	<decl><name pos:line="143" pos:column="9">olecstateRedrawOff</name>	<init pos:line="143" pos:column="33">= <expr><lit:literal type="number" pos:line="143" pos:column="35">2</lit:literal></expr></init></decl><op:operator pos:line="143" pos:column="36">,</op:operator>
+	<decl><name pos:line="144" pos:column="9">olecstateWarningsOff</name>	<init pos:line="144" pos:column="33">= <expr><lit:literal type="number" pos:line="144" pos:column="35">3</lit:literal></expr></init></decl><op:operator pos:line="144" pos:column="36">,</op:operator>
+	<decl><name pos:line="145" pos:column="9">olecstateRecording</name>	<init pos:line="145" pos:column="33">= <expr><lit:literal type="number" pos:line="145" pos:column="35">4</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+<typedef pos:line="147" pos:column="1">typedef <type><name pos:line="147" pos:column="9">ULONG</name></type> <name pos:line="147" pos:column="15">OLECSTATE</name>;</typedef>
+
+
+<enum pos:line="150" pos:column="1">enum <name pos:line="150" pos:column="6">_OLECCONTEXT</name>
+    <block pos:line="151" pos:column="5">{	<decl><name pos:line="151" pos:column="9">oleccontextAll</name>	<init pos:line="151" pos:column="25">= <expr><lit:literal type="number" pos:line="151" pos:column="27">0</lit:literal></expr></init></decl><op:operator pos:line="151" pos:column="28">,</op:operator>
+	<decl><name pos:line="152" pos:column="9">oleccontextMine</name>	<init pos:line="152" pos:column="25">= <expr><lit:literal type="number" pos:line="152" pos:column="27">1</lit:literal></expr></init></decl><op:operator pos:line="152" pos:column="28">,</op:operator>
+	<decl><name pos:line="153" pos:column="9">oleccontextOthers</name>	<init pos:line="153" pos:column="33">= <expr><lit:literal type="number" pos:line="153" pos:column="35">2</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+<typedef pos:line="155" pos:column="1">typedef <type><name pos:line="155" pos:column="9">ULONG</name></type> <name pos:line="155" pos:column="15">OLECCONTEXT</name>;</typedef>
+
+
+<enum pos:line="158" pos:column="1">enum <name pos:line="158" pos:column="6">_OLEGAC</name>
+    <block pos:line="159" pos:column="5">{	<decl><name pos:line="159" pos:column="9">olegacActive</name>	<init pos:line="159" pos:column="25">= <expr><lit:literal type="number" pos:line="159" pos:column="27">0</lit:literal></expr></init></decl><op:operator pos:line="159" pos:column="28">,</op:operator>
+	<decl><name pos:line="160" pos:column="9">olegacTracking</name>	<init pos:line="160" pos:column="25">= <expr><lit:literal type="number" pos:line="160" pos:column="27">1</lit:literal></expr></init></decl><op:operator pos:line="160" pos:column="28">,</op:operator>
+	<decl><name pos:line="161" pos:column="9">olegacTrackingOrActive</name>	<init pos:line="161" pos:column="33">= <expr><lit:literal type="number" pos:line="161" pos:column="35">2</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+<typedef pos:line="163" pos:column="1">typedef <type><name pos:line="163" pos:column="9">DWORD</name></type> <name pos:line="163" pos:column="15">OLEGAC</name>;</typedef>
+
+
+<enum pos:line="166" pos:column="1">enum <name pos:line="166" pos:column="6">_OLECWINDOW</name>
+    <block pos:line="167" pos:column="5">{	<decl><name pos:line="167" pos:column="9">olecWindowFrameToplevel</name>	<init pos:line="167" pos:column="33">= <expr><lit:literal type="number" pos:line="167" pos:column="35">0</lit:literal></expr></init></decl><op:operator pos:line="167" pos:column="36">,</op:operator>
+	<decl><name pos:line="168" pos:column="9">olecWindowFrameOwner</name>	<init pos:line="168" pos:column="33">= <expr><lit:literal type="number" pos:line="168" pos:column="35">1</lit:literal></expr></init></decl><op:operator pos:line="168" pos:column="36">,</op:operator>
+	<decl><name pos:line="169" pos:column="9">olecWindowComponent</name>	<init pos:line="169" pos:column="33">= <expr><lit:literal type="number" pos:line="169" pos:column="35">2</lit:literal></expr></init></decl><op:operator pos:line="169" pos:column="36">,</op:operator>
+	<decl><name pos:line="170" pos:column="9">olecWindowDlgOwner</name>	<init pos:line="170" pos:column="33">= <expr><lit:literal type="number" pos:line="170" pos:column="35">3</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+<typedef pos:line="172" pos:column="1">typedef <type><name pos:line="172" pos:column="9">DWORD</name></type> <name pos:line="172" pos:column="15">OLECWINDOW</name>;</typedef>
+
+
+
+<decl_stmt><decl><type><specifier pos:line="176" pos:column="1">extern</specifier> <name pos:line="176" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="176" pos:column="22">__MIDL_itf_olecm_0000_0000_v0_0_c_ifspec</name></decl>;</decl_stmt>
+<decl_stmt><decl><type><specifier pos:line="177" pos:column="1">extern</specifier> <name pos:line="177" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="177" pos:column="22">__MIDL_itf_olecm_0000_0000_v0_0_s_ifspec</name></decl>;</decl_stmt>
+
+<cpp:ifndef pos:line="179" pos:column="1">#<cpp:directive pos:line="179" pos:column="2">ifndef</cpp:directive> <name pos:line="179" pos:column="9">__IOleComponent_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="180" pos:column="1">#<cpp:directive pos:line="180" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="180" pos:column="9">__IOleComponent_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="182" pos:column="1">/* interface IOleComponent */</comment>
+<comment type="block" pos:line="183" pos:column="1">/* [object][local][unique][version][uuid] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="186" pos:column="1">EXTERN_C</name> <specifier pos:line="186" pos:column="10">const</specifier> <name pos:line="186" pos:column="16">IID</name></type> <name pos:line="186" pos:column="20">IID_IOleComponent</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="188" pos:column="1">#<cpp:directive pos:line="188" pos:column="2">if</cpp:directive> <expr><call><name pos:line="188" pos:column="5">defined</name><argument_list pos:line="188" pos:column="12">(<argument><expr><name pos:line="188" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="188" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="188" pos:column="29">!</op:operator><call><name pos:line="188" pos:column="30">defined</name><argument_list pos:line="188" pos:column="37">(<argument><expr><name pos:line="188" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="190" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="190" pos:column="19">(<argument pos:line="190" pos:column="20">"000C0600-0000-0000-C000-000000000046"</argument>)</argument_list></macro>
+    <label><name pos:line="191" pos:column="5">IOleComponent</name> :</label> <expr_stmt><expr pos:line="191" pos:column="21">public <name pos:line="191" pos:column="28">IUnknown</name>
+    <block pos:line="192" pos:column="5">{
+    <expr pos:line="193" pos:column="5">public<op:operator pos:line="193" pos:column="11">:</op:operator>
+        virtual <name pos:line="194" pos:column="17">BOOL</name> <name pos:line="194" pos:column="22">STDMETHODCALLTYPE</name> <macro><name pos:line="194" pos:column="40">FReserved1</name><argument_list pos:line="194" pos:column="50">( 
+            <comment type="block" pos:line="195" pos:column="13">/* [in] */</comment> <argument pos:line="195" pos:column="24">DWORD dwReserved</argument>,
+            <comment type="block" pos:line="196" pos:column="13">/* [in] */</comment> <argument pos:line="196" pos:column="24">UINT message</argument>,
+            <comment type="block" pos:line="197" pos:column="13">/* [in] */</comment> <argument pos:line="197" pos:column="24">WPARAM wParam</argument>,
+            <comment type="block" pos:line="198" pos:column="13">/* [in] */</comment> <argument pos:line="198" pos:column="24">LPARAM lParam</argument>)</argument_list></macro> <op:operator pos:line="198" pos:column="39">=</op:operator> <lit:literal type="number" pos:line="198" pos:column="41">0</lit:literal></expr>;
+        
+        <expr pos:line="200" pos:column="9">virtual <name pos:line="200" pos:column="17">BOOL</name> <name pos:line="200" pos:column="22">STDMETHODCALLTYPE</name> <call><name pos:line="200" pos:column="40">FPreTranslateMessage</name><argument_list pos:line="200" pos:column="60">( 
+            <comment type="block" pos:line="201" pos:column="13">/* [out][in] */</comment> <argument><expr><name pos:line="201" pos:column="29">MSG</name> <op:operator pos:line="201" pos:column="33">*</op:operator><name pos:line="201" pos:column="34">pMsg</name></expr></argument>)</argument_list></call> <op:operator pos:line="201" pos:column="40">=</op:operator> <lit:literal type="number" pos:line="201" pos:column="42">0</lit:literal></expr>;
+        
+        <expr pos:line="203" pos:column="9">virtual <name pos:line="203" pos:column="17">void</name> <name pos:line="203" pos:column="22">STDMETHODCALLTYPE</name> <macro><name pos:line="203" pos:column="40">OnEnterState</name><argument_list pos:line="203" pos:column="52">( 
+            <comment type="block" pos:line="204" pos:column="13">/* [in] */</comment> <argument pos:line="204" pos:column="24">OLECSTATE uStateID</argument>,
+            <comment type="block" pos:line="205" pos:column="13">/* [in] */</comment> <argument pos:line="205" pos:column="24">BOOL fEnter</argument>)</argument_list></macro> <op:operator pos:line="205" pos:column="37">=</op:operator> <lit:literal type="number" pos:line="205" pos:column="39">0</lit:literal></expr>;
+        
+        <expr pos:line="207" pos:column="9">virtual <name pos:line="207" pos:column="17">void</name> <name pos:line="207" pos:column="22">STDMETHODCALLTYPE</name> <macro><name pos:line="207" pos:column="40">OnAppActivate</name><argument_list pos:line="207" pos:column="53">( 
+            <comment type="block" pos:line="208" pos:column="13">/* [in] */</comment> <argument pos:line="208" pos:column="24">BOOL fActive</argument>,
+            <comment type="block" pos:line="209" pos:column="13">/* [in] */</comment> <argument pos:line="209" pos:column="24">DWORD dwOtherThreadID</argument>)</argument_list></macro> <op:operator pos:line="209" pos:column="47">=</op:operator> <lit:literal type="number" pos:line="209" pos:column="49">0</lit:literal></expr>;
+        
+        <expr pos:line="211" pos:column="9">virtual <name pos:line="211" pos:column="17">void</name> <name pos:line="211" pos:column="22">STDMETHODCALLTYPE</name> <call><name pos:line="211" pos:column="40">OnLoseActivation</name><argument_list pos:line="211" pos:column="56">( <argument><expr><name pos:line="211" pos:column="58">void</name></expr></argument>)</argument_list></call> <op:operator pos:line="211" pos:column="64">=</op:operator> <lit:literal type="number" pos:line="211" pos:column="66">0</lit:literal></expr>;
+        
+        <expr pos:line="213" pos:column="9">virtual <name pos:line="213" pos:column="17">void</name> <name pos:line="213" pos:column="22">STDMETHODCALLTYPE</name> <macro><name pos:line="213" pos:column="40">OnActivationChange</name><argument_list pos:line="213" pos:column="58">( 
+            <comment type="block" pos:line="214" pos:column="13">/* [in] */</comment> <argument pos:line="214" pos:column="24">IOleComponent *pic</argument>,
+            <comment type="block" pos:line="215" pos:column="13">/* [in] */</comment> <argument pos:line="215" pos:column="24">BOOL fSameComponent</argument>,
+            <comment type="block" pos:line="216" pos:column="13">/* [in] */</comment> <argument pos:line="216" pos:column="24">const OLECRINFO *pcrinfo</argument>,
+            <comment type="block" pos:line="217" pos:column="13">/* [in] */</comment> <argument pos:line="217" pos:column="24">BOOL fHostIsActivating</argument>,
+            <comment type="block" pos:line="218" pos:column="13">/* [in] */</comment> <argument pos:line="218" pos:column="24">const OLECHOSTINFO *pchostinfo</argument>,
+            <comment type="block" pos:line="219" pos:column="13">/* [in] */</comment> <argument pos:line="219" pos:column="24">DWORD dwReserved</argument>)</argument_list></macro> <op:operator pos:line="219" pos:column="42">=</op:operator> <lit:literal type="number" pos:line="219" pos:column="44">0</lit:literal></expr>;
+        
+        <expr pos:line="221" pos:column="9">virtual <name pos:line="221" pos:column="17">BOOL</name> <name pos:line="221" pos:column="22">STDMETHODCALLTYPE</name> <macro><name pos:line="221" pos:column="40">FDoIdle</name><argument_list pos:line="221" pos:column="47">( 
+            <comment type="block" pos:line="222" pos:column="13">/* [in] */</comment> <argument pos:line="222" pos:column="24">OLEIDLEF grfidlef</argument>)</argument_list></macro> <op:operator pos:line="222" pos:column="43">=</op:operator> <lit:literal type="number" pos:line="222" pos:column="45">0</lit:literal></expr>;
+        
+        <expr pos:line="224" pos:column="9">virtual <name pos:line="224" pos:column="17">BOOL</name> <name pos:line="224" pos:column="22">STDMETHODCALLTYPE</name> <macro><name pos:line="224" pos:column="40">FContinueMessageLoop</name><argument_list pos:line="224" pos:column="60">( 
+            <comment type="block" pos:line="225" pos:column="13">/* [in] */</comment> <argument pos:line="225" pos:column="24">OLELOOP uReason</argument>,
+            <comment type="block" pos:line="226" pos:column="13">/* [in] */</comment> <argument pos:line="226" pos:column="24">void *pvLoopData</argument>,
+            <comment type="block" pos:line="227" pos:column="13">/* [in] */</comment> <argument pos:line="227" pos:column="24">MSG *pMsgPeeked</argument>)</argument_list></macro> <op:operator pos:line="227" pos:column="41">=</op:operator> <lit:literal type="number" pos:line="227" pos:column="43">0</lit:literal></expr>;
+        
+        <expr pos:line="229" pos:column="9">virtual <name pos:line="229" pos:column="17">BOOL</name> <name pos:line="229" pos:column="22">STDMETHODCALLTYPE</name> <macro><name pos:line="229" pos:column="40">FQueryTerminate</name><argument_list pos:line="229" pos:column="55">( 
+            <comment type="block" pos:line="230" pos:column="13">/* [in] */</comment> <argument pos:line="230" pos:column="24">BOOL fPromptUser</argument>)</argument_list></macro> <op:operator pos:line="230" pos:column="42">=</op:operator> <lit:literal type="number" pos:line="230" pos:column="44">0</lit:literal></expr>;
+        
+        <expr pos:line="232" pos:column="9">virtual <name pos:line="232" pos:column="17">void</name> <name pos:line="232" pos:column="22">STDMETHODCALLTYPE</name> <call><name pos:line="232" pos:column="40">Terminate</name><argument_list pos:line="232" pos:column="49">( <argument><expr><name pos:line="232" pos:column="51">void</name></expr></argument>)</argument_list></call> <op:operator pos:line="232" pos:column="57">=</op:operator> <lit:literal type="number" pos:line="232" pos:column="59">0</lit:literal></expr>;
+        
+        <expr pos:line="234" pos:column="9">virtual <name pos:line="234" pos:column="17">HWND</name> <name pos:line="234" pos:column="22">STDMETHODCALLTYPE</name> <macro><name pos:line="234" pos:column="40">HwndGetWindow</name><argument_list pos:line="234" pos:column="53">( 
+            <comment type="block" pos:line="235" pos:column="13">/* [in] */</comment> <argument pos:line="235" pos:column="24">OLECWINDOW dwWhich</argument>,
+            <comment type="block" pos:line="236" pos:column="13">/* [in] */</comment> <argument pos:line="236" pos:column="24">DWORD dwReserved</argument>)</argument_list></macro> <op:operator pos:line="236" pos:column="42">=</op:operator> <lit:literal type="number" pos:line="236" pos:column="44">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="240" pos:column="1">#<cpp:directive pos:line="240" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="240" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="242" pos:column="5">typedef <type><struct pos:line="242" pos:column="13">struct <name pos:line="242" pos:column="20">IOleComponentVtbl</name>
+    <block pos:line="243" pos:column="5">{<public type="default" pos:line="243" pos:column="6">
+        <function_decl><type><name pos:line="244" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="246" pos:column="9">HRESULT</name></type> ( <name pos:line="246" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="246" pos:column="37">*</type:modifier><name pos:line="246" pos:column="38">QueryInterface</name> )<parameter_list pos:line="246" pos:column="54">( 
+            <param><decl><type><name pos:line="247" pos:column="13">IOleComponent</name> <type:modifier pos:line="247" pos:column="27">*</type:modifier></type> <name pos:line="247" pos:column="29">This</name></decl></param>,
+            <comment type="block" pos:line="248" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="248" pos:column="24">REFIID</name></type> <name pos:line="248" pos:column="31">riid</name></decl></param>,
+            <comment type="block" pos:line="249" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="250" pos:column="13">__RPC__deref_out</name>  <name pos:line="250" pos:column="31">void</name> <type:modifier pos:line="250" pos:column="36">*</type:modifier><type:modifier pos:line="250" pos:column="37">*</type:modifier></type><name pos:line="250" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="252" pos:column="9">ULONG</name></type> ( <name pos:line="252" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="252" pos:column="35">*</type:modifier><name pos:line="252" pos:column="36">AddRef</name> )<parameter_list pos:line="252" pos:column="44">( 
+            <param><decl><type><name pos:line="253" pos:column="13">IOleComponent</name> <type:modifier pos:line="253" pos:column="27">*</type:modifier></type> <name pos:line="253" pos:column="29">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="255" pos:column="9">ULONG</name></type> ( <name pos:line="255" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="255" pos:column="35">*</type:modifier><name pos:line="255" pos:column="36">Release</name> )<parameter_list pos:line="255" pos:column="45">( 
+            <param><decl><type><name pos:line="256" pos:column="13">IOleComponent</name> <type:modifier pos:line="256" pos:column="27">*</type:modifier></type> <name pos:line="256" pos:column="29">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="258" pos:column="9">BOOL</name></type> ( <name pos:line="258" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="258" pos:column="34">*</type:modifier><name pos:line="258" pos:column="35">FReserved1</name> )<parameter_list pos:line="258" pos:column="47">( 
+            <param><decl><type><name pos:line="259" pos:column="13">IOleComponent</name> <type:modifier pos:line="259" pos:column="27">*</type:modifier></type> <name pos:line="259" pos:column="29">This</name></decl></param>,
+            <comment type="block" pos:line="260" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="260" pos:column="24">DWORD</name></type> <name pos:line="260" pos:column="30">dwReserved</name></decl></param>,
+            <comment type="block" pos:line="261" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="261" pos:column="24">UINT</name></type> <name pos:line="261" pos:column="29">message</name></decl></param>,
+            <comment type="block" pos:line="262" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="262" pos:column="24">WPARAM</name></type> <name pos:line="262" pos:column="31">wParam</name></decl></param>,
+            <comment type="block" pos:line="263" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="263" pos:column="24">LPARAM</name></type> <name pos:line="263" pos:column="31">lParam</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="265" pos:column="9">BOOL</name></type> ( <name pos:line="265" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="265" pos:column="34">*</type:modifier><name pos:line="265" pos:column="35">FPreTranslateMessage</name> )<parameter_list pos:line="265" pos:column="57">( 
+            <param><decl><type><name pos:line="266" pos:column="13">IOleComponent</name> <type:modifier pos:line="266" pos:column="27">*</type:modifier></type> <name pos:line="266" pos:column="29">This</name></decl></param>,
+            <comment type="block" pos:line="267" pos:column="13">/* [out][in] */</comment> <param><decl><type><name pos:line="267" pos:column="29">MSG</name> <type:modifier pos:line="267" pos:column="33">*</type:modifier></type><name pos:line="267" pos:column="34">pMsg</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="269" pos:column="9">void</name></type> ( <name pos:line="269" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="269" pos:column="34">*</type:modifier><name pos:line="269" pos:column="35">OnEnterState</name> )<parameter_list pos:line="269" pos:column="49">( 
+            <param><decl><type><name pos:line="270" pos:column="13">IOleComponent</name> <type:modifier pos:line="270" pos:column="27">*</type:modifier></type> <name pos:line="270" pos:column="29">This</name></decl></param>,
+            <comment type="block" pos:line="271" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="271" pos:column="24">OLECSTATE</name></type> <name pos:line="271" pos:column="34">uStateID</name></decl></param>,
+            <comment type="block" pos:line="272" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="272" pos:column="24">BOOL</name></type> <name pos:line="272" pos:column="29">fEnter</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="274" pos:column="9">void</name></type> ( <name pos:line="274" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="274" pos:column="34">*</type:modifier><name pos:line="274" pos:column="35">OnAppActivate</name> )<parameter_list pos:line="274" pos:column="50">( 
+            <param><decl><type><name pos:line="275" pos:column="13">IOleComponent</name> <type:modifier pos:line="275" pos:column="27">*</type:modifier></type> <name pos:line="275" pos:column="29">This</name></decl></param>,
+            <comment type="block" pos:line="276" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="276" pos:column="24">BOOL</name></type> <name pos:line="276" pos:column="29">fActive</name></decl></param>,
+            <comment type="block" pos:line="277" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="277" pos:column="24">DWORD</name></type> <name pos:line="277" pos:column="30">dwOtherThreadID</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="279" pos:column="9">void</name></type> ( <name pos:line="279" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="279" pos:column="34">*</type:modifier><name pos:line="279" pos:column="35">OnLoseActivation</name> )<parameter_list pos:line="279" pos:column="53">( 
+            <param><decl><type><name pos:line="280" pos:column="13">IOleComponent</name> <type:modifier pos:line="280" pos:column="27">*</type:modifier></type> <name pos:line="280" pos:column="29">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="282" pos:column="9">void</name></type> ( <name pos:line="282" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="282" pos:column="34">*</type:modifier><name pos:line="282" pos:column="35">OnActivationChange</name> )<parameter_list pos:line="282" pos:column="55">( 
+            <param><decl><type><name pos:line="283" pos:column="13">IOleComponent</name> <type:modifier pos:line="283" pos:column="27">*</type:modifier></type> <name pos:line="283" pos:column="29">This</name></decl></param>,
+            <comment type="block" pos:line="284" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="284" pos:column="24">IOleComponent</name> <type:modifier pos:line="284" pos:column="38">*</type:modifier></type><name pos:line="284" pos:column="39">pic</name></decl></param>,
+            <comment type="block" pos:line="285" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="285" pos:column="24">BOOL</name></type> <name pos:line="285" pos:column="29">fSameComponent</name></decl></param>,
+            <comment type="block" pos:line="286" pos:column="13">/* [in] */</comment> <param><decl><type><specifier pos:line="286" pos:column="24">const</specifier> <name pos:line="286" pos:column="30">OLECRINFO</name> <type:modifier pos:line="286" pos:column="40">*</type:modifier></type><name pos:line="286" pos:column="41">pcrinfo</name></decl></param>,
+            <comment type="block" pos:line="287" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="287" pos:column="24">BOOL</name></type> <name pos:line="287" pos:column="29">fHostIsActivating</name></decl></param>,
+            <comment type="block" pos:line="288" pos:column="13">/* [in] */</comment> <param><decl><type><specifier pos:line="288" pos:column="24">const</specifier> <name pos:line="288" pos:column="30">OLECHOSTINFO</name> <type:modifier pos:line="288" pos:column="43">*</type:modifier></type><name pos:line="288" pos:column="44">pchostinfo</name></decl></param>,
+            <comment type="block" pos:line="289" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="289" pos:column="24">DWORD</name></type> <name pos:line="289" pos:column="30">dwReserved</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="291" pos:column="9">BOOL</name></type> ( <name pos:line="291" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="291" pos:column="34">*</type:modifier><name pos:line="291" pos:column="35">FDoIdle</name> )<parameter_list pos:line="291" pos:column="44">( 
+            <param><decl><type><name pos:line="292" pos:column="13">IOleComponent</name> <type:modifier pos:line="292" pos:column="27">*</type:modifier></type> <name pos:line="292" pos:column="29">This</name></decl></param>,
+            <comment type="block" pos:line="293" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="293" pos:column="24">OLEIDLEF</name></type> <name pos:line="293" pos:column="33">grfidlef</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="295" pos:column="9">BOOL</name></type> ( <name pos:line="295" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="295" pos:column="34">*</type:modifier><name pos:line="295" pos:column="35">FContinueMessageLoop</name> )<parameter_list pos:line="295" pos:column="57">( 
+            <param><decl><type><name pos:line="296" pos:column="13">IOleComponent</name> <type:modifier pos:line="296" pos:column="27">*</type:modifier></type> <name pos:line="296" pos:column="29">This</name></decl></param>,
+            <comment type="block" pos:line="297" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="297" pos:column="24">OLELOOP</name></type> <name pos:line="297" pos:column="32">uReason</name></decl></param>,
+            <comment type="block" pos:line="298" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="298" pos:column="24">void</name> <type:modifier pos:line="298" pos:column="29">*</type:modifier></type><name pos:line="298" pos:column="30">pvLoopData</name></decl></param>,
+            <comment type="block" pos:line="299" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="299" pos:column="24">MSG</name> <type:modifier pos:line="299" pos:column="28">*</type:modifier></type><name pos:line="299" pos:column="29">pMsgPeeked</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="301" pos:column="9">BOOL</name></type> ( <name pos:line="301" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="301" pos:column="34">*</type:modifier><name pos:line="301" pos:column="35">FQueryTerminate</name> )<parameter_list pos:line="301" pos:column="52">( 
+            <param><decl><type><name pos:line="302" pos:column="13">IOleComponent</name> <type:modifier pos:line="302" pos:column="27">*</type:modifier></type> <name pos:line="302" pos:column="29">This</name></decl></param>,
+            <comment type="block" pos:line="303" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="303" pos:column="24">BOOL</name></type> <name pos:line="303" pos:column="29">fPromptUser</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="305" pos:column="9">void</name></type> ( <name pos:line="305" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="305" pos:column="34">*</type:modifier><name pos:line="305" pos:column="35">Terminate</name> )<parameter_list pos:line="305" pos:column="46">( 
+            <param><decl><type><name pos:line="306" pos:column="13">IOleComponent</name> <type:modifier pos:line="306" pos:column="27">*</type:modifier></type> <name pos:line="306" pos:column="29">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="308" pos:column="9">HWND</name></type> ( <name pos:line="308" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="308" pos:column="34">*</type:modifier><name pos:line="308" pos:column="35">HwndGetWindow</name> )<parameter_list pos:line="308" pos:column="50">( 
+            <param><decl><type><name pos:line="309" pos:column="13">IOleComponent</name> <type:modifier pos:line="309" pos:column="27">*</type:modifier></type> <name pos:line="309" pos:column="29">This</name></decl></param>,
+            <comment type="block" pos:line="310" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="310" pos:column="24">OLECWINDOW</name></type> <name pos:line="310" pos:column="35">dwWhich</name></decl></param>,
+            <comment type="block" pos:line="311" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="311" pos:column="24">DWORD</name></type> <name pos:line="311" pos:column="30">dwReserved</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="313" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="314" pos:column="7">IOleComponentVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="316" pos:column="5">interface</name></type> <name pos:line="316" pos:column="15">IOleComponent</name>
+    <argument_list pos:line="317" pos:column="5">{
+        <argument><expr><name pos:line="318" pos:column="9">CONST_VTBL</name> struct <name pos:line="318" pos:column="27">IOleComponentVtbl</name> <op:operator pos:line="318" pos:column="45">*</op:operator><name pos:line="318" pos:column="46">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="323" pos:column="1">#<cpp:directive pos:line="323" pos:column="2">ifdef</cpp:directive> <name pos:line="323" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="326" pos:column="1">#<cpp:directive pos:line="326" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="326" pos:column="9">IOleComponent_QueryInterface</name><parameter_list pos:line="326" pos:column="37">(<param><type><name pos:line="326" pos:column="38">This</name></type></param>,<param><type><name pos:line="326" pos:column="43">riid</name></type></param>,<param><type><name pos:line="326" pos:column="48">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="327" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="329" pos:column="1">#<cpp:directive pos:line="329" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="329" pos:column="9">IOleComponent_AddRef</name><parameter_list pos:line="329" pos:column="29">(<param><type><name pos:line="329" pos:column="30">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="330" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="332" pos:column="1">#<cpp:directive pos:line="332" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="332" pos:column="9">IOleComponent_Release</name><parameter_list pos:line="332" pos:column="30">(<param><type><name pos:line="332" pos:column="31">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="333" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="336" pos:column="1">#<cpp:directive pos:line="336" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="336" pos:column="9">IOleComponent_FReserved1</name><parameter_list pos:line="336" pos:column="33">(<param><type><name pos:line="336" pos:column="34">This</name></type></param>,<param><type><name pos:line="336" pos:column="39">dwReserved</name></type></param>,<param><type><name pos:line="336" pos:column="50">message</name></type></param>,<param><type><name pos:line="336" pos:column="58">wParam</name></type></param>,<param><type><name pos:line="336" pos:column="65">lParam</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="337" pos:column="5">( (This)-&gt;lpVtbl -&gt; FReserved1(This,dwReserved,message,wParam,lParam) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="339" pos:column="1">#<cpp:directive pos:line="339" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="339" pos:column="9">IOleComponent_FPreTranslateMessage</name><parameter_list pos:line="339" pos:column="43">(<param><type><name pos:line="339" pos:column="44">This</name></type></param>,<param><type><name pos:line="339" pos:column="49">pMsg</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="340" pos:column="5">( (This)-&gt;lpVtbl -&gt; FPreTranslateMessage(This,pMsg) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="342" pos:column="1">#<cpp:directive pos:line="342" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="342" pos:column="9">IOleComponent_OnEnterState</name><parameter_list pos:line="342" pos:column="35">(<param><type><name pos:line="342" pos:column="36">This</name></type></param>,<param><type><name pos:line="342" pos:column="41">uStateID</name></type></param>,<param><type><name pos:line="342" pos:column="50">fEnter</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="343" pos:column="5">( (This)-&gt;lpVtbl -&gt; OnEnterState(This,uStateID,fEnter) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="345" pos:column="1">#<cpp:directive pos:line="345" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="345" pos:column="9">IOleComponent_OnAppActivate</name><parameter_list pos:line="345" pos:column="36">(<param><type><name pos:line="345" pos:column="37">This</name></type></param>,<param><type><name pos:line="345" pos:column="42">fActive</name></type></param>,<param><type><name pos:line="345" pos:column="50">dwOtherThreadID</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="346" pos:column="5">( (This)-&gt;lpVtbl -&gt; OnAppActivate(This,fActive,dwOtherThreadID) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="348" pos:column="1">#<cpp:directive pos:line="348" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="348" pos:column="9">IOleComponent_OnLoseActivation</name><parameter_list pos:line="348" pos:column="39">(<param><type><name pos:line="348" pos:column="40">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="349" pos:column="5">( (This)-&gt;lpVtbl -&gt; OnLoseActivation(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="351" pos:column="1">#<cpp:directive pos:line="351" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="351" pos:column="9">IOleComponent_OnActivationChange</name><parameter_list pos:line="351" pos:column="41">(<param><type><name pos:line="351" pos:column="42">This</name></type></param>,<param><type><name pos:line="351" pos:column="47">pic</name></type></param>,<param><type><name pos:line="351" pos:column="51">fSameComponent</name></type></param>,<param><type><name pos:line="351" pos:column="66">pcrinfo</name></type></param>,<param><type><name pos:line="351" pos:column="74">fHostIsActivating</name></type></param>,<param><type><name pos:line="351" pos:column="92">pchostinfo</name></type></param>,<param><type><name pos:line="351" pos:column="103">dwReserved</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="352" pos:column="5">( (This)-&gt;lpVtbl -&gt; OnActivationChange(This,pic,fSameComponent,pcrinfo,fHostIsActivating,pchostinfo,dwReserved) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="354" pos:column="1">#<cpp:directive pos:line="354" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="354" pos:column="9">IOleComponent_FDoIdle</name><parameter_list pos:line="354" pos:column="30">(<param><type><name pos:line="354" pos:column="31">This</name></type></param>,<param><type><name pos:line="354" pos:column="36">grfidlef</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="355" pos:column="5">( (This)-&gt;lpVtbl -&gt; FDoIdle(This,grfidlef) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="357" pos:column="1">#<cpp:directive pos:line="357" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="357" pos:column="9">IOleComponent_FContinueMessageLoop</name><parameter_list pos:line="357" pos:column="43">(<param><type><name pos:line="357" pos:column="44">This</name></type></param>,<param><type><name pos:line="357" pos:column="49">uReason</name></type></param>,<param><type><name pos:line="357" pos:column="57">pvLoopData</name></type></param>,<param><type><name pos:line="357" pos:column="68">pMsgPeeked</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="358" pos:column="5">( (This)-&gt;lpVtbl -&gt; FContinueMessageLoop(This,uReason,pvLoopData,pMsgPeeked) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="360" pos:column="1">#<cpp:directive pos:line="360" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="360" pos:column="9">IOleComponent_FQueryTerminate</name><parameter_list pos:line="360" pos:column="38">(<param><type><name pos:line="360" pos:column="39">This</name></type></param>,<param><type><name pos:line="360" pos:column="44">fPromptUser</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="361" pos:column="5">( (This)-&gt;lpVtbl -&gt; FQueryTerminate(This,fPromptUser) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="363" pos:column="1">#<cpp:directive pos:line="363" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="363" pos:column="9">IOleComponent_Terminate</name><parameter_list pos:line="363" pos:column="32">(<param><type><name pos:line="363" pos:column="33">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="364" pos:column="5">( (This)-&gt;lpVtbl -&gt; Terminate(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="366" pos:column="1">#<cpp:directive pos:line="366" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="366" pos:column="9">IOleComponent_HwndGetWindow</name><parameter_list pos:line="366" pos:column="36">(<param><type><name pos:line="366" pos:column="37">This</name></type></param>,<param><type><name pos:line="366" pos:column="42">dwWhich</name></type></param>,<param><type><name pos:line="366" pos:column="50">dwReserved</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="367" pos:column="5">( (This)-&gt;lpVtbl -&gt; HwndGetWindow(This,dwWhich,dwReserved) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="369" pos:column="1">#<cpp:directive pos:line="369" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="369" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="372" pos:column="1">#<cpp:directive pos:line="372" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="372" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="377" pos:column="1">#<cpp:directive pos:line="377" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="377" pos:column="9">/* __IOleComponent_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="380" pos:column="1">#<cpp:directive pos:line="380" pos:column="2">ifndef</cpp:directive> <name pos:line="380" pos:column="9">__IOleComponentManager_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="381" pos:column="1">#<cpp:directive pos:line="381" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="381" pos:column="9">__IOleComponentManager_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="383" pos:column="1">/* interface IOleComponentManager */</comment>
+<comment type="block" pos:line="384" pos:column="1">/* [object][local][unique][version][uuid] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="387" pos:column="1">EXTERN_C</name> <specifier pos:line="387" pos:column="10">const</specifier> <name pos:line="387" pos:column="16">IID</name></type> <name pos:line="387" pos:column="20">IID_IOleComponentManager</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="389" pos:column="1">#<cpp:directive pos:line="389" pos:column="2">if</cpp:directive> <expr><call><name pos:line="389" pos:column="5">defined</name><argument_list pos:line="389" pos:column="12">(<argument><expr><name pos:line="389" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="389" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="389" pos:column="29">!</op:operator><call><name pos:line="389" pos:column="30">defined</name><argument_list pos:line="389" pos:column="37">(<argument><expr><name pos:line="389" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="391" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="391" pos:column="19">(<argument pos:line="391" pos:column="20">"000C0601-0000-0000-C000-000000000046"</argument>)</argument_list></macro>
+    <label><name pos:line="392" pos:column="5">IOleComponentManager</name> :</label> <expr_stmt><expr pos:line="392" pos:column="28">public <name pos:line="392" pos:column="35">IUnknown</name>
+    <block pos:line="393" pos:column="5">{
+    <expr pos:line="394" pos:column="5">public<op:operator pos:line="394" pos:column="11">:</op:operator>
+        virtual <name pos:line="395" pos:column="17">HRESULT</name> <name pos:line="395" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="395" pos:column="43">QueryService</name><argument_list pos:line="395" pos:column="55">( 
+            <comment type="block" pos:line="396" pos:column="13">/* [in] */</comment> <argument pos:line="396" pos:column="24">REFGUID guidService</argument>,
+            <comment type="block" pos:line="397" pos:column="13">/* [in] */</comment> <argument pos:line="397" pos:column="24">REFIID iid</argument>,
+            <comment type="block" pos:line="398" pos:column="13">/* [out] */</comment> <argument pos:line="398" pos:column="25">void **ppvObj</argument>)</argument_list></macro> <op:operator pos:line="398" pos:column="40">=</op:operator> <lit:literal type="number" pos:line="398" pos:column="42">0</lit:literal></expr>;
+        
+        <expr pos:line="400" pos:column="9">virtual <name pos:line="400" pos:column="17">BOOL</name> <name pos:line="400" pos:column="22">STDMETHODCALLTYPE</name> <macro><name pos:line="400" pos:column="40">FReserved1</name><argument_list pos:line="400" pos:column="50">( 
+            <comment type="block" pos:line="401" pos:column="13">/* [in] */</comment> <argument pos:line="401" pos:column="24">DWORD dwReserved</argument>,
+            <comment type="block" pos:line="402" pos:column="13">/* [in] */</comment> <argument pos:line="402" pos:column="24">UINT message</argument>,
+            <comment type="block" pos:line="403" pos:column="13">/* [in] */</comment> <argument pos:line="403" pos:column="24">WPARAM wParam</argument>,
+            <comment type="block" pos:line="404" pos:column="13">/* [in] */</comment> <argument pos:line="404" pos:column="24">LPARAM lParam</argument>)</argument_list></macro> <op:operator pos:line="404" pos:column="39">=</op:operator> <lit:literal type="number" pos:line="404" pos:column="41">0</lit:literal></expr>;
+        
+        <expr pos:line="406" pos:column="9">virtual <name pos:line="406" pos:column="17">BOOL</name> <name pos:line="406" pos:column="22">STDMETHODCALLTYPE</name> <call><name pos:line="406" pos:column="40">FRegisterComponent</name><argument_list pos:line="406" pos:column="58">( 
+            <comment type="block" pos:line="407" pos:column="13">/* [in] */</comment> <argument><expr><name pos:line="407" pos:column="24">IOleComponent</name> <op:operator pos:line="407" pos:column="38">*</op:operator><name pos:line="407" pos:column="39">piComponent</name></expr></argument>,
+            <comment type="block" pos:line="408" pos:column="13">/* [in] */</comment> <argument><expr pos:line="408" pos:column="24">const <name pos:line="408" pos:column="30">OLECRINFO</name> <op:operator pos:line="408" pos:column="40">*</op:operator><name pos:line="408" pos:column="41">pcrinfo</name></expr></argument>,
+            <comment type="block" pos:line="409" pos:column="13">/* [out] */</comment> <argument><expr><name pos:line="409" pos:column="25">DWORD_PTR</name> <op:operator pos:line="409" pos:column="35">*</op:operator><name pos:line="409" pos:column="36">pdwComponentID</name></expr></argument>)</argument_list></call> <op:operator pos:line="409" pos:column="52">=</op:operator> <lit:literal type="number" pos:line="409" pos:column="54">0</lit:literal></expr>;
+        
+        <expr pos:line="411" pos:column="9">virtual <name pos:line="411" pos:column="17">BOOL</name> <name pos:line="411" pos:column="22">STDMETHODCALLTYPE</name> <macro><name pos:line="411" pos:column="40">FRevokeComponent</name><argument_list pos:line="411" pos:column="56">( 
+            <comment type="block" pos:line="412" pos:column="13">/* [in] */</comment> <argument pos:line="412" pos:column="24">DWORD_PTR dwComponentID</argument>)</argument_list></macro> <op:operator pos:line="412" pos:column="49">=</op:operator> <lit:literal type="number" pos:line="412" pos:column="51">0</lit:literal></expr>;
+        
+        <expr pos:line="414" pos:column="9">virtual <name pos:line="414" pos:column="17">BOOL</name> <name pos:line="414" pos:column="22">STDMETHODCALLTYPE</name> <macro><name pos:line="414" pos:column="40">FUpdateComponentRegistration</name><argument_list pos:line="414" pos:column="68">( 
+            <comment type="block" pos:line="415" pos:column="13">/* [in] */</comment> <argument pos:line="415" pos:column="24">DWORD_PTR dwComponentID</argument>,
+            <comment type="block" pos:line="416" pos:column="13">/* [in] */</comment> <argument pos:line="416" pos:column="24">const OLECRINFO *pcrinfo</argument>)</argument_list></macro> <op:operator pos:line="416" pos:column="50">=</op:operator> <lit:literal type="number" pos:line="416" pos:column="52">0</lit:literal></expr>;
+        
+        <expr pos:line="418" pos:column="9">virtual <name pos:line="418" pos:column="17">BOOL</name> <name pos:line="418" pos:column="22">STDMETHODCALLTYPE</name> <macro><name pos:line="418" pos:column="40">FOnComponentActivate</name><argument_list pos:line="418" pos:column="60">( 
+            <comment type="block" pos:line="419" pos:column="13">/* [in] */</comment> <argument pos:line="419" pos:column="24">DWORD_PTR dwComponentID</argument>)</argument_list></macro> <op:operator pos:line="419" pos:column="49">=</op:operator> <lit:literal type="number" pos:line="419" pos:column="51">0</lit:literal></expr>;
+        
+        <expr pos:line="421" pos:column="9">virtual <name pos:line="421" pos:column="17">BOOL</name> <name pos:line="421" pos:column="22">STDMETHODCALLTYPE</name> <macro><name pos:line="421" pos:column="40">FSetTrackingComponent</name><argument_list pos:line="421" pos:column="61">( 
+            <comment type="block" pos:line="422" pos:column="13">/* [in] */</comment> <argument pos:line="422" pos:column="24">DWORD_PTR dwComponentID</argument>,
+            <comment type="block" pos:line="423" pos:column="13">/* [in] */</comment> <argument pos:line="423" pos:column="24">BOOL fTrack</argument>)</argument_list></macro> <op:operator pos:line="423" pos:column="37">=</op:operator> <lit:literal type="number" pos:line="423" pos:column="39">0</lit:literal></expr>;
+        
+        <expr pos:line="425" pos:column="9">virtual <name pos:line="425" pos:column="17">void</name> <name pos:line="425" pos:column="22">STDMETHODCALLTYPE</name> <macro><name pos:line="425" pos:column="40">OnComponentEnterState</name><argument_list pos:line="425" pos:column="61">( 
+            <comment type="block" pos:line="426" pos:column="13">/* [in] */</comment> <argument pos:line="426" pos:column="24">DWORD_PTR dwComponentID</argument>,
+            <comment type="block" pos:line="427" pos:column="13">/* [in] */</comment> <argument pos:line="427" pos:column="24">OLECSTATE uStateID</argument>,
+            <comment type="block" pos:line="428" pos:column="13">/* [in] */</comment> <argument pos:line="428" pos:column="24">OLECCONTEXT uContext</argument>,
+            <comment type="block" pos:line="429" pos:column="13">/* [in] */</comment> <argument pos:line="429" pos:column="24">ULONG cpicmExclude</argument>,
+            <comment type="block" pos:line="430" pos:column="13">/* [in] */</comment> <argument pos:line="430" pos:column="24">IOleComponentManager **rgpicmExclude</argument>,
+            <comment type="block" pos:line="431" pos:column="13">/* [in] */</comment> <argument pos:line="431" pos:column="24">DWORD dwReserved</argument>)</argument_list></macro> <op:operator pos:line="431" pos:column="42">=</op:operator> <lit:literal type="number" pos:line="431" pos:column="44">0</lit:literal></expr>;
+        
+        <expr pos:line="433" pos:column="9">virtual <name pos:line="433" pos:column="17">BOOL</name> <name pos:line="433" pos:column="22">STDMETHODCALLTYPE</name> <macro><name pos:line="433" pos:column="40">FOnComponentExitState</name><argument_list pos:line="433" pos:column="61">( 
+            <comment type="block" pos:line="434" pos:column="13">/* [in] */</comment> <argument pos:line="434" pos:column="24">DWORD_PTR dwComponentID</argument>,
+            <comment type="block" pos:line="435" pos:column="13">/* [in] */</comment> <argument pos:line="435" pos:column="24">OLECSTATE uStateID</argument>,
+            <comment type="block" pos:line="436" pos:column="13">/* [in] */</comment> <argument pos:line="436" pos:column="24">OLECCONTEXT uContext</argument>,
+            <comment type="block" pos:line="437" pos:column="13">/* [in] */</comment> <argument pos:line="437" pos:column="24">ULONG cpicmExclude</argument>,
+            <comment type="block" pos:line="438" pos:column="13">/* [in] */</comment> <argument pos:line="438" pos:column="24">IOleComponentManager **rgpicmExclude</argument>)</argument_list></macro> <op:operator pos:line="438" pos:column="62">=</op:operator> <lit:literal type="number" pos:line="438" pos:column="64">0</lit:literal></expr>;
+        
+        <expr pos:line="440" pos:column="9">virtual <name pos:line="440" pos:column="17">BOOL</name> <name pos:line="440" pos:column="22">STDMETHODCALLTYPE</name> <macro><name pos:line="440" pos:column="40">FInState</name><argument_list pos:line="440" pos:column="48">( 
+            <comment type="block" pos:line="441" pos:column="13">/* [in] */</comment> <argument pos:line="441" pos:column="24">OLECSTATE uStateID</argument>,
+            <comment type="block" pos:line="442" pos:column="13">/* [in] */</comment> <argument pos:line="442" pos:column="24">void *pvoid</argument>)</argument_list></macro> <op:operator pos:line="442" pos:column="37">=</op:operator> <lit:literal type="number" pos:line="442" pos:column="39">0</lit:literal></expr>;
+        
+        <expr pos:line="444" pos:column="9">virtual <name pos:line="444" pos:column="17">BOOL</name> <name pos:line="444" pos:column="22">STDMETHODCALLTYPE</name> <call><name pos:line="444" pos:column="40">FContinueIdle</name><argument_list pos:line="444" pos:column="53">( <argument><expr><name pos:line="444" pos:column="55">void</name></expr></argument>)</argument_list></call> <op:operator pos:line="444" pos:column="61">=</op:operator> <lit:literal type="number" pos:line="444" pos:column="63">0</lit:literal></expr>;
+        
+        <expr pos:line="446" pos:column="9">virtual <name pos:line="446" pos:column="17">BOOL</name> <name pos:line="446" pos:column="22">STDMETHODCALLTYPE</name> <macro><name pos:line="446" pos:column="40">FPushMessageLoop</name><argument_list pos:line="446" pos:column="56">( 
+            <comment type="block" pos:line="447" pos:column="13">/* [in] */</comment> <argument pos:line="447" pos:column="24">DWORD_PTR dwComponentID</argument>,
+            <comment type="block" pos:line="448" pos:column="13">/* [in] */</comment> <argument pos:line="448" pos:column="24">OLELOOP uReason</argument>,
+            <comment type="block" pos:line="449" pos:column="13">/* [in] */</comment> <argument pos:line="449" pos:column="24">void *pvLoopData</argument>)</argument_list></macro> <op:operator pos:line="449" pos:column="42">=</op:operator> <lit:literal type="number" pos:line="449" pos:column="44">0</lit:literal></expr>;
+        
+        <expr pos:line="451" pos:column="9">virtual <name pos:line="451" pos:column="17">BOOL</name> <name pos:line="451" pos:column="22">STDMETHODCALLTYPE</name> <macro><name pos:line="451" pos:column="40">FCreateSubComponentManager</name><argument_list pos:line="451" pos:column="66">( 
+            <comment type="block" pos:line="452" pos:column="13">/* [in] */</comment> <argument pos:line="452" pos:column="24">IUnknown *piunkOuter</argument>,
+            <comment type="block" pos:line="453" pos:column="13">/* [in] */</comment> <argument pos:line="453" pos:column="24">IUnknown *piunkServProv</argument>,
+            <comment type="block" pos:line="454" pos:column="13">/* [in] */</comment> <argument pos:line="454" pos:column="24">REFIID riid</argument>,
+            <comment type="block" pos:line="455" pos:column="13">/* [out] */</comment> <argument pos:line="455" pos:column="25">void **ppvObj</argument>)</argument_list></macro> <op:operator pos:line="455" pos:column="40">=</op:operator> <lit:literal type="number" pos:line="455" pos:column="42">0</lit:literal></expr>;
+        
+        <expr pos:line="457" pos:column="9">virtual <name pos:line="457" pos:column="17">BOOL</name> <name pos:line="457" pos:column="22">STDMETHODCALLTYPE</name> <call><name pos:line="457" pos:column="40">FGetParentComponentManager</name><argument_list pos:line="457" pos:column="66">( 
+            <comment type="block" pos:line="458" pos:column="13">/* [out] */</comment> <argument><expr><name pos:line="458" pos:column="25">IOleComponentManager</name> <op:operator pos:line="458" pos:column="46">*</op:operator><op:operator pos:line="458" pos:column="47">*</op:operator><name pos:line="458" pos:column="48">ppicm</name></expr></argument>)</argument_list></call> <op:operator pos:line="458" pos:column="55">=</op:operator> <lit:literal type="number" pos:line="458" pos:column="57">0</lit:literal></expr>;
+        
+        <expr pos:line="460" pos:column="9">virtual <name pos:line="460" pos:column="17">BOOL</name> <name pos:line="460" pos:column="22">STDMETHODCALLTYPE</name> <macro><name pos:line="460" pos:column="40">FGetActiveComponent</name><argument_list pos:line="460" pos:column="59">( 
+            <comment type="block" pos:line="461" pos:column="13">/* [in] */</comment> <argument pos:line="461" pos:column="24">OLEGAC dwgac</argument>,
+            <comment type="block" pos:line="462" pos:column="13">/* [out] */</comment> <argument pos:line="462" pos:column="25">IOleComponent **ppic</argument>,
+            <comment type="block" pos:line="463" pos:column="13">/* [out][in] */</comment> <argument pos:line="463" pos:column="29">OLECRINFO *pcrinfo</argument>,
+            <comment type="block" pos:line="464" pos:column="13">/* [in] */</comment> <argument pos:line="464" pos:column="24">DWORD dwReserved</argument>)</argument_list></macro> <op:operator pos:line="464" pos:column="42">=</op:operator> <lit:literal type="number" pos:line="464" pos:column="44">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="468" pos:column="1">#<cpp:directive pos:line="468" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="468" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="470" pos:column="5">typedef <type><struct pos:line="470" pos:column="13">struct <name pos:line="470" pos:column="20">IOleComponentManagerVtbl</name>
+    <block pos:line="471" pos:column="5">{<public type="default" pos:line="471" pos:column="6">
+        <function_decl><type><name pos:line="472" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="474" pos:column="9">HRESULT</name></type> ( <name pos:line="474" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="474" pos:column="37">*</type:modifier><name pos:line="474" pos:column="38">QueryInterface</name> )<parameter_list pos:line="474" pos:column="54">( 
+            <param><decl><type><name pos:line="475" pos:column="13">IOleComponentManager</name> <type:modifier pos:line="475" pos:column="34">*</type:modifier></type> <name pos:line="475" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="476" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="476" pos:column="24">REFIID</name></type> <name pos:line="476" pos:column="31">riid</name></decl></param>,
+            <comment type="block" pos:line="477" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="478" pos:column="13">__RPC__deref_out</name>  <name pos:line="478" pos:column="31">void</name> <type:modifier pos:line="478" pos:column="36">*</type:modifier><type:modifier pos:line="478" pos:column="37">*</type:modifier></type><name pos:line="478" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="480" pos:column="9">ULONG</name></type> ( <name pos:line="480" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="480" pos:column="35">*</type:modifier><name pos:line="480" pos:column="36">AddRef</name> )<parameter_list pos:line="480" pos:column="44">( 
+            <param><decl><type><name pos:line="481" pos:column="13">IOleComponentManager</name> <type:modifier pos:line="481" pos:column="34">*</type:modifier></type> <name pos:line="481" pos:column="36">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="483" pos:column="9">ULONG</name></type> ( <name pos:line="483" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="483" pos:column="35">*</type:modifier><name pos:line="483" pos:column="36">Release</name> )<parameter_list pos:line="483" pos:column="45">( 
+            <param><decl><type><name pos:line="484" pos:column="13">IOleComponentManager</name> <type:modifier pos:line="484" pos:column="34">*</type:modifier></type> <name pos:line="484" pos:column="36">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="486" pos:column="9">HRESULT</name></type> ( <name pos:line="486" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="486" pos:column="37">*</type:modifier><name pos:line="486" pos:column="38">QueryService</name> )<parameter_list pos:line="486" pos:column="52">( 
+            <param><decl><type><name pos:line="487" pos:column="13">IOleComponentManager</name> <type:modifier pos:line="487" pos:column="34">*</type:modifier></type> <name pos:line="487" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="488" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="488" pos:column="24">REFGUID</name></type> <name pos:line="488" pos:column="32">guidService</name></decl></param>,
+            <comment type="block" pos:line="489" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="489" pos:column="24">REFIID</name></type> <name pos:line="489" pos:column="31">iid</name></decl></param>,
+            <comment type="block" pos:line="490" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="490" pos:column="25">void</name> <type:modifier pos:line="490" pos:column="30">*</type:modifier><type:modifier pos:line="490" pos:column="31">*</type:modifier></type><name pos:line="490" pos:column="32">ppvObj</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="492" pos:column="9">BOOL</name></type> ( <name pos:line="492" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="492" pos:column="34">*</type:modifier><name pos:line="492" pos:column="35">FReserved1</name> )<parameter_list pos:line="492" pos:column="47">( 
+            <param><decl><type><name pos:line="493" pos:column="13">IOleComponentManager</name> <type:modifier pos:line="493" pos:column="34">*</type:modifier></type> <name pos:line="493" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="494" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="494" pos:column="24">DWORD</name></type> <name pos:line="494" pos:column="30">dwReserved</name></decl></param>,
+            <comment type="block" pos:line="495" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="495" pos:column="24">UINT</name></type> <name pos:line="495" pos:column="29">message</name></decl></param>,
+            <comment type="block" pos:line="496" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="496" pos:column="24">WPARAM</name></type> <name pos:line="496" pos:column="31">wParam</name></decl></param>,
+            <comment type="block" pos:line="497" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="497" pos:column="24">LPARAM</name></type> <name pos:line="497" pos:column="31">lParam</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="499" pos:column="9">BOOL</name></type> ( <name pos:line="499" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="499" pos:column="34">*</type:modifier><name pos:line="499" pos:column="35">FRegisterComponent</name> )<parameter_list pos:line="499" pos:column="55">( 
+            <param><decl><type><name pos:line="500" pos:column="13">IOleComponentManager</name> <type:modifier pos:line="500" pos:column="34">*</type:modifier></type> <name pos:line="500" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="501" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="501" pos:column="24">IOleComponent</name> <type:modifier pos:line="501" pos:column="38">*</type:modifier></type><name pos:line="501" pos:column="39">piComponent</name></decl></param>,
+            <comment type="block" pos:line="502" pos:column="13">/* [in] */</comment> <param><decl><type><specifier pos:line="502" pos:column="24">const</specifier> <name pos:line="502" pos:column="30">OLECRINFO</name> <type:modifier pos:line="502" pos:column="40">*</type:modifier></type><name pos:line="502" pos:column="41">pcrinfo</name></decl></param>,
+            <comment type="block" pos:line="503" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="503" pos:column="25">DWORD_PTR</name> <type:modifier pos:line="503" pos:column="35">*</type:modifier></type><name pos:line="503" pos:column="36">pdwComponentID</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="505" pos:column="9">BOOL</name></type> ( <name pos:line="505" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="505" pos:column="34">*</type:modifier><name pos:line="505" pos:column="35">FRevokeComponent</name> )<parameter_list pos:line="505" pos:column="53">( 
+            <param><decl><type><name pos:line="506" pos:column="13">IOleComponentManager</name> <type:modifier pos:line="506" pos:column="34">*</type:modifier></type> <name pos:line="506" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="507" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="507" pos:column="24">DWORD_PTR</name></type> <name pos:line="507" pos:column="34">dwComponentID</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="509" pos:column="9">BOOL</name></type> ( <name pos:line="509" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="509" pos:column="34">*</type:modifier><name pos:line="509" pos:column="35">FUpdateComponentRegistration</name> )<parameter_list pos:line="509" pos:column="65">( 
+            <param><decl><type><name pos:line="510" pos:column="13">IOleComponentManager</name> <type:modifier pos:line="510" pos:column="34">*</type:modifier></type> <name pos:line="510" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="511" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="511" pos:column="24">DWORD_PTR</name></type> <name pos:line="511" pos:column="34">dwComponentID</name></decl></param>,
+            <comment type="block" pos:line="512" pos:column="13">/* [in] */</comment> <param><decl><type><specifier pos:line="512" pos:column="24">const</specifier> <name pos:line="512" pos:column="30">OLECRINFO</name> <type:modifier pos:line="512" pos:column="40">*</type:modifier></type><name pos:line="512" pos:column="41">pcrinfo</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="514" pos:column="9">BOOL</name></type> ( <name pos:line="514" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="514" pos:column="34">*</type:modifier><name pos:line="514" pos:column="35">FOnComponentActivate</name> )<parameter_list pos:line="514" pos:column="57">( 
+            <param><decl><type><name pos:line="515" pos:column="13">IOleComponentManager</name> <type:modifier pos:line="515" pos:column="34">*</type:modifier></type> <name pos:line="515" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="516" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="516" pos:column="24">DWORD_PTR</name></type> <name pos:line="516" pos:column="34">dwComponentID</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="518" pos:column="9">BOOL</name></type> ( <name pos:line="518" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="518" pos:column="34">*</type:modifier><name pos:line="518" pos:column="35">FSetTrackingComponent</name> )<parameter_list pos:line="518" pos:column="58">( 
+            <param><decl><type><name pos:line="519" pos:column="13">IOleComponentManager</name> <type:modifier pos:line="519" pos:column="34">*</type:modifier></type> <name pos:line="519" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="520" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="520" pos:column="24">DWORD_PTR</name></type> <name pos:line="520" pos:column="34">dwComponentID</name></decl></param>,
+            <comment type="block" pos:line="521" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="521" pos:column="24">BOOL</name></type> <name pos:line="521" pos:column="29">fTrack</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="523" pos:column="9">void</name></type> ( <name pos:line="523" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="523" pos:column="34">*</type:modifier><name pos:line="523" pos:column="35">OnComponentEnterState</name> )<parameter_list pos:line="523" pos:column="58">( 
+            <param><decl><type><name pos:line="524" pos:column="13">IOleComponentManager</name> <type:modifier pos:line="524" pos:column="34">*</type:modifier></type> <name pos:line="524" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="525" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="525" pos:column="24">DWORD_PTR</name></type> <name pos:line="525" pos:column="34">dwComponentID</name></decl></param>,
+            <comment type="block" pos:line="526" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="526" pos:column="24">OLECSTATE</name></type> <name pos:line="526" pos:column="34">uStateID</name></decl></param>,
+            <comment type="block" pos:line="527" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="527" pos:column="24">OLECCONTEXT</name></type> <name pos:line="527" pos:column="36">uContext</name></decl></param>,
+            <comment type="block" pos:line="528" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="528" pos:column="24">ULONG</name></type> <name pos:line="528" pos:column="30">cpicmExclude</name></decl></param>,
+            <comment type="block" pos:line="529" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="529" pos:column="24">IOleComponentManager</name> <type:modifier pos:line="529" pos:column="45">*</type:modifier><type:modifier pos:line="529" pos:column="46">*</type:modifier></type><name pos:line="529" pos:column="47">rgpicmExclude</name></decl></param>,
+            <comment type="block" pos:line="530" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="530" pos:column="24">DWORD</name></type> <name pos:line="530" pos:column="30">dwReserved</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="532" pos:column="9">BOOL</name></type> ( <name pos:line="532" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="532" pos:column="34">*</type:modifier><name pos:line="532" pos:column="35">FOnComponentExitState</name> )<parameter_list pos:line="532" pos:column="58">( 
+            <param><decl><type><name pos:line="533" pos:column="13">IOleComponentManager</name> <type:modifier pos:line="533" pos:column="34">*</type:modifier></type> <name pos:line="533" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="534" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="534" pos:column="24">DWORD_PTR</name></type> <name pos:line="534" pos:column="34">dwComponentID</name></decl></param>,
+            <comment type="block" pos:line="535" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="535" pos:column="24">OLECSTATE</name></type> <name pos:line="535" pos:column="34">uStateID</name></decl></param>,
+            <comment type="block" pos:line="536" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="536" pos:column="24">OLECCONTEXT</name></type> <name pos:line="536" pos:column="36">uContext</name></decl></param>,
+            <comment type="block" pos:line="537" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="537" pos:column="24">ULONG</name></type> <name pos:line="537" pos:column="30">cpicmExclude</name></decl></param>,
+            <comment type="block" pos:line="538" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="538" pos:column="24">IOleComponentManager</name> <type:modifier pos:line="538" pos:column="45">*</type:modifier><type:modifier pos:line="538" pos:column="46">*</type:modifier></type><name pos:line="538" pos:column="47">rgpicmExclude</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="540" pos:column="9">BOOL</name></type> ( <name pos:line="540" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="540" pos:column="34">*</type:modifier><name pos:line="540" pos:column="35">FInState</name> )<parameter_list pos:line="540" pos:column="45">( 
+            <param><decl><type><name pos:line="541" pos:column="13">IOleComponentManager</name> <type:modifier pos:line="541" pos:column="34">*</type:modifier></type> <name pos:line="541" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="542" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="542" pos:column="24">OLECSTATE</name></type> <name pos:line="542" pos:column="34">uStateID</name></decl></param>,
+            <comment type="block" pos:line="543" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="543" pos:column="24">void</name> <type:modifier pos:line="543" pos:column="29">*</type:modifier></type><name pos:line="543" pos:column="30">pvoid</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="545" pos:column="9">BOOL</name></type> ( <name pos:line="545" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="545" pos:column="34">*</type:modifier><name pos:line="545" pos:column="35">FContinueIdle</name> )<parameter_list pos:line="545" pos:column="50">( 
+            <param><decl><type><name pos:line="546" pos:column="13">IOleComponentManager</name> <type:modifier pos:line="546" pos:column="34">*</type:modifier></type> <name pos:line="546" pos:column="36">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="548" pos:column="9">BOOL</name></type> ( <name pos:line="548" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="548" pos:column="34">*</type:modifier><name pos:line="548" pos:column="35">FPushMessageLoop</name> )<parameter_list pos:line="548" pos:column="53">( 
+            <param><decl><type><name pos:line="549" pos:column="13">IOleComponentManager</name> <type:modifier pos:line="549" pos:column="34">*</type:modifier></type> <name pos:line="549" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="550" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="550" pos:column="24">DWORD_PTR</name></type> <name pos:line="550" pos:column="34">dwComponentID</name></decl></param>,
+            <comment type="block" pos:line="551" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="551" pos:column="24">OLELOOP</name></type> <name pos:line="551" pos:column="32">uReason</name></decl></param>,
+            <comment type="block" pos:line="552" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="552" pos:column="24">void</name> <type:modifier pos:line="552" pos:column="29">*</type:modifier></type><name pos:line="552" pos:column="30">pvLoopData</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="554" pos:column="9">BOOL</name></type> ( <name pos:line="554" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="554" pos:column="34">*</type:modifier><name pos:line="554" pos:column="35">FCreateSubComponentManager</name> )<parameter_list pos:line="554" pos:column="63">( 
+            <param><decl><type><name pos:line="555" pos:column="13">IOleComponentManager</name> <type:modifier pos:line="555" pos:column="34">*</type:modifier></type> <name pos:line="555" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="556" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="556" pos:column="24">IUnknown</name> <type:modifier pos:line="556" pos:column="33">*</type:modifier></type><name pos:line="556" pos:column="34">piunkOuter</name></decl></param>,
+            <comment type="block" pos:line="557" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="557" pos:column="24">IUnknown</name> <type:modifier pos:line="557" pos:column="33">*</type:modifier></type><name pos:line="557" pos:column="34">piunkServProv</name></decl></param>,
+            <comment type="block" pos:line="558" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="558" pos:column="24">REFIID</name></type> <name pos:line="558" pos:column="31">riid</name></decl></param>,
+            <comment type="block" pos:line="559" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="559" pos:column="25">void</name> <type:modifier pos:line="559" pos:column="30">*</type:modifier><type:modifier pos:line="559" pos:column="31">*</type:modifier></type><name pos:line="559" pos:column="32">ppvObj</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="561" pos:column="9">BOOL</name></type> ( <name pos:line="561" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="561" pos:column="34">*</type:modifier><name pos:line="561" pos:column="35">FGetParentComponentManager</name> )<parameter_list pos:line="561" pos:column="63">( 
+            <param><decl><type><name pos:line="562" pos:column="13">IOleComponentManager</name> <type:modifier pos:line="562" pos:column="34">*</type:modifier></type> <name pos:line="562" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="563" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="563" pos:column="25">IOleComponentManager</name> <type:modifier pos:line="563" pos:column="46">*</type:modifier><type:modifier pos:line="563" pos:column="47">*</type:modifier></type><name pos:line="563" pos:column="48">ppicm</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="565" pos:column="9">BOOL</name></type> ( <name pos:line="565" pos:column="16">STDMETHODCALLTYPE</name> <type:modifier pos:line="565" pos:column="34">*</type:modifier><name pos:line="565" pos:column="35">FGetActiveComponent</name> )<parameter_list pos:line="565" pos:column="56">( 
+            <param><decl><type><name pos:line="566" pos:column="13">IOleComponentManager</name> <type:modifier pos:line="566" pos:column="34">*</type:modifier></type> <name pos:line="566" pos:column="36">This</name></decl></param>,
+            <comment type="block" pos:line="567" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="567" pos:column="24">OLEGAC</name></type> <name pos:line="567" pos:column="31">dwgac</name></decl></param>,
+            <comment type="block" pos:line="568" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="568" pos:column="25">IOleComponent</name> <type:modifier pos:line="568" pos:column="39">*</type:modifier><type:modifier pos:line="568" pos:column="40">*</type:modifier></type><name pos:line="568" pos:column="41">ppic</name></decl></param>,
+            <comment type="block" pos:line="569" pos:column="13">/* [out][in] */</comment> <param><decl><type><name pos:line="569" pos:column="29">OLECRINFO</name> <type:modifier pos:line="569" pos:column="39">*</type:modifier></type><name pos:line="569" pos:column="40">pcrinfo</name></decl></param>,
+            <comment type="block" pos:line="570" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="570" pos:column="24">DWORD</name></type> <name pos:line="570" pos:column="30">dwReserved</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="572" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="573" pos:column="7">IOleComponentManagerVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="575" pos:column="5">interface</name></type> <name pos:line="575" pos:column="15">IOleComponentManager</name>
+    <argument_list pos:line="576" pos:column="5">{
+        <argument><expr><name pos:line="577" pos:column="9">CONST_VTBL</name> struct <name pos:line="577" pos:column="27">IOleComponentManagerVtbl</name> <op:operator pos:line="577" pos:column="52">*</op:operator><name pos:line="577" pos:column="53">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="582" pos:column="1">#<cpp:directive pos:line="582" pos:column="2">ifdef</cpp:directive> <name pos:line="582" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="585" pos:column="1">#<cpp:directive pos:line="585" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="585" pos:column="9">IOleComponentManager_QueryInterface</name><parameter_list pos:line="585" pos:column="44">(<param><type><name pos:line="585" pos:column="45">This</name></type></param>,<param><type><name pos:line="585" pos:column="50">riid</name></type></param>,<param><type><name pos:line="585" pos:column="55">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="586" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="588" pos:column="1">#<cpp:directive pos:line="588" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="588" pos:column="9">IOleComponentManager_AddRef</name><parameter_list pos:line="588" pos:column="36">(<param><type><name pos:line="588" pos:column="37">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="589" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="591" pos:column="1">#<cpp:directive pos:line="591" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="591" pos:column="9">IOleComponentManager_Release</name><parameter_list pos:line="591" pos:column="37">(<param><type><name pos:line="591" pos:column="38">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="592" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="595" pos:column="1">#<cpp:directive pos:line="595" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="595" pos:column="9">IOleComponentManager_QueryService</name><parameter_list pos:line="595" pos:column="42">(<param><type><name pos:line="595" pos:column="43">This</name></type></param>,<param><type><name pos:line="595" pos:column="48">guidService</name></type></param>,<param><type><name pos:line="595" pos:column="60">iid</name></type></param>,<param><type><name pos:line="595" pos:column="64">ppvObj</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="596" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryService(This,guidService,iid,ppvObj) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="598" pos:column="1">#<cpp:directive pos:line="598" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="598" pos:column="9">IOleComponentManager_FReserved1</name><parameter_list pos:line="598" pos:column="40">(<param><type><name pos:line="598" pos:column="41">This</name></type></param>,<param><type><name pos:line="598" pos:column="46">dwReserved</name></type></param>,<param><type><name pos:line="598" pos:column="57">message</name></type></param>,<param><type><name pos:line="598" pos:column="65">wParam</name></type></param>,<param><type><name pos:line="598" pos:column="72">lParam</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="599" pos:column="5">( (This)-&gt;lpVtbl -&gt; FReserved1(This,dwReserved,message,wParam,lParam) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="601" pos:column="1">#<cpp:directive pos:line="601" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="601" pos:column="9">IOleComponentManager_FRegisterComponent</name><parameter_list pos:line="601" pos:column="48">(<param><type><name pos:line="601" pos:column="49">This</name></type></param>,<param><type><name pos:line="601" pos:column="54">piComponent</name></type></param>,<param><type><name pos:line="601" pos:column="66">pcrinfo</name></type></param>,<param><type><name pos:line="601" pos:column="74">pdwComponentID</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="602" pos:column="5">( (This)-&gt;lpVtbl -&gt; FRegisterComponent(This,piComponent,pcrinfo,pdwComponentID) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="604" pos:column="1">#<cpp:directive pos:line="604" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="604" pos:column="9">IOleComponentManager_FRevokeComponent</name><parameter_list pos:line="604" pos:column="46">(<param><type><name pos:line="604" pos:column="47">This</name></type></param>,<param><type><name pos:line="604" pos:column="52">dwComponentID</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="605" pos:column="5">( (This)-&gt;lpVtbl -&gt; FRevokeComponent(This,dwComponentID) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="607" pos:column="1">#<cpp:directive pos:line="607" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="607" pos:column="9">IOleComponentManager_FUpdateComponentRegistration</name><parameter_list pos:line="607" pos:column="58">(<param><type><name pos:line="607" pos:column="59">This</name></type></param>,<param><type><name pos:line="607" pos:column="64">dwComponentID</name></type></param>,<param><type><name pos:line="607" pos:column="78">pcrinfo</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="608" pos:column="5">( (This)-&gt;lpVtbl -&gt; FUpdateComponentRegistration(This,dwComponentID,pcrinfo) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="610" pos:column="1">#<cpp:directive pos:line="610" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="610" pos:column="9">IOleComponentManager_FOnComponentActivate</name><parameter_list pos:line="610" pos:column="50">(<param><type><name pos:line="610" pos:column="51">This</name></type></param>,<param><type><name pos:line="610" pos:column="56">dwComponentID</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="611" pos:column="5">( (This)-&gt;lpVtbl -&gt; FOnComponentActivate(This,dwComponentID) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="613" pos:column="1">#<cpp:directive pos:line="613" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="613" pos:column="9">IOleComponentManager_FSetTrackingComponent</name><parameter_list pos:line="613" pos:column="51">(<param><type><name pos:line="613" pos:column="52">This</name></type></param>,<param><type><name pos:line="613" pos:column="57">dwComponentID</name></type></param>,<param><type><name pos:line="613" pos:column="71">fTrack</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="614" pos:column="5">( (This)-&gt;lpVtbl -&gt; FSetTrackingComponent(This,dwComponentID,fTrack) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="616" pos:column="1">#<cpp:directive pos:line="616" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="616" pos:column="9">IOleComponentManager_OnComponentEnterState</name><parameter_list pos:line="616" pos:column="51">(<param><type><name pos:line="616" pos:column="52">This</name></type></param>,<param><type><name pos:line="616" pos:column="57">dwComponentID</name></type></param>,<param><type><name pos:line="616" pos:column="71">uStateID</name></type></param>,<param><type><name pos:line="616" pos:column="80">uContext</name></type></param>,<param><type><name pos:line="616" pos:column="89">cpicmExclude</name></type></param>,<param><type><name pos:line="616" pos:column="102">rgpicmExclude</name></type></param>,<param><type><name pos:line="616" pos:column="116">dwReserved</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="617" pos:column="5">( (This)-&gt;lpVtbl -&gt; OnComponentEnterState(This,dwComponentID,uStateID,uContext,cpicmExclude,rgpicmExclude,dwReserved) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="619" pos:column="1">#<cpp:directive pos:line="619" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="619" pos:column="9">IOleComponentManager_FOnComponentExitState</name><parameter_list pos:line="619" pos:column="51">(<param><type><name pos:line="619" pos:column="52">This</name></type></param>,<param><type><name pos:line="619" pos:column="57">dwComponentID</name></type></param>,<param><type><name pos:line="619" pos:column="71">uStateID</name></type></param>,<param><type><name pos:line="619" pos:column="80">uContext</name></type></param>,<param><type><name pos:line="619" pos:column="89">cpicmExclude</name></type></param>,<param><type><name pos:line="619" pos:column="102">rgpicmExclude</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="620" pos:column="5">( (This)-&gt;lpVtbl -&gt; FOnComponentExitState(This,dwComponentID,uStateID,uContext,cpicmExclude,rgpicmExclude) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="622" pos:column="1">#<cpp:directive pos:line="622" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="622" pos:column="9">IOleComponentManager_FInState</name><parameter_list pos:line="622" pos:column="38">(<param><type><name pos:line="622" pos:column="39">This</name></type></param>,<param><type><name pos:line="622" pos:column="44">uStateID</name></type></param>,<param><type><name pos:line="622" pos:column="53">pvoid</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="623" pos:column="5">( (This)-&gt;lpVtbl -&gt; FInState(This,uStateID,pvoid) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="625" pos:column="1">#<cpp:directive pos:line="625" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="625" pos:column="9">IOleComponentManager_FContinueIdle</name><parameter_list pos:line="625" pos:column="43">(<param><type><name pos:line="625" pos:column="44">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="626" pos:column="5">( (This)-&gt;lpVtbl -&gt; FContinueIdle(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="628" pos:column="1">#<cpp:directive pos:line="628" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="628" pos:column="9">IOleComponentManager_FPushMessageLoop</name><parameter_list pos:line="628" pos:column="46">(<param><type><name pos:line="628" pos:column="47">This</name></type></param>,<param><type><name pos:line="628" pos:column="52">dwComponentID</name></type></param>,<param><type><name pos:line="628" pos:column="66">uReason</name></type></param>,<param><type><name pos:line="628" pos:column="74">pvLoopData</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="629" pos:column="5">( (This)-&gt;lpVtbl -&gt; FPushMessageLoop(This,dwComponentID,uReason,pvLoopData) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="631" pos:column="1">#<cpp:directive pos:line="631" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="631" pos:column="9">IOleComponentManager_FCreateSubComponentManager</name><parameter_list pos:line="631" pos:column="56">(<param><type><name pos:line="631" pos:column="57">This</name></type></param>,<param><type><name pos:line="631" pos:column="62">piunkOuter</name></type></param>,<param><type><name pos:line="631" pos:column="73">piunkServProv</name></type></param>,<param><type><name pos:line="631" pos:column="87">riid</name></type></param>,<param><type><name pos:line="631" pos:column="92">ppvObj</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="632" pos:column="5">( (This)-&gt;lpVtbl -&gt; FCreateSubComponentManager(This,piunkOuter,piunkServProv,riid,ppvObj) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="634" pos:column="1">#<cpp:directive pos:line="634" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="634" pos:column="9">IOleComponentManager_FGetParentComponentManager</name><parameter_list pos:line="634" pos:column="56">(<param><type><name pos:line="634" pos:column="57">This</name></type></param>,<param><type><name pos:line="634" pos:column="62">ppicm</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="635" pos:column="5">( (This)-&gt;lpVtbl -&gt; FGetParentComponentManager(This,ppicm) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="637" pos:column="1">#<cpp:directive pos:line="637" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="637" pos:column="9">IOleComponentManager_FGetActiveComponent</name><parameter_list pos:line="637" pos:column="49">(<param><type><name pos:line="637" pos:column="50">This</name></type></param>,<param><type><name pos:line="637" pos:column="55">dwgac</name></type></param>,<param><type><name pos:line="637" pos:column="61">ppic</name></type></param>,<param><type><name pos:line="637" pos:column="66">pcrinfo</name></type></param>,<param><type><name pos:line="637" pos:column="74">dwReserved</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="638" pos:column="5">( (This)-&gt;lpVtbl -&gt; FGetActiveComponent(This,dwgac,ppic,pcrinfo,dwReserved) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="640" pos:column="1">#<cpp:directive pos:line="640" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="640" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="643" pos:column="1">#<cpp:directive pos:line="643" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="643" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="648" pos:column="1">#<cpp:directive pos:line="648" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="648" pos:column="9">/* __IOleComponentManager_INTERFACE_DEFINED__ */</comment>
+
+
+<comment type="block" pos:line="651" pos:column="1">/* interface __MIDL_itf_olecm_0000_0002 */</comment>
+<comment type="block" pos:line="652" pos:column="1">/* [local] */</comment> 
+
+<decl_stmt><decl><type><name pos:line="654" pos:column="1">EXTERN_C</name> <specifier pos:line="654" pos:column="10">const</specifier> <name pos:line="654" pos:column="16">IID</name></type> <name pos:line="654" pos:column="20">SID_SOleComponentManager</name></decl>;</decl_stmt>
+
+
+<decl_stmt><decl><type><specifier pos:line="657" pos:column="1">extern</specifier> <name pos:line="657" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="657" pos:column="22">__MIDL_itf_olecm_0000_0002_v0_0_c_ifspec</name></decl>;</decl_stmt>
+<decl_stmt><decl><type><specifier pos:line="658" pos:column="1">extern</specifier> <name pos:line="658" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="658" pos:column="22">__MIDL_itf_olecm_0000_0002_v0_0_s_ifspec</name></decl>;</decl_stmt>
+
+<comment type="block" pos:line="660" pos:column="1">/* Additional Prototypes for ALL interfaces */</comment>
+
+<comment type="block" pos:line="662" pos:column="1">/* end of Additional Prototypes */</comment>
+
+<cpp:ifdef pos:line="664" pos:column="1">#<cpp:directive pos:line="664" pos:column="2">ifdef</cpp:directive> <name pos:line="664" pos:column="8">__cplusplus</name></cpp:ifdef>
+}</block></extern>
+<cpp:endif pos:line="666" pos:column="1">#<cpp:directive pos:line="666" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:endif pos:line="668" pos:column="1">#<cpp:directive pos:line="668" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+</unit>

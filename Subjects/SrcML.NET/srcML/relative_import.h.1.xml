@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\SrcML.NET\TestInputs\relative_import.h" pos:tabs="8" pos:line="1" pos:column="1">
+<namespace pos:line="2" pos:column="1">namespace <name pos:line="2" pos:column="11">A</name> <block pos:line="2" pos:column="13">{
+  <function_decl><type><name pos:line="3" pos:column="3">void</name></type> <name pos:line="3" pos:column="8">foo</name><parameter_list pos:line="3" pos:column="11">()</parameter_list>;</function_decl>
+
+  <namespace pos:line="5" pos:column="3">namespace <name pos:line="5" pos:column="13">nested</name> <block pos:line="5" pos:column="20">{
+    <decl_stmt><decl><type><name pos:line="6" pos:column="5">int</name></type> <name pos:line="6" pos:column="9">bar</name> <init pos:line="6" pos:column="13">= <expr><lit:literal type="number" pos:line="6" pos:column="15">42</lit:literal></expr></init></decl>;</decl_stmt>
+  }</block></namespace>
+}</block></namespace>
+</unit>

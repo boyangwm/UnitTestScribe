@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensions\DataStoreExtensions.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">Glimpse</name><op:operator pos:line="2" pos:column="14">.</op:operator><name pos:line="2" pos:column="15">Core</name><op:operator pos:line="2" pos:column="19">.</op:operator><name pos:line="2" pos:column="20">Extensibility</name></name>;</using>
+
+<namespace pos:line="4" pos:column="1">namespace <name><name pos:line="4" pos:column="11">Glimpse</name><op:operator pos:line="4" pos:column="18">.</op:operator><name pos:line="4" pos:column="19">Core</name><op:operator pos:line="4" pos:column="23">.</op:operator><name pos:line="4" pos:column="24">Extensions</name></name>
+<block pos:line="5" pos:column="1">{
+    <comment type="line" pos:line="6" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// Extension methods to simplify common tasks completed with &lt;see cref="IDataStore"/&gt;.</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="9" pos:column="5">public</specifier> <specifier pos:line="9" pos:column="12">static</specifier> class <name pos:line="9" pos:column="25">DataStoreExtensions</name>
+    <block pos:line="10" pos:column="5">{
+        <comment type="line" pos:line="11" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="12" pos:column="9">/// Gets an item from &lt;paramref name="store"/&gt; using &amp;lt;T&amp;gt; as a key. This method should be used in combination with &lt;c&gt;Set&amp;lt;T&amp;gt;&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// &lt;typeparam name="T"&gt;The type of item to retrieve and the key when used in combination with &lt;c&gt;Set&amp;lt;T&amp;gt;&lt;/c&gt;.&lt;/typeparam&gt;</comment>
+        <comment type="line" pos:line="15" pos:column="9">/// &lt;param name="store"&gt;The data store instance.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="16" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="17" pos:column="9">/// An item of type &lt;typeparamref name="T"/&gt;, &lt;c&gt;null&lt;/c&gt; or an &lt;see cref="InvalidCastException"/&gt; is thrown depending on the type of &lt;paramref name="store"/&gt;. Call &lt;c&gt;Contains&amp;lt;T&amp;gt;&lt;/c&gt; first to ensure results.</comment>
+        <comment type="line" pos:line="18" pos:column="9">/// &lt;/returns&gt;</comment>
+        <comment type="line" pos:line="19" pos:column="9">/// &lt;exception cref="InvalidCastException"&gt;May throw an invalid cast exception if the &lt;see cref="IDataStore"/&gt; item and type do not match.&lt;/exception&gt;</comment>
+        <function><type><specifier pos:line="20" pos:column="9">public</specifier> <specifier pos:line="20" pos:column="16">static</specifier> <name pos:line="20" pos:column="23">T</name></type> <name><name pos:line="20" pos:column="25">Get</name><argument_list pos:line="20" pos:column="28">&lt;<argument><name pos:line="20" pos:column="29">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="20" pos:column="31">(<param><decl><type><name pos:line="20" pos:column="32">this</name> <name pos:line="20" pos:column="37">IDataStore</name></type> <name pos:line="20" pos:column="48">store</name></decl></param>)</parameter_list>
+        <block pos:line="21" pos:column="9">{
+            <return pos:line="22" pos:column="13">return <expr><op:operator pos:line="22" pos:column="20">(</op:operator><name pos:line="22" pos:column="21">T</name><op:operator pos:line="22" pos:column="22">)</op:operator><call><name><name pos:line="22" pos:column="23">store</name><op:operator pos:line="22" pos:column="28">.</op:operator><name pos:line="22" pos:column="29">Get</name></name><argument_list pos:line="22" pos:column="32">(<argument><expr><call><name><name pos:line="22" pos:column="33">KeyOf</name><argument_list pos:line="22" pos:column="38">&lt;<argument><name pos:line="22" pos:column="39">T</name></argument>&gt;</argument_list></name><argument_list pos:line="22" pos:column="41">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// Gets an item from &lt;paramref name="store"/&gt; using the key and casts to &lt;c&gt;&amp;lt;T&amp;gt;&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;typeparam name="T"&gt;The type of item to retrieve.&lt;/typeparam&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;param name="store"&gt;The data store instance.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;param name="key"&gt;The item key.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="32" pos:column="9">/// An item of type &lt;typeparamref name="T"/&gt;, &lt;c&gt;null&lt;/c&gt; or an &lt;see cref="InvalidCastException"/&gt; is thrown depending on the type of &lt;paramref name="store"/&gt;. Call &lt;c&gt;Contains&amp;lt;T&amp;gt;&lt;/c&gt; first to ensure results.</comment>
+        <comment type="line" pos:line="33" pos:column="9">/// &lt;/returns&gt;</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// &lt;exception cref="InvalidCastException"&gt;May throw an invalid cast exception if the &lt;see cref="IDataStore"/&gt; item and type do not match.&lt;/exception&gt;</comment>
+        <function><type><specifier pos:line="35" pos:column="9">public</specifier> <specifier pos:line="35" pos:column="16">static</specifier> <name pos:line="35" pos:column="23">T</name></type> <name><name pos:line="35" pos:column="25">Get</name><argument_list pos:line="35" pos:column="28">&lt;<argument><name pos:line="35" pos:column="29">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="35" pos:column="31">(<param><decl><type><name pos:line="35" pos:column="32">this</name> <name pos:line="35" pos:column="37">IDataStore</name></type> <name pos:line="35" pos:column="48">store</name></decl></param>, <param><decl><type><name pos:line="35" pos:column="55">string</name></type> <name pos:line="35" pos:column="62">key</name></decl></param>)</parameter_list>
+        <block pos:line="36" pos:column="9">{
+            <return pos:line="37" pos:column="13">return <expr><op:operator pos:line="37" pos:column="20">(</op:operator><name pos:line="37" pos:column="21">T</name><op:operator pos:line="37" pos:column="22">)</op:operator><call><name><name pos:line="37" pos:column="23">store</name><op:operator pos:line="37" pos:column="28">.</op:operator><name pos:line="37" pos:column="29">Get</name></name><argument_list pos:line="37" pos:column="32">(<argument><expr><name pos:line="37" pos:column="33">key</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// Sets an item in &lt;paramref name="store"/&gt; using &amp;lt;T&amp;gt; as a key. This method should be used in combination with &lt;c&gt;Get&amp;lt;T&amp;gt;&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// &lt;typeparam name="T"&gt;The type of item to set.&lt;/typeparam&gt;</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// &lt;param name="store"&gt;The data store instance.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// &lt;param name="value"&gt;The item to store.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// &lt;example&gt;</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// &lt;code&gt;</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// &lt;![CDATA[</comment>
+        <comment type="line" pos:line="49" pos:column="9">/// dataStore.Set("I am a string"); // inferred type</comment>
+        <comment type="line" pos:line="50" pos:column="9">/// var result = dataStore.Get&lt;string&gt;();</comment>
+        <comment type="line" pos:line="51" pos:column="9">/// Assert.Equals(result, "I am a string");</comment>
+        <comment type="line" pos:line="52" pos:column="9">/// </comment>
+        <comment type="line" pos:line="53" pos:column="9">/// dataStore.Set&lt;IList&lt;int&gt;&gt;(new List{ 1, 2, 3 }); // specified type</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// var result = dataStore.Get&lt;IList&lt;int&gt;&gt;();</comment>
+        <comment type="line" pos:line="55" pos:column="9">/// Assert.Equals(result.Count, 3);</comment>
+        <comment type="line" pos:line="56" pos:column="9">/// ]]&gt;</comment>
+        <comment type="line" pos:line="57" pos:column="9">/// &lt;/code&gt;</comment>
+        <comment type="line" pos:line="58" pos:column="9">/// &lt;/example&gt;</comment>
+        <function><type><specifier pos:line="59" pos:column="9">public</specifier> <specifier pos:line="59" pos:column="16">static</specifier> <name pos:line="59" pos:column="23">void</name></type> <name><name pos:line="59" pos:column="28">Set</name><argument_list pos:line="59" pos:column="31">&lt;<argument><name pos:line="59" pos:column="32">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="59" pos:column="34">(<param><decl><type><name pos:line="59" pos:column="35">this</name> <name pos:line="59" pos:column="40">IDataStore</name></type> <name pos:line="59" pos:column="51">store</name></decl></param>, <param><decl><type><name pos:line="59" pos:column="58">T</name></type> <name pos:line="59" pos:column="60">value</name></decl></param>)</parameter_list>
+        <block pos:line="60" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="61" pos:column="13">store</name><op:operator pos:line="61" pos:column="18">.</op:operator><name pos:line="61" pos:column="19">Set</name></name><argument_list pos:line="61" pos:column="22">(<argument><expr><call><name><name pos:line="61" pos:column="23">KeyOf</name><argument_list pos:line="61" pos:column="28">&lt;<argument><name pos:line="61" pos:column="29">T</name></argument>&gt;</argument_list></name><argument_list pos:line="61" pos:column="31">()</argument_list></call></expr></argument>, <argument><expr><name pos:line="61" pos:column="35">value</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="64" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="65" pos:column="9">/// Determines whether &lt;paramref name="store"/&gt; contains and item with a key of &lt;c&gt;T&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="66" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="67" pos:column="9">/// &lt;typeparam name="T"&gt;The item key.&lt;/typeparam&gt;</comment>
+        <comment type="line" pos:line="68" pos:column="9">/// &lt;param name="store"&gt;The data store instance.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="69" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="70" pos:column="9">///   &lt;c&gt;true&lt;/c&gt; if store contains the item; otherwise, &lt;c&gt;false&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="71" pos:column="9">/// &lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="72" pos:column="9">public</specifier> <specifier pos:line="72" pos:column="16">static</specifier> <name pos:line="72" pos:column="23">bool</name></type> <name><name pos:line="72" pos:column="28">Contains</name><argument_list pos:line="72" pos:column="36">&lt;<argument><name pos:line="72" pos:column="37">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="72" pos:column="39">(<param><decl><type><name pos:line="72" pos:column="40">this</name> <name pos:line="72" pos:column="45">IDataStore</name></type> <name pos:line="72" pos:column="56">store</name></decl></param>)</parameter_list>
+        <block pos:line="73" pos:column="9">{
+            <return pos:line="74" pos:column="13">return <expr><call><name><name pos:line="74" pos:column="20">store</name><op:operator pos:line="74" pos:column="25">.</op:operator><name pos:line="74" pos:column="26">Contains</name></name><argument_list pos:line="74" pos:column="34">(<argument><expr><call><name><name pos:line="74" pos:column="35">KeyOf</name><argument_list pos:line="74" pos:column="40">&lt;<argument><name pos:line="74" pos:column="41">T</name></argument>&gt;</argument_list></name><argument_list pos:line="74" pos:column="43">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="77" pos:column="9">private</specifier> <specifier pos:line="77" pos:column="17">static</specifier> <name pos:line="77" pos:column="24">string</name></type> <name><name pos:line="77" pos:column="31">KeyOf</name><argument_list pos:line="77" pos:column="36">&lt;<argument><name pos:line="77" pos:column="37">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="77" pos:column="39">()</parameter_list>
+        <block pos:line="78" pos:column="9">{
+            <return pos:line="79" pos:column="13">return <expr><call><name pos:line="79" pos:column="20">typeof</name><argument_list pos:line="79" pos:column="26">(<argument><expr><name pos:line="79" pos:column="27">T</name></expr></argument>)</argument_list></call><op:operator pos:line="79" pos:column="29">.</op:operator><name pos:line="79" pos:column="30">AssemblyQualifiedName</name></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace>
+</unit>

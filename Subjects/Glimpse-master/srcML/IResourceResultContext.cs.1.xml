@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensibility\IResourceResultContext.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">Glimpse</name><op:operator pos:line="1" pos:column="14">.</op:operator><name pos:line="1" pos:column="15">Core</name><op:operator pos:line="1" pos:column="19">.</op:operator><name pos:line="1" pos:column="20">Framework</name></name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Core</name><op:operator pos:line="3" pos:column="23">.</op:operator><name pos:line="3" pos:column="24">Extensibility</name></name>
+<block pos:line="4" pos:column="1">{
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="6" pos:column="5">/// &lt;c&gt;IResourceResultContext&lt;/c&gt; provides implementations of &lt;see cref="IResourceResult"/&gt; access to the</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// &lt;see cref="IFrameworkProvider"/&gt;, &lt;see cref="ISerializer"/&gt; and &lt;see cref="IHtmlEncoder"/&gt;.</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class type="interface"><specifier pos:line="9" pos:column="5">public</specifier> interface <name pos:line="9" pos:column="22">IResourceResultContext</name> <super pos:line="9" pos:column="45">: <name pos:line="9" pos:column="47">IContext</name></super>
+    <block pos:line="10" pos:column="5">{
+        <comment type="line" pos:line="11" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="12" pos:column="9">/// Gets the framework provider.</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// &lt;value&gt;The framework provider.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="15" pos:column="9">IFrameworkProvider</name></type> <name pos:line="15" pos:column="28">FrameworkProvider</name> <block pos:line="15" pos:column="46">{ <function_decl><name pos:line="15" pos:column="48">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="17" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="18" pos:column="9">/// Gets the serializer.</comment>
+        <comment type="line" pos:line="19" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="20" pos:column="9">/// &lt;value&gt;The serializer.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="21" pos:column="9">ISerializer</name></type> <name pos:line="21" pos:column="21">Serializer</name> <block pos:line="21" pos:column="32">{ <function_decl><name pos:line="21" pos:column="34">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="23" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// Gets the HTML encoder.</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;value&gt;The HTML encoder.&lt;/value&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="27" pos:column="9">IHtmlEncoder</name></type> <name pos:line="27" pos:column="22">HtmlEncoder</name> <block pos:line="27" pos:column="34">{ <function_decl><name pos:line="27" pos:column="36">get</name>;</function_decl> }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace></unit>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML\Utilities\IConcurrencyStrategy.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2014 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - Initial implementation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Text</name></name>;</using>
+
+<namespace pos:line="17" pos:column="1">namespace <name><name pos:line="17" pos:column="11">ABB</name><op:operator pos:line="17" pos:column="14">.</op:operator><name pos:line="17" pos:column="15">SrcML</name></name> <block pos:line="17" pos:column="21">{
+    <comment type="line" pos:line="18" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="19" pos:column="5">/// A concurrency strategy is used to compute the number of available</comment>
+    <comment type="line" pos:line="20" pos:column="5">/// cores for the &lt;see cref="LimitedConcurrencyLevelTaskScheduler"/&gt;</comment>
+    <comment type="line" pos:line="21" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class type="interface"><specifier pos:line="22" pos:column="5">public</specifier> interface <name pos:line="22" pos:column="22">IConcurrencyStrategy</name> <block pos:line="22" pos:column="43">{
+        <comment type="line" pos:line="23" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// Returns the number of available cores</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;returns&gt;The number of available cores&lt;/returns&gt;</comment>
+        <function_decl><type><name pos:line="27" pos:column="9">int</name></type> <name pos:line="27" pos:column="13">ComputeAvailableCores</name><parameter_list pos:line="27" pos:column="34">()</parameter_list>;</function_decl>
+    }</block></class>
+}</block></namespace>
+</unit>

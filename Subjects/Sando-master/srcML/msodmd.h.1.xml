@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\office10\msodmd.h" pos:tabs="8"><cpp:pragma pos:line="1" pos:column="1">#<cpp:directive pos:line="1" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+
+<comment type="line" format="doxygen" pos:line="3" pos:column="1">///////////////////////////////////////////////////////////////////////////</comment>
+<comment type="line" pos:line="4" pos:column="1">// Mso Doc Management debug-only declarations.</comment>
+<comment type="line" pos:line="5" pos:column="1">//</comment>
+
+<cpp:ifndef pos:line="7" pos:column="1">#<cpp:directive pos:line="7" pos:column="2">ifndef</cpp:directive> <name pos:line="7" pos:column="9">__INDEX_DUMP__STRUCT__</name></cpp:ifndef>
+<cpp:define pos:line="8" pos:column="1">#<cpp:directive pos:line="8" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="8" pos:column="9">__INDEX_DUMP__STRUCT__</name></cpp:macro></cpp:define>
+
+<comment type="line" pos:line="10" pos:column="1">// Structure and index dump type for custom index specification</comment>
+<comment type="line" pos:line="11" pos:column="1">// Index dump types. In a Custom index dump, the user has selected the properties</comment>
+<comment type="line" pos:line="12" pos:column="1">// to be dumped out and their localized string names are stored in the structIndexDump</comment>
+<comment type="line" pos:line="13" pos:column="1">// structure.</comment>
+<typedef pos:line="14" pos:column="1">typedef <type><enum pos:line="14" pos:column="9">enum <name pos:line="14" pos:column="14">_MsoIndexDumpType</name>
+<block pos:line="15" pos:column="1">{
+	<decl><name pos:line="16" pos:column="9">Custom</name>	<init pos:line="16" pos:column="17">=	<expr><lit:literal type="number" pos:line="16" pos:column="25">0</lit:literal></expr></init></decl><op:operator pos:line="16" pos:column="26">,</op:operator>
+	<decl><name pos:line="17" pos:column="9">Complete</name></decl><op:operator pos:line="17" pos:column="17">,</op:operator>
+	<decl><name pos:line="18" pos:column="9">OfficeProps_Only</name></decl><op:operator pos:line="18" pos:column="25">,</op:operator>
+	<decl><name pos:line="19" pos:column="9">NonOfficeProps_Only</name></decl><op:operator pos:line="19" pos:column="28">,</op:operator>
+	<decl><name pos:line="20" pos:column="9">TextProps_Only</name></decl><op:operator pos:line="20" pos:column="23">,</op:operator>
+	<decl><name pos:line="21" pos:column="9">DateProps_Only</name></decl><op:operator pos:line="21" pos:column="23">,</op:operator>
+	<decl><name pos:line="22" pos:column="9">NumericProps_Only</name></decl><op:operator pos:line="22" pos:column="26">,</op:operator>
+	<decl><name pos:line="23" pos:column="9">No_Contents</name></decl><op:operator pos:line="23" pos:column="20">,</op:operator>
+	<decl><name pos:line="24" pos:column="9">Contents_Only</name></decl>
+}</block></enum></type> <name pos:line="25" pos:column="3">MsoIndexDumpType</name>;</typedef>
+
+<comment type="line" pos:line="27" pos:column="1">// Structure that holds criteria for limiting index dumps</comment>
+<typedef pos:line="28" pos:column="1">typedef <type><struct pos:line="28" pos:column="9">struct <name pos:line="28" pos:column="16">_MsoIndexDump</name> <block pos:line="28" pos:column="30">{<public type="default" pos:line="28" pos:column="31">
+
+    <decl_stmt><decl><type><name pos:line="30" pos:column="5">BOOL</name></type>     <name pos:line="30" pos:column="14">fConvertToASCII</name></decl>;</decl_stmt>           <comment type="line" pos:line="30" pos:column="41">// if true, output in ASCII rather than in Unicode</comment>
+
+	<decl_stmt><decl><type><name pos:line="32" pos:column="9">BOOL</name></type>	 <name pos:line="32" pos:column="18">fIncludeDocLists</name></decl>;</decl_stmt>			<comment type="line" pos:line="32" pos:column="57">// whether or not include document lists for each prop</comment>
+	<decl_stmt><decl><type><name pos:line="33" pos:column="9">BOOL</name></type>	 <name pos:line="33" pos:column="18">fIncludeDocNames</name></decl>;</decl_stmt>			<comment type="line" pos:line="33" pos:column="57">// whether or not to include document names</comment>
+	<decl_stmt><decl><type><name pos:line="34" pos:column="9">BOOL</name></type>	 <name pos:line="34" pos:column="18">fShowFullPath</name></decl>;</decl_stmt>				<comment type="line" pos:line="34" pos:column="57">// whether or not show full path for the indexed files</comment>
+
+	<decl_stmt><decl><type><name pos:line="36" pos:column="9">BOOL</name></type>	 <name pos:line="36" pos:column="18">fIncludeCounts</name></decl>;</decl_stmt>			<comment type="line" pos:line="36" pos:column="57">// whether or not print out occurence counts</comment>
+
+	<decl_stmt><decl><type><name pos:line="38" pos:column="9">BOOL</name></type>	 <name pos:line="38" pos:column="18">fIncludeEmptyVals</name></decl>;</decl_stmt>			<comment type="line" pos:line="38" pos:column="57">//  .....  property names &amp; counts for empty values</comment>
+
+
+	<decl_stmt><decl><type><name pos:line="41" pos:column="9">MsoIndexDumpType</name></type> <name pos:line="41" pos:column="26">idType</name></decl>;</decl_stmt>
+
+	<decl_stmt><decl><type><name pos:line="43" pos:column="9">int</name></type>		<name pos:line="43" pos:column="25">wcSelectedProps</name></decl>;</decl_stmt>			<comment type="line" pos:line="43" pos:column="65">// number of properties selected for customized index dump</comment>
+
+	<decl_stmt><decl><type><name pos:line="45" pos:column="9">WCHAR</name>	<type:modifier pos:line="45" pos:column="17">*</type:modifier><type:modifier pos:line="45" pos:column="18">*</type:modifier></type><name pos:line="45" pos:column="19">wzLocPropNames</name></decl>;</decl_stmt>			<comment type="line" pos:line="45" pos:column="57">// array of pointers to localized property</comment>
+										<comment type="line" pos:line="46" pos:column="81">// names for properties to be dumped out (if</comment>
+										<comment type="line" pos:line="47" pos:column="81">// dump type is custom)</comment>
+
+	<decl_stmt><decl><type><name pos:line="49" pos:column="9">WCHAR</name>	<type:modifier pos:line="49" pos:column="17">*</type:modifier></type><name pos:line="49" pos:column="18">wzLowerLimit</name></decl>;</decl_stmt>				<comment type="line" pos:line="49" pos:column="57">// lower range limit for text values</comment>
+	<decl_stmt><decl><type><name pos:line="50" pos:column="9">WCHAR</name>	<type:modifier pos:line="50" pos:column="17">*</type:modifier></type><name pos:line="50" pos:column="18">wzUpperLimit</name></decl>;</decl_stmt>				<comment type="line" pos:line="50" pos:column="57">// upper range limit; if NULL, only the values</comment>
+										<comment type="line" pos:line="51" pos:column="81">// that are equal or extensions of m_wzLowerLimit are dumped out</comment>
+
+    <decl_stmt><decl><type><name pos:line="53" pos:column="5">BOOL</name></type>	<name pos:line="53" pos:column="17">fMatchWholeWordOnly</name></decl>;</decl_stmt>		<comment type="line" pos:line="53" pos:column="49">// if this flag is set, AND m_wzUpperLimit is NULL, then</comment>
+										<comment type="line" pos:line="54" pos:column="81">// only values that are equal to m_wzLowerLimit are dumped out</comment>
+</public>}</block></struct></type> <name pos:line="55" pos:column="3">MsoIndexDump</name>;</typedef>
+
+
+
+<cpp:endif pos:line="59" pos:column="1">#<cpp:directive pos:line="59" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="59" pos:column="8">// __INDEX_DUMP__STRUCT__</comment>
+</unit>

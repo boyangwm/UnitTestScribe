@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML.Data\ImportStatement.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2014 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Patrick Francis (ABB Group) - initial API, implementation, &amp; documentation
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="13" pos:column="1">using <name pos:line="13" pos:column="7">System</name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Collections</name><op:operator pos:line="14" pos:column="25">.</op:operator><name pos:line="14" pos:column="26">Generic</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Collections</name><op:operator pos:line="15" pos:column="25">.</op:operator><name pos:line="15" pos:column="26">ObjectModel</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">System</name><op:operator pos:line="16" pos:column="13">.</op:operator><name pos:line="16" pos:column="14">Linq</name></name>;</using>
+<using pos:line="17" pos:column="1">using <name><name pos:line="17" pos:column="7">System</name><op:operator pos:line="17" pos:column="13">.</op:operator><name pos:line="17" pos:column="14">Text</name></name>;</using>
+<using pos:line="18" pos:column="1">using <name><name pos:line="18" pos:column="7">System</name><op:operator pos:line="18" pos:column="13">.</op:operator><name pos:line="18" pos:column="14">Xml</name></name>;</using>
+
+<namespace pos:line="20" pos:column="1">namespace <name><name pos:line="20" pos:column="11">ABB</name><op:operator pos:line="20" pos:column="14">.</op:operator><name pos:line="20" pos:column="15">SrcML</name><op:operator pos:line="20" pos:column="20">.</op:operator><name pos:line="20" pos:column="21">Data</name></name> <block pos:line="20" pos:column="26">{
+    <comment type="line" pos:line="21" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="22" pos:column="5">/// Represents a general import statement in a program. </comment>
+    <comment type="line" pos:line="23" pos:column="5">/// (Depending on the programming language, this may use a keyword other than import.)</comment>
+    <comment type="line" pos:line="24" pos:column="5">/// For example:</comment>
+    <comment type="line" pos:line="25" pos:column="5">/// Java: import java.lang.*;</comment>
+    <comment type="line" pos:line="26" pos:column="5">/// C#:   using System.IO;</comment>
+    <comment type="line" pos:line="27" pos:column="5">/// C++:  using namespace std;</comment>
+    <comment type="line" pos:line="28" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="29" pos:column="5">public</specifier> class <name pos:line="29" pos:column="18">ImportStatement</name> <super pos:line="29" pos:column="34">: <name pos:line="29" pos:column="36">Statement</name></super> <block pos:line="29" pos:column="46">{
+        <decl_stmt><decl><type><specifier pos:line="30" pos:column="9">private</specifier> <name pos:line="30" pos:column="17">Expression</name></type> <name pos:line="30" pos:column="28">importExpression</name></decl>;</decl_stmt>
+        
+        <comment type="line" pos:line="32" pos:column="9">/// &lt;summary&gt; The XML name for ImportStatement &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="33" pos:column="9">public</specifier> <specifier pos:line="33" pos:column="16">new</specifier> <specifier pos:line="33" pos:column="20">const</specifier> <name pos:line="33" pos:column="26">string</name></type> <name pos:line="33" pos:column="33">XmlName</name> <init pos:line="33" pos:column="41">= <expr><lit:literal type="string" pos:line="33" pos:column="43">"Import"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="35" pos:column="9">/// &lt;summary&gt; XML Name for &lt;see cref="ImportedNamespace" /&gt; &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="36" pos:column="9">public</specifier> <specifier pos:line="36" pos:column="16">const</specifier> <name pos:line="36" pos:column="22">string</name></type> <name pos:line="36" pos:column="29">XmlImportedNamespaceName</name> <init pos:line="36" pos:column="54">= <expr><lit:literal type="string" pos:line="36" pos:column="56">"ImportedNamespace"</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="38" pos:column="9">/// &lt;summary&gt; The namespace being imported. &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="39" pos:column="9">public</specifier> <name pos:line="39" pos:column="16">Expression</name></type> <name pos:line="39" pos:column="27">ImportedNamespace</name> <block pos:line="39" pos:column="45">{
+            <function><name pos:line="40" pos:column="13">get</name> <block pos:line="40" pos:column="17">{ <return pos:line="40" pos:column="19">return <expr><name pos:line="40" pos:column="26">importExpression</name></expr>;</return> }</block></function>
+            <function><name pos:line="41" pos:column="13">set</name> <block pos:line="41" pos:column="17">{
+                <expr_stmt><expr><name pos:line="42" pos:column="17">importExpression</name> <op:operator pos:line="42" pos:column="34">=</op:operator> <name pos:line="42" pos:column="36">value</name></expr>;</expr_stmt>
+                <if pos:line="43" pos:column="17">if<condition pos:line="43" pos:column="19">(<expr><name pos:line="43" pos:column="20">importExpression</name> <op:operator pos:line="43" pos:column="37">!=</op:operator> <name pos:line="43" pos:column="40">null</name></expr>)</condition><then pos:line="43" pos:column="45"> <block pos:line="43" pos:column="46">{
+                    <expr_stmt><expr><name><name pos:line="44" pos:column="21">importExpression</name><op:operator pos:line="44" pos:column="37">.</op:operator><name pos:line="44" pos:column="38">ParentStatement</name></name> <op:operator pos:line="44" pos:column="54">=</op:operator> <name pos:line="44" pos:column="56">this</name></expr>;</expr_stmt>
+                }</block></then></if>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="49" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="50" pos:column="9">/// Instance method for getting &lt;see cref="ImportStatement.XmlName"/&gt;</comment>
+        <comment type="line" pos:line="51" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="52" pos:column="9">/// &lt;returns&gt;Returns the XML name for ImportStatement&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="53" pos:column="9">public</specifier> <specifier pos:line="53" pos:column="16">override</specifier> <name pos:line="53" pos:column="25">string</name></type> <name pos:line="53" pos:column="32">GetXmlName</name><parameter_list pos:line="53" pos:column="42">()</parameter_list> <block pos:line="53" pos:column="45">{ <return pos:line="53" pos:column="47">return <expr><name><name pos:line="53" pos:column="54">ImportStatement</name><op:operator pos:line="53" pos:column="69">.</op:operator><name pos:line="53" pos:column="70">XmlName</name></name></expr>;</return> }</block></function>
+
+        <comment type="line" pos:line="55" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="56" pos:column="9">/// Processes the child of the current reader position into a child of this object.</comment>
+        <comment type="line" pos:line="57" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="58" pos:column="9">/// &lt;param name="reader"&gt;The XML reader&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="59" pos:column="9">protected</specifier> <specifier pos:line="59" pos:column="19">override</specifier> <name pos:line="59" pos:column="28">void</name></type> <name pos:line="59" pos:column="33">ReadXmlChild</name><parameter_list pos:line="59" pos:column="45">(<param><decl><type><name pos:line="59" pos:column="46">XmlReader</name></type> <name pos:line="59" pos:column="56">reader</name></decl></param>)</parameter_list> <block pos:line="59" pos:column="64">{
+            <if pos:line="60" pos:column="13">if<condition pos:line="60" pos:column="15">(<expr><name pos:line="60" pos:column="16">XmlImportedNamespaceName</name> <op:operator pos:line="60" pos:column="41">==</op:operator> <name><name pos:line="60" pos:column="44">reader</name><op:operator pos:line="60" pos:column="50">.</op:operator><name pos:line="60" pos:column="51">Name</name></name></expr>)</condition><then pos:line="60" pos:column="56"> <block pos:line="60" pos:column="57">{
+                <expr_stmt><expr><name pos:line="61" pos:column="17">ImportedNamespace</name> <op:operator pos:line="61" pos:column="35">=</op:operator> <call><name><name pos:line="61" pos:column="37">XmlSerialization</name><op:operator pos:line="61" pos:column="53">.</op:operator><name pos:line="61" pos:column="54">ReadChildExpression</name></name><argument_list pos:line="61" pos:column="73">(<argument><expr><name pos:line="61" pos:column="74">reader</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then> <else pos:line="62" pos:column="15">else <block pos:line="62" pos:column="20">{
+                <expr_stmt><expr><call><name><name pos:line="63" pos:column="17">base</name><op:operator pos:line="63" pos:column="21">.</op:operator><name pos:line="63" pos:column="22">ReadXmlChild</name></name><argument_list pos:line="63" pos:column="34">(<argument><expr><name pos:line="63" pos:column="35">reader</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></else></if>
+        }</block></function>
+
+        <comment type="line" pos:line="67" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="68" pos:column="9">/// Writes the contents of this object to &lt;paramref name="writer"/&gt;.</comment>
+        <comment type="line" pos:line="69" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="70" pos:column="9">/// &lt;param name="writer"&gt;The XML writer to write to&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="71" pos:column="9">protected</specifier> <specifier pos:line="71" pos:column="19">override</specifier> <name pos:line="71" pos:column="28">void</name></type> <name pos:line="71" pos:column="33">WriteXmlContents</name><parameter_list pos:line="71" pos:column="49">(<param><decl><type><name pos:line="71" pos:column="50">XmlWriter</name></type> <name pos:line="71" pos:column="60">writer</name></decl></param>)</parameter_list> <block pos:line="71" pos:column="68">{
+            <if pos:line="72" pos:column="13">if<condition pos:line="72" pos:column="15">(<expr><name pos:line="72" pos:column="16">null</name> <op:operator pos:line="72" pos:column="21">!=</op:operator> <name pos:line="72" pos:column="24">ImportedNamespace</name></expr>)</condition><then pos:line="72" pos:column="42"> <block pos:line="72" pos:column="43">{
+                <expr_stmt><expr><call><name><name pos:line="73" pos:column="17">XmlSerialization</name><op:operator pos:line="73" pos:column="33">.</op:operator><name pos:line="73" pos:column="34">WriteElement</name></name><argument_list pos:line="73" pos:column="46">(<argument><expr><name pos:line="73" pos:column="47">writer</name></expr></argument>, <argument><expr><name pos:line="73" pos:column="55">ImportedNamespace</name></expr></argument>, <argument><expr><name pos:line="73" pos:column="74">XmlImportedNamespaceName</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+            <expr_stmt><expr><call><name><name pos:line="75" pos:column="13">base</name><op:operator pos:line="75" pos:column="17">.</op:operator><name pos:line="75" pos:column="18">WriteXmlContents</name></name><argument_list pos:line="75" pos:column="34">(<argument><expr><name pos:line="75" pos:column="35">writer</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="78" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="79" pos:column="9">/// Returns all the expressions within this statement.</comment>
+        <comment type="line" pos:line="80" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="81" pos:column="9">public</specifier> <specifier pos:line="81" pos:column="16">override</specifier> <name><name pos:line="81" pos:column="25">IEnumerable</name><argument_list pos:line="81" pos:column="36">&lt;<argument><name pos:line="81" pos:column="37">Expression</name></argument>&gt;</argument_list></name></type> <name pos:line="81" pos:column="49">GetExpressions</name><parameter_list pos:line="81" pos:column="63">()</parameter_list> <block pos:line="81" pos:column="66">{
+            <if pos:line="82" pos:column="13">if<condition pos:line="82" pos:column="15">(<expr><name pos:line="82" pos:column="16">ImportedNamespace</name> <op:operator pos:line="82" pos:column="34">!=</op:operator> <name pos:line="82" pos:column="37">null</name></expr>)</condition><then pos:line="82" pos:column="42"> <block pos:line="82" pos:column="43">{
+                <return><specifier pos:line="83" pos:column="17">yield</specifier> return <expr><name pos:line="83" pos:column="30">ImportedNamespace</name></expr>;</return>
+            }</block></then></if>
+        }</block></function>
+
+        <comment type="line" pos:line="87" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="88" pos:column="9">/// Returns a string representation of this statement.</comment>
+        <comment type="line" pos:line="89" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="90" pos:column="9">public</specifier> <specifier pos:line="90" pos:column="16">override</specifier> <name pos:line="90" pos:column="25">string</name></type> <name pos:line="90" pos:column="32">ToString</name><parameter_list pos:line="90" pos:column="40">()</parameter_list> <block pos:line="90" pos:column="43">{
+            <switch pos:line="91" pos:column="13">switch<condition pos:line="91" pos:column="19">(<expr><name pos:line="91" pos:column="20">ProgrammingLanguage</name></expr>)</condition> <block pos:line="91" pos:column="41">{
+                <case pos:line="92" pos:column="17">case <expr><name><name pos:line="92" pos:column="22">Language</name><op:operator pos:line="92" pos:column="30">.</op:operator><name pos:line="92" pos:column="31">CSharp</name></name></expr>:
+                    <return pos:line="93" pos:column="21">return <expr><call><name><name pos:line="93" pos:column="28">string</name><op:operator pos:line="93" pos:column="34">.</op:operator><name pos:line="93" pos:column="35">Format</name></name><argument_list pos:line="93" pos:column="41">(<argument><expr><lit:literal type="string" pos:line="93" pos:column="42">"using {0};"</lit:literal></expr></argument>, <argument><expr><name pos:line="93" pos:column="56">ImportedNamespace</name></expr></argument>)</argument_list></call></expr>;</return>
+                </case><case pos:line="94" pos:column="17">case <expr><name><name pos:line="94" pos:column="22">Language</name><op:operator pos:line="94" pos:column="30">.</op:operator><name pos:line="94" pos:column="31">CPlusPlus</name></name></expr>:
+                    <return pos:line="95" pos:column="21">return <expr><call><name><name pos:line="95" pos:column="28">string</name><op:operator pos:line="95" pos:column="34">.</op:operator><name pos:line="95" pos:column="35">Format</name></name><argument_list pos:line="95" pos:column="41">(<argument><expr><lit:literal type="string" pos:line="95" pos:column="42">"using namespace {0};"</lit:literal></expr></argument>, <argument><expr><name pos:line="95" pos:column="66">ImportedNamespace</name></expr></argument>)</argument_list></call></expr>;</return>
+                </case><case pos:line="96" pos:column="17">case <expr><name><name pos:line="96" pos:column="22">Language</name><op:operator pos:line="96" pos:column="30">.</op:operator><name pos:line="96" pos:column="31">Java</name></name></expr>:
+                    <return pos:line="97" pos:column="21">return <expr><call><name><name pos:line="97" pos:column="28">string</name><op:operator pos:line="97" pos:column="34">.</op:operator><name pos:line="97" pos:column="35">Format</name></name><argument_list pos:line="97" pos:column="41">(<argument><expr><lit:literal type="string" pos:line="97" pos:column="42">"import {0}.*;"</lit:literal></expr></argument>, <argument><expr><name pos:line="97" pos:column="59">ImportedNamespace</name></expr></argument>)</argument_list></call></expr>;</return>
+                </case><default pos:line="98" pos:column="17">default:
+                    <goto pos:line="99" pos:column="21">goto <name pos:line="99" pos:column="26">case Language.CSharp</name>;</goto>
+            </default>}</block></switch>
+        }</block></function>
+    }</block></class>
+}</block></namespace>
+</unit>

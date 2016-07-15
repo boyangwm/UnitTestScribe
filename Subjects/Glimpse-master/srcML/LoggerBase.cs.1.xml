@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensibility\LoggerBase.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Core</name><op:operator pos:line="3" pos:column="23">.</op:operator><name pos:line="3" pos:column="24">Extensibility</name></name>
+<block pos:line="4" pos:column="1">{
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="6" pos:column="5">/// An abstract base class which provides &lt;see cref="ILogger"/&gt; implementations with message formatting abilities.</comment>
+    <comment type="line" pos:line="7" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="8" pos:column="5">public</specifier> <specifier pos:line="8" pos:column="12">abstract</specifier> class <name pos:line="8" pos:column="27">LoggerBase</name> <super pos:line="8" pos:column="38">: <name pos:line="8" pos:column="40">ILogger</name></super>
+    <block pos:line="9" pos:column="5">{
+        <comment type="line" pos:line="10" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="11" pos:column="9">/// Log message at Trace level.</comment>
+        <comment type="line" pos:line="12" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt;</comment>
+        <function_decl><type><specifier pos:line="14" pos:column="9">public</specifier> <specifier pos:line="14" pos:column="16">abstract</specifier> <name pos:line="14" pos:column="25">void</name></type> <name pos:line="14" pos:column="30">Trace</name><parameter_list pos:line="14" pos:column="35">(<param><decl><type><name pos:line="14" pos:column="36">string</name></type> <name pos:line="14" pos:column="43">message</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="16" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="17" pos:column="9">/// Log message at Debug level.</comment>
+        <comment type="line" pos:line="18" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="19" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt;</comment>
+        <function_decl><type><specifier pos:line="20" pos:column="9">public</specifier> <specifier pos:line="20" pos:column="16">abstract</specifier> <name pos:line="20" pos:column="25">void</name></type> <name pos:line="20" pos:column="30">Debug</name><parameter_list pos:line="20" pos:column="35">(<param><decl><type><name pos:line="20" pos:column="36">string</name></type> <name pos:line="20" pos:column="43">message</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="22" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// Log message at Info level.</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt;</comment>
+        <function_decl><type><specifier pos:line="26" pos:column="9">public</specifier> <specifier pos:line="26" pos:column="16">abstract</specifier> <name pos:line="26" pos:column="25">void</name></type> <name pos:line="26" pos:column="30">Info</name><parameter_list pos:line="26" pos:column="34">(<param><decl><type><name pos:line="26" pos:column="35">string</name></type> <name pos:line="26" pos:column="42">message</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// Log message at Warn level.</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt;</comment>
+        <function_decl><type><specifier pos:line="32" pos:column="9">public</specifier> <specifier pos:line="32" pos:column="16">abstract</specifier> <name pos:line="32" pos:column="25">void</name></type> <name pos:line="32" pos:column="30">Warn</name><parameter_list pos:line="32" pos:column="34">(<param><decl><type><name pos:line="32" pos:column="35">string</name></type> <name pos:line="32" pos:column="42">message</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="34" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="35" pos:column="9">/// Log message at Error level.</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt;</comment>
+        <function_decl><type><specifier pos:line="38" pos:column="9">public</specifier> <specifier pos:line="38" pos:column="16">abstract</specifier> <name pos:line="38" pos:column="25">void</name></type> <name pos:line="38" pos:column="30">Error</name><parameter_list pos:line="38" pos:column="35">(<param><decl><type><name pos:line="38" pos:column="36">string</name></type> <name pos:line="38" pos:column="43">message</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// Log message at Fatal level.</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt;</comment>
+        <function_decl><type><specifier pos:line="44" pos:column="9">public</specifier> <specifier pos:line="44" pos:column="16">abstract</specifier> <name pos:line="44" pos:column="25">void</name></type> <name pos:line="44" pos:column="30">Fatal</name><parameter_list pos:line="44" pos:column="35">(<param><decl><type><name pos:line="44" pos:column="36">string</name></type> <name pos:line="44" pos:column="43">message</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="46" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// Log message at Trace level.</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="49" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="50" pos:column="9">/// &lt;param name="exception"&gt;The exception.&lt;/param&gt;</comment>
+        <function_decl><type><specifier pos:line="51" pos:column="9">public</specifier> <specifier pos:line="51" pos:column="16">abstract</specifier> <name pos:line="51" pos:column="25">void</name></type> <name pos:line="51" pos:column="30">Trace</name><parameter_list pos:line="51" pos:column="35">(<param><decl><type><name pos:line="51" pos:column="36">string</name></type> <name pos:line="51" pos:column="43">message</name></decl></param>, <param><decl><type><name pos:line="51" pos:column="52">Exception</name></type> <name pos:line="51" pos:column="62">exception</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="53" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// Log message at Debug level.</comment>
+        <comment type="line" pos:line="55" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="56" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="57" pos:column="9">/// &lt;param name="exception"&gt;The exception.&lt;/param&gt;</comment>
+        <function_decl><type><specifier pos:line="58" pos:column="9">public</specifier> <specifier pos:line="58" pos:column="16">abstract</specifier> <name pos:line="58" pos:column="25">void</name></type> <name pos:line="58" pos:column="30">Debug</name><parameter_list pos:line="58" pos:column="35">(<param><decl><type><name pos:line="58" pos:column="36">string</name></type> <name pos:line="58" pos:column="43">message</name></decl></param>, <param><decl><type><name pos:line="58" pos:column="52">Exception</name></type> <name pos:line="58" pos:column="62">exception</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="60" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="61" pos:column="9">/// Log message at Info level.</comment>
+        <comment type="line" pos:line="62" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="63" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="64" pos:column="9">/// &lt;param name="exception"&gt;The exception.&lt;/param&gt;</comment>
+        <function_decl><type><specifier pos:line="65" pos:column="9">public</specifier> <specifier pos:line="65" pos:column="16">abstract</specifier> <name pos:line="65" pos:column="25">void</name></type> <name pos:line="65" pos:column="30">Info</name><parameter_list pos:line="65" pos:column="34">(<param><decl><type><name pos:line="65" pos:column="35">string</name></type> <name pos:line="65" pos:column="42">message</name></decl></param>, <param><decl><type><name pos:line="65" pos:column="51">Exception</name></type> <name pos:line="65" pos:column="61">exception</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="67" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="68" pos:column="9">/// Log message at Warn level.</comment>
+        <comment type="line" pos:line="69" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="70" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="71" pos:column="9">/// &lt;param name="exception"&gt;The exception.&lt;/param&gt;</comment>
+        <function_decl><type><specifier pos:line="72" pos:column="9">public</specifier> <specifier pos:line="72" pos:column="16">abstract</specifier> <name pos:line="72" pos:column="25">void</name></type> <name pos:line="72" pos:column="30">Warn</name><parameter_list pos:line="72" pos:column="34">(<param><decl><type><name pos:line="72" pos:column="35">string</name></type> <name pos:line="72" pos:column="42">message</name></decl></param>, <param><decl><type><name pos:line="72" pos:column="51">Exception</name></type> <name pos:line="72" pos:column="61">exception</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="74" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="75" pos:column="9">/// Log message at Error level.</comment>
+        <comment type="line" pos:line="76" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="77" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="78" pos:column="9">/// &lt;param name="exception"&gt;The exception.&lt;/param&gt;</comment>
+        <function_decl><type><specifier pos:line="79" pos:column="9">public</specifier> <specifier pos:line="79" pos:column="16">abstract</specifier> <name pos:line="79" pos:column="25">void</name></type> <name pos:line="79" pos:column="30">Error</name><parameter_list pos:line="79" pos:column="35">(<param><decl><type><name pos:line="79" pos:column="36">string</name></type> <name pos:line="79" pos:column="43">message</name></decl></param>, <param><decl><type><name pos:line="79" pos:column="52">Exception</name></type> <name pos:line="79" pos:column="62">exception</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="81" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="82" pos:column="9">/// Log message at Fatal level.</comment>
+        <comment type="line" pos:line="83" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="84" pos:column="9">/// &lt;param name="message"&gt;The message.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="85" pos:column="9">/// &lt;param name="exception"&gt;The exception.&lt;/param&gt;</comment>
+        <function_decl><type><specifier pos:line="86" pos:column="9">public</specifier> <specifier pos:line="86" pos:column="16">abstract</specifier> <name pos:line="86" pos:column="25">void</name></type> <name pos:line="86" pos:column="30">Fatal</name><parameter_list pos:line="86" pos:column="35">(<param><decl><type><name pos:line="86" pos:column="36">string</name></type> <name pos:line="86" pos:column="43">message</name></decl></param>, <param><decl><type><name pos:line="86" pos:column="52">Exception</name></type> <name pos:line="86" pos:column="62">exception</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="88" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="89" pos:column="9">/// Log message at Trace level.</comment>
+        <comment type="line" pos:line="90" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="91" pos:column="9">/// &lt;param name="messageFormat"&gt;The message format.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="92" pos:column="9">/// &lt;param name="args"&gt;The args.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="93" pos:column="9">public</specifier> <name pos:line="93" pos:column="16">void</name></type> <name pos:line="93" pos:column="21">Trace</name><parameter_list pos:line="93" pos:column="26">(<param><decl><type><name pos:line="93" pos:column="27">string</name></type> <name pos:line="93" pos:column="34">messageFormat</name></decl></param>, <param><decl><type><specifier pos:line="93" pos:column="49">params</specifier> <name><name pos:line="93" pos:column="56">object</name><index pos:line="93" pos:column="62">[]</index></name></type> <name pos:line="93" pos:column="65">args</name></decl></param>)</parameter_list>
+        <block pos:line="94" pos:column="9">{
+            <expr_stmt><expr><call><name pos:line="95" pos:column="13">Trace</name><argument_list pos:line="95" pos:column="18">(<argument><expr><call><name><name pos:line="95" pos:column="19">string</name><op:operator pos:line="95" pos:column="25">.</op:operator><name pos:line="95" pos:column="26">Format</name></name><argument_list pos:line="95" pos:column="32">(<argument><expr><name pos:line="95" pos:column="33">messageFormat</name></expr></argument>, <argument><expr><name pos:line="95" pos:column="48">args</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="98" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="99" pos:column="9">/// Log message at Debug level.</comment>
+        <comment type="line" pos:line="100" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="101" pos:column="9">/// &lt;param name="messageFormat"&gt;The message format.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="102" pos:column="9">/// &lt;param name="args"&gt;The args.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="103" pos:column="9">public</specifier> <name pos:line="103" pos:column="16">void</name></type> <name pos:line="103" pos:column="21">Debug</name><parameter_list pos:line="103" pos:column="26">(<param><decl><type><name pos:line="103" pos:column="27">string</name></type> <name pos:line="103" pos:column="34">messageFormat</name></decl></param>, <param><decl><type><specifier pos:line="103" pos:column="49">params</specifier> <name><name pos:line="103" pos:column="56">object</name><index pos:line="103" pos:column="62">[]</index></name></type> <name pos:line="103" pos:column="65">args</name></decl></param>)</parameter_list>
+        <block pos:line="104" pos:column="9">{
+            <expr_stmt><expr><call><name pos:line="105" pos:column="13">Debug</name><argument_list pos:line="105" pos:column="18">(<argument><expr><call><name><name pos:line="105" pos:column="19">string</name><op:operator pos:line="105" pos:column="25">.</op:operator><name pos:line="105" pos:column="26">Format</name></name><argument_list pos:line="105" pos:column="32">(<argument><expr><name pos:line="105" pos:column="33">messageFormat</name></expr></argument>, <argument><expr><name pos:line="105" pos:column="48">args</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="108" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="109" pos:column="9">/// Log message at Info level.</comment>
+        <comment type="line" pos:line="110" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="111" pos:column="9">/// &lt;param name="messageFormat"&gt;The message format.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="112" pos:column="9">/// &lt;param name="args"&gt;The args.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="113" pos:column="9">public</specifier> <name pos:line="113" pos:column="16">void</name></type> <name pos:line="113" pos:column="21">Info</name><parameter_list pos:line="113" pos:column="25">(<param><decl><type><name pos:line="113" pos:column="26">string</name></type> <name pos:line="113" pos:column="33">messageFormat</name></decl></param>, <param><decl><type><specifier pos:line="113" pos:column="48">params</specifier> <name><name pos:line="113" pos:column="55">object</name><index pos:line="113" pos:column="61">[]</index></name></type> <name pos:line="113" pos:column="64">args</name></decl></param>)</parameter_list>
+        <block pos:line="114" pos:column="9">{
+            <expr_stmt><expr><call><name pos:line="115" pos:column="13">Info</name><argument_list pos:line="115" pos:column="17">(<argument><expr><call><name><name pos:line="115" pos:column="18">string</name><op:operator pos:line="115" pos:column="24">.</op:operator><name pos:line="115" pos:column="25">Format</name></name><argument_list pos:line="115" pos:column="31">(<argument><expr><name pos:line="115" pos:column="32">messageFormat</name></expr></argument>, <argument><expr><name pos:line="115" pos:column="47">args</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="118" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="119" pos:column="9">/// Log message at Warn level.</comment>
+        <comment type="line" pos:line="120" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="121" pos:column="9">/// &lt;param name="messageFormat"&gt;The message format.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="122" pos:column="9">/// &lt;param name="args"&gt;The args.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="123" pos:column="9">public</specifier> <name pos:line="123" pos:column="16">void</name></type> <name pos:line="123" pos:column="21">Warn</name><parameter_list pos:line="123" pos:column="25">(<param><decl><type><name pos:line="123" pos:column="26">string</name></type> <name pos:line="123" pos:column="33">messageFormat</name></decl></param>, <param><decl><type><specifier pos:line="123" pos:column="48">params</specifier> <name><name pos:line="123" pos:column="55">object</name><index pos:line="123" pos:column="61">[]</index></name></type> <name pos:line="123" pos:column="64">args</name></decl></param>)</parameter_list>
+        <block pos:line="124" pos:column="9">{
+            <expr_stmt><expr><call><name pos:line="125" pos:column="13">Warn</name><argument_list pos:line="125" pos:column="17">(<argument><expr><call><name><name pos:line="125" pos:column="18">string</name><op:operator pos:line="125" pos:column="24">.</op:operator><name pos:line="125" pos:column="25">Format</name></name><argument_list pos:line="125" pos:column="31">(<argument><expr><name pos:line="125" pos:column="32">messageFormat</name></expr></argument>, <argument><expr><name pos:line="125" pos:column="47">args</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="128" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="129" pos:column="9">/// Log message at Error level.</comment>
+        <comment type="line" pos:line="130" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="131" pos:column="9">/// &lt;param name="messageFormat"&gt;The message format.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="132" pos:column="9">/// &lt;param name="args"&gt;The args.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="133" pos:column="9">public</specifier> <name pos:line="133" pos:column="16">void</name></type> <name pos:line="133" pos:column="21">Error</name><parameter_list pos:line="133" pos:column="26">(<param><decl><type><name pos:line="133" pos:column="27">string</name></type> <name pos:line="133" pos:column="34">messageFormat</name></decl></param>, <param><decl><type><specifier pos:line="133" pos:column="49">params</specifier> <name><name pos:line="133" pos:column="56">object</name><index pos:line="133" pos:column="62">[]</index></name></type> <name pos:line="133" pos:column="65">args</name></decl></param>)</parameter_list>
+        <block pos:line="134" pos:column="9">{
+            <expr_stmt><expr><call><name pos:line="135" pos:column="13">Error</name><argument_list pos:line="135" pos:column="18">(<argument><expr><call><name><name pos:line="135" pos:column="19">string</name><op:operator pos:line="135" pos:column="25">.</op:operator><name pos:line="135" pos:column="26">Format</name></name><argument_list pos:line="135" pos:column="32">(<argument><expr><name pos:line="135" pos:column="33">messageFormat</name></expr></argument>, <argument><expr><name pos:line="135" pos:column="48">args</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="138" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="139" pos:column="9">/// Log message at Fatal level.</comment>
+        <comment type="line" pos:line="140" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="141" pos:column="9">/// &lt;param name="messageFormat"&gt;The message format.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="142" pos:column="9">/// &lt;param name="args"&gt;The args.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="143" pos:column="9">public</specifier> <name pos:line="143" pos:column="16">void</name></type> <name pos:line="143" pos:column="21">Fatal</name><parameter_list pos:line="143" pos:column="26">(<param><decl><type><name pos:line="143" pos:column="27">string</name></type> <name pos:line="143" pos:column="34">messageFormat</name></decl></param>, <param><decl><type><specifier pos:line="143" pos:column="49">params</specifier> <name><name pos:line="143" pos:column="56">object</name><index pos:line="143" pos:column="62">[]</index></name></type> <name pos:line="143" pos:column="65">args</name></decl></param>)</parameter_list>
+        <block pos:line="144" pos:column="9">{
+            <expr_stmt><expr><call><name pos:line="145" pos:column="13">Fatal</name><argument_list pos:line="145" pos:column="18">(<argument><expr><call><name><name pos:line="145" pos:column="19">string</name><op:operator pos:line="145" pos:column="25">.</op:operator><name pos:line="145" pos:column="26">Format</name></name><argument_list pos:line="145" pos:column="32">(<argument><expr><name pos:line="145" pos:column="33">messageFormat</name></expr></argument>, <argument><expr><name pos:line="145" pos:column="48">args</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="148" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="149" pos:column="9">/// Log message at Trace level.</comment>
+        <comment type="line" pos:line="150" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="151" pos:column="9">/// &lt;param name="messageFormat"&gt;The message format.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="152" pos:column="9">/// &lt;param name="exception"&gt;The exception.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="153" pos:column="9">/// &lt;param name="args"&gt;The args.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="154" pos:column="9">public</specifier> <name pos:line="154" pos:column="16">void</name></type> <name pos:line="154" pos:column="21">Trace</name><parameter_list pos:line="154" pos:column="26">(<param><decl><type><name pos:line="154" pos:column="27">string</name></type> <name pos:line="154" pos:column="34">messageFormat</name></decl></param>, <param><decl><type><name pos:line="154" pos:column="49">Exception</name></type> <name pos:line="154" pos:column="59">exception</name></decl></param>, <param><decl><type><specifier pos:line="154" pos:column="70">params</specifier> <name><name pos:line="154" pos:column="77">object</name><index pos:line="154" pos:column="83">[]</index></name></type> <name pos:line="154" pos:column="86">args</name></decl></param>)</parameter_list>
+        <block pos:line="155" pos:column="9">{
+            <expr_stmt><expr><call><name pos:line="156" pos:column="13">Trace</name><argument_list pos:line="156" pos:column="18">(<argument><expr><call><name><name pos:line="156" pos:column="19">string</name><op:operator pos:line="156" pos:column="25">.</op:operator><name pos:line="156" pos:column="26">Format</name></name><argument_list pos:line="156" pos:column="32">(<argument><expr><name pos:line="156" pos:column="33">messageFormat</name></expr></argument>, <argument><expr><name pos:line="156" pos:column="48">args</name></expr></argument>)</argument_list></call></expr></argument>, <argument><expr><name pos:line="156" pos:column="55">exception</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="159" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="160" pos:column="9">/// Log message at Debug level.</comment>
+        <comment type="line" pos:line="161" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="162" pos:column="9">/// &lt;param name="messageFormat"&gt;The message format.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="163" pos:column="9">/// &lt;param name="exception"&gt;The exception.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="164" pos:column="9">/// &lt;param name="args"&gt;The args.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="165" pos:column="9">public</specifier> <name pos:line="165" pos:column="16">void</name></type> <name pos:line="165" pos:column="21">Debug</name><parameter_list pos:line="165" pos:column="26">(<param><decl><type><name pos:line="165" pos:column="27">string</name></type> <name pos:line="165" pos:column="34">messageFormat</name></decl></param>, <param><decl><type><name pos:line="165" pos:column="49">Exception</name></type> <name pos:line="165" pos:column="59">exception</name></decl></param>, <param><decl><type><specifier pos:line="165" pos:column="70">params</specifier> <name><name pos:line="165" pos:column="77">object</name><index pos:line="165" pos:column="83">[]</index></name></type> <name pos:line="165" pos:column="86">args</name></decl></param>)</parameter_list>
+        <block pos:line="166" pos:column="9">{
+            <expr_stmt><expr><call><name pos:line="167" pos:column="13">Debug</name><argument_list pos:line="167" pos:column="18">(<argument><expr><call><name><name pos:line="167" pos:column="19">string</name><op:operator pos:line="167" pos:column="25">.</op:operator><name pos:line="167" pos:column="26">Format</name></name><argument_list pos:line="167" pos:column="32">(<argument><expr><name pos:line="167" pos:column="33">messageFormat</name></expr></argument>, <argument><expr><name pos:line="167" pos:column="48">args</name></expr></argument>)</argument_list></call></expr></argument>, <argument><expr><name pos:line="167" pos:column="55">exception</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="170" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="171" pos:column="9">/// Log message at Info level.</comment>
+        <comment type="line" pos:line="172" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="173" pos:column="9">/// &lt;param name="messageFormat"&gt;The message format.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="174" pos:column="9">/// &lt;param name="exception"&gt;The exception.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="175" pos:column="9">/// &lt;param name="args"&gt;The args.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="176" pos:column="9">public</specifier> <name pos:line="176" pos:column="16">void</name></type> <name pos:line="176" pos:column="21">Info</name><parameter_list pos:line="176" pos:column="25">(<param><decl><type><name pos:line="176" pos:column="26">string</name></type> <name pos:line="176" pos:column="33">messageFormat</name></decl></param>, <param><decl><type><name pos:line="176" pos:column="48">Exception</name></type> <name pos:line="176" pos:column="58">exception</name></decl></param>, <param><decl><type><specifier pos:line="176" pos:column="69">params</specifier> <name><name pos:line="176" pos:column="76">object</name><index pos:line="176" pos:column="82">[]</index></name></type> <name pos:line="176" pos:column="85">args</name></decl></param>)</parameter_list>
+        <block pos:line="177" pos:column="9">{
+            <expr_stmt><expr><call><name pos:line="178" pos:column="13">Info</name><argument_list pos:line="178" pos:column="17">(<argument><expr><call><name><name pos:line="178" pos:column="18">string</name><op:operator pos:line="178" pos:column="24">.</op:operator><name pos:line="178" pos:column="25">Format</name></name><argument_list pos:line="178" pos:column="31">(<argument><expr><name pos:line="178" pos:column="32">messageFormat</name></expr></argument>, <argument><expr><name pos:line="178" pos:column="47">args</name></expr></argument>)</argument_list></call></expr></argument>, <argument><expr><name pos:line="178" pos:column="54">exception</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="181" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="182" pos:column="9">/// Log message at Warn level.</comment>
+        <comment type="line" pos:line="183" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="184" pos:column="9">/// &lt;param name="messageFormat"&gt;The message format.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="185" pos:column="9">/// &lt;param name="exception"&gt;The exception.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="186" pos:column="9">/// &lt;param name="args"&gt;The args.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="187" pos:column="9">public</specifier> <name pos:line="187" pos:column="16">void</name></type> <name pos:line="187" pos:column="21">Warn</name><parameter_list pos:line="187" pos:column="25">(<param><decl><type><name pos:line="187" pos:column="26">string</name></type> <name pos:line="187" pos:column="33">messageFormat</name></decl></param>, <param><decl><type><name pos:line="187" pos:column="48">Exception</name></type> <name pos:line="187" pos:column="58">exception</name></decl></param>, <param><decl><type><specifier pos:line="187" pos:column="69">params</specifier> <name><name pos:line="187" pos:column="76">object</name><index pos:line="187" pos:column="82">[]</index></name></type> <name pos:line="187" pos:column="85">args</name></decl></param>)</parameter_list>
+        <block pos:line="188" pos:column="9">{
+            <expr_stmt><expr><call><name pos:line="189" pos:column="13">Warn</name><argument_list pos:line="189" pos:column="17">(<argument><expr><call><name><name pos:line="189" pos:column="18">string</name><op:operator pos:line="189" pos:column="24">.</op:operator><name pos:line="189" pos:column="25">Format</name></name><argument_list pos:line="189" pos:column="31">(<argument><expr><name pos:line="189" pos:column="32">messageFormat</name></expr></argument>, <argument><expr><name pos:line="189" pos:column="47">args</name></expr></argument>)</argument_list></call></expr></argument>, <argument><expr><name pos:line="189" pos:column="54">exception</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="192" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="193" pos:column="9">/// Log message at Error level.</comment>
+        <comment type="line" pos:line="194" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="195" pos:column="9">/// &lt;param name="messageFormat"&gt;The message format.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="196" pos:column="9">/// &lt;param name="exception"&gt;The exception.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="197" pos:column="9">/// &lt;param name="args"&gt;The args.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="198" pos:column="9">public</specifier> <name pos:line="198" pos:column="16">void</name></type> <name pos:line="198" pos:column="21">Error</name><parameter_list pos:line="198" pos:column="26">(<param><decl><type><name pos:line="198" pos:column="27">string</name></type> <name pos:line="198" pos:column="34">messageFormat</name></decl></param>, <param><decl><type><name pos:line="198" pos:column="49">Exception</name></type> <name pos:line="198" pos:column="59">exception</name></decl></param>, <param><decl><type><specifier pos:line="198" pos:column="70">params</specifier> <name><name pos:line="198" pos:column="77">object</name><index pos:line="198" pos:column="83">[]</index></name></type> <name pos:line="198" pos:column="86">args</name></decl></param>)</parameter_list>
+        <block pos:line="199" pos:column="9">{
+            <expr_stmt><expr><call><name pos:line="200" pos:column="13">Error</name><argument_list pos:line="200" pos:column="18">(<argument><expr><call><name><name pos:line="200" pos:column="19">string</name><op:operator pos:line="200" pos:column="25">.</op:operator><name pos:line="200" pos:column="26">Format</name></name><argument_list pos:line="200" pos:column="32">(<argument><expr><name pos:line="200" pos:column="33">messageFormat</name></expr></argument>, <argument><expr><name pos:line="200" pos:column="48">args</name></expr></argument>)</argument_list></call></expr></argument>, <argument><expr><name pos:line="200" pos:column="55">exception</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="203" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="204" pos:column="9">/// Log message at Fatal level.</comment>
+        <comment type="line" pos:line="205" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="206" pos:column="9">/// &lt;param name="messageFormat"&gt;The message format.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="207" pos:column="9">/// &lt;param name="exception"&gt;The exception.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="208" pos:column="9">/// &lt;param name="args"&gt;The args.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="209" pos:column="9">public</specifier> <name pos:line="209" pos:column="16">void</name></type> <name pos:line="209" pos:column="21">Fatal</name><parameter_list pos:line="209" pos:column="26">(<param><decl><type><name pos:line="209" pos:column="27">string</name></type> <name pos:line="209" pos:column="34">messageFormat</name></decl></param>, <param><decl><type><name pos:line="209" pos:column="49">Exception</name></type> <name pos:line="209" pos:column="59">exception</name></decl></param>, <param><decl><type><specifier pos:line="209" pos:column="70">params</specifier> <name><name pos:line="209" pos:column="77">object</name><index pos:line="209" pos:column="83">[]</index></name></type> <name pos:line="209" pos:column="86">args</name></decl></param>)</parameter_list>
+        <block pos:line="210" pos:column="9">{
+            <expr_stmt><expr><call><name pos:line="211" pos:column="13">Fatal</name><argument_list pos:line="211" pos:column="18">(<argument><expr><call><name><name pos:line="211" pos:column="19">string</name><op:operator pos:line="211" pos:column="25">.</op:operator><name pos:line="211" pos:column="26">Format</name></name><argument_list pos:line="211" pos:column="32">(<argument><expr><name pos:line="211" pos:column="33">messageFormat</name></expr></argument>, <argument><expr><name pos:line="211" pos:column="48">args</name></expr></argument>)</argument_list></call></expr></argument>, <argument><expr><name pos:line="211" pos:column="55">exception</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

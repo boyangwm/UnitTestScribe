@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Framework\IFrameworkProvider.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">Glimpse</name><op:operator pos:line="1" pos:column="14">.</op:operator><name pos:line="1" pos:column="15">Core</name><op:operator pos:line="1" pos:column="19">.</op:operator><name pos:line="1" pos:column="20">Extensibility</name></name>;</using>
+
+<namespace pos:line="3" pos:column="1">namespace <name><name pos:line="3" pos:column="11">Glimpse</name><op:operator pos:line="3" pos:column="18">.</op:operator><name pos:line="3" pos:column="19">Core</name><op:operator pos:line="3" pos:column="23">.</op:operator><name pos:line="3" pos:column="24">Framework</name></name>
+<block pos:line="4" pos:column="1">{
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="6" pos:column="5">/// Defines methods to required to implement a Glimpse framework provider. </comment>
+    <comment type="line" pos:line="7" pos:column="5">/// Framework providers allow Glimpse to work generically against any .NET based web development framework.</comment>
+    <comment type="line" pos:line="8" pos:column="5">/// &lt;/summary&gt;</comment>
+    <comment type="line" pos:line="9" pos:column="5">/// &lt;remarks&gt;</comment>
+    <comment type="line" pos:line="10" pos:column="5">/// Required by any different Framework Provider - i.e. ASP.NET, Self Hosted WebAPI, </comment>
+    <comment type="line" pos:line="11" pos:column="5">/// NancyFX, etc. See Glimpse.AspNet.AspNetFrameworkProvider</comment>
+    <comment type="line" pos:line="12" pos:column="5">/// as reference implementation.</comment>
+    <comment type="line" pos:line="13" pos:column="5">/// &lt;/remarks&gt;</comment>
+    <class type="interface"><specifier pos:line="14" pos:column="5">public</specifier> interface <name pos:line="14" pos:column="22">IFrameworkProvider</name>
+    <block pos:line="15" pos:column="5">{
+        <comment type="line" pos:line="16" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="17" pos:column="9">/// Gets the Http request store.</comment>
+        <comment type="line" pos:line="18" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="19" pos:column="9">/// &lt;value&gt;The Http request store.&lt;/value&gt;</comment>
+        <comment type="line" pos:line="20" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="21" pos:column="9">/// A request store is a place for Glimpse to store data that lives and dies with an Http request.</comment>
+        <comment type="line" pos:line="22" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// &lt;example&gt;</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// In ASP.NET, &lt;c&gt;HttpContext.Items&lt;/c&gt; is a request store.</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;/example&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="26" pos:column="9">IDataStore</name></type> <name pos:line="26" pos:column="20">HttpRequestStore</name> <block pos:line="26" pos:column="37">{ <function_decl><name pos:line="26" pos:column="39">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// Gets the Http server store.</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// &lt;value&gt;The Http server store.&lt;/value&gt;</comment>
+        <comment type="line" pos:line="32" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="33" pos:column="9">/// A server store is a place for Glimpse to store data a persists across Http requests.</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <comment type="line" pos:line="35" pos:column="9">/// &lt;example&gt;</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// In ASP.NET, &lt;c&gt;HttpContext.Application&lt;/c&gt; is a server store.</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;/example&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="38" pos:column="9">IDataStore</name></type> <name pos:line="38" pos:column="20">HttpServerStore</name> <block pos:line="38" pos:column="36">{ <function_decl><name pos:line="38" pos:column="38">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// Gets the runtime context.</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// &lt;value&gt;The runtime context.&lt;/value&gt;</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// Instance of the underlying context that the web development framework uses.</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// &lt;example&gt;</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// In ASP.NET, &lt;c&gt;HttpContext&lt;/c&gt; is the runtime context.</comment>
+        <comment type="line" pos:line="49" pos:column="9">/// &lt;/example&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="50" pos:column="9">object</name></type> <name pos:line="50" pos:column="16">RuntimeContext</name> <block pos:line="50" pos:column="31">{ <function_decl><name pos:line="50" pos:column="33">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="52" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="53" pos:column="9">/// Gets the request metadata.</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="55" pos:column="9">/// &lt;value&gt;The request metadata.&lt;/value&gt;</comment>
+        <comment type="line" pos:line="56" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="57" pos:column="9">/// An instance of &lt;see cref="IRequestMetadata"/&gt; which provides relevant metadata about an Http request.</comment>
+        <comment type="line" pos:line="58" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <comment type="line" pos:line="59" pos:column="9">/// &lt;example&gt;</comment>
+        <comment type="line" pos:line="60" pos:column="9">/// In ASP.NET, a &lt;c&gt;HttpRequest&lt;/c&gt; contains must data required for creating a &lt;see cref="IRequestMetadata"/&gt;.</comment>
+        <comment type="line" pos:line="61" pos:column="9">/// &lt;/example&gt;</comment>
+        <decl_stmt><decl><type><name pos:line="62" pos:column="9">IRequestMetadata</name></type> <name pos:line="62" pos:column="26">RequestMetadata</name> <block pos:line="62" pos:column="42">{ <function_decl><name pos:line="62" pos:column="44">get</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="64" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="65" pos:column="9">/// Sets the Http response header.</comment>
+        <comment type="line" pos:line="66" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="67" pos:column="9">/// &lt;param name="name"&gt;The name.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="68" pos:column="9">/// &lt;param name="value"&gt;The value.&lt;/param&gt;</comment>
+        <function_decl><type><name pos:line="69" pos:column="9">void</name></type> <name pos:line="69" pos:column="14">SetHttpResponseHeader</name><parameter_list pos:line="69" pos:column="35">(<param><decl><type><name pos:line="69" pos:column="36">string</name></type> <name pos:line="69" pos:column="43">name</name></decl></param>, <param><decl><type><name pos:line="69" pos:column="49">string</name></type> <name pos:line="69" pos:column="56">value</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="71" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="72" pos:column="9">/// Sets the Http response status code.</comment>
+        <comment type="line" pos:line="73" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="74" pos:column="9">/// &lt;param name="statusCode"&gt;The status code.&lt;/param&gt;</comment>
+        <function_decl><type><name pos:line="75" pos:column="9">void</name></type> <name pos:line="75" pos:column="14">SetHttpResponseStatusCode</name><parameter_list pos:line="75" pos:column="39">(<param><decl><type><name pos:line="75" pos:column="40">int</name></type> <name pos:line="75" pos:column="44">statusCode</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="77" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="78" pos:column="9">/// Sets the cookie.</comment>
+        <comment type="line" pos:line="79" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="80" pos:column="9">/// &lt;param name="name"&gt;The name.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="81" pos:column="9">/// &lt;param name="value"&gt;The value.&lt;/param&gt;</comment>
+        <function_decl><type><name pos:line="82" pos:column="9">void</name></type> <name pos:line="82" pos:column="14">SetCookie</name><parameter_list pos:line="82" pos:column="23">(<param><decl><type><name pos:line="82" pos:column="24">string</name></type> <name pos:line="82" pos:column="31">name</name></decl></param>, <param><decl><type><name pos:line="82" pos:column="37">string</name></type> <name pos:line="82" pos:column="44">value</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="84" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="85" pos:column="9">/// Injects the Http response body.</comment>
+        <comment type="line" pos:line="86" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="87" pos:column="9">/// &lt;param name="htmlSnippet"&gt;The HTML snippet.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="88" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="89" pos:column="9">/// Inserts the given html snippet into the html document just before the end &lt;c&gt;&amp;lt;/body&amp;gt;&lt;/c&gt; tag.</comment>
+        <comment type="line" pos:line="90" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <function_decl><type><name pos:line="91" pos:column="9">void</name></type> <name pos:line="91" pos:column="14">InjectHttpResponseBody</name><parameter_list pos:line="91" pos:column="36">(<param><decl><type><name pos:line="91" pos:column="37">string</name></type> <name pos:line="91" pos:column="44">htmlSnippet</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="93" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="94" pos:column="9">/// Writes the Http response.</comment>
+        <comment type="line" pos:line="95" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="96" pos:column="9">/// &lt;param name="content"&gt;The content.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="97" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="98" pos:column="9">/// Used by the resource infrastructure to output binary content (i.e. embedded content,</comment>
+        <comment type="line" pos:line="99" pos:column="9">/// images, etc).</comment>
+        <comment type="line" pos:line="100" pos:column="9">/// &lt;seealso cref="Glimpse.Core.Extensibility.IResourceResult"/&gt;</comment>
+        <comment type="line" pos:line="101" pos:column="9">/// &lt;seealso cref="Glimpse.Core.Extensibility.IResource"/&gt;</comment>
+        <comment type="line" pos:line="102" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <function_decl><type><name pos:line="103" pos:column="9">void</name></type> <name pos:line="103" pos:column="14">WriteHttpResponse</name><parameter_list pos:line="103" pos:column="31">(<param><decl><type><name><name pos:line="103" pos:column="32">byte</name><index pos:line="103" pos:column="36">[]</index></name></type> <name pos:line="103" pos:column="39">content</name></decl></param>)</parameter_list>;</function_decl>
+
+        <comment type="line" pos:line="105" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="106" pos:column="9">/// Writes the Http response.</comment>
+        <comment type="line" pos:line="107" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="108" pos:column="9">/// &lt;param name="content"&gt;The content.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="109" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="110" pos:column="9">/// Used by the resource infrastructure to output string content (i.e. generated strings,</comment>
+        <comment type="line" pos:line="111" pos:column="9">/// JSON objects, etc).</comment>
+        <comment type="line" pos:line="112" pos:column="9">/// &lt;seealso cref="IResourceResult"/&gt;</comment>
+        <comment type="line" pos:line="113" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <function_decl><type><name pos:line="114" pos:column="9">void</name></type> <name pos:line="114" pos:column="14">WriteHttpResponse</name><parameter_list pos:line="114" pos:column="31">(<param><decl><type><name pos:line="114" pos:column="32">string</name></type> <name pos:line="114" pos:column="39">content</name></decl></param>)</parameter_list>;</function_decl>
+    }</block></class>
+}</block></namespace>
+</unit>

@@ -1,0 +1,941 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\office10\msodebug.h" pos:tabs="8"><cpp:pragma pos:line="1" pos:column="1">#<cpp:directive pos:line="1" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+
+<comment type="block" format="doxygen" pos:line="3" pos:column="1">/*************************************************************************
+ 	msodebug.h
+
+ 	Owner: rickp
+ 	Copyright (c) 1994 Microsoft Corporation
+
+	Standard debugging definitions for the shared Office libraries.
+	Includes asserts, tracing, and other cool stuff like that.
+*************************************************************************/</comment>
+
+<cpp:if pos:line="13" pos:column="1">#<cpp:directive pos:line="13" pos:column="2">if</cpp:directive> <expr><op:operator pos:line="13" pos:column="5">!</op:operator><call><name pos:line="13" pos:column="6">defined</name><argument_list pos:line="13" pos:column="13">(<argument><expr><name pos:line="13" pos:column="14">MSODEBUG_H</name></expr></argument>)</argument_list></call></expr></cpp:if>
+<cpp:define pos:line="14" pos:column="1">#<cpp:directive pos:line="14" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="14" pos:column="9">MSODEBUG_H</name></cpp:macro></cpp:define>
+
+<cpp:if pos:line="16" pos:column="1">#<cpp:directive pos:line="16" pos:column="2">if</cpp:directive> <expr><op:operator pos:line="16" pos:column="5">!</op:operator><call><name pos:line="16" pos:column="6">defined</name><argument_list pos:line="16" pos:column="13">(<argument><expr><name pos:line="16" pos:column="14">MSOSTD_H</name></expr></argument>)</argument_list></call></expr></cpp:if>
+<cpp:include pos:line="17" pos:column="1">#<cpp:directive pos:line="17" pos:column="2">include</cpp:directive> <cpp:file pos:line="17" pos:column="10">&lt;msostd.h&gt;</cpp:file></cpp:include>
+<cpp:endif pos:line="18" pos:column="1">#<cpp:directive pos:line="18" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:if pos:line="20" pos:column="1">#<cpp:directive pos:line="20" pos:column="2">if</cpp:directive> <expr><call><name pos:line="20" pos:column="5">defined</name><argument_list pos:line="20" pos:column="12">(<argument><expr><name pos:line="20" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call></expr></cpp:if>
+<extern pos:line="21" pos:column="1">extern <lit:literal type="string" pos:line="21" pos:column="8">"C"</lit:literal> <block pos:line="21" pos:column="12">{
+<cpp:endif pos:line="22" pos:column="1">#<cpp:directive pos:line="22" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" format="doxygen" pos:line="24" pos:column="1">/*************************************************************************
+	Random useful macros
+*************************************************************************/</comment>
+
+<comment type="block" pos:line="28" pos:column="1">/* Exception to VSMSODEBUG */</comment>
+<cpp:if pos:line="29" pos:column="1">#<cpp:directive pos:line="29" pos:column="2">if</cpp:directive> <expr><name pos:line="29" pos:column="5">DEBUG</name></expr></cpp:if>
+	<cpp:define pos:line="30" pos:column="9">#<cpp:directive pos:line="30" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="30" pos:column="17">Debug</name><parameter_list pos:line="30" pos:column="22">(<param><type><name pos:line="30" pos:column="23">e</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="30" pos:column="26">e</cpp:value></cpp:define>
+	<cpp:define pos:line="31" pos:column="9">#<cpp:directive pos:line="31" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="31" pos:column="17">DebugOnly</name><parameter_list pos:line="31" pos:column="26">(<param><type><name pos:line="31" pos:column="27">e</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="31" pos:column="30">e</cpp:value></cpp:define>
+	<cpp:define pos:line="32" pos:column="9">#<cpp:directive pos:line="32" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="32" pos:column="17">DebugElse</name><parameter_list pos:line="32" pos:column="26">(<param><type><name pos:line="32" pos:column="27">s</name></type></param>, <param><type><name pos:line="32" pos:column="30">t</name></type></param>)</parameter_list></cpp:macro>	<cpp:value pos:line="32" pos:column="33">s</cpp:value></cpp:define>
+<cpp:else pos:line="33" pos:column="1">#<cpp:directive pos:line="33" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="34" pos:column="9">#<cpp:directive pos:line="34" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="34" pos:column="17">Debug</name><parameter_list pos:line="34" pos:column="22">(<param><type><name pos:line="34" pos:column="23">e</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+	<cpp:define pos:line="35" pos:column="9">#<cpp:directive pos:line="35" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="35" pos:column="17">DebugOnly</name><parameter_list pos:line="35" pos:column="26">(<param><type><name pos:line="35" pos:column="27">e</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+	<cpp:define pos:line="36" pos:column="9">#<cpp:directive pos:line="36" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="36" pos:column="17">DebugElse</name><parameter_list pos:line="36" pos:column="26">(<param><type><name pos:line="36" pos:column="27">s</name></type></param>, <param><type><name pos:line="36" pos:column="30">t</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="36" pos:column="33">t</cpp:value></cpp:define>
+<cpp:endif pos:line="37" pos:column="1">#<cpp:directive pos:line="37" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+<comment type="line" pos:line="40" pos:column="1">//  REVIEW:  PETERO:  This should be DEBUG only</comment>
+<comment type="block" format="doxygen" pos:line="41" pos:column="1">/****************************************************************************
+   This enum contains the Debug "Messages" that are sent to the FDebugMessage
+   Method
+ ****************************************************************** JIMMUR **/</comment>
+<enum pos:line="45" pos:column="1">enum
+<block pos:line="46" pos:column="1">{
+	<decl><name pos:line="47" pos:column="9">msodmWriteBe</name> <init pos:line="47" pos:column="22">= <expr><lit:literal type="number" pos:line="47" pos:column="24">1</lit:literal></expr></init></decl><op:operator pos:line="47" pos:column="25">,</op:operator> <comment type="block" pos:line="47" pos:column="27">/* write out the BE record for this object */</comment>
+
+	<comment type="block" pos:line="49" pos:column="9">/* Here begin drawing only debug messages */</comment>
+	<decl><name pos:line="50" pos:column="9">msodmDgvRcvOfHsp</name> <init pos:line="50" pos:column="26">= <expr><lit:literal type="number" pos:line="50" pos:column="28">2001</lit:literal></expr></init></decl><op:operator pos:line="50" pos:column="32">,</op:operator>
+		<comment type="block" pos:line="51" pos:column="17">/* Ask a DGV for the bounding rectangle (if any) of an HSP.
+			Assumes lParam is really a pointer to an MSODGDB, looks at the
+			hsp field thereof and fills out the rcv field. */</comment>
+	<decl><name pos:line="54" pos:column="9">msodmDgsWriteBePvAnchor</name></decl><op:operator pos:line="54" pos:column="32">,</op:operator>
+		<comment type="block" pos:line="55" pos:column="17">/* Write out the BE record for a host allocated pvAnchor. */</comment>
+	<decl><name pos:line="56" pos:column="9">msodmDgsWriteBePvClient</name></decl><op:operator pos:line="56" pos:column="32">,</op:operator>
+		<comment type="block" pos:line="57" pos:column="17">/* Write out the BE record for any host allocated client data. */</comment>
+	<decl><name pos:line="58" pos:column="9">msodmDgvsAfterMouseInsert</name></decl><op:operator pos:line="58" pos:column="34">,</op:operator>
+		<comment type="block" pos:line="59" pos:column="17">/* Passed to IMsoDrawingViewSite after a shape is interactively
+			inserted with the mouse. lParam is really the inserted HSP. */</comment>
+	<decl><name pos:line="61" pos:column="9">msodmDgvsAfterMarquee</name></decl><op:operator pos:line="61" pos:column="30">,</op:operator>
+		<comment type="block" pos:line="62" pos:column="17">/* Passed to IMsoDrawingViewSite after one drags out a rectangle
+			with the pointer tool selecting zero or more shapes. */</comment>
+	<decl><name pos:line="64" pos:column="9">msodmIsNotMso96</name></decl><op:operator pos:line="64" pos:column="24">,</op:operator>
+		<comment type="block" pos:line="65" pos:column="17">/* Returns FALSE if the specified object is implemented by MSO96.DLL.
+			Allows sleazy up-casts, for example, from IMsoDrawingView *
+			to DGV *. */</comment>
+	<decl><name pos:line="68" pos:column="9">msodmGetHdesShape</name></decl><op:operator pos:line="68" pos:column="26">,</op:operator>
+		<comment type="block" pos:line="69" pos:column="17">/* Ask a DGVs for its m_hdesShape (in *(MSOHDES *)lParam).  Returns
+			FALSE if it filled out an HDES. */</comment>
+	<decl><name pos:line="71" pos:column="9">msodmGetHdesSelection</name></decl><op:operator pos:line="71" pos:column="30">,</op:operator>
+		<comment type="block" pos:line="72" pos:column="17">/* Ask a DGVs for its m_hdesSelection (in *(MSOHDES *)lParam).
+			Returns FALSE if it filled out an HDES. */</comment>
+	<decl><name pos:line="74" pos:column="9">msodmDguiWriteBeForDgc</name></decl><op:operator pos:line="74" pos:column="31">,</op:operator>
+		<comment type="block" pos:line="75" pos:column="17">/* Ask a DGUI to write BEs for a DGC it allocated. */</comment>
+	<decl><name pos:line="76" pos:column="9">msodmDgsWriteBeTxid</name></decl><op:operator pos:line="76" pos:column="28">,</op:operator>
+		<comment type="block" pos:line="77" pos:column="17">/* Write out the BE record for the attached text of a shape. */</comment>
+	<decl><name pos:line="78" pos:column="9">msodmDgsWriteBePvAnchorUndo</name></decl><op:operator pos:line="78" pos:column="36">,</op:operator>
+		<comment type="block" pos:line="79" pos:column="17">/* Write out the BE record for a host anchor in the undo stack. */</comment>
+	<decl><name pos:line="80" pos:column="9">msodmDgvsDragDrop</name></decl><op:operator pos:line="80" pos:column="26">,</op:operator>
+		<comment type="block" pos:line="81" pos:column="17">/* Let the host know that I just did a drag-drop from this window. */</comment>
+}</block>;</enum>
+
+<enum pos:line="84" pos:column="1">enum
+<block pos:line="85" pos:column="1">{
+   <decl><name pos:line="86" pos:column="4">msodmbtDoNotWriteObj</name> <init pos:line="86" pos:column="25">= <expr><lit:literal type="number" pos:line="86" pos:column="27">0</lit:literal></expr></init></decl><op:operator pos:line="86" pos:column="28">,</op:operator>    <comment type="line" pos:line="86" pos:column="33">// Do Not write out the object </comment>
+   <decl><name pos:line="87" pos:column="4">msodmbtWriteObj</name></decl><op:operator pos:line="87" pos:column="19">,</op:operator>             <comment type="line" pos:line="87" pos:column="33">// Do write out the object and</comment>
+                                    <comment type="line" pos:line="88" pos:column="37">// embedded pointers</comment>
+}</block>;</enum>
+
+
+<enum pos:line="92" pos:column="1">enum
+<block pos:line="93" pos:column="1">{
+	<decl><name pos:line="94" pos:column="9">msocchBt</name> <init pos:line="94" pos:column="18">= <expr><lit:literal type="number" pos:line="94" pos:column="20">20</lit:literal></expr></init></decl><op:operator pos:line="94" pos:column="22">,</op:operator>						<comment type="line" pos:line="94" pos:column="65">// Maximum size of a Bt description String</comment>
+}</block>;</enum>
+
+<comment type="block" pos:line="97" pos:column="1">/* Some debug messages need more arguments than fit through
+	the arguments to FDebugMethod.  For these there are various
+	MSODMBfoo structs, usually defined near the objects they're passed
+	to. */</comment>
+
+
+<comment type="block" format="doxygen" pos:line="103" pos:column="1">/****************************************************************************
+    Interface debug routine
+ ****************************************************************** JIMMUR **/</comment>
+<cpp:if pos:line="106" pos:column="1">#<cpp:directive pos:line="106" pos:column="2">if</cpp:directive> <expr><name pos:line="106" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+   <cpp:define pos:line="107" pos:column="4">#<cpp:directive pos:line="107" pos:column="5">define</cpp:directive> <cpp:macro><name pos:line="107" pos:column="12">MSODEBUGMETHOD</name></cpp:macro>  <cpp:value pos:line="107" pos:column="28">MSOMETHOD_(BOOL, FDebugMessage) (THIS_ HMSOINST hinst, \
+         UINT message, WPARAM wParam, LPARAM lParam) PURE;</cpp:value></cpp:define>
+
+   <cpp:define pos:line="110" pos:column="4">#<cpp:directive pos:line="110" pos:column="5">define</cpp:directive> <cpp:macro><name pos:line="110" pos:column="12">MSODEBUGMETHODIMP</name></cpp:macro> <cpp:value pos:line="110" pos:column="30">MSOMETHODIMP_(BOOL) FDebugMessage (HMSOINST hinst, \
+         UINT message, WPARAM wParam, LPARAM lParam); \
+         static BOOL FCheckObject(LPVOID pv, int cb);</cpp:value></cpp:define>
+			
+	<cpp:define pos:line="114" pos:column="9">#<cpp:directive pos:line="114" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="114" pos:column="17">MSOMACDEBUGMETHODIMP</name></cpp:macro> <cpp:value pos:line="114" pos:column="38">MSOMACPUB	 MSOMETHODIMP_(BOOL) FDebugMessage (HMSOINST hinst, \
+         UINT message, WPARAM wParam, LPARAM lParam); \
+         static BOOL FCheckObject(LPVOID pv, int cb);</cpp:value></cpp:define>
+
+   <cpp:define pos:line="118" pos:column="4">#<cpp:directive pos:line="118" pos:column="5">define</cpp:directive> <cpp:macro><name pos:line="118" pos:column="12">DEBUGMETHOD</name><parameter_list pos:line="118" pos:column="23">(<param><type><name pos:line="118" pos:column="24">cn</name></type></param>,<param><type><name pos:line="118" pos:column="27">bt</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="118" pos:column="31">STDMETHODIMP_(BOOL) cn::FDebugMessage \
+         (HMSOINST hinst, UINT message, WPARAM wParam, LPARAM lParam) \
+         { \
+            if (msodmWriteBE == message) \
+               {  \
+                  return MsoFSaveBe(hinst,lParam,(void*)this,sizeof(cn),bt); \
+               } \
+            return FALSE; \
+         }</cpp:value></cpp:define>
+ <cpp:else pos:line="127" pos:column="2">#<cpp:directive pos:line="127" pos:column="3">else</cpp:directive></cpp:else>
+   <cpp:define pos:line="128" pos:column="4">#<cpp:directive pos:line="128" pos:column="5">define</cpp:directive> <cpp:macro><name pos:line="128" pos:column="12">MSODEBUGMETHOD</name></cpp:macro>  <cpp:value pos:line="128" pos:column="28">MSOMETHOD_(BOOL, FDebugMessage) (THIS_ HMSOINST hinst, \
+         UINT message, WPARAM wParam, LPARAM lParam) PURE;</cpp:value></cpp:define>
+
+   <cpp:define pos:line="131" pos:column="4">#<cpp:directive pos:line="131" pos:column="5">define</cpp:directive> <cpp:macro><name pos:line="131" pos:column="12">MSODEBUGMETHODIMP</name></cpp:macro> <cpp:value pos:line="131" pos:column="30">MSOMETHODIMP_(BOOL) FDebugMessage (HMSOINST hinst, \
+         UINT message, WPARAM wParam, LPARAM lParam);</cpp:value></cpp:define>
+			
+   <cpp:define pos:line="134" pos:column="4">#<cpp:directive pos:line="134" pos:column="5">define</cpp:directive> <cpp:macro><name pos:line="134" pos:column="12">MSOMACDEBUGMETHODIMP</name></cpp:macro> <cpp:value pos:line="134" pos:column="33">MSOMACPUB MSOMETHODIMP_(BOOL) FDebugMessage (HMSOINST hinst, \
+         UINT message, WPARAM wParam, LPARAM lParam);</cpp:value></cpp:define>
+	
+   <cpp:define pos:line="137" pos:column="4">#<cpp:directive pos:line="137" pos:column="5">define</cpp:directive> <cpp:macro><name pos:line="137" pos:column="12">DEBUGMETHOD</name><parameter_list pos:line="137" pos:column="23">(<param><type><name pos:line="137" pos:column="24">cn</name></type></param>,<param><type><name pos:line="137" pos:column="27">bt</name></type></param>)</parameter_list></cpp:macro>  <cpp:value pos:line="137" pos:column="32">STDMETHODIMP_(BOOL) cn::FDebugMessage (HMSOINST, \
+         UINT, WPARAM, LPARAM) { return TRUE; }</cpp:value></cpp:define>
+<cpp:endif pos:line="139" pos:column="1">#<cpp:directive pos:line="139" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+
+<comment type="block" format="doxygen" pos:line="143" pos:column="1">/*************************************************************************
+	Enabling/disabling debug options
+*************************************************************************/</comment>
+
+<enum pos:line="147" pos:column="1">enum
+<block pos:line="148" pos:column="1">{
+	<decl><name pos:line="149" pos:column="9">msodcAsserts</name> <init pos:line="149" pos:column="22">= <expr><lit:literal type="number" pos:line="149" pos:column="24">0</lit:literal></expr></init></decl><op:operator pos:line="149" pos:column="25">,</op:operator>	<comment type="block" pos:line="149" pos:column="33">/* asserts enabled */</comment>
+	<decl><name pos:line="150" pos:column="9">msodcPushAsserts</name> <init pos:line="150" pos:column="26">= <expr><lit:literal type="number" pos:line="150" pos:column="28">1</lit:literal></expr></init></decl><op:operator pos:line="150" pos:column="29">,</op:operator> <comment type="block" pos:line="150" pos:column="31">/* push asserts enabled */</comment>
+	<decl><name pos:line="151" pos:column="9">msodcMemoryFill</name> <init pos:line="151" pos:column="25">= <expr><lit:literal type="number" pos:line="151" pos:column="27">2</lit:literal></expr></init></decl><op:operator pos:line="151" pos:column="28">,</op:operator>	<comment type="block" pos:line="151" pos:column="33">/* memory fills enabled */</comment>
+	<decl><name pos:line="152" pos:column="9">msodcMemoryFillCheck</name> <init pos:line="152" pos:column="30">= <expr><lit:literal type="number" pos:line="152" pos:column="32">3</lit:literal></expr></init></decl><op:operator pos:line="152" pos:column="33">,</op:operator>	<comment type="block" pos:line="152" pos:column="41">/* check memory fills */</comment>
+	<decl><name pos:line="153" pos:column="9">msodcTrace</name> <init pos:line="153" pos:column="20">= <expr><lit:literal type="number" pos:line="153" pos:column="22">4</lit:literal></expr></init></decl><op:operator pos:line="153" pos:column="23">,</op:operator>	<comment type="block" pos:line="153" pos:column="25">/* trace output */</comment>
+	<decl><name pos:line="154" pos:column="9">msodcHeap</name> <init pos:line="154" pos:column="19">= <expr><lit:literal type="number" pos:line="154" pos:column="21">5</lit:literal></expr></init></decl><op:operator pos:line="154" pos:column="22">,</op:operator>	<comment type="block" pos:line="154" pos:column="25">/* heap checking */</comment>
+	<decl><name pos:line="155" pos:column="9">msodcMemLeakCheck</name> <init pos:line="155" pos:column="27">= <expr><lit:literal type="number" pos:line="155" pos:column="29">6</lit:literal></expr></init></decl><op:operator pos:line="155" pos:column="30">,</op:operator>
+	<decl><name pos:line="156" pos:column="9">msodcMemTrace</name> <init pos:line="156" pos:column="23">= <expr><lit:literal type="number" pos:line="156" pos:column="25">7</lit:literal></expr></init></decl><op:operator pos:line="156" pos:column="26">,</op:operator>	<comment type="block" pos:line="156" pos:column="33">/* memory allocation trace */</comment>
+	<decl><name pos:line="157" pos:column="9">msodcGdiNoBatch</name> <init pos:line="157" pos:column="25">= <expr><lit:literal type="number" pos:line="157" pos:column="27">8</lit:literal></expr></init></decl><op:operator pos:line="157" pos:column="28">,</op:operator>	<comment type="block" pos:line="157" pos:column="33">/* don't batch GDI calls */</comment>
+	<decl><name pos:line="158" pos:column="9">msodcShakeMem</name> <init pos:line="158" pos:column="23">= <expr><lit:literal type="number" pos:line="158" pos:column="25">9</lit:literal></expr></init></decl><op:operator pos:line="158" pos:column="26">,</op:operator>	<comment type="block" pos:line="158" pos:column="33">/* shake memory on allocations */</comment>
+	<decl><name pos:line="159" pos:column="9">msodcReports</name> <init pos:line="159" pos:column="22">= <expr><lit:literal type="number" pos:line="159" pos:column="24">10</lit:literal></expr></init></decl><op:operator pos:line="159" pos:column="26">,</op:operator>	<comment type="block" pos:line="159" pos:column="33">/* report output enabled */</comment>
+	<decl><name pos:line="160" pos:column="9">msodcMsgTrace</name> <init pos:line="160" pos:column="23">= <expr><lit:literal type="number" pos:line="160" pos:column="25">11</lit:literal></expr></init></decl><op:operator pos:line="160" pos:column="27">,</op:operator>	<comment type="block" pos:line="160" pos:column="33">/* WLM message trace - MAC only */</comment>
+	<decl><name pos:line="161" pos:column="9">msodcWlmValidate</name> <init pos:line="161" pos:column="26">= <expr><lit:literal type="number" pos:line="161" pos:column="28">12</lit:literal></expr></init></decl><op:operator pos:line="161" pos:column="30">,</op:operator>	<comment type="block" pos:line="161" pos:column="33">/* WLM parameter validation - MAC only */</comment>
+	<decl><name pos:line="162" pos:column="9">msodcGdiNoExcep</name> <init pos:line="162" pos:column="25">= <expr><lit:literal type="number" pos:line="162" pos:column="27">13</lit:literal></expr></init></decl><op:operator pos:line="162" pos:column="29">,</op:operator>  <comment type="block" pos:line="162" pos:column="32">/* Don't call GetObjectType for debug */</comment>
+	<decl><name pos:line="163" pos:column="9">msodcDisplaySlowTests</name> <init pos:line="163" pos:column="31">= <expr><lit:literal type="number" pos:line="163" pos:column="33">14</lit:literal></expr></init></decl><op:operator pos:line="163" pos:column="35">,</op:operator> <comment type="block" pos:line="163" pos:column="37">/* Do slow (O(n^2) and worse) Drawing debug checks */</comment>
+	<decl><name pos:line="164" pos:column="9">msodcDisplayAbortOften</name> <init pos:line="164" pos:column="32">= <expr><lit:literal type="number" pos:line="164" pos:column="34">15</lit:literal></expr></init></decl><op:operator pos:line="164" pos:column="36">,</op:operator> <comment type="block" pos:line="164" pos:column="38">/* Check for aborting redraw really often. */</comment>
+	<decl><name pos:line="165" pos:column="9">msodcDisplayAbortNever</name> <init pos:line="165" pos:column="32">= <expr><lit:literal type="number" pos:line="165" pos:column="34">16</lit:literal></expr></init></decl><op:operator pos:line="165" pos:column="36">,</op:operator> <comment type="block" pos:line="165" pos:column="38">/* Don't abort redraw */</comment>
+	<decl><name pos:line="166" pos:column="9">msodcPurgedMaxSmall</name> <init pos:line="166" pos:column="29">= <expr><lit:literal type="number" pos:line="166" pos:column="31">17</lit:literal></expr></init></decl><op:operator pos:line="166" pos:column="33">,</op:operator>
+	<decl><name pos:line="167" pos:column="9">msodcMarkMemLeakCheck</name> <init pos:line="167" pos:column="31">= <expr><lit:literal type="number" pos:line="167" pos:column="33">18</lit:literal></expr></init></decl><op:operator pos:line="167" pos:column="35">,</op:operator>
+	<decl><name pos:line="168" pos:column="9">msodcSpare19</name> <init pos:line="168" pos:column="22">= <expr><lit:literal type="number" pos:line="168" pos:column="24">19</lit:literal></expr></init></decl><op:operator pos:line="168" pos:column="26">,</op:operator> <comment type="block" pos:line="168" pos:column="28">/* USE ME */</comment>
+	<decl><name pos:line="169" pos:column="9">msodcSpare20</name> <init pos:line="169" pos:column="22">= <expr><lit:literal type="number" pos:line="169" pos:column="24">20</lit:literal></expr></init></decl><op:operator pos:line="169" pos:column="26">,</op:operator> <comment type="block" pos:line="169" pos:column="28">/* USE ME */</comment>
+	<decl><name pos:line="170" pos:column="9">msodcSpare21</name> <init pos:line="170" pos:column="22">= <expr><lit:literal type="number" pos:line="170" pos:column="24">21</lit:literal></expr></init></decl><op:operator pos:line="170" pos:column="26">,</op:operator> <comment type="block" pos:line="170" pos:column="28">/* USE ME */</comment>
+	<decl><name pos:line="171" pos:column="9">msodcSpare22</name> <init pos:line="171" pos:column="22">= <expr><lit:literal type="number" pos:line="171" pos:column="24">22</lit:literal></expr></init></decl><op:operator pos:line="171" pos:column="26">,</op:operator> <comment type="block" pos:line="171" pos:column="28">/* USE ME */</comment>
+	<decl><name pos:line="172" pos:column="9">msodcMax</name> <init pos:line="172" pos:column="18">= <expr><lit:literal type="number" pos:line="172" pos:column="20">23</lit:literal></expr></init></decl><op:operator pos:line="172" pos:column="22">,</op:operator>
+}</block>;</enum>
+
+
+<comment type="block" pos:line="176" pos:column="1">/* Enables/disables various office debug checks. dc is the check to 
+	change, fEnabled is TRUE if the check should be enabled, FALSE
+	if disabled */</comment>
+<cpp:if pos:line="179" pos:column="1">#<cpp:directive pos:line="179" pos:column="2">if</cpp:directive> <expr><name pos:line="179" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="180" pos:column="9">MSOAPI_</name><argument_list pos:line="180" pos:column="16">(<argument pos:line="180" pos:column="17">BOOL</argument>)</argument_list></macro> <macro><name pos:line="180" pos:column="23">MsoEnableDebugCheck</name><argument_list pos:line="180" pos:column="42">(<argument pos:line="180" pos:column="43">int dc</argument>, <argument pos:line="180" pos:column="51">BOOL fEnabled</argument>)</argument_list></macro><empty_stmt pos:line="180" pos:column="65">;</empty_stmt>
+	<cpp:if pos:line="181" pos:column="9">#<cpp:directive pos:line="181" pos:column="10">if</cpp:directive> <expr><op:operator pos:line="181" pos:column="13">!</op:operator><name pos:line="181" pos:column="14">OFFICE_BUILD</name></expr></cpp:if>
+		<macro><name pos:line="182" pos:column="17">MSOAPI_</name><argument_list pos:line="182" pos:column="24">(<argument pos:line="182" pos:column="25">BOOL</argument>)</argument_list></macro> <macro><name pos:line="182" pos:column="31">MsoFGetDebugCheck</name><argument_list pos:line="182" pos:column="48">(<argument pos:line="182" pos:column="49">int dc</argument>)</argument_list></macro><empty_stmt pos:line="182" pos:column="56">;</empty_stmt>
+	<cpp:else pos:line="183" pos:column="9">#<cpp:directive pos:line="183" pos:column="10">else</cpp:directive></cpp:else>
+		<decl_stmt><decl><type><specifier pos:line="184" pos:column="17">extern</specifier> <name pos:line="184" pos:column="24">BYTE</name></type> <name><name pos:line="184" pos:column="29">msovmpdcfDisabled</name><index pos:line="184" pos:column="46">[<expr><name pos:line="184" pos:column="47">msodcMax</name></expr>]</index></name></decl>;</decl_stmt>
+		<cpp:define pos:line="185" pos:column="17">#<cpp:directive pos:line="185" pos:column="18">define</cpp:directive> <cpp:macro><name pos:line="185" pos:column="25">MsoFGetDebugCheck</name><parameter_list pos:line="185" pos:column="42">(<param><type><name pos:line="185" pos:column="43">dc</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="185" pos:column="47">(!msovmpdcfDisabled[(dc)])</cpp:value></cpp:define>
+	<cpp:endif pos:line="186" pos:column="9">#<cpp:directive pos:line="186" pos:column="10">endif</cpp:directive></cpp:endif>
+<cpp:else pos:line="187" pos:column="1">#<cpp:directive pos:line="187" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="188" pos:column="9">#<cpp:directive pos:line="188" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="188" pos:column="17">MsoEnableDebugCheck</name><parameter_list pos:line="188" pos:column="36">(<param><type><name pos:line="188" pos:column="37">dc</name></type></param>, <param><type><name pos:line="188" pos:column="41">fEnabled</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="188" pos:column="51">(FALSE)</cpp:value></cpp:define>
+	<cpp:define pos:line="189" pos:column="9">#<cpp:directive pos:line="189" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="189" pos:column="17">MsoFGetDebugCheck</name><parameter_list pos:line="189" pos:column="34">(<param><type><name pos:line="189" pos:column="35">dc</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="189" pos:column="39">(FALSE)</cpp:value></cpp:define>
+<cpp:endif pos:line="190" pos:column="1">#<cpp:directive pos:line="190" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+<comment type="block" pos:line="193" pos:column="1">/* Enables/disables various office feature reports. bitfFeatureFilter
+	is the feature reports to change, fEnable should be TRUE if the
+	feature reports should be enabled, FALSE if disabled. */</comment>
+<cpp:if pos:line="196" pos:column="1">#<cpp:directive pos:line="196" pos:column="2">if</cpp:directive> <expr><name pos:line="196" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="197" pos:column="9">MSOAPI_</name><argument_list pos:line="197" pos:column="16">(<argument pos:line="197" pos:column="17">UINT</argument>)</argument_list></macro> <macro><name pos:line="197" pos:column="23">MsoEnableFeatureReports</name><argument_list pos:line="197" pos:column="46">(<argument pos:line="197" pos:column="47">UINT bitfFeatureFilter</argument>, <argument pos:line="197" pos:column="71">BOOL fEnable</argument>)</argument_list></macro><empty_stmt pos:line="197" pos:column="84">;</empty_stmt>
+	<macro><name pos:line="198" pos:column="9">MSOAPI_</name><argument_list pos:line="198" pos:column="16">(<argument pos:line="198" pos:column="17">UINT</argument>)</argument_list></macro> <macro><name pos:line="198" pos:column="23">MsoSetFeatureReports</name><argument_list pos:line="198" pos:column="43">(<argument pos:line="198" pos:column="44">UINT grfFeatureFilter</argument>)</argument_list></macro><empty_stmt pos:line="198" pos:column="66">;</empty_stmt>
+	<cpp:if pos:line="199" pos:column="9">#<cpp:directive pos:line="199" pos:column="10">if</cpp:directive> <expr><op:operator pos:line="199" pos:column="13">!</op:operator><name pos:line="199" pos:column="14">OFFICE_BUILD</name></expr></cpp:if>
+		<macro><name pos:line="200" pos:column="17">MSOAPI_</name><argument_list pos:line="200" pos:column="24">(<argument pos:line="200" pos:column="25">BOOL</argument>)</argument_list></macro> <macro><name pos:line="200" pos:column="31">MsoFFeatureReportsEnabled</name><argument_list pos:line="200" pos:column="56">(<argument pos:line="200" pos:column="57">UINT bitfFeatureFilter</argument>)</argument_list></macro><empty_stmt pos:line="200" pos:column="80">;</empty_stmt>
+		<macro><name pos:line="201" pos:column="17">MSOAPI_</name><argument_list pos:line="201" pos:column="24">(<argument pos:line="201" pos:column="25">UINT</argument>)</argument_list></macro> <expr_stmt><expr><call><name pos:line="201" pos:column="31">MsoGetFeatureReports</name><argument_list pos:line="201" pos:column="51">()</argument_list></call></expr>;</expr_stmt>
+	<cpp:else pos:line="202" pos:column="9">#<cpp:directive pos:line="202" pos:column="10">else</cpp:directive></cpp:else>
+		<decl_stmt><decl><type><specifier pos:line="203" pos:column="17">extern</specifier> <name pos:line="203" pos:column="24">UINT</name></type> <name pos:line="203" pos:column="29">vuFeatureReportsFilter</name></decl>;</decl_stmt>
+		<cpp:define pos:line="204" pos:column="17">#<cpp:directive pos:line="204" pos:column="18">define</cpp:directive> <cpp:macro><name pos:line="204" pos:column="25">MsoFFeatureReportsEnabled</name><parameter_list pos:line="204" pos:column="50">(<param><type><name pos:line="204" pos:column="51">bitfFeatureFilter</name></type></param>)</parameter_list></cpp:macro> \
+					<cpp:value pos:line="205" pos:column="41">(vuFeatureReportsFilter &amp; bitfFeatureFilter)</cpp:value></cpp:define>
+		<cpp:define pos:line="206" pos:column="17">#<cpp:directive pos:line="206" pos:column="18">define</cpp:directive> <cpp:macro><name pos:line="206" pos:column="25">MsoGetFeatureReports</name><parameter_list pos:line="206" pos:column="45">()</parameter_list></cpp:macro> <cpp:value pos:line="206" pos:column="48">(vuFeatureReportsFilter)</cpp:value></cpp:define>
+	<cpp:endif pos:line="207" pos:column="9">#<cpp:directive pos:line="207" pos:column="10">endif</cpp:directive></cpp:endif>
+<cpp:else pos:line="208" pos:column="1">#<cpp:directive pos:line="208" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="209" pos:column="9">#<cpp:directive pos:line="209" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="209" pos:column="17">MsoEnableFeatureReports</name><parameter_list pos:line="209" pos:column="40">(<param><type><name pos:line="209" pos:column="41">bitfFeatureFilter</name></type></param>, <param><type><name pos:line="209" pos:column="60">fEnable</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="209" pos:column="69">(0)</cpp:value></cpp:define>
+	<cpp:define pos:line="210" pos:column="9">#<cpp:directive pos:line="210" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="210" pos:column="17">MsoFFeatureReportsEnabled</name><parameter_list pos:line="210" pos:column="42">(<param><type><name pos:line="210" pos:column="43">bitfFeatureFilter</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="210" pos:column="62">(FALSE)</cpp:value></cpp:define>
+	<cpp:define pos:line="211" pos:column="9">#<cpp:directive pos:line="211" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="211" pos:column="17">MsoSetFeatureReports</name><parameter_list pos:line="211" pos:column="37">(<param><type><name pos:line="211" pos:column="38">grfFeatureFilter</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="211" pos:column="56">(0)</cpp:value></cpp:define>
+	<cpp:define pos:line="212" pos:column="9">#<cpp:directive pos:line="212" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="212" pos:column="17">MsoGetFeatureReports</name><parameter_list pos:line="212" pos:column="37">()</parameter_list></cpp:macro> <cpp:value pos:line="212" pos:column="40">(0)</cpp:value></cpp:define>
+<cpp:endif pos:line="213" pos:column="1">#<cpp:directive pos:line="213" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+<comment type="block" pos:line="216" pos:column="1">/*	Assert Output types */</comment>
+<enum pos:line="217" pos:column="1">enum
+<block pos:line="218" pos:column="1">{
+	<decl><name pos:line="219" pos:column="9">msoiasoAssert</name></decl><op:operator pos:line="219" pos:column="22">,</op:operator>
+	<decl><name pos:line="220" pos:column="9">msoiasoTrace</name></decl><op:operator pos:line="220" pos:column="21">,</op:operator>
+	<decl><name pos:line="221" pos:column="9">msoiasoReport</name></decl><op:operator pos:line="221" pos:column="22">,</op:operator>
+	<decl><name pos:line="222" pos:column="9">msoiasoMax</name></decl>
+}</block>;</enum>
+
+
+<comment type="block" pos:line="226" pos:column="1">/*	Returns the current debug output settings.  Note that these are
+	macros referencing a DLL global variable. */</comment>
+<comment type="line" pos:line="228" pos:column="1">//#define MsoFAssertsEnabled() (MsoFGetDebugCheck(msodcAsserts))</comment>
+<macro><name pos:line="229" pos:column="1">MSOAPI_</name><argument_list pos:line="229" pos:column="8">(<argument pos:line="229" pos:column="9">BOOL</argument>)</argument_list></macro> <expr_stmt><expr><call><name pos:line="229" pos:column="15">MsoFAssertsEnabled</name><argument_list pos:line="229" pos:column="33">()</argument_list></call></expr>;</expr_stmt>
+<cpp:define pos:line="230" pos:column="1">#<cpp:directive pos:line="230" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="230" pos:column="9">MsoFTraceEnabled</name><parameter_list pos:line="230" pos:column="25">()</parameter_list></cpp:macro> <cpp:value pos:line="230" pos:column="28">(MsoFGetDebugCheck(msodcTrace))</cpp:value></cpp:define>
+<cpp:define pos:line="231" pos:column="1">#<cpp:directive pos:line="231" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="231" pos:column="9">MsoFReportsEnabled</name><parameter_list pos:line="231" pos:column="27">()</parameter_list></cpp:macro> <cpp:value pos:line="231" pos:column="30">(MsoFGetDebugCheck(msodcReports))</cpp:value></cpp:define>
+
+<enum pos:line="233" pos:column="1">enum
+<block pos:line="234" pos:column="1">{
+	<decl><name pos:line="235" pos:column="9">msoaoDebugger</name> <init pos:line="235" pos:column="23">= <expr><lit:literal type="number" pos:line="235" pos:column="25">0x01</lit:literal></expr></init></decl><op:operator pos:line="235" pos:column="29">,</op:operator>	<comment type="block" pos:line="235" pos:column="33">/* output to debugger */</comment>
+	<decl><name pos:line="236" pos:column="9">msoaoFile</name> <init pos:line="236" pos:column="19">= <expr><lit:literal type="number" pos:line="236" pos:column="21">0x02</lit:literal></expr></init></decl><op:operator pos:line="236" pos:column="25">,</op:operator>	<comment type="block" pos:line="236" pos:column="33">/* output goes to file */</comment>
+	<decl><name pos:line="237" pos:column="9">msoaoMsgBox</name> <init pos:line="237" pos:column="21">= <expr><lit:literal type="number" pos:line="237" pos:column="23">0x04</lit:literal></expr></init></decl><op:operator pos:line="237" pos:column="27">,</op:operator>	<comment type="block" pos:line="237" pos:column="33">/* output displayed in message box (no Traces) */</comment>
+	<decl><name pos:line="238" pos:column="9">msoaoPort</name> <init pos:line="238" pos:column="19">= <expr><lit:literal type="number" pos:line="238" pos:column="21">0x08</lit:literal></expr></init></decl><op:operator pos:line="238" pos:column="25">,</op:operator>	<comment type="block" pos:line="238" pos:column="33">/* output sent to serial port */</comment>
+	<decl><name pos:line="239" pos:column="9">msoaoMappedFile</name> <init pos:line="239" pos:column="25">= <expr><lit:literal type="number" pos:line="239" pos:column="27">0x10</lit:literal></expr></init></decl><op:operator pos:line="239" pos:column="31">,</op:operator>	<comment type="block" pos:line="239" pos:column="33">/* output recorded in memory mapped file */</comment>
+	<decl><name pos:line="240" pos:column="9">msoaoDebugBreak</name> <init pos:line="240" pos:column="25">= <expr><lit:literal type="number" pos:line="240" pos:column="27">0x20</lit:literal></expr></init></decl><op:operator pos:line="240" pos:column="31">,</op:operator>	<comment type="block" pos:line="240" pos:column="33">/* msoaoDebugger breaks into the debugger */</comment>
+
+	<decl><name pos:line="242" pos:column="9">msoaoAppend</name> <init pos:line="242" pos:column="21">= <expr><lit:literal type="number" pos:line="242" pos:column="23">0x8000</lit:literal></expr></init></decl><op:operator pos:line="242" pos:column="29">,</op:operator>	<comment type="block" pos:line="242" pos:column="33">/* output appended to existing file */</comment>
+}</block>;</enum>
+
+<comment type="block" pos:line="245" pos:column="1">/*	Sets the destination of assert output */</comment>
+<cpp:if pos:line="246" pos:column="1">#<cpp:directive pos:line="246" pos:column="2">if</cpp:directive> <expr><name pos:line="246" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="247" pos:column="9">MSOAPI_</name><argument_list pos:line="247" pos:column="16">(<argument pos:line="247" pos:column="17">int</argument>)</argument_list></macro> <macro><name pos:line="247" pos:column="22">MsoSetAssertOutput</name><argument_list pos:line="247" pos:column="40">(<argument pos:line="247" pos:column="41">int iaso</argument>, <argument pos:line="247" pos:column="51">int ao</argument>)</argument_list></macro><empty_stmt pos:line="247" pos:column="58">;</empty_stmt>
+<cpp:else pos:line="248" pos:column="1">#<cpp:directive pos:line="248" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="249" pos:column="9">#<cpp:directive pos:line="249" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="249" pos:column="17">MsoSetAssertOutput</name><parameter_list pos:line="249" pos:column="35">(<param><type><name pos:line="249" pos:column="36">iaso</name></type></param>, <param><type><name pos:line="249" pos:column="42">ao</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="249" pos:column="46">(0)</cpp:value></cpp:define>
+<cpp:endif pos:line="250" pos:column="1">#<cpp:directive pos:line="250" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="252" pos:column="1">/*	Returns the current assert output destination. */</comment>
+<cpp:if pos:line="253" pos:column="1">#<cpp:directive pos:line="253" pos:column="2">if</cpp:directive> <expr><name pos:line="253" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="254" pos:column="9">MSOAPI_</name><argument_list pos:line="254" pos:column="16">(<argument pos:line="254" pos:column="17">int</argument>)</argument_list></macro> <macro><name pos:line="254" pos:column="22">MsoGetAssertOutput</name><argument_list pos:line="254" pos:column="40">(<argument pos:line="254" pos:column="41">int iaso</argument>)</argument_list></macro><empty_stmt pos:line="254" pos:column="50">;</empty_stmt>
+<cpp:else pos:line="255" pos:column="1">#<cpp:directive pos:line="255" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="256" pos:column="9">#<cpp:directive pos:line="256" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="256" pos:column="17">MsoGetAssertOutput</name><parameter_list pos:line="256" pos:column="35">(<param><type><name pos:line="256" pos:column="36">iaso</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="256" pos:column="42">(0)</cpp:value></cpp:define>
+<cpp:endif pos:line="257" pos:column="1">#<cpp:directive pos:line="257" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="259" pos:column="1">/* Sets the name of the file that the assert information gets written
+	to, if file output is enabled using msoaoFile */</comment>
+<cpp:if pos:line="261" pos:column="1">#<cpp:directive pos:line="261" pos:column="2">if</cpp:directive> <expr><name pos:line="261" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="262" pos:column="9">MSOAPI_</name><argument_list pos:line="262" pos:column="16">(<argument pos:line="262" pos:column="17">void</argument>)</argument_list></macro> <macro><name pos:line="262" pos:column="23">MsoSetAssertOutputFile</name><argument_list pos:line="262" pos:column="45">(<argument pos:line="262" pos:column="46">int iaso</argument>, <argument pos:line="262" pos:column="56">const CHAR* szFile</argument>)</argument_list></macro><empty_stmt pos:line="262" pos:column="75">;</empty_stmt>
+<cpp:else pos:line="263" pos:column="1">#<cpp:directive pos:line="263" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="264" pos:column="9">#<cpp:directive pos:line="264" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="264" pos:column="17">MsoSetAssertOutputFile</name><parameter_list pos:line="264" pos:column="39">(<param><type><name pos:line="264" pos:column="40">iaso</name></type></param>, <param><type><name pos:line="264" pos:column="46">szFile</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="264" pos:column="54">(0)</cpp:value></cpp:define>
+<cpp:endif pos:line="265" pos:column="1">#<cpp:directive pos:line="265" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="267" pos:column="1">/*	Returns the current name of the file that we're writing assert
+	output to.   The name is saved in the buffer szFile, which must be
+	cchMax characters long.  Returns the actual  length of the string
+	returned. */</comment>
+<cpp:if pos:line="271" pos:column="1">#<cpp:directive pos:line="271" pos:column="2">if</cpp:directive> <expr><name pos:line="271" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="272" pos:column="9">MSOAPIXX_</name><argument_list pos:line="272" pos:column="18">(<argument pos:line="272" pos:column="19">int</argument>)</argument_list></macro> <macro><name pos:line="272" pos:column="24">MsoGetAssertOutputFile</name><argument_list pos:line="272" pos:column="46">(<argument pos:line="272" pos:column="47">int iaso</argument>, <argument pos:line="272" pos:column="57">CHAR* szFile</argument>, <argument pos:line="272" pos:column="71">int cchMax</argument>)</argument_list></macro><empty_stmt pos:line="272" pos:column="82">;</empty_stmt>
+<cpp:else pos:line="273" pos:column="1">#<cpp:directive pos:line="273" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="274" pos:column="9">#<cpp:directive pos:line="274" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="274" pos:column="17">MsoGetAssertOutputFile</name><parameter_list pos:line="274" pos:column="39">(<param><type><name pos:line="274" pos:column="40">iaso</name></type></param>, <param><type><name pos:line="274" pos:column="46">szFile</name></type></param>, <param><type><name pos:line="274" pos:column="54">cchMax</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="274" pos:column="62">(0)</cpp:value></cpp:define>
+<cpp:endif pos:line="275" pos:column="1">#<cpp:directive pos:line="275" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+<comment type="block" format="doxygen" pos:line="278" pos:column="1">/*************************************************************************
+	Debugger breaks
+*************************************************************************/</comment>
+
+<comment type="block" pos:line="282" pos:column="1">/* REVIEW KirkG: Should these be defined in Ship versions? */</comment>
+
+<comment type="block" pos:line="284" pos:column="1">/* REVIEW KirkG: Why do we need both Inline and non-Inline? */</comment>
+
+<comment type="block" pos:line="286" pos:column="1">/* Breaks into the debugger.  Works (more or less) on all supported
+ 	systems. */</comment>
+<cpp:if pos:line="288" pos:column="1">#<cpp:directive pos:line="288" pos:column="2">if</cpp:directive> <expr><name pos:line="288" pos:column="5">X86</name></expr></cpp:if>
+	<cpp:define pos:line="289" pos:column="9">#<cpp:directive pos:line="289" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="289" pos:column="17">MsoDebugBreakInline</name><parameter_list pos:line="289" pos:column="36">()</parameter_list></cpp:macro> <cpp:value pos:line="289" pos:column="39">{__asm int 3}</cpp:value></cpp:define>
+<cpp:else pos:line="290" pos:column="1">#<cpp:directive pos:line="290" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="291" pos:column="9">#<cpp:directive pos:line="291" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="291" pos:column="17">MsoDebugBreakInline</name><parameter_list pos:line="291" pos:column="36">()</parameter_list></cpp:macro> <cpp:value pos:line="291" pos:column="39">{ MsoDebugBreak(); }</cpp:value></cpp:define>
+<cpp:endif pos:line="292" pos:column="1">#<cpp:directive pos:line="292" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="294" pos:column="1">/*	A version of debug break that you can actually call, instead of the
+	above inline weirdness we use in most cases.  Can therefore be used in
+	expressions. Returns 0 */</comment>
+<cpp:if pos:line="297" pos:column="1">#<cpp:directive pos:line="297" pos:column="2">if</cpp:directive> <expr><name pos:line="297" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="298" pos:column="9">MSOAPI_</name><argument_list pos:line="298" pos:column="16">(<argument pos:line="298" pos:column="17">int</argument>)</argument_list></macro> <expr_stmt><expr><call><name pos:line="298" pos:column="22">MsoDebugBreak</name><argument_list pos:line="298" pos:column="35">(<argument><expr><name pos:line="298" pos:column="36">void</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+<cpp:else pos:line="299" pos:column="1">#<cpp:directive pos:line="299" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="300" pos:column="9">#<cpp:directive pos:line="300" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="300" pos:column="17">MsoDebugBreak</name><parameter_list pos:line="300" pos:column="30">()</parameter_list></cpp:macro> <cpp:value pos:line="300" pos:column="33">(0)</cpp:value></cpp:define>
+<cpp:endif pos:line="301" pos:column="1">#<cpp:directive pos:line="301" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+<comment type="block" format="doxygen" pos:line="304" pos:column="1">/*************************************************************************
+	Assertion failures
+*************************************************************************/</comment>
+
+<cpp:if pos:line="308" pos:column="1">#<cpp:directive pos:line="308" pos:column="2">if</cpp:directive> <expr><op:operator pos:line="308" pos:column="5">!</op:operator><call><name pos:line="308" pos:column="6">defined</name><argument_list pos:line="308" pos:column="13">(<argument><expr><name pos:line="308" pos:column="14">MSO_NO_ASSERTS</name></expr></argument>)</argument_list></call></expr></cpp:if>
+
+<comment type="block" pos:line="310" pos:column="1">/*	Displays the assert message, including flushing any assert stack.
+	szFile and li are the filename and line number of the failure,
+	and szMsg is an optional message to display with the assert.
+	Returns FALSE if the caller should break into the debugger. */</comment>
+<cpp:if pos:line="314" pos:column="1">#<cpp:directive pos:line="314" pos:column="2">if</cpp:directive> <expr><name pos:line="314" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="315" pos:column="9">MSOAPI_</name><argument_list pos:line="315" pos:column="16">(<argument pos:line="315" pos:column="17">BOOL</argument>)</argument_list></macro> <macro><name pos:line="315" pos:column="23">MsoFAssert</name><argument_list pos:line="315" pos:column="33">(<argument pos:line="315" pos:column="34">const CHAR* szFile</argument>, <argument pos:line="315" pos:column="54">int li</argument>, <argument pos:line="315" pos:column="62">const CHAR* szMsg</argument>)</argument_list></macro><empty_stmt pos:line="315" pos:column="80">;</empty_stmt>
+<cpp:ifndef pos:line="316" pos:column="1">#<cpp:directive pos:line="316" pos:column="2">ifndef</cpp:directive> <name pos:line="316" pos:column="9">STATIC_LIB_DEF</name></cpp:ifndef>
+	<macro><name pos:line="317" pos:column="9">MSOAPI_</name><argument_list pos:line="317" pos:column="16">(<argument pos:line="317" pos:column="17">BOOL</argument>)</argument_list></macro> <macro><name pos:line="317" pos:column="23">MsoFAssertTag</name><argument_list pos:line="317" pos:column="36">(<argument pos:line="317" pos:column="37">DWORD dwTag</argument>, <argument pos:line="317" pos:column="50">const CHAR* szFile</argument>, <argument pos:line="317" pos:column="70">int li</argument>, 
+	                            <argument pos:line="318" pos:column="37">const CHAR* szMsg</argument>)</argument_list></macro><empty_stmt pos:line="318" pos:column="55">;</empty_stmt>
+<cpp:endif pos:line="319" pos:column="1">#<cpp:directive pos:line="319" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="319" pos:column="8">// !STATIC_LIB_DEF</comment>
+<cpp:else pos:line="320" pos:column="1">#<cpp:directive pos:line="320" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="321" pos:column="9">#<cpp:directive pos:line="321" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="321" pos:column="17">MsoFAssert</name><parameter_list pos:line="321" pos:column="27">(<param><type><name pos:line="321" pos:column="28">szFile</name></type></param>, <param><type><name pos:line="321" pos:column="36">li</name></type></param>, <param><type><name pos:line="321" pos:column="40">szMsg</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="321" pos:column="47">(TRUE)</cpp:value></cpp:define>
+	<cpp:define pos:line="322" pos:column="9">#<cpp:directive pos:line="322" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="322" pos:column="17">MsoFAssertTag</name><parameter_list pos:line="322" pos:column="30">(<param><type><name pos:line="322" pos:column="31">dwTag</name></type></param>, <param><type><name pos:line="322" pos:column="38">szFile</name></type></param>, <param><type><name pos:line="322" pos:column="46">li</name></type></param>, <param><type><name pos:line="322" pos:column="50">szMsg</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="322" pos:column="57">(TRUE)</cpp:value></cpp:define>
+<cpp:endif pos:line="323" pos:column="1">#<cpp:directive pos:line="323" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="325" pos:column="1">/*	Same as MsoFAssert above, except an optional title string can be
+	displayed. */</comment>
+<cpp:if pos:line="327" pos:column="1">#<cpp:directive pos:line="327" pos:column="2">if</cpp:directive> <expr><name pos:line="327" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="328" pos:column="9">MSOAPI_</name><argument_list pos:line="328" pos:column="16">(<argument pos:line="328" pos:column="17">BOOL</argument>)</argument_list></macro> <macro><name pos:line="328" pos:column="23">MsoFAssertTitle</name><argument_list pos:line="328" pos:column="38">(<argument pos:line="328" pos:column="39">const CHAR* szTitle</argument>,
+			<argument pos:line="329" pos:column="25">const CHAR* szFile</argument>, <argument pos:line="329" pos:column="45">int li</argument>, <argument pos:line="329" pos:column="53">const CHAR* szMsg</argument>)</argument_list></macro><empty_stmt pos:line="329" pos:column="71">;</empty_stmt>
+	<macro><name pos:line="330" pos:column="9">MSOAPI_</name><argument_list pos:line="330" pos:column="16">(<argument pos:line="330" pos:column="17">BOOL</argument>)</argument_list></macro> <macro><name pos:line="330" pos:column="23">MsoFAssertTagTitle</name><argument_list pos:line="330" pos:column="41">(<argument pos:line="330" pos:column="42">DWORD dwAssertTag</argument>, <argument pos:line="330" pos:column="61">const CHAR* szTitle</argument>,
+			<argument pos:line="331" pos:column="25">const CHAR* szFile</argument>, <argument pos:line="331" pos:column="45">int li</argument>, <argument pos:line="331" pos:column="53">const CHAR* szMsg</argument>)</argument_list></macro><empty_stmt pos:line="331" pos:column="71">;</empty_stmt>
+<cpp:else pos:line="332" pos:column="1">#<cpp:directive pos:line="332" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="333" pos:column="9">#<cpp:directive pos:line="333" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="333" pos:column="17">MsoFAssertTitle</name><parameter_list pos:line="333" pos:column="32">(<param><type><name pos:line="333" pos:column="33">szTitle</name></type></param>, <param><type><name pos:line="333" pos:column="42">szFile</name></type></param>, <param><type><name pos:line="333" pos:column="50">li</name></type></param>, <param><type><name pos:line="333" pos:column="54">szMsg</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="333" pos:column="61">(TRUE)</cpp:value></cpp:define>
+	<cpp:define pos:line="334" pos:column="9">#<cpp:directive pos:line="334" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="334" pos:column="17">MsoFAssertTagTitle</name><parameter_list pos:line="334" pos:column="35">(<param><type><name pos:line="334" pos:column="36">dwAssertTag</name></type></param>, <param><type><name pos:line="334" pos:column="49">szTitle</name></type></param>, <param><type><name pos:line="334" pos:column="58">szFile</name></type></param>, <param><type><name pos:line="334" pos:column="66">li</name></type></param>, <param><type><name pos:line="334" pos:column="70">szMsg</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="334" pos:column="77">(TRUE)</cpp:value></cpp:define>
+<cpp:endif pos:line="335" pos:column="1">#<cpp:directive pos:line="335" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="337" pos:column="1">/*	Same as MsoFAssertTitle above, except you can pass in your own 
+	MessageBox flags */</comment>
+<cpp:if pos:line="339" pos:column="1">#<cpp:directive pos:line="339" pos:column="2">if</cpp:directive> <expr><name pos:line="339" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="340" pos:column="9">MSOAPIXX_</name><argument_list pos:line="340" pos:column="18">(<argument pos:line="340" pos:column="19">BOOL</argument>)</argument_list></macro> <macro><name pos:line="340" pos:column="25">MsoFAssertTitleMb</name><argument_list pos:line="340" pos:column="42">(<argument pos:line="340" pos:column="43">const CHAR* szTitle</argument>,
+			<argument pos:line="341" pos:column="25">const CHAR* szFile</argument>, <argument pos:line="341" pos:column="45">int li</argument>, <argument pos:line="341" pos:column="53">const CHAR* szMsg</argument>, <argument pos:line="341" pos:column="72">UINT mb</argument>)</argument_list></macro><empty_stmt pos:line="341" pos:column="80">;</empty_stmt>
+<cpp:else pos:line="342" pos:column="1">#<cpp:directive pos:line="342" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="343" pos:column="9">#<cpp:directive pos:line="343" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="343" pos:column="17">MsoFAssertTitleMb</name><parameter_list pos:line="343" pos:column="34">(<param><type><name pos:line="343" pos:column="35">szTitle</name></type></param>, <param><type><name pos:line="343" pos:column="44">szFile</name></type></param>, <param><type><name pos:line="343" pos:column="52">li</name></type></param>, <param><type><name pos:line="343" pos:column="56">szMsg</name></type></param>, <param><type><name pos:line="343" pos:column="63">mb</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="343" pos:column="67">(TRUE)</cpp:value></cpp:define>
+<cpp:endif pos:line="344" pos:column="1">#<cpp:directive pos:line="344" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="346" pos:column="1">/*	Set a global for what type of NoTag file we should write. */</comment>
+<cpp:if pos:line="347" pos:column="1">#<cpp:directive pos:line="347" pos:column="2">if</cpp:directive> <expr><name pos:line="347" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="348" pos:column="9">MSOAPI_</name><argument_list pos:line="348" pos:column="16">(<argument pos:line="348" pos:column="17">VOID</argument>)</argument_list></macro> <macro><name pos:line="348" pos:column="23">MsoAssertNoTag</name><argument_list pos:line="348" pos:column="37">(<argument pos:line="348" pos:column="38">int iLog</argument>)</argument_list></macro><empty_stmt pos:line="348" pos:column="47">;</empty_stmt>
+<cpp:else pos:line="349" pos:column="1">#<cpp:directive pos:line="349" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="350" pos:column="9">#<cpp:directive pos:line="350" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="350" pos:column="17">MsoAssertNoTag</name><parameter_list pos:line="350" pos:column="31">(<param><type><name pos:line="350" pos:column="32">iLog</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:endif pos:line="351" pos:column="1">#<cpp:directive pos:line="351" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="line" pos:line="353" pos:column="1">// This enum has to match the array vrgNoTag in dbassert.cpp.</comment>
+<enum pos:line="354" pos:column="1">enum
+	<block pos:line="355" pos:column="9">{
+	<decl><name pos:line="356" pos:column="9">iNoTagDefault</name> <init pos:line="356" pos:column="23">= <expr><lit:literal type="number" pos:line="356" pos:column="25">0</lit:literal></expr></init></decl><op:operator pos:line="356" pos:column="26">,</op:operator>
+	<decl><name pos:line="357" pos:column="9">iNoTagAssert</name> <init pos:line="357" pos:column="22">= <expr><lit:literal type="number" pos:line="357" pos:column="24">0</lit:literal></expr></init></decl><op:operator pos:line="357" pos:column="25">,</op:operator>
+	<decl><name pos:line="358" pos:column="9">iNoTagHTML</name> <init pos:line="358" pos:column="20">= <expr><lit:literal type="number" pos:line="358" pos:column="22">1</lit:literal></expr></init></decl><op:operator pos:line="358" pos:column="23">,</op:operator>
+	<decl><name pos:line="359" pos:column="9">iNoTagGEL</name> <init pos:line="359" pos:column="19">= <expr><lit:literal type="number" pos:line="359" pos:column="21">2</lit:literal></expr></init></decl><op:operator pos:line="359" pos:column="22">,</op:operator>
+	<decl><name pos:line="360" pos:column="9">iNoTagMem</name> <init pos:line="360" pos:column="19">= <expr><lit:literal type="number" pos:line="360" pos:column="21">3</lit:literal></expr></init></decl>
+	}</block>;</enum>
+	
+
+<comment type="block" pos:line="364" pos:column="1">/*	Same as MsoFAssertTitleMb above, except you can pass in your own 
+	assert output type */</comment>
+<cpp:if pos:line="366" pos:column="1">#<cpp:directive pos:line="366" pos:column="2">if</cpp:directive> <expr><name pos:line="366" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="367" pos:column="9">MSOAPI_</name><argument_list pos:line="367" pos:column="16">(<argument pos:line="367" pos:column="17">BOOL</argument>)</argument_list></macro> <macro><name pos:line="367" pos:column="23">MsoFAssertTitleAsoMb</name><argument_list pos:line="367" pos:column="43">(<argument pos:line="367" pos:column="44">int iaso</argument>, <argument pos:line="367" pos:column="54">const CHAR* szTitle</argument>,
+			<argument pos:line="368" pos:column="25">const CHAR* szFile</argument>, <argument pos:line="368" pos:column="45">int li</argument>, <argument pos:line="368" pos:column="53">const CHAR* szMsg</argument>, <argument pos:line="368" pos:column="72">UINT mb</argument>)</argument_list></macro><empty_stmt pos:line="368" pos:column="80">;</empty_stmt>
+<cpp:else pos:line="369" pos:column="1">#<cpp:directive pos:line="369" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="370" pos:column="9">#<cpp:directive pos:line="370" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="370" pos:column="17">MsoFAssertTitleAsoMb</name><parameter_list pos:line="370" pos:column="37">(<param><type><name pos:line="370" pos:column="38">iaso</name></type></param>, <param><type><name pos:line="370" pos:column="44">szTitle</name></type></param>, <param><type><name pos:line="370" pos:column="53">szFile</name></type></param>, <param><type><name pos:line="370" pos:column="61">li</name></type></param>, <param><type><name pos:line="370" pos:column="65">szMsg</name></type></param>, <param><type><name pos:line="370" pos:column="72">mb</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="370" pos:column="76">(TRUE)</cpp:value></cpp:define>
+<cpp:endif pos:line="371" pos:column="1">#<cpp:directive pos:line="371" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="373" pos:column="1">/*	Similiar to MsoFAssertTitle above but is a report instead, also you can
+	pass in the number of function frames to go back to disable the report */</comment>
+<cpp:if pos:line="375" pos:column="1">#<cpp:directive pos:line="375" pos:column="2">if</cpp:directive> <expr><name pos:line="375" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="376" pos:column="9">MSOAPI_</name><argument_list pos:line="376" pos:column="16">(<argument pos:line="376" pos:column="17">BOOL</argument>)</argument_list></macro> <macro><name pos:line="376" pos:column="23">MsoFReportTitleLevel</name><argument_list pos:line="376" pos:column="43">(<argument pos:line="376" pos:column="44">const CHAR* szTitle</argument>, <argument pos:line="376" pos:column="65">int wLevel</argument>,
+			<argument pos:line="377" pos:column="25">const CHAR* szFile</argument>, <argument pos:line="377" pos:column="45">int li</argument>, <argument pos:line="377" pos:column="53">const CHAR* szMsg</argument>)</argument_list></macro><empty_stmt pos:line="377" pos:column="71">;</empty_stmt>
+<cpp:else pos:line="378" pos:column="1">#<cpp:directive pos:line="378" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="379" pos:column="9">#<cpp:directive pos:line="379" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="379" pos:column="17">MsoFReportTitleLevel</name><parameter_list pos:line="379" pos:column="37">(<param><type><name pos:line="379" pos:column="38">szTitle</name></type></param>, <param><type><name pos:line="379" pos:column="47">wLevel</name></type></param>, <param><type><name pos:line="379" pos:column="55">szFile</name></type></param>, <param><type><name pos:line="379" pos:column="63">li</name></type></param>, <param><type><name pos:line="379" pos:column="67">szMsg</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="379" pos:column="74">(TRUE)</cpp:value></cpp:define>
+<cpp:endif pos:line="380" pos:column="1">#<cpp:directive pos:line="380" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="line" pos:line="382" pos:column="1">// REVIEW KirkG: Move this gunk to msoassert.h</comment>
+
+<comment type="block" pos:line="384" pos:column="1">/*	The actual guts of the assert.  if the flag f is FALSE, then we kick
+	of the assertion failure, displaying the optional message szMsg along
+	with the filename and line number of the failure */</comment>
+<cpp:if pos:line="387" pos:column="1">#<cpp:directive pos:line="387" pos:column="2">if</cpp:directive> <expr><op:operator pos:line="387" pos:column="5">!</op:operator><name pos:line="387" pos:column="6">VSMSODEBUG</name></expr></cpp:if>
+	<cpp:define pos:line="388" pos:column="9">#<cpp:directive pos:line="388" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="388" pos:column="17">AssertMsgInline</name><parameter_list pos:line="388" pos:column="32">(<param><type><name pos:line="388" pos:column="33">f</name></type></param>, <param><type><name pos:line="388" pos:column="36">szMsg</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+	<cpp:define pos:line="389" pos:column="9">#<cpp:directive pos:line="389" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="389" pos:column="17">AssertMsgTemplate</name><parameter_list pos:line="389" pos:column="34">(<param><type><name pos:line="389" pos:column="35">f</name></type></param>, <param><type><name pos:line="389" pos:column="38">szMsg</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:else pos:line="390" pos:column="1">#<cpp:directive pos:line="390" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="391" pos:column="9">#<cpp:directive pos:line="391" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="391" pos:column="17">AssertMsgInline</name><parameter_list pos:line="391" pos:column="32">(<param><type><name pos:line="391" pos:column="33">f</name></type></param>, <param><type><name pos:line="391" pos:column="36">szMsg</name></type></param>)</parameter_list></cpp:macro> \
+		<cpp:value pos:line="392" pos:column="17">do { \
+		if (!(f) &amp;&amp; MsoFAssertsEnabled() &amp;&amp; \
+				!MsoFAssert(__FILE__, __LINE__, (const CHAR*)(szMsg))) \
+			MsoDebugBreakInline(); \
+		} while (0)</cpp:value></cpp:define>
+	<comment type="line" pos:line="397" pos:column="9">// Template inlines don't like the inline __asm for some reason</comment>
+	<cpp:define pos:line="398" pos:column="9">#<cpp:directive pos:line="398" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="398" pos:column="17">AssertMsgTemplate</name><parameter_list pos:line="398" pos:column="34">(<param><type><name pos:line="398" pos:column="35">f</name></type></param>, <param><type><name pos:line="398" pos:column="38">szMsg</name></type></param>)</parameter_list></cpp:macro> \
+		<cpp:value pos:line="399" pos:column="17">do { \
+		if (!(f) &amp;&amp; MsoFAssertsEnabled() &amp;&amp; \
+				!MsoFAssert(__FILE__, __LINE__, (const CHAR*)(szMsg))) \
+			MsoDebugBreak(); \
+		} while (0)</cpp:value></cpp:define>
+<cpp:endif pos:line="404" pos:column="1">#<cpp:directive pos:line="404" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+<comment type="block" pos:line="407" pos:column="1">/*	Tells if the Office is currently displaying an alert message box */</comment>
+<cpp:if pos:line="408" pos:column="1">#<cpp:directive pos:line="408" pos:column="2">if</cpp:directive> <expr><op:operator pos:line="408" pos:column="5">!</op:operator><name pos:line="408" pos:column="6">VSMSODEBUG</name></expr></cpp:if>
+	<cpp:define pos:line="409" pos:column="9">#<cpp:directive pos:line="409" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="409" pos:column="17">MsoFInAssert</name><parameter_list pos:line="409" pos:column="29">()</parameter_list></cpp:macro> <cpp:value pos:line="409" pos:column="32">(FALSE)</cpp:value></cpp:define>
+<cpp:else pos:line="410" pos:column="1">#<cpp:directive pos:line="410" pos:column="2">else</cpp:directive></cpp:else>
+	<macro><name pos:line="411" pos:column="9">MSOAPI_</name><argument_list pos:line="411" pos:column="16">(<argument pos:line="411" pos:column="17">BOOL</argument>)</argument_list></macro> <expr_stmt><expr><call><name pos:line="411" pos:column="23">MsoFInAssert</name><argument_list pos:line="411" pos:column="35">(<argument><expr><name pos:line="411" pos:column="36">void</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+<cpp:endif pos:line="412" pos:column="1">#<cpp:directive pos:line="412" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="414" pos:column="1">/*	Random compatability versions of the assert macros */</comment>
+
+<cpp:if pos:line="416" pos:column="1">#<cpp:directive pos:line="416" pos:column="2">if</cpp:directive> <expr><name pos:line="416" pos:column="5">MSO_ASSERT_EXP</name></expr></cpp:if>
+	<cpp:define pos:line="417" pos:column="9">#<cpp:directive pos:line="417" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="417" pos:column="17">AssertInline</name><parameter_list pos:line="417" pos:column="29">(<param><type><name pos:line="417" pos:column="30">f</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="417" pos:column="33">AssertMsgInline((f), #f)</cpp:value></cpp:define>
+	<cpp:define pos:line="418" pos:column="9">#<cpp:directive pos:line="418" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="418" pos:column="17">AssertTemplate</name><parameter_list pos:line="418" pos:column="31">(<param><type><name pos:line="418" pos:column="32">f</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="418" pos:column="35">AssertMsgTemplate((f), #f)</cpp:value></cpp:define>
+<cpp:else pos:line="419" pos:column="1">#<cpp:directive pos:line="419" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="420" pos:column="9">#<cpp:directive pos:line="420" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="420" pos:column="17">AssertInline</name><parameter_list pos:line="420" pos:column="29">(<param><type><name pos:line="420" pos:column="30">f</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="420" pos:column="33">AssertMsgInline((f), NULL)</cpp:value></cpp:define>
+	<cpp:define pos:line="421" pos:column="9">#<cpp:directive pos:line="421" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="421" pos:column="17">AssertTemplate</name><parameter_list pos:line="421" pos:column="31">(<param><type><name pos:line="421" pos:column="32">f</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="421" pos:column="35">AssertMsgTemplate((f), NULL)</cpp:value></cpp:define>
+<cpp:endif pos:line="422" pos:column="1">#<cpp:directive pos:line="422" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+<comment type="block" format="doxygen" pos:line="425" pos:column="1">/*************************************************************************
+	Untested notifications
+*************************************************************************/</comment>
+
+<cpp:if pos:line="429" pos:column="1">#<cpp:directive pos:line="429" pos:column="2">if</cpp:directive> <expr><op:operator pos:line="429" pos:column="5">!</op:operator><name pos:line="429" pos:column="6">VSMSODEBUG</name></expr></cpp:if>
+	<cpp:define pos:line="430" pos:column="9">#<cpp:directive pos:line="430" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="430" pos:column="17">UntestedMsg</name><parameter_list pos:line="430" pos:column="28">(<param><type><name pos:line="430" pos:column="29">szMsg</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:else pos:line="431" pos:column="1">#<cpp:directive pos:line="431" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="432" pos:column="9">#<cpp:directive pos:line="432" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="432" pos:column="17">UntestedMsg</name><parameter_list pos:line="432" pos:column="28">(<param><type><name pos:line="432" pos:column="29">szMsg</name></type></param>)</parameter_list></cpp:macro> \
+		<cpp:value pos:line="433" pos:column="17">do { \
+		if (MsoFAssertsEnabled() &amp;&amp; \
+				!MsoFAssertTitle("Untested", vszAssertFile, __LINE__, (const CHAR*)(szMsg))) \
+			MsoDebugBreakInline(); \
+		} while (0)</cpp:value></cpp:define>
+<cpp:endif pos:line="438" pos:column="1">#<cpp:directive pos:line="438" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:define pos:line="440" pos:column="1">#<cpp:directive pos:line="440" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="440" pos:column="9">Untested</name><parameter_list pos:line="440" pos:column="17">()</parameter_list></cpp:macro> <cpp:value pos:line="440" pos:column="20">UntestedMsg(NULL)</cpp:value></cpp:define>
+
+
+<comment type="block" format="doxygen" pos:line="443" pos:column="1">/*************************************************************************
+	Unreached notifications
+*************************************************************************/</comment>
+
+<cpp:if pos:line="447" pos:column="1">#<cpp:directive pos:line="447" pos:column="2">if</cpp:directive> <expr><op:operator pos:line="447" pos:column="5">!</op:operator><name pos:line="447" pos:column="6">VSMSODEBUG</name></expr></cpp:if>
+	<cpp:define pos:line="448" pos:column="9">#<cpp:directive pos:line="448" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="448" pos:column="17">UnreachedMsg</name><parameter_list pos:line="448" pos:column="29">(<param><type><name pos:line="448" pos:column="30">szMsg</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:else pos:line="449" pos:column="1">#<cpp:directive pos:line="449" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="450" pos:column="9">#<cpp:directive pos:line="450" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="450" pos:column="17">UnreachedMsg</name><parameter_list pos:line="450" pos:column="29">(<param><type><name pos:line="450" pos:column="30">szMsg</name></type></param>)</parameter_list></cpp:macro> \
+		<cpp:value pos:line="451" pos:column="17">do { \
+		if (MsoFAssertsEnabled() &amp;&amp; \
+				!MsoFAssertTitle("Unreached", vszAssertFile, __LINE__, (const CHAR*)(szMsg))) \
+			MsoDebugBreakInline(); \
+		} while (0)</cpp:value></cpp:define>
+<cpp:endif pos:line="456" pos:column="1">#<cpp:directive pos:line="456" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:define pos:line="458" pos:column="1">#<cpp:directive pos:line="458" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="458" pos:column="9">Unreached</name><parameter_list pos:line="458" pos:column="18">()</parameter_list></cpp:macro> <cpp:value pos:line="458" pos:column="21">UnreachedMsg(NULL)</cpp:value></cpp:define>
+
+
+<cpp:if pos:line="461" pos:column="1">#<cpp:directive pos:line="461" pos:column="2">if</cpp:directive> <expr><op:operator pos:line="461" pos:column="5">!</op:operator><name pos:line="461" pos:column="6">VSMSODEBUG</name></expr></cpp:if>
+	<cpp:define pos:line="462" pos:column="9">#<cpp:directive pos:line="462" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="462" pos:column="17">UnreachedMsgTag</name><parameter_list pos:line="462" pos:column="32">(<param><type><name pos:line="462" pos:column="33">szMsg</name></type></param>,<param><type><name pos:line="462" pos:column="39">dwAssertTag</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:else pos:line="463" pos:column="1">#<cpp:directive pos:line="463" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="464" pos:column="9">#<cpp:directive pos:line="464" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="464" pos:column="17">UnreachedMsgTag</name><parameter_list pos:line="464" pos:column="32">(<param><type><name pos:line="464" pos:column="33">szMsg</name></type></param>,<param><type><name pos:line="464" pos:column="39">dwAssertTag</name></type></param>)</parameter_list></cpp:macro> \
+		<cpp:value pos:line="465" pos:column="17">do { \
+		if (MsoFAssertsEnabled() &amp;&amp; \
+				!MsoFAssertTagTitle(dwAssertTag, "Unreached", vszAssertFile, __LINE__, (const CHAR*)(szMsg))) \
+			MsoDebugBreakInline(); \
+		} while (0)</cpp:value></cpp:define>
+<cpp:endif pos:line="470" pos:column="1">#<cpp:directive pos:line="470" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:define pos:line="472" pos:column="1">#<cpp:directive pos:line="472" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="472" pos:column="9">UnreachedTag</name><parameter_list pos:line="472" pos:column="21">(<param><type><name pos:line="472" pos:column="22">dwAssertTag</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="472" pos:column="35">UnreachedMsgTag(NULL, dwAssertTag)</cpp:value></cpp:define>
+
+<comment type="block" format="doxygen" pos:line="474" pos:column="1">/*************************************************************************
+	PushAsserts
+*************************************************************************/</comment>
+
+<comment type="block" pos:line="478" pos:column="1">/*	Like Assert, except the message is not immediately displayed.
+	Instead, the message is saved on a LIFO stack, which is dumped
+	to the screen when an Assert eventually occurs.  This can be
+	useful for displaying additional information about the type of
+	failure inside a nested validation routine.
+
+ 	Yeah, I know, this isn't the best idea, but I had the code, so I
+	might as well use it. */</comment>
+
+<cpp:if pos:line="487" pos:column="1">#<cpp:directive pos:line="487" pos:column="2">if</cpp:directive> <expr><op:operator pos:line="487" pos:column="5">!</op:operator><name pos:line="487" pos:column="6">VSMSODEBUG</name></expr></cpp:if>
+	<cpp:define pos:line="488" pos:column="9">#<cpp:directive pos:line="488" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="488" pos:column="17">MsoFPushAssert</name><parameter_list pos:line="488" pos:column="31">(<param><type><name pos:line="488" pos:column="32">szFile</name></type></param>, <param><type><name pos:line="488" pos:column="40">li</name></type></param>, <param><type><name pos:line="488" pos:column="44">szMsg</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="488" pos:column="51">(0)</cpp:value></cpp:define>
+	<cpp:define pos:line="489" pos:column="9">#<cpp:directive pos:line="489" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="489" pos:column="17">PushAssertMsg</name><parameter_list pos:line="489" pos:column="30">(<param><type><name pos:line="489" pos:column="31">f</name></type></param>, <param><type><name pos:line="489" pos:column="34">szMsg</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="489" pos:column="41">(1)</cpp:value></cpp:define>
+<cpp:else pos:line="490" pos:column="1">#<cpp:directive pos:line="490" pos:column="2">else</cpp:directive></cpp:else>
+	<macro><name pos:line="491" pos:column="9">MSOAPIXX_</name><argument_list pos:line="491" pos:column="18">(<argument pos:line="491" pos:column="19">BOOL</argument>)</argument_list></macro> <macro><name pos:line="491" pos:column="25">MsoFPushAssert</name><argument_list pos:line="491" pos:column="39">(<argument pos:line="491" pos:column="40">const CHAR* szFile</argument>, <argument pos:line="491" pos:column="60">int li</argument>, <argument pos:line="491" pos:column="68">const CHAR* szMsg</argument>)</argument_list></macro><empty_stmt pos:line="491" pos:column="86">;</empty_stmt>
+	<cpp:define pos:line="492" pos:column="9">#<cpp:directive pos:line="492" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="492" pos:column="17">PushAssertMsg</name><parameter_list pos:line="492" pos:column="30">(<param><type><name pos:line="492" pos:column="31">f</name></type></param>, <param><type><name pos:line="492" pos:column="34">szMsg</name></type></param>)</parameter_list></cpp:macro> \
+		<cpp:value pos:line="493" pos:column="17">((f) || (!MsoFPushAssert(vszAssertFile, __LINE__, szMsg) &amp;&amp; MsoDebugBreak()))</cpp:value></cpp:define>
+<cpp:endif pos:line="494" pos:column="1">#<cpp:directive pos:line="494" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:if pos:line="496" pos:column="1">#<cpp:directive pos:line="496" pos:column="2">if</cpp:directive> <expr><name pos:line="496" pos:column="5">MSO_ASSERT_EXP</name></expr></cpp:if>
+	<cpp:define pos:line="497" pos:column="9">#<cpp:directive pos:line="497" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="497" pos:column="17">PushAssert</name><parameter_list pos:line="497" pos:column="27">(<param><type><name pos:line="497" pos:column="28">f</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="497" pos:column="31">PushAssertMsg((f), #f)</cpp:value></cpp:define>
+<cpp:else pos:line="498" pos:column="1">#<cpp:directive pos:line="498" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="499" pos:column="9">#<cpp:directive pos:line="499" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="499" pos:column="17">PushAssert</name><parameter_list pos:line="499" pos:column="27">(<param><type><name pos:line="499" pos:column="28">f</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="499" pos:column="31">PushAssertMsg((f), NULL)</cpp:value></cpp:define>
+<cpp:endif pos:line="500" pos:column="1">#<cpp:directive pos:line="500" pos:column="2">endif</cpp:directive></cpp:endif>	
+<cpp:define pos:line="501" pos:column="1">#<cpp:directive pos:line="501" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="501" pos:column="9">PushAssertExp</name><parameter_list pos:line="501" pos:column="22">(<param><type><name pos:line="501" pos:column="23">f</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="501" pos:column="26">PushAssertMsg((f), #f)</cpp:value></cpp:define>
+
+
+<comment type="block" format="doxygen" pos:line="504" pos:column="1">/*************************************************************************
+	Scratch GDI Objects
+*************************************************************************/</comment>
+
+<comment type="block" pos:line="508" pos:column="1">/*	Routines to ensure only single access to global scratch GDI objects */</comment>
+
+<cpp:if pos:line="510" pos:column="1">#<cpp:directive pos:line="510" pos:column="2">if</cpp:directive> <expr><op:operator pos:line="510" pos:column="5">!</op:operator><name pos:line="510" pos:column="6">VSMSODEBUG</name></expr></cpp:if>
+
+	<cpp:define pos:line="512" pos:column="9">#<cpp:directive pos:line="512" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="512" pos:column="17">MsoUseScratchObj</name><parameter_list pos:line="512" pos:column="33">(<param><type><name pos:line="512" pos:column="34">hobj</name></type></param>, <param><type><name pos:line="512" pos:column="40">szObjName</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+	<cpp:define pos:line="513" pos:column="9">#<cpp:directive pos:line="513" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="513" pos:column="17">MsoReleaseScratchObj</name><parameter_list pos:line="513" pos:column="37">(<param><type><name pos:line="513" pos:column="38">hobj</name></type></param>, <param><type><name pos:line="513" pos:column="44">szObjName</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+	<cpp:define pos:line="514" pos:column="9">#<cpp:directive pos:line="514" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="514" pos:column="17">UseScratchDC</name><parameter_list pos:line="514" pos:column="29">(<param><type><name pos:line="514" pos:column="30">hdc</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+	<cpp:define pos:line="515" pos:column="9">#<cpp:directive pos:line="515" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="515" pos:column="17">ReleaseScratchDC</name><parameter_list pos:line="515" pos:column="33">(<param><type><name pos:line="515" pos:column="34">hdc</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+	<cpp:define pos:line="516" pos:column="9">#<cpp:directive pos:line="516" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="516" pos:column="17">UseScratchRgn</name><parameter_list pos:line="516" pos:column="30">(<param><type><name pos:line="516" pos:column="31">hrgn</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+	<cpp:define pos:line="517" pos:column="9">#<cpp:directive pos:line="517" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="517" pos:column="17">ReleaseScratchRgn</name><parameter_list pos:line="517" pos:column="34">(<param><type><name pos:line="517" pos:column="35">hrgn</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+
+<cpp:else pos:line="519" pos:column="1">#<cpp:directive pos:line="519" pos:column="2">else</cpp:directive></cpp:else>
+
+	<comment type="block" pos:line="521" pos:column="9">/* mask that contains unused bits in the handle */</comment>
+	<cpp:define pos:line="522" pos:column="9">#<cpp:directive pos:line="522" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="522" pos:column="17">msohInUse</name></cpp:macro> <cpp:value pos:line="522" pos:column="27">(0xffffffff)</cpp:value></cpp:define>
+	<comment type="line" pos:line="523" pos:column="9">// REVIEW: any handle bits we can rely on to make this test more correct?</comment>
+	<cpp:define pos:line="524" pos:column="9">#<cpp:directive pos:line="524" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="524" pos:column="17">MsoFObjInUse</name><parameter_list pos:line="524" pos:column="29">(<param><type><name pos:line="524" pos:column="30">hobj</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="524" pos:column="36">(GetObjectType(hobj) != 0)</cpp:value></cpp:define>
+
+	<cpp:define pos:line="526" pos:column="9">#<cpp:directive pos:line="526" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="526" pos:column="17">MsoUseScratchObj</name><parameter_list pos:line="526" pos:column="33">(<param><type><name pos:line="526" pos:column="34">hobj</name></type></param>, <param><type><name pos:line="526" pos:column="40">szObjName</name></type></param>)</parameter_list></cpp:macro> \
+			<cpp:value pos:line="527" pos:column="25">do { \
+			if (MsoFObjInUse(hobj) &amp;&amp; MsoFAssertsEnabled() &amp;&amp; \
+					!MsoFAssert(vszAssertFile, __LINE__, "Scratch " szObjName " " #hobj " already in use")) \
+				MsoDebugBreakInline(); \
+			*(int*)&amp;(hobj) ^= msohInUse; \
+			} while (0)</cpp:value></cpp:define>
+
+	<cpp:define pos:line="534" pos:column="9">#<cpp:directive pos:line="534" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="534" pos:column="17">MsoReleaseScratchObj</name><parameter_list pos:line="534" pos:column="37">(<param><type><name pos:line="534" pos:column="38">hobj</name></type></param>, <param><type><name pos:line="534" pos:column="44">szObjName</name></type></param>)</parameter_list></cpp:macro> \
+			<cpp:value pos:line="535" pos:column="25">do { \
+			if (!MsoFObjInUse(hobj) &amp;&amp; MsoFAssertsEnabled() &amp;&amp; \
+					!MsoFAssert(vszAssertFile, __LINE__, "Scratch " szObjName " " #hobj " not in use")) \
+				MsoDebugBreakInline(); \
+			*(int*)&amp;(hobj) ^= msohInUse; \
+			} while (0)</cpp:value></cpp:define>
+
+	<cpp:define pos:line="542" pos:column="9">#<cpp:directive pos:line="542" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="542" pos:column="17">UseScratchDC</name><parameter_list pos:line="542" pos:column="29">(<param><type><name pos:line="542" pos:column="30">hdc</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="542" pos:column="35">MsoUseScratchObj(hdc, "DC")</cpp:value></cpp:define>
+	<cpp:define pos:line="543" pos:column="9">#<cpp:directive pos:line="543" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="543" pos:column="17">ReleaseScratchDC</name><parameter_list pos:line="543" pos:column="33">(<param><type><name pos:line="543" pos:column="34">hdc</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="543" pos:column="39">MsoReleaseScratchObj(hdc, "DC")</cpp:value></cpp:define>
+	<cpp:define pos:line="544" pos:column="9">#<cpp:directive pos:line="544" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="544" pos:column="17">UseScratchRgn</name><parameter_list pos:line="544" pos:column="30">(<param><type><name pos:line="544" pos:column="31">hrgn</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="544" pos:column="37">MsoUseScratchObj(hrgn, "region")</cpp:value></cpp:define>
+	<cpp:define pos:line="545" pos:column="9">#<cpp:directive pos:line="545" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="545" pos:column="17">ReleaseScratchRgn</name><parameter_list pos:line="545" pos:column="34">(<param><type><name pos:line="545" pos:column="35">hrgn</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="545" pos:column="41">MsoReleaseScratchObj(hrgn, "region")</cpp:value></cpp:define>
+
+<cpp:endif pos:line="547" pos:column="1">#<cpp:directive pos:line="547" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+<comment type="block" format="doxygen" pos:line="550" pos:column="1">/*************************************************************************
+	Reports
+*************************************************************************/</comment>
+
+<comment type="line" pos:line="554" pos:column="1">// REVIEW KirkG: Get rid of these, and use msodbglg.h's MsoReportSz</comment>
+
+<cpp:if pos:line="556" pos:column="1">#<cpp:directive pos:line="556" pos:column="2">if</cpp:directive> <expr><name pos:line="556" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="557" pos:column="9">MSOAPI_</name><argument_list pos:line="557" pos:column="16">(<argument pos:line="557" pos:column="17">BOOL</argument>)</argument_list></macro> <macro><name pos:line="557" pos:column="23">MsoFReport</name><argument_list pos:line="557" pos:column="33">(<argument pos:line="557" pos:column="34">const CHAR* szFile</argument>, <argument pos:line="557" pos:column="54">int li</argument>, <argument pos:line="557" pos:column="62">const CHAR* szMsg</argument>)</argument_list></macro><empty_stmt pos:line="557" pos:column="80">;</empty_stmt>
+	<cpp:define pos:line="558" pos:column="9">#<cpp:directive pos:line="558" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="558" pos:column="17">ReportMsg</name><parameter_list pos:line="558" pos:column="26">(<param><type><name pos:line="558" pos:column="27">f</name></type></param>, <param><type><name pos:line="558" pos:column="30">szMsg</name></type></param>)</parameter_list></cpp:macro> \
+		<cpp:value pos:line="559" pos:column="17">do { \
+		if (MsoFReportsEnabled() &amp;&amp; !(f) &amp;&amp; \
+				!MsoFReport(vszAssertFile, __LINE__, (const CHAR*)(szMsg))) \
+			MsoDebugBreakInline(); \
+		} while (0)</cpp:value></cpp:define>
+<cpp:else pos:line="564" pos:column="1">#<cpp:directive pos:line="564" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="565" pos:column="9">#<cpp:directive pos:line="565" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="565" pos:column="17">MsoFReport</name><parameter_list pos:line="565" pos:column="27">(<param><type><name pos:line="565" pos:column="28">szFile</name></type></param>, <param><type><name pos:line="565" pos:column="36">li</name></type></param>, <param><type><name pos:line="565" pos:column="40">szMsg</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="565" pos:column="47">(TRUE)</cpp:value></cpp:define>
+	<cpp:define pos:line="566" pos:column="9">#<cpp:directive pos:line="566" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="566" pos:column="17">ReportMsg</name><parameter_list pos:line="566" pos:column="26">(<param><type><name pos:line="566" pos:column="27">f</name></type></param>, <param><type><name pos:line="566" pos:column="30">szMsg</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:endif pos:line="567" pos:column="1">#<cpp:directive pos:line="567" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+<cpp:endif pos:line="570" pos:column="1">#<cpp:directive pos:line="570" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="570" pos:column="8">// MSO_NO_ASSERTS</comment>
+
+<comment type="block" format="doxygen" pos:line="572" pos:column="1">/*************************************************************************
+	Inline Assert stubs - these should only happen for people who
+	define MSO_NO_ASSERTS and don't define the asserts we need.  If
+	it happens -- too bad.  They don't get these kinds of asserts.
+*************************************************************************/</comment>
+
+<cpp:ifndef pos:line="578" pos:column="1">#<cpp:directive pos:line="578" pos:column="2">ifndef</cpp:directive> <name pos:line="578" pos:column="9">AssertMsgInline</name></cpp:ifndef>
+	<cpp:define pos:line="579" pos:column="9">#<cpp:directive pos:line="579" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="579" pos:column="17">AssertMsgInline</name><parameter_list pos:line="579" pos:column="32">(<param><type><name pos:line="579" pos:column="33">f</name></type></param>, <param><type><name pos:line="579" pos:column="36">szMsg</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:endif pos:line="580" pos:column="1">#<cpp:directive pos:line="580" pos:column="2">endif</cpp:directive></cpp:endif>
+<cpp:ifndef pos:line="581" pos:column="1">#<cpp:directive pos:line="581" pos:column="2">ifndef</cpp:directive> <name pos:line="581" pos:column="9">AssertMsgTemplate</name></cpp:ifndef>
+	<cpp:define pos:line="582" pos:column="9">#<cpp:directive pos:line="582" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="582" pos:column="17">AssertMsgTemplate</name><parameter_list pos:line="582" pos:column="34">(<param><type><name pos:line="582" pos:column="35">f</name></type></param>, <param><type><name pos:line="582" pos:column="38">szMsg</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:endif pos:line="583" pos:column="1">#<cpp:directive pos:line="583" pos:column="2">endif</cpp:directive></cpp:endif>
+<cpp:ifndef pos:line="584" pos:column="1">#<cpp:directive pos:line="584" pos:column="2">ifndef</cpp:directive> <name pos:line="584" pos:column="9">AssertInline</name></cpp:ifndef>
+	<cpp:define pos:line="585" pos:column="9">#<cpp:directive pos:line="585" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="585" pos:column="17">AssertInline</name><parameter_list pos:line="585" pos:column="29">(<param><type><name pos:line="585" pos:column="30">f</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:endif pos:line="586" pos:column="1">#<cpp:directive pos:line="586" pos:column="2">endif</cpp:directive></cpp:endif>
+<cpp:ifndef pos:line="587" pos:column="1">#<cpp:directive pos:line="587" pos:column="2">ifndef</cpp:directive> <name pos:line="587" pos:column="9">AssertTemplate</name></cpp:ifndef>
+	<cpp:define pos:line="588" pos:column="9">#<cpp:directive pos:line="588" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="588" pos:column="17">AssertTemplate</name><parameter_list pos:line="588" pos:column="31">(<param><type><name pos:line="588" pos:column="32">f</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:endif pos:line="589" pos:column="1">#<cpp:directive pos:line="589" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+<comment type="block" format="doxygen" pos:line="592" pos:column="1">/*************************************************************************
+	Tracing
+*************************************************************************/</comment>
+
+<comment type="block" pos:line="596" pos:column="1">/*	Displays the string sz in the debug output location */</comment>
+<cpp:if pos:line="597" pos:column="1">#<cpp:directive pos:line="597" pos:column="2">if</cpp:directive> <expr><name pos:line="597" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="598" pos:column="9">MSOAPI_</name><argument_list pos:line="598" pos:column="16">(<argument pos:line="598" pos:column="17">void</argument>)</argument_list></macro> <expr_stmt><expr><call><name pos:line="598" pos:column="23">MsoTraceSz</name><argument_list pos:line="598" pos:column="33">(<argument><expr pos:line="598" pos:column="34">const <name pos:line="598" pos:column="40">CHAR</name><op:operator pos:line="598" pos:column="44">*</op:operator> <name pos:line="598" pos:column="46">szMsg</name></expr></argument>, <argument><type:modifier pos:line="598" pos:column="53">...</type:modifier><expr/></argument>)</argument_list></call></expr>;</expr_stmt>
+	<macro><name pos:line="599" pos:column="9">MSOAPI_</name><argument_list pos:line="599" pos:column="16">(<argument pos:line="599" pos:column="17">void</argument>)</argument_list></macro> <macro><name pos:line="599" pos:column="23">MsoTraceVa</name><argument_list pos:line="599" pos:column="33">(<argument pos:line="599" pos:column="34">const CHAR* szMsg</argument>, <argument pos:line="599" pos:column="53">va_list va</argument>)</argument_list></macro><empty_stmt pos:line="599" pos:column="64">;</empty_stmt>
+<cpp:elif pos:line="600" pos:column="1">#<cpp:directive pos:line="600" pos:column="2">elif</cpp:directive> <expr><name pos:line="600" pos:column="7">__cplusplus</name></expr></cpp:elif>
+	<function><type><name pos:line="601" pos:column="9">__inline</name> <name pos:line="601" pos:column="18">void</name> <name pos:line="601" pos:column="23">__cdecl</name></type> <name pos:line="601" pos:column="31">MsoTraceSz</name><parameter_list pos:line="601" pos:column="41">(<param><decl><type><specifier pos:line="601" pos:column="42">const</specifier></type> <name pos:line="601" pos:column="48">CHAR</name><type:modifier pos:line="601" pos:column="52">*</type:modifier></decl></param>,<param><decl><type><type:modifier pos:line="601" pos:column="54">...</type:modifier></type></decl></param>)</parameter_list> <block pos:line="601" pos:column="59">{}</block></function>
+	<cpp:define pos:line="602" pos:column="9">#<cpp:directive pos:line="602" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="602" pos:column="17">MsoTraceVa</name><parameter_list pos:line="602" pos:column="27">(<param><type><name pos:line="602" pos:column="28">szMsg</name></type></param>, <param><type><name pos:line="602" pos:column="35">va</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:else pos:line="603" pos:column="1">#<cpp:directive pos:line="603" pos:column="2">else</cpp:directive></cpp:else>
+	<function><type><name pos:line="604" pos:column="9">__inline</name> <name pos:line="604" pos:column="18">void</name> <name pos:line="604" pos:column="23">__cdecl</name></type> <name pos:line="604" pos:column="31">MsoTraceSz</name><parameter_list pos:line="604" pos:column="41">(<param><decl><type><specifier pos:line="604" pos:column="42">const</specifier> <name pos:line="604" pos:column="48">CHAR</name><type:modifier pos:line="604" pos:column="52">*</type:modifier></type> <name pos:line="604" pos:column="54">szMsg</name></decl></param>,<param><decl><type><type:modifier pos:line="604" pos:column="60">...</type:modifier></type></decl></param>)</parameter_list> <block pos:line="604" pos:column="65">{}</block></function>
+	<cpp:define pos:line="605" pos:column="9">#<cpp:directive pos:line="605" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="605" pos:column="17">MsoTraceVa</name><parameter_list pos:line="605" pos:column="27">(<param><type><name pos:line="605" pos:column="28">szMsg</name></type></param>, <param><type><name pos:line="605" pos:column="35">va</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:endif pos:line="606" pos:column="1">#<cpp:directive pos:line="606" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+
+<comment type="block" format="doxygen" pos:line="610" pos:column="1">/*************************************************************************
+	Debug fills
+*************************************************************************/</comment>
+
+<comment type="line" pos:line="614" pos:column="1">//  REVIEW:  PETERO:  Should be able to #ifdef VSMSODEBUG this enum and still build successfully.</comment>
+<enum pos:line="615" pos:column="1">enum
+<block pos:line="616" pos:column="1">{
+	<decl><name pos:line="617" pos:column="9">msomfSentinel</name></decl><op:operator pos:line="617" pos:column="22">,</op:operator>	<comment type="line" pos:line="617" pos:column="25">// sentinel fill value - one before and one after memory allocations to test for over/under write</comment>
+	<decl><name pos:line="618" pos:column="9">msomfFree</name></decl><op:operator pos:line="618" pos:column="18">,</op:operator>		<comment type="line" pos:line="618" pos:column="33">// free memory fill value</comment>
+	<decl><name pos:line="619" pos:column="9">msomfNew</name></decl><op:operator pos:line="619" pos:column="17">,</op:operator>       <comment type="line" pos:line="619" pos:column="25">// new memory fill value</comment>
+	<decl><name pos:line="620" pos:column="9">msomfBuffer</name></decl><op:operator pos:line="620" pos:column="20">,</op:operator>    <comment type="line" pos:line="620" pos:column="25">// fill value used to test buffers passed into APIs against expected size</comment>
+	<decl><name pos:line="621" pos:column="9">msomfStack</name></decl><op:operator pos:line="621" pos:column="19">,</op:operator>     <comment type="line" pos:line="621" pos:column="25">// fill value used in chkstk</comment>
+	<decl><name pos:line="622" pos:column="9">msomfClass</name></decl><op:operator pos:line="622" pos:column="19">,</op:operator>		<comment type="line" pos:line="622" pos:column="33">// fill value used to mark classes to test for uninit members</comment>
+	<decl><name pos:line="623" pos:column="9">msomfMax</name></decl>
+}</block>;</enum>
+
+<comment type="block" pos:line="626" pos:column="1">/*	Fills the memory pointed to by pv with the fill value lFill.  The
+	area is assumed to be cb bytes in length.  Does nothing in the
+	non-debug build */</comment>
+<cpp:if pos:line="629" pos:column="1">#<cpp:directive pos:line="629" pos:column="2">if</cpp:directive> <expr><name pos:line="629" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="630" pos:column="9">MSOAPI_</name><argument_list pos:line="630" pos:column="16">(<argument pos:line="630" pos:column="17">void</argument>)</argument_list></macro> <macro><name pos:line="630" pos:column="23">MsoDebugFillValue</name><argument_list pos:line="630" pos:column="40">(<argument pos:line="630" pos:column="41">void* pv</argument>, <argument pos:line="630" pos:column="51">INT_PTR cb</argument>, <argument pos:line="630" pos:column="63">DWORD lFill</argument>)</argument_list></macro><empty_stmt pos:line="630" pos:column="75">;</empty_stmt>
+<cpp:else pos:line="631" pos:column="1">#<cpp:directive pos:line="631" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="632" pos:column="9">#<cpp:directive pos:line="632" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="632" pos:column="17">MsoDebugFillValue</name><parameter_list pos:line="632" pos:column="34">(<param><type><name pos:line="632" pos:column="35">pv</name></type></param>, <param><type><name pos:line="632" pos:column="39">cb</name></type></param>, <param><type><name pos:line="632" pos:column="43">lFill</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:endif pos:line="633" pos:column="1">#<cpp:directive pos:line="633" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="635" pos:column="1">/*	In the debug version, used to fill the area of memory pointed to by
+	pv with a the standard fill value specified by mf.  The memory is 
+	assumed to be cb bytes long. */</comment>
+<cpp:if pos:line="638" pos:column="1">#<cpp:directive pos:line="638" pos:column="2">if</cpp:directive> <expr><name pos:line="638" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="639" pos:column="9">MSOAPI_</name><argument_list pos:line="639" pos:column="16">(<argument pos:line="639" pos:column="17">void</argument>)</argument_list></macro> <macro><name pos:line="639" pos:column="23">MsoDebugFill</name><argument_list pos:line="639" pos:column="35">(<argument pos:line="639" pos:column="36">void* pv</argument>, <argument pos:line="639" pos:column="46">INT_PTR cb</argument>, <argument pos:line="639" pos:column="58">int mf</argument>)</argument_list></macro><empty_stmt pos:line="639" pos:column="65">;</empty_stmt>
+<cpp:else pos:line="640" pos:column="1">#<cpp:directive pos:line="640" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="641" pos:column="9">#<cpp:directive pos:line="641" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="641" pos:column="17">MsoDebugFill</name><parameter_list pos:line="641" pos:column="29">(<param><type><name pos:line="641" pos:column="30">pv</name></type></param>, <param><type><name pos:line="641" pos:column="34">cb</name></type></param>, <param><type><name pos:line="641" pos:column="38">mf</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:endif pos:line="642" pos:column="1">#<cpp:directive pos:line="642" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="644" pos:column="1">/*	Checks the area given by pv and cb are filled with the debug fill
+	value lFill. */</comment>
+<cpp:if pos:line="646" pos:column="1">#<cpp:directive pos:line="646" pos:column="2">if</cpp:directive> <expr><name pos:line="646" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="647" pos:column="9">MSOAPI_</name><argument_list pos:line="647" pos:column="16">(<argument pos:line="647" pos:column="17">BOOL</argument>)</argument_list></macro> <macro><name pos:line="647" pos:column="23">MsoFCheckDebugFillValue</name><argument_list pos:line="647" pos:column="46">(<argument pos:line="647" pos:column="47">const void* pv</argument>, <argument pos:line="647" pos:column="63">INT_PTR cb</argument>, <argument pos:line="647" pos:column="75">DWORD lFill</argument>)</argument_list></macro><empty_stmt pos:line="647" pos:column="87">;</empty_stmt>
+<cpp:else pos:line="648" pos:column="1">#<cpp:directive pos:line="648" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="649" pos:column="9">#<cpp:directive pos:line="649" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="649" pos:column="17">MsoFCheckDebugFillValue</name><parameter_list pos:line="649" pos:column="40">(<param><type><name pos:line="649" pos:column="41">pv</name></type></param>, <param><type><name pos:line="649" pos:column="45">cb</name></type></param>, <param><type><name pos:line="649" pos:column="49">lFill</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="649" pos:column="56">(TRUE)</cpp:value></cpp:define>
+<cpp:endif pos:line="650" pos:column="1">#<cpp:directive pos:line="650" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="652" pos:column="1">/*	Checks the area given by pv and cb are filled with the debug fill
+	of type mf. */</comment>
+<cpp:if pos:line="654" pos:column="1">#<cpp:directive pos:line="654" pos:column="2">if</cpp:directive> <expr><name pos:line="654" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="655" pos:column="9">MSOAPI_</name><argument_list pos:line="655" pos:column="16">(<argument pos:line="655" pos:column="17">BOOL</argument>)</argument_list></macro> <macro><name pos:line="655" pos:column="23">MsoFCheckDebugFill</name><argument_list pos:line="655" pos:column="41">(<argument pos:line="655" pos:column="42">const void* pv</argument>, <argument pos:line="655" pos:column="58">INT_PTR cb</argument>, <argument pos:line="655" pos:column="70">int mf</argument>)</argument_list></macro><empty_stmt pos:line="655" pos:column="77">;</empty_stmt>
+<cpp:else pos:line="656" pos:column="1">#<cpp:directive pos:line="656" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="657" pos:column="9">#<cpp:directive pos:line="657" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="657" pos:column="17">MsoFCheckDebugFill</name><parameter_list pos:line="657" pos:column="35">(<param><type><name pos:line="657" pos:column="36">pv</name></type></param>, <param><type><name pos:line="657" pos:column="40">cb</name></type></param>, <param><type><name pos:line="657" pos:column="44">mf</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="657" pos:column="48">(TRUE)</cpp:value></cpp:define>
+<cpp:endif pos:line="658" pos:column="1">#<cpp:directive pos:line="658" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="660" pos:column="1">/* Returns the fill value corresponding to the given fill value type mf. */</comment>
+<cpp:if pos:line="661" pos:column="1">#<cpp:directive pos:line="661" pos:column="2">if</cpp:directive> <expr><name pos:line="661" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="662" pos:column="9">MSOAPI_</name><argument_list pos:line="662" pos:column="16">(<argument pos:line="662" pos:column="17">DWORD</argument>)</argument_list></macro> <macro><name pos:line="662" pos:column="24">MsoLGetDebugFillValue</name><argument_list pos:line="662" pos:column="45">(<argument pos:line="662" pos:column="46">int mf</argument>)</argument_list></macro><empty_stmt pos:line="662" pos:column="53">;</empty_stmt>
+<cpp:else pos:line="663" pos:column="1">#<cpp:directive pos:line="663" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="664" pos:column="9">#<cpp:directive pos:line="664" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="664" pos:column="17">MsoLGetDebugFillValue</name><parameter_list pos:line="664" pos:column="38">(<param><type><name pos:line="664" pos:column="39">mf</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="664" pos:column="43">((DWORD)0)</cpp:value></cpp:define>
+<cpp:endif pos:line="665" pos:column="1">#<cpp:directive pos:line="665" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="667" pos:column="1">/*	Sets the fill value to lFill for the given memory fill type mf.
+	Returns the previous fill value. */</comment>
+<cpp:if pos:line="669" pos:column="1">#<cpp:directive pos:line="669" pos:column="2">if</cpp:directive> <expr><name pos:line="669" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="670" pos:column="9">MSOAPI_</name><argument_list pos:line="670" pos:column="16">(<argument pos:line="670" pos:column="17">DWORD</argument>)</argument_list></macro> <macro><name pos:line="670" pos:column="24">MsoSetDebugFillValue</name><argument_list pos:line="670" pos:column="44">(<argument pos:line="670" pos:column="45">int mf</argument>, <argument pos:line="670" pos:column="53">DWORD lFill</argument>)</argument_list></macro><empty_stmt pos:line="670" pos:column="65">;</empty_stmt>
+<cpp:else pos:line="671" pos:column="1">#<cpp:directive pos:line="671" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="672" pos:column="9">#<cpp:directive pos:line="672" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="672" pos:column="17">MsoSetDebugFillValue</name><parameter_list pos:line="672" pos:column="37">(<param><type><name pos:line="672" pos:column="38">mf</name></type></param>, <param><type><name pos:line="672" pos:column="42">lFill</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="672" pos:column="49">((DWORD)0)</cpp:value></cpp:define>
+<cpp:endif pos:line="673" pos:column="1">#<cpp:directive pos:line="673" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:define pos:line="675" pos:column="1">#<cpp:directive pos:line="675" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="675" pos:column="9">MsoDebugFillLocal</name><parameter_list pos:line="675" pos:column="26">(<param><type><name pos:line="675" pos:column="27">l</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="675" pos:column="30">MsoDebugFill(&amp;(l), sizeof(l), msomfFree)</cpp:value></cpp:define>
+
+<comment type="block" format="doxygen" pos:line="677" pos:column="1">/*************************************************************************
+	Debug APIs
+*************************************************************************/</comment>
+
+<enum pos:line="681" pos:column="1">enum
+<block pos:line="682" pos:column="1">{
+	<decl><name pos:line="683" pos:column="9">msodbSaveBe</name> <init pos:line="683" pos:column="21">= <expr><lit:literal type="number" pos:line="683" pos:column="23">1</lit:literal></expr></init></decl><op:operator pos:line="683" pos:column="24">,</op:operator>
+	<decl><name pos:line="684" pos:column="9">msodbValidate</name> <init pos:line="684" pos:column="23">= <expr><lit:literal type="number" pos:line="684" pos:column="25">2</lit:literal></expr></init></decl><op:operator pos:line="684" pos:column="26">,</op:operator>
+}</block>;</enum>
+
+
+<comment type="block" format="doxygen" pos:line="688" pos:column="1">/*************************************************************************
+	Standard debugging UI for controlling Office debug options from
+	within the app.
+*************************************************************************/</comment>
+
+<comment type="block" pos:line="693" pos:column="1">/*	Debug options for the Debug Options dialog box */</comment>
+<typedef pos:line="694" pos:column="1">typedef <type><struct pos:line="694" pos:column="9">struct <name pos:line="694" pos:column="16">MSODBO</name>
+<block pos:line="695" pos:column="1">{<public type="default" pos:line="695" pos:column="2">
+	<decl_stmt><decl><type><name pos:line="696" pos:column="9">int</name></type> <name pos:line="696" pos:column="13">aoEnabled</name></decl>;</decl_stmt>	<comment type="line" pos:line="696" pos:column="25">// assert outputs</comment>
+	<decl_stmt><decl><type><name pos:line="697" pos:column="9">char</name></type> <name><name pos:line="697" pos:column="14">szOut</name><index pos:line="697" pos:column="19">[<expr><lit:literal type="number" pos:line="697" pos:column="20">128</lit:literal></expr>]</index></name></decl>;</decl_stmt>	<comment type="line" pos:line="697" pos:column="33">// assert output file (for msoaoFile)</comment>
+	<decl_stmt><decl><type><name pos:line="698" pos:column="9">DWORD</name></type> <name><name pos:line="698" pos:column="15">mpmflFill</name><index pos:line="698" pos:column="24">[<expr><name pos:line="698" pos:column="25">msomfMax</name></expr>]</index></name></decl>;</decl_stmt>	<comment type="line" pos:line="698" pos:column="41">// memory fill values</comment>
+	<decl_stmt><decl><type><name pos:line="699" pos:column="9">UINT</name></type> <name pos:line="699" pos:column="14">uFeatureReportsFilter</name></decl>;</decl_stmt>	<comment type="line" pos:line="699" pos:column="41">// feature reports enabled</comment>
+	<decl_stmt><decl><type><name pos:line="700" pos:column="9">BOOL</name></type> <name><name pos:line="700" pos:column="14">mpdcfEnabled</name><index pos:line="700" pos:column="26">[<expr><name pos:line="700" pos:column="27">msodcMax</name></expr>]</index></name></decl>;</decl_stmt>	<comment type="line" pos:line="700" pos:column="41">// debug checks enabled</comment>
+		<comment type="block" pos:line="701" pos:column="17">/* TODO rickp(peteren): I moved mpdcfEnabled to the end
+			so's you could avoid full builds after adding new options.
+			That OK? */</comment>
+	<decl_stmt><decl><type><name pos:line="704" pos:column="9">BOOL</name></type> <name pos:line="704" pos:column="14">fShowShapePropertyDlg</name></decl>;</decl_stmt>
+</public>}</block></struct></type> <name pos:line="705" pos:column="3">MSODBO</name>;</typedef>
+
+<enum pos:line="707" pos:column="1">enum
+<block pos:line="708" pos:column="1">{
+	<decl><name pos:line="709" pos:column="9">msodboGetDefaults</name> <init pos:line="709" pos:column="27">= <expr><lit:literal type="number" pos:line="709" pos:column="29">1</lit:literal></expr></init></decl><op:operator pos:line="709" pos:column="30">,</op:operator>	<comment type="block" pos:line="709" pos:column="33">/* return default debug options */</comment>
+	<decl><name pos:line="710" pos:column="9">msodboShowDialog</name> <init pos:line="710" pos:column="26">= <expr><lit:literal type="number" pos:line="710" pos:column="28">2</lit:literal></expr></init></decl><op:operator pos:line="710" pos:column="29">,</op:operator>	<comment type="block" pos:line="710" pos:column="33">/* show default debug options dialog */</comment>
+	<decl><name pos:line="711" pos:column="9">msodboSetOptions</name> <init pos:line="711" pos:column="26">= <expr><lit:literal type="number" pos:line="711" pos:column="28">3</lit:literal></expr></init></decl>	<comment type="block" pos:line="711" pos:column="33">/* set debug options */</comment>
+}</block>;</enum>
+
+<comment type="block" pos:line="714" pos:column="1">/*	Displays the Office standard debug dialog box with owner hwndParent;
+	for msdboGetDefaults, returns the current debug settings in pdbo; for
+	msdboShowDialog, displays the dialog box using the settings passed
+	in pdbo, and returns the new values (if the user hits OK); for 
+	msdboSetOptions, sets the current debug settings to values in pdbo.
+	Returns FALSE if the user canceled the dialog. */</comment>
+<cpp:if pos:line="720" pos:column="1">#<cpp:directive pos:line="720" pos:column="2">if</cpp:directive> <expr><name pos:line="720" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="721" pos:column="9">MSOAPI_</name><argument_list pos:line="721" pos:column="16">(<argument pos:line="721" pos:column="17">BOOL</argument>)</argument_list></macro> <macro><name pos:line="721" pos:column="23">MsoFDebugOptionsDlg</name><argument_list pos:line="721" pos:column="42">(<argument pos:line="721" pos:column="43">HWND hwndParent</argument>, <argument pos:line="721" pos:column="60">MSODBO* pdbo</argument>, <argument pos:line="721" pos:column="74">int dbo</argument>)</argument_list></macro><empty_stmt pos:line="721" pos:column="82">;</empty_stmt>
+<cpp:else pos:line="722" pos:column="1">#<cpp:directive pos:line="722" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="723" pos:column="9">#<cpp:directive pos:line="723" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="723" pos:column="17">MsoFDebugOptionsDlg</name><parameter_list pos:line="723" pos:column="36">(<param><type><name pos:line="723" pos:column="37">hwndParent</name></type></param>, <param><type><name pos:line="723" pos:column="49">pdbo</name></type></param>, <param><type><name pos:line="723" pos:column="55">dbo</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="723" pos:column="60">(0)</cpp:value></cpp:define>
+<cpp:endif pos:line="724" pos:column="1">#<cpp:directive pos:line="724" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:if pos:line="726" pos:column="1">#<cpp:directive pos:line="726" pos:column="2">if</cpp:directive> <expr><name pos:line="726" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="727" pos:column="9">MSOAPI_</name><argument_list pos:line="727" pos:column="16">(<argument pos:line="727" pos:column="17">BOOL</argument>)</argument_list></macro> <macro><name pos:line="727" pos:column="23">MsoFDebugOptionsDlgEx</name><argument_list pos:line="727" pos:column="44">(<argument pos:line="727" pos:column="45">HWND hwndParent</argument>, 
+		<argument pos:line="728" pos:column="17">interface IMsoDrawingUserInterface* pidgui</argument>, <argument pos:line="728" pos:column="61">MSODBO* pdbo</argument>, <argument pos:line="728" pos:column="75">int dbo</argument>)</argument_list></macro><empty_stmt pos:line="728" pos:column="83">;</empty_stmt>
+<cpp:else pos:line="729" pos:column="1">#<cpp:directive pos:line="729" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="730" pos:column="9">#<cpp:directive pos:line="730" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="730" pos:column="17">MsoFDebugOptionsDlgEx</name><parameter_list pos:line="730" pos:column="38">(<param><type><name pos:line="730" pos:column="39">hwndParent</name></type></param>, <param><type><name pos:line="730" pos:column="51">pidgui</name></type></param>, <param><type><name pos:line="730" pos:column="59">pdbo</name></type></param>, <param><type><name pos:line="730" pos:column="65">dbo</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="730" pos:column="70">(0)</cpp:value></cpp:define>
+<cpp:endif pos:line="731" pos:column="1">#<cpp:directive pos:line="731" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+<comment type="block" pos:line="734" pos:column="1">/*	Puts up the debug dialog box that displays all the cool and
+	interesting version information for all the modules linked into
+	the running application.  The owning window is hwndParent, and
+	additional DLL instances can be displayed by passing an array
+	of instance handles in rghinst, with size chinst. */</comment>
+<cpp:if pos:line="739" pos:column="1">#<cpp:directive pos:line="739" pos:column="2">if</cpp:directive> <expr><name pos:line="739" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<macro><name pos:line="740" pos:column="9">MSOAPI_</name><argument_list pos:line="740" pos:column="16">(<argument pos:line="740" pos:column="17">void</argument>)</argument_list></macro> <macro><name pos:line="740" pos:column="23">MsoModuleVersionDlg</name><argument_list pos:line="740" pos:column="42">(<argument pos:line="740" pos:column="43">HWND hwndParent</argument>, <argument pos:line="740" pos:column="60">const HINSTANCE* rghinst</argument>,
+			<argument pos:line="741" pos:column="25">int chinst</argument>)</argument_list></macro><empty_stmt pos:line="741" pos:column="36">;</empty_stmt>
+<cpp:else pos:line="742" pos:column="1">#<cpp:directive pos:line="742" pos:column="2">else</cpp:directive></cpp:else>
+	<cpp:define pos:line="743" pos:column="9">#<cpp:directive pos:line="743" pos:column="10">define</cpp:directive> <cpp:macro><name pos:line="743" pos:column="17">MsoModuleVersionDlg</name><parameter_list pos:line="743" pos:column="36">(<param><type><name pos:line="743" pos:column="37">hwndParent</name></type></param>, <param><type><name pos:line="743" pos:column="49">rghinst</name></type></param>, <param><type><name pos:line="743" pos:column="58">chinst</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:endif pos:line="744" pos:column="1">#<cpp:directive pos:line="744" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+<comment type="block" format="doxygen" pos:line="747" pos:column="1">/*************************************************************************
+	Debug Monitors
+*************************************************************************/</comment>
+
+<comment type="block" pos:line="751" pos:column="1">/*	Monitor notifcations */</comment>
+
+<enum pos:line="753" pos:column="1">enum
+<block pos:line="754" pos:column="1">{
+	<decl><name pos:line="755" pos:column="9">msonmAlloc</name><init pos:line="755" pos:column="19">=<expr><lit:literal type="number" pos:line="755" pos:column="20">0x1000</lit:literal></expr></init></decl><op:operator pos:line="755" pos:column="26">,</op:operator>	<comment type="line" pos:line="755" pos:column="33">// memory allocation</comment>
+	<decl><name pos:line="756" pos:column="9">msonmFree</name></decl><op:operator pos:line="756" pos:column="18">,</op:operator>	<comment type="line" pos:line="756" pos:column="25">// memory freed</comment>
+	<decl><name pos:line="757" pos:column="9">msonmRealloc</name></decl><op:operator pos:line="757" pos:column="21">,</op:operator>	<comment type="line" pos:line="757" pos:column="25">// memory reallocation</comment>
+	<decl><name pos:line="758" pos:column="9">msonmStartTrace</name></decl><op:operator pos:line="758" pos:column="24">,</op:operator>	<comment type="line" pos:line="758" pos:column="33">// start trace</comment>
+	<decl><name pos:line="759" pos:column="9">msonmEndTrace</name></decl><op:operator pos:line="759" pos:column="22">,</op:operator>	<comment type="line" pos:line="759" pos:column="25">// end trace</comment>
+	<decl><name pos:line="760" pos:column="9">msonmSbMic</name></decl><op:operator pos:line="760" pos:column="19">,</op:operator>
+	<decl><name pos:line="761" pos:column="9">msonmSbMac</name></decl><op:operator pos:line="761" pos:column="19">,</op:operator>
+	<decl><name pos:line="762" pos:column="9">msonmSbCbFree</name></decl><op:operator pos:line="762" pos:column="22">,</op:operator>
+	<decl><name pos:line="763" pos:column="9">msonmSbCbTotal</name></decl><op:operator pos:line="763" pos:column="23">,</op:operator>
+}</block>;</enum>
+
+<cpp:if pos:line="766" pos:column="1">#<cpp:directive pos:line="766" pos:column="2">if</cpp:directive> <expr><name pos:line="766" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+
+	<macro><name pos:line="768" pos:column="9">MSOAPIXX_</name><argument_list pos:line="768" pos:column="18">(<argument pos:line="768" pos:column="19">LRESULT</argument>)</argument_list></macro> <macro><name pos:line="768" pos:column="28">MsoNotifyMonitor</name><argument_list pos:line="768" pos:column="44">(<argument pos:line="768" pos:column="45">int nm</argument>, <argument pos:line="768" pos:column="53">...</argument>)</argument_list></macro><empty_stmt pos:line="768" pos:column="57">;</empty_stmt>
+	<macro><name pos:line="769" pos:column="9">MSOAPIXX_</name><argument_list pos:line="769" pos:column="18">(<argument pos:line="769" pos:column="19">HWND</argument>)</argument_list></macro> <expr_stmt><expr><call><name pos:line="769" pos:column="25">MsoGetMonitor</name><argument_list pos:line="769" pos:column="38">(<argument><expr><name pos:line="769" pos:column="39">void</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+	<macro><name pos:line="770" pos:column="9">MSOAPIXX_</name><argument_list pos:line="770" pos:column="18">(<argument pos:line="770" pos:column="19">BOOL</argument>)</argument_list></macro> <macro><name pos:line="770" pos:column="25">MsoFAddMonitor</name><argument_list pos:line="770" pos:column="39">(<argument pos:line="770" pos:column="40">HWND hwnd</argument>)</argument_list></macro><empty_stmt pos:line="770" pos:column="50">;</empty_stmt>
+	<macro><name pos:line="771" pos:column="9">MSOAPIXX_</name><argument_list pos:line="771" pos:column="18">(<argument pos:line="771" pos:column="19">BOOL</argument>)</argument_list></macro> <macro><name pos:line="771" pos:column="25">MsoFRemoveMonitor</name><argument_list pos:line="771" pos:column="42">(<argument pos:line="771" pos:column="43">HWND hwnd</argument>)</argument_list></macro><empty_stmt pos:line="771" pos:column="53">;</empty_stmt>
+	<macro><name pos:line="772" pos:column="9">MSOAPIXX_</name><argument_list pos:line="772" pos:column="18">(<argument pos:line="772" pos:column="19">BOOL</argument>)</argument_list></macro> <macro><name pos:line="772" pos:column="25">MsoFMonitorProcess</name><argument_list pos:line="772" pos:column="43">(<argument pos:line="772" pos:column="44">HWND hwnd</argument>)</argument_list></macro><empty_stmt pos:line="772" pos:column="54">;</empty_stmt>
+	<macro><name pos:line="773" pos:column="9">MSOAPIXX_</name><argument_list pos:line="773" pos:column="18">(<argument pos:line="773" pos:column="19">HWND</argument>)</argument_list></macro> <expr_stmt><expr><call><name pos:line="773" pos:column="25">MsoGetMonitoredProcess</name><argument_list pos:line="773" pos:column="47">(<argument><expr><name pos:line="773" pos:column="48">void</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+	<macro><name pos:line="774" pos:column="9">MSOAPIXX_</name><argument_list pos:line="774" pos:column="18">(<argument pos:line="774" pos:column="19">LRESULT</argument>)</argument_list></macro> <macro><name pos:line="774" pos:column="28">MsoAskMonitoredProcess</name><argument_list pos:line="774" pos:column="50">(<argument pos:line="774" pos:column="51">int nm</argument>, <argument pos:line="774" pos:column="59">LPARAM lParam</argument>)</argument_list></macro><empty_stmt pos:line="774" pos:column="73">;</empty_stmt>
+
+<cpp:elif pos:line="776" pos:column="1">#<cpp:directive pos:line="776" pos:column="2">elif</cpp:directive> <expr><name pos:line="776" pos:column="7">__cplusplus</name></expr></cpp:elif>
+	<function><type><name pos:line="777" pos:column="9">__inline</name> <name pos:line="777" pos:column="18">void</name> <name pos:line="777" pos:column="23">__cdecl</name></type> <name pos:line="777" pos:column="31">MsoNotifyMonitor</name><parameter_list pos:line="777" pos:column="47">(<param><decl><type><name pos:line="777" pos:column="48">int</name></type></decl></param>,<param><decl><type><type:modifier pos:line="777" pos:column="52">...</type:modifier></type></decl></param>)</parameter_list> <block pos:line="777" pos:column="57">{}</block></function>
+<cpp:else pos:line="778" pos:column="1">#<cpp:directive pos:line="778" pos:column="2">else</cpp:directive></cpp:else>
+	<function><type><name pos:line="779" pos:column="9">__inline</name> <name pos:line="779" pos:column="18">void</name> <name pos:line="779" pos:column="23">__cdecl</name></type> <name pos:line="779" pos:column="31">MsoNotifyMonitor</name><parameter_list pos:line="779" pos:column="47">(<param><decl><type><name pos:line="779" pos:column="48">int</name></type> <name pos:line="779" pos:column="52">nm</name></decl></param>,<param><decl><type><type:modifier pos:line="779" pos:column="55">...</type:modifier></type></decl></param>)</parameter_list> <block pos:line="779" pos:column="60">{}</block></function>
+<cpp:endif pos:line="780" pos:column="1">#<cpp:directive pos:line="780" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" format="doxygen" pos:line="782" pos:column="1">/*************************************************************************
+	Debug Menu Preference List
+*************************************************************************/</comment>
+<cpp:if pos:line="785" pos:column="1">#<cpp:directive pos:line="785" pos:column="2">if</cpp:directive> <expr><name pos:line="785" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+	<comment type="line" pos:line="786" pos:column="9">// To add a boolean to the office debug menu, add an identifier to</comment>
+	<comment type="line" pos:line="787" pos:column="9">// this enumeration.  Please use the msodbgf&lt;team initials&gt;&lt;...&gt;</comment>
+	<comment type="line" pos:line="788" pos:column="9">// format for future extensibility</comment>
+	<enum pos:line="789" pos:column="9">enum <block pos:line="789" pos:column="14">{
+		<decl><name pos:line="790" pos:column="17">msodbgfTCOTrace</name></decl><op:operator pos:line="790" pos:column="32">,</op:operator>
+		<decl><name pos:line="791" pos:column="17">msodbgfTCODisableResiliency</name></decl><op:operator pos:line="791" pos:column="44">,</op:operator>
+		<decl><name pos:line="792" pos:column="17">msodbgfTCODisableInstalls</name></decl><op:operator pos:line="792" pos:column="42">,</op:operator>
+		<decl><name pos:line="793" pos:column="17">msodbgfTCOAssertResiliency</name></decl><op:operator pos:line="793" pos:column="43">,</op:operator>
+		<decl><name pos:line="794" pos:column="17">msodbgfTCOAssertInstalls</name></decl><op:operator pos:line="794" pos:column="41">,</op:operator>
+		<decl><name pos:line="795" pos:column="17">msodbgfTCOAssertDarwinErrors</name></decl><op:operator pos:line="795" pos:column="45">,</op:operator>
+		<decl><name pos:line="796" pos:column="17">msodbgfTCOAssertAuthErrors</name></decl><op:operator pos:line="796" pos:column="43">,</op:operator>
+		<decl><name pos:line="797" pos:column="17">msodbgfTCOEnablePolicy</name></decl><op:operator pos:line="797" pos:column="39">,</op:operator>
+		<decl><name pos:line="798" pos:column="17">msodbgfTCOFakeQualifiedComponents</name></decl><op:operator pos:line="798" pos:column="50">,</op:operator> 
+		<decl><name pos:line="799" pos:column="17">msodbgfTCOFakeDemandInstall</name></decl><op:operator pos:line="799" pos:column="44">,</op:operator> 
+		<decl><name pos:line="800" pos:column="17">msodbgfTCOOrapiTraces</name></decl><op:operator pos:line="800" pos:column="38">,</op:operator>
+		<decl><name pos:line="801" pos:column="17">msodbgfTCOOrapiTraceFunctions</name></decl><op:operator pos:line="801" pos:column="46">,</op:operator>
+		<decl><name pos:line="802" pos:column="17">msodbgfTCOOrapiAlwaysWriteValues</name></decl><op:operator pos:line="802" pos:column="49">,</op:operator>
+		<decl><name pos:line="803" pos:column="17">msodbgfTCOIEVersion</name></decl><op:operator pos:line="803" pos:column="36">,</op:operator>
+		<decl><name pos:line="804" pos:column="17">msodbgfUIAppendMSAADumps</name></decl><op:operator pos:line="804" pos:column="41">,</op:operator>
+		<decl><name pos:line="805" pos:column="17">msodbgfUIInfoViaHelp</name></decl><op:operator pos:line="805" pos:column="37">,</op:operator>
+		<decl><name pos:line="806" pos:column="17">msodbgfWCTestNestedTags</name></decl><op:operator pos:line="806" pos:column="40">,</op:operator>
+		<decl><name pos:line="807" pos:column="17">msodbgfPRGAlwaysShowProgress</name></decl><op:operator pos:line="807" pos:column="45">,</op:operator>
+ 		<decl><name pos:line="808" pos:column="17">msodbgfOATransferGif</name></decl><op:operator pos:line="808" pos:column="37">,</op:operator>
+ 		<decl><name pos:line="809" pos:column="17">msodbgfOATransferJfif</name></decl><op:operator pos:line="809" pos:column="38">,</op:operator>
+ 		<decl><name pos:line="810" pos:column="17">msodbgfOATransferPng</name></decl><op:operator pos:line="810" pos:column="37">,</op:operator>
+		<decl><name pos:line="811" pos:column="17">msodbgfUISOWWizTest</name></decl><op:operator pos:line="811" pos:column="36">,</op:operator>
+		<decl><name pos:line="812" pos:column="17">msodbgfUISOWWizLIS</name></decl><op:operator pos:line="812" pos:column="35">,</op:operator>
+		<decl><name pos:line="813" pos:column="17">msodbgfKJReallocNew</name></decl><op:operator pos:line="813" pos:column="36">,</op:operator>
+		<decl><name pos:line="814" pos:column="17">msodbgfFUNLogFile</name></decl><op:operator pos:line="814" pos:column="34">,</op:operator>
+		<decl><name pos:line="815" pos:column="17">msodbgfKJIdleLog</name></decl><op:operator pos:line="815" pos:column="33">,</op:operator>
+		<comment type="line" pos:line="816" pos:column="17">// sentinel, place boolean declarations above this line</comment>
+		<decl><name pos:line="817" pos:column="17">msodbgfMax</name></decl><op:operator pos:line="817" pos:column="27">,</op:operator>
+	}</block>;</enum>
+
+	<macro><name pos:line="820" pos:column="9">MSOAPI_</name><argument_list pos:line="820" pos:column="16">(<argument pos:line="820" pos:column="17">BOOL</argument>)</argument_list></macro> <macro><name pos:line="820" pos:column="23">MsoFDebugPref</name><argument_list pos:line="820" pos:column="36">( <argument pos:line="820" pos:column="38">unsigned int idbgf</argument> )</argument_list></macro><empty_stmt pos:line="820" pos:column="58">;</empty_stmt>
+	<macro><name pos:line="821" pos:column="9">MSOAPI_</name><argument_list pos:line="821" pos:column="16">(<argument pos:line="821" pos:column="17">BOOL</argument>)</argument_list></macro> <macro><name pos:line="821" pos:column="23">MsoFSetDebugPref</name><argument_list pos:line="821" pos:column="39">( <argument pos:line="821" pos:column="41">unsigned int idgbf</argument>, <argument pos:line="821" pos:column="61">BOOL fActive</argument> )</argument_list></macro><empty_stmt pos:line="821" pos:column="75">;</empty_stmt>
+<cpp:endif pos:line="822" pos:column="1">#<cpp:directive pos:line="822" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:if pos:line="824" pos:column="1">#<cpp:directive pos:line="824" pos:column="2">if</cpp:directive> <expr><call><name pos:line="824" pos:column="5">defined</name><argument_list pos:line="824" pos:column="12">(<argument><expr><name pos:line="824" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call></expr></cpp:if>
+}</block></extern>
+<cpp:endif pos:line="826" pos:column="1">#<cpp:directive pos:line="826" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" format="doxygen" pos:line="828" pos:column="1">/******************************************************************************
+	OLE related debug utlities
+******************************************************************************/</comment>	
+<cpp:if pos:line="831" pos:column="1">#<cpp:directive pos:line="831" pos:column="2">if</cpp:directive> <expr><name pos:line="831" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+<comment type="block" pos:line="832" pos:column="1">/*-----------------------------------------------------------------------------
+	MsoDebugPeekStg	
+
+	One level enumeration of any IStorage object
+-------------------------------------------------------------------- HAILIU -*/</comment>
+<macro><name pos:line="837" pos:column="1">MSOAPI_</name><argument_list pos:line="837" pos:column="8">(<argument pos:line="837" pos:column="9">VOID</argument>)</argument_list></macro> <expr_stmt><expr><call><name pos:line="837" pos:column="15">MsoDebugPeekStg</name><argument_list pos:line="837" pos:column="30">(<argument><expr><name pos:line="837" pos:column="31">IStorage</name> <op:operator pos:line="837" pos:column="40">*</op:operator><name pos:line="837" pos:column="41">pistg</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+<comment type="block" pos:line="839" pos:column="1">/*-----------------------------------------------------------------------------
+	MsoDebugDumpStg	
+
+	Dump any IStorage to c:\$stgdump.stg
+-------------------------------------------------------------------- HAILIU -*/</comment>
+<macro><name pos:line="844" pos:column="1">MSOAPI_</name><argument_list pos:line="844" pos:column="8">(<argument pos:line="844" pos:column="9">VOID</argument>)</argument_list></macro> <expr_stmt><expr><call><name pos:line="844" pos:column="15">MsoDebugDumpStg</name><argument_list pos:line="844" pos:column="30">(<argument><expr><name pos:line="844" pos:column="31">IStorage</name> <op:operator pos:line="844" pos:column="40">*</op:operator><name pos:line="844" pos:column="41">pistg</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+<comment type="block" pos:line="846" pos:column="1">/*-----------------------------------------------------------------------------
+	MsoDebugPeekDataObject
+
+	enumerate the supported formatetc of the IDataObject object
+-------------------------------------------------------------------- HAILIU -*/</comment>
+<macro><name pos:line="851" pos:column="1">MSOAPI_</name><argument_list pos:line="851" pos:column="8">(<argument pos:line="851" pos:column="9">VOID</argument>)</argument_list></macro> <expr_stmt><expr><call><name pos:line="851" pos:column="15">MsoDebugPeekDataObject</name><argument_list pos:line="851" pos:column="37">(<argument><expr><name pos:line="851" pos:column="38">IDataObject</name> <op:operator pos:line="851" pos:column="50">*</op:operator><name pos:line="851" pos:column="51">pidobj</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+<comment type="block" pos:line="853" pos:column="1">/*-----------------------------------------------------------------------------
+	MsoFDebugUseViewObject
+
+	return TURE if the object should use IViewObject interface for rendering
+	if the object support a IDataObject which in turn support at least
+	CF_METAFILEPICT, you should not be using IViewObject
+-------------------------------------------------------------------- HAILIU -*/</comment>
+<macro><name pos:line="860" pos:column="1">MSOAPI_</name><argument_list pos:line="860" pos:column="8">(<argument pos:line="860" pos:column="9">BOOL</argument>)</argument_list></macro> <macro><name pos:line="860" pos:column="15">MsoFDebugUseViewObject</name><argument_list pos:line="860" pos:column="37">(<argument pos:line="860" pos:column="38">LPUNKNOWN punk</argument>)</argument_list></macro><empty_stmt pos:line="860" pos:column="53">;</empty_stmt>
+
+<comment type="block" pos:line="862" pos:column="1">/*-----------------------------------------------------------------------------
+	MsoDebugPeekStm
+-------------------------------------------------------------------- HAILIU -*/</comment>
+<macro><name pos:line="865" pos:column="1">MSOAPI_</name><argument_list pos:line="865" pos:column="8">(<argument pos:line="865" pos:column="9">VOID</argument>)</argument_list></macro> <expr_stmt><expr><call><name pos:line="865" pos:column="15">MsoDebugPeekStm</name><argument_list pos:line="865" pos:column="30">(<argument><expr><name pos:line="865" pos:column="31">IStream</name> <op:operator pos:line="865" pos:column="39">*</op:operator><name pos:line="865" pos:column="40">pistm</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+<comment type="block" pos:line="867" pos:column="1">/*-----------------------------------------------------------------------------
+	MsoDebugPeekDC
+
+	Give you a chance to look at the various aspect the hdc
+-------------------------------------------------------------------- HAILIU -*/</comment>
+<macro><name pos:line="872" pos:column="1">MSOAPI_</name><argument_list pos:line="872" pos:column="8">(<argument pos:line="872" pos:column="9">VOID</argument>)</argument_list></macro> <macro><name pos:line="872" pos:column="15">MsoDebugPeekDC</name><argument_list pos:line="872" pos:column="29">(<argument pos:line="872" pos:column="30">HDC hdc</argument>)</argument_list></macro><empty_stmt pos:line="872" pos:column="38">;</empty_stmt>
+
+<comment type="block" pos:line="874" pos:column="1">/*-----------------------------------------------------------------------------
+	MsoDebugPeekViewObjectEmf
+-------------------------------------------------------------------- HAILIU -*/</comment>
+<macro><name pos:line="877" pos:column="1">MSOAPI_</name><argument_list pos:line="877" pos:column="8">(<argument pos:line="877" pos:column="9">VOID</argument>)</argument_list></macro> <expr_stmt><expr><call><name pos:line="877" pos:column="15">MsoDebugPeekViewObjectEmf</name><argument_list pos:line="877" pos:column="40">(<argument><expr><name pos:line="877" pos:column="41">IViewObject</name> <op:operator pos:line="877" pos:column="53">*</op:operator><name pos:line="877" pos:column="54">pivobj</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+<cpp:else pos:line="879" pos:column="1">#<cpp:directive pos:line="879" pos:column="2">else</cpp:directive></cpp:else>
+<cpp:define pos:line="880" pos:column="1">#<cpp:directive pos:line="880" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="880" pos:column="9">MsoDebugPeekStg</name><parameter_list pos:line="880" pos:column="24">(<param><type><name pos:line="880" pos:column="25">pistg</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:define pos:line="881" pos:column="1">#<cpp:directive pos:line="881" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="881" pos:column="9">MsoDebugDumpStg</name><parameter_list pos:line="881" pos:column="24">(<param><type><name pos:line="881" pos:column="25">pistg</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:define pos:line="882" pos:column="1">#<cpp:directive pos:line="882" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="882" pos:column="9">MsoDebugPeekDataObject</name><parameter_list pos:line="882" pos:column="31">(<param><type><name pos:line="882" pos:column="32">pidobj</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:define pos:line="883" pos:column="1">#<cpp:directive pos:line="883" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="883" pos:column="9">MsoFDebugUseViewObject</name><parameter_list pos:line="883" pos:column="31">(<param><type><name pos:line="883" pos:column="32">punk</name></type></param>)</parameter_list></cpp:macro>  <cpp:value pos:line="883" pos:column="39">(TRUE)</cpp:value></cpp:define>
+<cpp:define pos:line="884" pos:column="1">#<cpp:directive pos:line="884" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="884" pos:column="9">MsoDebugPeekStm</name><parameter_list pos:line="884" pos:column="24">(<param><type><name pos:line="884" pos:column="25">pistm</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:define pos:line="885" pos:column="1">#<cpp:directive pos:line="885" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="885" pos:column="9">MsoDebugPeekDC</name><parameter_list pos:line="885" pos:column="23">(<param><type><name pos:line="885" pos:column="24">hdc</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:define pos:line="886" pos:column="1">#<cpp:directive pos:line="886" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="886" pos:column="9">MsoDebugPeekViewObjectEmf</name><parameter_list pos:line="886" pos:column="34">(<param><type><name pos:line="886" pos:column="35">pivobj</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:endif pos:line="887" pos:column="1">#<cpp:directive pos:line="887" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="887" pos:column="8">//VSMSODEBUG</comment>
+
+
+<comment type="block" format="doxygen" pos:line="890" pos:column="1">/****************************************************************************
+	MsoDebugOptions VBA object related routine.
+**************************************************************** SureshT ***/</comment>
+
+<comment type="block" pos:line="894" pos:column="1">/*-----------------------------------------------------------------------------
+	MsoHrGetMsoDebugOptions
+
+	Mso API to get the MsoDebugOptions VBA object.
+
+------------------------------------------------------------------- SureshT -*/</comment>
+<macro><name pos:line="900" pos:column="1">MSOAPI_</name><argument_list pos:line="900" pos:column="8">(<argument pos:line="900" pos:column="9">HRESULT</argument>)</argument_list></macro> <expr_stmt><expr><call><name pos:line="900" pos:column="18">MsoHrGetMsoDebugOptions</name><argument_list pos:line="900" pos:column="41">(<argument pos:line="900" pos:column="42">struct <expr><name pos:line="900" pos:column="49">MSOINST</name> <op:operator pos:line="900" pos:column="57">*</op:operator><name pos:line="900" pos:column="58">hmsoinst</name></expr></argument>, <argument><expr><name pos:line="900" pos:column="68">IDispatch</name> <op:operator pos:line="900" pos:column="78">*</op:operator><op:operator pos:line="900" pos:column="79">*</op:operator><name pos:line="900" pos:column="80">ppidisp</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+
+<comment type="block" format="doxygen" pos:line="903" pos:column="1">/*****************************************************************************
+	Return address structure
+*****************************************************************************/</comment>
+<typedef pos:line="906" pos:column="1">typedef <type><struct pos:line="906" pos:column="9">struct <name pos:line="906" pos:column="16">_MSORADDR</name>
+<block pos:line="907" pos:column="1">{<public type="default" pos:line="907" pos:column="2">
+	<decl_stmt><decl><type><name pos:line="908" pos:column="9">void</name><type:modifier pos:line="908" pos:column="13">*</type:modifier></type> <name pos:line="908" pos:column="15">pfnCaller</name></decl>;</decl_stmt>
+<comment type="line" pos:line="909" pos:column="1">//  REVIEW:  PETERO:  Consider removing PPCMAC</comment>
+<cpp:if pos:line="910" pos:column="1">#<cpp:directive pos:line="910" pos:column="2">if</cpp:directive> <expr><name pos:line="910" pos:column="5">PPCMAC</name></expr></cpp:if>
+	<decl_stmt><decl><type><name pos:line="911" pos:column="9">void</name><type:modifier pos:line="911" pos:column="13">*</type:modifier></type> <name pos:line="911" pos:column="15">pfnJumpEntry</name></decl>;</decl_stmt>
+<cpp:endif pos:line="912" pos:column="1">#<cpp:directive pos:line="912" pos:column="2">endif</cpp:directive></cpp:endif>
+</public>}</block></struct></type> <name pos:line="913" pos:column="3">MSORADDR</name>;</typedef>
+
+<comment type="block" pos:line="915" pos:column="1">/*-----------------------------------------------------------------------------
+	MsoHrGetMsoDebugOptions
+
+	Skips cSkip levels then stores up to maxraddr return 
+	addresses from the call stack.
+	pcraddr is set to the  number of valid elements in rgraddr
+------------------------------------------------------------------- fviton -*/</comment>
+<macro><name pos:line="922" pos:column="1">MSOAPI_</name><argument_list pos:line="922" pos:column="8">(<argument pos:line="922" pos:column="9">void</argument>)</argument_list></macro> <macro><name pos:line="922" pos:column="15">MsoDbgGetCallStack</name><argument_list pos:line="922" pos:column="33">(<argument pos:line="922" pos:column="34">MSORADDR* rgraddr</argument>, <argument pos:line="922" pos:column="53">int cSkip</argument>, <argument pos:line="922" pos:column="64">int maxraddr</argument>, <argument pos:line="922" pos:column="78">int* pcraddr</argument>)</argument_list></macro><empty_stmt pos:line="922" pos:column="91">;</empty_stmt>
+
+
+<comment type="block" pos:line="925" pos:column="1">/*---------------------------------------------------------------------------
+	MsoFCopyToClipboardSz
+
+	Copies sz to the clipboard.  hwnd is the owner window for the string and
+	may be NULL.
+
+	Returns true if the copy was successful.
+---------------------------------------------------------------- PaulCole -*/</comment>
+<cpp:if pos:line="933" pos:column="1">#<cpp:directive pos:line="933" pos:column="2">if</cpp:directive> <expr><name pos:line="933" pos:column="5">VSMSODEBUG</name></expr></cpp:if>
+<macro><name pos:line="934" pos:column="1">MSOAPI_</name><argument_list pos:line="934" pos:column="8">(<argument pos:line="934" pos:column="9">BOOL</argument>)</argument_list></macro> <macro><name pos:line="934" pos:column="15">MsoFCopyToClipboardSz</name><argument_list pos:line="934" pos:column="36">(<argument pos:line="934" pos:column="37">char * sz</argument>, <argument pos:line="934" pos:column="48">HWND hwnd</argument>)</argument_list></macro><empty_stmt pos:line="934" pos:column="58">;</empty_stmt>
+<cpp:endif pos:line="935" pos:column="1">#<cpp:directive pos:line="935" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+
+<cpp:endif pos:line="939" pos:column="1">#<cpp:directive pos:line="939" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="939" pos:column="8">// MSODEBUG_H</comment>
+</unit>

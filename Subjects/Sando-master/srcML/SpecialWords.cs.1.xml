@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Sando-master\Core\Core\Tools\SpecialWords.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">IO</name></name>;</using>
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">System</name><op:operator pos:line="4" pos:column="13">.</op:operator><name pos:line="4" pos:column="14">Linq</name></name>;</using>
+<using pos:line="5" pos:column="1">using <name><name pos:line="5" pos:column="7">System</name><op:operator pos:line="5" pos:column="13">.</op:operator><name pos:line="5" pos:column="14">Text</name></name>;</using>
+
+<namespace pos:line="7" pos:column="1">namespace <name><name pos:line="7" pos:column="11">Sando</name><op:operator pos:line="7" pos:column="16">.</op:operator><name pos:line="7" pos:column="17">Core</name><op:operator pos:line="7" pos:column="21">.</op:operator><name pos:line="7" pos:column="22">Tools</name></name>
+<block pos:line="8" pos:column="1">{
+    <class><specifier pos:line="9" pos:column="5">public</specifier> <specifier pos:line="9" pos:column="12">static</specifier> class <name pos:line="9" pos:column="25">SpecialWords</name>
+    <block pos:line="10" pos:column="5">{
+        <function><type><specifier pos:line="11" pos:column="9">public</specifier> <specifier pos:line="11" pos:column="16">static</specifier> <name pos:line="11" pos:column="23">String</name><index pos:line="11" pos:column="29">[]</index></type> <name pos:line="11" pos:column="32">NonInformativeWords</name><parameter_list pos:line="11" pos:column="51">()</parameter_list>
+        <block pos:line="12" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="13" pos:column="13">var</name></type> <name pos:line="13" pos:column="17">list</name> <init pos:line="13" pos:column="22">= <expr><op:operator pos:line="13" pos:column="24">new</op:operator> <call><name><name pos:line="13" pos:column="28">List</name><argument_list pos:line="13" pos:column="32">&lt;<argument><name pos:line="13" pos:column="33">string</name></argument>&gt;</argument_list></name><argument_list pos:line="13" pos:column="40">()</argument_list></call></expr></init></decl>;</decl_stmt>
+            <expr_stmt><expr><call><name><name pos:line="14" pos:column="13">list</name><op:operator pos:line="14" pos:column="17">.</op:operator><name pos:line="14" pos:column="18">AddRange</name></name><argument_list pos:line="14" pos:column="26">(<argument><expr><call><name pos:line="14" pos:column="27">CSharpKeyWords</name><argument_list pos:line="14" pos:column="41">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="15" pos:column="13">list</name><op:operator pos:line="15" pos:column="17">.</op:operator><name pos:line="15" pos:column="18">AddRange</name></name><argument_list pos:line="15" pos:column="26">(<argument><expr><call><name pos:line="15" pos:column="27">FrequentEnglishWordsTopHundred</name><argument_list pos:line="15" pos:column="57">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="16" pos:column="13">list</name><op:operator pos:line="16" pos:column="17">.</op:operator><name pos:line="16" pos:column="18">AddRange</name></name><argument_list pos:line="16" pos:column="26">(<argument><expr><call><name pos:line="16" pos:column="27">MostCommonVerbs</name><argument_list pos:line="16" pos:column="42">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="17" pos:column="13">list</name><op:operator pos:line="17" pos:column="17">.</op:operator><name pos:line="17" pos:column="18">AddRange</name></name><argument_list pos:line="17" pos:column="26">(<argument><expr><call><name pos:line="17" pos:column="27">StopWords</name><argument_list pos:line="17" pos:column="36">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <return pos:line="18" pos:column="13">return <expr><call><name><name pos:line="18" pos:column="20">list</name><op:operator pos:line="18" pos:column="24">.</op:operator><name pos:line="18" pos:column="25">Distinct</name></name><argument_list pos:line="18" pos:column="33">()</argument_list></call><op:operator pos:line="18" pos:column="35">.</op:operator><call><name pos:line="18" pos:column="36">ToArray</name><argument_list pos:line="18" pos:column="43">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+
+        <function><type><specifier pos:line="22" pos:column="9">public</specifier> <specifier pos:line="22" pos:column="16">static</specifier> <name pos:line="22" pos:column="23">string</name><index pos:line="22" pos:column="29">[]</index></type> <name pos:line="22" pos:column="32">CSharpKeyWords</name><parameter_list pos:line="22" pos:column="46">()</parameter_list>
+        <block pos:line="23" pos:column="9">{
+            <return pos:line="24" pos:column="13">return <expr><lit:literal type="string" pos:line="24" pos:column="20">@"abstract	event	new	struct
+                as	explicit	null	switch
+                base	extern	object	this
+                bool	false	operator	throw
+                break	finally	out	true system
+                byte	fixed	override	try
+                case	float	params	typeof
+                catch   for	private	uint main
+                char    foreach	protected	ulong
+                checked	goto	public	unchecked
+                class	if	readonly	unsafe
+                const	implicit	ref	ushort
+                continue	in	return	using error
+                decimal	int	sbyte	virtual warning
+                default	interface	sealed	volatile
+                delegate	internal	short	void
+                do	is	sizeof	while debug info
+                double	lock	stackalloc logger
+                else    long	static exception
+                enum namespace string var"</lit:literal><op:operator pos:line="43" pos:column="43">.</op:operator><call><name pos:line="43" pos:column="44">Split</name><argument_list pos:line="43" pos:column="49">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+
+        <function><type><specifier pos:line="47" pos:column="9">public</specifier> <specifier pos:line="47" pos:column="16">static</specifier> <name pos:line="47" pos:column="23">string</name><index pos:line="47" pos:column="29">[]</index></type> <name pos:line="47" pos:column="32">FrequentEnglishWordsTopHundred</name><parameter_list pos:line="47" pos:column="62">()</parameter_list>
+        <block pos:line="48" pos:column="9">{
+            <return pos:line="49" pos:column="13">return <expr><lit:literal type="string" pos:line="49" pos:column="20">@"the of and a to in is you that it he was any where when what
+            for on are as with his they I at be this have from 
+            or one had by word but not what all were we when your can
+            said there use an each which she do how their if will good
+            up other about out many then them these so some her not non only
+            would make like him into time has look two more write go see number no way
+            could people my than first water been call who its now did get come made may
+            "</lit:literal><op:operator pos:line="56" pos:column="14">.</op:operator><call><name pos:line="56" pos:column="15">Split</name><argument_list pos:line="56" pos:column="20">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="59" pos:column="9">public</specifier> <specifier pos:line="59" pos:column="16">static</specifier> <name pos:line="59" pos:column="23">string</name><index pos:line="59" pos:column="29">[]</index></type> <name pos:line="59" pos:column="32">MostCommonVerbs</name><parameter_list pos:line="59" pos:column="47">()</parameter_list>
+        <block pos:line="60" pos:column="9">{
+            <return pos:line="61" pos:column="13">return <expr><lit:literal type="string" pos:line="61" pos:column="20">@"accept care could enjoy happen lead open reduce settle teach account carry count examine hate learn order refer shake tell
+            achieve catch cover exist have leave ought reflect shall tend act cause create expect head lend own refuse share test add change cross 
+            experience hear let pass regard shoot thank admit charge cry explain help lie pay relate should think affect check cut express hide like
+            perform release shout throw afford choose damage extend hit limit pick remain show touch agree claim dance face hold link place remember shut
+            train aim clean deal fail hope listen plan remove sing travel allow clear decide fall hurt live play repeat sit treat answer climb deliver 
+            fasten identify look point replace sleep try appear close demand feed imagine lose prefer reply smile turn apply collect deny feel improve love
+            prepare report sort understand argue come depend fight include make present represent sound use arrange commit describe fill increase manage 
+            press require speak used to arrive compare design find indicate mark prevent rest stand visit ask complain destroy finish influence matter 
+            produce result start vote attack complete develop fit inform may promise return state wait avoid concern die fly intend mean protect reveal 
+            stay walk base confirm disappear fold introduce measure prove ring stick want be connect discover follow invite meet provide rise stop warn 
+            beat consider discuss force involve mention publish roll study wash become consist divide forget join might pull run succeed watch begin 
+            contact do forgive jump mind push save suffer wear believe contain draw form keep miss put say suggest will belong continue dress found kick 
+            move raise see suit win break contribute drink gain kill must reach seem supply wish build control drive get knock need read sell support 
+            wonder burn cook drop give know notice realize send suppose work buy copy eat go last obtain receive separate survive worry call correct enable
+            grow laugh occur recognize serve take would can cost encourage handle lay offer record set talk write"</lit:literal><op:operator pos:line="75" pos:column="115">.</op:operator><call><name pos:line="75" pos:column="116">Split</name><argument_list pos:line="75" pos:column="121">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+
+        <function><type><specifier pos:line="79" pos:column="9">public</specifier> <specifier pos:line="79" pos:column="16">static</specifier> <name><name pos:line="79" pos:column="23">Dictionary</name><argument_list pos:line="79" pos:column="33">&lt;<argument><name pos:line="79" pos:column="34">string</name></argument>, <argument><name pos:line="79" pos:column="42">string</name></argument>&gt;</argument_list></name></type> <name pos:line="79" pos:column="50">HyperCommonAcronyms</name><parameter_list pos:line="79" pos:column="69">()</parameter_list>
+        <block pos:line="80" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="81" pos:column="13">var</name></type> <name pos:line="81" pos:column="17">map</name> <init pos:line="81" pos:column="21">= <expr><op:operator pos:line="81" pos:column="23">new</op:operator> <name><name pos:line="81" pos:column="27">Dictionary</name><argument_list pos:line="81" pos:column="37">&lt;<argument><name pos:line="81" pos:column="38">String</name></argument>, <argument><name pos:line="81" pos:column="46">String</name></argument>&gt;</argument_list></name>
+            <block pos:line="82" pos:column="13">{
+                <expr><block pos:line="83" pos:column="17">{<expr><lit:literal type="string" pos:line="83" pos:column="18">"int"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="83" pos:column="25">"integer"</lit:literal></expr>}</block></expr>, <expr><block pos:line="83" pos:column="37">{<expr><lit:literal type="string" pos:line="83" pos:column="38">"std"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="83" pos:column="45">"standard"</lit:literal></expr>}</block></expr>,
+                <expr><block pos:line="84" pos:column="17">{<expr><lit:literal type="string" pos:line="84" pos:column="18">"impl"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="84" pos:column="26">"implement"</lit:literal></expr>}</block></expr>,
+                <expr><block pos:line="85" pos:column="17">{<expr><lit:literal type="string" pos:line="85" pos:column="18">"obj"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="85" pos:column="25">"object"</lit:literal></expr>}</block></expr>,
+                <expr><block pos:line="86" pos:column="17">{<expr><lit:literal type="string" pos:line="86" pos:column="18">"pos"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="86" pos:column="25">"position"</lit:literal></expr>}</block></expr>,
+                <expr><block pos:line="87" pos:column="17">{<expr><lit:literal type="string" pos:line="87" pos:column="18">"init"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="87" pos:column="26">"initial"</lit:literal></expr>}</block></expr>,
+                <expr><block pos:line="88" pos:column="17">{<expr><lit:literal type="string" pos:line="88" pos:column="18">"len"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="88" pos:column="25">"length"</lit:literal></expr>}</block></expr>,
+                <expr><block pos:line="89" pos:column="17">{<expr><lit:literal type="string" pos:line="89" pos:column="18">"attr"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="89" pos:column="26">"attribute"</lit:literal></expr>}</block></expr>,
+                <expr><block pos:line="90" pos:column="17">{<expr><lit:literal type="string" pos:line="90" pos:column="18">"num"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="90" pos:column="25">"number"</lit:literal></expr>}</block></expr>,
+                <expr><block pos:line="91" pos:column="17">{<expr><lit:literal type="string" pos:line="91" pos:column="18">"env"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="91" pos:column="25">"environment"</lit:literal></expr>}</block></expr>,
+                <expr><block pos:line="92" pos:column="17">{<expr><lit:literal type="string" pos:line="92" pos:column="18">"val"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="92" pos:column="25">"value"</lit:literal></expr>}</block></expr>,
+                <expr><block pos:line="93" pos:column="17">{<expr><lit:literal type="string" pos:line="93" pos:column="18">"str"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="93" pos:column="25">"string"</lit:literal></expr>}</block></expr>,
+                <expr><block pos:line="94" pos:column="17">{<expr><lit:literal type="string" pos:line="94" pos:column="18">"doc"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="94" pos:column="25">"document"</lit:literal></expr>}</block></expr>,
+                <expr><block pos:line="95" pos:column="17">{<expr><lit:literal type="string" pos:line="95" pos:column="18">"buf"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="95" pos:column="25">"buffer"</lit:literal></expr>}</block></expr>,
+                <expr><block pos:line="96" pos:column="17">{<expr><lit:literal type="string" pos:line="96" pos:column="18">"ctx"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="96" pos:column="25">"context"</lit:literal></expr>}</block></expr>,
+                <expr><block pos:line="97" pos:column="17">{<expr><lit:literal type="string" pos:line="97" pos:column="18">"msg"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="97" pos:column="25">"message"</lit:literal></expr>}</block></expr>,
+                <expr><block pos:line="98" pos:column="17">{<expr><lit:literal type="string" pos:line="98" pos:column="18">"var"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="98" pos:column="25">"variable"</lit:literal></expr>}</block></expr>,
+                <expr><block pos:line="99" pos:column="17">{<expr><lit:literal type="string" pos:line="99" pos:column="18">"param"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="99" pos:column="27">"parameter"</lit:literal></expr>}</block></expr>,
+                <expr><block pos:line="100" pos:column="17">{<expr><lit:literal type="string" pos:line="100" pos:column="18">"decl"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="100" pos:column="26">"declare"</lit:literal></expr>}</block></expr>,
+                <expr><block pos:line="101" pos:column="17">{<expr><lit:literal type="string" pos:line="101" pos:column="18">"arg"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="101" pos:column="25">"argument"</lit:literal></expr>}</block></expr>,
+                <expr><block pos:line="102" pos:column="17">{<expr><lit:literal type="string" pos:line="102" pos:column="18">"rect"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="102" pos:column="26">"rectangle"</lit:literal></expr>}</block></expr>,
+                <expr><block pos:line="103" pos:column="17">{<expr><lit:literal type="string" pos:line="103" pos:column="18">"expr"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="103" pos:column="26">"express"</lit:literal></expr>}</block></expr>,
+                <expr><block pos:line="104" pos:column="17">{<expr><lit:literal type="string" pos:line="104" pos:column="18">"dir"</lit:literal></expr>, <expr><lit:literal type="string" pos:line="104" pos:column="25">"directory"</lit:literal></expr>}</block></expr>
+            }</block></expr></init></decl>;</decl_stmt>
+            <return pos:line="106" pos:column="13">return <expr><name pos:line="106" pos:column="20">map</name></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="109" pos:column="9">public</specifier> <specifier pos:line="109" pos:column="16">static</specifier> <name pos:line="109" pos:column="23">string</name><index pos:line="109" pos:column="29">[]</index></type> <name pos:line="109" pos:column="32">StopWords</name><parameter_list pos:line="109" pos:column="41">()</parameter_list>
+        <block pos:line="110" pos:column="9">{
+            <return pos:line="111" pos:column="13">return <expr><lit:literal type="string" pos:line="111" pos:column="20">@"a's able about above according accordingly across actually after afterwards again 
+            against ain't all allow allows almost alone along already also although always am among amongst an and
+            another any anybody anyhow anyone anything anyway anyways anywhere apart appear appreciate appropriate
+            are aren't around as aside ask asking associated at available away awfully be became because become 
+            becomes becoming been before beforehand behind being believe below beside besides best better between
+            beyond both brief but by c'mon c's came can can't cannot cant cause causes certain certainly changes
+            clearly co com come comes concerning consequently consider considering contain containing contains
+            corresponding could couldn't course currently definitely described despite did didn't different do
+            does doesn't doing don't done down downwards during each edu eg eight either else elsewhere enough 
+            entirely especially et etc even ever every everybody everyone everything everywhere ex exactly example
+            except far few fifth first five followed following follows for former formerly forth four from further 
+            furthermore get gets getting given gives go goes going gone got gotten greetings had hadn't happens 
+            hardly has hasn't have haven't having he he's hello help hence her here here's hereafter hereby herein 
+            hereupon hers herself hi him himself his hither hopefully how howbeit however i'd i'll i'm i've ie 
+            if ignored immediate in inasmuch inc indeed indicate indicated indicates inner insofar instead into 
+            inward is isn't it it'd it'll it's its itself just keep keeps kept know known knows last lately later
+            latter latterly least less lest let let's like liked likely little look looking looks ltd mainly many 
+            may maybe me mean meanwhile merely might more moreover most mostly much must my myself name namely 
+            nd near nearly necessary need needs neither never nevertheless new next nine no nobody non none 
+            noone nor normally not nothing novel now nowhere obviously of off often oh ok okay old on once 
+            one ones only onto or other others otherwise ought our ours ourselves out outside over overall own 
+            particular particularly per perhaps placed please plus possible presumably probably provides que 
+            quite qv rather rd re really reasonably regarding regardless regards relatively respectively right 
+            said same saw say saying says second secondly see seeing seem seemed seeming seems seen self selves 
+            sensible sent serious seriously seven several shall she should shouldn't since six so some somebody 
+            somehow someone something sometime sometimes somewhat somewhere soon sorry specified specify 
+            specifying still sub such sup sure t's take taken tell tends th than thank thanks thanx that that's 
+            thats the their theirs them themselves then thence there there's thereafter thereby therefore therein 
+            theres thereupon these they they'd they'll they're they've think third this thorough thoroughly those 
+            though three through throughout thru thus to together too took toward towards tried tries truly try 
+            trying twice two un under unfortunately unless unlikely until unto up upon us use used useful uses 
+            using usually value various very via viz vs want wants was wasn't way we we'd we'll we're we've 
+            welcome well went were weren't what what's whatever when whence whenever where where's whereafter 
+            whereas whereby wherein whereupon wherever whether which while whither who who's whoever whole whom 
+            whose why will willing wish with within without won't wonder would wouldn't yes yet you you'd 
+            you'll you're you've your yours yourself yourselves zero"</lit:literal><op:operator pos:line="146" pos:column="70">.</op:operator><call><name pos:line="146" pos:column="71">Split</name><argument_list pos:line="146" pos:column="76">()</argument_list></call></expr>;</return>
+        }</block></function>
+
+    }</block></class>
+}</block></namespace>
+</unit>

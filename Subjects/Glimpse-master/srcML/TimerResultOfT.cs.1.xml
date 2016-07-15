@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Extensibility\TimerResultOfT.cs" pos:tabs="8"><namespace pos:line="1" pos:column="1">namespace <name><name pos:line="1" pos:column="11">Glimpse</name><op:operator pos:line="1" pos:column="18">.</op:operator><name pos:line="1" pos:column="19">Core</name><op:operator pos:line="1" pos:column="23">.</op:operator><name pos:line="1" pos:column="24">Extensibility</name></name>
+<block pos:line="2" pos:column="1">{
+    <comment type="line" pos:line="3" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="4" pos:column="5">/// A subtype of &lt;see cref="TimerResult"/&gt; which includes the result of non-void method calls.</comment>
+    <comment type="line" pos:line="5" pos:column="5">/// &lt;/summary&gt;</comment>
+    <comment type="line" pos:line="6" pos:column="5">/// &lt;typeparam name="T"&gt;The type returned by the executed method.&lt;/typeparam&gt;</comment>
+    <class><specifier pos:line="7" pos:column="5">public</specifier> class <name><name pos:line="7" pos:column="18">TimerResult</name><argument_list pos:line="7" pos:column="29">&lt;<argument><name pos:line="7" pos:column="30">T</name></argument>&gt;</argument_list></name> <super pos:line="7" pos:column="33">: <name pos:line="7" pos:column="35">TimerResult</name></super>
+    <block pos:line="8" pos:column="5">{
+        <comment type="line" pos:line="9" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="10" pos:column="9">/// Gets or sets the result.</comment>
+        <comment type="line" pos:line="11" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="12" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="13" pos:column="9">/// The result.</comment>
+        <comment type="line" pos:line="14" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="15" pos:column="9">public</specifier> <name pos:line="15" pos:column="16">T</name></type> <name pos:line="15" pos:column="18">Result</name> <block pos:line="15" pos:column="25">{ <function_decl><name pos:line="15" pos:column="27">get</name>;</function_decl> <function_decl><name pos:line="15" pos:column="32">set</name>;</function_decl> }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace></unit>

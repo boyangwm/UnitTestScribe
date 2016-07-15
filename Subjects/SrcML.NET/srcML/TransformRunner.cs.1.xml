@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML\TransformRunner.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2010 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Text</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">System</name><op:operator pos:line="16" pos:column="13">.</op:operator><name pos:line="16" pos:column="14">Xml</name><op:operator pos:line="16" pos:column="17">.</op:operator><name pos:line="16" pos:column="18">Linq</name></name>;</using>
+
+<namespace pos:line="18" pos:column="1">namespace <name><name pos:line="18" pos:column="11">ABB</name><op:operator pos:line="18" pos:column="14">.</op:operator><name pos:line="18" pos:column="15">SrcML</name></name>
+<block pos:line="19" pos:column="1">{
+    <comment type="line" pos:line="20" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="21" pos:column="5">/// This class is a wrapper for querying and transforming a document using an ITransform.</comment>
+    <comment type="line" pos:line="22" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="23" pos:column="5">public</specifier> <specifier pos:line="23" pos:column="12">sealed</specifier> class <name pos:line="23" pos:column="25">TransformRunner</name>
+    <block pos:line="24" pos:column="5">{
+        <constructor><specifier pos:line="25" pos:column="9">private</specifier> <name pos:line="25" pos:column="17">TransformRunner</name><parameter_list pos:line="25" pos:column="32">()</parameter_list>
+        <block pos:line="26" pos:column="9">{
+
+        }</block></constructor>
+
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// Run the query against the given document.</comment>
+        <comment type="line" pos:line="32" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="33" pos:column="9">/// &lt;param name="document"&gt;The document to query.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// &lt;param name="transform"&gt;The transform containing the Query.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="35" pos:column="9">/// &lt;returns&gt;The list of matching nodes.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="36" pos:column="9">public</specifier> <specifier pos:line="36" pos:column="16">static</specifier> <name><name pos:line="36" pos:column="23">IEnumerable</name><argument_list pos:line="36" pos:column="34">&lt;<argument><name pos:line="36" pos:column="35">XElement</name></argument>&gt;</argument_list></name></type> <name pos:line="36" pos:column="45">RunQuery</name><parameter_list pos:line="36" pos:column="53">(<param><decl><type><name pos:line="36" pos:column="54">SrcMLFile</name></type> <name pos:line="36" pos:column="64">document</name></decl></param>, <param><decl><type><name pos:line="36" pos:column="74">ITransform</name></type> <name pos:line="36" pos:column="85">transform</name></decl></param>)</parameter_list>
+        <block pos:line="37" pos:column="9">{
+            <if pos:line="38" pos:column="13">if <condition pos:line="38" pos:column="16">(<expr><name pos:line="38" pos:column="17">null</name> <op:operator pos:line="38" pos:column="22">==</op:operator> <name pos:line="38" pos:column="25">document</name></expr>)</condition><then pos:line="38" pos:column="34">
+                <throw pos:line="39" pos:column="17">throw <expr><op:operator pos:line="39" pos:column="23">new</op:operator> <call><name pos:line="39" pos:column="27">ArgumentNullException</name><argument_list pos:line="39" pos:column="48">(<argument><expr><lit:literal type="string" pos:line="39" pos:column="49">"document"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw></then></if>
+
+            <return pos:line="41" pos:column="13">return <expr><call><name><name pos:line="41" pos:column="20">document</name><op:operator pos:line="41" pos:column="28">.</op:operator><name pos:line="41" pos:column="29">QueryEachUnit</name></name><argument_list pos:line="41" pos:column="42">(<argument><expr><name pos:line="41" pos:column="43">transform</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="44" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// Runs the transform against the list of elements.</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// &lt;param name="elements"&gt;The elements to transform.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// &lt;param name="transform"&gt;The transform containing the &lt;see cref="ITransform.Transform"/&gt;.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="49" pos:column="9">/// &lt;returns&gt;The list of transformed nodes.&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="50" pos:column="9">public</specifier> <specifier pos:line="50" pos:column="16">static</specifier> <name><name pos:line="50" pos:column="23">IEnumerable</name><argument_list pos:line="50" pos:column="34">&lt;<argument><name pos:line="50" pos:column="35">XElement</name></argument>&gt;</argument_list></name></type> <name pos:line="50" pos:column="45">RunTransform</name><parameter_list pos:line="50" pos:column="57">(<param><decl><type><name><name pos:line="50" pos:column="58">IEnumerable</name><argument_list pos:line="50" pos:column="69">&lt;<argument><name pos:line="50" pos:column="70">XElement</name></argument>&gt;</argument_list></name></type> <name pos:line="50" pos:column="80">elements</name></decl></param>, <param><decl><type><name pos:line="50" pos:column="90">ITransform</name></type> <name pos:line="50" pos:column="101">transform</name></decl></param>)</parameter_list>
+        <block pos:line="51" pos:column="9">{
+            <foreach pos:line="52" pos:column="13">foreach (<init><decl><type><name pos:line="52" pos:column="22">var</name></type> <name pos:line="52" pos:column="26">e</name> <range pos:line="52" pos:column="28">in <expr><name pos:line="52" pos:column="31">elements</name></expr></range></decl></init>)
+                <return><specifier pos:line="53" pos:column="17">yield</specifier> return <expr><call><name><name pos:line="53" pos:column="30">transform</name><op:operator pos:line="53" pos:column="39">.</op:operator><name pos:line="53" pos:column="40">Transform</name></name><argument_list pos:line="53" pos:column="49">(<argument><expr><op:operator pos:line="53" pos:column="50">new</op:operator> <call><name pos:line="53" pos:column="54">XElement</name><argument_list pos:line="53" pos:column="62">(<argument><expr><name pos:line="53" pos:column="63">e</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</return></foreach>
+        }</block></function>
+    }</block></class>
+}</block></namespace>
+</unit>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML.Data\ParserContext.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2014 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Patrick Francis (ABB Group) - initial API, implementation, &amp; documentation
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="13" pos:column="1">using <name pos:line="13" pos:column="7">System</name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Collections</name><op:operator pos:line="14" pos:column="25">.</op:operator><name pos:line="14" pos:column="26">Generic</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Collections</name><op:operator pos:line="15" pos:column="25">.</op:operator><name pos:line="15" pos:column="26">ObjectModel</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">System</name><op:operator pos:line="16" pos:column="13">.</op:operator><name pos:line="16" pos:column="14">Xml</name><op:operator pos:line="16" pos:column="17">.</op:operator><name pos:line="16" pos:column="18">Linq</name></name>;</using>
+
+<namespace pos:line="18" pos:column="1">namespace <name><name pos:line="18" pos:column="11">ABB</name><op:operator pos:line="18" pos:column="14">.</op:operator><name pos:line="18" pos:column="15">SrcML</name><op:operator pos:line="18" pos:column="20">.</op:operator><name pos:line="18" pos:column="21">Data</name></name> <block pos:line="18" pos:column="26">{
+
+    <comment type="line" pos:line="20" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="21" pos:column="5">/// Parser context objects store the current state of the</comment>
+    <comment type="line" pos:line="22" pos:column="5">/// &lt;see cref="AbstractCodeParser.ParseStatement"/&gt; method.</comment>
+    <comment type="line" pos:line="23" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="24" pos:column="5">public</specifier> class <name pos:line="24" pos:column="18">ParserContext</name> <block pos:line="24" pos:column="32">{
+        <decl_stmt><decl><type><specifier pos:line="25" pos:column="9">private</specifier> <name pos:line="25" pos:column="17">XElement</name></type> <name pos:line="25" pos:column="26">fileUnitBeingParsed</name></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// Creates a new parser context</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;/summary&gt;</comment>
+        <constructor><specifier pos:line="30" pos:column="9">public</specifier> <name pos:line="30" pos:column="16">ParserContext</name><parameter_list pos:line="30" pos:column="29">()</parameter_list>
+            <member_list pos:line="31" pos:column="13">: <call><name pos:line="31" pos:column="15">this</name><argument_list pos:line="31" pos:column="19">(<argument><expr><name pos:line="31" pos:column="20">null</name></expr></argument>)</argument_list></call> </member_list><block pos:line="31" pos:column="26">{
+        }</block></constructor>
+
+        <comment type="line" pos:line="34" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="35" pos:column="9">/// Creates a new parser context</comment>
+        <comment type="line" pos:line="36" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;param name="fileUnit"&gt;The file unit for this context&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="38" pos:column="9">public</specifier> <name pos:line="38" pos:column="16">ParserContext</name><parameter_list pos:line="38" pos:column="29">(<param><decl><type><name pos:line="38" pos:column="30">XElement</name></type> <name pos:line="38" pos:column="39">fileUnit</name></decl></param>)</parameter_list> <block pos:line="38" pos:column="49">{
+            <expr_stmt><expr><name><name pos:line="39" pos:column="13">this</name><op:operator pos:line="39" pos:column="17">.</op:operator><name pos:line="39" pos:column="18">FileUnit</name></name> <op:operator pos:line="39" pos:column="27">=</op:operator> <name pos:line="39" pos:column="29">fileUnit</name></expr>;</expr_stmt>
+            <comment type="line" pos:line="40" pos:column="13">//ParentStatementStack = new Stack&lt;Statement&gt;();</comment>
+            <comment type="line" pos:line="41" pos:column="13">//StatementStack = new Stack&lt;Statement&gt;();</comment>
+        }</block></constructor>
+
+        <comment type="line" pos:line="44" pos:column="9">///// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="45" pos:column="9">///// The aliases for this context. This should be set by a call to</comment>
+        <comment type="line" pos:line="46" pos:column="9">///// &lt;see cref="AbstractCodeParser.ParseUnitElement"/&gt;.</comment>
+        <comment type="line" pos:line="47" pos:column="9">///// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="48" pos:column="9">//public Collection&lt;Alias&gt; Aliases { get; set; }</comment>
+
+        <comment type="line" pos:line="50" pos:column="9">///// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="51" pos:column="9">///// The current statement on &lt;see cref="ParentStatementStack"/&gt;. If the stack is empty, it returns</comment>
+        <comment type="line" pos:line="52" pos:column="9">///// null.</comment>
+        <comment type="line" pos:line="53" pos:column="9">///// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="54" pos:column="9">//public Statement CurrentParentStatement {</comment>
+        <comment type="line" pos:line="55" pos:column="9">//    get {</comment>
+        <comment type="line" pos:line="56" pos:column="9">//        if(ParentStatementStack.Count &gt; 0)</comment>
+        <comment type="line" pos:line="57" pos:column="9">//            return ParentStatementStack.Peek();</comment>
+        <comment type="line" pos:line="58" pos:column="9">//        return null;</comment>
+        <comment type="line" pos:line="59" pos:column="9">//    }</comment>
+        <comment type="line" pos:line="60" pos:column="9">//}</comment>
+
+        <comment type="line" pos:line="62" pos:column="9">///// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="63" pos:column="9">///// The current statement on &lt;see cref="StatementStack"/&gt;. If the stack is empty, it returns null.</comment>
+        <comment type="line" pos:line="64" pos:column="9">///// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="65" pos:column="9">//public Statement CurrentStatement {</comment>
+        <comment type="line" pos:line="66" pos:column="9">//    get {</comment>
+        <comment type="line" pos:line="67" pos:column="9">//        if(StatementStack.Count &gt; 0)</comment>
+        <comment type="line" pos:line="68" pos:column="9">//            return StatementStack.Peek();</comment>
+        <comment type="line" pos:line="69" pos:column="9">//        return null;</comment>
+        <comment type="line" pos:line="70" pos:column="9">//    }</comment>
+        <comment type="line" pos:line="71" pos:column="9">//}</comment>
+
+        <comment type="line" pos:line="73" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="74" pos:column="9">/// The file name from &lt;see cref="FileUnit"/&gt;</comment>
+        <comment type="line" pos:line="75" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="76" pos:column="9">public</specifier> <name pos:line="76" pos:column="16">string</name></type> <name pos:line="76" pos:column="23">FileName</name> <block pos:line="76" pos:column="32">{ <function_decl><name pos:line="76" pos:column="34">get</name>;</function_decl> <function_decl><specifier pos:line="76" pos:column="39">private</specifier> <name pos:line="76" pos:column="47">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="78" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="79" pos:column="9">/// The file unit for this context. This should be set by a call to</comment>
+        <comment type="line" pos:line="80" pos:column="9">/// &lt;see cref="AbstractCodeParser.ParseUnitElement"/&gt;. Alternatively, this can be set</comment>
+        <comment type="line" pos:line="81" pos:column="9">/// manually for calls to other Parse methods in &lt;see cref="AbstractCodeParser"/&gt;.</comment>
+        <comment type="line" pos:line="82" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="83" pos:column="9">public</specifier> <name pos:line="83" pos:column="16">XElement</name></type> <name pos:line="83" pos:column="25">FileUnit</name> <block pos:line="83" pos:column="34">{
+            <function><name pos:line="84" pos:column="13">get</name> <block pos:line="84" pos:column="17">{ <return pos:line="84" pos:column="19">return <expr><name><name pos:line="84" pos:column="26">this</name><op:operator pos:line="84" pos:column="30">.</op:operator><name pos:line="84" pos:column="31">fileUnitBeingParsed</name></name></expr>;</return> }</block></function>
+            <function><name pos:line="85" pos:column="13">set</name> <block pos:line="85" pos:column="17">{
+                <if pos:line="86" pos:column="17">if<condition pos:line="86" pos:column="19">(<expr><name pos:line="86" pos:column="20">null</name> <op:operator pos:line="86" pos:column="25">!=</op:operator> <name pos:line="86" pos:column="28">value</name></expr>)</condition><then pos:line="86" pos:column="34"> <block pos:line="86" pos:column="35">{
+                    <if pos:line="87" pos:column="21">if<condition pos:line="87" pos:column="23">(<expr><name><name pos:line="87" pos:column="24">value</name><op:operator pos:line="87" pos:column="29">.</op:operator><name pos:line="87" pos:column="30">Name</name></name> <op:operator pos:line="87" pos:column="35">!=</op:operator> <name><name pos:line="87" pos:column="38">SRC</name><op:operator pos:line="87" pos:column="41">.</op:operator><name pos:line="87" pos:column="42">Unit</name></name></expr>)</condition><then pos:line="87" pos:column="47">
+                        <throw pos:line="88" pos:column="25">throw <expr><op:operator pos:line="88" pos:column="31">new</op:operator> <call><name pos:line="88" pos:column="35">ArgumentException</name><argument_list pos:line="88" pos:column="52">(<argument><expr><lit:literal type="string" pos:line="88" pos:column="53">"must be a SRC.Unit"</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="88" pos:column="75">"value"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw></then></if>
+                    <expr_stmt><expr><name><name pos:line="89" pos:column="21">this</name><op:operator pos:line="89" pos:column="25">.</op:operator><name pos:line="89" pos:column="26">FileName</name></name> <op:operator pos:line="89" pos:column="35">=</op:operator> <call><name><name pos:line="89" pos:column="37">SrcMLElement</name><op:operator pos:line="89" pos:column="49">.</op:operator><name pos:line="89" pos:column="50">GetFileNameForUnit</name></name><argument_list pos:line="89" pos:column="68">(<argument><expr><name pos:line="89" pos:column="69">value</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                }</block></then> <else pos:line="90" pos:column="19">else <block pos:line="90" pos:column="24">{
+                    <expr_stmt><expr><name><name pos:line="91" pos:column="21">this</name><op:operator pos:line="91" pos:column="25">.</op:operator><name pos:line="91" pos:column="26">FileName</name></name> <op:operator pos:line="91" pos:column="35">=</op:operator> <name><name pos:line="91" pos:column="37">string</name><op:operator pos:line="91" pos:column="43">.</op:operator><name pos:line="91" pos:column="44">Empty</name></name></expr>;</expr_stmt>
+                }</block></else></if>
+                <expr_stmt><expr><name><name pos:line="93" pos:column="17">this</name><op:operator pos:line="93" pos:column="21">.</op:operator><name pos:line="93" pos:column="22">fileUnitBeingParsed</name></name> <op:operator pos:line="93" pos:column="42">=</op:operator> <name pos:line="93" pos:column="44">value</name></expr>;</expr_stmt>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="97" pos:column="9">///// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="98" pos:column="9">///// The parent statement stack stores the parent of the statement being parsed. This is only used in</comment>
+        <comment type="line" pos:line="99" pos:column="9">///// specific cases such as the following C# example: &lt;code language="C#"&gt; namespace A.B.C {</comment>
+        <comment type="line" pos:line="100" pos:column="9">///// } &lt;/code&gt; In this example, we want the tree to be &lt;c&gt;A-&gt;B-&gt;C&lt;/c&gt;. What</comment>
+        <comment type="line" pos:line="101" pos:column="9">///// &lt;see cref="AbstractCodeParser.ParseNamespaceElement(XElement,ParserContext)"/&gt; does in</comment>
+        <comment type="line" pos:line="102" pos:column="9">///// this case is create three namespaces: &lt;c&gt;A&lt;/c&gt;, &lt;c&gt;B&lt;/c&gt;, and &lt;c&gt;C&lt;/c&gt; and puts them all</comment>
+        <comment type="line" pos:line="103" pos:column="9">///// on &lt;see cref="StatementStack"/&gt;. Because we have created three elements, we need a way to</comment>
+        <comment type="line" pos:line="104" pos:column="9">///// track how many need to be popped off. The &lt;c&gt;A&lt;/c&gt; namespace will be put on</comment>
+        <comment type="line" pos:line="105" pos:column="9">///// &lt;see cref="ParentStatementStack"/&gt;.</comment>
+        <comment type="line" pos:line="106" pos:column="9">///// &lt;see cref="AbstractCodeParser.ParseElement(XElement,ParserContext)"/&gt; will see that</comment>
+        <comment type="line" pos:line="107" pos:column="9">///// ParentStatementStack and &lt;see cref="StatementStack"/&gt; are not equal and it will</comment>
+        <comment type="line" pos:line="108" pos:column="9">///// &lt;see cref="System.Collections.Stack.Pop()"/&gt; elements off until they are.</comment>
+        <comment type="line" pos:line="109" pos:column="9">///// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="110" pos:column="9">//private Stack&lt;Statement&gt; ParentStatementStack { get; set; }</comment>
+
+        <comment type="line" pos:line="112" pos:column="9">///// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="113" pos:column="9">///// The statement stack stores all of the statements currently being parsed. When</comment>
+        <comment type="line" pos:line="114" pos:column="9">///// &lt;see cref="AbstractCodeParser.ParseElement(XElement,ParserContext)"/&gt; creates a statement it</comment>
+        <comment type="line" pos:line="115" pos:column="9">///// pushes it onto the stack. Once it has finished creating the statement (including calling</comment>
+        <comment type="line" pos:line="116" pos:column="9">///// &lt;see cref="AbstractCodeParser.ParseElement(XElement,ParserContext)"/&gt; on all of its</comment>
+        <comment type="line" pos:line="117" pos:column="9">///// children), it removes it from the stack.</comment>
+        <comment type="line" pos:line="118" pos:column="9">///// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="119" pos:column="9">//private Stack&lt;Statement&gt; StatementStack { get; set; }</comment>
+
+        <comment type="line" pos:line="121" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="122" pos:column="9">/// Creates a location object for the given</comment>
+        <comment type="line" pos:line="123" pos:column="9">/// &lt;paramref name="element"/&gt;.</comment>
+        <comment type="line" pos:line="124" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="125" pos:column="9">/// &lt;param name="element"&gt;The element to create a location for&lt;/param&gt;</comment>
+        <comment type="line" pos:line="126" pos:column="9">/// &lt;param name="isReference"&gt;whether or not this is a reference location&lt;/param&gt;</comment>
+        <comment type="line" pos:line="127" pos:column="9">/// &lt;returns&gt;The new location object. The &lt;see cref="SourceLocation.SourceFileName"/&gt; will</comment>
+        <comment type="line" pos:line="128" pos:column="9">/// be set to see cref="FileName"/&gt;&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="129" pos:column="9">public</specifier> <name pos:line="129" pos:column="16">SrcMLLocation</name></type> <name pos:line="129" pos:column="30">CreateLocation</name><parameter_list pos:line="129" pos:column="44">(<param><decl><type><name pos:line="129" pos:column="45">XElement</name></type> <name pos:line="129" pos:column="54">element</name></decl></param>, <param><decl><type><name pos:line="129" pos:column="63">bool</name></type> <name pos:line="129" pos:column="68">isReference</name></decl></param>)</parameter_list> <block pos:line="129" pos:column="81">{
+            <decl_stmt><decl><type><name pos:line="130" pos:column="13">var</name></type> <name pos:line="130" pos:column="17">location</name> <init pos:line="130" pos:column="26">= <expr><op:operator pos:line="130" pos:column="28">new</op:operator> <call><name pos:line="130" pos:column="32">SrcMLLocation</name><argument_list pos:line="130" pos:column="45">(<argument><expr><name pos:line="130" pos:column="46">element</name></expr></argument>, <argument><expr><name><name pos:line="130" pos:column="55">this</name><op:operator pos:line="130" pos:column="59">.</op:operator><name pos:line="130" pos:column="60">FileName</name></name></expr></argument>, <argument><expr><name pos:line="130" pos:column="70">isReference</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+            <return pos:line="131" pos:column="13">return <expr><name pos:line="131" pos:column="20">location</name></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="134" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="135" pos:column="9">/// Creates a location object for the given</comment>
+        <comment type="line" pos:line="136" pos:column="9">/// &lt;paramref name="element"/&gt;.</comment>
+        <comment type="line" pos:line="137" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="138" pos:column="9">/// &lt;param name="element"&gt;The element to create a location for&lt;/param&gt;</comment>
+        <comment type="line" pos:line="139" pos:column="9">/// &lt;returns&gt;The new location object. The &lt;see cref="SourceLocation.SourceFileName"/&gt; will</comment>
+        <comment type="line" pos:line="140" pos:column="9">/// be set to see cref="FileName"/&gt;&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="141" pos:column="9">public</specifier> <name pos:line="141" pos:column="16">SrcMLLocation</name></type> <name pos:line="141" pos:column="30">CreateLocation</name><parameter_list pos:line="141" pos:column="44">(<param><decl><type><name pos:line="141" pos:column="45">XElement</name></type> <name pos:line="141" pos:column="54">element</name></decl></param>)</parameter_list> <block pos:line="141" pos:column="63">{
+            <decl_stmt><decl><type><name pos:line="142" pos:column="13">var</name></type> <name pos:line="142" pos:column="17">location</name> <init pos:line="142" pos:column="26">= <expr><op:operator pos:line="142" pos:column="28">new</op:operator> <call><name pos:line="142" pos:column="32">SrcMLLocation</name><argument_list pos:line="142" pos:column="45">(<argument><expr><name pos:line="142" pos:column="46">element</name></expr></argument>, <argument><expr><name><name pos:line="142" pos:column="55">this</name><op:operator pos:line="142" pos:column="59">.</op:operator><name pos:line="142" pos:column="60">FileName</name></name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+            <return pos:line="143" pos:column="13">return <expr><name pos:line="143" pos:column="20">location</name></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="146" pos:column="9">///// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="147" pos:column="9">///// Removes the most recent statement from the statement stack and returns it. If intermediate</comment>
+        <comment type="line" pos:line="148" pos:column="9">///// statements were inserted, it calls &lt;see cref="RevertToNextParent()"/&gt;.</comment>
+        <comment type="line" pos:line="149" pos:column="9">///// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="150" pos:column="9">///// &lt;returns&gt;The most recent statement.&lt;/returns&gt;</comment>
+        <comment type="line" pos:line="151" pos:column="9">//public Statement Pop() {</comment>
+        <comment type="line" pos:line="152" pos:column="9">//    RevertToNextParent();</comment>
+        <comment type="line" pos:line="153" pos:column="9">//    ParentStatementStack.Pop();</comment>
+        <comment type="line" pos:line="154" pos:column="9">//    return StatementStack.Pop();</comment>
+        <comment type="line" pos:line="155" pos:column="9">//}</comment>
+
+        <comment type="line" pos:line="157" pos:column="9">///// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="158" pos:column="9">///// Adds</comment>
+        <comment type="line" pos:line="159" pos:column="9">///// &lt;paramref name="statement"/&gt;to the statement stack. This simply calls</comment>
+        <comment type="line" pos:line="160" pos:column="9">///// &lt;see cref="Push(Statement,Statement)"/&gt; with both arguments set to</comment>
+        <comment type="line" pos:line="161" pos:column="9">///// &lt;paramref name="statement"/&gt;&lt;/summary&gt;</comment>
+        <comment type="line" pos:line="162" pos:column="9">///// &lt;param name="statement"&gt;The statement to add.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="163" pos:column="9">//public void Push(Statement statement) {</comment>
+        <comment type="line" pos:line="164" pos:column="9">//    Push(statement, statement);</comment>
+        <comment type="line" pos:line="165" pos:column="9">//}</comment>
+
+        <comment type="line" pos:line="167" pos:column="9">///// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="168" pos:column="9">///// Adds</comment>
+        <comment type="line" pos:line="169" pos:column="9">///// &lt;paramref name="statement"/&gt;and</comment>
+        <comment type="line" pos:line="170" pos:column="9">///// &lt;paramref name="parent"&gt;it's parent&lt;/paramref&gt; . If &lt;see cref="CurrentParentStatement"/&gt; is</comment>
+        <comment type="line" pos:line="171" pos:column="9">///// equal to</comment>
+        <comment type="line" pos:line="172" pos:column="9">///// &lt;paramref name="parent"/&gt;then parent is not added.</comment>
+        <comment type="line" pos:line="173" pos:column="9">///// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="174" pos:column="9">///// &lt;param name="statement"&gt;&lt;/param&gt;</comment>
+        <comment type="line" pos:line="175" pos:column="9">///// &lt;param name="parent"&gt;&lt;/param&gt;</comment>
+        <comment type="line" pos:line="176" pos:column="9">//public void Push(Statement statement, Statement parent) {</comment>
+        <comment type="line" pos:line="177" pos:column="9">//    StatementStack.Push(statement);</comment>
+        <comment type="line" pos:line="178" pos:column="9">//    if(parent != CurrentParentStatement) {</comment>
+        <comment type="line" pos:line="179" pos:column="9">//        ParentStatementStack.Push(parent);</comment>
+        <comment type="line" pos:line="180" pos:column="9">//    }</comment>
+        <comment type="line" pos:line="181" pos:column="9">//}</comment>
+
+        <comment type="line" pos:line="183" pos:column="9">///// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="184" pos:column="9">///// Removes statements until &lt;c&gt;CurrentStatement == CurrentParentStatement&lt;/c&gt;. As each statement is</comment>
+        <comment type="line" pos:line="185" pos:column="9">///// removed, it is added as a child to its predecessor.</comment>
+        <comment type="line" pos:line="186" pos:column="9">///// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="187" pos:column="9">//public void RevertToNextParent() {</comment>
+        <comment type="line" pos:line="188" pos:column="9">//    while(CurrentStatement != CurrentParentStatement) {</comment>
+        <comment type="line" pos:line="189" pos:column="9">//        var statement = StatementStack.Pop();</comment>
+        <comment type="line" pos:line="190" pos:column="9">//        CurrentStatement.AddChildScope(statement);</comment>
+        <comment type="line" pos:line="191" pos:column="9">//    }</comment>
+        <comment type="line" pos:line="192" pos:column="9">//}</comment>
+    }</block></class>
+}</block></namespace></unit>

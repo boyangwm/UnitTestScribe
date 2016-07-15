@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\ResourceResult\CacheControlDecorator.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">Glimpse</name><op:operator pos:line="1" pos:column="14">.</op:operator><name pos:line="1" pos:column="15">Core</name><op:operator pos:line="1" pos:column="19">.</op:operator><name pos:line="1" pos:column="20">Extensibility</name></name>;</using>
+<comment type="line" pos:line="2" pos:column="1">// ReSharper disable RedundantUsingDirective</comment>
+<comment type="line" pos:line="3" pos:column="1">//   Glimpse.Core.Extensions.EnumExtensions.ToDescription used in !DEBUG section.</comment>
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">Glimpse</name><op:operator pos:line="4" pos:column="14">.</op:operator><name pos:line="4" pos:column="15">Core</name><op:operator pos:line="4" pos:column="19">.</op:operator><name pos:line="4" pos:column="20">Extensions</name></name>;</using>
+<comment type="line" pos:line="5" pos:column="1">// ReSharper restore RedundantUsingDirective</comment>
+<using pos:line="6" pos:column="1">using <name><name pos:line="6" pos:column="7">Glimpse</name><op:operator pos:line="6" pos:column="14">.</op:operator><name pos:line="6" pos:column="15">Core</name><op:operator pos:line="6" pos:column="19">.</op:operator><name pos:line="6" pos:column="20">Framework</name></name>;</using>
+
+<namespace pos:line="8" pos:column="1">namespace <name><name pos:line="8" pos:column="11">Glimpse</name><op:operator pos:line="8" pos:column="18">.</op:operator><name pos:line="8" pos:column="19">Core</name><op:operator pos:line="8" pos:column="23">.</op:operator><name pos:line="8" pos:column="24">ResourceResult</name></name>
+<block pos:line="9" pos:column="1">{
+    <comment type="line" pos:line="10" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="11" pos:column="5">/// The &lt;see cref="ResourceResultDecorator"/&gt; implementation responsible providing Http caching to &lt;see cref="IResourceResult"/&gt; implementations via the &lt;c&gt;Cache-Control&lt;/c&gt; Http response header.</comment>
+    <comment type="line" pos:line="12" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="13" pos:column="5">public</specifier> class <name pos:line="13" pos:column="18">CacheControlDecorator</name> <super pos:line="13" pos:column="40">: <name pos:line="13" pos:column="42">ResourceResultDecorator</name></super>
+    <block pos:line="14" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="15" pos:column="9">private</specifier> <specifier pos:line="15" pos:column="17">const</specifier> <name pos:line="15" pos:column="23">long</name></type> <name pos:line="15" pos:column="28">NoCaching</name> <init pos:line="15" pos:column="38">= <expr><op:operator pos:line="15" pos:column="40">-</op:operator><lit:literal type="number" pos:line="15" pos:column="41">1</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="17" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="18" pos:column="9">/// Initializes a new instance of the &lt;see cref="CacheControlDecorator" /&gt; class.</comment>
+        <comment type="line" pos:line="19" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="20" pos:column="9">/// &lt;param name="wrappedResourceResult"&gt;The wrapped resource result.&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="21" pos:column="9">public</specifier> <name pos:line="21" pos:column="16">CacheControlDecorator</name><parameter_list pos:line="21" pos:column="37">(<param><decl><type><name pos:line="21" pos:column="38">IResourceResult</name></type> <name pos:line="21" pos:column="54">wrappedResourceResult</name></decl></param>)</parameter_list> <member_list pos:line="21" pos:column="77">: <call><name pos:line="21" pos:column="79">this</name><argument_list pos:line="21" pos:column="83">(<argument><expr><name pos:line="21" pos:column="84">NoCaching</name></expr></argument>, <argument><expr><name pos:line="21" pos:column="95">null</name></expr></argument>, <argument><expr><name pos:line="21" pos:column="101">wrappedResourceResult</name></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="22" pos:column="9">{
+        }</block></constructor>
+
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// Initializes a new instance of the &lt;see cref="CacheControlDecorator" /&gt; class.</comment>
+        <comment type="line" pos:line="27" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="28" pos:column="9">/// &lt;param name="cacheDuration"&gt;Duration of the cache.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;param name="cacheSetting"&gt;The cache setting.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// &lt;param name="wrappedResourceResult"&gt;The wrapped resource result.&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="31" pos:column="9">public</specifier> <name pos:line="31" pos:column="16">CacheControlDecorator</name><parameter_list pos:line="31" pos:column="37">(<param><decl><type><name pos:line="31" pos:column="38">long</name></type> <name pos:line="31" pos:column="43">cacheDuration</name></decl></param>, <param><decl><type><name pos:line="31" pos:column="58">CacheSetting</name><type:modifier pos:line="31" pos:column="70">?</type:modifier></type> <name pos:line="31" pos:column="72">cacheSetting</name></decl></param>, <param><decl><type><name pos:line="31" pos:column="86">IResourceResult</name></type> <name pos:line="31" pos:column="102">wrappedResourceResult</name></decl></param>)</parameter_list> <member_list pos:line="31" pos:column="125">: <call><name pos:line="31" pos:column="127">base</name><argument_list pos:line="31" pos:column="131">(<argument><expr><name pos:line="31" pos:column="132">wrappedResourceResult</name></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="32" pos:column="9">{
+            <expr_stmt><expr><name pos:line="33" pos:column="13">CacheDuration</name> <op:operator pos:line="33" pos:column="27">=</op:operator> <name pos:line="33" pos:column="29">cacheDuration</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="34" pos:column="13">CacheSetting</name> <op:operator pos:line="34" pos:column="26">=</op:operator> <name pos:line="34" pos:column="28">cacheSetting</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// Gets or sets the duration of the cache.</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// The duration of the cache in seconds.</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="43" pos:column="9">public</specifier> <name pos:line="43" pos:column="16">long</name></type> <name pos:line="43" pos:column="21">CacheDuration</name> <block pos:line="43" pos:column="35">{ <function_decl><name pos:line="43" pos:column="37">get</name>;</function_decl> <function_decl><name pos:line="43" pos:column="42">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="45" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// Gets or sets the cache directive.</comment>
+        <comment type="line" pos:line="47" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="48" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="49" pos:column="9">/// The cache directive.</comment>
+        <comment type="line" pos:line="50" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="51" pos:column="9">public</specifier> <name pos:line="51" pos:column="16">CacheSetting</name><type:modifier pos:line="51" pos:column="28">?</type:modifier></type> <name pos:line="51" pos:column="30">CacheSetting</name> <block pos:line="51" pos:column="43">{ <function_decl><name pos:line="51" pos:column="45">get</name>;</function_decl> <function_decl><name pos:line="51" pos:column="50">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="53" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// Decorates the specified context.</comment>
+        <comment type="line" pos:line="55" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="56" pos:column="9">/// &lt;param name="context"&gt;The context.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="57" pos:column="9">protected</specifier> <specifier pos:line="57" pos:column="19">override</specifier> <name pos:line="57" pos:column="28">void</name></type> <name pos:line="57" pos:column="33">Decorate</name><parameter_list pos:line="57" pos:column="41">(<param><decl><type><name pos:line="57" pos:column="42">IResourceResultContext</name></type> <name pos:line="57" pos:column="65">context</name></decl></param>)</parameter_list>
+        <block pos:line="58" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="59" pos:column="13">var</name></type> <name pos:line="59" pos:column="17">frameworkProvider</name> <init pos:line="59" pos:column="35">= <expr><name><name pos:line="59" pos:column="37">context</name><op:operator pos:line="59" pos:column="44">.</op:operator><name pos:line="59" pos:column="45">FrameworkProvider</name></name></expr></init></decl>;</decl_stmt>
+
+<cpp:if pos:line="61" pos:column="1">#<cpp:directive pos:line="61" pos:column="2">if</cpp:directive> <expr><op:operator pos:line="61" pos:column="5">!</op:operator><name pos:line="61" pos:column="6">DEBUG</name></expr></cpp:if>
+            <if pos:line="62" pos:column="13">if <condition pos:line="62" pos:column="16">(<expr><name><name pos:line="62" pos:column="17">CacheSetting</name><op:operator pos:line="62" pos:column="29">.</op:operator><name pos:line="62" pos:column="30">HasValue</name></name></expr>)</condition><then pos:line="62" pos:column="39">
+            <block pos:line="63" pos:column="13">{
+                <expr_stmt><expr><call><name><name pos:line="64" pos:column="17">frameworkProvider</name><op:operator pos:line="64" pos:column="34">.</op:operator><name pos:line="64" pos:column="35">SetHttpResponseHeader</name></name><argument_list pos:line="64" pos:column="56">(<argument><expr><lit:literal type="string" pos:line="64" pos:column="57">"Cache-Control"</lit:literal></expr></argument>, <argument><expr><call><name><name pos:line="64" pos:column="74">string</name><op:operator pos:line="64" pos:column="80">.</op:operator><name pos:line="64" pos:column="81">Format</name></name><argument_list pos:line="64" pos:column="87">(<argument><expr><lit:literal type="string" pos:line="64" pos:column="88">"{0}, max-age={1}"</lit:literal></expr></argument>, <argument><expr><call><name><name pos:line="64" pos:column="108">CacheSetting</name><op:operator pos:line="64" pos:column="120">.</op:operator><name pos:line="64" pos:column="121">Value</name><op:operator pos:line="64" pos:column="126">.</op:operator><name pos:line="64" pos:column="127">ToDescription</name></name><argument_list pos:line="64" pos:column="140">()</argument_list></call></expr></argument>, <argument><expr><name pos:line="64" pos:column="144">CacheDuration</name></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+                <if pos:line="66" pos:column="17">if <condition pos:line="66" pos:column="20">(<expr><name><name pos:line="66" pos:column="21">CacheSetting</name><op:operator pos:line="66" pos:column="33">.</op:operator><name pos:line="66" pos:column="34">Value</name></name> <op:operator pos:line="66" pos:column="40">==</op:operator> <name><name pos:line="66" pos:column="43">Framework</name><op:operator pos:line="66" pos:column="52">.</op:operator><name pos:line="66" pos:column="53">CacheSetting</name><op:operator pos:line="66" pos:column="65">.</op:operator><name pos:line="66" pos:column="66">NoCache</name></name></expr>)</condition><then pos:line="66" pos:column="74">
+                <block pos:line="67" pos:column="17">{
+                    <expr_stmt><expr><call><name><name pos:line="68" pos:column="21">frameworkProvider</name><op:operator pos:line="68" pos:column="38">.</op:operator><name pos:line="68" pos:column="39">SetHttpResponseHeader</name></name><argument_list pos:line="68" pos:column="60">(<argument><expr><lit:literal type="string" pos:line="68" pos:column="61">"Pragma"</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="68" pos:column="71">"no-cache"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                }</block></then></if>
+            }</block></then></if>
+<cpp:else pos:line="71" pos:column="1">#<cpp:directive pos:line="71" pos:column="2">else</cpp:directive></cpp:else>
+            <expr_stmt><expr><call><name><name pos:line="72" pos:column="13">frameworkProvider</name><op:operator pos:line="72" pos:column="30">.</op:operator><name pos:line="72" pos:column="31">SetHttpResponseHeader</name></name><argument_list pos:line="72" pos:column="52">(<argument><expr><lit:literal type="string" pos:line="72" pos:column="53">"Cache-Control"</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="72" pos:column="70">"no-cache"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="73" pos:column="13">frameworkProvider</name><op:operator pos:line="73" pos:column="30">.</op:operator><name pos:line="73" pos:column="31">SetHttpResponseHeader</name></name><argument_list pos:line="73" pos:column="52">(<argument><expr><lit:literal type="string" pos:line="73" pos:column="53">"Pragma"</lit:literal></expr></argument>, <argument><expr><lit:literal type="string" pos:line="73" pos:column="63">"no-cache"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+<cpp:endif pos:line="74" pos:column="1">#<cpp:directive pos:line="74" pos:column="2">endif</cpp:directive></cpp:endif>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\SrcML.NET\TestInputs\class_test.h" pos:tabs="8" pos:line="1" pos:column="1">
+<class pos:line="2" pos:column="1">class <name pos:line="2" pos:column="7">TestClass</name> <block pos:line="2" pos:column="17">{<private type="default" pos:line="2" pos:column="18">
+ </private><public pos:line="3" pos:column="2">public:
+  <function_decl><type><name pos:line="4" pos:column="3">int</name></type> <name pos:line="4" pos:column="7">set_x</name><parameter_list pos:line="4" pos:column="12">(<param><decl><type><name pos:line="4" pos:column="13">int</name></type> <name pos:line="4" pos:column="17">val</name></decl></param>)</parameter_list>;</function_decl>
+  <function_decl><type><name pos:line="5" pos:column="3">int</name></type> <name pos:line="5" pos:column="7">set_y</name><parameter_list pos:line="5" pos:column="12">(<param><decl><type><name pos:line="5" pos:column="13">int</name></type> <name pos:line="5" pos:column="17">y</name></decl></param>)</parameter_list>;</function_decl>
+  <decl_stmt><decl><type><name pos:line="6" pos:column="3">int</name></type> <name pos:line="6" pos:column="7">z</name></decl>;</decl_stmt>
+ </public><private pos:line="7" pos:column="2">private:
+  <decl_stmt><decl><type><name pos:line="8" pos:column="3">int</name></type> <name pos:line="8" pos:column="7">x</name></decl>;</decl_stmt>
+  <decl_stmt><decl><type><name pos:line="9" pos:column="3">int</name></type> <name pos:line="9" pos:column="7">y</name></decl>;</decl_stmt>
+</private>}</block>;</class>
+
+</unit>

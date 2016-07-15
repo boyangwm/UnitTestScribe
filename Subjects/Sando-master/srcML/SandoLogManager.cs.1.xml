@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Sando-master\Core\Core\Logging\SandoLogManager.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">Sando</name><op:operator pos:line="1" pos:column="12">.</op:operator><name pos:line="1" pos:column="13">Core</name><op:operator pos:line="1" pos:column="17">.</op:operator><name pos:line="1" pos:column="18">Logging</name><op:operator pos:line="1" pos:column="25">.</op:operator><name pos:line="1" pos:column="26">Events</name></name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">Sando</name><op:operator pos:line="2" pos:column="12">.</op:operator><name pos:line="2" pos:column="13">Core</name><op:operator pos:line="2" pos:column="17">.</op:operator><name pos:line="2" pos:column="18">Logging</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Persistence</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">Sando</name><op:operator pos:line="3" pos:column="12">.</op:operator><name pos:line="3" pos:column="13">Core</name><op:operator pos:line="3" pos:column="17">.</op:operator><name pos:line="3" pos:column="18">Logging</name><op:operator pos:line="3" pos:column="25">.</op:operator><name pos:line="3" pos:column="26">Upload</name></name>;</using>
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">Sando</name><op:operator pos:line="4" pos:column="12">.</op:operator><name pos:line="4" pos:column="13">Core</name><op:operator pos:line="4" pos:column="17">.</op:operator><name pos:line="4" pos:column="18">Tools</name></name>;</using>
+<using pos:line="5" pos:column="1">using <name pos:line="5" pos:column="7">System</name>;</using>
+<using pos:line="6" pos:column="1">using <name><name pos:line="6" pos:column="7">System</name><op:operator pos:line="6" pos:column="13">.</op:operator><name pos:line="6" pos:column="14">Collections</name><op:operator pos:line="6" pos:column="25">.</op:operator><name pos:line="6" pos:column="26">Generic</name></name>;</using>
+<using pos:line="7" pos:column="1">using <name><name pos:line="7" pos:column="7">System</name><op:operator pos:line="7" pos:column="13">.</op:operator><name pos:line="7" pos:column="14">ComponentModel</name></name>;</using>
+<using pos:line="8" pos:column="1">using <name><name pos:line="8" pos:column="7">System</name><op:operator pos:line="8" pos:column="13">.</op:operator><name pos:line="8" pos:column="14">IO</name></name>;</using>
+<using pos:line="9" pos:column="1">using <name><name pos:line="9" pos:column="7">System</name><op:operator pos:line="9" pos:column="13">.</op:operator><name pos:line="9" pos:column="14">Linq</name></name>;</using>
+<using pos:line="10" pos:column="1">using <name><name pos:line="10" pos:column="7">System</name><op:operator pos:line="10" pos:column="13">.</op:operator><name pos:line="10" pos:column="14">Text</name></name>;</using>
+
+<namespace pos:line="12" pos:column="1">namespace <name><name pos:line="12" pos:column="11">Sando</name><op:operator pos:line="12" pos:column="16">.</op:operator><name pos:line="12" pos:column="17">Core</name><op:operator pos:line="12" pos:column="21">.</op:operator><name pos:line="12" pos:column="22">Logging</name></name>
+<block pos:line="13" pos:column="1">{
+    <class><specifier pos:line="14" pos:column="5">public</specifier> <specifier pos:line="14" pos:column="12">static</specifier> class <name pos:line="14" pos:column="25">SandoLogManager</name>
+    <block pos:line="15" pos:column="5">{
+        <constructor><specifier pos:line="16" pos:column="9">static</specifier> <name pos:line="16" pos:column="16">SandoLogManager</name><parameter_list pos:line="16" pos:column="31">()</parameter_list>
+        <block pos:line="17" pos:column="9">{
+            <expr_stmt><expr><name pos:line="18" pos:column="13">DefaultLoggingOn</name> <op:operator pos:line="18" pos:column="30">=</op:operator> <lit:literal type="boolean" pos:line="18" pos:column="32">false</lit:literal></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="19" pos:column="13">DataCollectionOn</name> <op:operator pos:line="19" pos:column="30">=</op:operator> <lit:literal type="boolean" pos:line="19" pos:column="32">false</lit:literal></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <function><type><specifier pos:line="22" pos:column="9">public</specifier> <specifier pos:line="22" pos:column="16">static</specifier> <name pos:line="22" pos:column="23">void</name></type> <name pos:line="22" pos:column="28">StartDefaultLogging</name><parameter_list pos:line="22" pos:column="47">(<param><decl><type><name pos:line="22" pos:column="48">string</name></type> <name pos:line="22" pos:column="55">logPath</name></decl></param>)</parameter_list>
+        <block pos:line="23" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="24" pos:column="13">FileLogger</name><op:operator pos:line="24" pos:column="23">.</op:operator><name pos:line="24" pos:column="24">SetupDefaultFileLogger</name></name><argument_list pos:line="24" pos:column="46">(<argument><expr><name pos:line="24" pos:column="47">logPath</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="25" pos:column="13">DefaultLoggingOn</name> <op:operator pos:line="25" pos:column="30">=</op:operator> <lit:literal type="boolean" pos:line="25" pos:column="32">true</lit:literal></expr>;</expr_stmt>
+        }</block></function>
+
+        <function><type><specifier pos:line="28" pos:column="9">public</specifier> <specifier pos:line="28" pos:column="16">static</specifier> <name pos:line="28" pos:column="23">void</name></type> <name pos:line="28" pos:column="28">StartDataCollectionLogging</name><parameter_list pos:line="28" pos:column="54">(<param><decl><type><name pos:line="28" pos:column="55">string</name></type> <name pos:line="28" pos:column="62">logPath</name></decl></param>)</parameter_list>
+        <block pos:line="29" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="30" pos:column="13">DataCollectionLogEventHandlers</name><op:operator pos:line="30" pos:column="43">.</op:operator><name pos:line="30" pos:column="44">InitializeDataCollection</name></name><argument_list pos:line="30" pos:column="68">(<argument><expr><name pos:line="30" pos:column="69">logPath</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="31" pos:column="13">DataCollectionOn</name> <op:operator pos:line="31" pos:column="30">=</op:operator> <lit:literal type="boolean" pos:line="31" pos:column="32">true</lit:literal></expr>;</expr_stmt>
+        }</block></function>
+
+		<function><type><specifier pos:line="34" pos:column="17">public</specifier> <specifier pos:line="34" pos:column="24">static</specifier> <name pos:line="34" pos:column="31">void</name></type> <name pos:line="34" pos:column="36">StopDataCollectionLogging</name><parameter_list pos:line="34" pos:column="61">()</parameter_list>
+		<block pos:line="35" pos:column="17">{
+            <expr_stmt><expr><call><name><name pos:line="36" pos:column="13">DataCollectionLogEventHandlers</name><op:operator pos:line="36" pos:column="43">.</op:operator><name pos:line="36" pos:column="44">CloseDataCollection</name></name><argument_list pos:line="36" pos:column="63">()</argument_list></call></expr>;</expr_stmt>
+			<expr_stmt><expr><name pos:line="37" pos:column="25">DataCollectionOn</name> <op:operator pos:line="37" pos:column="42">=</op:operator> <lit:literal type="boolean" pos:line="37" pos:column="44">false</lit:literal></expr>;</expr_stmt>
+		}</block></function>
+
+        <function><type><specifier pos:line="40" pos:column="9">public</specifier> <specifier pos:line="40" pos:column="16">static</specifier> <name pos:line="40" pos:column="23">void</name></type> <name pos:line="40" pos:column="28">StopAllLogging</name><parameter_list pos:line="40" pos:column="42">()</parameter_list>
+        <block pos:line="41" pos:column="9">{
+            <expr_stmt><expr><name pos:line="42" pos:column="13">DefaultLoggingOn</name> <op:operator pos:line="42" pos:column="30">=</op:operator> <lit:literal type="boolean" pos:line="42" pos:column="32">false</lit:literal></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="43" pos:column="13">DataCollectionOn</name> <op:operator pos:line="43" pos:column="30">=</op:operator> <lit:literal type="boolean" pos:line="43" pos:column="32">false</lit:literal></expr>;</expr_stmt>
+        }</block></function>
+
+        <decl_stmt><decl><type><specifier pos:line="46" pos:column="9">public</specifier> <specifier pos:line="46" pos:column="16">static</specifier> <name pos:line="46" pos:column="23">bool</name></type> <name pos:line="46" pos:column="28">DefaultLoggingOn</name> <block pos:line="46" pos:column="45">{ <function_decl><name pos:line="46" pos:column="47">get</name>;</function_decl> <function_decl><specifier pos:line="46" pos:column="52">private</specifier> <name pos:line="46" pos:column="60">set</name>;</function_decl> }</block></decl></decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="47" pos:column="9">public</specifier> <specifier pos:line="47" pos:column="16">static</specifier> <name pos:line="47" pos:column="23">bool</name></type> <name pos:line="47" pos:column="28">DataCollectionOn</name> <block pos:line="47" pos:column="45">{ <function_decl><name pos:line="47" pos:column="47">get</name>;</function_decl> <function_decl><specifier pos:line="47" pos:column="52">private</specifier> <name pos:line="47" pos:column="60">set</name>;</function_decl> }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace>
+</unit>

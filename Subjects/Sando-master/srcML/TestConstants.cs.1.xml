@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Sando-master\IntegrationTests\TestConstants.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">IO</name></name>;</using>
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">System</name><op:operator pos:line="4" pos:column="13">.</op:operator><name pos:line="4" pos:column="14">Linq</name></name>;</using>
+<using pos:line="5" pos:column="1">using <name><name pos:line="5" pos:column="7">System</name><op:operator pos:line="5" pos:column="13">.</op:operator><name pos:line="5" pos:column="14">Text</name></name>;</using>
+<using pos:line="6" pos:column="1">using <name><name pos:line="6" pos:column="7">System</name><op:operator pos:line="6" pos:column="13">.</op:operator><name pos:line="6" pos:column="14">Threading</name><op:operator pos:line="6" pos:column="23">.</op:operator><name pos:line="6" pos:column="24">Tasks</name></name>;</using>
+
+<namespace pos:line="8" pos:column="1">namespace <name><name pos:line="8" pos:column="11">Sando</name><op:operator pos:line="8" pos:column="16">.</op:operator><name pos:line="8" pos:column="17">IntegrationTests</name></name>
+<block pos:line="9" pos:column="1">{
+    <class pos:line="10" pos:column="5">class <name pos:line="10" pos:column="11">TestConstants</name>
+    <block pos:line="11" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="12" pos:column="9">public</specifier> <specifier pos:line="12" pos:column="16">static</specifier> <name pos:line="12" pos:column="23">string</name></type> <name pos:line="12" pos:column="30">SolutionDirectory</name> <block pos:line="12" pos:column="48">{ <function_decl><name pos:line="12" pos:column="50">get</name>;</function_decl> <function_decl><specifier pos:line="12" pos:column="55">private</specifier> <name pos:line="12" pos:column="63">set</name>;</function_decl> }</block></decl></decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="13" pos:column="9">public</specifier> <specifier pos:line="13" pos:column="16">static</specifier> <name pos:line="13" pos:column="23">string</name></type> <name pos:line="13" pos:column="30">InputFolderPath</name> <block pos:line="13" pos:column="46">{ <function_decl><name pos:line="13" pos:column="48">get</name>;</function_decl> <function_decl><specifier pos:line="13" pos:column="53">private</specifier> <name pos:line="13" pos:column="61">set</name>;</function_decl> }</block></decl></decl_stmt>
+        <comment type="line" pos:line="14" pos:column="9">//public static string TemplatesFolder { get; private set; }</comment>
+
+        <constructor><specifier pos:line="16" pos:column="9">static</specifier> <name pos:line="16" pos:column="16">TestConstants</name><parameter_list pos:line="16" pos:column="29">()</parameter_list>
+        <block pos:line="17" pos:column="9">{
+            <expr_stmt><expr><name pos:line="18" pos:column="13">SolutionDirectory</name> <op:operator pos:line="18" pos:column="31">=</op:operator> <call><name><name pos:line="18" pos:column="33">TestHelpers</name><op:operator pos:line="18" pos:column="44">.</op:operator><name pos:line="18" pos:column="45">GetSolutionDirectory</name></name><argument_list pos:line="18" pos:column="65">()</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="19" pos:column="13">InputFolderPath</name> <op:operator pos:line="19" pos:column="29">=</op:operator> <call><name><name pos:line="19" pos:column="31">Path</name><op:operator pos:line="19" pos:column="35">.</op:operator><name pos:line="19" pos:column="36">Combine</name></name><argument_list pos:line="19" pos:column="43">(<argument><expr><name pos:line="19" pos:column="44">SolutionDirectory</name></expr></argument>, <argument><expr><lit:literal type="string" pos:line="19" pos:column="63">"TestInputs"</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <comment type="line" pos:line="20" pos:column="13">//TemplatesFolder = Path.Combine(InputFolderPath, "Template");</comment>
+        }</block></constructor>
+        <comment type="line" pos:line="22" pos:column="9">//public const string InputFolderPath = @"..\..\..\TestInputs\SrcMLService\";</comment>
+        <comment type="line" pos:line="23" pos:column="9">//public const string TemplatesFolder = @"..\..\..\TestInputs\SrcMLService\Template";</comment>
+    }</block></class>
+}</block></namespace>
+</unit>

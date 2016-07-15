@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" language="C" filename="sourcecode/main.c"><cpp:include>#<cpp:directive>include</cpp:directive> <cpp:file>&lt;stdio.h&gt;</cpp:file></cpp:include>
+ 
+<function><type><name>int</name></type> <name>main</name><parameter_list>()</parameter_list>
+<block>{
+  <expr_stmt><expr><call><name>printf</name><argument_list>(<argument><expr>"Hello world\n"</expr></argument>)</argument_list></call></expr>;</expr_stmt>
+  <return>return <expr>0</expr>;</return>
+}</block></function></unit>

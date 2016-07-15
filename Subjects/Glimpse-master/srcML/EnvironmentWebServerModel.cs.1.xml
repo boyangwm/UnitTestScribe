@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.AspNet\Model\EnvironmentWebServerModel.cs" pos:tabs="8"><namespace pos:line="1" pos:column="1">namespace <name><name pos:line="1" pos:column="11">Glimpse</name><op:operator pos:line="1" pos:column="18">.</op:operator><name pos:line="1" pos:column="19">AspNet</name><op:operator pos:line="1" pos:column="25">.</op:operator><name pos:line="1" pos:column="26">Model</name></name>
+<block pos:line="2" pos:column="1">{
+    <class><specifier pos:line="3" pos:column="5">public</specifier> class <name pos:line="3" pos:column="18">EnvironmentWebServerModel</name>
+    <block pos:line="4" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="5" pos:column="9">public</specifier> <name pos:line="5" pos:column="16">string</name></type> <name pos:line="5" pos:column="23">ServerType</name> <block pos:line="5" pos:column="34">{ <function_decl><name pos:line="5" pos:column="36">get</name>;</function_decl> <function_decl><name pos:line="5" pos:column="41">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="7" pos:column="9">public</specifier> <name pos:line="7" pos:column="16">bool</name></type> <name pos:line="7" pos:column="21">IntegratedPipeline</name> <block pos:line="7" pos:column="40">{ <function_decl><name pos:line="7" pos:column="42">get</name>;</function_decl> <function_decl><name pos:line="7" pos:column="47">set</name>;</function_decl> }</block></decl></decl_stmt>
+    }</block></class>
+}</block></namespace></unit>

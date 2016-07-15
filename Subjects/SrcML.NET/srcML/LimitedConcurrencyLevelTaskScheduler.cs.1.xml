@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML\Utilities\LimitedConcurrencyLevelTaskScheduler.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Threading</name></name>;</using>
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">System</name><op:operator pos:line="4" pos:column="13">.</op:operator><name pos:line="4" pos:column="14">Threading</name><op:operator pos:line="4" pos:column="23">.</op:operator><name pos:line="4" pos:column="24">Tasks</name></name>;</using>
+
+<namespace pos:line="6" pos:column="1">namespace <name><name pos:line="6" pos:column="11">ABB</name><op:operator pos:line="6" pos:column="14">.</op:operator><name pos:line="6" pos:column="15">SrcML</name><op:operator pos:line="6" pos:column="20">.</op:operator><name pos:line="6" pos:column="21">Utilities</name></name> <block pos:line="6" pos:column="31">{
+
+    <comment type="line" pos:line="8" pos:column="5">// Provides a task scheduler that ensures a maximum concurrency level while</comment>
+    <comment type="line" pos:line="9" pos:column="5">// running on top of the thread pool.</comment>
+    <class><specifier pos:line="10" pos:column="5">public</specifier> class <name pos:line="10" pos:column="18">LimitedConcurrencyLevelTaskScheduler</name> <super pos:line="10" pos:column="55">: <name pos:line="10" pos:column="57">TaskScheduler</name></super> <block pos:line="10" pos:column="71">{
+        <decl_stmt><decl><type><specifier pos:line="11" pos:column="9">private</specifier> <specifier pos:line="11" pos:column="17">const</specifier> <name pos:line="11" pos:column="23">int</name></type> <name pos:line="11" pos:column="27">IDLE_DELAY</name> <init pos:line="11" pos:column="38">= <expr><lit:literal type="number" pos:line="11" pos:column="40">250</lit:literal></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="13" pos:column="9">// Indicates whether the current thread is processing work items.</comment>
+        <decl_stmt><decl><type><attribute pos:line="14" pos:column="9">[<expr><name pos:line="14" pos:column="10">ThreadStatic</name></expr>]</attribute>
+        <specifier pos:line="15" pos:column="9">private</specifier> <specifier pos:line="15" pos:column="17">static</specifier> <name pos:line="15" pos:column="24">bool</name></type> <name pos:line="15" pos:column="29">_currentThreadIsProcessingItems</name></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="17" pos:column="9">// The list of tasks to be executed</comment>
+        <decl_stmt><decl><type><specifier pos:line="18" pos:column="9">private</specifier> <specifier pos:line="18" pos:column="17">readonly</specifier> <name><name pos:line="18" pos:column="26">LinkedList</name><argument_list pos:line="18" pos:column="36">&lt;<argument><name pos:line="18" pos:column="37">Task</name></argument>&gt;</argument_list></name></type> <name pos:line="18" pos:column="43">_tasks</name> <init pos:line="18" pos:column="50">= <expr><op:operator pos:line="18" pos:column="52">new</op:operator> <call><name><name pos:line="18" pos:column="56">LinkedList</name><argument_list pos:line="18" pos:column="66">&lt;<argument><name pos:line="18" pos:column="67">Task</name></argument>&gt;</argument_list></name><argument_list pos:line="18" pos:column="72">()</argument_list></call></expr></init></decl>;</decl_stmt> <comment type="line" pos:line="18" pos:column="76">// protected by lock(_tasks)</comment>
+
+        <comment type="line" pos:line="20" pos:column="9">// The maximum concurrency level allowed by this scheduler.</comment>
+        <decl_stmt><decl><type><specifier pos:line="21" pos:column="9">private</specifier> <specifier pos:line="21" pos:column="17">readonly</specifier> <name pos:line="21" pos:column="26">int</name></type> <name pos:line="21" pos:column="30">_maxDegreeOfParallelism</name></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="23" pos:column="9">// Indicates whether the scheduler is currently processing work items.</comment>
+        <decl_stmt><decl><type><specifier pos:line="24" pos:column="9">private</specifier> <name pos:line="24" pos:column="17">int</name></type> <name pos:line="24" pos:column="21">_delegatesQueuedOrRunning</name></decl>;</decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="26" pos:column="9">private</specifier> <name pos:line="26" pos:column="17">int</name></type> <name pos:line="26" pos:column="21">DelegatesQueuedOrRunning</name> <block pos:line="26" pos:column="46">{
+            <function><name pos:line="27" pos:column="13">get</name> <block pos:line="27" pos:column="17">{ <return pos:line="27" pos:column="19">return <expr><name pos:line="27" pos:column="26">_delegatesQueuedOrRunning</name></expr>;</return> }</block></function>
+            <function><name pos:line="28" pos:column="13">set</name> <block pos:line="28" pos:column="17">{
+                <expr_stmt><expr><call><name><name pos:line="29" pos:column="17">Interlocked</name><op:operator pos:line="29" pos:column="28">.</op:operator><name pos:line="29" pos:column="29">Exchange</name></name><argument_list pos:line="29" pos:column="37">(<argument><expr pos:line="29" pos:column="38">ref <name pos:line="29" pos:column="42">_delegatesQueuedOrRunning</name></expr></argument>, <argument><expr><name pos:line="29" pos:column="69">value</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                <if pos:line="30" pos:column="17">if<condition pos:line="30" pos:column="19">(<expr><name pos:line="30" pos:column="20">value</name> <op:operator pos:line="30" pos:column="26">==</op:operator> <lit:literal type="number" pos:line="30" pos:column="29">0</lit:literal></expr>)</condition><then pos:line="30" pos:column="31"> <block pos:line="30" pos:column="32">{
+                    <decl_stmt><decl><type><name pos:line="31" pos:column="21">var</name></type> <name pos:line="31" pos:column="25">timer</name> <init pos:line="31" pos:column="31">= <expr><op:operator pos:line="31" pos:column="33">new</op:operator> <call><name pos:line="31" pos:column="37">Timer</name><argument_list pos:line="31" pos:column="42">(<argument><expr><lambda><parameter_list pos:line="31" pos:column="43">(<param><decl><name pos:line="31" pos:column="44">state</name></decl></param>)</parameter_list> <op:operator pos:line="31" pos:column="51">=&gt;</op:operator> <block pos:line="31" pos:column="54">{
+                        <decl_stmt><decl><type><name pos:line="32" pos:column="25">bool</name></type> <name pos:line="32" pos:column="30">isIdle</name> <init pos:line="32" pos:column="37">= <expr><lit:literal type="boolean" pos:line="32" pos:column="39">false</lit:literal></expr></init></decl>;</decl_stmt>
+                        <lock pos:line="33" pos:column="25">lock(<expr><name pos:line="33" pos:column="30">_tasks</name></expr>) <block pos:line="33" pos:column="38">{
+                            <expr_stmt><expr><name pos:line="34" pos:column="29">isIdle</name> <op:operator pos:line="34" pos:column="36">=</op:operator> <op:operator pos:line="34" pos:column="38">(</op:operator><name><name pos:line="34" pos:column="39">_tasks</name><op:operator pos:line="34" pos:column="45">.</op:operator><name pos:line="34" pos:column="46">Count</name></name> <op:operator pos:line="34" pos:column="52">==</op:operator> <lit:literal type="number" pos:line="34" pos:column="55">0</lit:literal><op:operator pos:line="34" pos:column="56">)</op:operator></expr>;</expr_stmt>
+                        }</block></lock>
+                        <if pos:line="36" pos:column="25">if<condition pos:line="36" pos:column="27">(<expr><name pos:line="36" pos:column="28">isIdle</name></expr>)</condition><then pos:line="36" pos:column="35"> <block pos:line="36" pos:column="36">{
+                            <expr_stmt><expr><call><name pos:line="37" pos:column="29">OnSchedulerIdled</name><argument_list pos:line="37" pos:column="45">(<argument><expr><op:operator pos:line="37" pos:column="46">new</op:operator> <call><name pos:line="37" pos:column="50">EventArgs</name><argument_list pos:line="37" pos:column="59">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                        }</block></then></if>
+                    }</block></lambda></expr></argument>, <argument><expr><name pos:line="39" pos:column="24">null</name></expr></argument>, <argument><expr><name pos:line="39" pos:column="30">IDLE_DELAY</name></expr></argument>, <argument><expr><name><name pos:line="39" pos:column="42">Timeout</name><op:operator pos:line="39" pos:column="49">.</op:operator><name pos:line="39" pos:column="50">Infinite</name></name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+                }</block></then></if>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="44" pos:column="9">// true if the scheduler is "started" (true by default)</comment>
+        <comment type="line" pos:line="45" pos:column="9">// false if Stop() has been called</comment>
+        <decl_stmt><decl><type><specifier pos:line="46" pos:column="9">private</specifier> <name pos:line="46" pos:column="17">bool</name></type> <name pos:line="46" pos:column="22">_isStarted</name></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="48" pos:column="9">// Creates a new instance with the specified degree of parallelism.</comment>
+        <constructor><specifier pos:line="49" pos:column="9">public</specifier> <name pos:line="49" pos:column="16">LimitedConcurrencyLevelTaskScheduler</name><parameter_list pos:line="49" pos:column="52">(<param><decl><type><name pos:line="49" pos:column="53">int</name></type> <name pos:line="49" pos:column="57">maxDegreeOfParallelism</name></decl></param>)</parameter_list>
+            <member_list pos:line="50" pos:column="13">: <call><name pos:line="50" pos:column="15">this</name><argument_list pos:line="50" pos:column="19">(<argument><expr><name pos:line="50" pos:column="20">maxDegreeOfParallelism</name></expr></argument>, <argument><expr><lit:literal type="boolean" pos:line="50" pos:column="44">true</lit:literal></expr></argument>)</argument_list></call> </member_list><block pos:line="50" pos:column="50">{ }</block></constructor>
+
+        <constructor><specifier pos:line="52" pos:column="9">public</specifier> <name pos:line="52" pos:column="16">LimitedConcurrencyLevelTaskScheduler</name><parameter_list pos:line="52" pos:column="52">(<param><decl><type><name pos:line="52" pos:column="53">int</name></type> <name pos:line="52" pos:column="57">maxDegreeOfParallelism</name></decl></param>, <param><decl><type><name pos:line="52" pos:column="81">bool</name></type> <name pos:line="52" pos:column="86">isStarted</name></decl></param>)</parameter_list> <block pos:line="52" pos:column="97">{
+            <if pos:line="53" pos:column="13">if<condition pos:line="53" pos:column="15">(<expr><name pos:line="53" pos:column="16">maxDegreeOfParallelism</name> <op:operator pos:line="53" pos:column="39">&lt;</op:operator> <lit:literal type="number" pos:line="53" pos:column="41">1</lit:literal></expr>)</condition><then pos:line="53" pos:column="43">
+                <throw pos:line="54" pos:column="17">throw <expr><op:operator pos:line="54" pos:column="23">new</op:operator> <call><name pos:line="54" pos:column="27">ArgumentOutOfRangeException</name><argument_list pos:line="54" pos:column="54">(<argument><expr><lit:literal type="string" pos:line="54" pos:column="55">"maxDegreeOfParallelism"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw></then></if>
+            <expr_stmt><expr><name pos:line="55" pos:column="13">_maxDegreeOfParallelism</name> <op:operator pos:line="55" pos:column="37">=</op:operator> <name pos:line="55" pos:column="39">maxDegreeOfParallelism</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="56" pos:column="13">_isStarted</name> <op:operator pos:line="56" pos:column="24">=</op:operator> <name pos:line="56" pos:column="26">isStarted</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="57" pos:column="13">_delegatesQueuedOrRunning</name> <op:operator pos:line="57" pos:column="39">=</op:operator> <lit:literal type="number" pos:line="57" pos:column="41">0</lit:literal></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <decl_stmt><decl><type><specifier pos:line="60" pos:column="9">public</specifier> <specifier pos:line="60" pos:column="16">event</specifier> <name pos:line="60" pos:column="22">EventHandler</name></type> <name pos:line="60" pos:column="35">SchedulerIdled</name></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="62" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="63" pos:column="9">/// Causes the scheduler to start executing work items. By default the</comment>
+        <comment type="line" pos:line="64" pos:column="9">/// scheduler is "started" when it is constructed.</comment>
+        <comment type="line" pos:line="65" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="66" pos:column="9">public</specifier> <name pos:line="66" pos:column="16">void</name></type> <name pos:line="66" pos:column="21">Start</name><parameter_list pos:line="66" pos:column="26">()</parameter_list> <block pos:line="66" pos:column="29">{
+            <if pos:line="67" pos:column="13">if<condition pos:line="67" pos:column="15">(<expr><op:operator pos:line="67" pos:column="16">!</op:operator><name pos:line="67" pos:column="17">_isStarted</name></expr>)</condition><then pos:line="67" pos:column="28"> <block pos:line="67" pos:column="29">{
+                <expr_stmt><expr><name pos:line="68" pos:column="17">_isStarted</name> <op:operator pos:line="68" pos:column="28">=</op:operator> <lit:literal type="boolean" pos:line="68" pos:column="30">true</lit:literal></expr>;</expr_stmt>
+                <if pos:line="69" pos:column="17">if<condition pos:line="69" pos:column="19">(<expr><name pos:line="69" pos:column="20">DelegatesQueuedOrRunning</name> <op:operator pos:line="69" pos:column="45">&lt;</op:operator> <name pos:line="69" pos:column="47">_maxDegreeOfParallelism</name></expr>)</condition><then pos:line="69" pos:column="71"> <block pos:line="69" pos:column="72">{
+                    <expr_stmt><expr><op:operator pos:line="70" pos:column="21">++</op:operator><name pos:line="70" pos:column="23">DelegatesQueuedOrRunning</name></expr>;</expr_stmt>
+                    <expr_stmt><expr><call><name pos:line="71" pos:column="21">NotifyThreadPoolOfPendingWork</name><argument_list pos:line="71" pos:column="50">()</argument_list></call></expr>;</expr_stmt>
+                }</block></then></if>
+            }</block></then></if>
+        }</block></function>
+
+        <comment type="line" pos:line="76" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="77" pos:column="9">/// Causes the scheduler to stop executing work items. Calling &lt;see cref="Start()"/&gt;</comment>
+        <comment type="line" pos:line="78" pos:column="9">/// will cause execution to resume. This does not cancel any tasks. Instead, it just</comment>
+        <comment type="line" pos:line="79" pos:column="9">/// prevents new ones from executing.</comment>
+        <comment type="line" pos:line="80" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="81" pos:column="9">public</specifier> <name pos:line="81" pos:column="16">void</name></type> <name pos:line="81" pos:column="21">Stop</name><parameter_list pos:line="81" pos:column="25">()</parameter_list> <block pos:line="81" pos:column="28">{
+            <expr_stmt><expr><name pos:line="82" pos:column="13">_isStarted</name> <op:operator pos:line="82" pos:column="24">=</op:operator> <lit:literal type="boolean" pos:line="82" pos:column="26">false</lit:literal></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="85" pos:column="9">// Queues a task to the scheduler.</comment>
+        <function><type><specifier pos:line="86" pos:column="9">protected</specifier> <specifier pos:line="86" pos:column="19">sealed</specifier> <specifier pos:line="86" pos:column="26">override</specifier> <name pos:line="86" pos:column="35">void</name></type> <name pos:line="86" pos:column="40">QueueTask</name><parameter_list pos:line="86" pos:column="49">(<param><decl><type><name pos:line="86" pos:column="50">Task</name></type> <name pos:line="86" pos:column="55">task</name></decl></param>)</parameter_list> <block pos:line="86" pos:column="61">{
+            <comment type="line" pos:line="87" pos:column="13">// Add the task to the list of tasks to be processed.  If there aren't enough</comment>
+            <comment type="line" pos:line="88" pos:column="13">// delegates currently queued or running to process tasks, schedule another.</comment>
+            <lock pos:line="89" pos:column="13">lock(<expr><name pos:line="89" pos:column="18">_tasks</name></expr>) <block pos:line="89" pos:column="26">{
+                <expr_stmt><expr><call><name><name pos:line="90" pos:column="17">_tasks</name><op:operator pos:line="90" pos:column="23">.</op:operator><name pos:line="90" pos:column="24">AddLast</name></name><argument_list pos:line="90" pos:column="31">(<argument><expr><name pos:line="90" pos:column="32">task</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                <if pos:line="91" pos:column="17">if<condition pos:line="91" pos:column="19">(<expr><name pos:line="91" pos:column="20">DelegatesQueuedOrRunning</name> <op:operator pos:line="91" pos:column="45">&lt;</op:operator> <name pos:line="91" pos:column="47">_maxDegreeOfParallelism</name> <op:operator pos:line="91" pos:column="71">&amp;&amp;</op:operator> <name pos:line="91" pos:column="74">_isStarted</name></expr>)</condition><then pos:line="91" pos:column="85"> <block pos:line="91" pos:column="86">{
+                    <expr_stmt><expr><op:operator pos:line="92" pos:column="21">++</op:operator><name pos:line="92" pos:column="23">DelegatesQueuedOrRunning</name></expr>;</expr_stmt>
+                    <expr_stmt><expr><call><name pos:line="93" pos:column="21">NotifyThreadPoolOfPendingWork</name><argument_list pos:line="93" pos:column="50">()</argument_list></call></expr>;</expr_stmt>
+                }</block></then></if>
+            }</block></lock>
+        }</block></function>
+        <function><type><specifier pos:line="97" pos:column="9">protected</specifier> <specifier pos:line="97" pos:column="19">virtual</specifier> <name pos:line="97" pos:column="27">void</name></type> <name pos:line="97" pos:column="32">OnSchedulerIdled</name><parameter_list pos:line="97" pos:column="48">(<param><decl><type><name pos:line="97" pos:column="49">EventArgs</name></type> <name pos:line="97" pos:column="59">e</name></decl></param>)</parameter_list> <block pos:line="97" pos:column="62">{
+            <decl_stmt><decl><type><name pos:line="98" pos:column="13">EventHandler</name></type> <name pos:line="98" pos:column="26">handler</name> <init pos:line="98" pos:column="34">= <expr><name pos:line="98" pos:column="36">SchedulerIdled</name></expr></init></decl>;</decl_stmt>
+            <if pos:line="99" pos:column="13">if<condition pos:line="99" pos:column="15">(<expr><name pos:line="99" pos:column="16">null</name> <op:operator pos:line="99" pos:column="21">!=</op:operator> <name pos:line="99" pos:column="24">handler</name></expr>)</condition><then pos:line="99" pos:column="32"> <block pos:line="99" pos:column="33">{
+                <expr_stmt><expr><call><name pos:line="100" pos:column="17">handler</name><argument_list pos:line="100" pos:column="24">(<argument><expr><name pos:line="100" pos:column="25">this</name></expr></argument>, <argument><expr><name pos:line="100" pos:column="31">e</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+        }</block></function>
+
+        <comment type="line" pos:line="104" pos:column="9">// Inform the ThreadPool that there's work to be executed for this scheduler.</comment>
+        <function><type><specifier pos:line="105" pos:column="9">private</specifier> <name pos:line="105" pos:column="17">void</name></type> <name pos:line="105" pos:column="22">NotifyThreadPoolOfPendingWork</name><parameter_list pos:line="105" pos:column="51">()</parameter_list> <block pos:line="105" pos:column="54">{
+            <expr_stmt><expr><call><name><name pos:line="106" pos:column="13">ThreadPool</name><op:operator pos:line="106" pos:column="23">.</op:operator><name pos:line="106" pos:column="24">UnsafeQueueUserWorkItem</name></name><argument_list pos:line="106" pos:column="47">(<argument><expr><lambda><name pos:line="106" pos:column="48">_</name> <op:operator pos:line="106" pos:column="50">=&gt;</op:operator> <block pos:line="106" pos:column="53">{
+                <comment type="line" pos:line="107" pos:column="17">// Note that the current thread is now processing work items.</comment>
+                <comment type="line" pos:line="108" pos:column="17">// This is necessary to enable inlining of tasks into this thread.</comment>
+                <expr_stmt><expr><name pos:line="109" pos:column="17">_currentThreadIsProcessingItems</name> <op:operator pos:line="109" pos:column="49">=</op:operator> <lit:literal type="boolean" pos:line="109" pos:column="51">true</lit:literal></expr>;</expr_stmt>
+                <try pos:line="110" pos:column="17">try <block pos:line="110" pos:column="21">{
+                    <comment type="line" pos:line="111" pos:column="21">// Process all available items in the queue.</comment>
+                    <while pos:line="112" pos:column="21">while<condition pos:line="112" pos:column="26">(<expr><lit:literal type="boolean" pos:line="112" pos:column="27">true</lit:literal></expr>)</condition> <block pos:line="112" pos:column="33">{
+                        <decl_stmt><decl><type><name pos:line="113" pos:column="25">Task</name></type> <name pos:line="113" pos:column="30">item</name></decl>;</decl_stmt>
+                        <lock pos:line="114" pos:column="25">lock(<expr><name pos:line="114" pos:column="30">_tasks</name></expr>) <block pos:line="114" pos:column="38">{
+                            <comment type="line" pos:line="115" pos:column="29">// When there are no more items to be processed,</comment>
+                            <comment type="line" pos:line="116" pos:column="29">// note that we're done processing, and get out.</comment>
+                            <if pos:line="117" pos:column="29">if<condition pos:line="117" pos:column="31">(<expr><name><name pos:line="117" pos:column="32">_tasks</name><op:operator pos:line="117" pos:column="38">.</op:operator><name pos:line="117" pos:column="39">Count</name></name> <op:operator pos:line="117" pos:column="45">==</op:operator> <lit:literal type="number" pos:line="117" pos:column="48">0</lit:literal> <op:operator pos:line="117" pos:column="50">||</op:operator> <op:operator pos:line="117" pos:column="53">!</op:operator><name pos:line="117" pos:column="54">_isStarted</name></expr>)</condition><then pos:line="117" pos:column="65"> <block pos:line="117" pos:column="66">{
+                                <expr_stmt><expr><op:operator pos:line="118" pos:column="33">--</op:operator><name pos:line="118" pos:column="35">DelegatesQueuedOrRunning</name></expr>;</expr_stmt>
+                                <break pos:line="119" pos:column="33">break;</break>
+                            }</block></then></if>
+
+                            <comment type="line" pos:line="122" pos:column="29">// Get the next item from the queue</comment>
+                            <expr_stmt><expr><name pos:line="123" pos:column="29">item</name> <op:operator pos:line="123" pos:column="34">=</op:operator> <name><name pos:line="123" pos:column="36">_tasks</name><op:operator pos:line="123" pos:column="42">.</op:operator><name pos:line="123" pos:column="43">First</name><op:operator pos:line="123" pos:column="48">.</op:operator><name pos:line="123" pos:column="49">Value</name></name></expr>;</expr_stmt>
+                            <expr_stmt><expr><call><name><name pos:line="124" pos:column="29">_tasks</name><op:operator pos:line="124" pos:column="35">.</op:operator><name pos:line="124" pos:column="36">RemoveFirst</name></name><argument_list pos:line="124" pos:column="47">()</argument_list></call></expr>;</expr_stmt>
+                        }</block></lock>
+
+                        <comment type="line" pos:line="127" pos:column="25">// Execute the task we pulled out of the queue</comment>
+                        <expr_stmt><expr><call><name><name pos:line="128" pos:column="25">base</name><op:operator pos:line="128" pos:column="29">.</op:operator><name pos:line="128" pos:column="30">TryExecuteTask</name></name><argument_list pos:line="128" pos:column="44">(<argument><expr><name pos:line="128" pos:column="45">item</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                    }</block></while>
+                }</block> <finally pos:line="130" pos:column="19">finally <block pos:line="130" pos:column="27">{
+                    <comment type="line" pos:line="131" pos:column="21">// We're done processing items on the current thread</comment>
+                    <expr_stmt><expr><name pos:line="132" pos:column="21">_currentThreadIsProcessingItems</name> <op:operator pos:line="132" pos:column="53">=</op:operator> <lit:literal type="boolean" pos:line="132" pos:column="55">false</lit:literal></expr>;</expr_stmt>
+                }</block></finally></try>
+            }</block></lambda></expr></argument>, <argument><expr><name pos:line="134" pos:column="16">null</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="137" pos:column="9">// Attempts to execute the specified task on the current thread.</comment>
+        <function><type><specifier pos:line="138" pos:column="9">protected</specifier> <specifier pos:line="138" pos:column="19">sealed</specifier> <specifier pos:line="138" pos:column="26">override</specifier> <name pos:line="138" pos:column="35">bool</name></type> <name pos:line="138" pos:column="40">TryExecuteTaskInline</name><parameter_list pos:line="138" pos:column="60">(<param><decl><type><name pos:line="138" pos:column="61">Task</name></type> <name pos:line="138" pos:column="66">task</name></decl></param>, <param><decl><type><name pos:line="138" pos:column="72">bool</name></type> <name pos:line="138" pos:column="77">taskWasPreviouslyQueued</name></decl></param>)</parameter_list> <block pos:line="138" pos:column="102">{
+            <comment type="line" pos:line="139" pos:column="13">// If this thread isn't already processing a task, we don't support inlining</comment>
+            <if pos:line="140" pos:column="13">if<condition pos:line="140" pos:column="15">(<expr><op:operator pos:line="140" pos:column="16">!</op:operator><name pos:line="140" pos:column="17">_currentThreadIsProcessingItems</name></expr>)</condition><then pos:line="140" pos:column="49">
+                <return pos:line="141" pos:column="17">return <expr><lit:literal type="boolean" pos:line="141" pos:column="24">false</lit:literal></expr>;</return></then></if>
+
+            <comment type="line" pos:line="143" pos:column="13">// If the task was previously queued, remove it from the queue</comment>
+            <if pos:line="144" pos:column="13">if<condition pos:line="144" pos:column="15">(<expr><name pos:line="144" pos:column="16">taskWasPreviouslyQueued</name></expr>)</condition><then pos:line="144" pos:column="40">
+                <comment type="line" pos:line="145" pos:column="17">// Try to run the task.</comment>
+                <if pos:line="146" pos:column="17">if<condition pos:line="146" pos:column="19">(<expr><call><name pos:line="146" pos:column="20">TryDequeue</name><argument_list pos:line="146" pos:column="30">(<argument><expr><name pos:line="146" pos:column="31">task</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="146" pos:column="37">
+                    <return pos:line="147" pos:column="21">return <expr><call><name><name pos:line="147" pos:column="28">base</name><op:operator pos:line="147" pos:column="32">.</op:operator><name pos:line="147" pos:column="33">TryExecuteTask</name></name><argument_list pos:line="147" pos:column="47">(<argument><expr><name pos:line="147" pos:column="48">task</name></expr></argument>)</argument_list></call></expr>;</return></then>
+                <else pos:line="148" pos:column="17">else
+                    <return pos:line="149" pos:column="21">return <expr><lit:literal type="boolean" pos:line="149" pos:column="28">false</lit:literal></expr>;</return></else></if></then>
+            <else pos:line="150" pos:column="13">else
+                <return pos:line="151" pos:column="17">return <expr><call><name><name pos:line="151" pos:column="24">base</name><op:operator pos:line="151" pos:column="28">.</op:operator><name pos:line="151" pos:column="29">TryExecuteTask</name></name><argument_list pos:line="151" pos:column="43">(<argument><expr><name pos:line="151" pos:column="44">task</name></expr></argument>)</argument_list></call></expr>;</return></else></if>
+        }</block></function>
+
+        <comment type="line" pos:line="154" pos:column="9">// Attempt to remove a previously scheduled task from the scheduler.</comment>
+        <function><type><specifier pos:line="155" pos:column="9">protected</specifier> <specifier pos:line="155" pos:column="19">sealed</specifier> <specifier pos:line="155" pos:column="26">override</specifier> <name pos:line="155" pos:column="35">bool</name></type> <name pos:line="155" pos:column="40">TryDequeue</name><parameter_list pos:line="155" pos:column="50">(<param><decl><type><name pos:line="155" pos:column="51">Task</name></type> <name pos:line="155" pos:column="56">task</name></decl></param>)</parameter_list> <block pos:line="155" pos:column="62">{
+            <lock pos:line="156" pos:column="13">lock(<expr><name pos:line="156" pos:column="18">_tasks</name></expr>)
+                <return pos:line="157" pos:column="17">return <expr><call><name><name pos:line="157" pos:column="24">_tasks</name><op:operator pos:line="157" pos:column="30">.</op:operator><name pos:line="157" pos:column="31">Remove</name></name><argument_list pos:line="157" pos:column="37">(<argument><expr><name pos:line="157" pos:column="38">task</name></expr></argument>)</argument_list></call></expr>;</return></lock>
+        }</block></function>
+
+        <comment type="line" pos:line="160" pos:column="9">// Gets the maximum concurrency level supported by this scheduler.</comment>
+        <decl_stmt><decl><type><specifier pos:line="161" pos:column="9">public</specifier> <specifier pos:line="161" pos:column="16">sealed</specifier> <specifier pos:line="161" pos:column="23">override</specifier> <name pos:line="161" pos:column="32">int</name></type> <name pos:line="161" pos:column="36">MaximumConcurrencyLevel</name> <block pos:line="161" pos:column="60">{ <function><name pos:line="161" pos:column="62">get</name> <block pos:line="161" pos:column="66">{ <return pos:line="161" pos:column="68">return <expr><name pos:line="161" pos:column="75">_maxDegreeOfParallelism</name></expr>;</return> }</block></function> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="163" pos:column="9">// Gets an enumerable of the tasks currently scheduled on this scheduler.</comment>
+        <function><type><specifier pos:line="164" pos:column="9">protected</specifier> <specifier pos:line="164" pos:column="19">sealed</specifier> <specifier pos:line="164" pos:column="26">override</specifier> <name><name pos:line="164" pos:column="35">IEnumerable</name><argument_list pos:line="164" pos:column="46">&lt;<argument><name pos:line="164" pos:column="47">Task</name></argument>&gt;</argument_list></name></type> <name pos:line="164" pos:column="53">GetScheduledTasks</name><parameter_list pos:line="164" pos:column="70">()</parameter_list> <block pos:line="164" pos:column="73">{
+            <decl_stmt><decl><type><name pos:line="165" pos:column="13">bool</name></type> <name pos:line="165" pos:column="18">lockTaken</name> <init pos:line="165" pos:column="28">= <expr><lit:literal type="boolean" pos:line="165" pos:column="30">false</lit:literal></expr></init></decl>;</decl_stmt>
+            <try pos:line="166" pos:column="13">try <block pos:line="166" pos:column="17">{
+                <expr_stmt><expr><call><name><name pos:line="167" pos:column="17">Monitor</name><op:operator pos:line="167" pos:column="24">.</op:operator><name pos:line="167" pos:column="25">TryEnter</name></name><argument_list pos:line="167" pos:column="33">(<argument><expr><name pos:line="167" pos:column="34">_tasks</name></expr></argument>, <argument><expr pos:line="167" pos:column="42">ref <name pos:line="167" pos:column="46">lockTaken</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                <if pos:line="168" pos:column="17">if<condition pos:line="168" pos:column="19">(<expr><name pos:line="168" pos:column="20">lockTaken</name></expr>)</condition><then pos:line="168" pos:column="30">
+                    <return pos:line="169" pos:column="21">return <expr><name pos:line="169" pos:column="28">_tasks</name></expr>;</return></then>
+                <else pos:line="170" pos:column="17">else
+                    <throw pos:line="171" pos:column="21">throw <expr><op:operator pos:line="171" pos:column="27">new</op:operator> <call><name pos:line="171" pos:column="31">NotSupportedException</name><argument_list pos:line="171" pos:column="52">()</argument_list></call></expr>;</throw></else></if>
+            }</block> <finally pos:line="172" pos:column="15">finally <block pos:line="172" pos:column="23">{
+                <if pos:line="173" pos:column="17">if<condition pos:line="173" pos:column="19">(<expr><name pos:line="173" pos:column="20">lockTaken</name></expr>)</condition><then pos:line="173" pos:column="30">
+                    <expr_stmt><expr><call><name><name pos:line="174" pos:column="21">Monitor</name><op:operator pos:line="174" pos:column="28">.</op:operator><name pos:line="174" pos:column="29">Exit</name></name><argument_list pos:line="174" pos:column="33">(<argument><expr><name pos:line="174" pos:column="34">_tasks</name></expr></argument>)</argument_list></call></expr>;</expr_stmt></then></if>
+            }</block></finally></try>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

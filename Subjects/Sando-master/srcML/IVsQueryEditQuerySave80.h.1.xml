@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\IVsQueryEditQuerySave80.h" pos:tabs="8" pos:line="1" pos:column="1">
+
+<comment type="block" pos:line="3" pos:column="1">/* this ALWAYS GENERATED file contains the definitions for the interfaces */</comment>
+
+
+ <comment type="block" pos:line="6" pos:column="2">/* File created by MIDL compiler version 7.00.0499 */</comment>
+<comment type="block" pos:line="7" pos:column="1">/* Compiler settings for IVsQueryEditQuerySave80.idl:
+    Oicf, W0, Zp8, env=Win32 (32b run)
+    protocol : dce , ms_ext, c_ext, robust
+    error checks: allocation ref bounds_check enum stub_data 
+    VC __declspec() decoration level: 
+         __declspec(uuid()), __declspec(selectany), __declspec(novtable)
+         DECLSPEC_UUID(), MIDL_INTERFACE()
+*/</comment>
+<comment type="line" pos:line="15" pos:column="1">//@@MIDL_FILE_HEADING(  )</comment>
+
+<cpp:pragma pos:line="17" pos:column="1">#<cpp:directive pos:line="17" pos:column="2">pragma</cpp:directive> warning( disable: 4049 )</cpp:pragma>  <comment type="block" pos:line="17" pos:column="35">/* more than 64k source lines */</comment>
+
+
+<comment type="block" pos:line="20" pos:column="1">/* verify that the &lt;rpcndr.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="21" pos:column="1">#<cpp:directive pos:line="21" pos:column="2">ifndef</cpp:directive> <name pos:line="21" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="22" pos:column="1">#<cpp:directive pos:line="22" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="22" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:macro> <cpp:value pos:line="22" pos:column="39">475</cpp:value></cpp:define>
+<cpp:endif pos:line="23" pos:column="1">#<cpp:directive pos:line="23" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="25" pos:column="1">/* verify that the &lt;rpcsal.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="26" pos:column="1">#<cpp:directive pos:line="26" pos:column="2">ifndef</cpp:directive> <name pos:line="26" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="27" pos:column="1">#<cpp:directive pos:line="27" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="27" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:macro> <cpp:value pos:line="27" pos:column="39">100</cpp:value></cpp:define>
+<cpp:endif pos:line="28" pos:column="1">#<cpp:directive pos:line="28" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:include pos:line="30" pos:column="1">#<cpp:directive pos:line="30" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="30" pos:column="10">"rpc.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="31" pos:column="1">#<cpp:directive pos:line="31" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="31" pos:column="10">"rpcndr.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifndef pos:line="33" pos:column="1">#<cpp:directive pos:line="33" pos:column="2">ifndef</cpp:directive> <name pos:line="33" pos:column="9">__RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:error pos:line="34" pos:column="1">#<cpp:directive pos:line="34" pos:column="2">error</cpp:directive> this stub requires an updated version of &lt;rpcndr.h&gt;</cpp:error>
+<cpp:endif pos:line="35" pos:column="1">#<cpp:directive pos:line="35" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="35" pos:column="8">// __RPCNDR_H_VERSION__</comment>
+
+
+<cpp:ifndef pos:line="38" pos:column="1">#<cpp:directive pos:line="38" pos:column="2">ifndef</cpp:directive> <name pos:line="38" pos:column="9">__IVsQueryEditQuerySave80_h__</name></cpp:ifndef>
+<cpp:define pos:line="39" pos:column="1">#<cpp:directive pos:line="39" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="39" pos:column="9">__IVsQueryEditQuerySave80_h__</name></cpp:macro></cpp:define>
+
+<cpp:if pos:line="41" pos:column="1">#<cpp:directive pos:line="41" pos:column="2">if</cpp:directive> <expr><call><name pos:line="41" pos:column="5">defined</name><argument_list pos:line="41" pos:column="12">(<argument><expr><name pos:line="41" pos:column="13">_MSC_VER</name></expr></argument>)</argument_list></call> <op:operator pos:line="41" pos:column="23">&amp;&amp;</op:operator> <op:operator pos:line="41" pos:column="26">(</op:operator><name pos:line="41" pos:column="27">_MSC_VER</name> <op:operator pos:line="41" pos:column="36">&gt;=</op:operator> <lit:literal type="number" pos:line="41" pos:column="39">1020</lit:literal><op:operator pos:line="41" pos:column="43">)</op:operator></expr></cpp:if>
+<cpp:pragma pos:line="42" pos:column="1">#<cpp:directive pos:line="42" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+<cpp:endif pos:line="43" pos:column="1">#<cpp:directive pos:line="43" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="45" pos:column="1">/* Forward Declarations */</comment> 
+
+<comment type="block" pos:line="47" pos:column="1">/* header files for imported files */</comment>
+<cpp:include pos:line="48" pos:column="1">#<cpp:directive pos:line="48" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="48" pos:column="10">"IVsQueryEditQuerySave2.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifdef pos:line="50" pos:column="1">#<cpp:directive pos:line="50" pos:column="2">ifdef</cpp:directive> <name pos:line="50" pos:column="8">__cplusplus</name></cpp:ifdef>
+<extern pos:line="51" pos:column="1">extern <lit:literal type="string" pos:line="51" pos:column="8">"C"</lit:literal><block pos:line="51" pos:column="11">{
+<cpp:endif pos:line="52" pos:column="1">#<cpp:directive pos:line="52" pos:column="2">endif</cpp:directive></cpp:endif> 
+
+
+<comment type="block" pos:line="55" pos:column="1">/* interface __MIDL_itf_IVsQueryEditQuerySave80_0000_0000 */</comment>
+<comment type="block" pos:line="56" pos:column="1">/* [local] */</comment> 
+
+<cpp:pragma pos:line="58" pos:column="1">#<cpp:directive pos:line="58" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+
+<enum pos:line="60" pos:column="1">enum <name pos:line="60" pos:column="6">__VSQueryEditFlags2</name>
+    <block pos:line="61" pos:column="5">{	<decl><name pos:line="61" pos:column="9">QEF_AllowUnopenedProjects</name>	<init pos:line="61" pos:column="41">= <expr><lit:literal type="number" pos:line="61" pos:column="43">0x80</lit:literal></expr></init></decl><op:operator pos:line="61" pos:column="47">,</op:operator>
+	<decl><name pos:line="62" pos:column="9">QEF_CheckoutLocalVersion</name>	<init pos:line="62" pos:column="41">= <expr><lit:literal type="number" pos:line="62" pos:column="43">0x100</lit:literal></expr></init></decl><op:operator pos:line="62" pos:column="48">,</op:operator>
+	<decl><name pos:line="63" pos:column="9">QEF_CheckoutLatestVersion</name>	<init pos:line="63" pos:column="41">= <expr><lit:literal type="number" pos:line="63" pos:column="43">0x200</lit:literal></expr></init></decl><op:operator pos:line="63" pos:column="48">,</op:operator>
+	<decl><name pos:line="64" pos:column="9">QEF_DetectAnyChangedFile</name>	<init pos:line="64" pos:column="41">= <expr><lit:literal type="number" pos:line="64" pos:column="43">0x400</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+<typedef pos:line="66" pos:column="1">typedef <type><name pos:line="66" pos:column="9">DWORD</name></type> <name pos:line="66" pos:column="15">VSQueryEditFlags2</name>;</typedef>
+
+
+<enum pos:line="69" pos:column="1">enum <name pos:line="69" pos:column="6">tagVSQueryEditResultFlags2</name>
+    <block pos:line="70" pos:column="5">{	<decl><name pos:line="70" pos:column="9">QER_Reloaded</name>	<init pos:line="70" pos:column="25">= <expr><lit:literal type="number" pos:line="70" pos:column="27">0x200</lit:literal></expr></init></decl><op:operator pos:line="70" pos:column="32">,</op:operator>
+	<decl><name pos:line="71" pos:column="9">QER_Changed</name>	<init pos:line="71" pos:column="25">= <expr><lit:literal type="number" pos:line="71" pos:column="27">0x400</lit:literal></expr></init></decl>
+    }</block> ;</enum>
+<typedef pos:line="73" pos:column="1">typedef <type><name pos:line="73" pos:column="9">DWORD</name></type> <name pos:line="73" pos:column="15">VSQueryEditResultFlags2</name>;</typedef>
+
+
+
+<decl_stmt><decl><type><specifier pos:line="77" pos:column="1">extern</specifier> <name pos:line="77" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="77" pos:column="22">__MIDL_itf_IVsQueryEditQuerySave80_0000_0000_v0_0_c_ifspec</name></decl>;</decl_stmt>
+<decl_stmt><decl><type><specifier pos:line="78" pos:column="1">extern</specifier> <name pos:line="78" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="78" pos:column="22">__MIDL_itf_IVsQueryEditQuerySave80_0000_0000_v0_0_s_ifspec</name></decl>;</decl_stmt>
+
+<comment type="block" pos:line="80" pos:column="1">/* Additional Prototypes for ALL interfaces */</comment>
+
+<comment type="block" pos:line="82" pos:column="1">/* end of Additional Prototypes */</comment>
+
+<cpp:ifdef pos:line="84" pos:column="1">#<cpp:directive pos:line="84" pos:column="2">ifdef</cpp:directive> <name pos:line="84" pos:column="8">__cplusplus</name></cpp:ifdef>
+}</block></extern>
+<cpp:endif pos:line="86" pos:column="1">#<cpp:directive pos:line="86" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:endif pos:line="88" pos:column="1">#<cpp:directive pos:line="88" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+</unit>

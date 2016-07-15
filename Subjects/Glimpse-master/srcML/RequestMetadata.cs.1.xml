@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.AspNet\RequestMetadata.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Web</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">Glimpse</name><op:operator pos:line="3" pos:column="14">.</op:operator><name pos:line="3" pos:column="15">Core</name><op:operator pos:line="3" pos:column="19">.</op:operator><name pos:line="3" pos:column="20">Framework</name></name>;</using>
+
+<namespace pos:line="5" pos:column="1">namespace <name><name pos:line="5" pos:column="11">Glimpse</name><op:operator pos:line="5" pos:column="18">.</op:operator><name pos:line="5" pos:column="19">AspNet</name></name>
+<block pos:line="6" pos:column="1">{
+    <class><specifier pos:line="7" pos:column="5">public</specifier> class <name pos:line="7" pos:column="18">RequestMetadata</name> <super pos:line="7" pos:column="34">: <name pos:line="7" pos:column="36">IRequestMetadata</name></super>
+    <block pos:line="8" pos:column="5">{
+        <constructor><specifier pos:line="9" pos:column="9">public</specifier> <name pos:line="9" pos:column="16">RequestMetadata</name><parameter_list pos:line="9" pos:column="31">(<param><decl><type><name pos:line="9" pos:column="32">HttpContextBase</name></type> <name pos:line="9" pos:column="48">context</name></decl></param>)</parameter_list>
+        <block pos:line="10" pos:column="9">{
+            <if pos:line="11" pos:column="13">if <condition pos:line="11" pos:column="16">(<expr><name pos:line="11" pos:column="17">context</name> <op:operator pos:line="11" pos:column="25">==</op:operator> <name pos:line="11" pos:column="28">null</name></expr>)</condition><then pos:line="11" pos:column="33">
+            <block pos:line="12" pos:column="13">{
+                <throw pos:line="13" pos:column="17">throw <expr><op:operator pos:line="13" pos:column="23">new</op:operator> <call><name pos:line="13" pos:column="27">ArgumentNullException</name><argument_list pos:line="13" pos:column="48">(<argument><expr><lit:literal type="string" pos:line="13" pos:column="49">"context"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="16" pos:column="13">Context</name> <op:operator pos:line="16" pos:column="21">=</op:operator> <name pos:line="16" pos:column="23">context</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <decl_stmt><decl><type><specifier pos:line="19" pos:column="9">public</specifier> <name pos:line="19" pos:column="16">string</name></type> <name pos:line="19" pos:column="23">RequestHttpMethod</name>
+        <block pos:line="20" pos:column="9">{
+            <function><name pos:line="21" pos:column="13">get</name> <block pos:line="21" pos:column="17">{ <return pos:line="21" pos:column="19">return <expr><name><name pos:line="21" pos:column="26">Context</name><op:operator pos:line="21" pos:column="33">.</op:operator><name pos:line="21" pos:column="34">Request</name><op:operator pos:line="21" pos:column="41">.</op:operator><name pos:line="21" pos:column="42">HttpMethod</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="24" pos:column="9">public</specifier> <name pos:line="24" pos:column="16">int</name></type> <name pos:line="24" pos:column="20">ResponseStatusCode</name>
+        <block pos:line="25" pos:column="9">{
+            <function><name pos:line="26" pos:column="13">get</name> <block pos:line="26" pos:column="17">{ <return pos:line="26" pos:column="19">return <expr><name><name pos:line="26" pos:column="26">Context</name><op:operator pos:line="26" pos:column="33">.</op:operator><name pos:line="26" pos:column="34">Response</name><op:operator pos:line="26" pos:column="42">.</op:operator><name pos:line="26" pos:column="43">StatusCode</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="29" pos:column="9">public</specifier> <name pos:line="29" pos:column="16">string</name></type> <name pos:line="29" pos:column="23">ResponseContentType</name>
+        <block pos:line="30" pos:column="9">{
+            <function><name pos:line="31" pos:column="13">get</name> <block pos:line="31" pos:column="17">{ <return pos:line="31" pos:column="19">return <expr><name><name pos:line="31" pos:column="26">Context</name><op:operator pos:line="31" pos:column="33">.</op:operator><name pos:line="31" pos:column="34">Response</name><op:operator pos:line="31" pos:column="42">.</op:operator><name pos:line="31" pos:column="43">ContentType</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="34" pos:column="9">public</specifier> <name pos:line="34" pos:column="16">bool</name></type> <name pos:line="34" pos:column="21">RequestIsAjax</name>
+        <block pos:line="35" pos:column="9">{
+            <function><name pos:line="36" pos:column="13">get</name>
+            <block pos:line="37" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="38" pos:column="17">var</name></type> <name pos:line="38" pos:column="21">request</name> <init pos:line="38" pos:column="29">= <expr><name><name pos:line="38" pos:column="31">Context</name><op:operator pos:line="38" pos:column="38">.</op:operator><name pos:line="38" pos:column="39">Request</name></name></expr></init></decl>;</decl_stmt>
+
+                <if pos:line="40" pos:column="17">if <condition pos:line="40" pos:column="20">(<expr><name><name pos:line="40" pos:column="21">request</name><index pos:line="40" pos:column="28">[<expr><lit:literal type="string" pos:line="40" pos:column="29">"X-Requested-With"</lit:literal></expr>]</index></name> <op:operator pos:line="40" pos:column="49">==</op:operator> <lit:literal type="string" pos:line="40" pos:column="52">"XMLHttpRequest"</lit:literal></expr>)</condition><then pos:line="40" pos:column="69">
+                <block pos:line="41" pos:column="17">{
+                    <return pos:line="42" pos:column="21">return <expr><lit:literal type="boolean" pos:line="42" pos:column="28">true</lit:literal></expr>;</return>
+                }</block></then></if>
+
+                <if pos:line="45" pos:column="17">if <condition pos:line="45" pos:column="20">(<expr><name><name pos:line="45" pos:column="21">request</name><op:operator pos:line="45" pos:column="28">.</op:operator><name pos:line="45" pos:column="29">Headers</name></name> <op:operator pos:line="45" pos:column="37">!=</op:operator> <name pos:line="45" pos:column="40">null</name></expr>)</condition><then pos:line="45" pos:column="45">
+                <block pos:line="46" pos:column="17">{
+                    <return pos:line="47" pos:column="21">return <expr><name><name pos:line="47" pos:column="28">request</name><op:operator pos:line="47" pos:column="35">.</op:operator><name pos:line="47" pos:column="36">Headers</name><index pos:line="47" pos:column="43">[<expr><lit:literal type="string" pos:line="47" pos:column="44">"X-Requested-With"</lit:literal></expr>]</index></name> <op:operator pos:line="47" pos:column="64">==</op:operator> <lit:literal type="string" pos:line="47" pos:column="67">"XMLHttpRequest"</lit:literal></expr>;</return>
+                }</block></then></if>
+
+                <return pos:line="50" pos:column="17">return <expr><lit:literal type="boolean" pos:line="50" pos:column="24">false</lit:literal></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="54" pos:column="9">public</specifier> <name pos:line="54" pos:column="16">string</name></type> <name pos:line="54" pos:column="23">ClientId</name> 
+        <block pos:line="55" pos:column="9">{ 
+            <function><name pos:line="56" pos:column="13">get</name>
+            <block pos:line="57" pos:column="13">{
+                <if pos:line="58" pos:column="17">if <condition pos:line="58" pos:column="20">(<expr><name><name pos:line="58" pos:column="21">Context</name><op:operator pos:line="58" pos:column="28">.</op:operator><name pos:line="58" pos:column="29">User</name></name> <op:operator pos:line="58" pos:column="34">!=</op:operator> <name pos:line="58" pos:column="37">null</name> <op:operator pos:line="58" pos:column="42">&amp;&amp;</op:operator> <name><name pos:line="58" pos:column="45">Context</name><op:operator pos:line="58" pos:column="52">.</op:operator><name pos:line="58" pos:column="53">User</name><op:operator pos:line="58" pos:column="57">.</op:operator><name pos:line="58" pos:column="58">Identity</name></name> <op:operator pos:line="58" pos:column="67">!=</op:operator> <name pos:line="58" pos:column="70">null</name></expr>)</condition><then pos:line="58" pos:column="75">
+                <block pos:line="59" pos:column="17">{
+                    <decl_stmt><decl><type><name pos:line="60" pos:column="21">var</name></type> <name pos:line="60" pos:column="25">user</name> <init pos:line="60" pos:column="30">= <expr><name><name pos:line="60" pos:column="32">Context</name><op:operator pos:line="60" pos:column="39">.</op:operator><name pos:line="60" pos:column="40">User</name><op:operator pos:line="60" pos:column="44">.</op:operator><name pos:line="60" pos:column="45">Identity</name><op:operator pos:line="60" pos:column="53">.</op:operator><name pos:line="60" pos:column="54">Name</name></name></expr></init></decl>;</decl_stmt>
+                    <if pos:line="61" pos:column="21">if <condition pos:line="61" pos:column="24">(<expr><op:operator pos:line="61" pos:column="25">!</op:operator><call><name><name pos:line="61" pos:column="26">string</name><op:operator pos:line="61" pos:column="32">.</op:operator><name pos:line="61" pos:column="33">IsNullOrEmpty</name></name><argument_list pos:line="61" pos:column="46">(<argument><expr><name pos:line="61" pos:column="47">user</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="61" pos:column="53">
+                    <block pos:line="62" pos:column="21">{
+                        <return pos:line="63" pos:column="25">return <expr><name pos:line="63" pos:column="32">user</name></expr>;</return>
+                    }</block></then></if>
+                }</block></then></if>
+
+                <decl_stmt><decl><type><name pos:line="67" pos:column="17">var</name></type> <name pos:line="67" pos:column="21">browser</name> <init pos:line="67" pos:column="29">= <expr><name><name pos:line="67" pos:column="31">Context</name><op:operator pos:line="67" pos:column="38">.</op:operator><name pos:line="67" pos:column="39">Request</name><op:operator pos:line="67" pos:column="46">.</op:operator><name pos:line="67" pos:column="47">Browser</name></name></expr></init></decl>;</decl_stmt>
+
+                <if pos:line="69" pos:column="17">if <condition pos:line="69" pos:column="20">(<expr><name pos:line="69" pos:column="21">browser</name> <op:operator pos:line="69" pos:column="29">!=</op:operator> <name pos:line="69" pos:column="32">null</name></expr>)</condition><then pos:line="69" pos:column="37">
+                <block pos:line="70" pos:column="17">{
+                    <return pos:line="71" pos:column="21">return <expr><call><name><name pos:line="71" pos:column="28">string</name><op:operator pos:line="71" pos:column="34">.</op:operator><name pos:line="71" pos:column="35">Format</name></name><argument_list pos:line="71" pos:column="41">(<argument><expr><lit:literal type="string" pos:line="71" pos:column="42">"{0} {1}"</lit:literal></expr></argument>, <argument><expr><name><name pos:line="71" pos:column="53">browser</name><op:operator pos:line="71" pos:column="60">.</op:operator><name pos:line="71" pos:column="61">Browser</name></name></expr></argument>, <argument><expr><name><name pos:line="71" pos:column="70">browser</name><op:operator pos:line="71" pos:column="77">.</op:operator><name pos:line="71" pos:column="78">Version</name></name></expr></argument>)</argument_list></call></expr>;</return>
+                }</block></then></if>
+
+                <return pos:line="74" pos:column="17">return <expr><call><name><name pos:line="74" pos:column="24">Guid</name><op:operator pos:line="74" pos:column="28">.</op:operator><name pos:line="74" pos:column="29">NewGuid</name></name><argument_list pos:line="74" pos:column="36">()</argument_list></call><op:operator pos:line="74" pos:column="38">.</op:operator><call><name pos:line="74" pos:column="39">ToString</name><argument_list pos:line="74" pos:column="47">(<argument><expr><lit:literal type="string" pos:line="74" pos:column="48">"N"</lit:literal></expr></argument>)</argument_list></call></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="78" pos:column="9">public</specifier> <name pos:line="78" pos:column="16">string</name></type> <name pos:line="78" pos:column="23">RequestUri</name>
+        <block pos:line="79" pos:column="9">{
+            <function><name pos:line="80" pos:column="13">get</name> <block pos:line="80" pos:column="17">{ <return pos:line="80" pos:column="19">return <expr><name><name pos:line="80" pos:column="26">Context</name><op:operator pos:line="80" pos:column="33">.</op:operator><name pos:line="80" pos:column="34">Request</name><op:operator pos:line="80" pos:column="41">.</op:operator><name pos:line="80" pos:column="42">Url</name><op:operator pos:line="80" pos:column="45">.</op:operator><name pos:line="80" pos:column="46">AbsoluteUri</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="83" pos:column="9">private</specifier> <name pos:line="83" pos:column="17">HttpContextBase</name></type> <name pos:line="83" pos:column="33">Context</name> <block pos:line="83" pos:column="41">{ <function_decl><name pos:line="83" pos:column="43">get</name>;</function_decl> <function_decl><name pos:line="83" pos:column="48">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <function><type><specifier pos:line="85" pos:column="9">public</specifier> <name pos:line="85" pos:column="16">string</name></type> <name pos:line="85" pos:column="23">GetCookie</name><parameter_list pos:line="85" pos:column="32">(<param><decl><type><name pos:line="85" pos:column="33">string</name></type> <name pos:line="85" pos:column="40">name</name></decl></param>)</parameter_list>
+        <block pos:line="86" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="87" pos:column="13">var</name></type> <name pos:line="87" pos:column="17">cookie</name> <init pos:line="87" pos:column="24">= <expr><call><name><name pos:line="87" pos:column="26">Context</name><op:operator pos:line="87" pos:column="33">.</op:operator><name pos:line="87" pos:column="34">Request</name><op:operator pos:line="87" pos:column="41">.</op:operator><name pos:line="87" pos:column="42">Cookies</name><op:operator pos:line="87" pos:column="49">.</op:operator><name pos:line="87" pos:column="50">Get</name></name><argument_list pos:line="87" pos:column="53">(<argument><expr><name pos:line="87" pos:column="54">name</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <return pos:line="89" pos:column="13">return <expr><name pos:line="89" pos:column="20">cookie</name> <op:operator pos:line="89" pos:column="27">==</op:operator> <name pos:line="89" pos:column="30">null</name> <op:operator pos:line="89" pos:column="35">?</op:operator> <name pos:line="89" pos:column="37">null</name> <op:operator pos:line="89" pos:column="42">:</op:operator> <name><name pos:line="89" pos:column="44">cookie</name><op:operator pos:line="89" pos:column="50">.</op:operator><name pos:line="89" pos:column="51">Value</name></name></expr>;</return>
+        }</block></function>
+
+        <function><type><specifier pos:line="92" pos:column="9">public</specifier> <name pos:line="92" pos:column="16">string</name></type> <name pos:line="92" pos:column="23">GetHttpHeader</name><parameter_list pos:line="92" pos:column="36">(<param><decl><type><name pos:line="92" pos:column="37">string</name></type> <name pos:line="92" pos:column="44">name</name></decl></param>)</parameter_list>
+        <block pos:line="93" pos:column="9">{
+            <return pos:line="94" pos:column="13">return <expr><call><name><name pos:line="94" pos:column="20">Context</name><op:operator pos:line="94" pos:column="27">.</op:operator><name pos:line="94" pos:column="28">Request</name><op:operator pos:line="94" pos:column="35">.</op:operator><name pos:line="94" pos:column="36">Headers</name><op:operator pos:line="94" pos:column="43">.</op:operator><name pos:line="94" pos:column="44">Get</name></name><argument_list pos:line="94" pos:column="47">(<argument><expr><name pos:line="94" pos:column="48">name</name></expr></argument>)</argument_list></call></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

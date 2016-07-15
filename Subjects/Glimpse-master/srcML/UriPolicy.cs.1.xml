@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Policy\UriPolicy.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Linq</name></name>;</using>
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">System</name><op:operator pos:line="4" pos:column="13">.</op:operator><name pos:line="4" pos:column="14">Text</name><op:operator pos:line="4" pos:column="18">.</op:operator><name pos:line="4" pos:column="19">RegularExpressions</name></name>;</using>
+<using pos:line="5" pos:column="1">using <name><name pos:line="5" pos:column="7">Glimpse</name><op:operator pos:line="5" pos:column="14">.</op:operator><name pos:line="5" pos:column="15">Core</name><op:operator pos:line="5" pos:column="19">.</op:operator><name pos:line="5" pos:column="20">Configuration</name></name>;</using>
+<using pos:line="6" pos:column="1">using <name><name pos:line="6" pos:column="7">Glimpse</name><op:operator pos:line="6" pos:column="14">.</op:operator><name pos:line="6" pos:column="15">Core</name><op:operator pos:line="6" pos:column="19">.</op:operator><name pos:line="6" pos:column="20">Extensibility</name></name>;</using>
+
+<namespace pos:line="8" pos:column="1">namespace <name><name pos:line="8" pos:column="11">Glimpse</name><op:operator pos:line="8" pos:column="18">.</op:operator><name pos:line="8" pos:column="19">Core</name><op:operator pos:line="8" pos:column="23">.</op:operator><name pos:line="8" pos:column="24">Policy</name></name>
+<block pos:line="9" pos:column="1">{
+    <comment type="line" pos:line="10" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="11" pos:column="5">/// Policy which will set Glimpse's runtime policy to &lt;c&gt;Off&lt;/c&gt; if a Http request's Uri matches a pattern in the black list.</comment>
+    <comment type="line" pos:line="12" pos:column="5">/// &lt;/summary&gt;</comment>
+    <class><specifier pos:line="13" pos:column="5">public</specifier> class <name pos:line="13" pos:column="18">UriPolicy</name> <super pos:line="13" pos:column="28">: <name pos:line="13" pos:column="30">IRuntimePolicy</name>, <name pos:line="13" pos:column="46">IConfigurable</name></super>
+    <block pos:line="14" pos:column="5">{
+        <comment type="line" pos:line="15" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="16" pos:column="9">/// Initializes a new instance of the &lt;see cref="UriPolicy" /&gt; class with an empty black list.</comment>
+        <comment type="line" pos:line="17" pos:column="9">/// &lt;/summary&gt;</comment>
+        <constructor><specifier pos:line="18" pos:column="9">public</specifier> <name pos:line="18" pos:column="16">UriPolicy</name><parameter_list pos:line="18" pos:column="25">()</parameter_list> <member_list pos:line="18" pos:column="28">: <call><name pos:line="18" pos:column="30">this</name><argument_list pos:line="18" pos:column="34">(<argument><expr><op:operator pos:line="18" pos:column="35">new</op:operator> <call><name><name pos:line="18" pos:column="39">List</name><argument_list pos:line="18" pos:column="43">&lt;<argument><name pos:line="18" pos:column="44">Regex</name></argument>&gt;</argument_list></name><argument_list pos:line="18" pos:column="50">()</argument_list></call></expr></argument>)</argument_list></call>
+        </member_list><block pos:line="19" pos:column="9">{
+        }</block></constructor>
+
+        <comment type="line" pos:line="22" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// Initializes a new instance of the &lt;see cref="UriPolicy" /&gt; class with the provided &lt;paramref name="uriBlackList"/&gt;.</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;param name="uriBlackList"&gt;The Uri black list to validate against. Regular expressions are also supported in the black list.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;exception cref="System.ArgumentNullException"&gt;Exception thrown if &lt;paramref name="uriBlackList"/&gt; is &lt;c&gt;null&lt;/c&gt;.&lt;/exception&gt;</comment>
+        <constructor><specifier pos:line="27" pos:column="9">public</specifier> <name pos:line="27" pos:column="16">UriPolicy</name><parameter_list pos:line="27" pos:column="25">(<param><decl><type><name><name pos:line="27" pos:column="26">IList</name><argument_list pos:line="27" pos:column="31">&lt;<argument><name pos:line="27" pos:column="32">Regex</name></argument>&gt;</argument_list></name></type> <name pos:line="27" pos:column="39">uriBlackList</name></decl></param>)</parameter_list>
+        <block pos:line="28" pos:column="9">{
+            <if pos:line="29" pos:column="13">if <condition pos:line="29" pos:column="16">(<expr><name pos:line="29" pos:column="17">uriBlackList</name> <op:operator pos:line="29" pos:column="30">==</op:operator> <name pos:line="29" pos:column="33">null</name></expr>)</condition><then pos:line="29" pos:column="38">
+            <block pos:line="30" pos:column="13">{
+                <throw pos:line="31" pos:column="17">throw <expr><op:operator pos:line="31" pos:column="23">new</op:operator> <call><name pos:line="31" pos:column="27">ArgumentNullException</name><argument_list pos:line="31" pos:column="48">(<argument><expr><lit:literal type="string" pos:line="31" pos:column="49">"uriBlackList"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="34" pos:column="13">UriBlackList</name> <op:operator pos:line="34" pos:column="26">=</op:operator> <name pos:line="34" pos:column="28">uriBlackList</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="37" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="38" pos:column="9">/// Gets the point in an Http request lifecycle that a policy should execute.</comment>
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// The moment to execute, &lt;see cref="AjaxPolicy"/&gt; uses &lt;c&gt;BeginRequest&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="43" pos:column="9">public</specifier> <name pos:line="43" pos:column="16">RuntimeEvent</name></type> <name pos:line="43" pos:column="29">ExecuteOn</name>
+        <block pos:line="44" pos:column="9">{
+            <function><name pos:line="45" pos:column="13">get</name> <block pos:line="45" pos:column="17">{ <return pos:line="45" pos:column="19">return <expr><name><name pos:line="45" pos:column="26">RuntimeEvent</name><op:operator pos:line="45" pos:column="38">.</op:operator><name pos:line="45" pos:column="39">BeginRequest</name></name></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="48" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="49" pos:column="9">/// Gets or sets the Uri black list.</comment>
+        <comment type="line" pos:line="50" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="51" pos:column="9">/// &lt;value&gt;</comment>
+        <comment type="line" pos:line="52" pos:column="9">/// The Uri black list to validate against.</comment>
+        <comment type="line" pos:line="53" pos:column="9">/// &lt;/value&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="54" pos:column="9">public</specifier> <name><name pos:line="54" pos:column="16">IList</name><argument_list pos:line="54" pos:column="21">&lt;<argument><name pos:line="54" pos:column="22">Regex</name></argument>&gt;</argument_list></name></type> <name pos:line="54" pos:column="29">UriBlackList</name> <block pos:line="54" pos:column="42">{ <function_decl><name pos:line="54" pos:column="44">get</name>;</function_decl> <function_decl><name pos:line="54" pos:column="49">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="56" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="57" pos:column="9">/// Executes the specified policy with the given context.</comment>
+        <comment type="line" pos:line="58" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="59" pos:column="9">/// &lt;param name="policyContext"&gt;The policy context.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="60" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="61" pos:column="9">/// &lt;c&gt;On&lt;/c&gt; if the request Uri is contained not matched in the black list, otherwise &lt;c&gt;Off&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="62" pos:column="9">/// &lt;/returns&gt;</comment>
+        <comment type="line" pos:line="63" pos:column="9">/// &lt;exception cref="System.ArgumentNullException"&gt;Exception thrown if &lt;paramref name="policyContext"/&gt; is &lt;c&gt;null&lt;/c&gt;.&lt;/exception&gt;</comment>
+        <function><type><specifier pos:line="64" pos:column="9">public</specifier> <name pos:line="64" pos:column="16">RuntimePolicy</name></type> <name pos:line="64" pos:column="30">Execute</name><parameter_list pos:line="64" pos:column="37">(<param><decl><type><name pos:line="64" pos:column="38">IRuntimePolicyContext</name></type> <name pos:line="64" pos:column="60">policyContext</name></decl></param>)</parameter_list>
+        <block pos:line="65" pos:column="9">{
+            <try pos:line="66" pos:column="13">try
+            <block pos:line="67" pos:column="13">{
+                <if pos:line="68" pos:column="17">if <condition pos:line="68" pos:column="20">(<expr><name><name pos:line="68" pos:column="21">UriBlackList</name><op:operator pos:line="68" pos:column="33">.</op:operator><name pos:line="68" pos:column="34">Count</name></name> <op:operator pos:line="68" pos:column="40">==</op:operator> <lit:literal type="number" pos:line="68" pos:column="43">0</lit:literal></expr>)</condition><then pos:line="68" pos:column="45">
+                <block pos:line="69" pos:column="17">{
+                    <return pos:line="70" pos:column="21">return <expr><name><name pos:line="70" pos:column="28">RuntimePolicy</name><op:operator pos:line="70" pos:column="41">.</op:operator><name pos:line="70" pos:column="42">On</name></name></expr>;</return>
+                }</block></then></if>
+
+                <decl_stmt><decl><type><name pos:line="73" pos:column="17">var</name></type> <name pos:line="73" pos:column="21">uri</name> <init pos:line="73" pos:column="25">= <expr><name><name pos:line="73" pos:column="27">policyContext</name><op:operator pos:line="73" pos:column="40">.</op:operator><name pos:line="73" pos:column="41">RequestMetadata</name><op:operator pos:line="73" pos:column="56">.</op:operator><name pos:line="73" pos:column="57">RequestUri</name></name></expr></init></decl>;</decl_stmt>
+
+                <if pos:line="75" pos:column="17">if <condition pos:line="75" pos:column="20">(<expr><call><name><name pos:line="75" pos:column="21">UriBlackList</name><op:operator pos:line="75" pos:column="33">.</op:operator><name pos:line="75" pos:column="34">Any</name></name><argument_list pos:line="75" pos:column="37">(<argument><expr><lambda><name pos:line="75" pos:column="38">regex</name> <op:operator pos:line="75" pos:column="44">=&gt;</op:operator> <call><name><name pos:line="75" pos:column="47">regex</name><op:operator pos:line="75" pos:column="52">.</op:operator><name pos:line="75" pos:column="53">IsMatch</name></name><argument_list pos:line="75" pos:column="60">(<argument><expr><name pos:line="75" pos:column="61">uri</name></expr></argument>)</argument_list></call></lambda></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="75" pos:column="67">
+                <block pos:line="76" pos:column="17">{
+                    <return pos:line="77" pos:column="21">return <expr><name><name pos:line="77" pos:column="28">RuntimePolicy</name><op:operator pos:line="77" pos:column="41">.</op:operator><name pos:line="77" pos:column="42">Off</name></name></expr>;</return>
+                }</block></then></if>
+
+                <return pos:line="80" pos:column="17">return <expr><name><name pos:line="80" pos:column="24">RuntimePolicy</name><op:operator pos:line="80" pos:column="37">.</op:operator><name pos:line="80" pos:column="38">On</name></name></expr>;</return>
+            }</block>
+            <catch pos:line="82" pos:column="13">catch <parameter_list pos:line="82" pos:column="19">(<param><decl><type><name pos:line="82" pos:column="20">Exception</name></type> <name pos:line="82" pos:column="30">exception</name></decl></param>)</parameter_list>
+            <block pos:line="83" pos:column="13">{
+                <expr_stmt><expr><call><name><name pos:line="84" pos:column="17">policyContext</name><op:operator pos:line="84" pos:column="30">.</op:operator><name pos:line="84" pos:column="31">Logger</name><op:operator pos:line="84" pos:column="37">.</op:operator><name pos:line="84" pos:column="38">Warn</name></name><argument_list pos:line="84" pos:column="42">(<argument><expr><name><name pos:line="84" pos:column="43">Resources</name><op:operator pos:line="84" pos:column="52">.</op:operator><name pos:line="84" pos:column="53">ExecutePolicyWarning</name></name></expr></argument>, <argument><expr><name pos:line="84" pos:column="75">exception</name></expr></argument>, <argument><expr><call><name pos:line="84" pos:column="86">GetType</name><argument_list pos:line="84" pos:column="93">()</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                <return pos:line="85" pos:column="17">return <expr><name><name pos:line="85" pos:column="24">RuntimePolicy</name><op:operator pos:line="85" pos:column="37">.</op:operator><name pos:line="85" pos:column="38">Off</name></name></expr>;</return>
+            }</block></catch></try>
+        }</block></function>
+
+        <comment type="line" pos:line="89" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="90" pos:column="9">/// Provides implementations an instance of &lt;see cref="Section" /&gt; to self populate any end user configuration options.</comment>
+        <comment type="line" pos:line="91" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="92" pos:column="9">/// &lt;param name="section"&gt;The configuration section, &lt;c&gt;&amp;lt;glimpse&amp;gt;&lt;/c&gt; from &lt;c&gt;web.config&lt;/c&gt;.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="93" pos:column="9">/// &lt;remarks&gt;</comment>
+        <comment type="line" pos:line="94" pos:column="9">/// Populates the Uri black list with values from &lt;c&gt;web.config&lt;/c&gt;.</comment>
+        <comment type="line" pos:line="95" pos:column="9">/// &lt;/remarks&gt;</comment>
+        <comment type="line" pos:line="96" pos:column="9">/// &lt;example&gt;</comment>
+        <comment type="line" pos:line="97" pos:column="9">/// Configure the Uri black list in &lt;c&gt;web.config&lt;/c&gt; with the following entries:</comment>
+        <comment type="line" pos:line="98" pos:column="9">/// &lt;code&gt;</comment>
+        <comment type="line" pos:line="99" pos:column="9">/// &lt;![CDATA[</comment>
+        <comment type="line" pos:line="100" pos:column="9">/// &lt;glimpse defaultRuntimePolicy="On" endpointBaseUri="~/Glimpse.axd"&gt;</comment>
+        <comment type="line" pos:line="101" pos:column="9">///     &lt;runtimePolicies&gt;</comment>
+        <comment type="line" pos:line="102" pos:column="9">///         &lt;uris&gt;</comment>
+        <comment type="line" pos:line="103" pos:column="9">///             &lt;!-- &lt;clear /&gt; clear to reset defaults --&gt;</comment>
+        <comment type="line" pos:line="104" pos:column="9">///             &lt;add regex="{regular expression or uri}" /&gt;</comment>
+        <comment type="line" pos:line="105" pos:column="9">///         &lt;/uris&gt;</comment>
+        <comment type="line" pos:line="106" pos:column="9">///     &lt;/runtimePolicies&gt;</comment>
+        <comment type="line" pos:line="107" pos:column="9">/// &lt;/glimpse&gt;</comment>
+        <comment type="line" pos:line="108" pos:column="9">/// ]]&gt;</comment>
+        <comment type="line" pos:line="109" pos:column="9">/// &lt;/code&gt;</comment>
+        <comment type="line" pos:line="110" pos:column="9">/// &lt;/example&gt;</comment>
+        <function><type><specifier pos:line="111" pos:column="9">public</specifier> <name pos:line="111" pos:column="16">void</name></type> <name pos:line="111" pos:column="21">Configure</name><parameter_list pos:line="111" pos:column="30">(<param><decl><type><name pos:line="111" pos:column="31">Section</name></type> <name pos:line="111" pos:column="39">section</name></decl></param>)</parameter_list>
+        <block pos:line="112" pos:column="9">{
+            <expr_stmt><expr><call><name><name pos:line="113" pos:column="13">UriBlackList</name><op:operator pos:line="113" pos:column="25">.</op:operator><name pos:line="113" pos:column="26">Add</name></name><argument_list pos:line="113" pos:column="29">(<argument><expr><op:operator pos:line="113" pos:column="30">new</op:operator> <call><name pos:line="113" pos:column="34">Regex</name><argument_list pos:line="113" pos:column="39">(<argument><expr><lit:literal type="string" pos:line="113" pos:column="40">"__browserLink/requestData"</lit:literal></expr></argument>)</argument_list></call></expr></argument>)</argument_list></call></expr>;</expr_stmt> 
+            <foreach pos:line="114" pos:column="13">foreach (<init><decl><type><name pos:line="114" pos:column="22">RegexElement</name></type> <name pos:line="114" pos:column="35">item</name> <range pos:line="114" pos:column="40">in <expr><name><name pos:line="114" pos:column="43">section</name><op:operator pos:line="114" pos:column="50">.</op:operator><name pos:line="114" pos:column="51">RuntimePolicies</name><op:operator pos:line="114" pos:column="66">.</op:operator><name pos:line="114" pos:column="67">Uris</name></name></expr></range></decl></init>)
+            <block pos:line="115" pos:column="13">{
+                <expr_stmt><expr><call><name><name pos:line="116" pos:column="17">UriBlackList</name><op:operator pos:line="116" pos:column="29">.</op:operator><name pos:line="116" pos:column="30">Add</name></name><argument_list pos:line="116" pos:column="33">(<argument><expr><name><name pos:line="116" pos:column="34">item</name><op:operator pos:line="116" pos:column="38">.</op:operator><name pos:line="116" pos:column="39">Regex</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></foreach>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

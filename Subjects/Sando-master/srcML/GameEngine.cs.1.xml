@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Sando-master\TestInputs\tictactoe\TicTacToe.Classes\GameEngine.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Text</name></name>;</using>
+
+<namespace pos:line="5" pos:column="1">namespace <name><name pos:line="5" pos:column="11">TicTacToe</name><op:operator pos:line="5" pos:column="20">.</op:operator><name pos:line="5" pos:column="21">Classes</name></name>
+<block pos:line="6" pos:column="1">{
+    <class><specifier pos:line="7" pos:column="5">public</specifier> class <name pos:line="7" pos:column="18">GameEngine</name>
+    <block pos:line="8" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="9" pos:column="9">private</specifier> <name pos:line="9" pos:column="17">HumanPlayer</name></type> <name pos:line="9" pos:column="29">humanPlayer</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="10" pos:column="9">private</specifier> <name pos:line="10" pos:column="17">PCPlayer</name></type> <name pos:line="10" pos:column="26">pcPlayer</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="11" pos:column="9">private</specifier> <name pos:line="11" pos:column="17">Player</name></type> <name pos:line="11" pos:column="24">currentPlayerTurn</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="12" pos:column="9">private</specifier> <name pos:line="12" pos:column="17">XOSymbol</name><index pos:line="12" pos:column="25">[,]</index></type> <name pos:line="12" pos:column="29">gamePad</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="13" pos:column="9">private</specifier> <name pos:line="13" pos:column="17">Player</name></type> <name pos:line="13" pos:column="24">winnerPlayer</name></decl>;</decl_stmt>
+        <decl_stmt><decl><type><specifier pos:line="14" pos:column="9">private</specifier> <name pos:line="14" pos:column="17">bool</name></type> <name pos:line="14" pos:column="22">isGameOver</name></decl>;</decl_stmt>
+
+        <constructor><specifier pos:line="16" pos:column="9">public</specifier> <name pos:line="16" pos:column="16">GameEngine</name><parameter_list pos:line="16" pos:column="26">(<param><decl><type><name pos:line="16" pos:column="27">HumanPlayer</name></type> <name pos:line="16" pos:column="39">humanPlayer</name></decl></param>, <param><decl><type><name pos:line="16" pos:column="52">PCPlayer</name></type> <name pos:line="16" pos:column="61">pcPlayer</name></decl></param>, <param><decl><type><name pos:line="16" pos:column="71">Player</name></type> <name pos:line="16" pos:column="78">firstPlayerTurn</name></decl></param>)</parameter_list>
+        <block pos:line="17" pos:column="9">{
+            <if pos:line="18" pos:column="13">if <condition pos:line="18" pos:column="16">(<expr><name><name pos:line="18" pos:column="17">humanPlayer</name><op:operator pos:line="18" pos:column="28">.</op:operator><name pos:line="18" pos:column="29">XOSymbol</name></name> <op:operator pos:line="18" pos:column="38">==</op:operator> <name><name pos:line="18" pos:column="41">pcPlayer</name><op:operator pos:line="18" pos:column="49">.</op:operator><name pos:line="18" pos:column="50">XOSymbol</name></name></expr>)</condition><then pos:line="18" pos:column="59">
+                <throw pos:line="19" pos:column="17">throw <expr><op:operator pos:line="19" pos:column="23">new</op:operator> <call><name pos:line="19" pos:column="27">Exception</name><argument_list pos:line="19" pos:column="36">(<argument><expr><lit:literal type="string" pos:line="19" pos:column="37">"Invalid Players.You can not give the PC and the Human player the same XO symbol"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw></then></if>
+
+            <expr_stmt><expr><name pos:line="21" pos:column="13">HumanPlayer</name> <op:operator pos:line="21" pos:column="25">=</op:operator> <name pos:line="21" pos:column="27">humanPlayer</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="22" pos:column="13">PCPlayer</name> <op:operator pos:line="22" pos:column="22">=</op:operator> <name pos:line="22" pos:column="24">pcPlayer</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name><name pos:line="23" pos:column="13">this</name><op:operator pos:line="23" pos:column="17">.</op:operator><name pos:line="23" pos:column="18">currentPlayerTurn</name></name> <op:operator pos:line="23" pos:column="36">=</op:operator> <name pos:line="23" pos:column="38">firstPlayerTurn</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="24" pos:column="13">gamePad</name> <op:operator pos:line="24" pos:column="21">=</op:operator> <op:operator pos:line="24" pos:column="23">new</op:operator> <name><name pos:line="24" pos:column="27">XOSymbol</name><index pos:line="24" pos:column="35">[<expr><lit:literal type="number" pos:line="24" pos:column="36">3</lit:literal></expr>, <expr><lit:literal type="number" pos:line="24" pos:column="39">3</lit:literal></expr>]</index></name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="25" pos:column="13">winnerPlayer</name> <op:operator pos:line="25" pos:column="26">=</op:operator> <name pos:line="25" pos:column="28">null</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="26" pos:column="13">isGameOver</name> <op:operator pos:line="26" pos:column="24">=</op:operator> <lit:literal type="boolean" pos:line="26" pos:column="26">false</lit:literal></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <decl_stmt><decl><type><specifier pos:line="29" pos:column="9">public</specifier> <name pos:line="29" pos:column="16">Player</name></type> <name pos:line="29" pos:column="23">CurrentPlayerTurn</name>
+        <block pos:line="30" pos:column="9">{
+            <function><name pos:line="31" pos:column="13">get</name>
+            <block pos:line="32" pos:column="13">{
+                <return pos:line="33" pos:column="17">return <expr><name pos:line="33" pos:column="24">currentPlayerTurn</name></expr>;</return> <empty_stmt pos:line="33" pos:column="43">;</empty_stmt>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="37" pos:column="9">public</specifier> <name pos:line="37" pos:column="16">XOSymbol</name><index pos:line="37" pos:column="24">[,]</index></type> <name pos:line="37" pos:column="28">GamePad</name>
+        <block pos:line="38" pos:column="9">{
+            <function><name pos:line="39" pos:column="13">get</name>
+            <block pos:line="40" pos:column="13">{
+                <return pos:line="41" pos:column="17">return <expr><op:operator pos:line="41" pos:column="24">(</op:operator><name><name pos:line="41" pos:column="25">XOSymbol</name><index pos:line="41" pos:column="33">[,]</index></name><op:operator pos:line="41" pos:column="36">)</op:operator><call><name><name pos:line="41" pos:column="37">gamePad</name><op:operator pos:line="41" pos:column="44">.</op:operator><name pos:line="41" pos:column="45">Clone</name></name><argument_list pos:line="41" pos:column="50">()</argument_list></call></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="45" pos:column="9">public</specifier> <name pos:line="45" pos:column="16">bool</name></type> <name pos:line="45" pos:column="21">IsGameOver</name>
+        <block pos:line="46" pos:column="9">{
+            <function><name pos:line="47" pos:column="13">get</name>
+            <block pos:line="48" pos:column="13">{
+                <return pos:line="49" pos:column="17">return <expr><name pos:line="49" pos:column="24">isGameOver</name></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="53" pos:column="9">public</specifier> <name pos:line="53" pos:column="16">Player</name></type> <name pos:line="53" pos:column="23">WinnerPlayer</name>
+        <block pos:line="54" pos:column="9">{
+            <function><name pos:line="55" pos:column="13">get</name>
+            <block pos:line="56" pos:column="13">{
+                <return pos:line="57" pos:column="17">return <expr><name pos:line="57" pos:column="24">winnerPlayer</name></expr>;</return>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="61" pos:column="9">public</specifier> <name pos:line="61" pos:column="16">HumanPlayer</name></type> <name pos:line="61" pos:column="28">HumanPlayer</name>
+        <block pos:line="62" pos:column="9">{
+            <function><name pos:line="63" pos:column="13">get</name>
+            <block pos:line="64" pos:column="13">{
+                <return pos:line="65" pos:column="17">return <expr><name pos:line="65" pos:column="24">humanPlayer</name></expr>;</return>
+            }</block></function>
+            <function><name pos:line="67" pos:column="13">set</name>
+            <block pos:line="68" pos:column="13">{
+                <expr_stmt><expr><name><name pos:line="69" pos:column="17">this</name><op:operator pos:line="69" pos:column="21">.</op:operator><name pos:line="69" pos:column="22">humanPlayer</name></name> <op:operator pos:line="69" pos:column="34">=</op:operator> <name pos:line="69" pos:column="36">value</name></expr>;</expr_stmt>
+                <expr_stmt><expr><name><name pos:line="70" pos:column="17">this</name><op:operator pos:line="70" pos:column="21">.</op:operator><name pos:line="70" pos:column="22">humanPlayer</name><op:operator pos:line="70" pos:column="33">.</op:operator><name pos:line="70" pos:column="34">GameEngine</name></name> <op:operator pos:line="70" pos:column="45">=</op:operator> <name pos:line="70" pos:column="47">this</name></expr>;</expr_stmt>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="74" pos:column="9">public</specifier> <name pos:line="74" pos:column="16">PCPlayer</name></type> <name pos:line="74" pos:column="25">PCPlayer</name>
+        <block pos:line="75" pos:column="9">{
+            <function><name pos:line="76" pos:column="13">get</name>
+            <block pos:line="77" pos:column="13">{
+                <return pos:line="78" pos:column="17">return <expr><name pos:line="78" pos:column="24">pcPlayer</name></expr>;</return>
+            }</block></function>
+            <function><name pos:line="80" pos:column="13">set</name>
+            <block pos:line="81" pos:column="13">{
+                <expr_stmt><expr><name><name pos:line="82" pos:column="17">this</name><op:operator pos:line="82" pos:column="21">.</op:operator><name pos:line="82" pos:column="22">pcPlayer</name></name> <op:operator pos:line="82" pos:column="31">=</op:operator> <name pos:line="82" pos:column="33">value</name></expr>;</expr_stmt>
+                <expr_stmt><expr><name><name pos:line="83" pos:column="17">this</name><op:operator pos:line="83" pos:column="21">.</op:operator><name pos:line="83" pos:column="22">pcPlayer</name><op:operator pos:line="83" pos:column="30">.</op:operator><name pos:line="83" pos:column="31">GameEngine</name></name> <op:operator pos:line="83" pos:column="42">=</op:operator> <name pos:line="83" pos:column="44">this</name></expr>;</expr_stmt>
+            }</block></function>
+        }</block></decl></decl_stmt>
+
+        <function><type><specifier pos:line="87" pos:column="9">public</specifier> <name pos:line="87" pos:column="16">bool</name></type> <name pos:line="87" pos:column="21">MakeMove</name><parameter_list pos:line="87" pos:column="29">(<param><decl><type><name pos:line="87" pos:column="30">Player</name></type> <name pos:line="87" pos:column="37">player</name></decl></param>, <param><decl><type><name pos:line="87" pos:column="45">GameMove</name></type> <name pos:line="87" pos:column="54">gameMove</name></decl></param>)</parameter_list>
+        <block pos:line="88" pos:column="9">{
+            <if pos:line="89" pos:column="13">if <condition pos:line="89" pos:column="16">(<expr><op:operator pos:line="89" pos:column="17">!</op:operator><call><name pos:line="89" pos:column="18">validateGameMove</name><argument_list pos:line="89" pos:column="34">(<argument><expr><name pos:line="89" pos:column="35">player</name></expr></argument>, <argument><expr><name pos:line="89" pos:column="43">gameMove</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="89" pos:column="53">
+            <block pos:line="90" pos:column="13">{
+                <return pos:line="91" pos:column="17">return <expr><lit:literal type="boolean" pos:line="91" pos:column="24">false</lit:literal></expr>;</return>
+            }</block></then></if>
+            <comment type="line" pos:line="93" pos:column="13">//Write the move in the GamePad</comment>
+            <decl_stmt><decl><type><name pos:line="94" pos:column="13">int</name></type> <name pos:line="94" pos:column="17">rowIndex</name></decl><op:operator pos:line="94" pos:column="25">,</op:operator> <decl><type ref="prev"/><name pos:line="94" pos:column="27">columnIndex</name></decl>;</decl_stmt>
+            <expr_stmt><expr><name pos:line="95" pos:column="13">rowIndex</name> <op:operator pos:line="95" pos:column="22">=</op:operator> <call><name pos:line="95" pos:column="24">getRowIndex</name><argument_list pos:line="95" pos:column="35">(<argument><expr><name><name pos:line="95" pos:column="36">gameMove</name><op:operator pos:line="95" pos:column="44">.</op:operator><name pos:line="95" pos:column="45">Position</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="96" pos:column="13">columnIndex</name> <op:operator pos:line="96" pos:column="25">=</op:operator> <call><name pos:line="96" pos:column="27">getColumnIndex</name><argument_list pos:line="96" pos:column="41">(<argument><expr><name><name pos:line="96" pos:column="42">gameMove</name><op:operator pos:line="96" pos:column="50">.</op:operator><name pos:line="96" pos:column="51">Position</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="97" pos:column="13">gamePad</name><op:operator pos:line="97" pos:column="20">.</op:operator><name pos:line="97" pos:column="21">SetValue</name></name><argument_list pos:line="97" pos:column="29">(<argument><expr><name><name pos:line="97" pos:column="30">gameMove</name><op:operator pos:line="97" pos:column="38">.</op:operator><name pos:line="97" pos:column="39">XOSymbol</name></name></expr></argument>, <argument><expr><name pos:line="97" pos:column="49">rowIndex</name></expr></argument>, <argument><expr><name pos:line="97" pos:column="59">columnIndex</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+            <comment type="line" pos:line="99" pos:column="13">//Switch the player turns</comment>
+            <expr_stmt><expr><call><name pos:line="100" pos:column="13">switchPlayers</name><argument_list pos:line="100" pos:column="26">()</argument_list></call></expr>;</expr_stmt>
+
+            <comment type="line" pos:line="102" pos:column="13">//Process Game status to see whether there is a Winner, or the game ends</comment>
+            <expr_stmt><expr><call><name pos:line="103" pos:column="13">processGame</name><argument_list pos:line="103" pos:column="24">()</argument_list></call></expr>;</expr_stmt>
+
+            <comment type="line" pos:line="105" pos:column="13">//Drive the PCPlayer to Play</comment>
+            <if pos:line="106" pos:column="13">if <condition pos:line="106" pos:column="16">(<expr><call><name><name pos:line="106" pos:column="17">currentPlayerTurn</name><op:operator pos:line="106" pos:column="34">.</op:operator><name pos:line="106" pos:column="35">Equals</name></name><argument_list pos:line="106" pos:column="41">(<argument><expr><name pos:line="106" pos:column="42">PCPlayer</name></expr></argument>)</argument_list></call> <op:operator pos:line="106" pos:column="52">&amp;&amp;</op:operator> <op:operator pos:line="106" pos:column="55">!</op:operator><name pos:line="106" pos:column="56">IsGameOver</name></expr>)</condition><then pos:line="106" pos:column="67">
+                <expr_stmt><expr><call><name><name pos:line="107" pos:column="17">pcPlayer</name><op:operator pos:line="107" pos:column="25">.</op:operator><name pos:line="107" pos:column="26">Play</name></name><argument_list pos:line="107" pos:column="30">()</argument_list></call></expr>;</expr_stmt></then></if>
+            <return pos:line="108" pos:column="13">return <expr><lit:literal type="boolean" pos:line="108" pos:column="20">true</lit:literal></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="111" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="112" pos:column="9">/// Rules to be validated</comment>
+        <comment type="line" pos:line="113" pos:column="9">/// 1- Game is not over AND</comment>
+        <comment type="line" pos:line="114" pos:column="9">/// 2- The player own this turn AND</comment>
+        <comment type="line" pos:line="115" pos:column="9">/// 3- The XOSymbol position is valid</comment>
+        <comment type="line" pos:line="116" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="117" pos:column="9">/// &lt;param name="player"&gt;&lt;/param&gt;</comment>
+        <comment type="line" pos:line="118" pos:column="9">/// &lt;param name="gameMove"&gt;&lt;/param&gt;</comment>
+        <comment type="line" pos:line="119" pos:column="9">/// &lt;returns&gt;&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="120" pos:column="9">private</specifier> <name pos:line="120" pos:column="17">bool</name></type> <name pos:line="120" pos:column="22">validateGameMove</name><parameter_list pos:line="120" pos:column="38">(<param><decl><type><name pos:line="120" pos:column="39">Player</name></type> <name pos:line="120" pos:column="46">player</name></decl></param>, <param><decl><type><name pos:line="120" pos:column="54">GameMove</name></type> <name pos:line="120" pos:column="63">gameMove</name></decl></param>)</parameter_list>
+        <block pos:line="121" pos:column="9">{
+            <return pos:line="122" pos:column="13">return <expr><op:operator pos:line="122" pos:column="20">(</op:operator><op:operator pos:line="122" pos:column="21">!</op:operator><name pos:line="122" pos:column="22">IsGameOver</name> <op:operator pos:line="122" pos:column="33">&amp;&amp;</op:operator> <call><name><name pos:line="122" pos:column="36">player</name><op:operator pos:line="122" pos:column="42">.</op:operator><name pos:line="122" pos:column="43">Equals</name></name><argument_list pos:line="122" pos:column="49">(<argument><expr><name pos:line="122" pos:column="50">currentPlayerTurn</name></expr></argument>)</argument_list></call> <op:operator pos:line="122" pos:column="69">&amp;&amp;</op:operator> <call><name pos:line="122" pos:column="72">validatePosition</name><argument_list pos:line="122" pos:column="88">(<argument><expr><name pos:line="122" pos:column="89">gameMove</name></expr></argument>)</argument_list></call><op:operator pos:line="122" pos:column="98">)</op:operator></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="125" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="126" pos:column="9">/// Rules:</comment>
+        <comment type="line" pos:line="127" pos:column="9">/// 1- The Position does not have already an Symbol</comment>
+        <comment type="line" pos:line="128" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="129" pos:column="9">/// &lt;param name="gameMove"&gt;&lt;/param&gt;</comment>
+        <comment type="line" pos:line="130" pos:column="9">/// &lt;returns&gt;&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="131" pos:column="9">private</specifier> <name pos:line="131" pos:column="17">bool</name></type> <name pos:line="131" pos:column="22">validatePosition</name><parameter_list pos:line="131" pos:column="38">(<param><decl><type><name pos:line="131" pos:column="39">GameMove</name></type> <name pos:line="131" pos:column="48">gameMove</name></decl></param>)</parameter_list>
+        <block pos:line="132" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="133" pos:column="13">int</name></type> <name pos:line="133" pos:column="17">rowIndex</name></decl><op:operator pos:line="133" pos:column="25">,</op:operator> <decl><type ref="prev"/><name pos:line="133" pos:column="27">columnIndex</name></decl>;</decl_stmt>
+            <expr_stmt><expr><name pos:line="134" pos:column="13">rowIndex</name> <op:operator pos:line="134" pos:column="22">=</op:operator> <call><name pos:line="134" pos:column="24">getRowIndex</name><argument_list pos:line="134" pos:column="35">(<argument><expr><name><name pos:line="134" pos:column="36">gameMove</name><op:operator pos:line="134" pos:column="44">.</op:operator><name pos:line="134" pos:column="45">Position</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="135" pos:column="13">columnIndex</name> <op:operator pos:line="135" pos:column="25">=</op:operator> <call><name pos:line="135" pos:column="27">getColumnIndex</name> <argument_list pos:line="135" pos:column="42">(<argument><expr><name><name pos:line="135" pos:column="43">gameMove</name><op:operator pos:line="135" pos:column="51">.</op:operator><name pos:line="135" pos:column="52">Position</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            <return pos:line="136" pos:column="13">return <expr><op:operator pos:line="136" pos:column="20">(</op:operator><name pos:line="136" pos:column="21">XOSymbol</name><op:operator pos:line="136" pos:column="29">)</op:operator><call><name><name pos:line="136" pos:column="30">gamePad</name><op:operator pos:line="136" pos:column="37">.</op:operator><name pos:line="136" pos:column="38">GetValue</name></name><argument_list pos:line="136" pos:column="46">(<argument><expr><name pos:line="136" pos:column="47">rowIndex</name></expr></argument>, <argument><expr><name pos:line="136" pos:column="57">columnIndex</name></expr></argument>)</argument_list></call> <op:operator pos:line="136" pos:column="70">==</op:operator> <name><name pos:line="136" pos:column="73">XOSymbol</name><op:operator pos:line="136" pos:column="81">.</op:operator><name pos:line="136" pos:column="82">EMPTY</name></name></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="139" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="140" pos:column="9">/// Returns the row index from the GameMove position</comment>
+        <comment type="line" pos:line="141" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="142" pos:column="9">/// &lt;param name="position"&gt;&lt;/param&gt;</comment>
+        <comment type="line" pos:line="143" pos:column="9">/// &lt;returns&gt;&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="144" pos:column="9">private</specifier> <name pos:line="144" pos:column="17">int</name></type> <name pos:line="144" pos:column="21">getRowIndex</name><parameter_list pos:line="144" pos:column="32">(<param><decl><type><name pos:line="144" pos:column="33">int</name></type> <name pos:line="144" pos:column="37">position</name></decl></param>)</parameter_list>
+        <block pos:line="145" pos:column="9">{
+            <return pos:line="146" pos:column="13">return <expr><name pos:line="146" pos:column="20">position</name> <op:operator pos:line="146" pos:column="29">/</op:operator> <lit:literal type="number" pos:line="146" pos:column="31">3</lit:literal></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="149" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="150" pos:column="9">/// Returns the column index from the GameMove position</comment>
+        <comment type="line" pos:line="151" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="152" pos:column="9">/// &lt;param name="position"&gt;&lt;/param&gt;</comment>
+        <comment type="line" pos:line="153" pos:column="9">/// &lt;returns&gt;&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="154" pos:column="9">private</specifier> <name pos:line="154" pos:column="17">int</name></type> <name pos:line="154" pos:column="21">getColumnIndex</name><parameter_list pos:line="154" pos:column="35">(<param><decl><type><name pos:line="154" pos:column="36">int</name></type> <name pos:line="154" pos:column="40">position</name></decl></param>)</parameter_list>
+        <block pos:line="155" pos:column="9">{
+            <return pos:line="156" pos:column="13">return <expr><name pos:line="156" pos:column="20">position</name> <op:operator pos:line="156" pos:column="29">%</op:operator> <lit:literal type="number" pos:line="156" pos:column="31">3</lit:literal></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="159" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="160" pos:column="9">/// Switch between players.</comment>
+        <comment type="line" pos:line="161" pos:column="9">/// For instnace if the Human played, it will give the turn to PC</comment>
+        <comment type="line" pos:line="162" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="163" pos:column="9">private</specifier> <name pos:line="163" pos:column="17">void</name></type> <name pos:line="163" pos:column="22">switchPlayers</name><parameter_list pos:line="163" pos:column="35">()</parameter_list>
+        <block pos:line="164" pos:column="9">{
+            <if pos:line="165" pos:column="13">if <condition pos:line="165" pos:column="16">(<expr><call><name><name pos:line="165" pos:column="17">currentPlayerTurn</name><op:operator pos:line="165" pos:column="34">.</op:operator><name pos:line="165" pos:column="35">Equals</name></name><argument_list pos:line="165" pos:column="41">(<argument><expr><name pos:line="165" pos:column="42">PCPlayer</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="165" pos:column="52">
+                <expr_stmt><expr><name pos:line="166" pos:column="17">currentPlayerTurn</name> <op:operator pos:line="166" pos:column="35">=</op:operator> <name pos:line="166" pos:column="37">HumanPlayer</name></expr>;</expr_stmt></then>
+            <else pos:line="167" pos:column="13">else
+                <expr_stmt><expr><name pos:line="168" pos:column="17">currentPlayerTurn</name> <op:operator pos:line="168" pos:column="35">=</op:operator> <name pos:line="168" pos:column="37">PCPlayer</name></expr>;</expr_stmt></else></if>
+        }</block></function>
+
+        <comment type="line" pos:line="171" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="172" pos:column="9">/// Check whether:</comment>
+        <comment type="line" pos:line="173" pos:column="9">/// 1- There is a winner OR</comment>
+        <comment type="line" pos:line="174" pos:column="9">/// 2- The game is finished with tie (no winner)</comment>
+        <comment type="line" pos:line="175" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="176" pos:column="9">private</specifier> <name pos:line="176" pos:column="17">void</name></type> <name pos:line="176" pos:column="22">processGame</name><parameter_list pos:line="176" pos:column="33">()</parameter_list>
+        <block pos:line="177" pos:column="9">{   
+            <comment type="line" pos:line="178" pos:column="13">//Check if there is a winner</comment>
+            <expr_stmt><expr><call><name pos:line="179" pos:column="13">checkRows</name><argument_list pos:line="179" pos:column="22">()</argument_list></call></expr>;</expr_stmt>
+            <if pos:line="180" pos:column="13">if <condition pos:line="180" pos:column="16">(<expr><name pos:line="180" pos:column="17">IsGameOver</name></expr>)</condition><then pos:line="180" pos:column="28">
+                <return pos:line="181" pos:column="17">return;</return></then></if>
+            <expr_stmt><expr><call><name pos:line="182" pos:column="13">checkColumns</name><argument_list pos:line="182" pos:column="25">()</argument_list></call></expr>;</expr_stmt>
+            <if pos:line="183" pos:column="13">if <condition pos:line="183" pos:column="16">(<expr><name pos:line="183" pos:column="17">IsGameOver</name></expr>)</condition><then pos:line="183" pos:column="28">
+                <return pos:line="184" pos:column="17">return;</return></then></if>
+            <expr_stmt><expr><call><name pos:line="185" pos:column="13">checkDiagonals</name><argument_list pos:line="185" pos:column="27">()</argument_list></call></expr>;</expr_stmt>
+            <if pos:line="186" pos:column="13">if <condition pos:line="186" pos:column="16">(<expr><name pos:line="186" pos:column="17">IsGameOver</name></expr>)</condition><then pos:line="186" pos:column="28">
+                <return pos:line="187" pos:column="17">return;</return></then></if>
+            <expr_stmt><expr><call><name pos:line="188" pos:column="13">checkGameOver</name><argument_list pos:line="188" pos:column="26">()</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="191" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="192" pos:column="9">/// Check if there is a winner based on Row Line </comment>
+        <comment type="line" pos:line="193" pos:column="9">/// Sample Data : </comment>
+        <comment type="line" pos:line="194" pos:column="9">/// X X X </comment>
+        <comment type="line" pos:line="195" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="196" pos:column="9">private</specifier> <name pos:line="196" pos:column="17">void</name></type> <name pos:line="196" pos:column="22">checkRows</name><parameter_list pos:line="196" pos:column="31">()</parameter_list>
+        <block pos:line="197" pos:column="9">{
+            <for pos:line="198" pos:column="13">for (<init><decl><type><name pos:line="198" pos:column="18">int</name></type> <name pos:line="198" pos:column="22">row</name> <init pos:line="198" pos:column="26">= <expr><lit:literal type="number" pos:line="198" pos:column="28">0</lit:literal></expr></init></decl>;</init> <condition><expr><name pos:line="198" pos:column="31">row</name> <op:operator pos:line="198" pos:column="35">&lt;</op:operator> <call><name><name pos:line="198" pos:column="37">gamePad</name><op:operator pos:line="198" pos:column="44">.</op:operator><name pos:line="198" pos:column="45">GetLength</name></name><argument_list pos:line="198" pos:column="54">(<argument><expr><lit:literal type="number" pos:line="198" pos:column="55">0</lit:literal></expr></argument>)</argument_list></call></expr>;</condition> <incr><expr><name pos:line="198" pos:column="59">row</name><op:operator pos:line="198" pos:column="62">++</op:operator></expr></incr>)
+            <block pos:line="199" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="200" pos:column="17">XOSymbol</name></type> <name pos:line="200" pos:column="26">cellXOSymbol</name> <init pos:line="200" pos:column="39">= <expr><op:operator pos:line="200" pos:column="41">(</op:operator><name pos:line="200" pos:column="42">XOSymbol</name><op:operator pos:line="200" pos:column="50">)</op:operator><call><name><name pos:line="200" pos:column="51">gamePad</name><op:operator pos:line="200" pos:column="58">.</op:operator><name pos:line="200" pos:column="59">GetValue</name></name><argument_list pos:line="200" pos:column="67">(<argument><expr><name pos:line="200" pos:column="68">row</name></expr></argument>, <argument><expr><lit:literal type="number" pos:line="200" pos:column="73">0</lit:literal></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt> <comment type="line" pos:line="200" pos:column="77">//Get first element of the current Row</comment>
+                <decl_stmt><decl><type><name pos:line="201" pos:column="17">bool</name></type> <name pos:line="201" pos:column="22">lineMatched</name> <init pos:line="201" pos:column="34">= <expr><name pos:line="201" pos:column="36">cellXOSymbol</name> <op:operator pos:line="201" pos:column="49">!=</op:operator> <name><name pos:line="201" pos:column="52">XOSymbol</name><op:operator pos:line="201" pos:column="60">.</op:operator><name pos:line="201" pos:column="61">EMPTY</name></name></expr></init></decl>;</decl_stmt> <comment type="line" pos:line="201" pos:column="68">//Ensure that it is not empty cell</comment>
+                <for pos:line="202" pos:column="17">for (<init><decl><type><name pos:line="202" pos:column="22">int</name></type> <name pos:line="202" pos:column="26">column</name> <init pos:line="202" pos:column="33">= <expr><lit:literal type="number" pos:line="202" pos:column="35">0</lit:literal></expr></init></decl>;</init> <condition><expr><name pos:line="202" pos:column="38">column</name> <op:operator pos:line="202" pos:column="45">&lt;</op:operator> <call><name><name pos:line="202" pos:column="47">gamePad</name><op:operator pos:line="202" pos:column="54">.</op:operator><name pos:line="202" pos:column="55">GetLength</name></name><argument_list pos:line="202" pos:column="64">(<argument><expr><lit:literal type="number" pos:line="202" pos:column="65">1</lit:literal></expr></argument>)</argument_list></call></expr>;</condition> <incr><expr><name pos:line="202" pos:column="69">column</name><op:operator pos:line="202" pos:column="75">++</op:operator></expr></incr>)
+                <block pos:line="203" pos:column="17">{
+                    <expr_stmt><expr><name pos:line="204" pos:column="21">lineMatched</name> <op:operator pos:line="204" pos:column="33">&amp;=</op:operator> <op:operator pos:line="204" pos:column="36">(</op:operator><name pos:line="204" pos:column="37">cellXOSymbol</name> <op:operator pos:line="204" pos:column="50">==</op:operator> <op:operator pos:line="204" pos:column="53">(</op:operator><name pos:line="204" pos:column="54">XOSymbol</name><op:operator pos:line="204" pos:column="62">)</op:operator><call><name><name pos:line="204" pos:column="63">gamePad</name><op:operator pos:line="204" pos:column="70">.</op:operator><name pos:line="204" pos:column="71">GetValue</name></name><argument_list pos:line="204" pos:column="79">(<argument><expr><name pos:line="204" pos:column="80">row</name></expr></argument>, <argument><expr><name pos:line="204" pos:column="85">column</name></expr></argument>)</argument_list></call><op:operator pos:line="204" pos:column="92">)</op:operator></expr>;</expr_stmt>
+                    <if pos:line="205" pos:column="21">if <condition pos:line="205" pos:column="24">(<expr><op:operator pos:line="205" pos:column="25">!</op:operator><name pos:line="205" pos:column="26">lineMatched</name></expr>)</condition><then pos:line="205" pos:column="38">
+                        <break pos:line="206" pos:column="25">break;</break></then></if>
+                }</block></for>
+                <if pos:line="208" pos:column="17">if <condition pos:line="208" pos:column="20">(<expr><name pos:line="208" pos:column="21">lineMatched</name></expr>)</condition><then pos:line="208" pos:column="33">
+                    <expr_stmt><expr><call><name pos:line="209" pos:column="21">endGame</name><argument_list pos:line="209" pos:column="28">(<argument><expr><name pos:line="209" pos:column="29">cellXOSymbol</name></expr></argument>)</argument_list></call></expr>;</expr_stmt></then></if>
+            }</block></for>
+        }</block></function>
+
+        <comment type="line" pos:line="213" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="214" pos:column="9">/// Check if there is a winner based on Column Line </comment>
+        <comment type="line" pos:line="215" pos:column="9">/// Sample Data : </comment>
+        <comment type="line" pos:line="216" pos:column="9">/// X</comment>
+        <comment type="line" pos:line="217" pos:column="9">/// X</comment>
+        <comment type="line" pos:line="218" pos:column="9">/// X</comment>
+        <comment type="line" pos:line="219" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="220" pos:column="9">private</specifier> <name pos:line="220" pos:column="17">void</name></type> <name pos:line="220" pos:column="22">checkColumns</name><parameter_list pos:line="220" pos:column="34">()</parameter_list>
+        <block pos:line="221" pos:column="9">{
+            <for pos:line="222" pos:column="13">for (<init><decl><type><name pos:line="222" pos:column="18">int</name></type> <name pos:line="222" pos:column="22">column</name> <init pos:line="222" pos:column="29">= <expr><lit:literal type="number" pos:line="222" pos:column="31">0</lit:literal></expr></init></decl>;</init> <condition><expr><name pos:line="222" pos:column="34">column</name> <op:operator pos:line="222" pos:column="41">&lt;</op:operator> <call><name><name pos:line="222" pos:column="43">gamePad</name><op:operator pos:line="222" pos:column="50">.</op:operator><name pos:line="222" pos:column="51">GetLength</name></name><argument_list pos:line="222" pos:column="60">(<argument><expr><lit:literal type="number" pos:line="222" pos:column="61">0</lit:literal></expr></argument>)</argument_list></call></expr>;</condition> <incr><expr><name pos:line="222" pos:column="65">column</name><op:operator pos:line="222" pos:column="71">++</op:operator></expr></incr>)
+            <block pos:line="223" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="224" pos:column="17">XOSymbol</name></type> <name pos:line="224" pos:column="26">cellXOSymbol</name> <init pos:line="224" pos:column="39">= <expr><op:operator pos:line="224" pos:column="41">(</op:operator><name pos:line="224" pos:column="42">XOSymbol</name><op:operator pos:line="224" pos:column="50">)</op:operator><call><name><name pos:line="224" pos:column="51">gamePad</name><op:operator pos:line="224" pos:column="58">.</op:operator><name pos:line="224" pos:column="59">GetValue</name></name><argument_list pos:line="224" pos:column="67">(<argument><expr><lit:literal type="number" pos:line="224" pos:column="68">0</lit:literal></expr></argument>, <argument><expr><name pos:line="224" pos:column="71">column</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt> <comment type="line" pos:line="224" pos:column="80">//Get first element of the current Column</comment>
+                <decl_stmt><decl><type><name pos:line="225" pos:column="17">bool</name></type> <name pos:line="225" pos:column="22">lineMatched</name> <init pos:line="225" pos:column="34">= <expr><name pos:line="225" pos:column="36">cellXOSymbol</name> <op:operator pos:line="225" pos:column="49">!=</op:operator> <name><name pos:line="225" pos:column="52">XOSymbol</name><op:operator pos:line="225" pos:column="60">.</op:operator><name pos:line="225" pos:column="61">EMPTY</name></name></expr></init></decl>;</decl_stmt> <comment type="line" pos:line="225" pos:column="68">//Ensure that it is not empty cell</comment>
+                <for pos:line="226" pos:column="17">for (<init><decl><type><name pos:line="226" pos:column="22">int</name></type> <name pos:line="226" pos:column="26">row</name> <init pos:line="226" pos:column="30">= <expr><lit:literal type="number" pos:line="226" pos:column="32">0</lit:literal></expr></init></decl>;</init> <condition><expr><name pos:line="226" pos:column="35">row</name> <op:operator pos:line="226" pos:column="39">&lt;</op:operator> <call><name><name pos:line="226" pos:column="41">gamePad</name><op:operator pos:line="226" pos:column="48">.</op:operator><name pos:line="226" pos:column="49">GetLength</name></name><argument_list pos:line="226" pos:column="58">(<argument><expr><lit:literal type="number" pos:line="226" pos:column="59">1</lit:literal></expr></argument>)</argument_list></call></expr>;</condition> <incr><expr><name pos:line="226" pos:column="63">row</name><op:operator pos:line="226" pos:column="66">++</op:operator></expr></incr>)
+                <block pos:line="227" pos:column="17">{
+                    <expr_stmt><expr><name pos:line="228" pos:column="21">lineMatched</name> <op:operator pos:line="228" pos:column="33">&amp;=</op:operator> <op:operator pos:line="228" pos:column="36">(</op:operator><name pos:line="228" pos:column="37">cellXOSymbol</name> <op:operator pos:line="228" pos:column="50">==</op:operator> <op:operator pos:line="228" pos:column="53">(</op:operator><name pos:line="228" pos:column="54">XOSymbol</name><op:operator pos:line="228" pos:column="62">)</op:operator><call><name><name pos:line="228" pos:column="63">gamePad</name><op:operator pos:line="228" pos:column="70">.</op:operator><name pos:line="228" pos:column="71">GetValue</name></name><argument_list pos:line="228" pos:column="79">(<argument><expr><name pos:line="228" pos:column="80">row</name></expr></argument>, <argument><expr><name pos:line="228" pos:column="85">column</name></expr></argument>)</argument_list></call><op:operator pos:line="228" pos:column="92">)</op:operator></expr>;</expr_stmt>
+                    <if pos:line="229" pos:column="21">if <condition pos:line="229" pos:column="24">(<expr><op:operator pos:line="229" pos:column="25">!</op:operator><name pos:line="229" pos:column="26">lineMatched</name></expr>)</condition><then pos:line="229" pos:column="38">
+                        <break pos:line="230" pos:column="25">break;</break></then></if>
+                }</block></for>
+                <if pos:line="232" pos:column="17">if <condition pos:line="232" pos:column="20">(<expr><name pos:line="232" pos:column="21">lineMatched</name></expr>)</condition><then pos:line="232" pos:column="33">
+                    <expr_stmt><expr><call><name pos:line="233" pos:column="21">endGame</name><argument_list pos:line="233" pos:column="28">(<argument><expr><name pos:line="233" pos:column="29">cellXOSymbol</name></expr></argument>)</argument_list></call></expr>;</expr_stmt></then></if>
+            }</block></for>
+        }</block></function>
+
+        <comment type="line" pos:line="237" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="238" pos:column="9">/// /// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="239" pos:column="9">/// Check if there is a winner based on Diagonal Line </comment>
+        <comment type="line" pos:line="240" pos:column="9">/// Sample Data : </comment>
+        <comment type="line" pos:line="241" pos:column="9">/// X </comment>
+        <comment type="line" pos:line="242" pos:column="9">///   X </comment>
+        <comment type="line" pos:line="243" pos:column="9">///     X </comment>
+        <comment type="line" pos:line="244" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="245" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="246" pos:column="9">private</specifier> <name pos:line="246" pos:column="17">void</name></type> <name pos:line="246" pos:column="22">checkDiagonals</name><parameter_list pos:line="246" pos:column="36">()</parameter_list>
+        <block pos:line="247" pos:column="9">{
+            <for pos:line="248" pos:column="13">for (<init><decl><type><name pos:line="248" pos:column="18">int</name></type> <name pos:line="248" pos:column="22">diagonal</name> <init pos:line="248" pos:column="31">= <expr><lit:literal type="number" pos:line="248" pos:column="33">0</lit:literal></expr></init></decl>;</init> <condition><expr><name pos:line="248" pos:column="36">diagonal</name> <op:operator pos:line="248" pos:column="45">&lt;</op:operator> <lit:literal type="number" pos:line="248" pos:column="47">2</lit:literal></expr>;</condition> <incr><expr><name pos:line="248" pos:column="50">diagonal</name><op:operator pos:line="248" pos:column="58">++</op:operator></expr></incr>)
+            <block pos:line="249" pos:column="13">{
+                <decl_stmt><decl><type><name pos:line="250" pos:column="17">XOSymbol</name></type> <name pos:line="250" pos:column="26">cellXOSymbol</name> <init pos:line="250" pos:column="39">= <expr><op:operator pos:line="250" pos:column="41">(</op:operator><name pos:line="250" pos:column="42">XOSymbol</name><op:operator pos:line="250" pos:column="50">)</op:operator><call><name><name pos:line="250" pos:column="51">gamePad</name><op:operator pos:line="250" pos:column="58">.</op:operator><name pos:line="250" pos:column="59">GetValue</name></name><argument_list pos:line="250" pos:column="67">(<argument><expr><name pos:line="250" pos:column="68">diagonal</name></expr></argument>, <argument><expr><name pos:line="250" pos:column="78">diagonal</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt> <comment type="line" pos:line="250" pos:column="89">//Get an element of the current Diagonal</comment>
+                <decl_stmt><decl><type><name pos:line="251" pos:column="17">bool</name></type> <name pos:line="251" pos:column="22">lineMatched</name> <init pos:line="251" pos:column="34">= <expr><name pos:line="251" pos:column="36">cellXOSymbol</name> <op:operator pos:line="251" pos:column="49">!=</op:operator> <name><name pos:line="251" pos:column="52">XOSymbol</name><op:operator pos:line="251" pos:column="60">.</op:operator><name pos:line="251" pos:column="61">EMPTY</name></name></expr></init></decl>;</decl_stmt> <comment type="line" pos:line="251" pos:column="68">//Ensure that it is not empty cell</comment>
+                <for pos:line="252" pos:column="17">for (<init><decl><type><name pos:line="252" pos:column="22">int</name></type> <name pos:line="252" pos:column="26">row</name> <init pos:line="252" pos:column="30">= <expr><lit:literal type="number" pos:line="252" pos:column="32">0</lit:literal></expr></init></decl>;</init> <condition><expr><name pos:line="252" pos:column="35">row</name> <op:operator pos:line="252" pos:column="39">&lt;</op:operator> <call><name><name pos:line="252" pos:column="41">gamePad</name><op:operator pos:line="252" pos:column="48">.</op:operator><name pos:line="252" pos:column="49">GetLength</name></name><argument_list pos:line="252" pos:column="58">(<argument><expr><lit:literal type="number" pos:line="252" pos:column="59">0</lit:literal></expr></argument>)</argument_list></call></expr>;</condition> <incr><expr><name pos:line="252" pos:column="63">row</name><op:operator pos:line="252" pos:column="66">++</op:operator></expr></incr>)
+                <block pos:line="253" pos:column="17">{
+                    <decl_stmt><decl><type><name pos:line="254" pos:column="21">int</name></type> <name pos:line="254" pos:column="25">column</name> <init pos:line="254" pos:column="32">= <expr><lit:literal type="number" pos:line="254" pos:column="34">0</lit:literal></expr></init></decl>;</decl_stmt>
+                    
+                    <switch pos:line="256" pos:column="21">switch <condition pos:line="256" pos:column="28">(<expr><name pos:line="256" pos:column="29">diagonal</name></expr>)</condition>
+                    <block pos:line="257" pos:column="21">{
+                        <case pos:line="258" pos:column="25">case  <expr><lit:literal type="number" pos:line="258" pos:column="31">0</lit:literal></expr>:
+                            <expr_stmt><expr><name pos:line="259" pos:column="29">column</name> <op:operator pos:line="259" pos:column="36">=</op:operator> <name pos:line="259" pos:column="38">row</name></expr>;</expr_stmt>
+                            <break pos:line="260" pos:column="29">break;</break>
+                        </case><case pos:line="261" pos:column="25">case <expr><lit:literal type="number" pos:line="261" pos:column="30">1</lit:literal></expr>:
+                            <expr_stmt><expr><name pos:line="262" pos:column="29">column</name> <op:operator pos:line="262" pos:column="36">=</op:operator> <op:operator pos:line="262" pos:column="38">(</op:operator><call><name><name pos:line="262" pos:column="39">gamePad</name><op:operator pos:line="262" pos:column="46">.</op:operator><name pos:line="262" pos:column="47">GetLength</name></name><argument_list pos:line="262" pos:column="56">(<argument><expr><lit:literal type="number" pos:line="262" pos:column="57">0</lit:literal></expr></argument>)</argument_list></call> <op:operator pos:line="262" pos:column="60">-</op:operator> <lit:literal type="number" pos:line="262" pos:column="62">1</lit:literal><op:operator pos:line="262" pos:column="63">)</op:operator> <op:operator pos:line="262" pos:column="65">-</op:operator> <name pos:line="262" pos:column="67">row</name></expr>;</expr_stmt>
+                            <break pos:line="263" pos:column="29">break;</break>
+                    </case>}</block></switch>
+
+                    <expr_stmt><expr><name pos:line="266" pos:column="21">lineMatched</name> <op:operator pos:line="266" pos:column="33">&amp;=</op:operator> <op:operator pos:line="266" pos:column="36">(</op:operator><name pos:line="266" pos:column="37">cellXOSymbol</name> <op:operator pos:line="266" pos:column="50">==</op:operator> <op:operator pos:line="266" pos:column="53">(</op:operator><name pos:line="266" pos:column="54">XOSymbol</name><op:operator pos:line="266" pos:column="62">)</op:operator><call><name><name pos:line="266" pos:column="63">gamePad</name><op:operator pos:line="266" pos:column="70">.</op:operator><name pos:line="266" pos:column="71">GetValue</name></name><argument_list pos:line="266" pos:column="79">(<argument><expr><name pos:line="266" pos:column="80">row</name></expr></argument>, <argument><expr><name pos:line="266" pos:column="85">column</name></expr></argument>)</argument_list></call><op:operator pos:line="266" pos:column="92">)</op:operator></expr>;</expr_stmt>
+                    <if pos:line="267" pos:column="21">if <condition pos:line="267" pos:column="24">(<expr><op:operator pos:line="267" pos:column="25">!</op:operator><name pos:line="267" pos:column="26">lineMatched</name></expr>)</condition><then pos:line="267" pos:column="38">
+                        <break pos:line="268" pos:column="25">break;</break></then></if>
+                }</block></for>
+                <if pos:line="270" pos:column="17">if <condition pos:line="270" pos:column="20">(<expr><name pos:line="270" pos:column="21">lineMatched</name></expr>)</condition><then pos:line="270" pos:column="33">
+                    <expr_stmt><expr><call><name pos:line="271" pos:column="21">endGame</name><argument_list pos:line="271" pos:column="28">(<argument><expr><name pos:line="271" pos:column="29">cellXOSymbol</name></expr></argument>)</argument_list></call></expr>;</expr_stmt></then></if>
+            }</block></for>
+        }</block></function>
+
+        <comment type="line" pos:line="275" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="276" pos:column="9">/// Check if the game is over with no winner , because the Game Pad if full</comment>
+        <comment type="line" pos:line="277" pos:column="9">/// Sample Data : </comment>
+        <comment type="line" pos:line="278" pos:column="9">/// X O X </comment>
+        <comment type="line" pos:line="279" pos:column="9">/// X O O </comment>
+        <comment type="line" pos:line="280" pos:column="9">/// O X O</comment>
+        <comment type="line" pos:line="281" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="282" pos:column="9">private</specifier> <name pos:line="282" pos:column="17">void</name></type> <name pos:line="282" pos:column="22">checkGameOver</name><parameter_list pos:line="282" pos:column="35">()</parameter_list>
+        <block pos:line="283" pos:column="9">{
+            <decl_stmt><decl><type><name pos:line="284" pos:column="13">bool</name></type> <name pos:line="284" pos:column="18">noEmptyCells</name> <init pos:line="284" pos:column="31">= <expr><lit:literal type="boolean" pos:line="284" pos:column="33">true</lit:literal></expr></init></decl>;</decl_stmt> <comment type="line" pos:line="284" pos:column="39">//Assume there is no empty cells</comment>
+            <for pos:line="285" pos:column="13">for (<init><decl><type><name pos:line="285" pos:column="18">int</name></type> <name pos:line="285" pos:column="22">row</name> <init pos:line="285" pos:column="26">= <expr><lit:literal type="number" pos:line="285" pos:column="28">0</lit:literal></expr></init></decl>;</init> <condition><expr><name pos:line="285" pos:column="31">row</name> <op:operator pos:line="285" pos:column="35">&lt;</op:operator> <call><name><name pos:line="285" pos:column="37">gamePad</name><op:operator pos:line="285" pos:column="44">.</op:operator><name pos:line="285" pos:column="45">GetLength</name></name><argument_list pos:line="285" pos:column="54">(<argument><expr><lit:literal type="number" pos:line="285" pos:column="55">0</lit:literal></expr></argument>)</argument_list></call></expr>;</condition> <incr><expr><name pos:line="285" pos:column="59">row</name><op:operator pos:line="285" pos:column="62">++</op:operator></expr></incr>)
+            <block pos:line="286" pos:column="13">{
+                <for pos:line="287" pos:column="17">for (<init><decl><type><name pos:line="287" pos:column="22">int</name></type> <name pos:line="287" pos:column="26">column</name> <init pos:line="287" pos:column="33">= <expr><lit:literal type="number" pos:line="287" pos:column="35">0</lit:literal></expr></init></decl>;</init> <condition><expr><name pos:line="287" pos:column="38">column</name> <op:operator pos:line="287" pos:column="45">&lt;</op:operator> <call><name><name pos:line="287" pos:column="47">gamePad</name><op:operator pos:line="287" pos:column="54">.</op:operator><name pos:line="287" pos:column="55">GetLength</name></name><argument_list pos:line="287" pos:column="64">(<argument><expr><lit:literal type="number" pos:line="287" pos:column="65">1</lit:literal></expr></argument>)</argument_list></call></expr>;</condition> <incr><expr><name pos:line="287" pos:column="69">column</name><op:operator pos:line="287" pos:column="75">++</op:operator></expr></incr>)
+                <block pos:line="288" pos:column="17">{
+                    <expr_stmt><expr><name pos:line="289" pos:column="21">noEmptyCells</name> <op:operator pos:line="289" pos:column="34">&amp;=</op:operator> <op:operator pos:line="289" pos:column="37">(</op:operator><op:operator pos:line="289" pos:column="38">(</op:operator><name pos:line="289" pos:column="39">XOSymbol</name><op:operator pos:line="289" pos:column="47">)</op:operator><call><name><name pos:line="289" pos:column="48">gamePad</name><op:operator pos:line="289" pos:column="55">.</op:operator><name pos:line="289" pos:column="56">GetValue</name></name><argument_list pos:line="289" pos:column="64">(<argument><expr><name pos:line="289" pos:column="65">row</name></expr></argument>, <argument><expr><name pos:line="289" pos:column="70">column</name></expr></argument>)</argument_list></call> <op:operator pos:line="289" pos:column="78">!=</op:operator> <name><name pos:line="289" pos:column="81">XOSymbol</name><op:operator pos:line="289" pos:column="89">.</op:operator><name pos:line="289" pos:column="90">EMPTY</name></name><op:operator pos:line="289" pos:column="95">)</op:operator></expr>;</expr_stmt>
+                }</block></for>
+            }</block></for>
+            <if pos:line="292" pos:column="13">if <condition pos:line="292" pos:column="16">(<expr><name pos:line="292" pos:column="17">noEmptyCells</name></expr>)</condition><then pos:line="292" pos:column="30">
+                <expr_stmt><expr><call><name pos:line="293" pos:column="17">endGame</name><argument_list pos:line="293" pos:column="24">(<argument><expr><name><name pos:line="293" pos:column="25">XOSymbol</name><op:operator pos:line="293" pos:column="33">.</op:operator><name pos:line="293" pos:column="34">EMPTY</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt></then></if>
+        }</block></function>
+
+        <comment type="line" pos:line="296" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="297" pos:column="9">/// 1- Set the gameover flag</comment>
+        <comment type="line" pos:line="298" pos:column="9">/// 2- Find the winner</comment>
+        <comment type="line" pos:line="299" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="300" pos:column="9">/// &lt;param name="winnerXOSymbol"&gt;&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="301" pos:column="9">private</specifier> <name pos:line="301" pos:column="17">void</name></type> <name pos:line="301" pos:column="22">endGame</name><parameter_list pos:line="301" pos:column="29">( <param><decl><type><name pos:line="301" pos:column="31">XOSymbol</name></type> <name pos:line="301" pos:column="40">winnerXOSymbol</name></decl></param>)</parameter_list>
+        <block pos:line="302" pos:column="9">{
+            <expr_stmt><expr><name pos:line="303" pos:column="13">isGameOver</name> <op:operator pos:line="303" pos:column="24">=</op:operator> <lit:literal type="boolean" pos:line="303" pos:column="26">true</lit:literal></expr>;</expr_stmt>
+            <if pos:line="304" pos:column="13">if <condition pos:line="304" pos:column="16">(<expr><name><name pos:line="304" pos:column="17">humanPlayer</name><op:operator pos:line="304" pos:column="28">.</op:operator><name pos:line="304" pos:column="29">XOSymbol</name></name> <op:operator pos:line="304" pos:column="38">==</op:operator> <name pos:line="304" pos:column="41">winnerXOSymbol</name></expr>)</condition><then pos:line="304" pos:column="56">
+            <block pos:line="305" pos:column="13">{
+                <expr_stmt><expr><name pos:line="306" pos:column="17">winnerPlayer</name> <op:operator pos:line="306" pos:column="30">=</op:operator> <name pos:line="306" pos:column="32">humanPlayer</name></expr>;</expr_stmt>
+                <return pos:line="307" pos:column="17">return;</return>
+            }</block></then></if>
+            <if pos:line="309" pos:column="13">if <condition pos:line="309" pos:column="16">(<expr><name><name pos:line="309" pos:column="17">pcPlayer</name><op:operator pos:line="309" pos:column="25">.</op:operator><name pos:line="309" pos:column="26">XOSymbol</name></name> <op:operator pos:line="309" pos:column="35">==</op:operator> <name pos:line="309" pos:column="38">winnerXOSymbol</name></expr>)</condition><then pos:line="309" pos:column="53">
+            <block pos:line="310" pos:column="13">{
+                <expr_stmt><expr><name pos:line="311" pos:column="17">winnerPlayer</name> <op:operator pos:line="311" pos:column="30">=</op:operator> <name pos:line="311" pos:column="32">pcPlayer</name></expr>;</expr_stmt>
+                <return pos:line="312" pos:column="17">return;</return>
+            }</block></then></if>
+        }</block></function>
+    }</block></class>
+}</block></namespace>
+</unit>

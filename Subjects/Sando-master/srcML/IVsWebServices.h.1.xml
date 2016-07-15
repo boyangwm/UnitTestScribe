@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\IVsWebServices.h" pos:tabs="8" pos:line="1" pos:column="1">
+
+<comment type="block" pos:line="3" pos:column="1">/* this ALWAYS GENERATED file contains the definitions for the interfaces */</comment>
+
+
+ <comment type="block" pos:line="6" pos:column="2">/* File created by MIDL compiler version 7.00.0499 */</comment>
+<comment type="block" pos:line="7" pos:column="1">/* Compiler settings for IVsWebServices.idl:
+    Oicf, W0, Zp8, env=Win32 (32b run)
+    protocol : dce , ms_ext, c_ext, robust
+    error checks: allocation ref bounds_check enum stub_data 
+    VC __declspec() decoration level: 
+         __declspec(uuid()), __declspec(selectany), __declspec(novtable)
+         DECLSPEC_UUID(), MIDL_INTERFACE()
+*/</comment>
+<comment type="line" pos:line="15" pos:column="1">//@@MIDL_FILE_HEADING(  )</comment>
+
+<cpp:pragma pos:line="17" pos:column="1">#<cpp:directive pos:line="17" pos:column="2">pragma</cpp:directive> warning( disable: 4049 )</cpp:pragma>  <comment type="block" pos:line="17" pos:column="35">/* more than 64k source lines */</comment>
+
+
+<comment type="block" pos:line="20" pos:column="1">/* verify that the &lt;rpcndr.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="21" pos:column="1">#<cpp:directive pos:line="21" pos:column="2">ifndef</cpp:directive> <name pos:line="21" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="22" pos:column="1">#<cpp:directive pos:line="22" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="22" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:macro> <cpp:value pos:line="22" pos:column="39">475</cpp:value></cpp:define>
+<cpp:endif pos:line="23" pos:column="1">#<cpp:directive pos:line="23" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="25" pos:column="1">/* verify that the &lt;rpcsal.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="26" pos:column="1">#<cpp:directive pos:line="26" pos:column="2">ifndef</cpp:directive> <name pos:line="26" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="27" pos:column="1">#<cpp:directive pos:line="27" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="27" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:macro> <cpp:value pos:line="27" pos:column="39">100</cpp:value></cpp:define>
+<cpp:endif pos:line="28" pos:column="1">#<cpp:directive pos:line="28" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:include pos:line="30" pos:column="1">#<cpp:directive pos:line="30" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="30" pos:column="10">"rpc.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="31" pos:column="1">#<cpp:directive pos:line="31" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="31" pos:column="10">"rpcndr.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifndef pos:line="33" pos:column="1">#<cpp:directive pos:line="33" pos:column="2">ifndef</cpp:directive> <name pos:line="33" pos:column="9">__RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:error pos:line="34" pos:column="1">#<cpp:directive pos:line="34" pos:column="2">error</cpp:directive> this stub requires an updated version of &lt;rpcndr.h&gt;</cpp:error>
+<cpp:endif pos:line="35" pos:column="1">#<cpp:directive pos:line="35" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="35" pos:column="8">// __RPCNDR_H_VERSION__</comment>
+
+
+<cpp:ifndef pos:line="38" pos:column="1">#<cpp:directive pos:line="38" pos:column="2">ifndef</cpp:directive> <name pos:line="38" pos:column="9">__IVsWebServices_h__</name></cpp:ifndef>
+<cpp:define pos:line="39" pos:column="1">#<cpp:directive pos:line="39" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="39" pos:column="9">__IVsWebServices_h__</name></cpp:macro></cpp:define>
+
+<cpp:if pos:line="41" pos:column="1">#<cpp:directive pos:line="41" pos:column="2">if</cpp:directive> <expr><call><name pos:line="41" pos:column="5">defined</name><argument_list pos:line="41" pos:column="12">(<argument><expr><name pos:line="41" pos:column="13">_MSC_VER</name></expr></argument>)</argument_list></call> <op:operator pos:line="41" pos:column="23">&amp;&amp;</op:operator> <op:operator pos:line="41" pos:column="26">(</op:operator><name pos:line="41" pos:column="27">_MSC_VER</name> <op:operator pos:line="41" pos:column="36">&gt;=</op:operator> <lit:literal type="number" pos:line="41" pos:column="39">1020</lit:literal><op:operator pos:line="41" pos:column="43">)</op:operator></expr></cpp:if>
+<cpp:pragma pos:line="42" pos:column="1">#<cpp:directive pos:line="42" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+<cpp:endif pos:line="43" pos:column="1">#<cpp:directive pos:line="43" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="45" pos:column="1">/* Forward Declarations */</comment> 
+
+<cpp:ifndef pos:line="47" pos:column="1">#<cpp:directive pos:line="47" pos:column="2">ifndef</cpp:directive> <name pos:line="47" pos:column="9">__IVsWebServiceProvider_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="48" pos:column="1">#<cpp:directive pos:line="48" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="48" pos:column="9">__IVsWebServiceProvider_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="49" pos:column="1">typedef <type><name pos:line="49" pos:column="9">interface</name> <name pos:line="49" pos:column="19">IVsWebServiceProvider</name></type> <name pos:line="49" pos:column="41">IVsWebServiceProvider</name>;</typedef>
+<cpp:endif pos:line="50" pos:column="1">#<cpp:directive pos:line="50" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="50" pos:column="9">/* __IVsWebServiceProvider_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="53" pos:column="1">#<cpp:directive pos:line="53" pos:column="2">ifndef</cpp:directive> <name pos:line="53" pos:column="9">__IVsWebService_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="54" pos:column="1">#<cpp:directive pos:line="54" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="54" pos:column="9">__IVsWebService_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="55" pos:column="1">typedef <type><name pos:line="55" pos:column="9">interface</name> <name pos:line="55" pos:column="19">IVsWebService</name></type> <name pos:line="55" pos:column="33">IVsWebService</name>;</typedef>
+<cpp:endif pos:line="56" pos:column="1">#<cpp:directive pos:line="56" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="56" pos:column="9">/* __IVsWebService_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="59" pos:column="1">#<cpp:directive pos:line="59" pos:column="2">ifndef</cpp:directive> <name pos:line="59" pos:column="9">__IVsWebServiceEvents_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="60" pos:column="1">#<cpp:directive pos:line="60" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="60" pos:column="9">__IVsWebServiceEvents_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="61" pos:column="1">typedef <type><name pos:line="61" pos:column="9">interface</name> <name pos:line="61" pos:column="19">IVsWebServiceEvents</name></type> <name pos:line="61" pos:column="39">IVsWebServiceEvents</name>;</typedef>
+<cpp:endif pos:line="62" pos:column="1">#<cpp:directive pos:line="62" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="62" pos:column="9">/* __IVsWebServiceEvents_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="65" pos:column="1">#<cpp:directive pos:line="65" pos:column="2">ifndef</cpp:directive> <name pos:line="65" pos:column="9">__IVsWebServiceProviderEvents_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="66" pos:column="1">#<cpp:directive pos:line="66" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="66" pos:column="9">__IVsWebServiceProviderEvents_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="67" pos:column="1">typedef <type><name pos:line="67" pos:column="9">interface</name> <name pos:line="67" pos:column="19">IVsWebServiceProviderEvents</name></type> <name pos:line="67" pos:column="47">IVsWebServiceProviderEvents</name>;</typedef>
+<cpp:endif pos:line="68" pos:column="1">#<cpp:directive pos:line="68" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="68" pos:column="9">/* __IVsWebServiceProviderEvents_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="71" pos:column="1">#<cpp:directive pos:line="71" pos:column="2">ifndef</cpp:directive> <name pos:line="71" pos:column="9">__IEnumWebServices_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="72" pos:column="1">#<cpp:directive pos:line="72" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="72" pos:column="9">__IEnumWebServices_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="73" pos:column="1">typedef <type><name pos:line="73" pos:column="9">interface</name> <name pos:line="73" pos:column="19">IEnumWebServices</name></type> <name pos:line="73" pos:column="36">IEnumWebServices</name>;</typedef>
+<cpp:endif pos:line="74" pos:column="1">#<cpp:directive pos:line="74" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="74" pos:column="9">/* __IEnumWebServices_FWD_DEFINED__ */</comment>
+
+
+<comment type="block" pos:line="77" pos:column="1">/* header files for imported files */</comment>
+<cpp:include pos:line="78" pos:column="1">#<cpp:directive pos:line="78" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="78" pos:column="10">"oaidl.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="79" pos:column="1">#<cpp:directive pos:line="79" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="79" pos:column="10">"ocidl.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="80" pos:column="1">#<cpp:directive pos:line="80" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="80" pos:column="10">"vsshell.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifdef pos:line="82" pos:column="1">#<cpp:directive pos:line="82" pos:column="2">ifdef</cpp:directive> <name pos:line="82" pos:column="8">__cplusplus</name></cpp:ifdef>
+<extern pos:line="83" pos:column="1">extern <lit:literal type="string" pos:line="83" pos:column="8">"C"</lit:literal><block pos:line="83" pos:column="11">{
+<cpp:endif pos:line="84" pos:column="1">#<cpp:directive pos:line="84" pos:column="2">endif</cpp:directive></cpp:endif> 
+
+
+
+<cpp:ifndef pos:line="88" pos:column="1">#<cpp:directive pos:line="88" pos:column="2">ifndef</cpp:directive> <name pos:line="88" pos:column="9">__VsWebServices_LIBRARY_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="89" pos:column="1">#<cpp:directive pos:line="89" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="89" pos:column="9">__VsWebServices_LIBRARY_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="91" pos:column="1">/* library VsWebServices */</comment>
+<comment type="block" pos:line="92" pos:column="1">/* [helpstring][version][uuid] */</comment> 
+
+
+
+
+<decl_stmt><decl><type><name pos:line="97" pos:column="1">EXTERN_C</name> <specifier pos:line="97" pos:column="10">const</specifier> <name pos:line="97" pos:column="16">IID</name></type> <name pos:line="97" pos:column="20">LIBID_VsWebServices</name></decl>;</decl_stmt>
+
+<cpp:ifndef pos:line="99" pos:column="1">#<cpp:directive pos:line="99" pos:column="2">ifndef</cpp:directive> <name pos:line="99" pos:column="9">__IVsWebServiceProvider_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="100" pos:column="1">#<cpp:directive pos:line="100" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="100" pos:column="9">__IVsWebServiceProvider_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="102" pos:column="1">/* interface IVsWebServiceProvider */</comment>
+<comment type="block" pos:line="103" pos:column="1">/* [object][unique][helpstring][uuid] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="106" pos:column="1">EXTERN_C</name> <specifier pos:line="106" pos:column="10">const</specifier> <name pos:line="106" pos:column="16">IID</name></type> <name pos:line="106" pos:column="20">IID_IVsWebServiceProvider</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="108" pos:column="1">#<cpp:directive pos:line="108" pos:column="2">if</cpp:directive> <expr><call><name pos:line="108" pos:column="5">defined</name><argument_list pos:line="108" pos:column="12">(<argument><expr><name pos:line="108" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="108" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="108" pos:column="29">!</op:operator><call><name pos:line="108" pos:column="30">defined</name><argument_list pos:line="108" pos:column="37">(<argument><expr><name pos:line="108" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="110" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="110" pos:column="19">(<argument pos:line="110" pos:column="20">"C736666C-6970-4ae7-9B1F-5C0407A30556"</argument>)</argument_list></macro>
+    <label><name pos:line="111" pos:column="5">IVsWebServiceProvider</name> :</label> <expr_stmt><expr pos:line="111" pos:column="29">public <name pos:line="111" pos:column="36">IUnknown</name>
+    <block pos:line="112" pos:column="5">{
+    <expr pos:line="113" pos:column="5">public<op:operator pos:line="113" pos:column="11">:</op:operator>
+        virtual <name pos:line="114" pos:column="17">HRESULT</name> <name pos:line="114" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="114" pos:column="43">WebServices</name><argument_list pos:line="114" pos:column="54">( 
+            <comment type="block" pos:line="115" pos:column="13">/* [retval][out] */</comment> <argument pos:line="115" pos:column="33">__RPC__deref_out_opt IEnumWebServices **ppIEnumWebServices</argument>)</argument_list></macro> <op:operator pos:line="115" pos:column="93">=</op:operator> <lit:literal type="number" pos:line="115" pos:column="95">0</lit:literal></expr>;
+        
+        <expr pos:line="117" pos:column="9">virtual <name pos:line="117" pos:column="17">HRESULT</name> <name pos:line="117" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="117" pos:column="43">GetWebService</name><argument_list pos:line="117" pos:column="56">( 
+            <comment type="block" pos:line="118" pos:column="13">/* [in] */</comment> <argument pos:line="118" pos:column="24">__RPC__in LPCOLESTR pszUrl</argument>,
+            <comment type="block" pos:line="119" pos:column="13">/* [retval][out] */</comment> <argument pos:line="119" pos:column="33">__RPC__deref_out_opt IVsWebService **ppIVsWebService</argument>)</argument_list></macro> <op:operator pos:line="119" pos:column="87">=</op:operator> <lit:literal type="number" pos:line="119" pos:column="89">0</lit:literal></expr>;
+        
+        <expr pos:line="121" pos:column="9">virtual <name pos:line="121" pos:column="17">HRESULT</name> <name pos:line="121" pos:column="25">STDMETHODCALLTYPE</name> <call><name pos:line="121" pos:column="43">StartServer</name><argument_list pos:line="121" pos:column="54">( <argument><expr><name pos:line="121" pos:column="56">void</name></expr></argument>)</argument_list></call> <op:operator pos:line="121" pos:column="62">=</op:operator> <lit:literal type="number" pos:line="121" pos:column="64">0</lit:literal></expr>;
+        
+        <expr pos:line="123" pos:column="9">virtual <name pos:line="123" pos:column="17">HRESULT</name> <name pos:line="123" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="123" pos:column="43">AdviseWebServiceProviderEvents</name><argument_list pos:line="123" pos:column="73">( 
+            <comment type="block" pos:line="124" pos:column="13">/* [in] */</comment> <argument pos:line="124" pos:column="24">__RPC__in_opt IVsWebServiceProviderEvents *pEvents</argument>,
+            <comment type="block" pos:line="125" pos:column="13">/* [retval][out] */</comment> <argument pos:line="125" pos:column="33">__RPC__out VSCOOKIE *pdwCookie</argument>)</argument_list></macro> <op:operator pos:line="125" pos:column="65">=</op:operator> <lit:literal type="number" pos:line="125" pos:column="67">0</lit:literal></expr>;
+        
+        <expr pos:line="127" pos:column="9">virtual <name pos:line="127" pos:column="17">HRESULT</name> <name pos:line="127" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="127" pos:column="43">UnadviseWebServiceProviderEvents</name><argument_list pos:line="127" pos:column="75">( 
+            <comment type="block" pos:line="128" pos:column="13">/* [in] */</comment> <argument pos:line="128" pos:column="24">VSCOOKIE dwCookie</argument>)</argument_list></macro> <op:operator pos:line="128" pos:column="43">=</op:operator> <lit:literal type="number" pos:line="128" pos:column="45">0</lit:literal></expr>;
+        
+        <expr pos:line="130" pos:column="9">virtual <name pos:line="130" pos:column="17">HRESULT</name> <name pos:line="130" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="130" pos:column="43">EnsureServerRunning</name><argument_list pos:line="130" pos:column="62">( 
+            <comment type="block" pos:line="131" pos:column="13">/* [retval][out] */</comment> <argument pos:line="131" pos:column="33">__RPC__deref_out_opt BSTR *pbstrUrl</argument>)</argument_list></macro> <op:operator pos:line="131" pos:column="70">=</op:operator> <lit:literal type="number" pos:line="131" pos:column="72">0</lit:literal></expr>;
+        
+        <expr pos:line="133" pos:column="9">virtual <name pos:line="133" pos:column="17">HRESULT</name> <name pos:line="133" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="133" pos:column="43">ApplicationUrl</name><argument_list pos:line="133" pos:column="57">( 
+            <comment type="block" pos:line="134" pos:column="13">/* [retval][out] */</comment> <argument pos:line="134" pos:column="33">__RPC__deref_out_opt BSTR *pbstrUrl</argument>)</argument_list></macro> <op:operator pos:line="134" pos:column="70">=</op:operator> <lit:literal type="number" pos:line="134" pos:column="72">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="138" pos:column="1">#<cpp:directive pos:line="138" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="138" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="140" pos:column="5">typedef <type><struct pos:line="140" pos:column="13">struct <name pos:line="140" pos:column="20">IVsWebServiceProviderVtbl</name>
+    <block pos:line="141" pos:column="5">{<public type="default" pos:line="141" pos:column="6">
+        <function_decl><type><name pos:line="142" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="144" pos:column="9">HRESULT</name></type> ( <name pos:line="144" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="144" pos:column="37">*</type:modifier><name pos:line="144" pos:column="38">QueryInterface</name> )<parameter_list pos:line="144" pos:column="54">( 
+            <param><decl><type><name pos:line="145" pos:column="13">IVsWebServiceProvider</name> <type:modifier pos:line="145" pos:column="35">*</type:modifier></type> <name pos:line="145" pos:column="37">This</name></decl></param>,
+            <comment type="block" pos:line="146" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="146" pos:column="24">__RPC__in</name> <name pos:line="146" pos:column="34">REFIID</name></type> <name pos:line="146" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="147" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="148" pos:column="13">__RPC__deref_out</name>  <name pos:line="148" pos:column="31">void</name> <type:modifier pos:line="148" pos:column="36">*</type:modifier><type:modifier pos:line="148" pos:column="37">*</type:modifier></type><name pos:line="148" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="150" pos:column="9">ULONG</name></type> ( <name pos:line="150" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="150" pos:column="35">*</type:modifier><name pos:line="150" pos:column="36">AddRef</name> )<parameter_list pos:line="150" pos:column="44">( 
+            <param><decl><type><name pos:line="151" pos:column="13">IVsWebServiceProvider</name> <type:modifier pos:line="151" pos:column="35">*</type:modifier></type> <name pos:line="151" pos:column="37">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="153" pos:column="9">ULONG</name></type> ( <name pos:line="153" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="153" pos:column="35">*</type:modifier><name pos:line="153" pos:column="36">Release</name> )<parameter_list pos:line="153" pos:column="45">( 
+            <param><decl><type><name pos:line="154" pos:column="13">IVsWebServiceProvider</name> <type:modifier pos:line="154" pos:column="35">*</type:modifier></type> <name pos:line="154" pos:column="37">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="156" pos:column="9">HRESULT</name></type> ( <name pos:line="156" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="156" pos:column="37">*</type:modifier><name pos:line="156" pos:column="38">WebServices</name> )<parameter_list pos:line="156" pos:column="51">( 
+            <param><decl><type><name pos:line="157" pos:column="13">IVsWebServiceProvider</name> <type:modifier pos:line="157" pos:column="35">*</type:modifier></type> <name pos:line="157" pos:column="37">This</name></decl></param>,
+            <comment type="block" pos:line="158" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="158" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="158" pos:column="54">IEnumWebServices</name> <type:modifier pos:line="158" pos:column="71">*</type:modifier><type:modifier pos:line="158" pos:column="72">*</type:modifier></type><name pos:line="158" pos:column="73">ppIEnumWebServices</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="160" pos:column="9">HRESULT</name></type> ( <name pos:line="160" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="160" pos:column="37">*</type:modifier><name pos:line="160" pos:column="38">GetWebService</name> )<parameter_list pos:line="160" pos:column="53">( 
+            <param><decl><type><name pos:line="161" pos:column="13">IVsWebServiceProvider</name> <type:modifier pos:line="161" pos:column="35">*</type:modifier></type> <name pos:line="161" pos:column="37">This</name></decl></param>,
+            <comment type="block" pos:line="162" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="162" pos:column="24">__RPC__in</name> <name pos:line="162" pos:column="34">LPCOLESTR</name></type> <name pos:line="162" pos:column="44">pszUrl</name></decl></param>,
+            <comment type="block" pos:line="163" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="163" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="163" pos:column="54">IVsWebService</name> <type:modifier pos:line="163" pos:column="68">*</type:modifier><type:modifier pos:line="163" pos:column="69">*</type:modifier></type><name pos:line="163" pos:column="70">ppIVsWebService</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="165" pos:column="9">HRESULT</name></type> ( <name pos:line="165" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="165" pos:column="37">*</type:modifier><name pos:line="165" pos:column="38">StartServer</name> )<parameter_list pos:line="165" pos:column="51">( 
+            <param><decl><type><name pos:line="166" pos:column="13">IVsWebServiceProvider</name> <type:modifier pos:line="166" pos:column="35">*</type:modifier></type> <name pos:line="166" pos:column="37">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="168" pos:column="9">HRESULT</name></type> ( <name pos:line="168" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="168" pos:column="37">*</type:modifier><name pos:line="168" pos:column="38">AdviseWebServiceProviderEvents</name> )<parameter_list pos:line="168" pos:column="70">( 
+            <param><decl><type><name pos:line="169" pos:column="13">IVsWebServiceProvider</name> <type:modifier pos:line="169" pos:column="35">*</type:modifier></type> <name pos:line="169" pos:column="37">This</name></decl></param>,
+            <comment type="block" pos:line="170" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="170" pos:column="24">__RPC__in_opt</name> <name pos:line="170" pos:column="38">IVsWebServiceProviderEvents</name> <type:modifier pos:line="170" pos:column="66">*</type:modifier></type><name pos:line="170" pos:column="67">pEvents</name></decl></param>,
+            <comment type="block" pos:line="171" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="171" pos:column="33">__RPC__out</name> <name pos:line="171" pos:column="44">VSCOOKIE</name> <type:modifier pos:line="171" pos:column="53">*</type:modifier></type><name pos:line="171" pos:column="54">pdwCookie</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="173" pos:column="9">HRESULT</name></type> ( <name pos:line="173" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="173" pos:column="37">*</type:modifier><name pos:line="173" pos:column="38">UnadviseWebServiceProviderEvents</name> )<parameter_list pos:line="173" pos:column="72">( 
+            <param><decl><type><name pos:line="174" pos:column="13">IVsWebServiceProvider</name> <type:modifier pos:line="174" pos:column="35">*</type:modifier></type> <name pos:line="174" pos:column="37">This</name></decl></param>,
+            <comment type="block" pos:line="175" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="175" pos:column="24">VSCOOKIE</name></type> <name pos:line="175" pos:column="33">dwCookie</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="177" pos:column="9">HRESULT</name></type> ( <name pos:line="177" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="177" pos:column="37">*</type:modifier><name pos:line="177" pos:column="38">EnsureServerRunning</name> )<parameter_list pos:line="177" pos:column="59">( 
+            <param><decl><type><name pos:line="178" pos:column="13">IVsWebServiceProvider</name> <type:modifier pos:line="178" pos:column="35">*</type:modifier></type> <name pos:line="178" pos:column="37">This</name></decl></param>,
+            <comment type="block" pos:line="179" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="179" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="179" pos:column="54">BSTR</name> <type:modifier pos:line="179" pos:column="59">*</type:modifier></type><name pos:line="179" pos:column="60">pbstrUrl</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="181" pos:column="9">HRESULT</name></type> ( <name pos:line="181" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="181" pos:column="37">*</type:modifier><name pos:line="181" pos:column="38">ApplicationUrl</name> )<parameter_list pos:line="181" pos:column="54">( 
+            <param><decl><type><name pos:line="182" pos:column="13">IVsWebServiceProvider</name> <type:modifier pos:line="182" pos:column="35">*</type:modifier></type> <name pos:line="182" pos:column="37">This</name></decl></param>,
+            <comment type="block" pos:line="183" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="183" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="183" pos:column="54">BSTR</name> <type:modifier pos:line="183" pos:column="59">*</type:modifier></type><name pos:line="183" pos:column="60">pbstrUrl</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="185" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="186" pos:column="7">IVsWebServiceProviderVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="188" pos:column="5">interface</name></type> <name pos:line="188" pos:column="15">IVsWebServiceProvider</name>
+    <argument_list pos:line="189" pos:column="5">{
+        <argument><expr><name pos:line="190" pos:column="9">CONST_VTBL</name> struct <name pos:line="190" pos:column="27">IVsWebServiceProviderVtbl</name> <op:operator pos:line="190" pos:column="53">*</op:operator><name pos:line="190" pos:column="54">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="195" pos:column="1">#<cpp:directive pos:line="195" pos:column="2">ifdef</cpp:directive> <name pos:line="195" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="198" pos:column="1">#<cpp:directive pos:line="198" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="198" pos:column="9">IVsWebServiceProvider_QueryInterface</name><parameter_list pos:line="198" pos:column="45">(<param><type><name pos:line="198" pos:column="46">This</name></type></param>,<param><type><name pos:line="198" pos:column="51">riid</name></type></param>,<param><type><name pos:line="198" pos:column="56">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="199" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="201" pos:column="1">#<cpp:directive pos:line="201" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="201" pos:column="9">IVsWebServiceProvider_AddRef</name><parameter_list pos:line="201" pos:column="37">(<param><type><name pos:line="201" pos:column="38">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="202" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="204" pos:column="1">#<cpp:directive pos:line="204" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="204" pos:column="9">IVsWebServiceProvider_Release</name><parameter_list pos:line="204" pos:column="38">(<param><type><name pos:line="204" pos:column="39">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="205" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="208" pos:column="1">#<cpp:directive pos:line="208" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="208" pos:column="9">IVsWebServiceProvider_WebServices</name><parameter_list pos:line="208" pos:column="42">(<param><type><name pos:line="208" pos:column="43">This</name></type></param>,<param><type><name pos:line="208" pos:column="48">ppIEnumWebServices</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="209" pos:column="5">( (This)-&gt;lpVtbl -&gt; WebServices(This,ppIEnumWebServices) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="211" pos:column="1">#<cpp:directive pos:line="211" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="211" pos:column="9">IVsWebServiceProvider_GetWebService</name><parameter_list pos:line="211" pos:column="44">(<param><type><name pos:line="211" pos:column="45">This</name></type></param>,<param><type><name pos:line="211" pos:column="50">pszUrl</name></type></param>,<param><type><name pos:line="211" pos:column="57">ppIVsWebService</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="212" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetWebService(This,pszUrl,ppIVsWebService) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="214" pos:column="1">#<cpp:directive pos:line="214" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="214" pos:column="9">IVsWebServiceProvider_StartServer</name><parameter_list pos:line="214" pos:column="42">(<param><type><name pos:line="214" pos:column="43">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="215" pos:column="5">( (This)-&gt;lpVtbl -&gt; StartServer(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="217" pos:column="1">#<cpp:directive pos:line="217" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="217" pos:column="9">IVsWebServiceProvider_AdviseWebServiceProviderEvents</name><parameter_list pos:line="217" pos:column="61">(<param><type><name pos:line="217" pos:column="62">This</name></type></param>,<param><type><name pos:line="217" pos:column="67">pEvents</name></type></param>,<param><type><name pos:line="217" pos:column="75">pdwCookie</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="218" pos:column="5">( (This)-&gt;lpVtbl -&gt; AdviseWebServiceProviderEvents(This,pEvents,pdwCookie) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="220" pos:column="1">#<cpp:directive pos:line="220" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="220" pos:column="9">IVsWebServiceProvider_UnadviseWebServiceProviderEvents</name><parameter_list pos:line="220" pos:column="63">(<param><type><name pos:line="220" pos:column="64">This</name></type></param>,<param><type><name pos:line="220" pos:column="69">dwCookie</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="221" pos:column="5">( (This)-&gt;lpVtbl -&gt; UnadviseWebServiceProviderEvents(This,dwCookie) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="223" pos:column="1">#<cpp:directive pos:line="223" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="223" pos:column="9">IVsWebServiceProvider_EnsureServerRunning</name><parameter_list pos:line="223" pos:column="50">(<param><type><name pos:line="223" pos:column="51">This</name></type></param>,<param><type><name pos:line="223" pos:column="56">pbstrUrl</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="224" pos:column="5">( (This)-&gt;lpVtbl -&gt; EnsureServerRunning(This,pbstrUrl) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="226" pos:column="1">#<cpp:directive pos:line="226" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="226" pos:column="9">IVsWebServiceProvider_ApplicationUrl</name><parameter_list pos:line="226" pos:column="45">(<param><type><name pos:line="226" pos:column="46">This</name></type></param>,<param><type><name pos:line="226" pos:column="51">pbstrUrl</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="227" pos:column="5">( (This)-&gt;lpVtbl -&gt; ApplicationUrl(This,pbstrUrl) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="229" pos:column="1">#<cpp:directive pos:line="229" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="229" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="232" pos:column="1">#<cpp:directive pos:line="232" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="232" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="237" pos:column="1">#<cpp:directive pos:line="237" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="237" pos:column="9">/* __IVsWebServiceProvider_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="240" pos:column="1">#<cpp:directive pos:line="240" pos:column="2">ifndef</cpp:directive> <name pos:line="240" pos:column="9">__IVsWebService_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="241" pos:column="1">#<cpp:directive pos:line="241" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="241" pos:column="9">__IVsWebService_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="243" pos:column="1">/* interface IVsWebService */</comment>
+<comment type="block" pos:line="244" pos:column="1">/* [object][unique][helpstring][uuid] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="247" pos:column="1">EXTERN_C</name> <specifier pos:line="247" pos:column="10">const</specifier> <name pos:line="247" pos:column="16">IID</name></type> <name pos:line="247" pos:column="20">IID_IVsWebService</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="249" pos:column="1">#<cpp:directive pos:line="249" pos:column="2">if</cpp:directive> <expr><call><name pos:line="249" pos:column="5">defined</name><argument_list pos:line="249" pos:column="12">(<argument><expr><name pos:line="249" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="249" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="249" pos:column="29">!</op:operator><call><name pos:line="249" pos:column="30">defined</name><argument_list pos:line="249" pos:column="37">(<argument><expr><name pos:line="249" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="251" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="251" pos:column="19">(<argument pos:line="251" pos:column="20">"D02603F6-BDB0-410c-9BA8-9E34E5FF4BEC"</argument>)</argument_list></macro>
+    <label><name pos:line="252" pos:column="5">IVsWebService</name> :</label> <expr_stmt><expr pos:line="252" pos:column="21">public <name pos:line="252" pos:column="28">IUnknown</name>
+    <block pos:line="253" pos:column="5">{
+    <expr pos:line="254" pos:column="5">public<op:operator pos:line="254" pos:column="11">:</op:operator>
+        virtual <name pos:line="255" pos:column="17">HRESULT</name> <name pos:line="255" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="255" pos:column="43">Url</name><argument_list pos:line="255" pos:column="46">( 
+            <comment type="block" pos:line="256" pos:column="13">/* [retval][out] */</comment> <argument pos:line="256" pos:column="33">__RPC__deref_out_opt BSTR *bstrUrl</argument>)</argument_list></macro> <op:operator pos:line="256" pos:column="69">=</op:operator> <lit:literal type="number" pos:line="256" pos:column="71">0</lit:literal></expr>;
+        
+        <expr pos:line="258" pos:column="9">virtual <name pos:line="258" pos:column="17">HRESULT</name> <name pos:line="258" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="258" pos:column="43">AppRelativeUrl</name><argument_list pos:line="258" pos:column="57">( 
+            <comment type="block" pos:line="259" pos:column="13">/* [retval][out] */</comment> <argument pos:line="259" pos:column="33">__RPC__deref_out_opt BSTR *bstrAppUrl</argument>)</argument_list></macro> <op:operator pos:line="259" pos:column="72">=</op:operator> <lit:literal type="number" pos:line="259" pos:column="74">0</lit:literal></expr>;
+        
+        <expr pos:line="261" pos:column="9">virtual <name pos:line="261" pos:column="17">HRESULT</name> <name pos:line="261" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="261" pos:column="43">GetProvider</name><argument_list pos:line="261" pos:column="54">( 
+            <comment type="block" pos:line="262" pos:column="13">/* [retval][out] */</comment> <argument pos:line="262" pos:column="33">__RPC__deref_out_opt IVsWebServiceProvider **ppIVsWebServiceProvider</argument>)</argument_list></macro> <op:operator pos:line="262" pos:column="103">=</op:operator> <lit:literal type="number" pos:line="262" pos:column="105">0</lit:literal></expr>;
+        
+        <expr pos:line="264" pos:column="9">virtual <name pos:line="264" pos:column="17">HRESULT</name> <name pos:line="264" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="264" pos:column="43">AdviseWebServiceEvents</name><argument_list pos:line="264" pos:column="65">( 
+            <comment type="block" pos:line="265" pos:column="13">/* [in] */</comment> <argument pos:line="265" pos:column="24">__RPC__in_opt IVsWebServiceEvents *pEvents</argument>,
+            <comment type="block" pos:line="266" pos:column="13">/* [retval][out] */</comment> <argument pos:line="266" pos:column="33">__RPC__out VSCOOKIE *pdwCookie</argument>)</argument_list></macro> <op:operator pos:line="266" pos:column="65">=</op:operator> <lit:literal type="number" pos:line="266" pos:column="67">0</lit:literal></expr>;
+        
+        <expr pos:line="268" pos:column="9">virtual <name pos:line="268" pos:column="17">HRESULT</name> <name pos:line="268" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="268" pos:column="43">UnadviseWebServiceEvents</name><argument_list pos:line="268" pos:column="67">( 
+            <comment type="block" pos:line="269" pos:column="13">/* [in] */</comment> <argument pos:line="269" pos:column="24">VSCOOKIE dwCookie</argument>)</argument_list></macro> <op:operator pos:line="269" pos:column="43">=</op:operator> <lit:literal type="number" pos:line="269" pos:column="45">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="273" pos:column="1">#<cpp:directive pos:line="273" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="273" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="275" pos:column="5">typedef <type><struct pos:line="275" pos:column="13">struct <name pos:line="275" pos:column="20">IVsWebServiceVtbl</name>
+    <block pos:line="276" pos:column="5">{<public type="default" pos:line="276" pos:column="6">
+        <function_decl><type><name pos:line="277" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="279" pos:column="9">HRESULT</name></type> ( <name pos:line="279" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="279" pos:column="37">*</type:modifier><name pos:line="279" pos:column="38">QueryInterface</name> )<parameter_list pos:line="279" pos:column="54">( 
+            <param><decl><type><name pos:line="280" pos:column="13">IVsWebService</name> <type:modifier pos:line="280" pos:column="27">*</type:modifier></type> <name pos:line="280" pos:column="29">This</name></decl></param>,
+            <comment type="block" pos:line="281" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="281" pos:column="24">__RPC__in</name> <name pos:line="281" pos:column="34">REFIID</name></type> <name pos:line="281" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="282" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="283" pos:column="13">__RPC__deref_out</name>  <name pos:line="283" pos:column="31">void</name> <type:modifier pos:line="283" pos:column="36">*</type:modifier><type:modifier pos:line="283" pos:column="37">*</type:modifier></type><name pos:line="283" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="285" pos:column="9">ULONG</name></type> ( <name pos:line="285" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="285" pos:column="35">*</type:modifier><name pos:line="285" pos:column="36">AddRef</name> )<parameter_list pos:line="285" pos:column="44">( 
+            <param><decl><type><name pos:line="286" pos:column="13">IVsWebService</name> <type:modifier pos:line="286" pos:column="27">*</type:modifier></type> <name pos:line="286" pos:column="29">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="288" pos:column="9">ULONG</name></type> ( <name pos:line="288" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="288" pos:column="35">*</type:modifier><name pos:line="288" pos:column="36">Release</name> )<parameter_list pos:line="288" pos:column="45">( 
+            <param><decl><type><name pos:line="289" pos:column="13">IVsWebService</name> <type:modifier pos:line="289" pos:column="27">*</type:modifier></type> <name pos:line="289" pos:column="29">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="291" pos:column="9">HRESULT</name></type> ( <name pos:line="291" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="291" pos:column="37">*</type:modifier><name pos:line="291" pos:column="38">Url</name> )<parameter_list pos:line="291" pos:column="43">( 
+            <param><decl><type><name pos:line="292" pos:column="13">IVsWebService</name> <type:modifier pos:line="292" pos:column="27">*</type:modifier></type> <name pos:line="292" pos:column="29">This</name></decl></param>,
+            <comment type="block" pos:line="293" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="293" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="293" pos:column="54">BSTR</name> <type:modifier pos:line="293" pos:column="59">*</type:modifier></type><name pos:line="293" pos:column="60">bstrUrl</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="295" pos:column="9">HRESULT</name></type> ( <name pos:line="295" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="295" pos:column="37">*</type:modifier><name pos:line="295" pos:column="38">AppRelativeUrl</name> )<parameter_list pos:line="295" pos:column="54">( 
+            <param><decl><type><name pos:line="296" pos:column="13">IVsWebService</name> <type:modifier pos:line="296" pos:column="27">*</type:modifier></type> <name pos:line="296" pos:column="29">This</name></decl></param>,
+            <comment type="block" pos:line="297" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="297" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="297" pos:column="54">BSTR</name> <type:modifier pos:line="297" pos:column="59">*</type:modifier></type><name pos:line="297" pos:column="60">bstrAppUrl</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="299" pos:column="9">HRESULT</name></type> ( <name pos:line="299" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="299" pos:column="37">*</type:modifier><name pos:line="299" pos:column="38">GetProvider</name> )<parameter_list pos:line="299" pos:column="51">( 
+            <param><decl><type><name pos:line="300" pos:column="13">IVsWebService</name> <type:modifier pos:line="300" pos:column="27">*</type:modifier></type> <name pos:line="300" pos:column="29">This</name></decl></param>,
+            <comment type="block" pos:line="301" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="301" pos:column="33">__RPC__deref_out_opt</name> <name pos:line="301" pos:column="54">IVsWebServiceProvider</name> <type:modifier pos:line="301" pos:column="76">*</type:modifier><type:modifier pos:line="301" pos:column="77">*</type:modifier></type><name pos:line="301" pos:column="78">ppIVsWebServiceProvider</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="303" pos:column="9">HRESULT</name></type> ( <name pos:line="303" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="303" pos:column="37">*</type:modifier><name pos:line="303" pos:column="38">AdviseWebServiceEvents</name> )<parameter_list pos:line="303" pos:column="62">( 
+            <param><decl><type><name pos:line="304" pos:column="13">IVsWebService</name> <type:modifier pos:line="304" pos:column="27">*</type:modifier></type> <name pos:line="304" pos:column="29">This</name></decl></param>,
+            <comment type="block" pos:line="305" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="305" pos:column="24">__RPC__in_opt</name> <name pos:line="305" pos:column="38">IVsWebServiceEvents</name> <type:modifier pos:line="305" pos:column="58">*</type:modifier></type><name pos:line="305" pos:column="59">pEvents</name></decl></param>,
+            <comment type="block" pos:line="306" pos:column="13">/* [retval][out] */</comment> <param><decl><type><name pos:line="306" pos:column="33">__RPC__out</name> <name pos:line="306" pos:column="44">VSCOOKIE</name> <type:modifier pos:line="306" pos:column="53">*</type:modifier></type><name pos:line="306" pos:column="54">pdwCookie</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="308" pos:column="9">HRESULT</name></type> ( <name pos:line="308" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="308" pos:column="37">*</type:modifier><name pos:line="308" pos:column="38">UnadviseWebServiceEvents</name> )<parameter_list pos:line="308" pos:column="64">( 
+            <param><decl><type><name pos:line="309" pos:column="13">IVsWebService</name> <type:modifier pos:line="309" pos:column="27">*</type:modifier></type> <name pos:line="309" pos:column="29">This</name></decl></param>,
+            <comment type="block" pos:line="310" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="310" pos:column="24">VSCOOKIE</name></type> <name pos:line="310" pos:column="33">dwCookie</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="312" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="313" pos:column="7">IVsWebServiceVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="315" pos:column="5">interface</name></type> <name pos:line="315" pos:column="15">IVsWebService</name>
+    <argument_list pos:line="316" pos:column="5">{
+        <argument><expr><name pos:line="317" pos:column="9">CONST_VTBL</name> struct <name pos:line="317" pos:column="27">IVsWebServiceVtbl</name> <op:operator pos:line="317" pos:column="45">*</op:operator><name pos:line="317" pos:column="46">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="322" pos:column="1">#<cpp:directive pos:line="322" pos:column="2">ifdef</cpp:directive> <name pos:line="322" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="325" pos:column="1">#<cpp:directive pos:line="325" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="325" pos:column="9">IVsWebService_QueryInterface</name><parameter_list pos:line="325" pos:column="37">(<param><type><name pos:line="325" pos:column="38">This</name></type></param>,<param><type><name pos:line="325" pos:column="43">riid</name></type></param>,<param><type><name pos:line="325" pos:column="48">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="326" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="328" pos:column="1">#<cpp:directive pos:line="328" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="328" pos:column="9">IVsWebService_AddRef</name><parameter_list pos:line="328" pos:column="29">(<param><type><name pos:line="328" pos:column="30">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="329" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="331" pos:column="1">#<cpp:directive pos:line="331" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="331" pos:column="9">IVsWebService_Release</name><parameter_list pos:line="331" pos:column="30">(<param><type><name pos:line="331" pos:column="31">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="332" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="335" pos:column="1">#<cpp:directive pos:line="335" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="335" pos:column="9">IVsWebService_Url</name><parameter_list pos:line="335" pos:column="26">(<param><type><name pos:line="335" pos:column="27">This</name></type></param>,<param><type><name pos:line="335" pos:column="32">bstrUrl</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="336" pos:column="5">( (This)-&gt;lpVtbl -&gt; Url(This,bstrUrl) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="338" pos:column="1">#<cpp:directive pos:line="338" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="338" pos:column="9">IVsWebService_AppRelativeUrl</name><parameter_list pos:line="338" pos:column="37">(<param><type><name pos:line="338" pos:column="38">This</name></type></param>,<param><type><name pos:line="338" pos:column="43">bstrAppUrl</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="339" pos:column="5">( (This)-&gt;lpVtbl -&gt; AppRelativeUrl(This,bstrAppUrl) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="341" pos:column="1">#<cpp:directive pos:line="341" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="341" pos:column="9">IVsWebService_GetProvider</name><parameter_list pos:line="341" pos:column="34">(<param><type><name pos:line="341" pos:column="35">This</name></type></param>,<param><type><name pos:line="341" pos:column="40">ppIVsWebServiceProvider</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="342" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetProvider(This,ppIVsWebServiceProvider) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="344" pos:column="1">#<cpp:directive pos:line="344" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="344" pos:column="9">IVsWebService_AdviseWebServiceEvents</name><parameter_list pos:line="344" pos:column="45">(<param><type><name pos:line="344" pos:column="46">This</name></type></param>,<param><type><name pos:line="344" pos:column="51">pEvents</name></type></param>,<param><type><name pos:line="344" pos:column="59">pdwCookie</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="345" pos:column="5">( (This)-&gt;lpVtbl -&gt; AdviseWebServiceEvents(This,pEvents,pdwCookie) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="347" pos:column="1">#<cpp:directive pos:line="347" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="347" pos:column="9">IVsWebService_UnadviseWebServiceEvents</name><parameter_list pos:line="347" pos:column="47">(<param><type><name pos:line="347" pos:column="48">This</name></type></param>,<param><type><name pos:line="347" pos:column="53">dwCookie</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="348" pos:column="5">( (This)-&gt;lpVtbl -&gt; UnadviseWebServiceEvents(This,dwCookie) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="350" pos:column="1">#<cpp:directive pos:line="350" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="350" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="353" pos:column="1">#<cpp:directive pos:line="353" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="353" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="358" pos:column="1">#<cpp:directive pos:line="358" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="358" pos:column="9">/* __IVsWebService_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="361" pos:column="1">#<cpp:directive pos:line="361" pos:column="2">ifndef</cpp:directive> <name pos:line="361" pos:column="9">__IVsWebServiceEvents_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="362" pos:column="1">#<cpp:directive pos:line="362" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="362" pos:column="9">__IVsWebServiceEvents_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="364" pos:column="1">/* interface IVsWebServiceEvents */</comment>
+<comment type="block" pos:line="365" pos:column="1">/* [object][unique][version][uuid] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="368" pos:column="1">EXTERN_C</name> <specifier pos:line="368" pos:column="10">const</specifier> <name pos:line="368" pos:column="16">IID</name></type> <name pos:line="368" pos:column="20">IID_IVsWebServiceEvents</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="370" pos:column="1">#<cpp:directive pos:line="370" pos:column="2">if</cpp:directive> <expr><call><name pos:line="370" pos:column="5">defined</name><argument_list pos:line="370" pos:column="12">(<argument><expr><name pos:line="370" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="370" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="370" pos:column="29">!</op:operator><call><name pos:line="370" pos:column="30">defined</name><argument_list pos:line="370" pos:column="37">(<argument><expr><name pos:line="370" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="372" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="372" pos:column="19">(<argument pos:line="372" pos:column="20">"F20AB4A1-4BA3-4842-AC78-2550669F751A"</argument>)</argument_list></macro>
+    <label><name pos:line="373" pos:column="5">IVsWebServiceEvents</name> :</label> <expr_stmt><expr pos:line="373" pos:column="27">public <name pos:line="373" pos:column="34">IUnknown</name>
+    <block pos:line="374" pos:column="5">{
+    <expr pos:line="375" pos:column="5">public<op:operator pos:line="375" pos:column="11">:</op:operator>
+        virtual <name pos:line="376" pos:column="17">HRESULT</name> <name pos:line="376" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="376" pos:column="43">OnRemoved</name><argument_list pos:line="376" pos:column="52">( 
+            <comment type="block" pos:line="377" pos:column="13">/* [in] */</comment> <argument pos:line="377" pos:column="24">__RPC__in LPCOLESTR pszOldURL</argument>)</argument_list></macro> <op:operator pos:line="377" pos:column="55">=</op:operator> <lit:literal type="number" pos:line="377" pos:column="57">0</lit:literal></expr>;
+        
+        <expr pos:line="379" pos:column="9">virtual <name pos:line="379" pos:column="17">HRESULT</name> <name pos:line="379" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="379" pos:column="43">OnRenamed</name><argument_list pos:line="379" pos:column="52">( 
+            <comment type="block" pos:line="380" pos:column="13">/* [in] */</comment> <argument pos:line="380" pos:column="24">__RPC__in LPCOLESTR pszOldURL</argument>,
+            <comment type="block" pos:line="381" pos:column="13">/* [in] */</comment> <argument pos:line="381" pos:column="24">__RPC__in LPCOLESTR pszNewURL</argument>)</argument_list></macro> <op:operator pos:line="381" pos:column="55">=</op:operator> <lit:literal type="number" pos:line="381" pos:column="57">0</lit:literal></expr>;
+        
+        <expr pos:line="383" pos:column="9">virtual <name pos:line="383" pos:column="17">HRESULT</name> <name pos:line="383" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="383" pos:column="43">OnChanged</name><argument_list pos:line="383" pos:column="52">( 
+            <comment type="block" pos:line="384" pos:column="13">/* [in] */</comment> <argument pos:line="384" pos:column="24">__RPC__in_opt IVsWebService *pIVsWebReference</argument>)</argument_list></macro> <op:operator pos:line="384" pos:column="71">=</op:operator> <lit:literal type="number" pos:line="384" pos:column="73">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="388" pos:column="1">#<cpp:directive pos:line="388" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="388" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="390" pos:column="5">typedef <type><struct pos:line="390" pos:column="13">struct <name pos:line="390" pos:column="20">IVsWebServiceEventsVtbl</name>
+    <block pos:line="391" pos:column="5">{<public type="default" pos:line="391" pos:column="6">
+        <function_decl><type><name pos:line="392" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="394" pos:column="9">HRESULT</name></type> ( <name pos:line="394" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="394" pos:column="37">*</type:modifier><name pos:line="394" pos:column="38">QueryInterface</name> )<parameter_list pos:line="394" pos:column="54">( 
+            <param><decl><type><name pos:line="395" pos:column="13">IVsWebServiceEvents</name> <type:modifier pos:line="395" pos:column="33">*</type:modifier></type> <name pos:line="395" pos:column="35">This</name></decl></param>,
+            <comment type="block" pos:line="396" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="396" pos:column="24">__RPC__in</name> <name pos:line="396" pos:column="34">REFIID</name></type> <name pos:line="396" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="397" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="398" pos:column="13">__RPC__deref_out</name>  <name pos:line="398" pos:column="31">void</name> <type:modifier pos:line="398" pos:column="36">*</type:modifier><type:modifier pos:line="398" pos:column="37">*</type:modifier></type><name pos:line="398" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="400" pos:column="9">ULONG</name></type> ( <name pos:line="400" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="400" pos:column="35">*</type:modifier><name pos:line="400" pos:column="36">AddRef</name> )<parameter_list pos:line="400" pos:column="44">( 
+            <param><decl><type><name pos:line="401" pos:column="13">IVsWebServiceEvents</name> <type:modifier pos:line="401" pos:column="33">*</type:modifier></type> <name pos:line="401" pos:column="35">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="403" pos:column="9">ULONG</name></type> ( <name pos:line="403" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="403" pos:column="35">*</type:modifier><name pos:line="403" pos:column="36">Release</name> )<parameter_list pos:line="403" pos:column="45">( 
+            <param><decl><type><name pos:line="404" pos:column="13">IVsWebServiceEvents</name> <type:modifier pos:line="404" pos:column="33">*</type:modifier></type> <name pos:line="404" pos:column="35">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="406" pos:column="9">HRESULT</name></type> ( <name pos:line="406" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="406" pos:column="37">*</type:modifier><name pos:line="406" pos:column="38">OnRemoved</name> )<parameter_list pos:line="406" pos:column="49">( 
+            <param><decl><type><name pos:line="407" pos:column="13">IVsWebServiceEvents</name> <type:modifier pos:line="407" pos:column="33">*</type:modifier></type> <name pos:line="407" pos:column="35">This</name></decl></param>,
+            <comment type="block" pos:line="408" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="408" pos:column="24">__RPC__in</name> <name pos:line="408" pos:column="34">LPCOLESTR</name></type> <name pos:line="408" pos:column="44">pszOldURL</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="410" pos:column="9">HRESULT</name></type> ( <name pos:line="410" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="410" pos:column="37">*</type:modifier><name pos:line="410" pos:column="38">OnRenamed</name> )<parameter_list pos:line="410" pos:column="49">( 
+            <param><decl><type><name pos:line="411" pos:column="13">IVsWebServiceEvents</name> <type:modifier pos:line="411" pos:column="33">*</type:modifier></type> <name pos:line="411" pos:column="35">This</name></decl></param>,
+            <comment type="block" pos:line="412" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="412" pos:column="24">__RPC__in</name> <name pos:line="412" pos:column="34">LPCOLESTR</name></type> <name pos:line="412" pos:column="44">pszOldURL</name></decl></param>,
+            <comment type="block" pos:line="413" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="413" pos:column="24">__RPC__in</name> <name pos:line="413" pos:column="34">LPCOLESTR</name></type> <name pos:line="413" pos:column="44">pszNewURL</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="415" pos:column="9">HRESULT</name></type> ( <name pos:line="415" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="415" pos:column="37">*</type:modifier><name pos:line="415" pos:column="38">OnChanged</name> )<parameter_list pos:line="415" pos:column="49">( 
+            <param><decl><type><name pos:line="416" pos:column="13">IVsWebServiceEvents</name> <type:modifier pos:line="416" pos:column="33">*</type:modifier></type> <name pos:line="416" pos:column="35">This</name></decl></param>,
+            <comment type="block" pos:line="417" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="417" pos:column="24">__RPC__in_opt</name> <name pos:line="417" pos:column="38">IVsWebService</name> <type:modifier pos:line="417" pos:column="52">*</type:modifier></type><name pos:line="417" pos:column="53">pIVsWebReference</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="419" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="420" pos:column="7">IVsWebServiceEventsVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="422" pos:column="5">interface</name></type> <name pos:line="422" pos:column="15">IVsWebServiceEvents</name>
+    <argument_list pos:line="423" pos:column="5">{
+        <argument><expr><name pos:line="424" pos:column="9">CONST_VTBL</name> struct <name pos:line="424" pos:column="27">IVsWebServiceEventsVtbl</name> <op:operator pos:line="424" pos:column="51">*</op:operator><name pos:line="424" pos:column="52">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="429" pos:column="1">#<cpp:directive pos:line="429" pos:column="2">ifdef</cpp:directive> <name pos:line="429" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="432" pos:column="1">#<cpp:directive pos:line="432" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="432" pos:column="9">IVsWebServiceEvents_QueryInterface</name><parameter_list pos:line="432" pos:column="43">(<param><type><name pos:line="432" pos:column="44">This</name></type></param>,<param><type><name pos:line="432" pos:column="49">riid</name></type></param>,<param><type><name pos:line="432" pos:column="54">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="433" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="435" pos:column="1">#<cpp:directive pos:line="435" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="435" pos:column="9">IVsWebServiceEvents_AddRef</name><parameter_list pos:line="435" pos:column="35">(<param><type><name pos:line="435" pos:column="36">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="436" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="438" pos:column="1">#<cpp:directive pos:line="438" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="438" pos:column="9">IVsWebServiceEvents_Release</name><parameter_list pos:line="438" pos:column="36">(<param><type><name pos:line="438" pos:column="37">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="439" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="442" pos:column="1">#<cpp:directive pos:line="442" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="442" pos:column="9">IVsWebServiceEvents_OnRemoved</name><parameter_list pos:line="442" pos:column="38">(<param><type><name pos:line="442" pos:column="39">This</name></type></param>,<param><type><name pos:line="442" pos:column="44">pszOldURL</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="443" pos:column="5">( (This)-&gt;lpVtbl -&gt; OnRemoved(This,pszOldURL) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="445" pos:column="1">#<cpp:directive pos:line="445" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="445" pos:column="9">IVsWebServiceEvents_OnRenamed</name><parameter_list pos:line="445" pos:column="38">(<param><type><name pos:line="445" pos:column="39">This</name></type></param>,<param><type><name pos:line="445" pos:column="44">pszOldURL</name></type></param>,<param><type><name pos:line="445" pos:column="54">pszNewURL</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="446" pos:column="5">( (This)-&gt;lpVtbl -&gt; OnRenamed(This,pszOldURL,pszNewURL) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="448" pos:column="1">#<cpp:directive pos:line="448" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="448" pos:column="9">IVsWebServiceEvents_OnChanged</name><parameter_list pos:line="448" pos:column="38">(<param><type><name pos:line="448" pos:column="39">This</name></type></param>,<param><type><name pos:line="448" pos:column="44">pIVsWebReference</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="449" pos:column="5">( (This)-&gt;lpVtbl -&gt; OnChanged(This,pIVsWebReference) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="451" pos:column="1">#<cpp:directive pos:line="451" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="451" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="454" pos:column="1">#<cpp:directive pos:line="454" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="454" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="459" pos:column="1">#<cpp:directive pos:line="459" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="459" pos:column="9">/* __IVsWebServiceEvents_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="462" pos:column="1">#<cpp:directive pos:line="462" pos:column="2">ifndef</cpp:directive> <name pos:line="462" pos:column="9">__IVsWebServiceProviderEvents_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="463" pos:column="1">#<cpp:directive pos:line="463" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="463" pos:column="9">__IVsWebServiceProviderEvents_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="465" pos:column="1">/* interface IVsWebServiceProviderEvents */</comment>
+<comment type="block" pos:line="466" pos:column="1">/* [object][unique][version][uuid] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="469" pos:column="1">EXTERN_C</name> <specifier pos:line="469" pos:column="10">const</specifier> <name pos:line="469" pos:column="16">IID</name></type> <name pos:line="469" pos:column="20">IID_IVsWebServiceProviderEvents</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="471" pos:column="1">#<cpp:directive pos:line="471" pos:column="2">if</cpp:directive> <expr><call><name pos:line="471" pos:column="5">defined</name><argument_list pos:line="471" pos:column="12">(<argument><expr><name pos:line="471" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="471" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="471" pos:column="29">!</op:operator><call><name pos:line="471" pos:column="30">defined</name><argument_list pos:line="471" pos:column="37">(<argument><expr><name pos:line="471" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="473" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="473" pos:column="19">(<argument pos:line="473" pos:column="20">"8170CB5A-D602-4886-A990-8260A5928133"</argument>)</argument_list></macro>
+    <label><name pos:line="474" pos:column="5">IVsWebServiceProviderEvents</name> :</label> <expr_stmt><expr pos:line="474" pos:column="35">public <name pos:line="474" pos:column="42">IUnknown</name>
+    <block pos:line="475" pos:column="5">{
+    <expr pos:line="476" pos:column="5">public<op:operator pos:line="476" pos:column="11">:</op:operator>
+        virtual <name pos:line="477" pos:column="17">HRESULT</name> <name pos:line="477" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="477" pos:column="43">OnAdded</name><argument_list pos:line="477" pos:column="50">( 
+            <comment type="block" pos:line="478" pos:column="13">/* [in] */</comment> <argument pos:line="478" pos:column="24">__RPC__in_opt IVsWebService *pIVsWebReference</argument>)</argument_list></macro> <op:operator pos:line="478" pos:column="71">=</op:operator> <lit:literal type="number" pos:line="478" pos:column="73">0</lit:literal></expr>;
+        
+        <expr pos:line="480" pos:column="9">virtual <name pos:line="480" pos:column="17">HRESULT</name> <name pos:line="480" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="480" pos:column="43">OnRemoved</name><argument_list pos:line="480" pos:column="52">( 
+            <comment type="block" pos:line="481" pos:column="13">/* [in] */</comment> <argument pos:line="481" pos:column="24">__RPC__in LPCOLESTR pszURL</argument>)</argument_list></macro> <op:operator pos:line="481" pos:column="52">=</op:operator> <lit:literal type="number" pos:line="481" pos:column="54">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="485" pos:column="1">#<cpp:directive pos:line="485" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="485" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="487" pos:column="5">typedef <type><struct pos:line="487" pos:column="13">struct <name pos:line="487" pos:column="20">IVsWebServiceProviderEventsVtbl</name>
+    <block pos:line="488" pos:column="5">{<public type="default" pos:line="488" pos:column="6">
+        <function_decl><type><name pos:line="489" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="491" pos:column="9">HRESULT</name></type> ( <name pos:line="491" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="491" pos:column="37">*</type:modifier><name pos:line="491" pos:column="38">QueryInterface</name> )<parameter_list pos:line="491" pos:column="54">( 
+            <param><decl><type><name pos:line="492" pos:column="13">IVsWebServiceProviderEvents</name> <type:modifier pos:line="492" pos:column="41">*</type:modifier></type> <name pos:line="492" pos:column="43">This</name></decl></param>,
+            <comment type="block" pos:line="493" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="493" pos:column="24">__RPC__in</name> <name pos:line="493" pos:column="34">REFIID</name></type> <name pos:line="493" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="494" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="495" pos:column="13">__RPC__deref_out</name>  <name pos:line="495" pos:column="31">void</name> <type:modifier pos:line="495" pos:column="36">*</type:modifier><type:modifier pos:line="495" pos:column="37">*</type:modifier></type><name pos:line="495" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="497" pos:column="9">ULONG</name></type> ( <name pos:line="497" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="497" pos:column="35">*</type:modifier><name pos:line="497" pos:column="36">AddRef</name> )<parameter_list pos:line="497" pos:column="44">( 
+            <param><decl><type><name pos:line="498" pos:column="13">IVsWebServiceProviderEvents</name> <type:modifier pos:line="498" pos:column="41">*</type:modifier></type> <name pos:line="498" pos:column="43">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="500" pos:column="9">ULONG</name></type> ( <name pos:line="500" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="500" pos:column="35">*</type:modifier><name pos:line="500" pos:column="36">Release</name> )<parameter_list pos:line="500" pos:column="45">( 
+            <param><decl><type><name pos:line="501" pos:column="13">IVsWebServiceProviderEvents</name> <type:modifier pos:line="501" pos:column="41">*</type:modifier></type> <name pos:line="501" pos:column="43">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="503" pos:column="9">HRESULT</name></type> ( <name pos:line="503" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="503" pos:column="37">*</type:modifier><name pos:line="503" pos:column="38">OnAdded</name> )<parameter_list pos:line="503" pos:column="47">( 
+            <param><decl><type><name pos:line="504" pos:column="13">IVsWebServiceProviderEvents</name> <type:modifier pos:line="504" pos:column="41">*</type:modifier></type> <name pos:line="504" pos:column="43">This</name></decl></param>,
+            <comment type="block" pos:line="505" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="505" pos:column="24">__RPC__in_opt</name> <name pos:line="505" pos:column="38">IVsWebService</name> <type:modifier pos:line="505" pos:column="52">*</type:modifier></type><name pos:line="505" pos:column="53">pIVsWebReference</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="507" pos:column="9">HRESULT</name></type> ( <name pos:line="507" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="507" pos:column="37">*</type:modifier><name pos:line="507" pos:column="38">OnRemoved</name> )<parameter_list pos:line="507" pos:column="49">( 
+            <param><decl><type><name pos:line="508" pos:column="13">IVsWebServiceProviderEvents</name> <type:modifier pos:line="508" pos:column="41">*</type:modifier></type> <name pos:line="508" pos:column="43">This</name></decl></param>,
+            <comment type="block" pos:line="509" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="509" pos:column="24">__RPC__in</name> <name pos:line="509" pos:column="34">LPCOLESTR</name></type> <name pos:line="509" pos:column="44">pszURL</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="511" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="512" pos:column="7">IVsWebServiceProviderEventsVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="514" pos:column="5">interface</name></type> <name pos:line="514" pos:column="15">IVsWebServiceProviderEvents</name>
+    <argument_list pos:line="515" pos:column="5">{
+        <argument><expr><name pos:line="516" pos:column="9">CONST_VTBL</name> struct <name pos:line="516" pos:column="27">IVsWebServiceProviderEventsVtbl</name> <op:operator pos:line="516" pos:column="59">*</op:operator><name pos:line="516" pos:column="60">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="521" pos:column="1">#<cpp:directive pos:line="521" pos:column="2">ifdef</cpp:directive> <name pos:line="521" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="524" pos:column="1">#<cpp:directive pos:line="524" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="524" pos:column="9">IVsWebServiceProviderEvents_QueryInterface</name><parameter_list pos:line="524" pos:column="51">(<param><type><name pos:line="524" pos:column="52">This</name></type></param>,<param><type><name pos:line="524" pos:column="57">riid</name></type></param>,<param><type><name pos:line="524" pos:column="62">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="525" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="527" pos:column="1">#<cpp:directive pos:line="527" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="527" pos:column="9">IVsWebServiceProviderEvents_AddRef</name><parameter_list pos:line="527" pos:column="43">(<param><type><name pos:line="527" pos:column="44">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="528" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="530" pos:column="1">#<cpp:directive pos:line="530" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="530" pos:column="9">IVsWebServiceProviderEvents_Release</name><parameter_list pos:line="530" pos:column="44">(<param><type><name pos:line="530" pos:column="45">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="531" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="534" pos:column="1">#<cpp:directive pos:line="534" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="534" pos:column="9">IVsWebServiceProviderEvents_OnAdded</name><parameter_list pos:line="534" pos:column="44">(<param><type><name pos:line="534" pos:column="45">This</name></type></param>,<param><type><name pos:line="534" pos:column="50">pIVsWebReference</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="535" pos:column="5">( (This)-&gt;lpVtbl -&gt; OnAdded(This,pIVsWebReference) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="537" pos:column="1">#<cpp:directive pos:line="537" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="537" pos:column="9">IVsWebServiceProviderEvents_OnRemoved</name><parameter_list pos:line="537" pos:column="46">(<param><type><name pos:line="537" pos:column="47">This</name></type></param>,<param><type><name pos:line="537" pos:column="52">pszURL</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="538" pos:column="5">( (This)-&gt;lpVtbl -&gt; OnRemoved(This,pszURL) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="540" pos:column="1">#<cpp:directive pos:line="540" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="540" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="543" pos:column="1">#<cpp:directive pos:line="543" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="543" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="548" pos:column="1">#<cpp:directive pos:line="548" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="548" pos:column="9">/* __IVsWebServiceProviderEvents_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="551" pos:column="1">#<cpp:directive pos:line="551" pos:column="2">ifndef</cpp:directive> <name pos:line="551" pos:column="9">__IEnumWebServices_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="552" pos:column="1">#<cpp:directive pos:line="552" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="552" pos:column="9">__IEnumWebServices_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="554" pos:column="1">/* interface IEnumWebServices */</comment>
+<comment type="block" pos:line="555" pos:column="1">/* [object][unique][helpstring][uuid] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="558" pos:column="1">EXTERN_C</name> <specifier pos:line="558" pos:column="10">const</specifier> <name pos:line="558" pos:column="16">IID</name></type> <name pos:line="558" pos:column="20">IID_IEnumWebServices</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="560" pos:column="1">#<cpp:directive pos:line="560" pos:column="2">if</cpp:directive> <expr><call><name pos:line="560" pos:column="5">defined</name><argument_list pos:line="560" pos:column="12">(<argument><expr><name pos:line="560" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="560" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="560" pos:column="29">!</op:operator><call><name pos:line="560" pos:column="30">defined</name><argument_list pos:line="560" pos:column="37">(<argument><expr><name pos:line="560" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="562" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="562" pos:column="19">(<argument pos:line="562" pos:column="20">"4DB4E7D3-5550-41ae-A612-3D28CD0C52A8"</argument>)</argument_list></macro>
+    <label><name pos:line="563" pos:column="5">IEnumWebServices</name> :</label> <expr_stmt><expr pos:line="563" pos:column="24">public <name pos:line="563" pos:column="31">IUnknown</name>
+    <block pos:line="564" pos:column="5">{
+    <expr pos:line="565" pos:column="5">public<op:operator pos:line="565" pos:column="11">:</op:operator>
+        virtual <name pos:line="566" pos:column="17">HRESULT</name> <name pos:line="566" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="566" pos:column="43">Next</name><argument_list pos:line="566" pos:column="47">( 
+            <comment type="block" pos:line="567" pos:column="13">/* [in] */</comment> <argument pos:line="567" pos:column="24">ULONG celt</argument>,
+            <comment type="block" pos:line="568" pos:column="13">/* [length_is][size_is][out] */</comment> <argument pos:line="568" pos:column="45">__RPC__out_ecount_part(celt, *pceltFetched) IVsWebService **rgelt</argument>,
+            <comment type="block" pos:line="569" pos:column="13">/* [out] */</comment> <argument pos:line="569" pos:column="25">__RPC__out ULONG *pceltFetched</argument>)</argument_list></macro> <op:operator pos:line="569" pos:column="57">=</op:operator> <lit:literal type="number" pos:line="569" pos:column="59">0</lit:literal></expr>;
+        
+        <expr pos:line="571" pos:column="9">virtual <name pos:line="571" pos:column="17">HRESULT</name> <name pos:line="571" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="571" pos:column="43">Skip</name><argument_list pos:line="571" pos:column="47">( 
+            <comment type="block" pos:line="572" pos:column="13">/* [in] */</comment> <argument pos:line="572" pos:column="24">ULONG celt</argument>)</argument_list></macro> <op:operator pos:line="572" pos:column="36">=</op:operator> <lit:literal type="number" pos:line="572" pos:column="38">0</lit:literal></expr>;
+        
+        <expr pos:line="574" pos:column="9">virtual <name pos:line="574" pos:column="17">HRESULT</name> <name pos:line="574" pos:column="25">STDMETHODCALLTYPE</name> <call><name pos:line="574" pos:column="43">Reset</name><argument_list pos:line="574" pos:column="48">( <argument><expr><name pos:line="574" pos:column="50">void</name></expr></argument>)</argument_list></call> <op:operator pos:line="574" pos:column="56">=</op:operator> <lit:literal type="number" pos:line="574" pos:column="58">0</lit:literal></expr>;
+        
+        <expr pos:line="576" pos:column="9">virtual <name pos:line="576" pos:column="17">HRESULT</name> <name pos:line="576" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="576" pos:column="43">Clone</name><argument_list pos:line="576" pos:column="48">( 
+            <comment type="block" pos:line="577" pos:column="13">/* [out] */</comment> <argument pos:line="577" pos:column="25">__RPC__deref_out_opt IEnumWebServices **ppenum</argument>)</argument_list></macro> <op:operator pos:line="577" pos:column="73">=</op:operator> <lit:literal type="number" pos:line="577" pos:column="75">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="581" pos:column="1">#<cpp:directive pos:line="581" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="581" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="583" pos:column="5">typedef <type><struct pos:line="583" pos:column="13">struct <name pos:line="583" pos:column="20">IEnumWebServicesVtbl</name>
+    <block pos:line="584" pos:column="5">{<public type="default" pos:line="584" pos:column="6">
+        <function_decl><type><name pos:line="585" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="587" pos:column="9">HRESULT</name></type> ( <name pos:line="587" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="587" pos:column="37">*</type:modifier><name pos:line="587" pos:column="38">QueryInterface</name> )<parameter_list pos:line="587" pos:column="54">( 
+            <param><decl><type><name pos:line="588" pos:column="13">IEnumWebServices</name> <type:modifier pos:line="588" pos:column="30">*</type:modifier></type> <name pos:line="588" pos:column="32">This</name></decl></param>,
+            <comment type="block" pos:line="589" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="589" pos:column="24">__RPC__in</name> <name pos:line="589" pos:column="34">REFIID</name></type> <name pos:line="589" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="590" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="591" pos:column="13">__RPC__deref_out</name>  <name pos:line="591" pos:column="31">void</name> <type:modifier pos:line="591" pos:column="36">*</type:modifier><type:modifier pos:line="591" pos:column="37">*</type:modifier></type><name pos:line="591" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="593" pos:column="9">ULONG</name></type> ( <name pos:line="593" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="593" pos:column="35">*</type:modifier><name pos:line="593" pos:column="36">AddRef</name> )<parameter_list pos:line="593" pos:column="44">( 
+            <param><decl><type><name pos:line="594" pos:column="13">IEnumWebServices</name> <type:modifier pos:line="594" pos:column="30">*</type:modifier></type> <name pos:line="594" pos:column="32">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="596" pos:column="9">ULONG</name></type> ( <name pos:line="596" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="596" pos:column="35">*</type:modifier><name pos:line="596" pos:column="36">Release</name> )<parameter_list pos:line="596" pos:column="45">( 
+            <param><decl><type><name pos:line="597" pos:column="13">IEnumWebServices</name> <type:modifier pos:line="597" pos:column="30">*</type:modifier></type> <name pos:line="597" pos:column="32">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="599" pos:column="9">HRESULT</name> <argument_list pos:line="599" pos:column="17">( <argument pos:line="599" pos:column="19">STDMETHODCALLTYPE *Next</argument> )</argument_list></macro><expr_stmt><expr><op:operator pos:line="599" pos:column="44">(</op:operator> 
+            <name pos:line="600" pos:column="13">IEnumWebServices</name> <op:operator pos:line="600" pos:column="30">*</op:operator> <name pos:line="600" pos:column="32">This</name><op:operator pos:line="600" pos:column="36">,</op:operator>
+            <comment type="block" pos:line="601" pos:column="13">/* [in] */</comment> <name pos:line="601" pos:column="24">ULONG</name> <name pos:line="601" pos:column="30">celt</name><op:operator pos:line="601" pos:column="34">,</op:operator>
+            <comment type="block" pos:line="602" pos:column="13">/* [length_is][size_is][out] */</comment> <macro><name pos:line="602" pos:column="45">__RPC__out_ecount_part</name><argument_list pos:line="602" pos:column="67">(<argument pos:line="602" pos:column="68">celt</argument>, <argument pos:line="602" pos:column="74">*pceltFetched</argument>)</argument_list></macro> <name pos:line="602" pos:column="89">IVsWebService</name> <op:operator pos:line="602" pos:column="103">*</op:operator><op:operator pos:line="602" pos:column="104">*</op:operator><name pos:line="602" pos:column="105">rgelt</name><op:operator pos:line="602" pos:column="110">,</op:operator>
+            <comment type="block" pos:line="603" pos:column="13">/* [out] */</comment> <name pos:line="603" pos:column="25">__RPC__out</name> <name pos:line="603" pos:column="36">ULONG</name> <op:operator pos:line="603" pos:column="42">*</op:operator><name pos:line="603" pos:column="43">pceltFetched</name><op:operator pos:line="603" pos:column="55">)</op:operator></expr>;</expr_stmt>
+        
+        <function_decl><type><name pos:line="605" pos:column="9">HRESULT</name></type> ( <name pos:line="605" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="605" pos:column="37">*</type:modifier><name pos:line="605" pos:column="38">Skip</name> )<parameter_list pos:line="605" pos:column="44">( 
+            <param><decl><type><name pos:line="606" pos:column="13">IEnumWebServices</name> <type:modifier pos:line="606" pos:column="30">*</type:modifier></type> <name pos:line="606" pos:column="32">This</name></decl></param>,
+            <comment type="block" pos:line="607" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="607" pos:column="24">ULONG</name></type> <name pos:line="607" pos:column="30">celt</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="609" pos:column="9">HRESULT</name></type> ( <name pos:line="609" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="609" pos:column="37">*</type:modifier><name pos:line="609" pos:column="38">Reset</name> )<parameter_list pos:line="609" pos:column="45">( 
+            <param><decl><type><name pos:line="610" pos:column="13">IEnumWebServices</name> <type:modifier pos:line="610" pos:column="30">*</type:modifier></type> <name pos:line="610" pos:column="32">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="612" pos:column="9">HRESULT</name></type> ( <name pos:line="612" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="612" pos:column="37">*</type:modifier><name pos:line="612" pos:column="38">Clone</name> )<parameter_list pos:line="612" pos:column="45">( 
+            <param><decl><type><name pos:line="613" pos:column="13">IEnumWebServices</name> <type:modifier pos:line="613" pos:column="30">*</type:modifier></type> <name pos:line="613" pos:column="32">This</name></decl></param>,
+            <comment type="block" pos:line="614" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="614" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="614" pos:column="46">IEnumWebServices</name> <type:modifier pos:line="614" pos:column="63">*</type:modifier><type:modifier pos:line="614" pos:column="64">*</type:modifier></type><name pos:line="614" pos:column="65">ppenum</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="616" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="617" pos:column="7">IEnumWebServicesVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="619" pos:column="5">interface</name></type> <name pos:line="619" pos:column="15">IEnumWebServices</name>
+    <argument_list pos:line="620" pos:column="5">{
+        <argument><expr><name pos:line="621" pos:column="9">CONST_VTBL</name> struct <name pos:line="621" pos:column="27">IEnumWebServicesVtbl</name> <op:operator pos:line="621" pos:column="48">*</op:operator><name pos:line="621" pos:column="49">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="626" pos:column="1">#<cpp:directive pos:line="626" pos:column="2">ifdef</cpp:directive> <name pos:line="626" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="629" pos:column="1">#<cpp:directive pos:line="629" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="629" pos:column="9">IEnumWebServices_QueryInterface</name><parameter_list pos:line="629" pos:column="40">(<param><type><name pos:line="629" pos:column="41">This</name></type></param>,<param><type><name pos:line="629" pos:column="46">riid</name></type></param>,<param><type><name pos:line="629" pos:column="51">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="630" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="632" pos:column="1">#<cpp:directive pos:line="632" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="632" pos:column="9">IEnumWebServices_AddRef</name><parameter_list pos:line="632" pos:column="32">(<param><type><name pos:line="632" pos:column="33">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="633" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="635" pos:column="1">#<cpp:directive pos:line="635" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="635" pos:column="9">IEnumWebServices_Release</name><parameter_list pos:line="635" pos:column="33">(<param><type><name pos:line="635" pos:column="34">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="636" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="639" pos:column="1">#<cpp:directive pos:line="639" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="639" pos:column="9">IEnumWebServices_Next</name><parameter_list pos:line="639" pos:column="30">(<param><type><name pos:line="639" pos:column="31">This</name></type></param>,<param><type><name pos:line="639" pos:column="36">celt</name></type></param>,<param><type><name pos:line="639" pos:column="41">rgelt</name></type></param>,<param><type><name pos:line="639" pos:column="47">pceltFetched</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="640" pos:column="5">( (This)-&gt;lpVtbl -&gt; Next(This,celt,rgelt,pceltFetched) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="642" pos:column="1">#<cpp:directive pos:line="642" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="642" pos:column="9">IEnumWebServices_Skip</name><parameter_list pos:line="642" pos:column="30">(<param><type><name pos:line="642" pos:column="31">This</name></type></param>,<param><type><name pos:line="642" pos:column="36">celt</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="643" pos:column="5">( (This)-&gt;lpVtbl -&gt; Skip(This,celt) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="645" pos:column="1">#<cpp:directive pos:line="645" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="645" pos:column="9">IEnumWebServices_Reset</name><parameter_list pos:line="645" pos:column="31">(<param><type><name pos:line="645" pos:column="32">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="646" pos:column="5">( (This)-&gt;lpVtbl -&gt; Reset(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="648" pos:column="1">#<cpp:directive pos:line="648" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="648" pos:column="9">IEnumWebServices_Clone</name><parameter_list pos:line="648" pos:column="31">(<param><type><name pos:line="648" pos:column="32">This</name></type></param>,<param><type><name pos:line="648" pos:column="37">ppenum</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="649" pos:column="5">( (This)-&gt;lpVtbl -&gt; Clone(This,ppenum) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="651" pos:column="1">#<cpp:directive pos:line="651" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="651" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="654" pos:column="1">#<cpp:directive pos:line="654" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="654" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="659" pos:column="1">#<cpp:directive pos:line="659" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="659" pos:column="9">/* __IEnumWebServices_INTERFACE_DEFINED__ */</comment>
+
+<cpp:endif pos:line="661" pos:column="1">#<cpp:directive pos:line="661" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="661" pos:column="8">/* __VsWebServices_LIBRARY_DEFINED__ */</comment>
+
+<comment type="block" pos:line="663" pos:column="1">/* Additional Prototypes for ALL interfaces */</comment>
+
+<comment type="block" pos:line="665" pos:column="1">/* end of Additional Prototypes */</comment>
+
+<cpp:ifdef pos:line="667" pos:column="1">#<cpp:directive pos:line="667" pos:column="2">ifdef</cpp:directive> <name pos:line="667" pos:column="8">__cplusplus</name></cpp:ifdef>
+}</block></extern>
+<cpp:endif pos:line="669" pos:column="1">#<cpp:directive pos:line="669" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:endif pos:line="671" pos:column="1">#<cpp:directive pos:line="671" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+</unit>

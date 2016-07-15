@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML\Transform.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2010 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - initial API, implementation, &amp; documentation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Text</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">System</name><op:operator pos:line="16" pos:column="13">.</op:operator><name pos:line="16" pos:column="14">Xml</name><op:operator pos:line="16" pos:column="17">.</op:operator><name pos:line="16" pos:column="18">Linq</name></name>;</using>
+<using pos:line="17" pos:column="1">using <name><name pos:line="17" pos:column="7">System</name><op:operator pos:line="17" pos:column="13">.</op:operator><name pos:line="17" pos:column="14">Reflection</name></name>;</using>
+
+<namespace pos:line="19" pos:column="1">namespace <name><name pos:line="19" pos:column="11">ABB</name><op:operator pos:line="19" pos:column="14">.</op:operator><name pos:line="19" pos:column="15">SrcML</name></name>
+<block pos:line="20" pos:column="1">{
+    <comment type="line" pos:line="21" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="22" pos:column="5">/// A delegate for SrcML query functions.</comment>
+    <comment type="line" pos:line="23" pos:column="5">/// &lt;/summary&gt;</comment>
+    <comment type="line" pos:line="24" pos:column="5">/// &lt;param name="element"&gt;The XML node to query from.&lt;/param&gt;</comment>
+    <comment type="line" pos:line="25" pos:column="5">/// &lt;returns&gt;A list of matching nodes from &lt;paramref name="element"/&gt;.&lt;/returns&gt;</comment>
+    <function_decl><type><specifier pos:line="26" pos:column="5">public</specifier> <specifier pos:line="26" pos:column="12">delegate</specifier> <name><name pos:line="26" pos:column="21">IEnumerable</name><argument_list pos:line="26" pos:column="32">&lt;<argument><name pos:line="26" pos:column="33">XElement</name></argument>&gt;</argument_list></name></type> <name pos:line="26" pos:column="43">Query</name><parameter_list pos:line="26" pos:column="48">(<param><decl><type><name pos:line="26" pos:column="49">XElement</name></type> <name pos:line="26" pos:column="58">element</name></decl></param>)</parameter_list>;</function_decl>
+
+    <comment type="line" pos:line="28" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="29" pos:column="5">/// A delegate for SrcML transform functions.</comment>
+    <comment type="line" pos:line="30" pos:column="5">/// &lt;/summary&gt;</comment>
+    <comment type="line" pos:line="31" pos:column="5">/// &lt;param name="element"&gt;the element to transform&lt;/param&gt;</comment>
+    <function_decl><type><specifier pos:line="32" pos:column="5">public</specifier> <specifier pos:line="32" pos:column="12">delegate</specifier> <name pos:line="32" pos:column="21">XElement</name></type> <name pos:line="32" pos:column="30">Transform</name><parameter_list pos:line="32" pos:column="39">(<param><decl><type><name pos:line="32" pos:column="40">XElement</name></type> <name pos:line="32" pos:column="49">element</name></decl></param>)</parameter_list>;</function_decl>
+}</block></namespace>
+</unit>

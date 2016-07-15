@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Mvc\Message\IBoundedFilterMessage.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Linq</name></name>;</using>
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">System</name><op:operator pos:line="4" pos:column="13">.</op:operator><name pos:line="4" pos:column="14">Text</name></name>;</using>
+
+<namespace pos:line="6" pos:column="1">namespace <name><name pos:line="6" pos:column="11">Glimpse</name><op:operator pos:line="6" pos:column="18">.</op:operator><name pos:line="6" pos:column="19">Mvc</name><op:operator pos:line="6" pos:column="22">.</op:operator><name pos:line="6" pos:column="23">Message</name></name>
+<block pos:line="7" pos:column="1">{
+    <class type="interface"><specifier pos:line="8" pos:column="5">public</specifier> interface <name pos:line="8" pos:column="22">IBoundedFilterMessage</name> <super pos:line="8" pos:column="44">: <name pos:line="8" pos:column="46">IFilterMessage</name></super>
+    <block pos:line="9" pos:column="5">{
+        <decl_stmt><decl><type><name pos:line="10" pos:column="9">FilterBounds</name></type> <name pos:line="10" pos:column="22">Bounds</name> <block pos:line="10" pos:column="29">{ <function_decl><name pos:line="10" pos:column="31">get</name>;</function_decl> <function_decl><name pos:line="10" pos:column="36">set</name>;</function_decl> }</block></decl></decl_stmt>
+    }</block></class>
+
+    <class><specifier pos:line="13" pos:column="5">public</specifier> <specifier pos:line="13" pos:column="12">static</specifier> class <name pos:line="13" pos:column="25">BoundedFilterMessageExtension</name>
+    <block pos:line="14" pos:column="5">{
+        <function><type><specifier pos:line="15" pos:column="9">public</specifier> <specifier pos:line="15" pos:column="16">static</specifier> <name pos:line="15" pos:column="23">T</name></type> <name><name pos:line="15" pos:column="25">AsBoundedFilterMessage</name><argument_list pos:line="15" pos:column="47">&lt;<argument><name pos:line="15" pos:column="48">T</name></argument>&gt;</argument_list></name><parameter_list pos:line="15" pos:column="50">(<param><decl><type><name pos:line="15" pos:column="51">this</name> <name pos:line="15" pos:column="56">T</name></type> <name pos:line="15" pos:column="58">message</name></decl></param>, <param><decl><type><name pos:line="15" pos:column="67">FilterBounds</name></type> <name pos:line="15" pos:column="80">bounds</name></decl></param>)</parameter_list>
+            <where pos:line="16" pos:column="13">where <name pos:line="16" pos:column="19">T</name> : <name pos:line="16" pos:column="23">IBoundedFilterMessage</name></where>
+        <block pos:line="17" pos:column="9">{
+            <expr_stmt><expr><name><name pos:line="18" pos:column="13">message</name><op:operator pos:line="18" pos:column="20">.</op:operator><name pos:line="18" pos:column="21">Bounds</name></name> <op:operator pos:line="18" pos:column="28">=</op:operator> <name pos:line="18" pos:column="30">bounds</name></expr>;</expr_stmt> 
+
+            <return pos:line="20" pos:column="13">return <expr><name pos:line="20" pos:column="20">message</name></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace>
+</unit>

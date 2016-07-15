@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\SrcML.NET\ABB.SrcML\ArchiveMonitor.cs" pos:tabs="8"><comment type="block" pos:line="1" pos:column="1">/******************************************************************************
+ * Copyright (c) 2014 ABB Group
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Vinay Augustine (ABB Group) - Initial implementation
+ *****************************************************************************/</comment>
+
+<using pos:line="12" pos:column="1">using <name pos:line="12" pos:column="7">System</name>;</using>
+<using pos:line="13" pos:column="1">using <name><name pos:line="13" pos:column="7">System</name><op:operator pos:line="13" pos:column="13">.</op:operator><name pos:line="13" pos:column="14">Collections</name><op:operator pos:line="13" pos:column="25">.</op:operator><name pos:line="13" pos:column="26">Generic</name></name>;</using>
+<using pos:line="14" pos:column="1">using <name><name pos:line="14" pos:column="7">System</name><op:operator pos:line="14" pos:column="13">.</op:operator><name pos:line="14" pos:column="14">Linq</name></name>;</using>
+<using pos:line="15" pos:column="1">using <name><name pos:line="15" pos:column="7">System</name><op:operator pos:line="15" pos:column="13">.</op:operator><name pos:line="15" pos:column="14">Text</name></name>;</using>
+<using pos:line="16" pos:column="1">using <name><name pos:line="16" pos:column="7">System</name><op:operator pos:line="16" pos:column="13">.</op:operator><name pos:line="16" pos:column="14">Threading</name><op:operator pos:line="16" pos:column="23">.</op:operator><name pos:line="16" pos:column="24">Tasks</name></name>;</using>
+
+<namespace pos:line="18" pos:column="1">namespace <name><name pos:line="18" pos:column="11">ABB</name><op:operator pos:line="18" pos:column="14">.</op:operator><name pos:line="18" pos:column="15">SrcML</name></name> <block pos:line="18" pos:column="21">{
+    <comment type="line" pos:line="19" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="20" pos:column="5">/// The archive monitor lets you use an archive as a monitoring source.</comment>
+    <comment type="line" pos:line="21" pos:column="5">/// &lt;/summary&gt;</comment>
+    <comment type="line" pos:line="22" pos:column="5">/// &lt;typeparam name="TArchive"&gt;The type of the archive to monitor&lt;/typeparam&gt;</comment>
+    <class><specifier pos:line="23" pos:column="5">public</specifier> class <name><name pos:line="23" pos:column="18">ArchiveMonitor</name><argument_list pos:line="23" pos:column="32">&lt;<argument><name pos:line="23" pos:column="33">TArchive</name></argument>&gt;</argument_list></name> <super pos:line="23" pos:column="43">: <name pos:line="23" pos:column="45">AbstractFileMonitor</name></super> <where pos:line="23" pos:column="65">where <name pos:line="23" pos:column="71">TArchive</name> : <name pos:line="23" pos:column="82">AbstractArchive</name></where> <block pos:line="23" pos:column="98">{
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// The archive being monitored</comment>
+        <comment type="line" pos:line="26" pos:column="9">/// &lt;/summary&gt;</comment>
+        <decl_stmt><decl><type><specifier pos:line="27" pos:column="9">public</specifier> <name pos:line="27" pos:column="16">TArchive</name></type> <name pos:line="27" pos:column="25">MonitoredArchive</name> <block pos:line="27" pos:column="42">{ <function_decl><name pos:line="27" pos:column="44">get</name>;</function_decl> <function_decl><specifier pos:line="27" pos:column="49">private</specifier> <name pos:line="27" pos:column="57">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="29" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="30" pos:column="9">/// Create a new archive monitor</comment>
+        <comment type="line" pos:line="31" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="32" pos:column="9">/// &lt;param name="baseDirectory"&gt;The base directory for this monitor&lt;/param&gt;</comment>
+        <comment type="line" pos:line="33" pos:column="9">/// &lt;param name="monitoredArchive"&gt;The archive to monitor (found in &lt;see cref="MonitoredArchive"/&gt;)&lt;/param&gt;</comment>
+        <comment type="line" pos:line="34" pos:column="9">/// &lt;param name="defaultArchive"&gt;The default archive to store data in&lt;/param&gt;</comment>
+        <comment type="line" pos:line="35" pos:column="9">/// &lt;param name="otherArchives"&gt;Other archives to store data in&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="36" pos:column="9">public</specifier> <name pos:line="36" pos:column="16">ArchiveMonitor</name><parameter_list pos:line="36" pos:column="30">(<param><decl><type><name pos:line="36" pos:column="31">string</name></type> <name pos:line="36" pos:column="38">baseDirectory</name></decl></param>, <param><decl><type><name pos:line="36" pos:column="53">TArchive</name></type> <name pos:line="36" pos:column="62">monitoredArchive</name></decl></param>, <param><decl><type><name pos:line="36" pos:column="80">AbstractArchive</name></type> <name pos:line="36" pos:column="96">defaultArchive</name></decl></param>, <param><decl><type><specifier pos:line="36" pos:column="112">params</specifier> <name><name pos:line="36" pos:column="119">AbstractArchive</name><index pos:line="36" pos:column="134">[]</index></name></type> <name pos:line="36" pos:column="137">otherArchives</name></decl></param>)</parameter_list>
+            <member_list pos:line="37" pos:column="13">: <call><name pos:line="37" pos:column="15">this</name><argument_list pos:line="37" pos:column="19">(<argument><expr><name><name pos:line="37" pos:column="20">TaskScheduler</name><op:operator pos:line="37" pos:column="33">.</op:operator><name pos:line="37" pos:column="34">Default</name></name></expr></argument>, <argument><expr><name pos:line="37" pos:column="43">baseDirectory</name></expr></argument>, <argument><expr><name pos:line="37" pos:column="58">monitoredArchive</name></expr></argument>, <argument><expr><name pos:line="37" pos:column="76">defaultArchive</name></expr></argument>, <argument><expr><name pos:line="37" pos:column="92">otherArchives</name></expr></argument>)</argument_list></call> </member_list><block pos:line="37" pos:column="107">{ }</block></constructor>
+
+        <comment type="line" pos:line="39" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="40" pos:column="9">/// Create a new archive monitor</comment>
+        <comment type="line" pos:line="41" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="42" pos:column="9">/// &lt;param name="scheduler"&gt;The scheduler to use&lt;/param&gt;</comment>
+        <comment type="line" pos:line="43" pos:column="9">/// &lt;param name="baseDirectory"&gt;The base directory for this monitor&lt;/param&gt;</comment>
+        <comment type="line" pos:line="44" pos:column="9">/// &lt;param name="monitoredArchive"&gt;The archive to monitor (found in &lt;see cref="MonitoredArchive"/&gt;)&lt;/param&gt;</comment>
+        <comment type="line" pos:line="45" pos:column="9">/// &lt;param name="defaultArchive"&gt;The default archive to store data in&lt;/param&gt;</comment>
+        <comment type="line" pos:line="46" pos:column="9">/// &lt;param name="otherArchives"&gt;Other archives to store data in&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="47" pos:column="9">public</specifier> <name pos:line="47" pos:column="16">ArchiveMonitor</name><parameter_list pos:line="47" pos:column="30">(<param><decl><type><name pos:line="47" pos:column="31">TaskScheduler</name></type> <name pos:line="47" pos:column="45">scheduler</name></decl></param>, <param><decl><type><name pos:line="47" pos:column="56">string</name></type> <name pos:line="47" pos:column="63">baseDirectory</name></decl></param>, <param><decl><type><name pos:line="47" pos:column="78">TArchive</name></type> <name pos:line="47" pos:column="87">monitoredArchive</name></decl></param>, <param><decl><type><name pos:line="47" pos:column="105">AbstractArchive</name></type> <name pos:line="47" pos:column="121">defaultArchive</name></decl></param>, <param><decl><type><specifier pos:line="47" pos:column="137">params</specifier> <name><name pos:line="47" pos:column="144">AbstractArchive</name><index pos:line="47" pos:column="159">[]</index></name></type> <name pos:line="47" pos:column="162">otherArchives</name></decl></param>)</parameter_list>
+            <member_list pos:line="48" pos:column="13">: <call><name pos:line="48" pos:column="15">base</name><argument_list pos:line="48" pos:column="19">(<argument><expr><name pos:line="48" pos:column="20">scheduler</name></expr></argument>, <argument><expr><name pos:line="48" pos:column="31">baseDirectory</name></expr></argument>, <argument><expr><name pos:line="48" pos:column="46">defaultArchive</name></expr></argument>, <argument><expr><name pos:line="48" pos:column="62">otherArchives</name></expr></argument>)</argument_list></call> </member_list><block pos:line="48" pos:column="77">{
+            <expr_stmt><expr><name pos:line="49" pos:column="13">MonitoredArchive</name> <op:operator pos:line="49" pos:column="30">=</op:operator> <name pos:line="49" pos:column="32">monitoredArchive</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <comment type="line" pos:line="52" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="53" pos:column="9">/// Start monitoring &lt;see cref="MonitoredArchive"/&gt; by subscribing to &lt;see cref="AbstractArchive.FileChanged"/&gt;</comment>
+        <comment type="line" pos:line="54" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="55" pos:column="9">public</specifier> <specifier pos:line="55" pos:column="16">override</specifier> <name pos:line="55" pos:column="25">void</name></type> <name pos:line="55" pos:column="30">StartMonitoring</name><parameter_list pos:line="55" pos:column="45">()</parameter_list> <block pos:line="55" pos:column="48">{
+            <expr_stmt><expr><name><name pos:line="56" pos:column="13">MonitoredArchive</name><op:operator pos:line="56" pos:column="29">.</op:operator><name pos:line="56" pos:column="30">FileChanged</name></name> <op:operator pos:line="56" pos:column="42">+=</op:operator> <name pos:line="56" pos:column="45">MonitoredArchive_FileChanged</name></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="59" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="60" pos:column="9">/// Stop monitoring &lt;see cref="MonitoredArchive"/&gt; by subscribing to &lt;see cref="AbstractArchive.FileChanged"/&gt;</comment>
+        <comment type="line" pos:line="61" pos:column="9">/// &lt;/summary&gt;</comment>
+        <function><type><specifier pos:line="62" pos:column="9">public</specifier> <specifier pos:line="62" pos:column="16">override</specifier> <name pos:line="62" pos:column="25">void</name></type> <name pos:line="62" pos:column="30">StopMonitoring</name><parameter_list pos:line="62" pos:column="44">()</parameter_list> <block pos:line="62" pos:column="47">{
+            <expr_stmt><expr><name><name pos:line="63" pos:column="13">MonitoredArchive</name><op:operator pos:line="63" pos:column="29">.</op:operator><name pos:line="63" pos:column="30">FileChanged</name></name> <op:operator pos:line="63" pos:column="42">-=</op:operator> <name pos:line="63" pos:column="45">MonitoredArchive_FileChanged</name></expr>;</expr_stmt>
+            <expr_stmt><expr><call><name><name pos:line="64" pos:column="13">base</name><op:operator pos:line="64" pos:column="17">.</op:operator><name pos:line="64" pos:column="18">StopMonitoring</name></name><argument_list pos:line="64" pos:column="32">()</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="67" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="68" pos:column="9">/// This is the method that is called whenever the &lt;see cref="AbstractArchive.FileChanged"/&gt; event from the &lt;see cref="MonitoredArchive"/&gt; is fired.</comment>
+        <comment type="line" pos:line="69" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="70" pos:column="9">/// &lt;param name="sender"&gt;The sender (should be &lt;see cref="MonitoredArchive"/&gt;)&lt;/param&gt;</comment>
+        <comment type="line" pos:line="71" pos:column="9">/// &lt;param name="e"&gt;The file that has been changed&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="72" pos:column="9">protected</specifier> <name pos:line="72" pos:column="19">void</name></type> <name pos:line="72" pos:column="24">MonitoredArchive_FileChanged</name><parameter_list pos:line="72" pos:column="52">(<param><decl><type><name pos:line="72" pos:column="53">object</name></type> <name pos:line="72" pos:column="60">sender</name></decl></param>, <param><decl><type><name pos:line="72" pos:column="68">FileEventRaisedArgs</name></type> <name pos:line="72" pos:column="88">e</name></decl></param>)</parameter_list> <block pos:line="72" pos:column="91">{
+            <decl_stmt><decl><type><name pos:line="73" pos:column="13">Task</name></type> <name pos:line="73" pos:column="18">task</name> <init pos:line="73" pos:column="23">= <expr><name pos:line="73" pos:column="25">null</name></expr></init></decl>;</decl_stmt>
+            <switch pos:line="74" pos:column="13">switch<condition pos:line="74" pos:column="19">(<expr><name><name pos:line="74" pos:column="20">e</name><op:operator pos:line="74" pos:column="21">.</op:operator><name pos:line="74" pos:column="22">EventType</name></name></expr>)</condition> <block pos:line="74" pos:column="33">{
+                <case pos:line="75" pos:column="17">case <expr><name><name pos:line="75" pos:column="22">FileEventType</name><op:operator pos:line="75" pos:column="35">.</op:operator><name pos:line="75" pos:column="36">FileAdded</name></name></expr>:
+                    <expr_stmt><expr><name pos:line="76" pos:column="21">task</name> <op:operator pos:line="76" pos:column="26">=</op:operator> <call><name pos:line="76" pos:column="28">AddFileAsync</name><argument_list pos:line="76" pos:column="40">(<argument><expr><name><name pos:line="76" pos:column="41">e</name><op:operator pos:line="76" pos:column="42">.</op:operator><name pos:line="76" pos:column="43">FilePath</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                    <break pos:line="77" pos:column="21">break;</break>
+                </case><case pos:line="78" pos:column="17">case <expr><name><name pos:line="78" pos:column="22">FileEventType</name><op:operator pos:line="78" pos:column="35">.</op:operator><name pos:line="78" pos:column="36">FileChanged</name></name></expr>:
+                    <expr_stmt><expr><name pos:line="79" pos:column="21">task</name> <op:operator pos:line="79" pos:column="26">=</op:operator> <call><name pos:line="79" pos:column="28">UpdateFileAsync</name><argument_list pos:line="79" pos:column="43">(<argument><expr><name><name pos:line="79" pos:column="44">e</name><op:operator pos:line="79" pos:column="45">.</op:operator><name pos:line="79" pos:column="46">FilePath</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                    <break pos:line="80" pos:column="21">break;</break>
+                </case><case pos:line="81" pos:column="17">case <expr><name><name pos:line="81" pos:column="22">FileEventType</name><op:operator pos:line="81" pos:column="35">.</op:operator><name pos:line="81" pos:column="36">FileDeleted</name></name></expr>:
+                    <expr_stmt><expr><name pos:line="82" pos:column="21">task</name> <op:operator pos:line="82" pos:column="26">=</op:operator> <call><name pos:line="82" pos:column="28">DeleteFileAsync</name><argument_list pos:line="82" pos:column="43">(<argument><expr><name><name pos:line="82" pos:column="44">e</name><op:operator pos:line="82" pos:column="45">.</op:operator><name pos:line="82" pos:column="46">FilePath</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                    <break pos:line="83" pos:column="21">break;</break>
+                </case><case pos:line="84" pos:column="17">case <expr><name><name pos:line="84" pos:column="22">FileEventType</name><op:operator pos:line="84" pos:column="35">.</op:operator><name pos:line="84" pos:column="36">FileRenamed</name></name></expr>:
+                    <expr_stmt><expr><name pos:line="85" pos:column="21">task</name> <op:operator pos:line="85" pos:column="26">=</op:operator> <call><name pos:line="85" pos:column="28">RenameFileAsync</name><argument_list pos:line="85" pos:column="43">(<argument><expr><name><name pos:line="85" pos:column="44">e</name><op:operator pos:line="85" pos:column="45">.</op:operator><name pos:line="85" pos:column="46">OldFilePath</name></name></expr></argument>, <argument><expr><name><name pos:line="85" pos:column="59">e</name><op:operator pos:line="85" pos:column="60">.</op:operator><name pos:line="85" pos:column="61">FilePath</name></name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                    <break pos:line="86" pos:column="21">break;</break>
+            </case>}</block></switch>
+            <expr_stmt><expr><call><name><name pos:line="88" pos:column="13">task</name><op:operator pos:line="88" pos:column="17">.</op:operator><name pos:line="88" pos:column="18">ContinueWith</name></name><argument_list pos:line="88" pos:column="30">(<argument><expr><lambda><parameter_list pos:line="88" pos:column="31">(<param><decl><name pos:line="88" pos:column="32">t</name></decl></param>)</parameter_list> <op:operator pos:line="88" pos:column="35">=&gt;</op:operator> <call><name pos:line="88" pos:column="38">OnFileChanged</name><argument_list pos:line="88" pos:column="51">(<argument><expr><name pos:line="88" pos:column="52">e</name></expr></argument>)</argument_list></call></lambda></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="91" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="92" pos:column="9">/// Gets the files kept in &lt;paramref name="MonitoredArchive"/&gt;</comment>
+        <comment type="line" pos:line="93" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="94" pos:column="9">/// &lt;returns&gt;&lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="95" pos:column="9">public</specifier> <specifier pos:line="95" pos:column="16">override</specifier> <name><name pos:line="95" pos:column="25">IEnumerable</name><argument_list pos:line="95" pos:column="36">&lt;<argument><name pos:line="95" pos:column="37">string</name></argument>&gt;</argument_list></name></type> <name pos:line="95" pos:column="45">EnumerateMonitoredFiles</name><parameter_list pos:line="95" pos:column="68">()</parameter_list> <block pos:line="95" pos:column="71">{
+            <return pos:line="96" pos:column="13">return <expr><call><name><name pos:line="96" pos:column="20">MonitoredArchive</name><op:operator pos:line="96" pos:column="36">.</op:operator><name pos:line="96" pos:column="37">GetFiles</name></name><argument_list pos:line="96" pos:column="45">()</argument_list></call></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace>
+</unit>

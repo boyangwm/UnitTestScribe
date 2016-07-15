@@ -1,0 +1,917 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\vsassert.h" pos:tabs="8"><comment type="line" pos:line="1" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+<comment type="line" pos:line="2" pos:column="1">// VsAssert.H</comment>
+<comment type="line" pos:line="3" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+<comment type="line" pos:line="4" pos:column="1">// Headers for common assert macros and debugging functionality</comment>
+<comment type="line" pos:line="5" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+<comment type="line" pos:line="6" pos:column="1">// Copyright (c) 1997, Microsoft Corporation</comment>
+<comment type="line" pos:line="7" pos:column="1">//			All Rights Reserved</comment>
+<comment type="line" pos:line="8" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+
+<comment type="block" pos:line="10" pos:column="1">/*
+Throwing assertion support added.
+
+Traditional code often does this
+	VSASSERT(p!=NULL, "p was NULL");
+	if(!p)
+	{
+		return E_FAIL;
+	}
+or something similar. 
+
+Unfortunately, developers often forget to do the checking after an assertion. 
+Additionally, the calling function is often not well prepared for this error return.
+
+Exception-safe code has a better choice here. It's already ready to receive an exception
+at any time. So we can use that in retail to avoid crashes in these kind of bad-internal
+state situations.
+
+The basic pattern here is that exception-safe code can do:
+
+	VsVerifyThrow(p!=NULL, "p was NULL"	);
+
+In debug, this is just a regular assertion. In retail, the code will throw an 
+exception, avoiding the crash when p would have been dereferenced, and simplifying
+the code because there's no need for the if clause shown above.
+
+Different code bases use different kinds of exceptions, so vsassert is agnostic about
+which kind of exception is being used. Its function looks like this
+
+CLINKAGE BOOL ENTRYPOINT 
+VsAssertAndThrow
+(
+	LPCSTR pszMsg, 
+	LPCSTR pszAssert, 
+	LPCSTR pszFile, 
+	UINT line, 
+	BOOL *pfThrow,				// Set to true if the use pressed the 'throw' button
+	BOOL *pfDisableAssert,		// True if the user asked to disable this assert for ever
+	BOOL *pfAlwaysThrow			// True if the user asked to throw this assert for ever
+);
+
+pfThrow will be true if the user wants to throw; the calling macro can then throw the
+right kind of exception inline.
+
+if pfAlwaysThrow is true, pfDisableAssert must be true too.
+
+
+*/</comment>
+
+<cpp:ifndef pos:line="59" pos:column="1">#<cpp:directive pos:line="59" pos:column="2">ifndef</cpp:directive> <name pos:line="59" pos:column="9">_INC_VSASSERT_H</name></cpp:ifndef>
+<cpp:define pos:line="60" pos:column="1">#<cpp:directive pos:line="60" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="60" pos:column="9">_INC_VSASSERT_H</name></cpp:macro></cpp:define>
+
+<cpp:include pos:line="62" pos:column="1">#<cpp:directive pos:line="62" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="62" pos:column="10">"windows.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="63" pos:column="1">#<cpp:directive pos:line="63" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="63" pos:column="10">"ole2.h"</lit:literal></cpp:file></cpp:include>
+<cpp:ifndef pos:line="64" pos:column="1">#<cpp:directive pos:line="64" pos:column="2">ifndef</cpp:directive> <name pos:line="64" pos:column="9">FEATURE_PAL</name></cpp:ifndef>
+<cpp:include pos:line="65" pos:column="1">#<cpp:directive pos:line="65" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="65" pos:column="10">"commdlg.h"</lit:literal></cpp:file></cpp:include>
+<cpp:endif pos:line="66" pos:column="1">#<cpp:directive pos:line="66" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:if pos:line="68" pos:column="1">#<cpp:directive pos:line="68" pos:column="2">if</cpp:directive> <expr><name pos:line="68" pos:column="5">_MSC_VER</name></expr></cpp:if>
+<cpp:define pos:line="69" pos:column="1">#<cpp:directive pos:line="69" pos:column="2">define</cpp:directive>	<cpp:macro><name pos:line="69" pos:column="9">ENTRYPOINT</name></cpp:macro>  <cpp:value pos:line="69" pos:column="21">__declspec(dllexport) __stdcall</cpp:value></cpp:define>
+<cpp:else pos:line="70" pos:column="1">#<cpp:directive pos:line="70" pos:column="2">else</cpp:directive></cpp:else>
+<cpp:define pos:line="71" pos:column="1">#<cpp:directive pos:line="71" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="71" pos:column="9">ENTRYPOINT</name></cpp:macro></cpp:define>
+<cpp:endif pos:line="72" pos:column="1">#<cpp:directive pos:line="72" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="72" pos:column="8">// _MSC_VER</comment>
+    
+<cpp:ifdef pos:line="74" pos:column="1">#<cpp:directive pos:line="74" pos:column="2">ifdef</cpp:directive> <name pos:line="74" pos:column="8">__cplusplus</name></cpp:ifdef>
+<cpp:define pos:line="75" pos:column="1">#<cpp:directive pos:line="75" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="75" pos:column="9">CLINKAGE</name></cpp:macro>	<cpp:value pos:line="75" pos:column="25">extern "C"</cpp:value></cpp:define>
+<cpp:else pos:line="76" pos:column="1">#<cpp:directive pos:line="76" pos:column="2">else</cpp:directive></cpp:else>
+<cpp:define pos:line="77" pos:column="1">#<cpp:directive pos:line="77" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="77" pos:column="9">CLINKAGE</name></cpp:macro></cpp:define>
+<cpp:endif pos:line="78" pos:column="1">#<cpp:directive pos:line="78" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="line" pos:line="80" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+<comment type="line" pos:line="81" pos:column="1">// Turn off compiler warnings which are exacerbated by constructs in this</comment>
+<comment type="line" pos:line="82" pos:column="1">// file's definitions:</comment>
+
+<comment type="line" pos:line="84" pos:column="1">// Warning C4127: conditional expression is constant.  This is caused by all</comment>
+<comment type="line" pos:line="85" pos:column="1">//		of the macros with "do { ... } while (false)" syntax.  The syntax is</comment>
+<comment type="line" pos:line="86" pos:column="1">//		a good way to ensure that a statement-like macro can be used in all</comment>
+<comment type="line" pos:line="87" pos:column="1">//		contexts (specifically if statements), but the compiler warns about</comment>
+<comment type="line" pos:line="88" pos:column="1">//		the "while (false)" part. </comment>
+
+<cpp:if pos:line="90" pos:column="1">#<cpp:directive pos:line="90" pos:column="2">if</cpp:directive> <expr><name pos:line="90" pos:column="5">_MSC_VER</name></expr></cpp:if>
+<cpp:pragma pos:line="91" pos:column="1">#<cpp:directive pos:line="91" pos:column="2">pragma</cpp:directive> warning(disable: 4127)</cpp:pragma>
+<cpp:endif pos:line="92" pos:column="1">#<cpp:directive pos:line="92" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:pragma pos:line="94" pos:column="1">#<cpp:directive pos:line="94" pos:column="2">pragma</cpp:directive> push_macro("DEBUG")</cpp:pragma>
+<cpp:ifdef pos:line="95" pos:column="1">#<cpp:directive pos:line="95" pos:column="2">ifdef</cpp:directive> <name pos:line="95" pos:column="8">_DEBUG</name></cpp:ifdef>
+<cpp:ifndef pos:line="96" pos:column="1">#<cpp:directive pos:line="96" pos:column="2">ifndef</cpp:directive> <name pos:line="96" pos:column="9">DEBUG</name></cpp:ifndef>
+<cpp:define pos:line="97" pos:column="1">#<cpp:directive pos:line="97" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="97" pos:column="9">DEBUG</name></cpp:macro></cpp:define>
+<cpp:endif pos:line="98" pos:column="1">#<cpp:directive pos:line="98" pos:column="2">endif</cpp:directive></cpp:endif>
+<cpp:endif pos:line="99" pos:column="1">#<cpp:directive pos:line="99" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="line" pos:line="101" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+<comment type="line" pos:line="102" pos:column="1">// Debugging constants.  These flags are used to route debug messages to</comment>
+<comment type="line" pos:line="103" pos:column="1">// the appropriate places</comment>
+<comment type="line" pos:line="104" pos:column="1">//</comment>
+<cpp:define pos:line="105" pos:column="1">#<cpp:directive pos:line="105" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="105" pos:column="9">DF_ENABLED</name></cpp:macro>               <cpp:value pos:line="105" pos:column="34">0x01</cpp:value></cpp:define> <comment type="line" pos:line="105" pos:column="39">// This option is enabled</comment>
+<cpp:define pos:line="106" pos:column="1">#<cpp:directive pos:line="106" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="106" pos:column="9">DF_OUTPUTDEBUGSTRING</name></cpp:macro>     <cpp:value pos:line="106" pos:column="34">0x02</cpp:value></cpp:define> <comment type="line" pos:line="106" pos:column="39">// Use OutputDebugString</comment>
+<cpp:define pos:line="107" pos:column="1">#<cpp:directive pos:line="107" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="107" pos:column="9">DF_OUTPUTDEBUGWINDOW</name></cpp:macro>     <cpp:value pos:line="107" pos:column="34">0x04</cpp:value></cpp:define> <comment type="line" pos:line="107" pos:column="39">// Send to the host's immediate window</comment>
+<cpp:define pos:line="108" pos:column="1">#<cpp:directive pos:line="108" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="108" pos:column="9">DF_OUTPUTFILE</name></cpp:macro>            <cpp:value pos:line="108" pos:column="34">0x08</cpp:value></cpp:define> <comment type="line" pos:line="108" pos:column="39">// Output to a file</comment>
+<cpp:define pos:line="109" pos:column="1">#<cpp:directive pos:line="109" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="109" pos:column="9">DF_OUTPUTDIALOG</name></cpp:macro>          <cpp:value pos:line="109" pos:column="34">0x10</cpp:value></cpp:define> <comment type="line" pos:line="109" pos:column="39">// Use the assert dialog</comment>
+<cpp:define pos:line="110" pos:column="1">#<cpp:directive pos:line="110" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="110" pos:column="9">DF_OUTOFPROCDIALOG</name></cpp:macro>       <cpp:value pos:line="110" pos:column="34">0x20</cpp:value></cpp:define> <comment type="line" pos:line="110" pos:column="39">// Go out of proc to report the assert in a dialog (Must be combined with DF_OUTPUTDIALOG)</comment>
+
+<cpp:define pos:line="112" pos:column="1">#<cpp:directive pos:line="112" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="112" pos:column="9">DF_DEFAULTASSERTOPTIONS</name></cpp:macro>  <cpp:value pos:line="112" pos:column="34">(DF_ENABLED | DF_OUTPUTDIALOG | DF_OUTOFPROCDIALOG)</cpp:value></cpp:define>
+<cpp:define pos:line="113" pos:column="1">#<cpp:directive pos:line="113" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="113" pos:column="9">DF_DEFAULTPRINTOPTIONS</name></cpp:macro>   <cpp:value pos:line="113" pos:column="34">(DF_ENABLED | DF_OUTPUTDEBUGSTRING)</cpp:value></cpp:define>
+
+<comment type="line" pos:line="115" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+<comment type="line" pos:line="116" pos:column="1">// If you want to route debug messages to an immediate/debug window of the</comment>
+<comment type="line" pos:line="117" pos:column="1">// hosting app, use this function to setup a callback with the same</comment>
+<comment type="line" pos:line="118" pos:column="1">// signature as below.  To revoke it, just call the fn again with a NULL</comment>
+<comment type="line" pos:line="119" pos:column="1">// parameter.</comment>
+<comment type="line" pos:line="120" pos:column="1">//</comment>
+<cpp:ifdef pos:line="121" pos:column="1">#<cpp:directive pos:line="121" pos:column="2">ifdef</cpp:directive> <name pos:line="121" pos:column="8">DEBUG</name></cpp:ifdef>
+<typedef pos:line="122" pos:column="1">typedef <function_decl><type><name pos:line="122" pos:column="9">void</name></type> (<name pos:line="122" pos:column="15">WINAPI</name> <type:modifier pos:line="122" pos:column="22">*</type:modifier><name pos:line="122" pos:column="23">IMMEDIATECALLBACK</name>)<parameter_list pos:line="122" pos:column="41">(<param><decl><type><name pos:line="122" pos:column="42">LPCSTR</name></type> <name pos:line="122" pos:column="49">pszMessage</name></decl></param>)</parameter_list>;</function_decl></typedef>
+<function_decl><type><name pos:line="123" pos:column="1">CLINKAGE</name> <name pos:line="123" pos:column="10">BOOL</name> <name pos:line="123" pos:column="15">ENTRYPOINT</name></type> <name pos:line="123" pos:column="26">VsSetImmediateCallback</name><parameter_list pos:line="123" pos:column="48">(<param><decl><type><name pos:line="123" pos:column="49">IMMEDIATECALLBACK</name></type> <name pos:line="123" pos:column="67">pImmediateCallback</name></decl></param>)</parameter_list>;</function_decl>
+
+<comment type="line" pos:line="125" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+<comment type="line" pos:line="126" pos:column="1">// Initialization / termination for debugging.  Yes, you can assert before</comment>
+<comment type="line" pos:line="127" pos:column="1">// and after these calls.  This just enables the fancy stuff.  Only the host</comment>
+<comment type="line" pos:line="128" pos:column="1">// EXE should call these.</comment>
+<comment type="line" pos:line="129" pos:column="1">//</comment>
+<function_decl><type><name pos:line="130" pos:column="1">CLINKAGE</name> <name pos:line="130" pos:column="10">VOID</name> <name pos:line="130" pos:column="15">ENTRYPOINT</name></type> <name pos:line="130" pos:column="26">VsDebugInitialize</name><parameter_list pos:line="130" pos:column="43">()</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="131" pos:column="1">CLINKAGE</name> <name pos:line="131" pos:column="10">VOID</name> <name pos:line="131" pos:column="15">ENTRYPOINT</name></type> <name pos:line="131" pos:column="26">VsDebugTerminate</name><parameter_list pos:line="131" pos:column="42">()</parameter_list>;</function_decl>
+
+<comment type="line" pos:line="133" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+<comment type="line" pos:line="134" pos:column="1">// Function prototypes.  You should use the macros below to keep debug/retail</comment>
+<comment type="line" pos:line="135" pos:column="1">// differences transparent.</comment>
+<comment type="line" pos:line="136" pos:column="1">//</comment>
+<comment type="line" pos:line="137" pos:column="1">// Support for managed VsTraceListener (note: ANSI strings)</comment>
+<function_decl><type><name pos:line="138" pos:column="1">CLINKAGE</name> <name pos:line="138" pos:column="10">BOOL</name> <name pos:line="138" pos:column="15">ENTRYPOINT</name></type> <name pos:line="138" pos:column="26">VsManagedAssert</name><parameter_list pos:line="138" pos:column="41">(<param><decl><type><name pos:line="138" pos:column="42">LPCSTR</name></type> <name pos:line="138" pos:column="49">pszMsg</name></decl></param>, <param><decl><type><name pos:line="138" pos:column="57">LPCSTR</name></type> <name pos:line="138" pos:column="64">pszAssert</name></decl></param>, <param><decl><type><name pos:line="138" pos:column="75">UINT</name></type> <name pos:line="138" pos:column="80">line</name></decl></param>, <param><decl><type><name pos:line="138" pos:column="86">BOOL</name> <type:modifier pos:line="138" pos:column="91">*</type:modifier></type><name pos:line="138" pos:column="92">pfDisableAssert</name></decl></param>)</parameter_list>;</function_decl>
+<comment type="line" pos:line="139" pos:column="1">// Support for managed VsTraceListener (note: ANSI strings)</comment>
+<function_decl><type><name pos:line="140" pos:column="1">CLINKAGE</name> <name pos:line="140" pos:column="10">VOID</name> <name pos:line="140" pos:column="15">ENTRYPOINT</name></type> <name pos:line="140" pos:column="26">VsDebugPrint</name><parameter_list pos:line="140" pos:column="38">(<param><decl><type><name pos:line="140" pos:column="39">LPCSTR</name></type> <name pos:line="140" pos:column="46">pszMsg</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="141" pos:column="1">CLINKAGE</name> <name pos:line="141" pos:column="10">BOOL</name> <name pos:line="141" pos:column="15">ENTRYPOINT</name></type> <name pos:line="141" pos:column="26">VsAssert</name><parameter_list pos:line="141" pos:column="34">(<param><decl><type><name pos:line="141" pos:column="35">LPCSTR</name></type> <name pos:line="141" pos:column="42">pszMsg</name></decl></param>, <param><decl><type><name pos:line="141" pos:column="50">LPCSTR</name></type> <name pos:line="141" pos:column="57">pszAssert</name></decl></param>, <param><decl><type><name pos:line="141" pos:column="68">LPCSTR</name></type> <name pos:line="141" pos:column="75">pszFile</name></decl></param>, <param><decl><type><name pos:line="141" pos:column="84">UINT</name></type> <name pos:line="141" pos:column="89">line</name></decl></param>, <param><decl><type><name pos:line="141" pos:column="95">BOOL</name> <type:modifier pos:line="141" pos:column="100">*</type:modifier></type><name pos:line="141" pos:column="101">pfDisableAssert</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="142" pos:column="1">CLINKAGE</name> <name pos:line="142" pos:column="10">BOOL</name> <name pos:line="142" pos:column="15">ENTRYPOINT</name></type> <name pos:line="142" pos:column="26">VsAssertAndThrow</name><parameter_list pos:line="142" pos:column="42">(<param><decl><type><name pos:line="142" pos:column="43">LPCSTR</name></type> <name pos:line="142" pos:column="50">pszMsg</name></decl></param>, <param><decl><type><name pos:line="142" pos:column="58">LPCSTR</name></type> <name pos:line="142" pos:column="65">pszAssert</name></decl></param>, <param><decl><type><name pos:line="142" pos:column="76">LPCSTR</name></type> <name pos:line="142" pos:column="83">pszFile</name></decl></param>, <param><decl><type><name pos:line="142" pos:column="92">UINT</name></type> <name pos:line="142" pos:column="97">line</name></decl></param>, <param><decl><type><name pos:line="142" pos:column="103">BOOL</name> <type:modifier pos:line="142" pos:column="108">*</type:modifier></type><name pos:line="142" pos:column="109">pfThrow</name></decl></param>, <param><decl><type><name pos:line="142" pos:column="118">BOOL</name> <type:modifier pos:line="142" pos:column="123">*</type:modifier></type><name pos:line="142" pos:column="124">pfDisableAssert</name></decl></param>, <param><decl><type><name pos:line="142" pos:column="141">BOOL</name> <type:modifier pos:line="142" pos:column="146">*</type:modifier></type><name pos:line="142" pos:column="147">pfAlwaysThrow</name></decl></param>)</parameter_list>;</function_decl>
+<cpp:if pos:line="143" pos:column="1">#<cpp:directive pos:line="143" pos:column="2">if</cpp:directive> <expr><call><name pos:line="143" pos:column="5">defined</name><argument_list pos:line="143" pos:column="12">(<argument><expr><name pos:line="143" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="143" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="143" pos:column="29">!</op:operator><call><name pos:line="143" pos:column="30">defined</name><argument_list pos:line="143" pos:column="37">(<argument><expr><name pos:line="143" pos:column="38">VSASSERT_MIXED_LINKAGE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+         <function_decl><type><name pos:line="144" pos:column="10">BOOL</name> <name pos:line="144" pos:column="15">ENTRYPOINT</name></type> <name pos:line="144" pos:column="26">VsAssert</name><parameter_list pos:line="144" pos:column="34">(<param><decl><type><name pos:line="144" pos:column="35">LPCWSTR</name></type> <name pos:line="144" pos:column="43">pszMsg</name></decl></param>, <param><decl><type><name pos:line="144" pos:column="51">LPCSTR</name></type> <name pos:line="144" pos:column="58">pszAssert</name></decl></param>, <param><decl><type><name pos:line="144" pos:column="69">LPCSTR</name></type> <name pos:line="144" pos:column="76">pszFile</name></decl></param>, <param><decl><type><name pos:line="144" pos:column="85">UINT</name></type> <name pos:line="144" pos:column="90">line</name></decl></param>, <param><decl><type><name pos:line="144" pos:column="96">BOOL</name> <type:modifier pos:line="144" pos:column="101">*</type:modifier></type><name pos:line="144" pos:column="102">pfDisableAssert</name></decl></param>)</parameter_list>;</function_decl>
+         <function_decl><type><name pos:line="145" pos:column="10">BOOL</name> <name pos:line="145" pos:column="15">ENTRYPOINT</name></type> <name pos:line="145" pos:column="26">VsAssertAndThrow</name><parameter_list pos:line="145" pos:column="42">(<param><decl><type><name pos:line="145" pos:column="43">LPCWSTR</name></type> <name pos:line="145" pos:column="51">pszMsg</name></decl></param>, <param><decl><type><name pos:line="145" pos:column="59">LPCSTR</name></type> <name pos:line="145" pos:column="66">pszAssert</name></decl></param>, <param><decl><type><name pos:line="145" pos:column="77">LPCSTR</name></type> <name pos:line="145" pos:column="84">pszFile</name></decl></param>, <param><decl><type><name pos:line="145" pos:column="93">UINT</name></type> <name pos:line="145" pos:column="98">line</name></decl></param>, <param><decl><type><name pos:line="145" pos:column="104">BOOL</name> <type:modifier pos:line="145" pos:column="109">*</type:modifier></type><name pos:line="145" pos:column="110">pfThrow</name></decl></param>, <param><decl><type><name pos:line="145" pos:column="119">BOOL</name> <type:modifier pos:line="145" pos:column="124">*</type:modifier></type><name pos:line="145" pos:column="125">pfDisableAssert</name></decl></param>, <param><decl><type><name pos:line="145" pos:column="142">BOOL</name> <type:modifier pos:line="145" pos:column="147">*</type:modifier></type><name pos:line="145" pos:column="148">pfAlwaysThrow</name></decl></param>)</parameter_list>;</function_decl>
+<cpp:endif pos:line="146" pos:column="1">#<cpp:directive pos:line="146" pos:column="2">endif</cpp:directive></cpp:endif>
+<function_decl><type><name pos:line="147" pos:column="1">CLINKAGE</name> <name pos:line="147" pos:column="10">BOOL</name> <name pos:line="147" pos:column="15">ENTRYPOINT</name></type> <name pos:line="147" pos:column="26">VsDisplayDebugMessage</name><parameter_list pos:line="147" pos:column="47">(<param><decl><type><name pos:line="147" pos:column="48">LPCSTR</name></type> <name pos:line="147" pos:column="55">pszMsg</name></decl></param>, <param><decl><type><name pos:line="147" pos:column="63">LPCSTR</name></type> <name pos:line="147" pos:column="70">pszAssert</name></decl></param>, <param><decl><type><name pos:line="147" pos:column="81">LPCSTR</name></type> <name pos:line="147" pos:column="88">pszFile</name></decl></param>, <param><decl><type><name pos:line="147" pos:column="97">UINT</name></type> <name pos:line="147" pos:column="102">line</name></decl></param>, <param><decl><type><name pos:line="147" pos:column="108">int</name></type> <name pos:line="147" pos:column="112">flags</name></decl></param>, <param><decl><type><name pos:line="147" pos:column="119">BOOL</name> <type:modifier pos:line="147" pos:column="124">*</type:modifier></type><name pos:line="147" pos:column="125">pfDisableAssert</name></decl></param>, <param><decl><type><type:modifier pos:line="147" pos:column="142">...</type:modifier></type></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="148" pos:column="1">CLINKAGE</name> <name pos:line="148" pos:column="10">BOOL</name> <name pos:line="148" pos:column="15">ENTRYPOINT</name></type> <name pos:line="148" pos:column="26">VsDisplayDebugMessageThrow</name><parameter_list pos:line="148" pos:column="52">(<param><decl><type><name pos:line="148" pos:column="53">LPCSTR</name></type> <name pos:line="148" pos:column="60">pszMsg</name></decl></param>, <param><decl><type><name pos:line="148" pos:column="68">LPCSTR</name></type> <name pos:line="148" pos:column="75">pszAssert</name></decl></param>, <param><decl><type><name pos:line="148" pos:column="86">LPCSTR</name></type> <name pos:line="148" pos:column="93">pszFile</name></decl></param>, <param><decl><type><name pos:line="148" pos:column="102">UINT</name></type> <name pos:line="148" pos:column="107">line</name></decl></param>, <param><decl><type><name pos:line="148" pos:column="113">int</name></type> <name pos:line="148" pos:column="117">flags</name></decl></param>, <param><decl><type><name pos:line="148" pos:column="124">BOOL</name> <type:modifier pos:line="148" pos:column="129">*</type:modifier></type><name pos:line="148" pos:column="130">pfThrow</name></decl></param>, <param><decl><type><name pos:line="148" pos:column="139">BOOL</name> <type:modifier pos:line="148" pos:column="144">*</type:modifier></type><name pos:line="148" pos:column="145">pfDisableAssert</name></decl></param>, <param><decl><type><name pos:line="148" pos:column="162">BOOL</name> <type:modifier pos:line="148" pos:column="167">*</type:modifier></type><name pos:line="148" pos:column="168">pfAlwaysThrow</name></decl></param>, <param><decl><type><type:modifier pos:line="148" pos:column="183">...</type:modifier></type></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="149" pos:column="1">CLINKAGE</name> <name pos:line="149" pos:column="10">BOOL</name> <name pos:line="149" pos:column="15">ENTRYPOINT</name></type> <name pos:line="149" pos:column="26">VsDisplayDebugMessageThrowVa</name><parameter_list pos:line="149" pos:column="54">(<param><decl><type><name pos:line="149" pos:column="55">LPCSTR</name></type> <name pos:line="149" pos:column="62">pszMsg</name></decl></param>, <param><decl><type><name pos:line="149" pos:column="70">LPCSTR</name></type> <name pos:line="149" pos:column="77">pszAssert</name></decl></param>, <param><decl><type><name pos:line="149" pos:column="88">LPCSTR</name></type> <name pos:line="149" pos:column="95">pszFile</name></decl></param>, <param><decl><type><name pos:line="149" pos:column="104">UINT</name></type> <name pos:line="149" pos:column="109">line</name></decl></param>, <param><decl><type><name pos:line="149" pos:column="115">int</name></type> <name pos:line="149" pos:column="119">flags</name></decl></param>, <param><decl><type><name pos:line="149" pos:column="126">BOOL</name> <type:modifier pos:line="149" pos:column="131">*</type:modifier></type><name pos:line="149" pos:column="132">pfThrow</name></decl></param>, <param><decl><type><name pos:line="149" pos:column="141">BOOL</name> <type:modifier pos:line="149" pos:column="146">*</type:modifier></type><name pos:line="149" pos:column="147">pfDisableAssert</name></decl></param>, <param><decl><type><name pos:line="149" pos:column="164">BOOL</name> <type:modifier pos:line="149" pos:column="169">*</type:modifier></type><name pos:line="149" pos:column="170">pfAlwaysThrow</name></decl></param>, <param><decl><type><name pos:line="149" pos:column="185">va_list</name></type> <name pos:line="149" pos:column="193">pArgs</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="150" pos:column="1">CLINKAGE</name> <name pos:line="150" pos:column="10">VOID</name> <name pos:line="150" pos:column="15">ENTRYPOINT</name></type> <name pos:line="150" pos:column="26">VsDebugOutput</name><parameter_list pos:line="150" pos:column="39">(<param><decl><type><name pos:line="150" pos:column="40">int</name></type> <name pos:line="150" pos:column="44">dfOutput</name></decl></param>, <param><decl><type><name pos:line="150" pos:column="54">LPCSTR</name></type> <name pos:line="150" pos:column="61">pszOutputString</name></decl></param>, <param><decl><type><name pos:line="150" pos:column="78">BOOL</name> <type:modifier pos:line="150" pos:column="83">*</type:modifier></type><name pos:line="150" pos:column="84">pfDoInt3</name></decl></param>, <param><decl><type><name pos:line="150" pos:column="94">BOOL</name> <type:modifier pos:line="150" pos:column="99">*</type:modifier></type><name pos:line="150" pos:column="100">pfDisableAssert</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="151" pos:column="1">CLINKAGE</name> <name pos:line="151" pos:column="10">VOID</name> <name pos:line="151" pos:column="15">ENTRYPOINT</name></type> <name pos:line="151" pos:column="26">VsDebugOutputThrow</name><parameter_list pos:line="151" pos:column="44">(<param><decl><type><name pos:line="151" pos:column="45">int</name></type> <name pos:line="151" pos:column="49">dfOutput</name></decl></param>, <param><decl><type><name pos:line="151" pos:column="59">LPCSTR</name></type> <name pos:line="151" pos:column="66">pszOutputString</name></decl></param>, <param><decl><type><name pos:line="151" pos:column="83">BOOL</name> <type:modifier pos:line="151" pos:column="88">*</type:modifier></type><name pos:line="151" pos:column="89">pfDoInt3</name></decl></param>, <param><decl><type><name pos:line="151" pos:column="99">BOOL</name> <type:modifier pos:line="151" pos:column="104">*</type:modifier></type><name pos:line="151" pos:column="105">pfThrow</name></decl></param>, <param><decl><type><name pos:line="151" pos:column="114">BOOL</name> <type:modifier pos:line="151" pos:column="119">*</type:modifier></type><name pos:line="151" pos:column="120">pfDisableAssert</name></decl></param>, <param><decl><type><name pos:line="151" pos:column="137">BOOL</name> <type:modifier pos:line="151" pos:column="142">*</type:modifier></type><name pos:line="151" pos:column="143">pfAlwaysThrow</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="152" pos:column="1">CLINKAGE</name> <name pos:line="152" pos:column="10">VOID</name> <name pos:line="152" pos:column="15">ENTRYPOINT</name></type> <name pos:line="152" pos:column="26">VsDebugPrintf</name><parameter_list pos:line="152" pos:column="39">(<param><decl><type><name pos:line="152" pos:column="40">LPCSTR</name></type> <name pos:line="152" pos:column="47">pszMsg</name></decl></param>, <param><decl><type><type:modifier pos:line="152" pos:column="55">...</type:modifier></type></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="153" pos:column="1">CLINKAGE</name> <name pos:line="153" pos:column="10">VOID</name> <name pos:line="153" pos:column="15">ENTRYPOINT</name></type> <name pos:line="153" pos:column="26">VsDebugPrintIf</name><parameter_list pos:line="153" pos:column="40">(<param><decl><type><name pos:line="153" pos:column="41">BOOL</name></type> <name pos:line="153" pos:column="46">fPrint</name></decl></param>, <param><decl><type><name pos:line="153" pos:column="54">LPCSTR</name></type> <name pos:line="153" pos:column="61">pszMsg</name></decl></param>, <param><decl><type><type:modifier pos:line="153" pos:column="69">...</type:modifier></type></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="154" pos:column="1">CLINKAGE</name> <name pos:line="154" pos:column="10">VOID</name> <name pos:line="154" pos:column="15">ENTRYPOINT</name></type> <name pos:line="154" pos:column="26">VsEnableAsserts</name> <parameter_list pos:line="154" pos:column="42">(<param><decl><type><name pos:line="154" pos:column="43">BOOL</name></type> <name pos:line="154" pos:column="48">fEnable</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="155" pos:column="1">CLINKAGE</name> <name pos:line="155" pos:column="10">VOID</name> <name pos:line="155" pos:column="15">ENTRYPOINT</name></type> <name pos:line="155" pos:column="26">VsPrintCallstack</name><parameter_list pos:line="155" pos:column="42">(<param><decl><type><name pos:line="155" pos:column="43">int</name></type> <name pos:line="155" pos:column="47">nLines</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="156" pos:column="1">CLINKAGE</name> <name pos:line="156" pos:column="10">BOOL</name> <name pos:line="156" pos:column="15">ENTRYPOINT</name></type> <name pos:line="156" pos:column="26">VsEnsureDebuggerPresent</name><parameter_list pos:line="156" pos:column="49">()</parameter_list>;</function_decl>
+         <function_decl><type><name pos:line="157" pos:column="10">BOOL</name> <name pos:line="157" pos:column="15">ENTRYPOINT</name></type> <name pos:line="157" pos:column="26">VsAssertWriteMiniDump</name><parameter_list pos:line="157" pos:column="47">()</parameter_list>;</function_decl>
+         
+<comment type="line" pos:line="159" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+<comment type="line" pos:line="160" pos:column="1">// Stack walk and resolve symbols functions</comment>
+<comment type="line" pos:line="161" pos:column="1">//</comment>
+<function_decl><type><name pos:line="162" pos:column="1">CLINKAGE</name> <name pos:line="162" pos:column="10">UINT</name> <name pos:line="162" pos:column="15">ENTRYPOINT</name></type> <name pos:line="162" pos:column="26">VsGetStackAddresses</name><parameter_list pos:line="162" pos:column="45">(<param><decl><type><name pos:line="162" pos:column="46">UINT</name></type> <name pos:line="162" pos:column="51">ifrStart</name></decl></param>, <param><decl><type><name pos:line="162" pos:column="61">UINT</name></type> <name pos:line="162" pos:column="66">cfrTotal</name></decl></param>, <param><decl><type><name pos:line="162" pos:column="76">DWORD_PTR</name> <type:modifier pos:line="162" pos:column="86">*</type:modifier></type> <name pos:line="162" pos:column="88">pdwAddr</name></decl></param>)</parameter_list>;</function_decl>
+<decl_stmt><decl><type><name pos:line="163" pos:column="1">CLINKAGE</name> <name pos:line="163" pos:column="10">BOOL</name> <name pos:line="163" pos:column="15">ENTRYPOINT</name></type> <name pos:line="163" pos:column="26">VsResolveSymbols</name><argument_list pos:line="163" pos:column="42">(<argument><expr><name pos:line="163" pos:column="43">DWORD_PTR</name> <name pos:line="163" pos:column="53">dwAddress</name></expr></argument>, <argument><expr><macro><name pos:line="163" pos:column="64">_Out_cap_</name><argument_list pos:line="163" pos:column="73">(<argument pos:line="163" pos:column="74">uicBuf</argument>)</argument_list></macro> <name pos:line="163" pos:column="82">char</name> <op:operator pos:line="163" pos:column="87">*</op:operator> <name pos:line="163" pos:column="89">pszBuf</name></expr></argument>, <argument><expr><name pos:line="163" pos:column="97">UINT</name> <name pos:line="163" pos:column="102">uicBuf</name></expr></argument>)</argument_list></decl>;</decl_stmt>
+
+<cpp:if pos:line="165" pos:column="1">#<cpp:directive pos:line="165" pos:column="2">if</cpp:directive> <expr><call><name pos:line="165" pos:column="5">defined</name><argument_list pos:line="165" pos:column="12">(<argument><expr><name pos:line="165" pos:column="13">_X86_</name></expr></argument>)</argument_list></call> <op:operator pos:line="165" pos:column="20">&amp;&amp;</op:operator> <op:operator pos:line="165" pos:column="23">!</op:operator><call><name pos:line="165" pos:column="24">defined</name><argument_list pos:line="165" pos:column="31">(<argument><expr><name pos:line="165" pos:column="32">PLATFORM_UNIX</name></expr></argument>)</argument_list></call> <op:operator pos:line="165" pos:column="47">&amp;&amp;</op:operator> <op:operator pos:line="165" pos:column="50">!</op:operator><call><name pos:line="165" pos:column="51">defined</name><argument_list pos:line="165" pos:column="58">(<argument><expr><name pos:line="165" pos:column="59">_M_CEE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+<comment type="line" pos:line="166" pos:column="1">// Avoid inline assembler in macros because it breaks lambdas; can be changed back when dev10 bug 658310 is fixed</comment>
+<comment type="line" pos:line="167" pos:column="1">// #define Int3 _asm { int 3 }</comment>
+<cpp:define pos:line="168" pos:column="1">#<cpp:directive pos:line="168" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="168" pos:column="9">Int3</name></cpp:macro> <cpp:value pos:line="168" pos:column="14">DebugBreak();</cpp:value></cpp:define>
+<cpp:else pos:line="169" pos:column="1">#<cpp:directive pos:line="169" pos:column="2">else</cpp:directive></cpp:else>
+<cpp:define pos:line="170" pos:column="1">#<cpp:directive pos:line="170" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="170" pos:column="9">Int3</name></cpp:macro> <cpp:value pos:line="170" pos:column="14">DebugBreak();</cpp:value></cpp:define>
+<cpp:endif pos:line="171" pos:column="1">#<cpp:directive pos:line="171" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="171" pos:column="8">// _X86_</comment>
+<cpp:define pos:line="172" pos:column="1">#<cpp:directive pos:line="172" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="172" pos:column="9">VsDebugBreak</name><parameter_list pos:line="172" pos:column="21">()</parameter_list></cpp:macro> <cpp:value pos:line="172" pos:column="24">do { if (VsEnsureDebuggerPresent()) {Int3; } } while(0)</cpp:value></cpp:define>
+
+<comment type="line" pos:line="174" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+<comment type="line" pos:line="175" pos:column="1">// Debugging macros</comment>
+<comment type="line" pos:line="176" pos:column="1">//</comment>
+<decl_stmt><decl><type><specifier pos:line="177" pos:column="1">static</specifier> <name pos:line="177" pos:column="8">BOOL</name></type> <name pos:line="177" pos:column="13">g_fStopOnVsAssert</name> <init pos:line="177" pos:column="31">= <expr><name pos:line="177" pos:column="33">FALSE</name></expr></init></decl>;</decl_stmt>
+
+<comment type="line" pos:line="179" pos:column="1">// function which uses g_fStopOnVsAssert so we don't get a compiler warning</comment>
+<function><type><name pos:line="180" pos:column="1">__forceinline</name>
+<name pos:line="181" pos:column="1">void</name></type>
+<name pos:line="182" pos:column="1">VSASSERT_H_UsefStopOnVsAssert</name><parameter_list pos:line="182" pos:column="30">()</parameter_list>
+<block pos:line="183" pos:column="1">{
+    <expr_stmt><expr><name pos:line="184" pos:column="5">g_fStopOnVsAssert</name> <op:operator pos:line="184" pos:column="23">=</op:operator> <name pos:line="184" pos:column="25">g_fStopOnVsAssert</name></expr>;</expr_stmt>
+}</block></function>
+
+<cpp:define pos:line="187" pos:column="1">#<cpp:directive pos:line="187" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="187" pos:column="9">VSASSERT</name><parameter_list pos:line="187" pos:column="17">(<param><type><name pos:line="187" pos:column="18">fTest</name></type></param>, <param><type><name pos:line="187" pos:column="25">szMsg</name></type></param>)</parameter_list></cpp:macro>                                      \
+  <cpp:value pos:line="188" pos:column="3">do {                                                              \
+    static BOOL fDisableThisAssert = FALSE;                         \
+    if (!(fTest) &amp;&amp; !fDisableThisAssert)                            \
+      {                                                             \
+      if(g_fStopOnVsAssert ||                                       \
+        VsAssert(szMsg, #fTest, __FILE__, __LINE__, &amp;fDisableThisAssert))\
+        VsDebugBreak();                                             \
+      }                                                             \
+  } while (false)								    \
+
+#define VSVERIFY(fTest, szMsg) VSASSERT((fTest), (szMsg))</cpp:value></cpp:define>
+
+<cpp:define pos:line="200" pos:column="1">#<cpp:directive pos:line="200" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="200" pos:column="9">VSVERIFYTHROW</name><parameter_list pos:line="200" pos:column="22">(<param><type><name pos:line="200" pos:column="23">fTest</name></type></param>, <param><type><name pos:line="200" pos:column="30">szMsg</name></type></param>, <param><type><name pos:line="200" pos:column="37">exception</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="200" pos:column="48">VSVERIFYFUNC(fTest, szMsg, throw exception)</cpp:value></cpp:define>
+
+<cpp:define pos:line="202" pos:column="1">#<cpp:directive pos:line="202" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="202" pos:column="9">VSVERIFYFUNC</name><parameter_list pos:line="202" pos:column="21">(<param><type><name pos:line="202" pos:column="22">fTest</name></type></param>, <param><type><name pos:line="202" pos:column="29">szMsg</name></type></param>, <param><type><name pos:line="202" pos:column="36">function</name></type></param>)</parameter_list></cpp:macro>                        \
+  <cpp:value pos:line="203" pos:column="3">do                                                                \
+    {                                                               \
+    static BOOL fDisableThisAssert = FALSE;                         \
+    static BOOL fThrowThisAssert = TRUE;                            \
+    if (!(fTest))                                                   \
+      {                                                             \
+      BOOL fThrow=true;                                             \
+      if(!fDisableThisAssert)                                       \
+        {                                                           \
+        if(g_fStopOnVsAssert ||                                     \
+          VsAssertAndThrow( szMsg,                                  \
+                            #fTest,                                 \
+                            __FILE__,                               \
+                            __LINE__,                               \
+                            &amp;fThrow,                                \
+                            &amp;fDisableThisAssert,                    \
+                            &amp;fThrowThisAssert))                     \
+          {                                                         \
+          VsDebugBreak();                                           \
+          }                                                         \
+        }                                                           \
+      else                                                          \
+        {                                                           \
+          fThrow=fThrowThisAssert;                                  \
+        }                                                           \
+      if(fThrow)                                                    \
+        {                                                           \
+          function;                                                 \
+        }                                                           \
+      }                                                             \
+    }                                                               \
+  while (false)                                                     \
+
+#define VSFAIL(szMsg) VSASSERT(0, szMsg)</cpp:value></cpp:define>
+<cpp:define pos:line="237" pos:column="1">#<cpp:directive pos:line="237" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="237" pos:column="9">VSIMPLIES</name><parameter_list pos:line="237" pos:column="18">(<param><type><name pos:line="237" pos:column="19">fHypothesis</name></type></param>, <param><type><name pos:line="237" pos:column="32">fConclusion</name></type></param>, <param><type><name pos:line="237" pos:column="45">szMsg</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="237" pos:column="52">VSASSERT(!(fHypothesis) || (fConclusion), szMsg)</cpp:value></cpp:define>
+<cpp:define pos:line="238" pos:column="1">#<cpp:directive pos:line="238" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="238" pos:column="9">VSDEBUGPRINTF</name></cpp:macro>  <cpp:value pos:line="238" pos:column="24">VsDebugPrintf</cpp:value></cpp:define>
+<cpp:define pos:line="239" pos:column="1">#<cpp:directive pos:line="239" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="239" pos:column="9">VSDEBUGPRINTIF</name></cpp:macro> <cpp:value pos:line="239" pos:column="24">VsDebugPrintIf</cpp:value></cpp:define>
+<cpp:define pos:line="240" pos:column="1">#<cpp:directive pos:line="240" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="240" pos:column="9">VSPRINTCALLSTACK</name><parameter_list pos:line="240" pos:column="25">(<param><type><name pos:line="240" pos:column="26">nLines</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="240" pos:column="34">VsPrintCallstack(nLines)</cpp:value></cpp:define>
+
+<comment type="line" pos:line="242" pos:column="1">// "CAssert".  This is a compile time assert that will fire if fTest is</comment>
+<comment type="line" pos:line="243" pos:column="1">// zero.  Here, "msg" must be a non-quoted single word string that can be</comment>
+<comment type="line" pos:line="244" pos:column="1">// used as an identifier.</comment>
+<comment type="line" pos:line="245" pos:column="1">//</comment>
+<cpp:define pos:line="246" pos:column="1">#<cpp:directive pos:line="246" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="246" pos:column="9">VSCASSERT</name><parameter_list pos:line="246" pos:column="18">(<param><type><name pos:line="246" pos:column="19">fTest</name></type></param>, <param><type><name pos:line="246" pos:column="26">msg</name></type></param>)</parameter_list></cpp:macro>  <cpp:value pos:line="246" pos:column="32">{ struct foo { int Compile_Assert_##msg:((fTest)!=0); }; }</cpp:value></cpp:define>
+
+<cpp:else pos:line="248" pos:column="1">#<cpp:directive pos:line="248" pos:column="2">else</cpp:directive></cpp:else> <comment type="line" pos:line="248" pos:column="7">// DEBUG</comment>
+
+<comment type="line" pos:line="250" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+<comment type="line" pos:line="251" pos:column="1">// Retail no-op implementations of debugging macros</comment>
+<comment type="line" pos:line="252" pos:column="1">//</comment>
+<cpp:ifdef pos:line="253" pos:column="1">#<cpp:directive pos:line="253" pos:column="2">ifdef</cpp:directive> <name pos:line="253" pos:column="8">__cplusplus</name></cpp:ifdef>
+<function><type><specifier pos:line="254" pos:column="1">inline</specifier> <name pos:line="254" pos:column="8">void</name> <name pos:line="254" pos:column="13">__cdecl</name></type> <name pos:line="254" pos:column="21">_DebugNop</name><parameter_list pos:line="254" pos:column="30">(<param><decl><type><type:modifier pos:line="254" pos:column="31">...</type:modifier></type></decl></param>)</parameter_list> <block pos:line="254" pos:column="36">{}</block></function>
+<cpp:endif pos:line="255" pos:column="1">#<cpp:directive pos:line="255" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:define pos:line="257" pos:column="1">#<cpp:directive pos:line="257" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="257" pos:column="9">VSASSERT</name><parameter_list pos:line="257" pos:column="17">(<param><type><name pos:line="257" pos:column="18">fTest</name></type></param>, <param><type><name pos:line="257" pos:column="25">szMsg</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="257" pos:column="32">do {} while (0)</cpp:value></cpp:define>
+<cpp:define pos:line="258" pos:column="1">#<cpp:directive pos:line="258" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="258" pos:column="9">VSVERIFY</name><parameter_list pos:line="258" pos:column="17">(<param><type><name pos:line="258" pos:column="18">fTest</name></type></param>, <param><type><name pos:line="258" pos:column="25">szMsg</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="258" pos:column="32">(void)(fTest);</cpp:value></cpp:define>
+
+<cpp:define pos:line="260" pos:column="1">#<cpp:directive pos:line="260" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="260" pos:column="9">VSVERIFYTHROW</name><parameter_list pos:line="260" pos:column="22">(<param><type><name pos:line="260" pos:column="23">fTest</name></type></param>, <param><type><name pos:line="260" pos:column="30">szMsg</name></type></param>, <param><type><name pos:line="260" pos:column="37">exception</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="260" pos:column="48">VSVERIFYFUNC(fTest, szMsg, throw exception)</cpp:value></cpp:define>
+
+<comment type="line" pos:line="262" pos:column="1">// Note: It is deliberate that this exists in retail too.</comment>
+<cpp:define pos:line="263" pos:column="1">#<cpp:directive pos:line="263" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="263" pos:column="9">VSVERIFYFUNC</name><parameter_list pos:line="263" pos:column="21">(<param><type><name pos:line="263" pos:column="22">fTest</name></type></param>, <param><type><name pos:line="263" pos:column="29">szMsg</name></type></param>, <param><type><name pos:line="263" pos:column="36">function</name></type></param>)</parameter_list></cpp:macro>                        \
+  <cpp:value pos:line="264" pos:column="3">do                                                                \
+    {                                                               \
+    if (!(fTest))                                                   \
+      {                                                             \
+        function;                                                   \
+      }                                                             \
+    }                                                               \
+  while (false)                                                     \
+
+#define VSFAIL(szMsg) do {} while (0)</cpp:value></cpp:define>
+<cpp:define pos:line="274" pos:column="1">#<cpp:directive pos:line="274" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="274" pos:column="9">VSIMPLIES</name><parameter_list pos:line="274" pos:column="18">(<param><type><name pos:line="274" pos:column="19">fHypothesis</name></type></param>, <param><type><name pos:line="274" pos:column="32">fConclusion</name></type></param>, <param><type><name pos:line="274" pos:column="45">szMsg</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="274" pos:column="52">do {} while (0)</cpp:value></cpp:define>
+<cpp:define pos:line="275" pos:column="1">#<cpp:directive pos:line="275" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="275" pos:column="9">VSDEBUGPRINTF</name></cpp:macro> <cpp:value pos:line="275" pos:column="23">1 ? (void)0 : _DebugNop</cpp:value></cpp:define>
+<cpp:define pos:line="276" pos:column="1">#<cpp:directive pos:line="276" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="276" pos:column="9">VSDEBUGPRINTIF</name></cpp:macro> <cpp:value pos:line="276" pos:column="24">VSDEBUGPRINTF</cpp:value></cpp:define>
+<cpp:define pos:line="277" pos:column="1">#<cpp:directive pos:line="277" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="277" pos:column="9">VSPRINTCALLSTACK</name><parameter_list pos:line="277" pos:column="25">(<param><type><name pos:line="277" pos:column="26">nLines</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:define pos:line="278" pos:column="1">#<cpp:directive pos:line="278" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="278" pos:column="9">VSCASSERT</name><parameter_list pos:line="278" pos:column="18">(<param><type><name pos:line="278" pos:column="19">fTest</name></type></param>, <param><type><name pos:line="278" pos:column="26">msg</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+
+<cpp:define pos:line="280" pos:column="1">#<cpp:directive pos:line="280" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="280" pos:column="9">VsSetImmediateCallback</name><parameter_list pos:line="280" pos:column="31">(<param><type><name pos:line="280" pos:column="32">pfn</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:define pos:line="281" pos:column="1">#<cpp:directive pos:line="281" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="281" pos:column="9">VsDebugInitialize</name><parameter_list pos:line="281" pos:column="26">()</parameter_list></cpp:macro></cpp:define>
+<cpp:define pos:line="282" pos:column="1">#<cpp:directive pos:line="282" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="282" pos:column="9">VsDebugTerminate</name><parameter_list pos:line="282" pos:column="25">()</parameter_list></cpp:macro></cpp:define>
+
+<cpp:define pos:line="284" pos:column="1">#<cpp:directive pos:line="284" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="284" pos:column="9">VsGetStackAddresses</name><parameter_list pos:line="284" pos:column="28">(<param><type><name pos:line="284" pos:column="29">ifrStart</name></type></param>, <param><type><name pos:line="284" pos:column="39">cfrTotal</name></type></param>, <param><type><name pos:line="284" pos:column="49">pdwAddr</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="284" pos:column="58">0</cpp:value></cpp:define>
+<cpp:define pos:line="285" pos:column="1">#<cpp:directive pos:line="285" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="285" pos:column="9">VsResolveSymbols</name><parameter_list pos:line="285" pos:column="25">(<param><type><name pos:line="285" pos:column="26">dwAddress</name></type></param>, <param><type><name pos:line="285" pos:column="37">pszBuf</name></type></param>, <param><type><name pos:line="285" pos:column="45">uicBuf</name></type></param>)</parameter_list></cpp:macro>      <cpp:value pos:line="285" pos:column="58">0</cpp:value></cpp:define>
+<cpp:define pos:line="286" pos:column="1">#<cpp:directive pos:line="286" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="286" pos:column="9">VsDebugBreak</name><parameter_list pos:line="286" pos:column="21">()</parameter_list></cpp:macro>  <cpp:value pos:line="286" pos:column="25">do {} while (0)</cpp:value></cpp:define>
+<cpp:endif pos:line="287" pos:column="1">#<cpp:directive pos:line="287" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="287" pos:column="8">// DEBUG</comment>
+
+<comment type="line" pos:line="289" pos:column="1">// usability improvement (accepting variable number of arguments and with formatting</comment>
+<comment type="line" pos:line="290" pos:column="1">// functionality built-in) (bug: 258645 - move the following definitions from</comment>
+<comment type="line" pos:line="291" pos:column="1">// env\msenv\inc\vbmacro.h to vscommon\vsassert\vsassert.h)</comment>
+
+<cpp:ifdef pos:line="293" pos:column="1">#<cpp:directive pos:line="293" pos:column="2">ifdef</cpp:directive> <name pos:line="293" pos:column="8">DEBUG</name></cpp:ifdef>
+    <cpp:define pos:line="294" pos:column="5">#<cpp:directive pos:line="294" pos:column="6">define</cpp:directive> <cpp:macro><name pos:line="294" pos:column="13">VSFAIL_FORMATWITHARGS_5</name><parameter_list pos:line="294" pos:column="36">(<param><type><name pos:line="294" pos:column="37">pwszFormat</name></type></param>, <param><type><name pos:line="294" pos:column="49">ARG1</name></type></param>, <param><type><name pos:line="294" pos:column="55">ARG2</name></type></param>, <param><type><name pos:line="294" pos:column="61">ARG3</name></type></param>, <param><type><name pos:line="294" pos:column="67">ARG4</name></type></param>, <param><type><name pos:line="294" pos:column="73">ARG5</name></type></param>)</parameter_list></cpp:macro> \
+    <cpp:value pos:line="295" pos:column="5">if (pwszFormat &amp;&amp; *pwszFormat)                                          \
+    {                                                                       \
+        WCHAR szFailString[MAX_PATH*4] = L"";                               \
+                                                                            \
+        VSBufPrint(szFailString, sizeof(szFailString)/sizeof(*szFailString), pwszFormat, ARG1, ARG2, ARG3, ARG4, ARG5);   \
+                                                                            \
+        VSFAIL(szFailString);                                               \
+    }</cpp:value></cpp:define>
+    <cpp:define pos:line="303" pos:column="5">#<cpp:directive pos:line="303" pos:column="6">define</cpp:directive> <cpp:macro><name pos:line="303" pos:column="13">VSFAIL_FORMATWITHARGS_4</name><parameter_list pos:line="303" pos:column="36">(<param><type><name pos:line="303" pos:column="37">pwszFormat</name></type></param>, <param><type><name pos:line="303" pos:column="49">ARG1</name></type></param>, <param><type><name pos:line="303" pos:column="55">ARG2</name></type></param>, <param><type><name pos:line="303" pos:column="61">ARG3</name></type></param>, <param><type><name pos:line="303" pos:column="67">ARG4</name></type></param>)</parameter_list></cpp:macro> \
+        <cpp:value pos:line="304" pos:column="9">VSFAIL_FORMATWITHARGS_5(pwszFormat, ARG1, ARG2, ARG3, ARG4, NULL);</cpp:value></cpp:define>
+    <cpp:define pos:line="305" pos:column="5">#<cpp:directive pos:line="305" pos:column="6">define</cpp:directive> <cpp:macro><name pos:line="305" pos:column="13">VSFAIL_FORMATWITHARGS_3</name><parameter_list pos:line="305" pos:column="36">(<param><type><name pos:line="305" pos:column="37">pwszFormat</name></type></param>, <param><type><name pos:line="305" pos:column="49">ARG1</name></type></param>, <param><type><name pos:line="305" pos:column="55">ARG2</name></type></param>, <param><type><name pos:line="305" pos:column="61">ARG3</name></type></param>)</parameter_list></cpp:macro> \
+        <cpp:value pos:line="306" pos:column="9">VSFAIL_FORMATWITHARGS_5(pwszFormat, ARG1, ARG2, ARG3, NULL, NULL);</cpp:value></cpp:define>
+    <cpp:define pos:line="307" pos:column="5">#<cpp:directive pos:line="307" pos:column="6">define</cpp:directive> <cpp:macro><name pos:line="307" pos:column="13">VSFAIL_FORMATWITHARGS_2</name><parameter_list pos:line="307" pos:column="36">(<param><type><name pos:line="307" pos:column="37">pwszFormat</name></type></param>, <param><type><name pos:line="307" pos:column="49">ARG1</name></type></param>, <param><type><name pos:line="307" pos:column="55">ARG2</name></type></param>)</parameter_list></cpp:macro> \
+        <cpp:value pos:line="308" pos:column="9">VSFAIL_FORMATWITHARGS_5(pwszFormat, ARG1, ARG2, NULL, NULL, NULL);</cpp:value></cpp:define>
+    <cpp:define pos:line="309" pos:column="5">#<cpp:directive pos:line="309" pos:column="6">define</cpp:directive> <cpp:macro><name pos:line="309" pos:column="13">VSFAIL_FORMATWITHARGS_1</name><parameter_list pos:line="309" pos:column="36">(<param><type><name pos:line="309" pos:column="37">pwszFormat</name></type></param>, <param><type><name pos:line="309" pos:column="49">ARG1</name></type></param>)</parameter_list></cpp:macro> \
+        <cpp:value pos:line="310" pos:column="9">VSFAIL_FORMATWITHARGS_5(pwszFormat, ARG1, NULL, NULL, NULL, NULL);</cpp:value></cpp:define>
+
+    <cpp:define pos:line="312" pos:column="5">#<cpp:directive pos:line="312" pos:column="6">define</cpp:directive> <cpp:macro><name pos:line="312" pos:column="13">VSASSERT_FORMATWITHARGS_5</name><parameter_list pos:line="312" pos:column="38">(<param><type><name pos:line="312" pos:column="39">fTest</name></type></param>, <param><type><name pos:line="312" pos:column="46">pwszFormat</name></type></param>, <param><type><name pos:line="312" pos:column="58">ARG1</name></type></param>, <param><type><name pos:line="312" pos:column="64">ARG2</name></type></param>, <param><type><name pos:line="312" pos:column="70">ARG3</name></type></param>, <param><type><name pos:line="312" pos:column="76">ARG4</name></type></param>, <param><type><name pos:line="312" pos:column="82">ARG5</name></type></param>)</parameter_list></cpp:macro>    \
+    <cpp:value pos:line="313" pos:column="5">{                                                                           \
+        if (!fTest)                                                             \
+        {                                                                       \
+            VSFAIL_FORMATWITHARGS_5(pwszFormat, ARG1, ARG2, ARG3, ARG4, ARG5);    \
+        }                                                                       \
+    }</cpp:value></cpp:define>
+    <cpp:define pos:line="319" pos:column="5">#<cpp:directive pos:line="319" pos:column="6">define</cpp:directive> <cpp:macro><name pos:line="319" pos:column="13">VSASSERT_FORMATWITHARGS_4</name><parameter_list pos:line="319" pos:column="38">(<param><type><name pos:line="319" pos:column="39">fTest</name></type></param>, <param><type><name pos:line="319" pos:column="46">pwszFormat</name></type></param>, <param><type><name pos:line="319" pos:column="58">ARG1</name></type></param>, <param><type><name pos:line="319" pos:column="64">ARG2</name></type></param>, <param><type><name pos:line="319" pos:column="70">ARG3</name></type></param>, <param><type><name pos:line="319" pos:column="76">ARG4</name></type></param>)</parameter_list></cpp:macro>  \
+        <cpp:value pos:line="320" pos:column="9">VSASSERT_FORMATWITHARGS_5(fTest, pwszFormat, ARG1, ARG2, ARG3, ARG4, NULL);</cpp:value></cpp:define>
+    <cpp:define pos:line="321" pos:column="5">#<cpp:directive pos:line="321" pos:column="6">define</cpp:directive> <cpp:macro><name pos:line="321" pos:column="13">VSASSERT_FORMATWITHARGS_3</name><parameter_list pos:line="321" pos:column="38">(<param><type><name pos:line="321" pos:column="39">fTest</name></type></param>, <param><type><name pos:line="321" pos:column="46">pwszFormat</name></type></param>, <param><type><name pos:line="321" pos:column="58">ARG1</name></type></param>, <param><type><name pos:line="321" pos:column="64">ARG2</name></type></param>, <param><type><name pos:line="321" pos:column="70">ARG3</name></type></param>)</parameter_list></cpp:macro>  \
+        <cpp:value pos:line="322" pos:column="9">VSASSERT_FORMATWITHARGS_5(fTest, pwszFormat, ARG1, ARG2, ARG3, NULL, NULL);</cpp:value></cpp:define>
+    <cpp:define pos:line="323" pos:column="5">#<cpp:directive pos:line="323" pos:column="6">define</cpp:directive> <cpp:macro><name pos:line="323" pos:column="13">VSASSERT_FORMATWITHARGS_2</name><parameter_list pos:line="323" pos:column="38">(<param><type><name pos:line="323" pos:column="39">fTest</name></type></param>, <param><type><name pos:line="323" pos:column="46">pwszFormat</name></type></param>, <param><type><name pos:line="323" pos:column="58">ARG1</name></type></param>, <param><type><name pos:line="323" pos:column="64">ARG2</name></type></param>)</parameter_list></cpp:macro>  \
+        <cpp:value pos:line="324" pos:column="9">VSASSERT_FORMATWITHARGS_5(fTest, pwszFormat, ARG1, ARG2, NULL, NULL, NULL);</cpp:value></cpp:define>
+    <cpp:define pos:line="325" pos:column="5">#<cpp:directive pos:line="325" pos:column="6">define</cpp:directive> <cpp:macro><name pos:line="325" pos:column="13">VSASSERT_FORMATWITHARGS_1</name><parameter_list pos:line="325" pos:column="38">(<param><type><name pos:line="325" pos:column="39">fTest</name></type></param>, <param><type><name pos:line="325" pos:column="46">pwszFormat</name></type></param>, <param><type><name pos:line="325" pos:column="58">ARG1</name></type></param>)</parameter_list></cpp:macro>  \
+        <cpp:value pos:line="326" pos:column="9">VSASSERT_FORMATWITHARGS_5(fTest, pwszFormat, ARG1, NULL, NULL, NULL, NULL);</cpp:value></cpp:define>
+
+<cpp:else pos:line="328" pos:column="1">#<cpp:directive pos:line="328" pos:column="2">else</cpp:directive></cpp:else>
+    <cpp:define pos:line="329" pos:column="5">#<cpp:directive pos:line="329" pos:column="6">define</cpp:directive> <cpp:macro><name pos:line="329" pos:column="13">VSFAIL_FORMATWITHARGS_5</name><parameter_list pos:line="329" pos:column="36">(<param><type><name pos:line="329" pos:column="37">pwszFormat</name></type></param>, <param><type><name pos:line="329" pos:column="49">ARG1</name></type></param>, <param><type><name pos:line="329" pos:column="55">ARG2</name></type></param>, <param><type><name pos:line="329" pos:column="61">ARG3</name></type></param>, <param><type><name pos:line="329" pos:column="67">ARG4</name></type></param>, <param><type><name pos:line="329" pos:column="73">ARG5</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+    <cpp:define pos:line="330" pos:column="5">#<cpp:directive pos:line="330" pos:column="6">define</cpp:directive> <cpp:macro><name pos:line="330" pos:column="13">VSFAIL_FORMATWITHARGS_4</name><parameter_list pos:line="330" pos:column="36">(<param><type><name pos:line="330" pos:column="37">pwszFormat</name></type></param>, <param><type><name pos:line="330" pos:column="49">ARG1</name></type></param>, <param><type><name pos:line="330" pos:column="55">ARG2</name></type></param>, <param><type><name pos:line="330" pos:column="61">ARG3</name></type></param>, <param><type><name pos:line="330" pos:column="67">ARG4</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+    <cpp:define pos:line="331" pos:column="5">#<cpp:directive pos:line="331" pos:column="6">define</cpp:directive> <cpp:macro><name pos:line="331" pos:column="13">VSFAIL_FORMATWITHARGS_3</name><parameter_list pos:line="331" pos:column="36">(<param><type><name pos:line="331" pos:column="37">pwszFormat</name></type></param>, <param><type><name pos:line="331" pos:column="49">ARG1</name></type></param>, <param><type><name pos:line="331" pos:column="55">ARG2</name></type></param>, <param><type><name pos:line="331" pos:column="61">ARG3</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+    <cpp:define pos:line="332" pos:column="5">#<cpp:directive pos:line="332" pos:column="6">define</cpp:directive> <cpp:macro><name pos:line="332" pos:column="13">VSFAIL_FORMATWITHARGS_2</name><parameter_list pos:line="332" pos:column="36">(<param><type><name pos:line="332" pos:column="37">pwszFormat</name></type></param>, <param><type><name pos:line="332" pos:column="49">ARG1</name></type></param>, <param><type><name pos:line="332" pos:column="55">ARG2</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+    <cpp:define pos:line="333" pos:column="5">#<cpp:directive pos:line="333" pos:column="6">define</cpp:directive> <cpp:macro><name pos:line="333" pos:column="13">VSFAIL_FORMATWITHARGS_1</name><parameter_list pos:line="333" pos:column="36">(<param><type><name pos:line="333" pos:column="37">pwszFormat</name></type></param>, <param><type><name pos:line="333" pos:column="49">ARG1</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+
+    <cpp:define pos:line="335" pos:column="5">#<cpp:directive pos:line="335" pos:column="6">define</cpp:directive> <cpp:macro><name pos:line="335" pos:column="13">VSASSERT_FORMATWITHARGS_5</name><parameter_list pos:line="335" pos:column="38">(<param><type><name pos:line="335" pos:column="39">fTest</name></type></param>, <param><type><name pos:line="335" pos:column="46">pwszFormat</name></type></param>, <param><type><name pos:line="335" pos:column="58">ARG1</name></type></param>, <param><type><name pos:line="335" pos:column="64">ARG2</name></type></param>, <param><type><name pos:line="335" pos:column="70">ARG3</name></type></param>, <param><type><name pos:line="335" pos:column="76">ARG4</name></type></param>, <param><type><name pos:line="335" pos:column="82">ARG5</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+    <cpp:define pos:line="336" pos:column="5">#<cpp:directive pos:line="336" pos:column="6">define</cpp:directive> <cpp:macro><name pos:line="336" pos:column="13">VSASSERT_FORMATWITHARGS_4</name><parameter_list pos:line="336" pos:column="38">(<param><type><name pos:line="336" pos:column="39">fTest</name></type></param>, <param><type><name pos:line="336" pos:column="46">pwszFormat</name></type></param>, <param><type><name pos:line="336" pos:column="58">ARG1</name></type></param>, <param><type><name pos:line="336" pos:column="64">ARG2</name></type></param>, <param><type><name pos:line="336" pos:column="70">ARG3</name></type></param>, <param><type><name pos:line="336" pos:column="76">ARG4</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+    <cpp:define pos:line="337" pos:column="5">#<cpp:directive pos:line="337" pos:column="6">define</cpp:directive> <cpp:macro><name pos:line="337" pos:column="13">VSASSERT_FORMATWITHARGS_3</name><parameter_list pos:line="337" pos:column="38">(<param><type><name pos:line="337" pos:column="39">fTest</name></type></param>, <param><type><name pos:line="337" pos:column="46">pwszFormat</name></type></param>, <param><type><name pos:line="337" pos:column="58">ARG1</name></type></param>, <param><type><name pos:line="337" pos:column="64">ARG2</name></type></param>, <param><type><name pos:line="337" pos:column="70">ARG3</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+    <cpp:define pos:line="338" pos:column="5">#<cpp:directive pos:line="338" pos:column="6">define</cpp:directive> <cpp:macro><name pos:line="338" pos:column="13">VSASSERT_FORMATWITHARGS_2</name><parameter_list pos:line="338" pos:column="38">(<param><type><name pos:line="338" pos:column="39">fTest</name></type></param>, <param><type><name pos:line="338" pos:column="46">pwszFormat</name></type></param>, <param><type><name pos:line="338" pos:column="58">ARG1</name></type></param>, <param><type><name pos:line="338" pos:column="64">ARG2</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+    <cpp:define pos:line="339" pos:column="5">#<cpp:directive pos:line="339" pos:column="6">define</cpp:directive> <cpp:macro><name pos:line="339" pos:column="13">VSASSERT_FORMATWITHARGS_1</name><parameter_list pos:line="339" pos:column="38">(<param><type><name pos:line="339" pos:column="39">fTest</name></type></param>, <param><type><name pos:line="339" pos:column="46">pwszFormat</name></type></param>, <param><type><name pos:line="339" pos:column="58">ARG1</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:endif pos:line="340" pos:column="1">#<cpp:directive pos:line="340" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="line" pos:line="342" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+<comment type="line" pos:line="343" pos:column="1">// Debug heap memory support routines.  These support leak tracking on a per</comment>
+<comment type="line" pos:line="344" pos:column="1">// DLL basis.  For us to be robust, you should ALWAYS use these routines</comment>
+<comment type="line" pos:line="345" pos:column="1">// in your debug code, unless there is some really well thought-out</comment>
+<comment type="line" pos:line="346" pos:column="1">// compelling reason not to.</comment>
+<comment type="line" pos:line="347" pos:column="1">//</comment>
+
+<cpp:ifdef pos:line="349" pos:column="1">#<cpp:directive pos:line="349" pos:column="2">ifdef</cpp:directive> <name pos:line="349" pos:column="8">DEBUG</name></cpp:ifdef>
+
+<comment type="line" pos:line="351" pos:column="1">// This will get you the process heap</comment>
+<comment type="line" pos:line="352" pos:column="1">//</comment>
+<cpp:define pos:line="353" pos:column="1">#<cpp:directive pos:line="353" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="353" pos:column="9">DEFAULT_HEAP</name></cpp:macro> <cpp:value pos:line="353" pos:column="22">(HANDLE)-1</cpp:value></cpp:define>
+
+<comment type="line" pos:line="355" pos:column="1">// Debug allocators have the concept of an instance, which is a unique ID that</comment>
+<comment type="line" pos:line="356" pos:column="1">// is usually the instance handle of the DLL making the allocation.  This takes</comment>
+<comment type="line" pos:line="357" pos:column="1">// special support from the DLL, but gives you the benefit of being able to</comment>
+<comment type="line" pos:line="358" pos:column="1">// track DLL leaks as they exit your process.  You can also identify allocations</comment>
+<comment type="line" pos:line="359" pos:column="1">// that may occur in static constructors by presetting the instance to UNDEFINED,</comment>
+<comment type="line" pos:line="360" pos:column="1">// then updating the instances when the DLL's ProcessAttach gets called.</comment>
+<comment type="line" pos:line="361" pos:column="1">//</comment>
+<cpp:define pos:line="362" pos:column="1">#<cpp:directive pos:line="362" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="362" pos:column="9">INSTANCE_GLOBAL</name></cpp:macro>    <cpp:value pos:line="362" pos:column="28">((DWORD)0)</cpp:value></cpp:define>
+<cpp:define pos:line="363" pos:column="1">#<cpp:directive pos:line="363" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="363" pos:column="9">INSTANCE_UNDEFINED</name></cpp:macro> <cpp:value pos:line="363" pos:column="28">((DWORD)-1)</cpp:value></cpp:define>
+
+<comment type="line" pos:line="365" pos:column="1">// you should avoid calling these functions; use the macros defined below</comment>
+<comment type="line" pos:line="366" pos:column="1">//</comment>
+<function_decl><type><name pos:line="367" pos:column="1">CLINKAGE</name> <name pos:line="367" pos:column="10">PVOID</name>    <name pos:line="367" pos:column="19">ENTRYPOINT</name></type> <name pos:line="367" pos:column="30">VsDebugAllocInternal</name>           <parameter_list pos:line="367" pos:column="61">(<param><decl><type><name pos:line="367" pos:column="62">HANDLE</name></type> <name pos:line="367" pos:column="69">hheap</name></decl></param>, <param><decl><type><name pos:line="367" pos:column="76">DWORD</name></type> <name pos:line="367" pos:column="82">flags</name></decl></param>, <param><decl><type><name pos:line="367" pos:column="89">SIZE_T</name></type> <name pos:line="367" pos:column="96">cb</name></decl></param>, <param><decl><type><name pos:line="367" pos:column="100">LPCSTR</name></type> <name pos:line="367" pos:column="107">pszFile</name></decl></param>,  <param><decl><type><name pos:line="367" pos:column="117">UINT</name></type>  <name pos:line="367" pos:column="123">uLine</name></decl></param>, <param><decl><type><name pos:line="367" pos:column="130">UINT_PTR</name></type> <name pos:line="367" pos:column="139">dwInst</name></decl></param>, <param><decl><type><name pos:line="367" pos:column="147">LPCSTR</name></type> <name pos:line="367" pos:column="154">pszExtra</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="368" pos:column="1">CLINKAGE</name> <name pos:line="368" pos:column="10">PVOID</name>    <name pos:line="368" pos:column="19">ENTRYPOINT</name></type> <name pos:line="368" pos:column="30">VsDebugReallocInternal</name>         <parameter_list pos:line="368" pos:column="61">(<param><decl><type><name pos:line="368" pos:column="62">HANDLE</name></type> <name pos:line="368" pos:column="69">hheap</name></decl></param>, <param><decl><type><name pos:line="368" pos:column="76">PVOID</name></type> <name pos:line="368" pos:column="82">pv</name></decl></param>, <param><decl><type><name pos:line="368" pos:column="86">DWORD</name></type> <name pos:line="368" pos:column="92">flags</name></decl></param>, <param><decl><type><name pos:line="368" pos:column="99">SIZE_T</name></type>  <name pos:line="368" pos:column="107">cb</name></decl></param>, <param><decl><type><name pos:line="368" pos:column="111">LPCSTR</name></type> <name pos:line="368" pos:column="118">pszFile</name></decl></param>, <param><decl><type><name pos:line="368" pos:column="127">UINT</name></type> <name pos:line="368" pos:column="132">uLine</name></decl></param>, <param><decl><type><name pos:line="368" pos:column="139">UINT_PTR</name></type> <name pos:line="368" pos:column="148">dwInst</name></decl></param>, <param><decl><type><name pos:line="368" pos:column="156">LPCSTR</name></type> <name pos:line="368" pos:column="163">pszExtra</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="369" pos:column="1">CLINKAGE</name> <name pos:line="369" pos:column="10">PVOID</name>    <name pos:line="369" pos:column="19">ENTRYPOINT</name></type> <name pos:line="369" pos:column="30">VsDebugSafeReallocInternal</name>     <parameter_list pos:line="369" pos:column="61">(<param><decl><type><name pos:line="369" pos:column="62">HANDLE</name></type> <name pos:line="369" pos:column="69">hheap</name></decl></param>, <param><decl><type><name pos:line="369" pos:column="76">PVOID</name></type> <name pos:line="369" pos:column="82">pv</name></decl></param>, <param><decl><type><name pos:line="369" pos:column="86">DWORD</name></type> <name pos:line="369" pos:column="92">flags</name></decl></param>, <param><decl><type><name pos:line="369" pos:column="99">SIZE_T</name></type>  <name pos:line="369" pos:column="107">cb</name></decl></param>, <param><decl><type><name pos:line="369" pos:column="111">LPCSTR</name></type> <name pos:line="369" pos:column="118">pszFile</name></decl></param>, <param><decl><type><name pos:line="369" pos:column="127">UINT</name></type> <name pos:line="369" pos:column="132">uLine</name></decl></param>, <param><decl><type><name pos:line="369" pos:column="139">UINT_PTR</name></type> <name pos:line="369" pos:column="148">dwInst</name></decl></param>, <param><decl><type><name pos:line="369" pos:column="156">LPCSTR</name></type> <name pos:line="369" pos:column="163">pszExtra</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="370" pos:column="1">CLINKAGE</name> <name pos:line="370" pos:column="10">VOID</name>     <name pos:line="370" pos:column="19">ENTRYPOINT</name></type> <name pos:line="370" pos:column="30">VsDebugFreeInternal</name>            <parameter_list pos:line="370" pos:column="61">(<param><decl><type><name pos:line="370" pos:column="62">HANDLE</name></type> <name pos:line="370" pos:column="69">hheap</name></decl></param>, <param><decl><type><name pos:line="370" pos:column="76">PVOID</name></type> <name pos:line="370" pos:column="82">pv</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="371" pos:column="1">CLINKAGE</name> <name pos:line="371" pos:column="10">SIZE_T</name>   <name pos:line="371" pos:column="19">ENTRYPOINT</name></type> <name pos:line="371" pos:column="30">VsDebugSizeInternal</name>            <parameter_list pos:line="371" pos:column="61">(<param><decl><type><name pos:line="371" pos:column="62">HANDLE</name></type> <name pos:line="371" pos:column="69">hheap</name></decl></param>, <param><decl><type><name pos:line="371" pos:column="76">PVOID</name></type> <name pos:line="371" pos:column="82">pv</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="372" pos:column="1">CLINKAGE</name> <name pos:line="372" pos:column="10">HANDLE</name>   <name pos:line="372" pos:column="19">ENTRYPOINT</name></type> <name pos:line="372" pos:column="30">VsDebugHeapCreateInternal</name>      <parameter_list pos:line="372" pos:column="61">(<param><decl><type><name pos:line="372" pos:column="62">DWORD</name></type> <name pos:line="372" pos:column="68">flags</name></decl></param>, <param><decl><type><name pos:line="372" pos:column="75">LPCSTR</name></type> <name pos:line="372" pos:column="82">pszName</name></decl></param>, <param><decl><type><name pos:line="372" pos:column="91">LPCSTR</name></type> <name pos:line="372" pos:column="98">pszFile</name></decl></param>, <param><decl><type><name pos:line="372" pos:column="107">UINT</name></type> <name pos:line="372" pos:column="112">uLine</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="373" pos:column="1">CLINKAGE</name> <name pos:line="373" pos:column="10">VOID</name>     <name pos:line="373" pos:column="19">ENTRYPOINT</name></type> <name pos:line="373" pos:column="30">VsDebugHeapDestroyInternal</name>     <parameter_list pos:line="373" pos:column="61">(<param><decl><type><name pos:line="373" pos:column="62">HANDLE</name></type> <name pos:line="373" pos:column="69">hheap</name></decl></param>, <param><decl><type><name pos:line="373" pos:column="76">BOOL</name></type> <name pos:line="373" pos:column="81">fLeakCheck</name></decl></param>)</parameter_list>;</function_decl>
+
+<comment type="line" pos:line="375" pos:column="1">// debug wrappers for heap allocations.  You should call these to do all of your</comment>
+<comment type="line" pos:line="376" pos:column="1">// debug memory allocations.</comment>
+<comment type="line" pos:line="377" pos:column="1">//</comment>
+<cpp:define pos:line="378" pos:column="1">#<cpp:directive pos:line="378" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="378" pos:column="9">VsDebAlloc</name><parameter_list pos:line="378" pos:column="19">(<param><type><name pos:line="378" pos:column="20">flags</name></type></param>, <param><type><name pos:line="378" pos:column="27">cb</name></type></param>)</parameter_list></cpp:macro>                 <cpp:value pos:line="378" pos:column="47">VsDebugAllocInternal(DEFAULT_HEAP, (flags), (cb), __FILE__, __LINE__, INSTANCE_GLOBAL, NULL)</cpp:value></cpp:define>
+<cpp:define pos:line="379" pos:column="1">#<cpp:directive pos:line="379" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="379" pos:column="9">VsDebRealloc</name><parameter_list pos:line="379" pos:column="21">(<param><type><name pos:line="379" pos:column="22">pv</name></type></param>, <param><type><name pos:line="379" pos:column="26">flags</name></type></param>, <param><type><name pos:line="379" pos:column="33">cb</name></type></param>)</parameter_list></cpp:macro>           <cpp:value pos:line="379" pos:column="47">VsDebugReallocInternal(DEFAULT_HEAP, (pv), (flags), (cb), __FILE__, __LINE__, INSTANCE_GLOBAL, NULL)</cpp:value></cpp:define>
+<cpp:define pos:line="380" pos:column="1">#<cpp:directive pos:line="380" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="380" pos:column="9">VsDebSafeRealloc</name><parameter_list pos:line="380" pos:column="25">(<param><type><name pos:line="380" pos:column="26">pv</name></type></param>, <param><type><name pos:line="380" pos:column="30">flags</name></type></param>, <param><type><name pos:line="380" pos:column="37">cb</name></type></param>)</parameter_list></cpp:macro>       <cpp:value pos:line="380" pos:column="47">VsDebugSafeReallocInternal(DEFAULT_HEAP, (pv), (flags), (cb), __FILE__, __LINE__, INSTANCE_GLOBAL, NULL)</cpp:value></cpp:define>
+<cpp:define pos:line="381" pos:column="1">#<cpp:directive pos:line="381" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="381" pos:column="9">VsDebFree</name><parameter_list pos:line="381" pos:column="18">(<param><type><name pos:line="381" pos:column="19">pv</name></type></param>)</parameter_list></cpp:macro>                         <cpp:value pos:line="381" pos:column="47">VsDebugFreeInternal(DEFAULT_HEAP, (pv))</cpp:value></cpp:define>
+<cpp:define pos:line="382" pos:column="1">#<cpp:directive pos:line="382" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="382" pos:column="9">VsDebSize</name><parameter_list pos:line="382" pos:column="18">(<param><type><name pos:line="382" pos:column="19">pv</name></type></param>)</parameter_list></cpp:macro>                         <cpp:value pos:line="382" pos:column="47">VsDebugSizeInternal(DEFAULT_HEAP, (pv))</cpp:value></cpp:define>
+
+<cpp:define pos:line="384" pos:column="1">#<cpp:directive pos:line="384" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="384" pos:column="9">VsDebHeapAlloc</name><parameter_list pos:line="384" pos:column="23">(<param><type><name pos:line="384" pos:column="24">heap</name></type></param>, <param><type><name pos:line="384" pos:column="30">flags</name></type></param>, <param><type><name pos:line="384" pos:column="37">cb</name></type></param>)</parameter_list></cpp:macro>       <cpp:value pos:line="384" pos:column="47">VsDebugAllocInternal(heap, (flags), (cb), __FILE__, __LINE__, INSTANCE_GLOBAL, NULL)</cpp:value></cpp:define>
+<cpp:define pos:line="385" pos:column="1">#<cpp:directive pos:line="385" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="385" pos:column="9">VsDebHeapRealloc</name><parameter_list pos:line="385" pos:column="25">(<param><type><name pos:line="385" pos:column="26">heap</name></type></param>, <param><type><name pos:line="385" pos:column="32">pv</name></type></param>, <param><type><name pos:line="385" pos:column="36">flags</name></type></param>, <param><type><name pos:line="385" pos:column="43">cb</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="385" pos:column="47">VsDebugReallocInternal(heap, (pv), (flags), (cb), __FILE__, __LINE__, INSTANCE_GLOBAL, NULL)</cpp:value></cpp:define>
+<cpp:define pos:line="386" pos:column="1">#<cpp:directive pos:line="386" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="386" pos:column="9">VsDebHeapFree</name><parameter_list pos:line="386" pos:column="22">(<param><type><name pos:line="386" pos:column="23">heap</name></type></param>, <param><type><name pos:line="386" pos:column="29">pv</name></type></param>)</parameter_list></cpp:macro>               <cpp:value pos:line="386" pos:column="47">VsDebugFreeInternal(heap, (pv))</cpp:value></cpp:define>
+<cpp:define pos:line="387" pos:column="1">#<cpp:directive pos:line="387" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="387" pos:column="9">VsDebHeapSize</name><parameter_list pos:line="387" pos:column="22">(<param><type><name pos:line="387" pos:column="23">heap</name></type></param>, <param><type><name pos:line="387" pos:column="29">pv</name></type></param>)</parameter_list></cpp:macro>               <cpp:value pos:line="387" pos:column="47">VsDebugSizeInternal(heap, (pv))</cpp:value></cpp:define>
+
+<cpp:define pos:line="389" pos:column="1">#<cpp:directive pos:line="389" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="389" pos:column="9">VsDebHeapCreate</name><parameter_list pos:line="389" pos:column="24">(<param><type><name pos:line="389" pos:column="25">flags</name></type></param>, <param><type><name pos:line="389" pos:column="32">name</name></type></param>)</parameter_list></cpp:macro>          <cpp:value pos:line="389" pos:column="47">VsDebugHeapCreateInternal(flags, name, __FILE__, __LINE__)</cpp:value></cpp:define>
+<cpp:define pos:line="390" pos:column="1">#<cpp:directive pos:line="390" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="390" pos:column="9">VsDebHeapDestroy</name><parameter_list pos:line="390" pos:column="25">(<param><type><name pos:line="390" pos:column="26">heap</name></type></param>, <param><type><name pos:line="390" pos:column="32">fLeakCheck</name></type></param>)</parameter_list></cpp:macro>    <cpp:value pos:line="390" pos:column="47">VsDebugHeapDestroyInternal(heap, fLeakCheck)</cpp:value></cpp:define>
+
+<comment type="line" pos:line="392" pos:column="1">// Heap diagnostic functions that you can freely call</comment>
+<comment type="line" pos:line="393" pos:column="1">//</comment>
+<function_decl><type><name pos:line="394" pos:column="1">CLINKAGE</name> <name pos:line="394" pos:column="10">VOID</name>     <name pos:line="394" pos:column="19">ENTRYPOINT</name></type> <name pos:line="394" pos:column="30">VsDebValidateHeaps</name>     <parameter_list pos:line="394" pos:column="53">()</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="395" pos:column="1">CLINKAGE</name> <name pos:line="395" pos:column="10">BOOL</name>     <name pos:line="395" pos:column="19">ENTRYPOINT</name></type> <name pos:line="395" pos:column="30">VsDebIsValidHeap</name>       <parameter_list pos:line="395" pos:column="53">(<param><decl><type><name pos:line="395" pos:column="54">HANDLE</name></type> <name pos:line="395" pos:column="61">hHeap</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="396" pos:column="1">CLINKAGE</name> <name pos:line="396" pos:column="10">BOOL</name>     <name pos:line="396" pos:column="19">ENTRYPOINT</name></type> <name pos:line="396" pos:column="30">VsDebIsValidHeapPtr</name>    <parameter_list pos:line="396" pos:column="53">(<param><decl><type><name pos:line="396" pos:column="54">HANDLE</name></type> <name pos:line="396" pos:column="61">hHeap</name></decl></param>, <param><decl><type><name pos:line="396" pos:column="68">PVOID</name></type> <name pos:line="396" pos:column="74">pv</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="397" pos:column="1">CLINKAGE</name> <name pos:line="397" pos:column="10">VOID</name>     <name pos:line="397" pos:column="19">ENTRYPOINT</name></type> <name pos:line="397" pos:column="30">VsDebDumpMemStats</name>      <parameter_list pos:line="397" pos:column="53">()</parameter_list>;</function_decl>
+
+<comment type="line" pos:line="399" pos:column="1">//VsDebGetNextHeap       will return the next CHeapSpy instance. If passed in 0, then will get first instance</comment>
+<function_decl><type><name pos:line="400" pos:column="1">CLINKAGE</name> <name pos:line="400" pos:column="10">HANDLE</name>    <name pos:line="400" pos:column="20">ENTRYPOINT</name></type> <name pos:line="400" pos:column="31">VsDebGetNextHeap</name>       <parameter_list pos:line="400" pos:column="54">(
+    <param><decl><type><name pos:line="401" pos:column="5">__in</name> <name pos:line="401" pos:column="10">HANDLE</name></type> <name pos:line="401" pos:column="17">hHeap</name></decl></param>, 
+    <param><decl><type><name pos:line="402" pos:column="5">__out</name> <name pos:line="402" pos:column="11">LPCSTR</name> <type:modifier pos:line="402" pos:column="18">*</type:modifier></type><name pos:line="402" pos:column="19">pszHeapName</name></decl></param>, 
+    <param><decl><type><name pos:line="403" pos:column="5">__out</name> <name pos:line="403" pos:column="11">LPCSTR</name> <type:modifier pos:line="403" pos:column="18">*</type:modifier></type><name pos:line="403" pos:column="19">pszFile</name></decl></param>, 
+    <param><decl><type><name pos:line="404" pos:column="5">__out</name> <name pos:line="404" pos:column="11">ULONG</name> <type:modifier pos:line="404" pos:column="17">*</type:modifier></type> <name pos:line="404" pos:column="19">pnLineNo</name></decl></param>  
+)</parameter_list>;</function_decl>
+
+
+
+<cpp:ifdef pos:line="409" pos:column="1">#<cpp:directive pos:line="409" pos:column="2">ifdef</cpp:directive> <name pos:line="409" pos:column="8">__cplusplus</name></cpp:ifdef>
+<function_decl><type><name pos:line="410" pos:column="1">CLINKAGE</name> <name pos:line="410" pos:column="10">VOID</name>     <name pos:line="410" pos:column="19">ENTRYPOINT</name></type> <name pos:line="410" pos:column="30">VsDebCheckLeaks</name>        <parameter_list pos:line="410" pos:column="53">(<param><decl><type><name pos:line="410" pos:column="54">HANDLE</name></type> <name pos:line="410" pos:column="61">hHeap</name></decl></param>, <param><decl><type><name pos:line="410" pos:column="68">UINT_PTR</name></type> <name pos:line="410" pos:column="77">dwInst</name> <init pos:line="410" pos:column="84">= <expr><name pos:line="410" pos:column="86">INSTANCE_GLOBAL</name></expr></init></decl></param>)</parameter_list>;</function_decl>
+<cpp:endif pos:line="411" pos:column="1">#<cpp:directive pos:line="411" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="line" pos:line="413" pos:column="1">// This allows you go get at the allocation blocks for a given heap.  Most</comment>
+<comment type="line" pos:line="414" pos:column="1">// people will never have to call these -- you can use them to mimic the CRT</comment>
+<comment type="line" pos:line="415" pos:column="1">// debug leak detection scheme.</comment>
+<comment type="line" pos:line="416" pos:column="1">//</comment>
+<comment type="line" pos:line="417" pos:column="1">// Note:  You should avoid performing allocations on a heap that you're</comment>
+<comment type="line" pos:line="418" pos:column="1">//        enumerating.</comment>
+<comment type="line" pos:line="419" pos:column="1">//</comment>
+<typedef pos:line="420" pos:column="1">typedef <type><struct pos:line="420" pos:column="9">struct <name pos:line="420" pos:column="16">_ALLOCATION</name>
+  <block pos:line="421" pos:column="3">{<public type="default" pos:line="421" pos:column="4">
+  <decl_stmt><decl><type><name pos:line="422" pos:column="3">PVOID</name></type>         <name pos:line="422" pos:column="17">m_pv</name></decl>;</decl_stmt>         <comment type="line" pos:line="422" pos:column="31">//address of block</comment>
+  <decl_stmt><decl><type><name pos:line="423" pos:column="3">SIZE_T</name></type>        <name pos:line="423" pos:column="17">m_cb</name></decl>;</decl_stmt>         <comment type="line" pos:line="423" pos:column="31">//size of allocation in BYTES</comment>
+  <decl_stmt><decl><type><name pos:line="424" pos:column="3">ULONG</name></type>         <name pos:line="424" pos:column="17">m_cAlloc</name></decl>;</decl_stmt>     <comment type="line" pos:line="424" pos:column="31">//allocation pass count.  relative to all heaps</comment>
+  <decl_stmt><decl><type><name pos:line="425" pos:column="3">LPCSTR</name></type>        <name pos:line="425" pos:column="17">m_pszFile</name></decl>;</decl_stmt>    <comment type="line" pos:line="425" pos:column="31">//source file where the allocation was made</comment>
+  <decl_stmt><decl><type><name pos:line="426" pos:column="3">ULONG</name></type>         <name pos:line="426" pos:column="17">m_uLine</name></decl>;</decl_stmt>      <comment type="line" pos:line="426" pos:column="31">//source line number where the allocation was made</comment>
+  <decl_stmt><decl><type><name pos:line="427" pos:column="3">UINT_PTR</name></type>      <name pos:line="427" pos:column="17">m_dwInst</name></decl>;</decl_stmt>     <comment type="line" pos:line="427" pos:column="31">//instance ID of this allocation</comment>
+  <decl_stmt><decl><type><name pos:line="428" pos:column="3">LPCSTR</name></type>        <name pos:line="428" pos:column="17">m_pszExtra</name></decl>;</decl_stmt>   <comment type="line" pos:line="428" pos:column="31">//additional info macros may like to add (eg. class name)</comment>
+  <decl_stmt><decl><type><name pos:line="429" pos:column="3">DWORD</name></type>         <name pos:line="429" pos:column="17">m_dwTid</name></decl>;</decl_stmt>      <comment type="line" pos:line="429" pos:column="31">//thread ID that caused this allocation</comment>
+  <decl_stmt><decl><type><name pos:line="430" pos:column="3">BOOL</name></type>          <name pos:line="430" pos:column="17">m_fIgnorable</name></decl>;</decl_stmt> <comment type="line" pos:line="430" pos:column="31">//can we ignore this allocation?</comment>
+  </public>}</block></struct></type> <name pos:line="431" pos:column="5">ALLOCATION</name>;</typedef>
+
+<comment type="line" pos:line="433" pos:column="1">// Work around a more strict VC6 compiler. When this file is included in components</comment>
+<comment type="line" pos:line="434" pos:column="1">// other than vsassert, these should be dllimport anyway. Also, the __declspec(dll*)</comment>
+<comment type="line" pos:line="435" pos:column="1">// should come *before* the return type.</comment>
+<typedef pos:line="436" pos:column="1">typedef <type><name pos:line="436" pos:column="9">ALLOCATION</name><type:modifier pos:line="436" pos:column="19">*</type:modifier></type> <name pos:line="436" pos:column="21">PALLOCATION</name>;</typedef>
+
+<function_decl><type><name pos:line="438" pos:column="1">CLINKAGE</name> <name pos:line="438" pos:column="10">PALLOCATION</name> <name pos:line="438" pos:column="22">ENTRYPOINT</name></type> <name pos:line="438" pos:column="33">VsDebGetFirstBlock</name><parameter_list pos:line="438" pos:column="51">(<param><decl><type><name pos:line="438" pos:column="52">HANDLE</name></type> <name pos:line="438" pos:column="59">hHeap</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="439" pos:column="1">CLINKAGE</name> <name pos:line="439" pos:column="10">PALLOCATION</name> <name pos:line="439" pos:column="22">ENTRYPOINT</name></type> <name pos:line="439" pos:column="33">VsDebGetNextBlock</name><parameter_list pos:line="439" pos:column="50">(<param><decl><type><name pos:line="439" pos:column="51">HANDLE</name></type> <name pos:line="439" pos:column="58">hHeap</name></decl></param>)</parameter_list>;</function_decl>
+
+<comment type="line" pos:line="441" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+<comment type="line" pos:line="442" pos:column="1">// Debug IMallocSpy implementation.  Only an EXE should call these functions</comment>
+<comment type="line" pos:line="443" pos:column="1">// as there is only one MallocSpy per process.</comment>
+<comment type="line" pos:line="444" pos:column="1">//</comment>
+<comment type="line" pos:line="445" pos:column="1">// rgIgnoreList may specify an optional list of sizes of external allocations to</comment>
+<comment type="line" pos:line="446" pos:column="1">// ignore.  This is usefull if your leaks beyond your control happen that you</comment>
+<comment type="line" pos:line="447" pos:column="1">// would like to filter out.  rgIgnoreList must be static as it is not copied,</comment>
+<comment type="line" pos:line="448" pos:column="1">// and it must end in a 0 byte value.  You may pass in NULL here if you do not</comment>
+<comment type="line" pos:line="449" pos:column="1">// have any special case external allocations to ignore.</comment>
+<comment type="line" pos:line="450" pos:column="1">//</comment>
+<function_decl><type><name pos:line="451" pos:column="1">CLINKAGE</name> <name pos:line="451" pos:column="10">HRESULT</name> <name pos:line="451" pos:column="18">ENTRYPOINT</name></type> <name pos:line="451" pos:column="29">VsStartMallocSpy</name><parameter_list pos:line="451" pos:column="45">(<param><decl><type><name pos:line="451" pos:column="46">DWORD_PTR</name> <type:modifier pos:line="451" pos:column="56">*</type:modifier></type><name pos:line="451" pos:column="57">rgIgnoreList</name></decl></param>)</parameter_list>;</function_decl> <comment type="line" pos:line="451" pos:column="72">// obsolette, use VsStartMallocSpyEx</comment>
+<cpp:ifdef pos:line="452" pos:column="1">#<cpp:directive pos:line="452" pos:column="2">ifdef</cpp:directive> <name pos:line="452" pos:column="8">__cplusplus</name></cpp:ifdef>
+<function_decl><type><name pos:line="453" pos:column="1">CLINKAGE</name> <name pos:line="453" pos:column="10">HRESULT</name> <name pos:line="453" pos:column="18">ENTRYPOINT</name></type> <name pos:line="453" pos:column="29">VsStartMallocSpyEx</name><parameter_list pos:line="453" pos:column="47">(<param><decl><type><name pos:line="453" pos:column="48">LPCOLESTR</name></type> <name pos:line="453" pos:column="58">pszKnownLeaksFileName</name> <init pos:line="453" pos:column="80">= <expr><name pos:line="453" pos:column="82">NULL</name></expr></init></decl></param>, <name pos:line="453" pos:column="88">LPCOLESTR</name> <name pos:line="453" pos:column="98">pszGdiKnownLeaksFileName</name> <op:operator pos:line="453" pos:column="123">=</op:operator> <name pos:line="453" pos:column="125">NULL</name>)</parameter_list>;</function_decl> 
+   <comment type="line" pos:line="454" pos:column="4">// NULL parameters mean default file names: &lt;exename&gt;_leaks.xml amd &lt;exename&gt;_gdileaks.xml</comment>
+<cpp:endif pos:line="455" pos:column="1">#<cpp:directive pos:line="455" pos:column="2">endif</cpp:directive></cpp:endif>
+<function_decl><type><name pos:line="456" pos:column="1">CLINKAGE</name> <name pos:line="456" pos:column="10">HRESULT</name> <name pos:line="456" pos:column="18">ENTRYPOINT</name></type> <name pos:line="456" pos:column="29">VsStopMallocSpy</name><parameter_list pos:line="456" pos:column="44">()</parameter_list>;</function_decl>
+
+<comment type="line" pos:line="458" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+<comment type="line" pos:line="459" pos:column="1">// Displays the standard debugging options dialog.</comment>
+<comment type="line" pos:line="460" pos:column="1">//</comment>
+<function_decl><type><name pos:line="461" pos:column="1">CLINKAGE</name> <name pos:line="461" pos:column="10">VOID</name> <name pos:line="461" pos:column="15">ENTRYPOINT</name></type> <name pos:line="461" pos:column="26">VsShowDebugOptions</name><parameter_list pos:line="461" pos:column="44">(<param><decl><type><name pos:line="461" pos:column="45">HWND</name></type> <name pos:line="461" pos:column="50">hwndParent</name></decl></param>)</parameter_list>;</function_decl>
+
+<comment type="line" pos:line="463" pos:column="1">// you should avoid calling these functions; use the macros defined below</comment>
+<comment type="line" pos:line="464" pos:column="1">//</comment>
+<function_decl><type><name pos:line="465" pos:column="1">CLINKAGE</name> <name pos:line="465" pos:column="10">PVOID</name> <name pos:line="465" pos:column="16">ENTRYPOINT</name></type> <name pos:line="465" pos:column="27">VsDebOleAllocInternal</name>   <parameter_list pos:line="465" pos:column="51">(<param><decl><type><name pos:line="465" pos:column="52">LPCSTR</name></type> <name pos:line="465" pos:column="59">pszFile</name></decl></param>, <param><decl><type><name pos:line="465" pos:column="68">ULONG</name></type> <name pos:line="465" pos:column="74">ulLine</name></decl></param>, <param><decl><type><name pos:line="465" pos:column="82">SIZE_T</name></type> <name pos:line="465" pos:column="89">cb</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="466" pos:column="1">CLINKAGE</name> <name pos:line="466" pos:column="10">VOID</name>  <name pos:line="466" pos:column="16">ENTRYPOINT</name></type> <name pos:line="466" pos:column="27">VsDebOleFreeInternal</name>    <parameter_list pos:line="466" pos:column="51">(<param><decl><type><name pos:line="466" pos:column="52">LPCSTR</name></type> <name pos:line="466" pos:column="59">pszFile</name></decl></param>, <param><decl><type><name pos:line="466" pos:column="68">ULONG</name></type> <name pos:line="466" pos:column="74">ulLine</name></decl></param>, <param><decl><type><name pos:line="466" pos:column="82">PVOID</name></type> <name pos:line="466" pos:column="88">pv</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="467" pos:column="1">CLINKAGE</name> <name pos:line="467" pos:column="10">PVOID</name> <name pos:line="467" pos:column="16">ENTRYPOINT</name></type> <name pos:line="467" pos:column="27">VsDebOleReallocInternal</name> <parameter_list pos:line="467" pos:column="51">(<param><decl><type><name pos:line="467" pos:column="52">LPCSTR</name></type> <name pos:line="467" pos:column="59">pszFile</name></decl></param>, <param><decl><type><name pos:line="467" pos:column="68">ULONG</name></type> <name pos:line="467" pos:column="74">ulLine</name></decl></param>, <param><decl><type><name pos:line="467" pos:column="82">PVOID</name></type> <name pos:line="467" pos:column="88">pv</name></decl></param>, <param><decl><type><name pos:line="467" pos:column="92">SIZE_T</name></type> <name pos:line="467" pos:column="99">cb</name></decl></param>)</parameter_list>;</function_decl>
+
+<function_decl><type><name pos:line="469" pos:column="1">CLINKAGE</name> <name pos:line="469" pos:column="10">BSTR</name>  <name pos:line="469" pos:column="16">ENTRYPOINT</name></type> <name pos:line="469" pos:column="27">VsSysAllocStringInternal</name>        <parameter_list pos:line="469" pos:column="59">(<param><decl><type><name pos:line="469" pos:column="60">LPCSTR</name></type> <name pos:line="469" pos:column="67">pszFile</name></decl></param>, <param><decl><type><name pos:line="469" pos:column="76">ULONG</name></type> <name pos:line="469" pos:column="82">ulLine</name></decl></param>, <param><decl><type><specifier pos:line="469" pos:column="90">const</specifier> <name pos:line="469" pos:column="96">OLECHAR</name> <type:modifier pos:line="469" pos:column="104">*</type:modifier></type><name pos:line="469" pos:column="105">pszString</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="470" pos:column="1">CLINKAGE</name> <name pos:line="470" pos:column="10">BSTR</name>  <name pos:line="470" pos:column="16">ENTRYPOINT</name></type> <name pos:line="470" pos:column="27">VsSysAllocStringByteLenInternal</name> <parameter_list pos:line="470" pos:column="59">(<param><decl><type><name pos:line="470" pos:column="60">LPCSTR</name></type> <name pos:line="470" pos:column="67">pszFile</name></decl></param>, <param><decl><type><name pos:line="470" pos:column="76">ULONG</name></type> <name pos:line="470" pos:column="82">ulLine</name></decl></param>, <param><decl><type><name pos:line="470" pos:column="90">LPCSTR</name></type> <name pos:line="470" pos:column="97">pszString</name></decl></param>, <param><decl><type><name pos:line="470" pos:column="108">UINT</name></type> <name pos:line="470" pos:column="113">cb</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="471" pos:column="1">CLINKAGE</name> <name pos:line="471" pos:column="10">BSTR</name>  <name pos:line="471" pos:column="16">ENTRYPOINT</name></type> <name pos:line="471" pos:column="27">VsSysAllocStringLenInternal</name>     <parameter_list pos:line="471" pos:column="59">(<param><decl><type><name pos:line="471" pos:column="60">LPCSTR</name></type> <name pos:line="471" pos:column="67">pszFile</name></decl></param>, <param><decl><type><name pos:line="471" pos:column="76">ULONG</name></type> <name pos:line="471" pos:column="82">ulLine</name></decl></param>, <param><decl><type><specifier pos:line="471" pos:column="90">const</specifier> <name pos:line="471" pos:column="96">OLECHAR</name> <type:modifier pos:line="471" pos:column="104">*</type:modifier></type><name pos:line="471" pos:column="105">pszString</name></decl></param>, <param><decl><type><name pos:line="471" pos:column="116">UINT</name></type> <name pos:line="471" pos:column="121">cch</name></decl></param> )</parameter_list>;</function_decl>
+
+<function_decl><type><name pos:line="473" pos:column="1">CLINKAGE</name> <name pos:line="473" pos:column="10">VOID</name>  <name pos:line="473" pos:column="16">ENTRYPOINT</name></type> <name pos:line="473" pos:column="27">VsIgnoreAllocsInternal</name> <parameter_list pos:line="473" pos:column="50">(<param><decl><type><name pos:line="473" pos:column="51">BOOL</name></type> <name pos:line="473" pos:column="56">fIgnore</name></decl></param>)</parameter_list>;</function_decl>
+
+<comment type="line" pos:line="475" pos:column="1">//utility to help you add leak checking functionality in case you have to wrap</comment>
+<comment type="line" pos:line="476" pos:column="1">// allocation routines (in which case you loose file/line info)</comment>
+<function_decl><type><name pos:line="477" pos:column="1">CLINKAGE</name> <name pos:line="477" pos:column="10">VOID</name>  <name pos:line="477" pos:column="16">ENTRYPOINT</name></type> <name pos:line="477" pos:column="27">VsDebOleSetAllocInfo</name> <parameter_list pos:line="477" pos:column="48">(<param><decl><type><name pos:line="477" pos:column="49">LPCSTR</name></type> <name pos:line="477" pos:column="56">pszFile</name></decl></param>, <param><decl><type><name pos:line="477" pos:column="65">ULONG</name></type> <name pos:line="477" pos:column="71">ulLine</name></decl></param>)</parameter_list>;</function_decl>
+
+<comment type="line" pos:line="479" pos:column="1">//wrapper for CoCreateInstance, which calls VsIgnoreAllocs</comment>
+<function_decl><type><name pos:line="480" pos:column="1">CLINKAGE</name> <name pos:line="480" pos:column="10">HRESULT</name> <name pos:line="480" pos:column="18">ENTRYPOINT</name></type> <name pos:line="480" pos:column="29">VsCoCreateInstance</name><parameter_list pos:line="480" pos:column="47">(<param><decl><type><name pos:line="480" pos:column="48">REFCLSID</name></type> <name pos:line="480" pos:column="57">rclsid</name></decl></param>, <param><decl><type><name pos:line="480" pos:column="65">LPUNKNOWN</name></type> <name pos:line="480" pos:column="75">pUnkOuter</name></decl></param>,
+				    <param><decl><type><name pos:line="481" pos:column="37">DWORD</name></type> <name pos:line="481" pos:column="43">dwClsContext</name></decl></param>, <param><decl><type><name pos:line="481" pos:column="57">REFIID</name></type> <name pos:line="481" pos:column="64">riid</name></decl></param>, <param><decl><type><name pos:line="481" pos:column="70">LPVOID</name> <name pos:line="481" pos:column="77">FAR</name><type:modifier pos:line="481" pos:column="80">*</type:modifier></type> <name pos:line="481" pos:column="82">ppv</name></decl></param>)</parameter_list>;</function_decl>
+
+<comment type="line" pos:line="483" pos:column="1">// debug wrappers for IMalloc allocations.  You should call these to do all of your debug</comment>
+<comment type="line" pos:line="484" pos:column="1">// IMalloc / SysAlloc* allocations</comment>
+<comment type="line" pos:line="485" pos:column="1">//</comment>
+<cpp:define pos:line="486" pos:column="1">#<cpp:directive pos:line="486" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="486" pos:column="9">VsDebOleAlloc</name><parameter_list pos:line="486" pos:column="22">(<param><type><name pos:line="486" pos:column="23">cb</name></type></param>)</parameter_list></cpp:macro>        <cpp:value pos:line="486" pos:column="34">VsDebOleAllocInternal(__FILE__, __LINE__, cb)</cpp:value></cpp:define>
+<cpp:define pos:line="487" pos:column="1">#<cpp:directive pos:line="487" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="487" pos:column="9">VsDebOleFree</name><parameter_list pos:line="487" pos:column="21">(<param><type><name pos:line="487" pos:column="22">pv</name></type></param>)</parameter_list></cpp:macro>         <cpp:value pos:line="487" pos:column="34">VsDebOleFreeInternal(__FILE__, __LINE__, pv)</cpp:value></cpp:define>
+<cpp:define pos:line="488" pos:column="1">#<cpp:directive pos:line="488" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="488" pos:column="9">VsDebOleRealloc</name><parameter_list pos:line="488" pos:column="24">(<param><type><name pos:line="488" pos:column="25">pv</name></type></param>, <param><type><name pos:line="488" pos:column="29">cb</name></type></param>)</parameter_list></cpp:macro>  <cpp:value pos:line="488" pos:column="34">VsDebOleReallocInternal(__FILE__, __LINE__, pv, cb)</cpp:value></cpp:define>
+
+<cpp:define pos:line="490" pos:column="1">#<cpp:directive pos:line="490" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="490" pos:column="9">VsDebSysAllocString</name><parameter_list pos:line="490" pos:column="28">(<param><type><name pos:line="490" pos:column="29">str</name></type></param>)</parameter_list></cpp:macro>            <cpp:value pos:line="490" pos:column="45">VsSysAllocStringInternal(__FILE__, __LINE__, str)</cpp:value></cpp:define>
+<cpp:define pos:line="491" pos:column="1">#<cpp:directive pos:line="491" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="491" pos:column="9">VsDebSysAllocStringByteLen</name><parameter_list pos:line="491" pos:column="35">(<param><type><name pos:line="491" pos:column="36">str</name></type></param>, <param><type><name pos:line="491" pos:column="41">cb</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="491" pos:column="45">VsSysAllocStringByteLenInternal(__FILE__, __LINE__, str, cb)</cpp:value></cpp:define>
+<cpp:define pos:line="492" pos:column="1">#<cpp:directive pos:line="492" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="492" pos:column="9">VsDebSysAllocStringLen</name><parameter_list pos:line="492" pos:column="31">(<param><type><name pos:line="492" pos:column="32">str</name></type></param>, <param><type><name pos:line="492" pos:column="37">cch</name></type></param>)</parameter_list></cpp:macro>    <cpp:value pos:line="492" pos:column="45">VsSysAllocStringLenInternal(__FILE__, __LINE__, str, cch)</cpp:value></cpp:define>
+
+<comment type="line" pos:line="494" pos:column="1">// It may sometimes be necessary to ignore IMalloc allocations.  Common dialogs are</comment>
+<comment type="line" pos:line="495" pos:column="1">// an example, as they cleanup after our process has left the building.  Call this</comment>
+<comment type="line" pos:line="496" pos:column="1">// with TRUE for f to disable leak checking for EXTERNAL leaks, and FALSE to re-enable</comment>
+<comment type="line" pos:line="497" pos:column="1">// it.  Note that this (1) only works for external leaks and (2) is refcounted so</comment>
+<comment type="line" pos:line="498" pos:column="1">// you must balance it.</comment>
+<comment type="line" pos:line="499" pos:column="1">//</comment>
+<cpp:define pos:line="500" pos:column="1">#<cpp:directive pos:line="500" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="500" pos:column="9">VsIgnoreAllocs</name><parameter_list pos:line="500" pos:column="23">(<param><type><name pos:line="500" pos:column="24">f</name></type></param>)</parameter_list></cpp:macro>      <cpp:value pos:line="500" pos:column="32">VsIgnoreAllocsInternal(f);</cpp:value></cpp:define>
+
+<cpp:ifndef pos:line="502" pos:column="1">#<cpp:directive pos:line="502" pos:column="2">ifndef</cpp:directive> <name pos:line="502" pos:column="9">FEATURE_PAL</name></cpp:ifndef>
+<comment type="line" pos:line="503" pos:column="1">// Wrappers for comdlg.dll 'A' functions which call VsIgnoreAllocsInternal...</comment>
+<function_decl><type><name pos:line="504" pos:column="1">CLINKAGE</name> <name pos:line="504" pos:column="10">BOOL</name> <name pos:line="504" pos:column="15">ENTRYPOINT</name></type> <name pos:line="504" pos:column="26">VsGetOpenFileNameA</name><parameter_list pos:line="504" pos:column="44">(<param><decl><type><name pos:line="504" pos:column="45">LPOPENFILENAMEA</name></type> <name pos:line="504" pos:column="61">pofn</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="505" pos:column="1">CLINKAGE</name> <name pos:line="505" pos:column="10">BOOL</name> <name pos:line="505" pos:column="15">ENTRYPOINT</name></type> <name pos:line="505" pos:column="26">VsGetSaveFileNameA</name><parameter_list pos:line="505" pos:column="44">(<param><decl><type><name pos:line="505" pos:column="45">LPOPENFILENAMEA</name></type> <name pos:line="505" pos:column="61">pofn</name></decl></param>)</parameter_list>;</function_decl>
+<decl_stmt><decl><type><name pos:line="506" pos:column="1">CLINKAGE</name> <name pos:line="506" pos:column="10">short</name> <name pos:line="506" pos:column="16">ENTRYPOINT</name></type> <name pos:line="506" pos:column="27">VsGetFileTitleA</name><argument_list pos:line="506" pos:column="42">(<argument><expr><name pos:line="506" pos:column="43">LPCSTR</name> <name pos:line="506" pos:column="50">lpstr1</name></expr></argument>, <argument><expr><macro><name pos:line="506" pos:column="58">_Out_z_cap_</name><argument_list pos:line="506" pos:column="69">(<argument pos:line="506" pos:column="70">w</argument>)</argument_list></macro> <name pos:line="506" pos:column="73">LPSTR</name> <name pos:line="506" pos:column="79">lpstr2</name></expr></argument>, <argument><expr><name pos:line="506" pos:column="87">WORD</name> <name pos:line="506" pos:column="92">w</name></expr></argument>)</argument_list></decl>;</decl_stmt>
+<function_decl><type><name pos:line="507" pos:column="1">CLINKAGE</name> <name pos:line="507" pos:column="10">BOOL</name> <name pos:line="507" pos:column="15">ENTRYPOINT</name></type> <name pos:line="507" pos:column="26">VsChooseColorA</name><parameter_list pos:line="507" pos:column="40">(<param><decl><type><name pos:line="507" pos:column="41">LPCHOOSECOLORA</name></type> <name pos:line="507" pos:column="56">pcc</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="508" pos:column="1">CLINKAGE</name> <name pos:line="508" pos:column="10">HWND</name> <name pos:line="508" pos:column="15">ENTRYPOINT</name></type> <name pos:line="508" pos:column="26">VsFindTextA</name><parameter_list pos:line="508" pos:column="37">(<param><decl><type><name pos:line="508" pos:column="38">LPFINDREPLACEA</name></type> <name pos:line="508" pos:column="53">pfr</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="509" pos:column="1">CLINKAGE</name> <name pos:line="509" pos:column="10">HWND</name> <name pos:line="509" pos:column="15">ENTRYPOINT</name></type> <name pos:line="509" pos:column="26">VsReplaceTextA</name><parameter_list pos:line="509" pos:column="40">(<param><decl><type><name pos:line="509" pos:column="41">LPFINDREPLACEA</name></type> <name pos:line="509" pos:column="56">pfr</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="510" pos:column="1">CLINKAGE</name> <name pos:line="510" pos:column="10">BOOL</name> <name pos:line="510" pos:column="15">ENTRYPOINT</name></type> <name pos:line="510" pos:column="26">VsChooseFontA</name><parameter_list pos:line="510" pos:column="39">(<param><decl><type><name pos:line="510" pos:column="40">LPCHOOSEFONTA</name></type> <name pos:line="510" pos:column="54">pcf</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="511" pos:column="1">CLINKAGE</name> <name pos:line="511" pos:column="10">BOOL</name> <name pos:line="511" pos:column="15">ENTRYPOINT</name></type> <name pos:line="511" pos:column="26">VsPrintDlgA</name><parameter_list pos:line="511" pos:column="37">(<param><decl><type><name pos:line="511" pos:column="38">LPPRINTDLGA</name></type> <name pos:line="511" pos:column="50">ppd</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="512" pos:column="1">CLINKAGE</name> <name pos:line="512" pos:column="10">DWORD</name> <name pos:line="512" pos:column="16">ENTRYPOINT</name></type> <name pos:line="512" pos:column="27">VsCommDlgExtendedError</name><parameter_list pos:line="512" pos:column="49">(<param><decl><type><name pos:line="512" pos:column="50">VOID</name></type></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="513" pos:column="1">CLINKAGE</name> <name pos:line="513" pos:column="10">BOOL</name> <name pos:line="513" pos:column="15">ENTRYPOINT</name></type> <name pos:line="513" pos:column="26">VsPageSetupDlgA</name><parameter_list pos:line="513" pos:column="41">(<param><decl><type><name pos:line="513" pos:column="42">LPPAGESETUPDLGA</name></type> <name pos:line="513" pos:column="58">pps</name></decl></param>)</parameter_list>;</function_decl>
+<cpp:endif pos:line="514" pos:column="1">#<cpp:directive pos:line="514" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="line" pos:line="516" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+<comment type="line" pos:line="517" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+<comment type="line" pos:line="518" pos:column="1">// Recommended defaults</comment>
+<comment type="line" pos:line="519" pos:column="1">//</comment>
+<comment type="line" pos:line="520" pos:column="1">// This header / dll combination is not designed to be used all by itself.</comment>
+<comment type="line" pos:line="521" pos:column="1">// You should add appropriate macro definitions to your own global headers</comment>
+<comment type="line" pos:line="522" pos:column="1">// to hide the fact that you're calling into this DLL.  This allows your team</comment>
+<comment type="line" pos:line="523" pos:column="1">// to code the way they know how, using team-established standards instead</comment>
+<comment type="line" pos:line="524" pos:column="1">// of imposing arbitrary rules on them.</comment>
+<comment type="line" pos:line="525" pos:column="1">//</comment>
+<comment type="line" pos:line="526" pos:column="1">// The macros below define some guidelines for setting up your own macros.</comment>
+<comment type="line" pos:line="527" pos:column="1">// If these macros suit all of your needs you may just #define</comment>
+<comment type="line" pos:line="528" pos:column="1">// VSASSERT_SET_DEFAULTS before including this header.</comment>
+<comment type="line" pos:line="529" pos:column="1">//</comment>
+<comment type="line" pos:line="530" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+<comment type="line" pos:line="531" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+<cpp:if pos:line="532" pos:column="1">#<cpp:directive pos:line="532" pos:column="2">if</cpp:directive> <expr><name pos:line="532" pos:column="5">VSASSERT_SET_DEFAULTS</name></expr></cpp:if>
+
+<comment type="line" pos:line="534" pos:column="1">// Assertion / tracing macro definitions</comment>
+<comment type="line" pos:line="535" pos:column="1">//</comment>
+<cpp:define pos:line="536" pos:column="1">#<cpp:directive pos:line="536" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="536" pos:column="9">ASSERT</name><parameter_list pos:line="536" pos:column="15">(<param><type><name pos:line="536" pos:column="16">fTest</name></type></param>, <param><type><name pos:line="536" pos:column="23">szMsg</name></type></param>)</parameter_list></cpp:macro>  <cpp:value pos:line="536" pos:column="31">VSASSERT((fTest), (szMsg))</cpp:value></cpp:define>
+<cpp:define pos:line="537" pos:column="1">#<cpp:directive pos:line="537" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="537" pos:column="9">FAIL</name><parameter_list pos:line="537" pos:column="13">(<param><type><name pos:line="537" pos:column="14">szMsg</name></type></param>)</parameter_list></cpp:macro>           <cpp:value pos:line="537" pos:column="31">VSFAIL((szMsg))</cpp:value></cpp:define>
+<cpp:define pos:line="538" pos:column="1">#<cpp:directive pos:line="538" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="538" pos:column="9">DEBUGPRINTF</name></cpp:macro>           <cpp:value pos:line="538" pos:column="31">VSDEBUGPRINTF</cpp:value></cpp:define>
+<cpp:define pos:line="539" pos:column="1">#<cpp:directive pos:line="539" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="539" pos:column="9">DEBUGPRINTIF</name></cpp:macro>          <cpp:value pos:line="539" pos:column="31">VSDEBUGPRINTIF</cpp:value></cpp:define>
+<cpp:define pos:line="540" pos:column="1">#<cpp:directive pos:line="540" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="540" pos:column="9">CASSERT</name><parameter_list pos:line="540" pos:column="16">(<param><type><name pos:line="540" pos:column="17">fTest</name></type></param>, <param><type><name pos:line="540" pos:column="24">msg</name></type></param>)</parameter_list></cpp:macro>   <cpp:value pos:line="540" pos:column="31">VSCASSERT((fTest), (msg))</cpp:value></cpp:define>
+
+<comment type="line" pos:line="542" pos:column="1">// Debug switches</comment>
+<comment type="line" pos:line="543" pos:column="1">//</comment>
+<cpp:define pos:line="544" pos:column="1">#<cpp:directive pos:line="544" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="544" pos:column="9">DEFINE_SWITCH</name><parameter_list pos:line="544" pos:column="22">(<param><type><name pos:line="544" pos:column="23">NAME</name></type></param>, <param><type><name pos:line="544" pos:column="29">PACKAGE</name></type></param>, <param><type><name pos:line="544" pos:column="38">DESC</name></type></param>)</parameter_list></cpp:macro>  <cpp:value pos:line="544" pos:column="45">VSDEFINE_SWITCH(NAME, PACKAGE, DESC)</cpp:value></cpp:define>
+<cpp:define pos:line="545" pos:column="1">#<cpp:directive pos:line="545" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="545" pos:column="9">EXTERN_SWITCH</name><parameter_list pos:line="545" pos:column="22">(<param><type><name pos:line="545" pos:column="23">NAME</name></type></param>)</parameter_list></cpp:macro>                 <cpp:value pos:line="545" pos:column="45">VSEXTERN_SWITCH(NAME)</cpp:value></cpp:define>
+<cpp:define pos:line="546" pos:column="1">#<cpp:directive pos:line="546" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="546" pos:column="9">FSWITCH</name><parameter_list pos:line="546" pos:column="16">(<param><type><name pos:line="546" pos:column="17">NAME</name></type></param>)</parameter_list></cpp:macro>                       <cpp:value pos:line="546" pos:column="45">VSFSWITCH(NAME)</cpp:value></cpp:define>
+
+<cpp:ifdef pos:line="548" pos:column="1">#<cpp:directive pos:line="548" pos:column="2">ifdef</cpp:directive> <name pos:line="548" pos:column="8">DEBUG</name></cpp:ifdef>
+
+<comment type="line" pos:line="550" pos:column="1">// Memory allocation</comment>
+<comment type="line" pos:line="551" pos:column="1">//</comment>
+<cpp:if pos:line="552" pos:column="1">#<cpp:directive pos:line="552" pos:column="2">if</cpp:directive> <expr><lit:literal type="number" pos:line="552" pos:column="5">0</lit:literal></expr></cpp:if>
+<comment type="line" pos:line="553" pos:column="1">// Note:  You should copy these to your own codebase as we cannot link them in here</comment>
+<comment type="line" pos:line="554" pos:column="1">//</comment>
+PVOID operator new(size_t size)
+      { return VsDebAlloc(0, size); }
+PVOID operator new(size_t size, LPCSTR pszFile, UINT uLine)
+      { return VsDebugAllocInternal(DEFAULT_HEAP, 0, size, pszFile, uLine, INSTANCE_GLOBAL, NULL); }
+void  operator delete(PVOID pv)
+      { VsDebFree(pv); }
+<cpp:endif pos:line="561" pos:column="1">#<cpp:directive pos:line="561" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="561" pos:column="8">// 0</comment>
+
+<function_decl><type><name pos:line="563" pos:column="1">PVOID</name> <name pos:line="563" pos:column="7">__cdecl</name></type> <name pos:line="563" pos:column="15">operator new</name><parameter_list pos:line="563" pos:column="27">(<param><decl><type><name pos:line="563" pos:column="28">size_t</name></type> <name pos:line="563" pos:column="35">size</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="564" pos:column="1">PVOID</name> <name pos:line="564" pos:column="7">__cdecl</name></type> <name pos:line="564" pos:column="15">operator new</name><parameter_list pos:line="564" pos:column="27">(<param><decl><type><name pos:line="564" pos:column="28">size_t</name></type> <name pos:line="564" pos:column="35">size</name></decl></param>, <param><decl><type><name pos:line="564" pos:column="41">LPCSTR</name></type> <name pos:line="564" pos:column="48">pszFile</name></decl></param>, <param><decl><type><name pos:line="564" pos:column="57">UINT</name></type> <name pos:line="564" pos:column="62">uLine</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="565" pos:column="1">void</name>  <name pos:line="565" pos:column="7">__cdecl</name></type> <name pos:line="565" pos:column="15">operator delete</name><parameter_list pos:line="565" pos:column="30">(<param><decl><type><name pos:line="565" pos:column="31">PVOID</name></type> <name pos:line="565" pos:column="37">pv</name></decl></param>)</parameter_list>;</function_decl>
+<cpp:define pos:line="566" pos:column="1">#<cpp:directive pos:line="566" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="566" pos:column="9">new</name></cpp:macro> <cpp:value pos:line="566" pos:column="13">new(__FILE__, __LINE__)</cpp:value></cpp:define>
+
+<cpp:define pos:line="568" pos:column="1">#<cpp:directive pos:line="568" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="568" pos:column="9">calloc</name><parameter_list pos:line="568" pos:column="15">(<param><type><name pos:line="568" pos:column="16">num</name></type></param>, <param><type><name pos:line="568" pos:column="21">size</name></type></param>)</parameter_list></cpp:macro>     <cpp:value pos:line="568" pos:column="31">VsDebAlloc(0, (num) * (size))</cpp:value></cpp:define>
+<cpp:define pos:line="569" pos:column="1">#<cpp:directive pos:line="569" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="569" pos:column="9">malloc</name><parameter_list pos:line="569" pos:column="15">(<param><type><name pos:line="569" pos:column="16">size</name></type></param>)</parameter_list></cpp:macro>          <cpp:value pos:line="569" pos:column="31">VsDebAlloc(0, (size))</cpp:value></cpp:define>
+<cpp:define pos:line="570" pos:column="1">#<cpp:directive pos:line="570" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="570" pos:column="9">realloc</name><parameter_list pos:line="570" pos:column="16">(<param><type><name pos:line="570" pos:column="17">pv</name></type></param>, <param><type><name pos:line="570" pos:column="21">size</name></type></param>)</parameter_list></cpp:macro>     <cpp:value pos:line="570" pos:column="31">VsDebSafeRealloc((pv), 0, (size))</cpp:value></cpp:define>
+<cpp:define pos:line="571" pos:column="1">#<cpp:directive pos:line="571" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="571" pos:column="9">_recalloc</name><parameter_list pos:line="571" pos:column="18">(<param><type><name pos:line="571" pos:column="19">pv</name></type></param>, <param><type><name pos:line="571" pos:column="23">num</name></type></param>, <param><type><name pos:line="571" pos:column="28">size</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="571" pos:column="34">VsDebSafeRealloc((pv), 0, (num) * (size))</cpp:value></cpp:define>
+<cpp:define pos:line="572" pos:column="1">#<cpp:directive pos:line="572" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="572" pos:column="9">free</name><parameter_list pos:line="572" pos:column="13">(<param><type><name pos:line="572" pos:column="14">pv</name></type></param>)</parameter_list></cpp:macro>              <cpp:value pos:line="572" pos:column="31">VsDebFree((pv))</cpp:value></cpp:define>
+
+<cpp:define pos:line="574" pos:column="1">#<cpp:directive pos:line="574" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="574" pos:column="9">HeapAlloc</name><parameter_list pos:line="574" pos:column="18">(<param><type><name pos:line="574" pos:column="19">heap</name></type></param>, <param><type><name pos:line="574" pos:column="25">flags</name></type></param>, <param><type><name pos:line="574" pos:column="32">size</name></type></param>)</parameter_list></cpp:macro>        <cpp:value pos:line="574" pos:column="45">VsDebHeapAlloc((heap), (flags), (size))</cpp:value></cpp:define>
+<cpp:define pos:line="575" pos:column="1">#<cpp:directive pos:line="575" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="575" pos:column="9">HeapReAlloc</name><parameter_list pos:line="575" pos:column="20">(<param><type><name pos:line="575" pos:column="21">heap</name></type></param>, <param><type><name pos:line="575" pos:column="27">flags</name></type></param>, <param><type><name pos:line="575" pos:column="34">pv</name></type></param>, <param><type><name pos:line="575" pos:column="38">size</name></type></param>)</parameter_list></cpp:macro>  <cpp:value pos:line="575" pos:column="45">VsDebHeapRealloc((heap), (flags), (pv), (size))</cpp:value></cpp:define>
+<cpp:define pos:line="576" pos:column="1">#<cpp:directive pos:line="576" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="576" pos:column="9">HeapFree</name><parameter_list pos:line="576" pos:column="17">(<param><type><name pos:line="576" pos:column="18">heap</name></type></param>, <param><type><name pos:line="576" pos:column="24">flags</name></type></param>, <param><type><name pos:line="576" pos:column="31">pv</name></type></param>)</parameter_list></cpp:macro>           <cpp:value pos:line="576" pos:column="45">VsDebHeapFree((heap), (pv))</cpp:value></cpp:define>
+<cpp:define pos:line="577" pos:column="1">#<cpp:directive pos:line="577" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="577" pos:column="9">HeapSize</name><parameter_list pos:line="577" pos:column="17">(<param><type><name pos:line="577" pos:column="18">heap</name></type></param>, <param><type><name pos:line="577" pos:column="24">flags</name></type></param>, <param><type><name pos:line="577" pos:column="31">pv</name></type></param>)</parameter_list></cpp:macro>           <cpp:value pos:line="577" pos:column="45">VsDebHeapSize((heap), (pv))</cpp:value></cpp:define>
+
+<cpp:define pos:line="579" pos:column="1">#<cpp:directive pos:line="579" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="579" pos:column="9">CoTaskMemAlloc</name><parameter_list pos:line="579" pos:column="23">(<param><type><name pos:line="579" pos:column="24">cb</name></type></param>)</parameter_list></cpp:macro>        <cpp:value pos:line="579" pos:column="35">VsDebOleAlloc(cb)</cpp:value></cpp:define>
+<cpp:define pos:line="580" pos:column="1">#<cpp:directive pos:line="580" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="580" pos:column="9">CoTaskMemRealloc</name><parameter_list pos:line="580" pos:column="25">(<param><type><name pos:line="580" pos:column="26">pv</name></type></param>, <param><type><name pos:line="580" pos:column="30">cb</name></type></param>)</parameter_list></cpp:macro>  <cpp:value pos:line="580" pos:column="35">VsDebOleRealloc(pv, cb)</cpp:value></cpp:define>
+<cpp:define pos:line="581" pos:column="1">#<cpp:directive pos:line="581" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="581" pos:column="9">CoTaskMemFree</name><parameter_list pos:line="581" pos:column="22">(<param><type><name pos:line="581" pos:column="23">pv</name></type></param>)</parameter_list></cpp:macro>         <cpp:value pos:line="581" pos:column="35">VsDebOleFree(pv)</cpp:value></cpp:define>
+
+<cpp:define pos:line="583" pos:column="1">#<cpp:directive pos:line="583" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="583" pos:column="9">SysAllocString</name><parameter_list pos:line="583" pos:column="23">(<param><type><name pos:line="583" pos:column="24">str</name></type></param>)</parameter_list></cpp:macro>             <cpp:value pos:line="583" pos:column="41">VsDebSysAllocString((str))</cpp:value></cpp:define>
+<cpp:define pos:line="584" pos:column="1">#<cpp:directive pos:line="584" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="584" pos:column="9">SysAllocStringByteLen</name><parameter_list pos:line="584" pos:column="30">(<param><type><name pos:line="584" pos:column="31">str</name></type></param>, <param><type><name pos:line="584" pos:column="36">cb</name></type></param>)</parameter_list></cpp:macro>  <cpp:value pos:line="584" pos:column="41">VsDebSysAllocStringByteLen((str), (cb))</cpp:value></cpp:define>
+<cpp:define pos:line="585" pos:column="1">#<cpp:directive pos:line="585" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="585" pos:column="9">SysAllocStringLen</name><parameter_list pos:line="585" pos:column="26">(<param><type><name pos:line="585" pos:column="27">str</name></type></param>, <param><type><name pos:line="585" pos:column="32">cch</name></type></param>)</parameter_list></cpp:macro>     <cpp:value pos:line="585" pos:column="41">VsDebSysAllocStringLen((str), (cch))</cpp:value></cpp:define>
+
+<cpp:endif pos:line="587" pos:column="1">#<cpp:directive pos:line="587" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="587" pos:column="8">// DEBUG</comment>
+
+<comment type="line" pos:line="589" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+<comment type="line" pos:line="590" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+<cpp:endif pos:line="591" pos:column="1">#<cpp:directive pos:line="591" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="591" pos:column="8">// VSASSERT_SET_DEFAULTS</comment>
+
+<cpp:ifdef pos:line="593" pos:column="1">#<cpp:directive pos:line="593" pos:column="2">ifdef</cpp:directive> <name pos:line="593" pos:column="8">__cplusplus</name></cpp:ifdef>
+<comment type="line" pos:line="594" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+<comment type="line" pos:line="595" pos:column="1">// This provides users with a way to create switches that only appear in</comment>
+<comment type="line" pos:line="596" pos:column="1">// debug.  Users can change these switches through a debug dialog that is</comment>
+<comment type="line" pos:line="597" pos:column="1">// automatically updated with the latest switches as package DLL's are loaded.</comment>
+<comment type="line" pos:line="598" pos:column="1">//</comment>
+<comment type="line" pos:line="599" pos:column="1">// These switches are persisted to a vsdebug.ini file in the windows directory.</comment>
+<comment type="line" pos:line="600" pos:column="1">//</comment>
+<comment type="line" pos:line="601" pos:column="1">// ...at the top of your code somewhere...</comment>
+<comment type="line" pos:line="602" pos:column="1">//</comment>
+<comment type="line" pos:line="603" pos:column="1">// DEFINE_SWITCH(FDisplayZonkerStatus, "Java", "Display Zonker Status");</comment>
+<comment type="line" pos:line="604" pos:column="1">//</comment>
+<comment type="line" pos:line="605" pos:column="1">//      FDisplayZonkerStatus    - the name of your switch</comment>
+<comment type="line" pos:line="606" pos:column="1">//      Java                    - some logical package grouping of your desire</comment>
+<comment type="line" pos:line="607" pos:column="1">//      Display Zonker Status   - text to display in the dialog</comment>
+<comment type="line" pos:line="608" pos:column="1">//</comment>
+<comment type="line" pos:line="609" pos:column="1">// ...then, wherever you would actually write the zonker status...</comment>
+<comment type="line" pos:line="610" pos:column="1">//</comment>
+<comment type="line" pos:line="611" pos:column="1">// if(FSWITCH(FDisplayZonkerStatus))</comment>
+<comment type="line" pos:line="612" pos:column="1">//    OutputDebugString(szZonkerStatus);</comment>
+<comment type="line" pos:line="613" pos:column="1">//</comment>
+<comment type="line" pos:line="614" pos:column="1">// Finally, if you need the switch in another file, use this construct:</comment>
+<comment type="line" pos:line="615" pos:column="1">//</comment>
+<comment type="line" pos:line="616" pos:column="1">// EXTERN_SWITCH(FDisplayZonkerStatus);</comment>
+<comment type="line" pos:line="617" pos:column="1">//</comment>
+<comment type="line" pos:line="618" pos:column="1">// Switches can be shared anywhere within the same DLL, but cannot be</comment>
+<comment type="line" pos:line="619" pos:column="1">// shared across DLLs.</comment>
+<comment type="line" pos:line="620" pos:column="1">//</comment>
+<comment type="line" pos:line="621" pos:column="1">//</comment>
+
+<class_decl pos:line="623" pos:column="1">class <name pos:line="623" pos:column="7">DebSwitch</name>;</class_decl>
+<function_decl><type><name pos:line="624" pos:column="1">CLINKAGE</name> <name pos:line="624" pos:column="10">PVOID</name> <name pos:line="624" pos:column="16">ENTRYPOINT</name></type> <name pos:line="624" pos:column="27">VsGetDebSwitchHead</name><parameter_list pos:line="624" pos:column="45">(<param><decl><type><name pos:line="624" pos:column="46">void</name></type></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="625" pos:column="1">CLINKAGE</name> <name pos:line="625" pos:column="10">VOID</name>  <name pos:line="625" pos:column="16">ENTRYPOINT</name></type> <name pos:line="625" pos:column="27">VsLoadSwitchState</name><parameter_list pos:line="625" pos:column="44">(<param><decl><type><name pos:line="625" pos:column="45">DebSwitch</name> <type:modifier pos:line="625" pos:column="55">*</type:modifier></type><name pos:line="625" pos:column="56">pSwitch</name></decl></param>)</parameter_list>;</function_decl>
+
+<class pos:line="627" pos:column="1">class <name pos:line="627" pos:column="7">DebSwitch</name>
+  <block pos:line="628" pos:column="3">{<private type="default" pos:line="628" pos:column="4">
+  </private><public pos:line="629" pos:column="3">public:
+    <constructor><name pos:line="630" pos:column="5">DebSwitch</name><parameter_list pos:line="630" pos:column="14">(<param><decl><type><name pos:line="630" pos:column="15">LPCSTR</name></type> <name pos:line="630" pos:column="22">pszName</name></decl></param>, <param><decl><type><name pos:line="630" pos:column="31">LPCSTR</name></type> <name pos:line="630" pos:column="38">pszPackage</name></decl></param>, <param><decl><type><name pos:line="630" pos:column="50">LPCSTR</name></type> <name pos:line="630" pos:column="57">pszDesc</name></decl></param>)</parameter_list>
+      <block pos:line="631" pos:column="7">{
+      <comment type="line" pos:line="632" pos:column="7">// set fields</comment>
+      <expr_stmt><expr><name pos:line="633" pos:column="7">m_pszName</name> <op:operator pos:line="633" pos:column="17">=</op:operator> <name pos:line="633" pos:column="19">pszName</name></expr>;</expr_stmt>
+      <expr_stmt><expr><name pos:line="634" pos:column="7">m_pszPackage</name> <op:operator pos:line="634" pos:column="20">=</op:operator> <name pos:line="634" pos:column="22">pszPackage</name></expr>;</expr_stmt>
+      <expr_stmt><expr><name pos:line="635" pos:column="7">m_pszDesc</name> <op:operator pos:line="635" pos:column="17">=</op:operator> <name pos:line="635" pos:column="19">pszDesc</name></expr>;</expr_stmt>
+      <expr_stmt><expr><name pos:line="636" pos:column="7">m_fSet</name> <op:operator pos:line="636" pos:column="14">=</op:operator> <name pos:line="636" pos:column="16">FALSE</name></expr>;</expr_stmt>
+
+      <comment type="line" pos:line="638" pos:column="7">// link into global list of switches</comment>
+      <decl_stmt><decl><type><name pos:line="639" pos:column="7">DebSwitch</name> <type:modifier pos:line="639" pos:column="17">*</type:modifier><type:modifier pos:line="639" pos:column="18">*</type:modifier></type><name pos:line="639" pos:column="19">ppHead</name> <init pos:line="639" pos:column="26">= <expr><op:operator pos:line="639" pos:column="28">(</op:operator><name pos:line="639" pos:column="29">DebSwitch</name> <op:operator pos:line="639" pos:column="39">*</op:operator><op:operator pos:line="639" pos:column="40">*</op:operator><op:operator pos:line="639" pos:column="41">)</op:operator><call><name pos:line="639" pos:column="42">VsGetDebSwitchHead</name><argument_list pos:line="639" pos:column="60">()</argument_list></call></expr></init></decl>;</decl_stmt>
+      <expr_stmt><expr><name><name pos:line="640" pos:column="7">this</name><op:operator pos:line="640" pos:column="11">-&gt;</op:operator><name pos:line="640" pos:column="13">m_pdebswNext</name></name> <op:operator pos:line="640" pos:column="26">=</op:operator> <op:operator pos:line="640" pos:column="28">*</op:operator><name pos:line="640" pos:column="29">ppHead</name></expr>;</expr_stmt>
+      <expr_stmt><expr><op:operator pos:line="641" pos:column="7">*</op:operator><name pos:line="641" pos:column="8">ppHead</name> <op:operator pos:line="641" pos:column="15">=</op:operator> <name pos:line="641" pos:column="17">this</name></expr>;</expr_stmt>
+
+      <comment type="line" pos:line="643" pos:column="7">// now load the switch state.  We must do this piecemeal</comment>
+      <comment type="line" pos:line="644" pos:column="7">// because DLL's may come and go at random times</comment>
+      <comment type="line" pos:line="645" pos:column="7">//</comment>
+      <expr_stmt><expr><call><name pos:line="646" pos:column="7">VsLoadSwitchState</name><argument_list pos:line="646" pos:column="24">(<argument><expr><name pos:line="646" pos:column="25">this</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+      }</block></constructor>
+
+    <destructor><name pos:line="649" pos:column="5">~<name pos:line="649" pos:column="6">DebSwitch</name></name><parameter_list pos:line="649" pos:column="15">()</parameter_list>
+      <block pos:line="650" pos:column="7">{
+      <comment type="line" pos:line="651" pos:column="7">// find our link and remove it.</comment>
+      <decl_stmt><decl><type><name pos:line="652" pos:column="7">DebSwitch</name> <type:modifier pos:line="652" pos:column="17">*</type:modifier><type:modifier pos:line="652" pos:column="18">*</type:modifier></type><name pos:line="652" pos:column="19">ppHead</name> <init pos:line="652" pos:column="26">= <expr><op:operator pos:line="652" pos:column="28">(</op:operator><name pos:line="652" pos:column="29">DebSwitch</name> <op:operator pos:line="652" pos:column="39">*</op:operator><op:operator pos:line="652" pos:column="40">*</op:operator><op:operator pos:line="652" pos:column="41">)</op:operator><call><name pos:line="652" pos:column="42">VsGetDebSwitchHead</name><argument_list pos:line="652" pos:column="60">()</argument_list></call></expr></init></decl>;</decl_stmt>
+      <while pos:line="653" pos:column="7">while <condition pos:line="653" pos:column="13">(<expr><op:operator pos:line="653" pos:column="14">*</op:operator><name pos:line="653" pos:column="15">ppHead</name></expr>)</condition> 
+        <block pos:line="654" pos:column="9">{
+        <if pos:line="655" pos:column="9">if <condition pos:line="655" pos:column="12">(<expr><op:operator pos:line="655" pos:column="13">*</op:operator><name pos:line="655" pos:column="14">ppHead</name> <op:operator pos:line="655" pos:column="21">==</op:operator> <name pos:line="655" pos:column="24">this</name></expr>)</condition><then pos:line="655" pos:column="29"> 
+          <block pos:line="656" pos:column="11">{
+          <expr_stmt><expr><op:operator pos:line="657" pos:column="11">*</op:operator><name pos:line="657" pos:column="12">ppHead</name> <op:operator pos:line="657" pos:column="19">=</op:operator> <name pos:line="657" pos:column="21">(<type:modifier pos:line="657" pos:column="22">*</type:modifier><name pos:line="657" pos:column="23">ppHead</name>)<op:operator pos:line="657" pos:column="30">-&gt;</op:operator><name pos:line="657" pos:column="32">m_pdebswNext</name></name></expr>;</expr_stmt>
+          <break pos:line="658" pos:column="11">break;</break>
+          }</block></then></if>
+
+          <expr_stmt><expr><name pos:line="661" pos:column="11">ppHead</name> <op:operator pos:line="661" pos:column="18">=</op:operator> <op:operator pos:line="661" pos:column="20">&amp;</op:operator><op:operator pos:line="661" pos:column="21">(</op:operator><name pos:line="661" pos:column="22">(<type:modifier pos:line="661" pos:column="23">*</type:modifier><name pos:line="661" pos:column="24">ppHead</name>)<op:operator pos:line="661" pos:column="31">-&gt;</op:operator><name pos:line="661" pos:column="33">m_pdebswNext</name></name><op:operator pos:line="661" pos:column="45">)</op:operator></expr>;</expr_stmt>
+        }</block></while>
+      }</block></destructor>
+
+    <decl_stmt><decl><type><name pos:line="665" pos:column="5">BOOL</name></type> <name pos:line="665" pos:column="10">m_fSet</name></decl>;</decl_stmt>              <comment type="line" pos:line="665" pos:column="31">// TRUE if switch is enabled</comment>
+    <decl_stmt><decl><type><name pos:line="666" pos:column="5">LPCSTR</name></type> <name pos:line="666" pos:column="12">m_pszPackage</name></decl>;</decl_stmt>       <comment type="line" pos:line="666" pos:column="32">// the package name</comment>
+    <decl_stmt><decl><type><name pos:line="667" pos:column="5">LPCSTR</name></type> <name pos:line="667" pos:column="12">m_pszName</name></decl>;</decl_stmt>          <comment type="line" pos:line="667" pos:column="32">// name of the switch</comment>
+    <decl_stmt><decl><type><name pos:line="668" pos:column="5">LPCSTR</name></type> <name pos:line="668" pos:column="12">m_pszDesc</name></decl>;</decl_stmt>          <comment type="line" pos:line="668" pos:column="32">// description string</comment>
+    <decl_stmt><decl><type><name pos:line="669" pos:column="5">DebSwitch</name><type:modifier pos:line="669" pos:column="14">*</type:modifier></type> <name pos:line="669" pos:column="16">m_pdebswNext</name></decl>;</decl_stmt>  <comment type="line" pos:line="669" pos:column="31">// next switch in global list</comment>
+  </public>}</block>;</class>
+
+<cpp:define pos:line="672" pos:column="1">#<cpp:directive pos:line="672" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="672" pos:column="9">VSDEFINE_SWITCH</name><parameter_list pos:line="672" pos:column="24">(<param><type><name pos:line="672" pos:column="25">NAME</name></type></param>, <param><type><name pos:line="672" pos:column="31">PACKAGE</name></type></param>, <param><type><name pos:line="672" pos:column="40">DESC</name></type></param>)</parameter_list></cpp:macro>  <cpp:value pos:line="672" pos:column="47">DebSwitch g_Switch_ ## NAME(#NAME, PACKAGE, DESC)</cpp:value></cpp:define>
+<cpp:define pos:line="673" pos:column="1">#<cpp:directive pos:line="673" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="673" pos:column="9">VSEXTERN_SWITCH</name><parameter_list pos:line="673" pos:column="24">(<param><type><name pos:line="673" pos:column="25">NAME</name></type></param>)</parameter_list></cpp:macro>                 <cpp:value pos:line="673" pos:column="47">extern DebSwitch g_Switch_ ## NAME</cpp:value></cpp:define>
+<cpp:define pos:line="674" pos:column="1">#<cpp:directive pos:line="674" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="674" pos:column="9">VSFSWITCH</name><parameter_list pos:line="674" pos:column="18">(<param><type><name pos:line="674" pos:column="19">NAME</name></type></param>)</parameter_list></cpp:macro>                       <cpp:value pos:line="674" pos:column="47">(g_Switch_ ## NAME . m_fSet)</cpp:value></cpp:define>
+
+<comment type="line" pos:line="676" pos:column="1">//****************************************************************************</comment>
+<comment type="line" pos:line="677" pos:column="1">// Externally Created Switches</comment>
+<comment type="line" pos:line="678" pos:column="1">//</comment>
+<comment type="line" pos:line="679" pos:column="1">//****************************************************************************</comment>
+
+<comment type="line" pos:line="681" pos:column="1">// These entry points provide a way for packages created in non C languages</comment>
+<comment type="line" pos:line="682" pos:column="1">// to create and use VS debug switches.  If you wish to run DEBUG binaries</comment>
+<comment type="line" pos:line="683" pos:column="1">// using these entry points in non-DEBUG drops you should use dynamic binding</comment>
+<comment type="line" pos:line="684" pos:column="1">// and handle binding failures by providing default switch values.</comment>
+
+<macro><name pos:line="686" pos:column="1">STDAPI_</name><argument_list pos:line="686" pos:column="8">(<argument pos:line="686" pos:column="9">PVOID</argument>)</argument_list></macro> <macro><name pos:line="686" pos:column="16">VsExternalAddSwitch</name><argument_list pos:line="686" pos:column="35">(<argument pos:line="686" pos:column="36">LPCSTR pszName</argument>, <argument pos:line="686" pos:column="52">LPCSTR pszPackage</argument>, <argument pos:line="686" pos:column="71">LPCSTR pszDesc</argument>)</argument_list></macro><empty_stmt pos:line="686" pos:column="86">;</empty_stmt>
+<macro><name pos:line="687" pos:column="1">STDAPI_</name><argument_list pos:line="687" pos:column="8">(<argument pos:line="687" pos:column="9">BOOL</argument>)</argument_list></macro> <macro><name pos:line="687" pos:column="15">VsExternalQuerySwitch</name><argument_list pos:line="687" pos:column="36">(<argument pos:line="687" pos:column="37">PVOID pSwitch</argument>)</argument_list></macro><empty_stmt pos:line="687" pos:column="51">;</empty_stmt>
+<macro><name pos:line="688" pos:column="1">STDAPI_</name><argument_list pos:line="688" pos:column="8">(<argument pos:line="688" pos:column="9">VOID</argument>)</argument_list></macro> <macro><name pos:line="688" pos:column="15">VsExternalRemoveSwitch</name><argument_list pos:line="688" pos:column="37">(<argument pos:line="688" pos:column="38">PVOID pSwitch</argument>)</argument_list></macro><empty_stmt pos:line="688" pos:column="52">;</empty_stmt>
+
+
+<comment type="line" pos:line="691" pos:column="1">// DebSwitchExt is a version of DebugSwitch that is instantiated via dll</comment>
+<comment type="line" pos:line="692" pos:column="1">// entry point instead of by macro. The only difference is that this version</comment>
+<comment type="line" pos:line="693" pos:column="1">// must copy the provided strings since the pointers are not guaranteed to</comment>
+<comment type="line" pos:line="694" pos:column="1">// point to non-volatile memory.</comment>
+
+<class pos:line="696" pos:column="1">class <name pos:line="696" pos:column="7">DebSwitchExt</name> <super pos:line="696" pos:column="20">: <specifier pos:line="696" pos:column="22">public</specifier> <name pos:line="696" pos:column="29">DebSwitch</name></super>
+  <block pos:line="697" pos:column="3">{<private type="default" pos:line="697" pos:column="4">
+  </private><public pos:line="698" pos:column="3">public:
+    <constructor_decl><name pos:line="699" pos:column="5">DebSwitchExt</name><parameter_list pos:line="699" pos:column="17">(<param><decl><type><name pos:line="699" pos:column="18">LPCSTR</name></type> <name pos:line="699" pos:column="25">pszName</name></decl></param>, <param><decl><type><name pos:line="699" pos:column="34">LPCSTR</name></type> <name pos:line="699" pos:column="41">pszPackage</name></decl></param>, <param><decl><type><name pos:line="699" pos:column="53">LPCSTR</name></type> <name pos:line="699" pos:column="60">pszDesc</name></decl></param>)</parameter_list>;</constructor_decl>
+
+    <decl_stmt><decl><type><name pos:line="701" pos:column="5">CHAR</name></type> <name><name pos:line="701" pos:column="10">m_rgszName</name><index pos:line="701" pos:column="20">[<expr><lit:literal type="number" pos:line="701" pos:column="21">100</lit:literal></expr>]</index></name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="702" pos:column="5">CHAR</name></type> <name><name pos:line="702" pos:column="10">m_rgszPackage</name><index pos:line="702" pos:column="23">[<expr><lit:literal type="number" pos:line="702" pos:column="24">100</lit:literal></expr>]</index></name></decl>;</decl_stmt>
+    <decl_stmt><decl><type><name pos:line="703" pos:column="5">CHAR</name></type> <name><name pos:line="703" pos:column="10">m_rgszDesc</name><index pos:line="703" pos:column="20">[<expr><lit:literal type="number" pos:line="703" pos:column="21">300</lit:literal></expr>]</index></name></decl>;</decl_stmt>
+  </public>}</block>;</class>
+
+<comment type="line" pos:line="706" pos:column="1">//****************************************************************************</comment>
+<cpp:endif pos:line="707" pos:column="1">#<cpp:directive pos:line="707" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+<cpp:else pos:line="710" pos:column="1">#<cpp:directive pos:line="710" pos:column="2">else</cpp:directive></cpp:else> <comment type="line" pos:line="710" pos:column="7">// DEBUG</comment>
+
+
+<comment type="line" pos:line="713" pos:column="1">//=--------------------------------------------------------------------------=</comment>
+<comment type="line" pos:line="714" pos:column="1">// Retail defines</comment>
+<comment type="line" pos:line="715" pos:column="1">//</comment>
+<cpp:define pos:line="716" pos:column="1">#<cpp:directive pos:line="716" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="716" pos:column="9">VSDEFINE_SWITCH</name><parameter_list pos:line="716" pos:column="24">(<param><type><name pos:line="716" pos:column="25">NAME</name></type></param>, <param><type><name pos:line="716" pos:column="31">PACKAGE</name></type></param>, <param><type><name pos:line="716" pos:column="40">DESC</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:define pos:line="717" pos:column="1">#<cpp:directive pos:line="717" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="717" pos:column="9">VSEXTERN_SWITCH</name><parameter_list pos:line="717" pos:column="24">(<param><type><name pos:line="717" pos:column="25">NAME</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+<cpp:define pos:line="718" pos:column="1">#<cpp:directive pos:line="718" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="718" pos:column="9">VSFSWITCH</name><parameter_list pos:line="718" pos:column="18">(<param><type><name pos:line="718" pos:column="19">NAME</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="718" pos:column="25">FALSE</cpp:value></cpp:define>
+
+<cpp:define pos:line="720" pos:column="1">#<cpp:directive pos:line="720" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="720" pos:column="9">VsIgnoreAllocs</name><parameter_list pos:line="720" pos:column="23">(<param><type><name pos:line="720" pos:column="24">f</name></type></param>)</parameter_list></cpp:macro></cpp:define>
+
+<cpp:endif pos:line="722" pos:column="1">#<cpp:directive pos:line="722" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="722" pos:column="8">// DEBUG</comment>
+
+<comment type="line" format="doxygen" pos:line="724" pos:column="1">/////</comment>
+<comment type="line" pos:line="725" pos:column="1">// This will show up in Debug.Threads in the VC debugger</comment>
+<comment type="line" format="doxygen" pos:line="726" pos:column="1">/////</comment>
+<function_decl><type><name pos:line="727" pos:column="1">CLINKAGE</name> <name pos:line="727" pos:column="10">VOID</name> <name pos:line="727" pos:column="15">ENTRYPOINT</name></type> <name pos:line="727" pos:column="26">VsNameThisThread</name> <parameter_list pos:line="727" pos:column="43">(<param><decl><type><name pos:line="727" pos:column="44">LPCSTR</name></type> <name pos:line="727" pos:column="51">szThreadName</name></decl></param>)</parameter_list>;</function_decl>
+
+
+<comment type="line" pos:line="730" pos:column="1">//****************************************************************************</comment>
+<comment type="line" pos:line="731" pos:column="1">//	    REFERENCE TRACKING</comment>
+<comment type="line" pos:line="732" pos:column="1">//****************************************************************************</comment>
+<comment type="block" pos:line="733" pos:column="1">/*
+  Tracker Macros
+  ==============
+
+    These macros can be used to record AddRef and Release on COM objects so
+    reference counting errors can be pinpointed.
+
+    How these macros work:
+    =====================
+
+    Whenever a reference is added by calling AddRef on a COM object, there is
+    usually a variable somewhere that holds a pointer to the object.  This
+    variable "owns" the reference.  When this variable is cleared (or goes out
+    of scope) the reference should be released.  If there is a reference leak, it
+    means that one of these variables didn't make its call to Release.
+
+    What these macros do in the debug build is that whenever anybody calls
+    AddRef, and entry is added to a table.  The entry stores the COM IUnkown
+    pointer, the address of the variable that holds this pointer, and a pass count.
+    Whenever anybody calls Release, we search the table for an entry where the COM
+    IUnknown pointer matches and the address of the variable matches, and remove it.
+    (If we don't find it we assert.  This means somebody is over-releasing.)
+
+    Then, at shutdown, we make sure the table is empty.  If it is not empty, then
+    we assert.  With the PassCount number, you can restart and break at the
+    offending AddRef.  I.e., you can break at exactly the point where somebody
+    AddRefs an object but never calls Release.
+
+
+    How to use:
+    ===========
+
+    Here is some sample code which uses these macros.
+
+    IFoo *g_pFoo;
+
+    void PlayWithObjects()
+    {
+      IFoo *pFoo = NULL;
+      IFoo *pFoo2 = NULL;
+
+      GetFooFromSomewhere(&amp;pFoo);
+      TRACKER_RECEIVE(pFoo);
+
+      pFoo2 = pFoo;
+      TRACKER_ADDREF(pFoo2);
+
+      // assign it to our global variable.  This global
+      // is going to hold it for a long time, so we don't
+      // release it at the end of this function.  Somebody somewhere
+      // else is going to release it later.
+      g_pFoo = pFoo;
+      TRACKER_ADDREF(g_pFoo);
+
+      // use pFoo and pFoo2 for a while
+
+      TRACKER_RELEASE(pFoo);
+      TRACKER_RELEASE(pFoo2);
+    }
+
+    Whenever you are given an object (because you called some function that
+    returns it to you) and you now hold a reference to it, call TRACKER_RECEIVE.
+    (This does nothing in the non-debug build.)  This will make sure you
+    remember to call release later.
+
+    Whenever you need to addref (because you copy the pointer into another
+    variable, for example) use TRACKER_ADDREF.
+
+    Whenever you need to release (when your variables are going out of scope),
+    call TRACKER_RELEASE.
+
+    Other notes: if you're giving out an object to your caller, you will need
+    to use TRACKER_GIVE_AWAY.  If you're transferring ownership from one variable
+    to another, use TRACKER_ASSIGN.
+
+*/</comment>
+
+<comment type="line" pos:line="810" pos:column="1">//****************************************************************************</comment>
+
+<comment type="line" pos:line="812" pos:column="1">//---------------------------------------------------------------------------</comment>
+
+<cpp:ifdef pos:line="814" pos:column="1">#<cpp:directive pos:line="814" pos:column="2">ifdef</cpp:directive> <name pos:line="814" pos:column="8">DEBUG</name></cpp:ifdef>
+<cpp:define pos:line="815" pos:column="1">#<cpp:directive pos:line="815" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="815" pos:column="9">TRACKER_ASSERT_EVERYTHING_RELEASED</name><parameter_list pos:line="815" pos:column="43">()</parameter_list></cpp:macro> <cpp:value pos:line="815" pos:column="46">TrackerAssertEverythingReleased()</cpp:value></cpp:define>
+<cpp:else pos:line="816" pos:column="1">#<cpp:directive pos:line="816" pos:column="2">else</cpp:directive></cpp:else>
+<cpp:define pos:line="817" pos:column="1">#<cpp:directive pos:line="817" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="817" pos:column="9">TRACKER_ASSERT_EVERYTHING_RELEASED</name><parameter_list pos:line="817" pos:column="43">()</parameter_list></cpp:macro></cpp:define>
+<cpp:define pos:line="818" pos:column="1">#<cpp:directive pos:line="818" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="818" pos:column="9">TrackerTransfer</name><parameter_list pos:line="818" pos:column="24">()</parameter_list></cpp:macro> <cpp:value pos:line="818" pos:column="27">do {} while (0)</cpp:value></cpp:define>
+<cpp:endif pos:line="819" pos:column="1">#<cpp:directive pos:line="819" pos:column="2">endif</cpp:directive></cpp:endif>	<comment type="line" pos:line="819" pos:column="9">// DEBUG</comment>
+
+<cpp:ifdef pos:line="821" pos:column="1">#<cpp:directive pos:line="821" pos:column="2">ifdef</cpp:directive> <name pos:line="821" pos:column="8">DEBUG</name></cpp:ifdef>
+
+<cpp:define pos:line="823" pos:column="1">#<cpp:directive pos:line="823" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="823" pos:column="9">TRACKER_ADDREF</name><parameter_list pos:line="823" pos:column="23">(<param><type><name pos:line="823" pos:column="24">punk1</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="823" pos:column="31">do {	  \
+    VSASSERT ((punk1), "TRACKER can't addref NULL");  \
+    (punk1)-&gt;AddRef();			  	  \
+    TrackerTransfer ((punk1), NULL, &amp;(punk1));	  \
+  } while (0)					  \
+
+#define TRACKER_RELEASE(punk) do {	    	\
+    VSASSERT (punk, "TRACKER can't release NULL");	\
+    (punk)-&gt;Release();			    	\
+    TrackerTransfer ((punk), &amp;(punk), NULL);   	\
+    (punk) = NULL;			    	\
+  } while (0)					\
+
+#define TRACKER_RECEIVE(punk) do {	       		\
+    VSASSERT (punk, "TRACKER can't receive NULL");	\
+    TrackerTransfer ((punk), NULL, &amp;(punk)); 		\
+  } while (0)						\
+
+
+#define TRACKER_GIVE_AWAY(punk) do {			\
+    VSASSERT (punk, "TRACKER can't give away NULL");	\
+    TrackerTransfer ((punk), &amp;(punk), NULL); 		\
+  } while (0)						\
+
+
+#define TRACKER_ASSIGN(punkDest, punkSrc) do {		  \
+    VSASSERT (punkSrc, "TRACKER can't assign NULL");	  \
+    VSASSERT (!punkDest, "TRACKER must assign to NULL");\
+    (punkDest) = (punkSrc);				  \
+    TrackerTransfer ((punkSrc), &amp;(punkSrc), &amp;(punkDest));  \
+    punkSrc = NULL;					  \
+  } while (0)</cpp:value></cpp:define>
+
+
+<cpp:define pos:line="857" pos:column="1">#<cpp:directive pos:line="857" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="857" pos:column="9">TRACKER_COPY</name><parameter_list pos:line="857" pos:column="21">(<param><type><name pos:line="857" pos:column="22">punkDest</name></type></param>, <param><type><name pos:line="857" pos:column="32">punkSrc</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="857" pos:column="41">do {		\
+    VSASSERT ((punkSrc), "TRACKER can't assign NULL");	\
+    VSASSERT ((!punkDest), "TRACKER must assign to NULL");\
+    (punkDest) = (punkSrc);				\
+    TRACKER_ADDREF ((punkDest));			\
+  } while (0)</cpp:value></cpp:define>
+
+<function_decl><type><name pos:line="864" pos:column="1">CLINKAGE</name> <name pos:line="864" pos:column="10">void</name> <name pos:line="864" pos:column="15">ENTRYPOINT</name></type>  <name pos:line="864" pos:column="27">TrackerTransfer</name><parameter_list pos:line="864" pos:column="42">(<param><decl><type><name pos:line="864" pos:column="43">IUnknown</name> <type:modifier pos:line="864" pos:column="52">*</type:modifier></type><name pos:line="864" pos:column="53">punk</name></decl></param>, <param><decl><type><name pos:line="864" pos:column="59">void</name> <type:modifier pos:line="864" pos:column="64">*</type:modifier></type><name pos:line="864" pos:column="65">pvFrom</name></decl></param>, <param><decl><type><name pos:line="864" pos:column="73">void</name> <type:modifier pos:line="864" pos:column="78">*</type:modifier></type><name pos:line="864" pos:column="79">pvTo</name></decl></param>)</parameter_list>;</function_decl>
+<function_decl><type><name pos:line="865" pos:column="1">CLINKAGE</name> <name pos:line="865" pos:column="10">void</name> <name pos:line="865" pos:column="15">ENTRYPOINT</name></type>  <name pos:line="865" pos:column="27">TrackerAssertEverythingReleased</name><parameter_list pos:line="865" pos:column="58">()</parameter_list>;</function_decl>
+
+<cpp:else pos:line="867" pos:column="1">#<cpp:directive pos:line="867" pos:column="2">else</cpp:directive></cpp:else> <comment type="line" pos:line="867" pos:column="7">// DEBUG</comment>
+
+<cpp:define pos:line="869" pos:column="1">#<cpp:directive pos:line="869" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="869" pos:column="9">TRACKER_ADDREF</name><parameter_list pos:line="869" pos:column="23">(<param><type><name pos:line="869" pos:column="24">punk</name></type></param>)</parameter_list></cpp:macro>	    <cpp:value pos:line="869" pos:column="37">((punk)-&gt;AddRef())</cpp:value></cpp:define>
+<cpp:define pos:line="870" pos:column="1">#<cpp:directive pos:line="870" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="870" pos:column="9">TRACKER_RELEASE</name><parameter_list pos:line="870" pos:column="24">(<param><type><name pos:line="870" pos:column="25">punk</name></type></param>)</parameter_list></cpp:macro>	    <cpp:value pos:line="870" pos:column="37">((punk) -&gt; Release(), (punk) = NULL)</cpp:value></cpp:define>
+<cpp:define pos:line="871" pos:column="1">#<cpp:directive pos:line="871" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="871" pos:column="9">TRACKER_RECEIVE</name><parameter_list pos:line="871" pos:column="24">(<param><type><name pos:line="871" pos:column="25">punk</name></type></param>)</parameter_list></cpp:macro>	    <cpp:value pos:line="871" pos:column="37">do {} while (0)</cpp:value></cpp:define>
+<cpp:define pos:line="872" pos:column="1">#<cpp:directive pos:line="872" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="872" pos:column="9">TRACKER_GIVE_AWAY</name><parameter_list pos:line="872" pos:column="26">(<param><type><name pos:line="872" pos:column="27">punk</name></type></param>)</parameter_list></cpp:macro>	    <cpp:value pos:line="872" pos:column="37">do {} while (0)</cpp:value></cpp:define>
+<cpp:define pos:line="873" pos:column="1">#<cpp:directive pos:line="873" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="873" pos:column="9">TRACKER_ASSIGN</name><parameter_list pos:line="873" pos:column="23">(<param><type><name pos:line="873" pos:column="24">punkD</name></type></param>, <param><type><name pos:line="873" pos:column="31">punkS</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="873" pos:column="38">((punkD) = (punkS), (punkS) = NULL)</cpp:value></cpp:define>
+<cpp:define pos:line="874" pos:column="1">#<cpp:directive pos:line="874" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="874" pos:column="9">TRACKER_COPY</name><parameter_list pos:line="874" pos:column="21">(<param><type><name pos:line="874" pos:column="22">punkD</name></type></param>, <param><type><name pos:line="874" pos:column="29">punkS</name></type></param>)</parameter_list></cpp:macro>  <cpp:value pos:line="874" pos:column="37">((punkD) = (punkS), (punkD) -&gt; AddRef())</cpp:value></cpp:define>
+
+<cpp:endif pos:line="876" pos:column="1">#<cpp:directive pos:line="876" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="876" pos:column="8">// DEBUG</comment>
+
+<cpp:define pos:line="878" pos:column="1">#<cpp:directive pos:line="878" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="878" pos:column="9">TRACKER_CHECK_RELEASE</name><parameter_list pos:line="878" pos:column="30">(<param><type><name pos:line="878" pos:column="31">punk</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="878" pos:column="37">do {	\
+    if (punk) {					\
+      TRACKER_RELEASE(punk);			\
+    }						\
+  } while (0)</cpp:value></cpp:define>					
+
+
+<comment type="line" pos:line="885" pos:column="1">//******************** Dynamic casting</comment>
+
+<comment type="line" pos:line="887" pos:column="1">// The new C++ standard defines dynamic_cast&lt;type&gt; (expr), which appears</comment>
+<comment type="line" pos:line="888" pos:column="1">// to be particulary usefull for verifying that a pointer to one class</comment>
+<comment type="line" pos:line="889" pos:column="1">// can safely be casted to a pointer to another.  However, this safety</comment>
+<comment type="line" pos:line="890" pos:column="1">// requires the use of RTTI, which currently imposes a significant overhead.</comment>
+<comment type="line" pos:line="891" pos:column="1">// We could almost use static_cast when RTTI is not available, but it has</comment>
+<comment type="line" pos:line="892" pos:column="1">// slightly different semantics in some circumstances</comment>
+
+<comment type="line" pos:line="894" pos:column="1">// The defined(DEBUG) is uneccesary since VSASSERT will go away for retail</comment>
+
+<cpp:if pos:line="896" pos:column="1">#<cpp:directive pos:line="896" pos:column="2">if</cpp:directive> <expr><call><name pos:line="896" pos:column="5">defined</name> <argument_list pos:line="896" pos:column="13">(<argument><expr><name pos:line="896" pos:column="14">_CPPRTTI</name></expr></argument>)</argument_list></call> <op:operator pos:line="896" pos:column="24">&amp;&amp;</op:operator> <call><name pos:line="896" pos:column="27">defined</name> <argument_list pos:line="896" pos:column="35">(<argument><expr><name pos:line="896" pos:column="36">DEBUG</name></expr></argument>)</argument_list></call></expr></cpp:if>
+
+<cpp:define pos:line="898" pos:column="1">#<cpp:directive pos:line="898" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="898" pos:column="9">ASSERT_TYPE</name><parameter_list pos:line="898" pos:column="20">(<param><type><name pos:line="898" pos:column="21">type</name></type></param>, <param><type><name pos:line="898" pos:column="27">expr</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="898" pos:column="33">do { \
+  VSASSERT ((dynamic_cast &lt;type&gt; (expr)), "Wrong type"); \
+  }  while (0)</cpp:value></cpp:define>
+
+<cpp:else pos:line="902" pos:column="1">#<cpp:directive pos:line="902" pos:column="2">else</cpp:directive></cpp:else>
+
+<cpp:define pos:line="904" pos:column="1">#<cpp:directive pos:line="904" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="904" pos:column="9">ASSERT_TYPE</name><parameter_list pos:line="904" pos:column="20">(<param><type><name pos:line="904" pos:column="21">type</name></type></param>, <param><type><name pos:line="904" pos:column="27">expr</name></type></param>)</parameter_list></cpp:macro> <cpp:value pos:line="904" pos:column="33">do { } while (0)</cpp:value></cpp:define>
+
+<cpp:endif pos:line="906" pos:column="1">#<cpp:directive pos:line="906" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+<cpp:pragma pos:line="909" pos:column="1">#<cpp:directive pos:line="909" pos:column="2">pragma</cpp:directive> pop_macro("DEBUG")</cpp:pragma>
+
+<cpp:endif pos:line="911" pos:column="1">#<cpp:directive pos:line="911" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="911" pos:column="8">// _INC_VSASSERT_H</comment>
+
+
+
+
+</unit>

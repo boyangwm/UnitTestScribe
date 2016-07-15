@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C++" filename="D:\Research\Subjects\Sando-master\LIBS\Extensions\inc\webmigration.h" pos:tabs="8" pos:line="1" pos:column="1">
+
+<comment type="block" pos:line="3" pos:column="1">/* this ALWAYS GENERATED file contains the definitions for the interfaces */</comment>
+
+
+ <comment type="block" pos:line="6" pos:column="2">/* File created by MIDL compiler version 7.00.0499 */</comment>
+<comment type="block" pos:line="7" pos:column="1">/* at Thu Mar 18 00:12:12 2010
+ */</comment>
+<comment type="block" pos:line="9" pos:column="1">/* Compiler settings for webmigration.idl:
+    Oicf, W1, Zp8, env=Win32 (32b run)
+    protocol : dce , ms_ext, c_ext, robust
+    error checks: allocation ref bounds_check enum stub_data 
+    VC __declspec() decoration level: 
+         __declspec(uuid()), __declspec(selectany), __declspec(novtable)
+         DECLSPEC_UUID(), MIDL_INTERFACE()
+*/</comment>
+<comment type="line" pos:line="17" pos:column="1">//@@MIDL_FILE_HEADING(  )</comment>
+
+<cpp:pragma pos:line="19" pos:column="1">#<cpp:directive pos:line="19" pos:column="2">pragma</cpp:directive> warning( disable: 4049 )</cpp:pragma>  <comment type="block" pos:line="19" pos:column="35">/* more than 64k source lines */</comment>
+
+
+<comment type="block" pos:line="22" pos:column="1">/* verify that the &lt;rpcndr.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="23" pos:column="1">#<cpp:directive pos:line="23" pos:column="2">ifndef</cpp:directive> <name pos:line="23" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="24" pos:column="1">#<cpp:directive pos:line="24" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="24" pos:column="9">__REQUIRED_RPCNDR_H_VERSION__</name></cpp:macro> <cpp:value pos:line="24" pos:column="39">475</cpp:value></cpp:define>
+<cpp:endif pos:line="25" pos:column="1">#<cpp:directive pos:line="25" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="27" pos:column="1">/* verify that the &lt;rpcsal.h&gt; version is high enough to compile this file*/</comment>
+<cpp:ifndef pos:line="28" pos:column="1">#<cpp:directive pos:line="28" pos:column="2">ifndef</cpp:directive> <name pos:line="28" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:ifndef>
+<cpp:define pos:line="29" pos:column="1">#<cpp:directive pos:line="29" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="29" pos:column="9">__REQUIRED_RPCSAL_H_VERSION__</name></cpp:macro> <cpp:value pos:line="29" pos:column="39">100</cpp:value></cpp:define>
+<cpp:endif pos:line="30" pos:column="1">#<cpp:directive pos:line="30" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:include pos:line="32" pos:column="1">#<cpp:directive pos:line="32" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="32" pos:column="10">"rpc.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="33" pos:column="1">#<cpp:directive pos:line="33" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="33" pos:column="10">"rpcndr.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifndef pos:line="35" pos:column="1">#<cpp:directive pos:line="35" pos:column="2">ifndef</cpp:directive> <name pos:line="35" pos:column="9">__RPCNDR_H_VERSION__</name></cpp:ifndef>
+<cpp:error pos:line="36" pos:column="1">#<cpp:directive pos:line="36" pos:column="2">error</cpp:directive> this stub requires an updated version of &lt;rpcndr.h&gt;</cpp:error>
+<cpp:endif pos:line="37" pos:column="1">#<cpp:directive pos:line="37" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="line" pos:line="37" pos:column="8">// __RPCNDR_H_VERSION__</comment>
+
+
+<cpp:ifndef pos:line="40" pos:column="1">#<cpp:directive pos:line="40" pos:column="2">ifndef</cpp:directive> <name pos:line="40" pos:column="9">__webmigration_h__</name></cpp:ifndef>
+<cpp:define pos:line="41" pos:column="1">#<cpp:directive pos:line="41" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="41" pos:column="9">__webmigration_h__</name></cpp:macro></cpp:define>
+
+<cpp:if pos:line="43" pos:column="1">#<cpp:directive pos:line="43" pos:column="2">if</cpp:directive> <expr><call><name pos:line="43" pos:column="5">defined</name><argument_list pos:line="43" pos:column="12">(<argument><expr><name pos:line="43" pos:column="13">_MSC_VER</name></expr></argument>)</argument_list></call> <op:operator pos:line="43" pos:column="23">&amp;&amp;</op:operator> <op:operator pos:line="43" pos:column="26">(</op:operator><name pos:line="43" pos:column="27">_MSC_VER</name> <op:operator pos:line="43" pos:column="36">&gt;=</op:operator> <lit:literal type="number" pos:line="43" pos:column="39">1020</lit:literal><op:operator pos:line="43" pos:column="43">)</op:operator></expr></cpp:if>
+<cpp:pragma pos:line="44" pos:column="1">#<cpp:directive pos:line="44" pos:column="2">pragma</cpp:directive> once</cpp:pragma>
+<cpp:endif pos:line="45" pos:column="1">#<cpp:directive pos:line="45" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<comment type="block" pos:line="47" pos:column="1">/* Forward Declarations */</comment> 
+
+<cpp:ifndef pos:line="49" pos:column="1">#<cpp:directive pos:line="49" pos:column="2">ifndef</cpp:directive> <name pos:line="49" pos:column="9">__IVsWebMigrationService_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="50" pos:column="1">#<cpp:directive pos:line="50" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="50" pos:column="9">__IVsWebMigrationService_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="51" pos:column="1">typedef <type><name pos:line="51" pos:column="9">interface</name> <name pos:line="51" pos:column="19">IVsWebMigrationService</name></type> <name pos:line="51" pos:column="42">IVsWebMigrationService</name>;</typedef>
+<cpp:endif pos:line="52" pos:column="1">#<cpp:directive pos:line="52" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="52" pos:column="9">/* __IVsWebMigrationService_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="55" pos:column="1">#<cpp:directive pos:line="55" pos:column="2">ifndef</cpp:directive> <name pos:line="55" pos:column="9">__IVsWebMigration_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="56" pos:column="1">#<cpp:directive pos:line="56" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="56" pos:column="9">__IVsWebMigration_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="57" pos:column="1">typedef <type><name pos:line="57" pos:column="9">interface</name> <name pos:line="57" pos:column="19">IVsWebMigration</name></type> <name pos:line="57" pos:column="35">IVsWebMigration</name>;</typedef>
+<cpp:endif pos:line="58" pos:column="1">#<cpp:directive pos:line="58" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="58" pos:column="9">/* __IVsWebMigration_FWD_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="61" pos:column="1">#<cpp:directive pos:line="61" pos:column="2">ifndef</cpp:directive> <name pos:line="61" pos:column="9">__IVsWebAppMigration_FWD_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="62" pos:column="1">#<cpp:directive pos:line="62" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="62" pos:column="9">__IVsWebAppMigration_FWD_DEFINED__</name></cpp:macro></cpp:define>
+<typedef pos:line="63" pos:column="1">typedef <type><name pos:line="63" pos:column="9">interface</name> <name pos:line="63" pos:column="19">IVsWebAppMigration</name></type> <name pos:line="63" pos:column="38">IVsWebAppMigration</name>;</typedef>
+<cpp:endif pos:line="64" pos:column="1">#<cpp:directive pos:line="64" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="64" pos:column="9">/* __IVsWebAppMigration_FWD_DEFINED__ */</comment>
+
+
+<comment type="block" pos:line="67" pos:column="1">/* header files for imported files */</comment>
+<cpp:include pos:line="68" pos:column="1">#<cpp:directive pos:line="68" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="68" pos:column="10">"oaidl.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="69" pos:column="1">#<cpp:directive pos:line="69" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="69" pos:column="10">"ocidl.h"</lit:literal></cpp:file></cpp:include>
+<cpp:include pos:line="70" pos:column="1">#<cpp:directive pos:line="70" pos:column="2">include</cpp:directive> <cpp:file><lit:literal type="string" pos:line="70" pos:column="10">"vsshell80.h"</lit:literal></cpp:file></cpp:include>
+
+<cpp:ifdef pos:line="72" pos:column="1">#<cpp:directive pos:line="72" pos:column="2">ifdef</cpp:directive> <name pos:line="72" pos:column="8">__cplusplus</name></cpp:ifdef>
+<extern pos:line="73" pos:column="1">extern <lit:literal type="string" pos:line="73" pos:column="8">"C"</lit:literal><block pos:line="73" pos:column="11">{
+<cpp:endif pos:line="74" pos:column="1">#<cpp:directive pos:line="74" pos:column="2">endif</cpp:directive></cpp:endif> 
+
+
+<comment type="block" pos:line="77" pos:column="1">/* interface __MIDL_itf_webmigration_0000_0000 */</comment>
+<comment type="block" pos:line="78" pos:column="1">/* [local] */</comment> 
+
+<cpp:define pos:line="80" pos:column="1">#<cpp:directive pos:line="80" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="80" pos:column="9">VSWEBMIGRATION_VER_MAJ</name></cpp:macro>    <cpp:value pos:line="80" pos:column="35">10</cpp:value></cpp:define>
+<cpp:define pos:line="81" pos:column="1">#<cpp:directive pos:line="81" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="81" pos:column="9">VSWEBMIGRATION_VER_MIN</name></cpp:macro>    <cpp:value pos:line="81" pos:column="35">0</cpp:value></cpp:define>
+
+
+<decl_stmt><decl><type><specifier pos:line="84" pos:column="1">extern</specifier> <name pos:line="84" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="84" pos:column="22">__MIDL_itf_webmigration_0000_0000_v0_0_c_ifspec</name></decl>;</decl_stmt>
+<decl_stmt><decl><type><specifier pos:line="85" pos:column="1">extern</specifier> <name pos:line="85" pos:column="8">RPC_IF_HANDLE</name></type> <name pos:line="85" pos:column="22">__MIDL_itf_webmigration_0000_0000_v0_0_s_ifspec</name></decl>;</decl_stmt>
+
+
+<cpp:ifndef pos:line="88" pos:column="1">#<cpp:directive pos:line="88" pos:column="2">ifndef</cpp:directive> <name pos:line="88" pos:column="9">__VSWebMigration_LIBRARY_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="89" pos:column="1">#<cpp:directive pos:line="89" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="89" pos:column="9">__VSWebMigration_LIBRARY_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="91" pos:column="1">/* library VSWebMigration */</comment>
+<comment type="block" pos:line="92" pos:column="1">/* [version][helpstring][uuid] */</comment> 
+
+
+<cpp:define pos:line="95" pos:column="1">#<cpp:directive pos:line="95" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="95" pos:column="9">SID_SVsWebMigrationService</name></cpp:macro> <cpp:value pos:line="95" pos:column="36">IID_IVsWebMigrationService</cpp:value></cpp:define>
+<expr_stmt><expr><call><name pos:line="96" pos:column="1">DEFINE_GUID</name><argument_list pos:line="96" pos:column="12">(<argument><expr><name pos:line="96" pos:column="13">CLSID_WebAppMigration</name></expr></argument>, <argument><expr><lit:literal type="number" pos:line="96" pos:column="36">0x26fa29e5</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="96" pos:column="48">0x8a81</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="96" pos:column="56">0x45e0</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="96" pos:column="64">0xae</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="96" pos:column="70">0xeb</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="96" pos:column="76">0xb</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="96" pos:column="81">0x1d</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="96" pos:column="87">0x6e</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="96" pos:column="93">0x5d</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="96" pos:column="99">0xd9</lit:literal></expr></argument>, <argument><expr><lit:literal type="number" pos:line="96" pos:column="105">0x77</lit:literal></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+
+<decl_stmt><decl><type><name pos:line="98" pos:column="1">EXTERN_C</name> <specifier pos:line="98" pos:column="10">const</specifier> <name pos:line="98" pos:column="16">IID</name></type> <name pos:line="98" pos:column="20">LIBID_VSWebMigration</name></decl>;</decl_stmt>
+
+<cpp:ifndef pos:line="100" pos:column="1">#<cpp:directive pos:line="100" pos:column="2">ifndef</cpp:directive> <name pos:line="100" pos:column="9">__IVsWebMigrationService_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="101" pos:column="1">#<cpp:directive pos:line="101" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="101" pos:column="9">__IVsWebMigrationService_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="103" pos:column="1">/* interface IVsWebMigrationService */</comment>
+<comment type="block" pos:line="104" pos:column="1">/* [object][version][uuid] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="107" pos:column="1">EXTERN_C</name> <specifier pos:line="107" pos:column="10">const</specifier> <name pos:line="107" pos:column="16">IID</name></type> <name pos:line="107" pos:column="20">IID_IVsWebMigrationService</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="109" pos:column="1">#<cpp:directive pos:line="109" pos:column="2">if</cpp:directive> <expr><call><name pos:line="109" pos:column="5">defined</name><argument_list pos:line="109" pos:column="12">(<argument><expr><name pos:line="109" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="109" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="109" pos:column="29">!</op:operator><call><name pos:line="109" pos:column="30">defined</name><argument_list pos:line="109" pos:column="37">(<argument><expr><name pos:line="109" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="111" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="111" pos:column="19">(<argument pos:line="111" pos:column="20">"DB0AD857-2F21-40c2-80F2-7CB9300F9DCA"</argument>)</argument_list></macro>
+    <label><name pos:line="112" pos:column="5">IVsWebMigrationService</name> :</label> <expr_stmt><expr pos:line="112" pos:column="30">public <name pos:line="112" pos:column="37">IUnknown</name>
+    <block pos:line="113" pos:column="5">{
+    <expr pos:line="114" pos:column="5">public<op:operator pos:line="114" pos:column="11">:</op:operator>
+        virtual <name pos:line="115" pos:column="17">HRESULT</name> <name pos:line="115" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="115" pos:column="43">MigrateWeb</name><argument_list pos:line="115" pos:column="53">( 
+            <comment type="block" pos:line="116" pos:column="13">/* [in] */</comment> <argument pos:line="116" pos:column="24">__RPC__in_opt IVsProject *pIVsProj</argument>,
+            <comment type="block" pos:line="117" pos:column="13">/* [in] */</comment> <argument pos:line="117" pos:column="24">__RPC__in LPCOLESTR pszLocation</argument>,
+            <comment type="block" pos:line="118" pos:column="13">/* [in] */</comment> <argument pos:line="118" pos:column="24">__RPC__in LPCOLESTR pszProjFile</argument>)</argument_list></macro> <op:operator pos:line="118" pos:column="57">=</op:operator> <lit:literal type="number" pos:line="118" pos:column="59">0</lit:literal></expr>;
+        
+        <expr pos:line="120" pos:column="9">virtual <name pos:line="120" pos:column="17">HRESULT</name> <name pos:line="120" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="120" pos:column="43">IsWebProject</name><argument_list pos:line="120" pos:column="55">( 
+            <comment type="block" pos:line="121" pos:column="13">/* [in] */</comment> <argument pos:line="121" pos:column="24">__RPC__in LPCOLESTR pszProjFile</argument>,
+            <comment type="block" pos:line="122" pos:column="13">/* [out] */</comment> <argument pos:line="122" pos:column="25">__RPC__out BOOL *pIsWeb</argument>)</argument_list></macro> <op:operator pos:line="122" pos:column="50">=</op:operator> <lit:literal type="number" pos:line="122" pos:column="52">0</lit:literal></expr>;
+        
+        <expr pos:line="124" pos:column="9">virtual <name pos:line="124" pos:column="17">HRESULT</name> <name pos:line="124" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="124" pos:column="43">GetProjectSCCInfo</name><argument_list pos:line="124" pos:column="60">( 
+            <comment type="block" pos:line="125" pos:column="13">/* [in] */</comment> <argument pos:line="125" pos:column="24">__RPC__in BSTR bstrProjectFIle</argument>,
+            <comment type="block" pos:line="126" pos:column="13">/* [out] */</comment> <argument pos:line="126" pos:column="25">__RPC__deref_out_opt BSTR *pbstrSccProjectName</argument>,
+            <comment type="block" pos:line="127" pos:column="13">/* [out] */</comment> <argument pos:line="127" pos:column="25">__RPC__deref_out_opt BSTR *pbstrSccAuxPath</argument>,
+            <comment type="block" pos:line="128" pos:column="13">/* [out] */</comment> <argument pos:line="128" pos:column="25">__RPC__deref_out_opt BSTR *pbstrSccLocalPath</argument>,
+            <comment type="block" pos:line="129" pos:column="13">/* [out] */</comment> <argument pos:line="129" pos:column="25">__RPC__deref_out_opt BSTR *pbstrProvider</argument>)</argument_list></macro> <op:operator pos:line="129" pos:column="67">=</op:operator> <lit:literal type="number" pos:line="129" pos:column="69">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="133" pos:column="1">#<cpp:directive pos:line="133" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="133" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="135" pos:column="5">typedef <type><struct pos:line="135" pos:column="13">struct <name pos:line="135" pos:column="20">IVsWebMigrationServiceVtbl</name>
+    <block pos:line="136" pos:column="5">{<public type="default" pos:line="136" pos:column="6">
+        <function_decl><type><name pos:line="137" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="139" pos:column="9">HRESULT</name></type> ( <name pos:line="139" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="139" pos:column="37">*</type:modifier><name pos:line="139" pos:column="38">QueryInterface</name> )<parameter_list pos:line="139" pos:column="54">( 
+            <param><decl><type><name pos:line="140" pos:column="13">IVsWebMigrationService</name> <type:modifier pos:line="140" pos:column="36">*</type:modifier></type> <name pos:line="140" pos:column="38">This</name></decl></param>,
+            <comment type="block" pos:line="141" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="141" pos:column="24">__RPC__in</name> <name pos:line="141" pos:column="34">REFIID</name></type> <name pos:line="141" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="142" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="143" pos:column="13">__RPC__deref_out</name>  <name pos:line="143" pos:column="31">void</name> <type:modifier pos:line="143" pos:column="36">*</type:modifier><type:modifier pos:line="143" pos:column="37">*</type:modifier></type><name pos:line="143" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="145" pos:column="9">ULONG</name></type> ( <name pos:line="145" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="145" pos:column="35">*</type:modifier><name pos:line="145" pos:column="36">AddRef</name> )<parameter_list pos:line="145" pos:column="44">( 
+            <param><decl><type><name pos:line="146" pos:column="13">IVsWebMigrationService</name> <type:modifier pos:line="146" pos:column="36">*</type:modifier></type> <name pos:line="146" pos:column="38">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="148" pos:column="9">ULONG</name></type> ( <name pos:line="148" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="148" pos:column="35">*</type:modifier><name pos:line="148" pos:column="36">Release</name> )<parameter_list pos:line="148" pos:column="45">( 
+            <param><decl><type><name pos:line="149" pos:column="13">IVsWebMigrationService</name> <type:modifier pos:line="149" pos:column="36">*</type:modifier></type> <name pos:line="149" pos:column="38">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="151" pos:column="9">HRESULT</name></type> ( <name pos:line="151" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="151" pos:column="37">*</type:modifier><name pos:line="151" pos:column="38">MigrateWeb</name> )<parameter_list pos:line="151" pos:column="50">( 
+            <param><decl><type><name pos:line="152" pos:column="13">IVsWebMigrationService</name> <type:modifier pos:line="152" pos:column="36">*</type:modifier></type> <name pos:line="152" pos:column="38">This</name></decl></param>,
+            <comment type="block" pos:line="153" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="153" pos:column="24">__RPC__in_opt</name> <name pos:line="153" pos:column="38">IVsProject</name> <type:modifier pos:line="153" pos:column="49">*</type:modifier></type><name pos:line="153" pos:column="50">pIVsProj</name></decl></param>,
+            <comment type="block" pos:line="154" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="154" pos:column="24">__RPC__in</name> <name pos:line="154" pos:column="34">LPCOLESTR</name></type> <name pos:line="154" pos:column="44">pszLocation</name></decl></param>,
+            <comment type="block" pos:line="155" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="155" pos:column="24">__RPC__in</name> <name pos:line="155" pos:column="34">LPCOLESTR</name></type> <name pos:line="155" pos:column="44">pszProjFile</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="157" pos:column="9">HRESULT</name></type> ( <name pos:line="157" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="157" pos:column="37">*</type:modifier><name pos:line="157" pos:column="38">IsWebProject</name> )<parameter_list pos:line="157" pos:column="52">( 
+            <param><decl><type><name pos:line="158" pos:column="13">IVsWebMigrationService</name> <type:modifier pos:line="158" pos:column="36">*</type:modifier></type> <name pos:line="158" pos:column="38">This</name></decl></param>,
+            <comment type="block" pos:line="159" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="159" pos:column="24">__RPC__in</name> <name pos:line="159" pos:column="34">LPCOLESTR</name></type> <name pos:line="159" pos:column="44">pszProjFile</name></decl></param>,
+            <comment type="block" pos:line="160" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="160" pos:column="25">__RPC__out</name> <name pos:line="160" pos:column="36">BOOL</name> <type:modifier pos:line="160" pos:column="41">*</type:modifier></type><name pos:line="160" pos:column="42">pIsWeb</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="162" pos:column="9">HRESULT</name></type> ( <name pos:line="162" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="162" pos:column="37">*</type:modifier><name pos:line="162" pos:column="38">GetProjectSCCInfo</name> )<parameter_list pos:line="162" pos:column="57">( 
+            <param><decl><type><name pos:line="163" pos:column="13">IVsWebMigrationService</name> <type:modifier pos:line="163" pos:column="36">*</type:modifier></type> <name pos:line="163" pos:column="38">This</name></decl></param>,
+            <comment type="block" pos:line="164" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="164" pos:column="24">__RPC__in</name> <name pos:line="164" pos:column="34">BSTR</name></type> <name pos:line="164" pos:column="39">bstrProjectFIle</name></decl></param>,
+            <comment type="block" pos:line="165" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="165" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="165" pos:column="46">BSTR</name> <type:modifier pos:line="165" pos:column="51">*</type:modifier></type><name pos:line="165" pos:column="52">pbstrSccProjectName</name></decl></param>,
+            <comment type="block" pos:line="166" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="166" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="166" pos:column="46">BSTR</name> <type:modifier pos:line="166" pos:column="51">*</type:modifier></type><name pos:line="166" pos:column="52">pbstrSccAuxPath</name></decl></param>,
+            <comment type="block" pos:line="167" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="167" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="167" pos:column="46">BSTR</name> <type:modifier pos:line="167" pos:column="51">*</type:modifier></type><name pos:line="167" pos:column="52">pbstrSccLocalPath</name></decl></param>,
+            <comment type="block" pos:line="168" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="168" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="168" pos:column="46">BSTR</name> <type:modifier pos:line="168" pos:column="51">*</type:modifier></type><name pos:line="168" pos:column="52">pbstrProvider</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="170" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="171" pos:column="7">IVsWebMigrationServiceVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="173" pos:column="5">interface</name></type> <name pos:line="173" pos:column="15">IVsWebMigrationService</name>
+    <argument_list pos:line="174" pos:column="5">{
+        <argument><expr><name pos:line="175" pos:column="9">CONST_VTBL</name> struct <name pos:line="175" pos:column="27">IVsWebMigrationServiceVtbl</name> <op:operator pos:line="175" pos:column="54">*</op:operator><name pos:line="175" pos:column="55">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="180" pos:column="1">#<cpp:directive pos:line="180" pos:column="2">ifdef</cpp:directive> <name pos:line="180" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="183" pos:column="1">#<cpp:directive pos:line="183" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="183" pos:column="9">IVsWebMigrationService_QueryInterface</name><parameter_list pos:line="183" pos:column="46">(<param><type><name pos:line="183" pos:column="47">This</name></type></param>,<param><type><name pos:line="183" pos:column="52">riid</name></type></param>,<param><type><name pos:line="183" pos:column="57">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="184" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="186" pos:column="1">#<cpp:directive pos:line="186" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="186" pos:column="9">IVsWebMigrationService_AddRef</name><parameter_list pos:line="186" pos:column="38">(<param><type><name pos:line="186" pos:column="39">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="187" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="189" pos:column="1">#<cpp:directive pos:line="189" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="189" pos:column="9">IVsWebMigrationService_Release</name><parameter_list pos:line="189" pos:column="39">(<param><type><name pos:line="189" pos:column="40">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="190" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="193" pos:column="1">#<cpp:directive pos:line="193" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="193" pos:column="9">IVsWebMigrationService_MigrateWeb</name><parameter_list pos:line="193" pos:column="42">(<param><type><name pos:line="193" pos:column="43">This</name></type></param>,<param><type><name pos:line="193" pos:column="48">pIVsProj</name></type></param>,<param><type><name pos:line="193" pos:column="57">pszLocation</name></type></param>,<param><type><name pos:line="193" pos:column="69">pszProjFile</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="194" pos:column="5">( (This)-&gt;lpVtbl -&gt; MigrateWeb(This,pIVsProj,pszLocation,pszProjFile) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="196" pos:column="1">#<cpp:directive pos:line="196" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="196" pos:column="9">IVsWebMigrationService_IsWebProject</name><parameter_list pos:line="196" pos:column="44">(<param><type><name pos:line="196" pos:column="45">This</name></type></param>,<param><type><name pos:line="196" pos:column="50">pszProjFile</name></type></param>,<param><type><name pos:line="196" pos:column="62">pIsWeb</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="197" pos:column="5">( (This)-&gt;lpVtbl -&gt; IsWebProject(This,pszProjFile,pIsWeb) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="199" pos:column="1">#<cpp:directive pos:line="199" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="199" pos:column="9">IVsWebMigrationService_GetProjectSCCInfo</name><parameter_list pos:line="199" pos:column="49">(<param><type><name pos:line="199" pos:column="50">This</name></type></param>,<param><type><name pos:line="199" pos:column="55">bstrProjectFIle</name></type></param>,<param><type><name pos:line="199" pos:column="71">pbstrSccProjectName</name></type></param>,<param><type><name pos:line="199" pos:column="91">pbstrSccAuxPath</name></type></param>,<param><type><name pos:line="199" pos:column="107">pbstrSccLocalPath</name></type></param>,<param><type><name pos:line="199" pos:column="125">pbstrProvider</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="200" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetProjectSCCInfo(This,bstrProjectFIle,pbstrSccProjectName,pbstrSccAuxPath,pbstrSccLocalPath,pbstrProvider) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="202" pos:column="1">#<cpp:directive pos:line="202" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="202" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="205" pos:column="1">#<cpp:directive pos:line="205" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="205" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="210" pos:column="1">#<cpp:directive pos:line="210" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="210" pos:column="9">/* __IVsWebMigrationService_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="213" pos:column="1">#<cpp:directive pos:line="213" pos:column="2">ifndef</cpp:directive> <name pos:line="213" pos:column="9">__IVsWebMigration_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="214" pos:column="1">#<cpp:directive pos:line="214" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="214" pos:column="9">__IVsWebMigration_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="216" pos:column="1">/* interface IVsWebMigration */</comment>
+<comment type="block" pos:line="217" pos:column="1">/* [unique][uuid][object] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="220" pos:column="1">EXTERN_C</name> <specifier pos:line="220" pos:column="10">const</specifier> <name pos:line="220" pos:column="16">IID</name></type> <name pos:line="220" pos:column="20">IID_IVsWebMigration</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="222" pos:column="1">#<cpp:directive pos:line="222" pos:column="2">if</cpp:directive> <expr><call><name pos:line="222" pos:column="5">defined</name><argument_list pos:line="222" pos:column="12">(<argument><expr><name pos:line="222" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="222" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="222" pos:column="29">!</op:operator><call><name pos:line="222" pos:column="30">defined</name><argument_list pos:line="222" pos:column="37">(<argument><expr><name pos:line="222" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="224" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="224" pos:column="19">(<argument pos:line="224" pos:column="20">"1D1851BE-913D-40f4-AD7C-AD1F69A34E27"</argument>)</argument_list></macro>
+    <label><name pos:line="225" pos:column="5">IVsWebMigration</name> :</label> <expr_stmt><expr pos:line="225" pos:column="23">public <name pos:line="225" pos:column="30">IUnknown</name>
+    <block pos:line="226" pos:column="5">{
+    <expr pos:line="227" pos:column="5">public<op:operator pos:line="227" pos:column="11">:</op:operator>
+        virtual <name pos:line="228" pos:column="17">HRESULT</name> <name pos:line="228" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="228" pos:column="43">LoadAssembly</name><argument_list pos:line="228" pos:column="55">( 
+            <comment type="block" pos:line="229" pos:column="13">/* [in] */</comment> <argument pos:line="229" pos:column="24">__RPC__in BSTR bstrFilePath</argument>)</argument_list></macro> <op:operator pos:line="229" pos:column="53">=</op:operator> <lit:literal type="number" pos:line="229" pos:column="55">0</lit:literal></expr>;
+        
+        <expr pos:line="231" pos:column="9">virtual <name pos:line="231" pos:column="17">HRESULT</name> <name pos:line="231" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="231" pos:column="43">GetBaseType</name><argument_list pos:line="231" pos:column="54">( 
+            <comment type="block" pos:line="232" pos:column="13">/* [in] */</comment> <argument pos:line="232" pos:column="24">__RPC__in BSTR bstrClassName</argument>,
+            <comment type="block" pos:line="233" pos:column="13">/* [out] */</comment> <argument pos:line="233" pos:column="25">__RPC__deref_out_opt BSTR *pbstrBaseClass</argument>)</argument_list></macro> <op:operator pos:line="233" pos:column="68">=</op:operator> <lit:literal type="number" pos:line="233" pos:column="70">0</lit:literal></expr>;
+        
+        <expr pos:line="235" pos:column="9">virtual <name pos:line="235" pos:column="17">HRESULT</name> <name pos:line="235" pos:column="25">STDMETHODCALLTYPE</name> <call><name pos:line="235" pos:column="43">Unload</name><argument_list pos:line="235" pos:column="49">( <argument><expr><name pos:line="235" pos:column="51">void</name></expr></argument>)</argument_list></call> <op:operator pos:line="235" pos:column="57">=</op:operator> <lit:literal type="number" pos:line="235" pos:column="59">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="239" pos:column="1">#<cpp:directive pos:line="239" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="239" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="241" pos:column="5">typedef <type><struct pos:line="241" pos:column="13">struct <name pos:line="241" pos:column="20">IVsWebMigrationVtbl</name>
+    <block pos:line="242" pos:column="5">{<public type="default" pos:line="242" pos:column="6">
+        <function_decl><type><name pos:line="243" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="245" pos:column="9">HRESULT</name></type> ( <name pos:line="245" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="245" pos:column="37">*</type:modifier><name pos:line="245" pos:column="38">QueryInterface</name> )<parameter_list pos:line="245" pos:column="54">( 
+            <param><decl><type><name pos:line="246" pos:column="13">IVsWebMigration</name> <type:modifier pos:line="246" pos:column="29">*</type:modifier></type> <name pos:line="246" pos:column="31">This</name></decl></param>,
+            <comment type="block" pos:line="247" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="247" pos:column="24">__RPC__in</name> <name pos:line="247" pos:column="34">REFIID</name></type> <name pos:line="247" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="248" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="249" pos:column="13">__RPC__deref_out</name>  <name pos:line="249" pos:column="31">void</name> <type:modifier pos:line="249" pos:column="36">*</type:modifier><type:modifier pos:line="249" pos:column="37">*</type:modifier></type><name pos:line="249" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="251" pos:column="9">ULONG</name></type> ( <name pos:line="251" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="251" pos:column="35">*</type:modifier><name pos:line="251" pos:column="36">AddRef</name> )<parameter_list pos:line="251" pos:column="44">( 
+            <param><decl><type><name pos:line="252" pos:column="13">IVsWebMigration</name> <type:modifier pos:line="252" pos:column="29">*</type:modifier></type> <name pos:line="252" pos:column="31">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="254" pos:column="9">ULONG</name></type> ( <name pos:line="254" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="254" pos:column="35">*</type:modifier><name pos:line="254" pos:column="36">Release</name> )<parameter_list pos:line="254" pos:column="45">( 
+            <param><decl><type><name pos:line="255" pos:column="13">IVsWebMigration</name> <type:modifier pos:line="255" pos:column="29">*</type:modifier></type> <name pos:line="255" pos:column="31">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="257" pos:column="9">HRESULT</name></type> ( <name pos:line="257" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="257" pos:column="37">*</type:modifier><name pos:line="257" pos:column="38">LoadAssembly</name> )<parameter_list pos:line="257" pos:column="52">( 
+            <param><decl><type><name pos:line="258" pos:column="13">IVsWebMigration</name> <type:modifier pos:line="258" pos:column="29">*</type:modifier></type> <name pos:line="258" pos:column="31">This</name></decl></param>,
+            <comment type="block" pos:line="259" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="259" pos:column="24">__RPC__in</name> <name pos:line="259" pos:column="34">BSTR</name></type> <name pos:line="259" pos:column="39">bstrFilePath</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="261" pos:column="9">HRESULT</name></type> ( <name pos:line="261" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="261" pos:column="37">*</type:modifier><name pos:line="261" pos:column="38">GetBaseType</name> )<parameter_list pos:line="261" pos:column="51">( 
+            <param><decl><type><name pos:line="262" pos:column="13">IVsWebMigration</name> <type:modifier pos:line="262" pos:column="29">*</type:modifier></type> <name pos:line="262" pos:column="31">This</name></decl></param>,
+            <comment type="block" pos:line="263" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="263" pos:column="24">__RPC__in</name> <name pos:line="263" pos:column="34">BSTR</name></type> <name pos:line="263" pos:column="39">bstrClassName</name></decl></param>,
+            <comment type="block" pos:line="264" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="264" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="264" pos:column="46">BSTR</name> <type:modifier pos:line="264" pos:column="51">*</type:modifier></type><name pos:line="264" pos:column="52">pbstrBaseClass</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="266" pos:column="9">HRESULT</name></type> ( <name pos:line="266" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="266" pos:column="37">*</type:modifier><name pos:line="266" pos:column="38">Unload</name> )<parameter_list pos:line="266" pos:column="46">( 
+            <param><decl><type><name pos:line="267" pos:column="13">IVsWebMigration</name> <type:modifier pos:line="267" pos:column="29">*</type:modifier></type> <name pos:line="267" pos:column="31">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="269" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="270" pos:column="7">IVsWebMigrationVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="272" pos:column="5">interface</name></type> <name pos:line="272" pos:column="15">IVsWebMigration</name>
+    <argument_list pos:line="273" pos:column="5">{
+        <argument><expr><name pos:line="274" pos:column="9">CONST_VTBL</name> struct <name pos:line="274" pos:column="27">IVsWebMigrationVtbl</name> <op:operator pos:line="274" pos:column="47">*</op:operator><name pos:line="274" pos:column="48">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="279" pos:column="1">#<cpp:directive pos:line="279" pos:column="2">ifdef</cpp:directive> <name pos:line="279" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="282" pos:column="1">#<cpp:directive pos:line="282" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="282" pos:column="9">IVsWebMigration_QueryInterface</name><parameter_list pos:line="282" pos:column="39">(<param><type><name pos:line="282" pos:column="40">This</name></type></param>,<param><type><name pos:line="282" pos:column="45">riid</name></type></param>,<param><type><name pos:line="282" pos:column="50">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="283" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="285" pos:column="1">#<cpp:directive pos:line="285" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="285" pos:column="9">IVsWebMigration_AddRef</name><parameter_list pos:line="285" pos:column="31">(<param><type><name pos:line="285" pos:column="32">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="286" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="288" pos:column="1">#<cpp:directive pos:line="288" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="288" pos:column="9">IVsWebMigration_Release</name><parameter_list pos:line="288" pos:column="32">(<param><type><name pos:line="288" pos:column="33">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="289" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="292" pos:column="1">#<cpp:directive pos:line="292" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="292" pos:column="9">IVsWebMigration_LoadAssembly</name><parameter_list pos:line="292" pos:column="37">(<param><type><name pos:line="292" pos:column="38">This</name></type></param>,<param><type><name pos:line="292" pos:column="43">bstrFilePath</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="293" pos:column="5">( (This)-&gt;lpVtbl -&gt; LoadAssembly(This,bstrFilePath) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="295" pos:column="1">#<cpp:directive pos:line="295" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="295" pos:column="9">IVsWebMigration_GetBaseType</name><parameter_list pos:line="295" pos:column="36">(<param><type><name pos:line="295" pos:column="37">This</name></type></param>,<param><type><name pos:line="295" pos:column="42">bstrClassName</name></type></param>,<param><type><name pos:line="295" pos:column="56">pbstrBaseClass</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="296" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetBaseType(This,bstrClassName,pbstrBaseClass) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="298" pos:column="1">#<cpp:directive pos:line="298" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="298" pos:column="9">IVsWebMigration_Unload</name><parameter_list pos:line="298" pos:column="31">(<param><type><name pos:line="298" pos:column="32">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="299" pos:column="5">( (This)-&gt;lpVtbl -&gt; Unload(This) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="301" pos:column="1">#<cpp:directive pos:line="301" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="301" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="304" pos:column="1">#<cpp:directive pos:line="304" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="304" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="309" pos:column="1">#<cpp:directive pos:line="309" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="309" pos:column="9">/* __IVsWebMigration_INTERFACE_DEFINED__ */</comment>
+
+
+<cpp:ifndef pos:line="312" pos:column="1">#<cpp:directive pos:line="312" pos:column="2">ifndef</cpp:directive> <name pos:line="312" pos:column="9">__IVsWebAppMigration_INTERFACE_DEFINED__</name></cpp:ifndef>
+<cpp:define pos:line="313" pos:column="1">#<cpp:directive pos:line="313" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="313" pos:column="9">__IVsWebAppMigration_INTERFACE_DEFINED__</name></cpp:macro></cpp:define>
+
+<comment type="block" pos:line="315" pos:column="1">/* interface IVsWebAppMigration */</comment>
+<comment type="block" pos:line="316" pos:column="1">/* [unique][uuid][object] */</comment> 
+
+
+<decl_stmt><decl><type><name pos:line="319" pos:column="1">EXTERN_C</name> <specifier pos:line="319" pos:column="10">const</specifier> <name pos:line="319" pos:column="16">IID</name></type> <name pos:line="319" pos:column="20">IID_IVsWebAppMigration</name></decl>;</decl_stmt>
+
+<cpp:if pos:line="321" pos:column="1">#<cpp:directive pos:line="321" pos:column="2">if</cpp:directive> <expr><call><name pos:line="321" pos:column="5">defined</name><argument_list pos:line="321" pos:column="12">(<argument><expr><name pos:line="321" pos:column="13">__cplusplus</name></expr></argument>)</argument_list></call> <op:operator pos:line="321" pos:column="26">&amp;&amp;</op:operator> <op:operator pos:line="321" pos:column="29">!</op:operator><call><name pos:line="321" pos:column="30">defined</name><argument_list pos:line="321" pos:column="37">(<argument><expr><name pos:line="321" pos:column="38">CINTERFACE</name></expr></argument>)</argument_list></call></expr></cpp:if>
+    
+    <macro><name pos:line="323" pos:column="5">MIDL_INTERFACE</name><argument_list pos:line="323" pos:column="19">(<argument pos:line="323" pos:column="20">"D1A24B44-033E-445f-B3AA-BE3F23C5617C"</argument>)</argument_list></macro>
+    <label><name pos:line="324" pos:column="5">IVsWebAppMigration</name> :</label> <expr_stmt><expr pos:line="324" pos:column="26">public <name pos:line="324" pos:column="33">IUnknown</name>
+    <block pos:line="325" pos:column="5">{
+    <expr pos:line="326" pos:column="5">public<op:operator pos:line="326" pos:column="11">:</op:operator>
+        virtual <name pos:line="327" pos:column="17">HRESULT</name> <name pos:line="327" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="327" pos:column="43">CanConvertToWebApp</name><argument_list pos:line="327" pos:column="61">( 
+            <comment type="block" pos:line="328" pos:column="13">/* [in] */</comment> <argument pos:line="328" pos:column="24">__RPC__in LPCOLESTR lpszProjectPath</argument>,
+            <comment type="block" pos:line="329" pos:column="13">/* [out] */</comment> <argument pos:line="329" pos:column="25">__RPC__out BOOL *pConverToWebApp</argument>,
+            <comment type="block" pos:line="330" pos:column="13">/* [out] */</comment> <argument pos:line="330" pos:column="25">__RPC__deref_out_opt BSTR *pbstrNewProjPath</argument>)</argument_list></macro> <op:operator pos:line="330" pos:column="70">=</op:operator> <lit:literal type="number" pos:line="330" pos:column="72">0</lit:literal></expr>;
+        
+        <expr pos:line="332" pos:column="9">virtual <name pos:line="332" pos:column="17">HRESULT</name> <name pos:line="332" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="332" pos:column="43">ConvertProjFileToWebAppProj</name><argument_list pos:line="332" pos:column="70">( 
+            <comment type="block" pos:line="333" pos:column="13">/* [in] */</comment> <argument pos:line="333" pos:column="24">__RPC__in LPCOLESTR lpszProjectPath</argument>,
+            <comment type="block" pos:line="334" pos:column="13">/* [out] */</comment> <argument pos:line="334" pos:column="25">__RPC__deref_out_opt BSTR *pbstrTempFileWithConvertedProject</argument>,
+            <comment type="block" pos:line="335" pos:column="13">/* [out] */</comment> <argument pos:line="335" pos:column="25">__RPC__out GUID *pProjectFactoryGuid</argument>)</argument_list></macro> <op:operator pos:line="335" pos:column="63">=</op:operator> <lit:literal type="number" pos:line="335" pos:column="65">0</lit:literal></expr>;
+        
+        <expr pos:line="337" pos:column="9">virtual <name pos:line="337" pos:column="17">HRESULT</name> <name pos:line="337" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="337" pos:column="43">CheckOutProjectFile</name><argument_list pos:line="337" pos:column="62">( 
+            <comment type="block" pos:line="338" pos:column="13">/* [in] */</comment> <argument pos:line="338" pos:column="24">__RPC__in LPCOLESTR lpszProjectPath</argument>)</argument_list></macro> <op:operator pos:line="338" pos:column="61">=</op:operator> <lit:literal type="number" pos:line="338" pos:column="63">0</lit:literal></expr>;
+        
+        <expr pos:line="340" pos:column="9">virtual <name pos:line="340" pos:column="17">HRESULT</name> <name pos:line="340" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="340" pos:column="43">GetSCCProperties</name><argument_list pos:line="340" pos:column="59">( 
+            <comment type="block" pos:line="341" pos:column="13">/* [out] */</comment> <argument pos:line="341" pos:column="25">__RPC__deref_out_opt BSTR *pbstrSccProjectName</argument>,
+            <comment type="block" pos:line="342" pos:column="13">/* [out] */</comment> <argument pos:line="342" pos:column="25">__RPC__deref_out_opt BSTR *pbstrSccLocalPath</argument>,
+            <comment type="block" pos:line="343" pos:column="13">/* [out] */</comment> <argument pos:line="343" pos:column="25">__RPC__deref_out_opt BSTR *pbstrSccAuxPath</argument>,
+            <comment type="block" pos:line="344" pos:column="13">/* [out] */</comment> <argument pos:line="344" pos:column="25">__RPC__deref_out_opt BSTR *pbstrSccProvider</argument>)</argument_list></macro> <op:operator pos:line="344" pos:column="70">=</op:operator> <lit:literal type="number" pos:line="344" pos:column="72">0</lit:literal></expr>;
+        
+        <expr pos:line="346" pos:column="9">virtual <name pos:line="346" pos:column="17">HRESULT</name> <name pos:line="346" pos:column="25">STDMETHODCALLTYPE</name> <macro><name pos:line="346" pos:column="43">SetProjFileConverted</name><argument_list pos:line="346" pos:column="63">( 
+            <comment type="block" pos:line="347" pos:column="13">/* [in] */</comment> <argument pos:line="347" pos:column="24">__RPC__in LPCOLESTR lpszProjectPath</argument>)</argument_list></macro> <op:operator pos:line="347" pos:column="61">=</op:operator> <lit:literal type="number" pos:line="347" pos:column="63">0</lit:literal></expr>;
+        
+    }</block></expr>;</expr_stmt>
+    
+<cpp:else pos:line="351" pos:column="1">#<cpp:directive pos:line="351" pos:column="2">else</cpp:directive></cpp:else> 	<comment type="block" pos:line="351" pos:column="9">/* C style interface */</comment>
+
+    <typedef pos:line="353" pos:column="5">typedef <type><struct pos:line="353" pos:column="13">struct <name pos:line="353" pos:column="20">IVsWebAppMigrationVtbl</name>
+    <block pos:line="354" pos:column="5">{<public type="default" pos:line="354" pos:column="6">
+        <function_decl><type><name pos:line="355" pos:column="9">BEGIN_INTERFACE</name>
+        
+        <name pos:line="357" pos:column="9">HRESULT</name></type> ( <name pos:line="357" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="357" pos:column="37">*</type:modifier><name pos:line="357" pos:column="38">QueryInterface</name> )<parameter_list pos:line="357" pos:column="54">( 
+            <param><decl><type><name pos:line="358" pos:column="13">IVsWebAppMigration</name> <type:modifier pos:line="358" pos:column="32">*</type:modifier></type> <name pos:line="358" pos:column="34">This</name></decl></param>,
+            <comment type="block" pos:line="359" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="359" pos:column="24">__RPC__in</name> <name pos:line="359" pos:column="34">REFIID</name></type> <name pos:line="359" pos:column="41">riid</name></decl></param>,
+            <comment type="block" pos:line="360" pos:column="13">/* [iid_is][out] */</comment> 
+            <param><decl><type><name pos:line="361" pos:column="13">__RPC__deref_out</name>  <name pos:line="361" pos:column="31">void</name> <type:modifier pos:line="361" pos:column="36">*</type:modifier><type:modifier pos:line="361" pos:column="37">*</type:modifier></type><name pos:line="361" pos:column="38">ppvObject</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="363" pos:column="9">ULONG</name></type> ( <name pos:line="363" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="363" pos:column="35">*</type:modifier><name pos:line="363" pos:column="36">AddRef</name> )<parameter_list pos:line="363" pos:column="44">( 
+            <param><decl><type><name pos:line="364" pos:column="13">IVsWebAppMigration</name> <type:modifier pos:line="364" pos:column="32">*</type:modifier></type> <name pos:line="364" pos:column="34">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="366" pos:column="9">ULONG</name></type> ( <name pos:line="366" pos:column="17">STDMETHODCALLTYPE</name> <type:modifier pos:line="366" pos:column="35">*</type:modifier><name pos:line="366" pos:column="36">Release</name> )<parameter_list pos:line="366" pos:column="45">( 
+            <param><decl><type><name pos:line="367" pos:column="13">IVsWebAppMigration</name> <type:modifier pos:line="367" pos:column="32">*</type:modifier></type> <name pos:line="367" pos:column="34">This</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="369" pos:column="9">HRESULT</name></type> ( <name pos:line="369" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="369" pos:column="37">*</type:modifier><name pos:line="369" pos:column="38">CanConvertToWebApp</name> )<parameter_list pos:line="369" pos:column="58">( 
+            <param><decl><type><name pos:line="370" pos:column="13">IVsWebAppMigration</name> <type:modifier pos:line="370" pos:column="32">*</type:modifier></type> <name pos:line="370" pos:column="34">This</name></decl></param>,
+            <comment type="block" pos:line="371" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="371" pos:column="24">__RPC__in</name> <name pos:line="371" pos:column="34">LPCOLESTR</name></type> <name pos:line="371" pos:column="44">lpszProjectPath</name></decl></param>,
+            <comment type="block" pos:line="372" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="372" pos:column="25">__RPC__out</name> <name pos:line="372" pos:column="36">BOOL</name> <type:modifier pos:line="372" pos:column="41">*</type:modifier></type><name pos:line="372" pos:column="42">pConverToWebApp</name></decl></param>,
+            <comment type="block" pos:line="373" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="373" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="373" pos:column="46">BSTR</name> <type:modifier pos:line="373" pos:column="51">*</type:modifier></type><name pos:line="373" pos:column="52">pbstrNewProjPath</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="375" pos:column="9">HRESULT</name></type> ( <name pos:line="375" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="375" pos:column="37">*</type:modifier><name pos:line="375" pos:column="38">ConvertProjFileToWebAppProj</name> )<parameter_list pos:line="375" pos:column="67">( 
+            <param><decl><type><name pos:line="376" pos:column="13">IVsWebAppMigration</name> <type:modifier pos:line="376" pos:column="32">*</type:modifier></type> <name pos:line="376" pos:column="34">This</name></decl></param>,
+            <comment type="block" pos:line="377" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="377" pos:column="24">__RPC__in</name> <name pos:line="377" pos:column="34">LPCOLESTR</name></type> <name pos:line="377" pos:column="44">lpszProjectPath</name></decl></param>,
+            <comment type="block" pos:line="378" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="378" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="378" pos:column="46">BSTR</name> <type:modifier pos:line="378" pos:column="51">*</type:modifier></type><name pos:line="378" pos:column="52">pbstrTempFileWithConvertedProject</name></decl></param>,
+            <comment type="block" pos:line="379" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="379" pos:column="25">__RPC__out</name> <name pos:line="379" pos:column="36">GUID</name> <type:modifier pos:line="379" pos:column="41">*</type:modifier></type><name pos:line="379" pos:column="42">pProjectFactoryGuid</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="381" pos:column="9">HRESULT</name></type> ( <name pos:line="381" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="381" pos:column="37">*</type:modifier><name pos:line="381" pos:column="38">CheckOutProjectFile</name> )<parameter_list pos:line="381" pos:column="59">( 
+            <param><decl><type><name pos:line="382" pos:column="13">IVsWebAppMigration</name> <type:modifier pos:line="382" pos:column="32">*</type:modifier></type> <name pos:line="382" pos:column="34">This</name></decl></param>,
+            <comment type="block" pos:line="383" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="383" pos:column="24">__RPC__in</name> <name pos:line="383" pos:column="34">LPCOLESTR</name></type> <name pos:line="383" pos:column="44">lpszProjectPath</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="385" pos:column="9">HRESULT</name></type> ( <name pos:line="385" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="385" pos:column="37">*</type:modifier><name pos:line="385" pos:column="38">GetSCCProperties</name> )<parameter_list pos:line="385" pos:column="56">( 
+            <param><decl><type><name pos:line="386" pos:column="13">IVsWebAppMigration</name> <type:modifier pos:line="386" pos:column="32">*</type:modifier></type> <name pos:line="386" pos:column="34">This</name></decl></param>,
+            <comment type="block" pos:line="387" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="387" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="387" pos:column="46">BSTR</name> <type:modifier pos:line="387" pos:column="51">*</type:modifier></type><name pos:line="387" pos:column="52">pbstrSccProjectName</name></decl></param>,
+            <comment type="block" pos:line="388" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="388" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="388" pos:column="46">BSTR</name> <type:modifier pos:line="388" pos:column="51">*</type:modifier></type><name pos:line="388" pos:column="52">pbstrSccLocalPath</name></decl></param>,
+            <comment type="block" pos:line="389" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="389" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="389" pos:column="46">BSTR</name> <type:modifier pos:line="389" pos:column="51">*</type:modifier></type><name pos:line="389" pos:column="52">pbstrSccAuxPath</name></decl></param>,
+            <comment type="block" pos:line="390" pos:column="13">/* [out] */</comment> <param><decl><type><name pos:line="390" pos:column="25">__RPC__deref_out_opt</name> <name pos:line="390" pos:column="46">BSTR</name> <type:modifier pos:line="390" pos:column="51">*</type:modifier></type><name pos:line="390" pos:column="52">pbstrSccProvider</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <function_decl><type><name pos:line="392" pos:column="9">HRESULT</name></type> ( <name pos:line="392" pos:column="19">STDMETHODCALLTYPE</name> <type:modifier pos:line="392" pos:column="37">*</type:modifier><name pos:line="392" pos:column="38">SetProjFileConverted</name> )<parameter_list pos:line="392" pos:column="60">( 
+            <param><decl><type><name pos:line="393" pos:column="13">IVsWebAppMigration</name> <type:modifier pos:line="393" pos:column="32">*</type:modifier></type> <name pos:line="393" pos:column="34">This</name></decl></param>,
+            <comment type="block" pos:line="394" pos:column="13">/* [in] */</comment> <param><decl><type><name pos:line="394" pos:column="24">__RPC__in</name> <name pos:line="394" pos:column="34">LPCOLESTR</name></type> <name pos:line="394" pos:column="44">lpszProjectPath</name></decl></param>)</parameter_list>;</function_decl>
+        
+        <macro><name pos:line="396" pos:column="9">END_INTERFACE</name></macro>
+    </public>}</block></struct></type> <name pos:line="397" pos:column="7">IVsWebAppMigrationVtbl</name>;</typedef>
+
+    <decl_stmt><decl><type><name pos:line="399" pos:column="5">interface</name></type> <name pos:line="399" pos:column="15">IVsWebAppMigration</name>
+    <argument_list pos:line="400" pos:column="5">{
+        <argument><expr><name pos:line="401" pos:column="9">CONST_VTBL</name> struct <name pos:line="401" pos:column="27">IVsWebAppMigrationVtbl</name> <op:operator pos:line="401" pos:column="50">*</op:operator><name pos:line="401" pos:column="51">lpVtbl</name></expr></argument>;
+    }</argument_list></decl>;</decl_stmt>
+
+    
+
+<cpp:ifdef pos:line="406" pos:column="1">#<cpp:directive pos:line="406" pos:column="2">ifdef</cpp:directive> <name pos:line="406" pos:column="8">COBJMACROS</name></cpp:ifdef>
+
+
+<cpp:define pos:line="409" pos:column="1">#<cpp:directive pos:line="409" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="409" pos:column="9">IVsWebAppMigration_QueryInterface</name><parameter_list pos:line="409" pos:column="42">(<param><type><name pos:line="409" pos:column="43">This</name></type></param>,<param><type><name pos:line="409" pos:column="48">riid</name></type></param>,<param><type><name pos:line="409" pos:column="53">ppvObject</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="410" pos:column="5">( (This)-&gt;lpVtbl -&gt; QueryInterface(This,riid,ppvObject) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="412" pos:column="1">#<cpp:directive pos:line="412" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="412" pos:column="9">IVsWebAppMigration_AddRef</name><parameter_list pos:line="412" pos:column="34">(<param><type><name pos:line="412" pos:column="35">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="413" pos:column="5">( (This)-&gt;lpVtbl -&gt; AddRef(This) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="415" pos:column="1">#<cpp:directive pos:line="415" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="415" pos:column="9">IVsWebAppMigration_Release</name><parameter_list pos:line="415" pos:column="35">(<param><type><name pos:line="415" pos:column="36">This</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="416" pos:column="5">( (This)-&gt;lpVtbl -&gt; Release(This) )</cpp:value></cpp:define> 
+
+
+<cpp:define pos:line="419" pos:column="1">#<cpp:directive pos:line="419" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="419" pos:column="9">IVsWebAppMigration_CanConvertToWebApp</name><parameter_list pos:line="419" pos:column="46">(<param><type><name pos:line="419" pos:column="47">This</name></type></param>,<param><type><name pos:line="419" pos:column="52">lpszProjectPath</name></type></param>,<param><type><name pos:line="419" pos:column="68">pConverToWebApp</name></type></param>,<param><type><name pos:line="419" pos:column="84">pbstrNewProjPath</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="420" pos:column="5">( (This)-&gt;lpVtbl -&gt; CanConvertToWebApp(This,lpszProjectPath,pConverToWebApp,pbstrNewProjPath) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="422" pos:column="1">#<cpp:directive pos:line="422" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="422" pos:column="9">IVsWebAppMigration_ConvertProjFileToWebAppProj</name><parameter_list pos:line="422" pos:column="55">(<param><type><name pos:line="422" pos:column="56">This</name></type></param>,<param><type><name pos:line="422" pos:column="61">lpszProjectPath</name></type></param>,<param><type><name pos:line="422" pos:column="77">pbstrTempFileWithConvertedProject</name></type></param>,<param><type><name pos:line="422" pos:column="111">pProjectFactoryGuid</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="423" pos:column="5">( (This)-&gt;lpVtbl -&gt; ConvertProjFileToWebAppProj(This,lpszProjectPath,pbstrTempFileWithConvertedProject,pProjectFactoryGuid) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="425" pos:column="1">#<cpp:directive pos:line="425" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="425" pos:column="9">IVsWebAppMigration_CheckOutProjectFile</name><parameter_list pos:line="425" pos:column="47">(<param><type><name pos:line="425" pos:column="48">This</name></type></param>,<param><type><name pos:line="425" pos:column="53">lpszProjectPath</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="426" pos:column="5">( (This)-&gt;lpVtbl -&gt; CheckOutProjectFile(This,lpszProjectPath) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="428" pos:column="1">#<cpp:directive pos:line="428" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="428" pos:column="9">IVsWebAppMigration_GetSCCProperties</name><parameter_list pos:line="428" pos:column="44">(<param><type><name pos:line="428" pos:column="45">This</name></type></param>,<param><type><name pos:line="428" pos:column="50">pbstrSccProjectName</name></type></param>,<param><type><name pos:line="428" pos:column="70">pbstrSccLocalPath</name></type></param>,<param><type><name pos:line="428" pos:column="88">pbstrSccAuxPath</name></type></param>,<param><type><name pos:line="428" pos:column="104">pbstrSccProvider</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="429" pos:column="5">( (This)-&gt;lpVtbl -&gt; GetSCCProperties(This,pbstrSccProjectName,pbstrSccLocalPath,pbstrSccAuxPath,pbstrSccProvider) )</cpp:value></cpp:define> 
+
+<cpp:define pos:line="431" pos:column="1">#<cpp:directive pos:line="431" pos:column="2">define</cpp:directive> <cpp:macro><name pos:line="431" pos:column="9">IVsWebAppMigration_SetProjFileConverted</name><parameter_list pos:line="431" pos:column="48">(<param><type><name pos:line="431" pos:column="49">This</name></type></param>,<param><type><name pos:line="431" pos:column="54">lpszProjectPath</name></type></param>)</parameter_list></cpp:macro>	\
+    <cpp:value pos:line="432" pos:column="5">( (This)-&gt;lpVtbl -&gt; SetProjFileConverted(This,lpszProjectPath) )</cpp:value></cpp:define> 
+
+<cpp:endif pos:line="434" pos:column="1">#<cpp:directive pos:line="434" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="434" pos:column="8">/* COBJMACROS */</comment>
+
+
+<cpp:endif pos:line="437" pos:column="1">#<cpp:directive pos:line="437" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="437" pos:column="9">/* C style interface */</comment>
+
+
+
+
+<cpp:endif pos:line="442" pos:column="1">#<cpp:directive pos:line="442" pos:column="2">endif</cpp:directive></cpp:endif> 	<comment type="block" pos:line="442" pos:column="9">/* __IVsWebAppMigration_INTERFACE_DEFINED__ */</comment>
+
+<cpp:endif pos:line="444" pos:column="1">#<cpp:directive pos:line="444" pos:column="2">endif</cpp:directive></cpp:endif> <comment type="block" pos:line="444" pos:column="8">/* __VSWebMigration_LIBRARY_DEFINED__ */</comment>
+
+<comment type="block" pos:line="446" pos:column="1">/* Additional Prototypes for ALL interfaces */</comment>
+
+<comment type="block" pos:line="448" pos:column="1">/* end of Additional Prototypes */</comment>
+
+<cpp:ifdef pos:line="450" pos:column="1">#<cpp:directive pos:line="450" pos:column="2">ifdef</cpp:directive> <name pos:line="450" pos:column="8">__cplusplus</name></cpp:ifdef>
+}</block></extern>
+<cpp:endif pos:line="452" pos:column="1">#<cpp:directive pos:line="452" pos:column="2">endif</cpp:directive></cpp:endif>
+
+<cpp:endif pos:line="454" pos:column="1">#<cpp:directive pos:line="454" pos:column="2">endif</cpp:directive></cpp:endif>
+
+
+</unit>

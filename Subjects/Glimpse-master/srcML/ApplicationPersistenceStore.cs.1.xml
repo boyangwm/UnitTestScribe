@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.Core\Framework\ApplicationPersistenceStore.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name pos:line="1" pos:column="7">System</name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">System</name><op:operator pos:line="2" pos:column="13">.</op:operator><name pos:line="2" pos:column="14">Collections</name><op:operator pos:line="2" pos:column="25">.</op:operator><name pos:line="2" pos:column="26">Generic</name></name>;</using>
+<using pos:line="3" pos:column="1">using <name><name pos:line="3" pos:column="7">System</name><op:operator pos:line="3" pos:column="13">.</op:operator><name pos:line="3" pos:column="14">Configuration</name></name>;</using>
+<using pos:line="4" pos:column="1">using <name><name pos:line="4" pos:column="7">System</name><op:operator pos:line="4" pos:column="13">.</op:operator><name pos:line="4" pos:column="14">Linq</name></name>;</using>
+<using pos:line="5" pos:column="1">using <name><name pos:line="5" pos:column="7">Glimpse</name><op:operator pos:line="5" pos:column="14">.</op:operator><name pos:line="5" pos:column="15">Core</name><op:operator pos:line="5" pos:column="19">.</op:operator><name pos:line="5" pos:column="20">Extensibility</name></name>;</using>
+<using pos:line="6" pos:column="1">using <name><name pos:line="6" pos:column="7">Glimpse</name><op:operator pos:line="6" pos:column="14">.</op:operator><name pos:line="6" pos:column="15">Core</name><op:operator pos:line="6" pos:column="19">.</op:operator><name pos:line="6" pos:column="20">Extensions</name></name>;</using>
+
+<namespace pos:line="8" pos:column="1">namespace <name><name pos:line="8" pos:column="11">Glimpse</name><op:operator pos:line="8" pos:column="18">.</op:operator><name pos:line="8" pos:column="19">Core</name><op:operator pos:line="8" pos:column="23">.</op:operator><name pos:line="8" pos:column="24">Framework</name></name>
+<block pos:line="9" pos:column="1">{
+    <comment type="line" pos:line="10" pos:column="5">/// &lt;summary&gt;</comment>
+    <comment type="line" pos:line="11" pos:column="5">/// An &lt;see cref="IPersistenceStore"/&gt; which stores Glimpse request and configuration data in application store.</comment>
+    <comment type="line" pos:line="12" pos:column="5">/// &lt;/summary&gt;</comment>
+    <comment type="line" pos:line="13" pos:column="5">/// &lt;remarks&gt;</comment>
+    <comment type="line" pos:line="14" pos:column="5">/// An example of an application store is &lt;c&gt;HttpContext.Current.Application&lt;/c&gt; in ASP.NET.</comment>
+    <comment type="line" pos:line="15" pos:column="5">/// &lt;/remarks&gt;</comment>
+    <class><specifier pos:line="16" pos:column="5">public</specifier> class <name pos:line="16" pos:column="18">ApplicationPersistenceStore</name> <super pos:line="16" pos:column="46">: <name pos:line="16" pos:column="48">IPersistenceStore</name></super>
+    <block pos:line="17" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="18" pos:column="9">private</specifier> <specifier pos:line="18" pos:column="17">const</specifier> <name pos:line="18" pos:column="23">string</name></type> <name pos:line="18" pos:column="30">PersistenceStoreKey</name> <init pos:line="18" pos:column="50">= <expr><lit:literal type="string" pos:line="18" pos:column="52">"__GlimpsePersistenceKey"</lit:literal></expr></init></decl>;</decl_stmt>
+                
+        <decl_stmt><decl><type><specifier pos:line="20" pos:column="9">private</specifier> <specifier pos:line="20" pos:column="17">readonly</specifier> <name pos:line="20" pos:column="26">object</name></type> <name pos:line="20" pos:column="33">queueLock</name> <init pos:line="20" pos:column="43">= <expr><op:operator pos:line="20" pos:column="45">new</op:operator> <call><name pos:line="20" pos:column="49">object</name><argument_list pos:line="20" pos:column="55">()</argument_list></call></expr></init></decl>;</decl_stmt>
+
+        <comment type="line" pos:line="22" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="23" pos:column="9">/// Initializes a new instance of the &lt;see cref="ApplicationPersistenceStore" /&gt; class.</comment>
+        <comment type="line" pos:line="24" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="25" pos:column="9">/// &lt;param name="dataStore"&gt;The data store.&lt;/param&gt;</comment>
+        <constructor><specifier pos:line="26" pos:column="9">public</specifier> <name pos:line="26" pos:column="16">ApplicationPersistenceStore</name><parameter_list pos:line="26" pos:column="43">(<param><decl><type><name pos:line="26" pos:column="44">IDataStore</name></type> <name pos:line="26" pos:column="55">dataStore</name></decl></param>, <param><decl><type><name pos:line="26" pos:column="66">int</name></type> <name pos:line="26" pos:column="70">bufferSize</name></decl></param>)</parameter_list>
+        <block pos:line="27" pos:column="9">{
+            <expr_stmt><expr><name pos:line="28" pos:column="13">DataStore</name> <op:operator pos:line="28" pos:column="23">=</op:operator> <name pos:line="28" pos:column="25">dataStore</name></expr>;</expr_stmt>
+            <expr_stmt><expr><name pos:line="29" pos:column="13">BufferSize</name> <op:operator pos:line="29" pos:column="24">=</op:operator> <name pos:line="29" pos:column="26">bufferSize</name></expr>;</expr_stmt>
+
+            <decl_stmt><decl><type><name pos:line="31" pos:column="13">var</name></type> <name pos:line="31" pos:column="17">glimpseRequests</name> <init pos:line="31" pos:column="33">= <expr><call><name><name pos:line="31" pos:column="35">DataStore</name><op:operator pos:line="31" pos:column="44">.</op:operator><name><name pos:line="31" pos:column="45">Get</name><argument_list pos:line="31" pos:column="48">&lt;<argument><name><name pos:line="31" pos:column="49">Queue</name><argument_list pos:line="31" pos:column="54">&lt;<argument><name pos:line="31" pos:column="55">GlimpseRequest</name></argument>&gt;</argument_list></name></argument>&gt;</argument_list></name></name><argument_list pos:line="31" pos:column="71">(<argument><expr><name pos:line="31" pos:column="72">PersistenceStoreKey</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+            <if pos:line="32" pos:column="13">if <condition pos:line="32" pos:column="16">(<expr><name pos:line="32" pos:column="17">glimpseRequests</name> <op:operator pos:line="32" pos:column="33">==</op:operator> <name pos:line="32" pos:column="36">null</name></expr>)</condition><then pos:line="32" pos:column="41">
+            <block pos:line="33" pos:column="13">{
+                <expr_stmt><expr><name pos:line="34" pos:column="17">glimpseRequests</name> <op:operator pos:line="34" pos:column="33">=</op:operator> <op:operator pos:line="34" pos:column="35">new</op:operator> <call><name><name pos:line="34" pos:column="39">Queue</name><argument_list pos:line="34" pos:column="44">&lt;<argument><name pos:line="34" pos:column="45">GlimpseRequest</name></argument>&gt;</argument_list></name><argument_list pos:line="34" pos:column="60">(<argument><expr><name pos:line="34" pos:column="61">BufferSize</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+                <expr_stmt><expr><call><name><name pos:line="35" pos:column="17">DataStore</name><op:operator pos:line="35" pos:column="26">.</op:operator><name pos:line="35" pos:column="27">Set</name></name><argument_list pos:line="35" pos:column="30">(<argument><expr><name pos:line="35" pos:column="31">PersistenceStoreKey</name></expr></argument>, <argument><expr><name pos:line="35" pos:column="52">glimpseRequests</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+
+            <expr_stmt><expr><name pos:line="38" pos:column="13">GlimpseRequests</name> <op:operator pos:line="38" pos:column="29">=</op:operator> <name pos:line="38" pos:column="31">glimpseRequests</name></expr>;</expr_stmt>
+        }</block></constructor>
+
+        <decl_stmt><decl><type><specifier pos:line="41" pos:column="9">internal</specifier> <name><name pos:line="41" pos:column="18">Queue</name><argument_list pos:line="41" pos:column="23">&lt;<argument><name pos:line="41" pos:column="24">GlimpseRequest</name></argument>&gt;</argument_list></name></type> <name pos:line="41" pos:column="40">GlimpseRequests</name> <block pos:line="41" pos:column="56">{ <function_decl><name pos:line="41" pos:column="58">get</name>;</function_decl> <function_decl><name pos:line="41" pos:column="63">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="43" pos:column="9">private</specifier> <name pos:line="43" pos:column="17">IDataStore</name></type> <name pos:line="43" pos:column="28">DataStore</name> <block pos:line="43" pos:column="38">{ <function_decl><name pos:line="43" pos:column="40">get</name>;</function_decl> <function_decl><name pos:line="43" pos:column="45">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="45" pos:column="9">private</specifier> <name pos:line="45" pos:column="17">GlimpseMetadata</name></type> <name pos:line="45" pos:column="33">Metadata</name> <block pos:line="45" pos:column="42">{ <function_decl><name pos:line="45" pos:column="44">get</name>;</function_decl> <function_decl><name pos:line="45" pos:column="49">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="47" pos:column="9">private</specifier> <name pos:line="47" pos:column="17">int</name></type> <name pos:line="47" pos:column="21">BufferSize</name> <block pos:line="47" pos:column="32">{ <function_decl><name pos:line="47" pos:column="34">get</name>;</function_decl> <function_decl><name pos:line="47" pos:column="39">set</name>;</function_decl> }</block></decl></decl_stmt>
+
+        <comment type="line" pos:line="49" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="50" pos:column="9">/// Saves the specified request.</comment>
+        <comment type="line" pos:line="51" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="52" pos:column="9">/// &lt;param name="request"&gt;The request.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="53" pos:column="9">public</specifier> <name pos:line="53" pos:column="16">void</name></type> <name pos:line="53" pos:column="21">Save</name><parameter_list pos:line="53" pos:column="25">(<param><decl><type><name pos:line="53" pos:column="26">GlimpseRequest</name></type> <name pos:line="53" pos:column="41">request</name></decl></param>)</parameter_list>
+        <block pos:line="54" pos:column="9">{
+            <lock pos:line="55" pos:column="13">lock (<expr><name pos:line="55" pos:column="19">queueLock</name></expr>)
+            <block pos:line="56" pos:column="13">{
+                <if pos:line="57" pos:column="17">if <condition pos:line="57" pos:column="20">(<expr><name><name pos:line="57" pos:column="21">GlimpseRequests</name><op:operator pos:line="57" pos:column="36">.</op:operator><name pos:line="57" pos:column="37">Count</name></name> <op:operator pos:line="57" pos:column="43">&gt;=</op:operator> <name pos:line="57" pos:column="46">BufferSize</name></expr>)</condition><then pos:line="57" pos:column="57">
+                <block pos:line="58" pos:column="17">{
+                    <expr_stmt><expr><call><name><name pos:line="59" pos:column="21">GlimpseRequests</name><op:operator pos:line="59" pos:column="36">.</op:operator><name pos:line="59" pos:column="37">Dequeue</name></name><argument_list pos:line="59" pos:column="44">()</argument_list></call></expr>;</expr_stmt>
+                }</block></then></if>
+
+                <expr_stmt><expr><call><name><name pos:line="62" pos:column="17">GlimpseRequests</name><op:operator pos:line="62" pos:column="32">.</op:operator><name pos:line="62" pos:column="33">Enqueue</name></name><argument_list pos:line="62" pos:column="40">(<argument><expr><name pos:line="62" pos:column="41">request</name></expr></argument>)</argument_list></call></expr>;</expr_stmt>
+            }</block></lock>
+        }</block></function>
+
+        <comment type="line" pos:line="66" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="67" pos:column="9">/// Saves the specified system metadata.</comment>
+        <comment type="line" pos:line="68" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="69" pos:column="9">/// &lt;param name="metadata"&gt;The metadata.&lt;/param&gt;</comment>
+        <function><type><specifier pos:line="70" pos:column="9">public</specifier> <name pos:line="70" pos:column="16">void</name></type> <name pos:line="70" pos:column="21">Save</name><parameter_list pos:line="70" pos:column="25">(<param><decl><type><name pos:line="70" pos:column="26">GlimpseMetadata</name></type> <name pos:line="70" pos:column="42">metadata</name></decl></param>)</parameter_list>
+        <block pos:line="71" pos:column="9">{
+            <expr_stmt><expr><name pos:line="72" pos:column="13">Metadata</name> <op:operator pos:line="72" pos:column="22">=</op:operator> <name pos:line="72" pos:column="24">metadata</name></expr>;</expr_stmt>
+        }</block></function>
+
+        <comment type="line" pos:line="75" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="76" pos:column="9">/// Gets the by request id.</comment>
+        <comment type="line" pos:line="77" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="78" pos:column="9">/// &lt;param name="requestId"&gt;The request id.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="79" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="80" pos:column="9">/// Instance of the request that matches the request id.</comment>
+        <comment type="line" pos:line="81" pos:column="9">/// &lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="82" pos:column="9">public</specifier> <name pos:line="82" pos:column="16">GlimpseRequest</name></type> <name pos:line="82" pos:column="31">GetByRequestId</name><parameter_list pos:line="82" pos:column="45">(<param><decl><type><name pos:line="82" pos:column="46">Guid</name></type> <name pos:line="82" pos:column="51">requestId</name></decl></param>)</parameter_list>
+        <block pos:line="83" pos:column="9">{
+            <lock pos:line="84" pos:column="13">lock (<expr><name pos:line="84" pos:column="19">queueLock</name></expr>)
+            <block pos:line="85" pos:column="13">{
+                <return pos:line="86" pos:column="17">return <expr><call><name><name pos:line="86" pos:column="24">GlimpseRequests</name><op:operator pos:line="86" pos:column="39">.</op:operator><name pos:line="86" pos:column="40">FirstOrDefault</name></name><argument_list pos:line="86" pos:column="54">(<argument><expr><lambda><name pos:line="86" pos:column="55">r</name> <op:operator pos:line="86" pos:column="57">=&gt;</op:operator> <name><name pos:line="86" pos:column="60">r</name><op:operator pos:line="86" pos:column="61">.</op:operator><name pos:line="86" pos:column="62">RequestId</name></name> <op:operator pos:line="86" pos:column="72">==</op:operator> <name pos:line="86" pos:column="75">requestId</name></lambda></expr></argument>)</argument_list></call></expr>;</return>
+            }</block></lock>
+        }</block></function>
+
+        <comment type="line" pos:line="90" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="91" pos:column="9">/// Gets the by request id and tab key.</comment>
+        <comment type="line" pos:line="92" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="93" pos:column="9">/// &lt;param name="requestId"&gt;The request id.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="94" pos:column="9">/// &lt;param name="tabKey"&gt;The tab key.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="95" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="96" pos:column="9">/// Instance of the tab data that matches the request id and tab key.</comment>
+        <comment type="line" pos:line="97" pos:column="9">/// &lt;/returns&gt;</comment>
+        <comment type="line" pos:line="98" pos:column="9">/// &lt;exception cref="System.ArgumentException"&gt;Throws an exception if &lt;paramref name="tabKey"/&gt; is &lt;c&gt;null&lt;/c&gt;.&lt;/exception&gt;</comment>
+        <function><type><specifier pos:line="99" pos:column="9">public</specifier> <name pos:line="99" pos:column="16">TabResult</name></type> <name pos:line="99" pos:column="26">GetByRequestIdAndTabKey</name><parameter_list pos:line="99" pos:column="49">(<param><decl><type><name pos:line="99" pos:column="50">Guid</name></type> <name pos:line="99" pos:column="55">requestId</name></decl></param>, <param><decl><type><name pos:line="99" pos:column="66">string</name></type> <name pos:line="99" pos:column="73">tabKey</name></decl></param>)</parameter_list>
+        <block pos:line="100" pos:column="9">{
+            <if pos:line="101" pos:column="13">if <condition pos:line="101" pos:column="16">(<expr><call><name><name pos:line="101" pos:column="17">string</name><op:operator pos:line="101" pos:column="23">.</op:operator><name pos:line="101" pos:column="24">IsNullOrEmpty</name></name><argument_list pos:line="101" pos:column="37">(<argument><expr><name pos:line="101" pos:column="38">tabKey</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="101" pos:column="46">
+            <block pos:line="102" pos:column="13">{
+                <throw pos:line="103" pos:column="17">throw <expr><op:operator pos:line="103" pos:column="23">new</op:operator> <call><name pos:line="103" pos:column="27">ArgumentException</name><argument_list pos:line="103" pos:column="44">(<argument><expr><lit:literal type="string" pos:line="103" pos:column="45">"tabKey"</lit:literal></expr></argument>)</argument_list></call></expr>;</throw>
+            }</block></then></if>
+
+            <decl_stmt><decl><type><name pos:line="106" pos:column="13">var</name></type> <name pos:line="106" pos:column="17">request</name> <init pos:line="106" pos:column="25">= <expr><call><name pos:line="106" pos:column="27">GetByRequestId</name><argument_list pos:line="106" pos:column="41">(<argument><expr><name pos:line="106" pos:column="42">requestId</name></expr></argument>)</argument_list></call></expr></init></decl>;</decl_stmt>
+
+            <if pos:line="108" pos:column="13">if <condition pos:line="108" pos:column="16">(<expr><name pos:line="108" pos:column="17">request</name> <op:operator pos:line="108" pos:column="25">==</op:operator> <name pos:line="108" pos:column="28">null</name> <op:operator pos:line="108" pos:column="33">||</op:operator> <op:operator pos:line="108" pos:column="36">!</op:operator><call><name><name pos:line="108" pos:column="37">request</name><op:operator pos:line="108" pos:column="44">.</op:operator><name pos:line="108" pos:column="45">TabData</name><op:operator pos:line="108" pos:column="52">.</op:operator><name pos:line="108" pos:column="53">ContainsKey</name></name><argument_list pos:line="108" pos:column="64">(<argument><expr><name pos:line="108" pos:column="65">tabKey</name></expr></argument>)</argument_list></call></expr>)</condition><then pos:line="108" pos:column="73">
+            <block pos:line="109" pos:column="13">{
+                <return pos:line="110" pos:column="17">return <expr><name pos:line="110" pos:column="24">null</name></expr>;</return>
+            }</block></then></if>
+
+            <return pos:line="113" pos:column="13">return <expr><name><name pos:line="113" pos:column="20">request</name><op:operator pos:line="113" pos:column="27">.</op:operator><name pos:line="113" pos:column="28">TabData</name><index pos:line="113" pos:column="35">[<expr><name pos:line="113" pos:column="36">tabKey</name></expr>]</index></name></expr>;</return>
+        }</block></function>
+
+        <comment type="line" pos:line="116" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="117" pos:column="9">/// Gets the by request parent id.</comment>
+        <comment type="line" pos:line="118" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="119" pos:column="9">/// &lt;param name="parentRequestId"&gt;The parent request id.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="120" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="121" pos:column="9">/// Collection of requests that matches the parent request id.</comment>
+        <comment type="line" pos:line="122" pos:column="9">/// &lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="123" pos:column="9">public</specifier> <name><name pos:line="123" pos:column="16">IEnumerable</name><argument_list pos:line="123" pos:column="27">&lt;<argument><name pos:line="123" pos:column="28">GlimpseRequest</name></argument>&gt;</argument_list></name></type> <name pos:line="123" pos:column="44">GetByRequestParentId</name><parameter_list pos:line="123" pos:column="64">(<param><decl><type><name pos:line="123" pos:column="65">Guid</name></type> <name pos:line="123" pos:column="70">parentRequestId</name></decl></param>)</parameter_list>
+        <block pos:line="124" pos:column="9">{
+            <lock pos:line="125" pos:column="13">lock (<expr><name pos:line="125" pos:column="19">queueLock</name></expr>)
+            <block pos:line="126" pos:column="13">{
+                <return pos:line="127" pos:column="17">return <expr><call><name><name pos:line="127" pos:column="24">GlimpseRequests</name><op:operator pos:line="127" pos:column="39">.</op:operator><name pos:line="127" pos:column="40">Where</name></name><argument_list pos:line="127" pos:column="45">(<argument><expr><lambda><name pos:line="127" pos:column="46">r</name> <op:operator pos:line="127" pos:column="48">=&gt;</op:operator> <name><name pos:line="127" pos:column="51">r</name><op:operator pos:line="127" pos:column="52">.</op:operator><name pos:line="127" pos:column="53">ParentRequestId</name></name> <op:operator pos:line="127" pos:column="69">==</op:operator> <name pos:line="127" pos:column="72">parentRequestId</name></lambda></expr></argument>)</argument_list></call><op:operator pos:line="127" pos:column="88">.</op:operator><call><name pos:line="127" pos:column="89">ToList</name><argument_list pos:line="127" pos:column="95">()</argument_list></call></expr>;</return>
+            }</block></lock>
+        }</block></function>
+
+        <comment type="line" pos:line="131" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="132" pos:column="9">/// Gets the top.</comment>
+        <comment type="line" pos:line="133" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="134" pos:column="9">/// &lt;param name="count"&gt;The count.&lt;/param&gt;</comment>
+        <comment type="line" pos:line="135" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="136" pos:column="9">/// Collection of requests that represent the top x number of requests.</comment>
+        <comment type="line" pos:line="137" pos:column="9">/// &lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="138" pos:column="9">public</specifier> <name><name pos:line="138" pos:column="16">IEnumerable</name><argument_list pos:line="138" pos:column="27">&lt;<argument><name pos:line="138" pos:column="28">GlimpseRequest</name></argument>&gt;</argument_list></name></type> <name pos:line="138" pos:column="44">GetTop</name><parameter_list pos:line="138" pos:column="50">(<param><decl><type><name pos:line="138" pos:column="51">int</name></type> <name pos:line="138" pos:column="55">count</name></decl></param>)</parameter_list>
+        <block pos:line="139" pos:column="9">{
+            <lock pos:line="140" pos:column="13">lock (<expr><name pos:line="140" pos:column="19">queueLock</name></expr>)
+            <block pos:line="141" pos:column="13">{
+                <return pos:line="142" pos:column="17">return <expr><call><name><name pos:line="142" pos:column="24">GlimpseRequests</name><op:operator pos:line="142" pos:column="39">.</op:operator><name pos:line="142" pos:column="40">Take</name></name><argument_list pos:line="142" pos:column="44">(<argument><expr><name pos:line="142" pos:column="45">count</name></expr></argument>)</argument_list></call><op:operator pos:line="142" pos:column="51">.</op:operator><call><name pos:line="142" pos:column="52">ToList</name><argument_list pos:line="142" pos:column="58">()</argument_list></call></expr>;</return>
+            }</block></lock>
+        }</block></function>
+
+        <comment type="line" pos:line="146" pos:column="9">/// &lt;summary&gt;</comment>
+        <comment type="line" pos:line="147" pos:column="9">/// Gets the metadata.</comment>
+        <comment type="line" pos:line="148" pos:column="9">/// &lt;/summary&gt;</comment>
+        <comment type="line" pos:line="149" pos:column="9">/// &lt;returns&gt;</comment>
+        <comment type="line" pos:line="150" pos:column="9">/// Metadata that is currently applied.</comment>
+        <comment type="line" pos:line="151" pos:column="9">/// &lt;/returns&gt;</comment>
+        <function><type><specifier pos:line="152" pos:column="9">public</specifier> <name pos:line="152" pos:column="16">GlimpseMetadata</name></type> <name pos:line="152" pos:column="32">GetMetadata</name><parameter_list pos:line="152" pos:column="43">()</parameter_list>
+        <block pos:line="153" pos:column="9">{
+            <return pos:line="154" pos:column="13">return <expr><name pos:line="154" pos:column="20">Metadata</name></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>

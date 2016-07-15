@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<unit xmlns="http://www.sdml.info/srcML/src" xmlns:cpp="http://www.sdml.info/srcML/cpp" xmlns:lit="http://www.sdml.info/srcML/literal" xmlns:op="http://www.sdml.info/srcML/operator" xmlns:type="http://www.sdml.info/srcML/modifier" xmlns:pos="http://www.sdml.info/srcML/position" language="C#" filename="D:\Research\Subjects\Glimpse-master\source\Glimpse.WindowsAzure\Tab\WindowsAzure.cs" pos:tabs="8"><using pos:line="1" pos:column="1">using <name><name pos:line="1" pos:column="7">Glimpse</name><op:operator pos:line="1" pos:column="14">.</op:operator><name pos:line="1" pos:column="15">Core</name><op:operator pos:line="1" pos:column="19">.</op:operator><name pos:line="1" pos:column="20">Extensibility</name></name>;</using>
+<using pos:line="2" pos:column="1">using <name><name pos:line="2" pos:column="7">Glimpse</name><op:operator pos:line="2" pos:column="14">.</op:operator><name pos:line="2" pos:column="15">WindowsAzure</name><op:operator pos:line="2" pos:column="27">.</op:operator><name pos:line="2" pos:column="28">Infrastructure</name></name>;</using>
+
+<namespace pos:line="4" pos:column="1">namespace <name><name pos:line="4" pos:column="11">Glimpse</name><op:operator pos:line="4" pos:column="18">.</op:operator><name pos:line="4" pos:column="19">WindowsAzure</name><op:operator pos:line="4" pos:column="31">.</op:operator><name pos:line="4" pos:column="32">Tab</name></name>
+<block pos:line="5" pos:column="1">{
+    <class><specifier pos:line="6" pos:column="5">public</specifier> class <name pos:line="6" pos:column="18">WindowsAzure</name>
+        <super pos:line="7" pos:column="9">: <name pos:line="7" pos:column="11">TabBase</name>, <name pos:line="7" pos:column="20">IKey</name></super>
+    <block pos:line="8" pos:column="5">{
+        <decl_stmt><decl><type><specifier pos:line="9" pos:column="9">private</specifier> <specifier pos:line="9" pos:column="17">readonly</specifier> <name pos:line="9" pos:column="26">IWindowsAzureEnvironment</name></type> <name pos:line="9" pos:column="51">windowsAzureEnvironment</name></decl>;</decl_stmt>
+
+        <constructor><specifier pos:line="11" pos:column="9">public</specifier> <name pos:line="11" pos:column="16">WindowsAzure</name><parameter_list pos:line="11" pos:column="28">()</parameter_list>
+        <block pos:line="12" pos:column="9">{
+            <expr_stmt><expr><name pos:line="13" pos:column="13">windowsAzureEnvironment</name> <op:operator pos:line="13" pos:column="37">=</op:operator> <op:operator pos:line="13" pos:column="39">new</op:operator> <call><name pos:line="13" pos:column="43">WindowsAzureWebsitesEnvironment</name><argument_list pos:line="13" pos:column="74">()</argument_list></call></expr>;</expr_stmt>
+            <if pos:line="14" pos:column="13">if <condition pos:line="14" pos:column="16">(<expr><op:operator pos:line="14" pos:column="17">!</op:operator><name><name pos:line="14" pos:column="18">windowsAzureEnvironment</name><op:operator pos:line="14" pos:column="41">.</op:operator><name pos:line="14" pos:column="42">IsAvailable</name></name></expr>)</condition><then pos:line="14" pos:column="54">
+            <block pos:line="15" pos:column="13">{
+                <expr_stmt><expr><name pos:line="16" pos:column="17">windowsAzureEnvironment</name> <op:operator pos:line="16" pos:column="41">=</op:operator> <op:operator pos:line="16" pos:column="43">new</op:operator> <call><name pos:line="16" pos:column="47">WindowsAzureCloudServicesEnvironment</name><argument_list pos:line="16" pos:column="83">()</argument_list></call></expr>;</expr_stmt>
+            }</block></then></if>
+        }</block></constructor>
+
+        <decl_stmt><decl><type><specifier pos:line="20" pos:column="9">public</specifier> <specifier pos:line="20" pos:column="16">override</specifier> <name pos:line="20" pos:column="25">string</name></type> <name pos:line="20" pos:column="32">Name</name>
+        <block pos:line="21" pos:column="9">{
+            <function><name pos:line="22" pos:column="13">get</name> <block pos:line="22" pos:column="17">{ <return pos:line="22" pos:column="19">return <expr><lit:literal type="string" pos:line="22" pos:column="26">"Azure Environment"</lit:literal></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <decl_stmt><decl><type><specifier pos:line="25" pos:column="9">public</specifier> <name pos:line="25" pos:column="16">string</name></type> <name pos:line="25" pos:column="23">Key</name> 
+        <block pos:line="26" pos:column="9">{
+            <function><name pos:line="27" pos:column="13">get</name> <block pos:line="27" pos:column="17">{ <return pos:line="27" pos:column="19">return <expr><lit:literal type="string" pos:line="27" pos:column="26">"glimpse_waz_environment"</lit:literal></expr>;</return> }</block></function>
+        }</block></decl></decl_stmt>
+
+        <function><type><specifier pos:line="30" pos:column="9">public</specifier> <specifier pos:line="30" pos:column="16">override</specifier> <name pos:line="30" pos:column="25">object</name></type> <name pos:line="30" pos:column="32">GetData</name><parameter_list pos:line="30" pos:column="39">(<param><decl><type><name pos:line="30" pos:column="40">ITabContext</name></type> <name pos:line="30" pos:column="52">context</name></decl></param>)</parameter_list>
+        <block pos:line="31" pos:column="9">{
+            <if pos:line="32" pos:column="13">if <condition pos:line="32" pos:column="16">(<expr><name><name pos:line="32" pos:column="17">windowsAzureEnvironment</name><op:operator pos:line="32" pos:column="40">.</op:operator><name pos:line="32" pos:column="41">IsAvailable</name></name></expr>)</condition><then pos:line="32" pos:column="53">
+            <block pos:line="33" pos:column="13">{
+                <return pos:line="34" pos:column="17">return <expr><name pos:line="34" pos:column="24">windowsAzureEnvironment</name></expr>;</return>
+            }</block></then></if>
+
+            <return pos:line="37" pos:column="13">return <expr><lit:literal type="string" pos:line="37" pos:column="20">"The application is not running in Windows Azure Cloud Services or Windows Azure Websites."</lit:literal></expr>;</return>
+        }</block></function>
+    }</block></class>
+}</block></namespace></unit>
