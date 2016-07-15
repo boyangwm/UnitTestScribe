@@ -1,0 +1,5 @@
+*.dgz
+*.log
+WM.UnitTestScribe.Test/obj/Debug/
+WM.UnitTestScribe/bin/Debug/ABB.SrcML.Data.dll
+WM.UnitTestScribe/bin/
