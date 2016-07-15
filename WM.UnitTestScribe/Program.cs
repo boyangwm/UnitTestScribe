@@ -36,7 +36,7 @@ namespace WM.UnitTestScribe {
             DateTime dt = DateTime.Now;
            //args = new string[] { "hello" };
            // args = new string[] { "testcases", "--loc", LocalProj, "--srcmlPath", SrcmlLoc }; 
-           args = new string[] { "summary", "--loc", LocalProj, "--srcmlPath", SrcmlLoc, "--outputLoc",  outputLoc }; 
+           //args = new string[] { "summary", "--loc", LocalProj, "--srcmlPath", SrcmlLoc, "--outputLoc",  outputLoc }; 
             var options = new Options();
             string invokedVerb = null;
             object invokedVerbOptions = null;
