@@ -1,1 +1,0 @@
-   variable <i>$rootVar$</i> through <a data-toggle="masterTooltip" title="$Variable; separator=" >>> " $"> <ins><i>slicing path</i></ins></a>
